@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferdimen - Adı yalnızlığından gelen kahraman</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            margin-bottom: 10px;
+        }
+        .social-icons {
+            margin: 20px 0;
+        }
+        .social-icons a {
+            color: #fff;
+            font-size: 24px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .section {
+            margin: 40px 0;
+        }
+        .section-title {
+            font-size: 24px;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .gallery img {
+            width: calc(30% - 10px); /* Resimlerin genişliğini ayarlayın */
+            height: auto; /* Yükseklik otomatik olsun */
+            object-fit: cover;
+            margin: 5px; /* Resimler arası boşluk */
+            cursor: pointer;
+        }
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .video-container iframe {
+            flex: 1 1 calc(50% - 10px);
+            height: 315px;
+        }
+        /* Lightbox CSS */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .lightbox-content img {
+            width: 100%;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://avatars.githubusercontent.com/u/120120395?v=4" alt="Ferdimen" class="profile-img">
+        <h1>Ferdimen</h1>
+        <h2>Adı yalnızlığından gelen kahraman</h2>
+        
+        <div class="social-icons">
+					<a href="https://www.youtube.com/@ferdimen" target="_blank"><i class="fab fa-youtube"></i></a>
+				<a href="https://www.youtube.com/@aykiriyollar" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://soundcloud.com/ferdimen" target="_blank"><i class="fab fa-soundcloud"></i></a>
+				<a href="https://t.me/ferdimen" target="_blank"><i class="fab fa-telegram"></i></a>
+                  <a href="https://github.com/ferdimen" target="_blank"><i class="fab fa-github"></i></a>  
+		<a href="https://www.polarsteps.com/ferdimen" target="_blank" class="social-icon polarsteps-link">
+    <i class="fab custom-polarsteps">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+        </svg>
+    </i>
+    P
+</a>
+		</div>
+
+        <div class="section">
+            <h3 class="section-title">?</h3>
+    <p><strong>Ferdimen</strong>, modern dijital dünyanın dayattığı algoritmik kalıplara, hız tüketimine ve "sayısallaştırılmış" başarı kriterlerine meydan okuyan, kendi deyimiyle <span class="highlight">"avare" bir bisikletçi, özgür bir yol anlatıcısıdır.</span></p>
+
+    <p>O, yolları kilometre taşlarıyla veya hız göstergeleriyle değil; arkasında bıraktığı hikayelerle, dokunduğu hayatlarla ve coğrafyanın ruhuyla ölçer. Popüler kültürün "influencer" veya standart "içerik üreticisi" tanımlarını reddederek, dijital dünyanın bir "ırgatı" olmayı değil, <strong>yaratıcı özerkliğini</strong> korumayı seçmiş bir modern zaman seyyahıdır.</p>
+
+    <hr>
+
+    <h3>Yol Felsefesi ve Bisiklet Kültürü</h3>
+    <p>Ferdimen için bisiklet, sadece bir ulaşım aracı değil; bağımsızlığın, sadeliğin ve doğayla kurulan sansürsüz bir bağın sembolüdür. Genellikle dağ bisikleti (MTB) tercihleriyle bilinen bu yolculuk tarzı, dayanıklılığı ve her türlü araziye uyum sağlamayı esas alır.</p> 
+
+    <p>Onun seyahat felsefesinde <strong>"görünmezlik"</strong> ve <strong>"hamlık"</strong> ön plandadır. Popüler rotaları tüketmek yerine, Anadolu'nun derinliklerine, unutulmuş patikalara ve kalıpların ötesindeki topraklara yönelir. Rotanın detaylarını (GPX verilerini) paylaşmayı veya yolculuğu mekanik bir veriye dönüştürmeyi reddeder; çünkü ona göre yol, sadece gidilerek ve hissedilerek keşfedilmesi gereken kişisel bir deneyimdir.</p>
+        </div>
+		
+
+        <div class="section">
+            <h3 class="section-title"></h3>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close">×</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="">
+        </div>
+    </div>
+
+    <script>
+        // Lightbox script
+        const galleryImages = document.querySelectorAll('.gallery img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const close = document.querySelector('.close');
+
+        galleryImages.forEach(image => {
+            image.addEventListener('click', () => {
+                lightbox.style.display = 'block';
+                lightboxImg.src = image.src;
+            });
+        });
+
+        close.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                lightbox.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
