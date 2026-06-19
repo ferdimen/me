@@ -1,0 +1,100 @@
+/* YouTube Geri Sayım Katman Stilleri */
+#countdown-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    opacity: 1;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#countdown-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#close-overlay {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: #666666;
+    font-size: 35px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+#close-overlay:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.countdown-container-box {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.countdown-container-box h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.countdown-container-box .description {
+    font-size: 0.95rem;
+    color: #888888;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 2rem;
+}
+
+.countdown-box {
+    background: #1a1a1a;
+    border: 1px solid #2d2d2d;
+    border-radius: 4px;
+    padding: 15px 5px;
+}
+
+.number {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: #ffffff;
+    display: block;
+    font-variant-numeric: tabular-nums;
+}
+
+.label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #666666;
+    letter-spacing: 1px;
+    display: block;
+    margin-top: 5px;
+}
+
+@media (max-width: 480px) {
+    .number { font-size: 1.6rem; }
+    .countdown-grid { gap: 8px; }
+    #close-overlay { top: 15px; right: 15px; font-size: 30px; }
+}
