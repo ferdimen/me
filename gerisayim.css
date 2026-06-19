@@ -98,3 +98,83 @@
     .countdown-grid { gap: 8px; }
     #close-overlay { top: 15px; right: 15px; font-size: 30px; }
 }
+
+/* Genel Kapsayıcı ve Merkezleme */
+.logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Logo Ayarları: Yazıya olabildiğince yakın durması için alt/üst boşluklar temizlendi */
+.spinning-logo {
+    width: 80px;
+    height: auto;
+    transform-origin: center center; 
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0; 
+    padding: 0;
+    z-index: 2; /* Logonun yazıların önünde/arkasında düzgün kalması için */
+}
+
+/* Metin Penceresi: Logonun konumuna göre sınır çekiyoruz */
+/* Metin Penceresi */
+.brand-text-container {
+    height: 24px;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: -2px; 
+    
+    /* İNCE AYAR ALANI */
+    /* Yazıyı sağa kaydırmak için sol tarafa iç boşluk veriyoruz. */
+    /* 5px değerini, logonun duruşuna göre 8px, 10px gibi değiştirebilirsin. */
+    padding-left: 5px; 
+    box-sizing: border-box; /* Kaymanın genişliği bozmasını engeller */
+}
+
+/* İki ismi dikeyde tutan ve kaydıran mekanizma */
+.brand-text-slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Başlangıçta ilk ismi (Aykırı Yollar) yukarı gizlemek için -24px kaydırıyoruz */
+    /* Böylece alttaki 'Ferdimen' logonun hemen altına denk geliyor */
+    transform: translateY(-24px); 
+}
+
+/* Marka İsimlerinin Ortak Stili */
+.brand-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 24px;
+    height: 24px;
+    color: #888888;
+    letter-spacing: 1px;
+    display: block;
+}
+
+/* Üstte açılacak olan Aykırı Yollar stil özellikleri */
+.brand-name.highlight {
+    color: #888888;
+    padding-left: 8px; 
+}
+
+/* ================= SİHİRLİ AN (HOVER) ================= */
+
+/* 1. Fare gelince logo kendi merkezinde 60 derece döner */
+.logo-wrapper:hover .spinning-logo {
+    transform: rotate(60deg); 
+}
+
+/* 2. Fare gelince slider başlangıç noktasına (0) geri döner */
+/* Böylece Ferdimen aşağı kayıp gizlenirken, Aykırı Yollar logonun ÜSTÜNE yerleşir */
+.logo-wrapper:hover .brand-text-slider {
+    transform: translateY(0); 
+}
