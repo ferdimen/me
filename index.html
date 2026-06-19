@@ -1078,9 +1078,23 @@
 
 	   }
     </style>
+<link rel="stylesheet" href="gerisayim.css">		
 </head>
 <body>
-
+<div id="countdown-overlay">
+    <button id="close-overlay" aria-label="Kapat">&times;</button>
+    <div class="countdown-container-box">
+        <h1>Son Video,</h1>
+        <p class="description">Hikayenin bu en güncel son parçasını kaçırmak istemezsin.</p>
+        
+        <div class="countdown-grid">
+            <div class="countdown-box"><span class="number" id="days">00</span><span class="label">Gün</span></div>
+            <div class="countdown-box"><span class="number" id="hours">00</span><span class="label">Saat</span></div>
+            <div class="countdown-box"><span class="number" id="minutes">00</span><span class="label">Dakika</span></div>
+            <div class="countdown-box"><span class="number" id="seconds">00</span><span class="label">Saniye</span></div>
+        </div>
+    </div>
+</div>
     <!-- ÜST NAVİGASYON VE MENÜ -->
     <header class="main-header">
         <div class="container nav-bar">
@@ -2156,6 +2170,7 @@ Bu karar tamamen bireysel bir tercih değil, yaşanan tecrübelerden doğan bir 
 
 
     </script>
+	<script src="gerisayim.js"></script>
 </body>
 </html>
 
