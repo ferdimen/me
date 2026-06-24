@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Yönlendiriliyorsunuz...</title>
-    <script>
-        // Tarayıcıdaki URL parametrelerini alıyoruz (Örn: ferdimen.com/?git=youtube)
-        const urlParams = new URLSearchParams(window.location.search);
-        const hedef = urlParams.get('git');
+    <script type="text/javascript">
+        // Gelen URL'yi alıyoruz ve küçük harfe çeviriyoruz
+        const path = window.location.pathname.toLowerCase();
 
-        // Yönlendirilecek adreslerin listesi (Bunu dilediğin gibi uzatabilirsin)
-        const yonlendirmeler = {
-            "youtube": "https://www.youtube.com/@Ferdimen",
-            "instagram": "https://ld.ferdimen.com/instagram", // Örnektir
-            "github": "https://github.com/ferdimen"
+        // Yönlendirme listemiz (Klasör açmadan, sadece buraya ekleme yapacaksın)
+        const rotalar = {
+            "/me/youtube": "https://www.youtube.com/@Ferdimen",
+            "/me/instagram": "https://instagram.com/ferdimen", // Örnek ekleme
+            "/me/github": "https://github.com/ferdimen"
         };
 
-        // Eğer eşleşen bir kelime varsa yönlendir, yoksa ana sayfada kal
-        if (hedef && yonlendirmeler[hedef]) {
-            window.location.href = yonlendirmeler[hedef];
+        // Eğer yazılan URL listemizde varsa yönlendir
+        if (rotalar[path]) {
+            window.location.href = rotalar[path];
         } else {
-            // Eğer parametre yoksa veya yanlışsa sitenin ana içeriğini göster veya buraya yaz
-            console.log("Ana sayfadasınız veya geçersiz yönlendirme.");
+            // Eğer listede olmayan rastgele bir şey yazıldıysa gerçek bir 404 sayfasına yönlendir veya mesaj yaz
+            document.write("<h1>Sayfa Bulunamadı</h1><p>Aradığınız içerik mevcut değil.</p><a href='/me/'>Ana Sayfaya Dön</a>");
         }
     </script>
 </head>
 <body>
-    <h1>Ferdimen.com</h1>
-    <p>Statik web sitesi test yayını.</p>
 </body>
 </html>
