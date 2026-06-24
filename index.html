@@ -2,13 +2,2177 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=https://www.youtube.com/@Ferdimen">
-    <title>Yönlendiriliyorsunuz...</title>
-    <script type="text/javascript">
-        window.location.href = "https://www.youtube.com/@Ferdimen";
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferdimen // Adı yalnızlığından gelen kahraman</title>
+    
+    <link rel="icon" type="image/png" href="img/logo.png">
+    
+    <style>
+        /* --- Modern ve Kurumsal Tasarım Temelleri --- */
+        :root {
+            --primary-color: #1a1a1a;
+            --text-color: #333333;
+            --text-light: #666666;
+            --bg-light: #f9f9f9;
+            --border-color: #e5e5e5;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --success-color: #2e7d32;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-color);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- ÜST MENÜ & NAVİGASYON --- */
+        .main-header {
+            border-bottom: 1px solid var(--border-color);
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo-group a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-group img {
+            max-height: 45px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav-right-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--text-light);
+        }
+
+        .header-socials {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-left: 1px solid var(--border-color);
+            padding-left: 20px;
+        }
+
+        .header-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .header-socials svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-color);
+            transition: fill 0.2s ease;
+        }
+
+        .header-socials a:hover svg {
+            fill: var(--text-light);
+            transform: translateY(-1px);
+        }
+
+        /* --- HERO (GİRİŞ) ALANI --- */
+        .hero-section {
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/ben.jpg') no-repeat center center/cover;
+            background-attachment: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 60px 20px;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-logo {
+            max-height: 110px;
+            width: auto;
+            margin-bottom: 25px;
+            object-fit: contain;
+            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.2));
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #e5e5e5;
+            font-style: italic;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-bio {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #f3f4f6;
+            margin-bottom: 35px;
+            font-weight: 400;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: #ffffff;
+            color: var(--primary-color);
+            padding: 14px 32px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-btn:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* --- HARİTA BÖLÜMÜ --- */
+        .hero-map-section {
+            background-color: var(--bg-light);
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .map-container {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        /* --- HAKKIMDA & FELSEFE --- */
+        .about-section {
+            padding: 80px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .about-block h2, .section-main-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .about-block h2::after, .section-main-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .about-block p {
+            font-size: 1.05rem;
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+/* --- MANİFESTO ALANI --- */
+.manifesto-section {
+    background-color: var(--bg-light);
+    padding: 80px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.manifesto-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Masaüstünde yan yana 3 kart */
+    gap: 30px;
+}
+
+.manifesto-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.manifesto-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+/* İkonların Tasarımı */
+.manifesto-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.manifesto-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--primary-color); /* Sitenin ana koyu rengini alır */
+}
+
+.manifesto-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.manifesto-card p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+/* Mobil Uyum */
+@media (max-width: 900px) {
+    .manifesto-grid {
+        grid-template-columns: repeat(2, 1fr); /* Tabletlerde yan yana 2 kart */
+    }
+}
+
+@media (max-width: 768px) {
+    .manifesto-grid {
+        grid-template-columns: 1fr; /* Mobilde alt alta tek kart */
+    }
+}
+
+        /* --- YATAY SLIDER VE OK NAVİGASYON ALTYAPISI --- */
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .horizontal-slider {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            padding: 10px 4px;
+            
+            /* Sürgüyü/Kaydırma çubuğunu her tarayıcıda tamamen gizler */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+
+        .horizontal-slider::-webkit-scrollbar {
+            display: none; /* Chrome, Safari ve Opera */
+        }
+
+        /* Navigasyon Ok Butonları */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .slider-arrow:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .slider-arrow:hover svg {
+            fill: #ffffff;
+        }
+
+        .slider-arrow svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--primary-color);
+            transition: fill 0.2s ease;
+        }
+
+        .slider-arrow.left-arrow {
+            left: -22px;
+        }
+
+        .slider-arrow.right-arrow {
+            right: -22px;
+        }
+
+        /* Okların sınır değerlerde sönükleşmesi için */
+        .slider-arrow.disabled {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* --- ROTALARIM BÖLÜMÜ --- */
+        .routes-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+
+        .route-card {
+            flex: 0 0 calc(50% - 12px); /* Masaüstünde tam 2 kart */
+            min-width: 300px;
+            scroll-snap-align: start;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--bg-light);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .route-card:hover {
+            border-color: #b5b5b5;
+        }
+
+        .route-card-content {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .route-meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .route-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .route-card p {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        .route-links {
+            display: flex;
+            gap: 15px;
+            border-top: 1px solid var(--border-color);
+            padding: 15px 25px;
+            background: #ffffff;
+        }
+
+        .route-links a {
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            transition: color 0.2s ease;
+        }
+
+        .route-links a:hover {
+            color: var(--text-light);
+        }
+
+        /* --- EKİPMANLARIM BÖLÜMÜ --- */
+        .gear-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .gear-category {
+            flex: 0 0 calc(33.333% - 16px); /* Masaüstünde tam 3 kategori */
+            min-width: 290px;
+            scroll-snap-align: start;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+        }
+
+        .gear-category h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .gear-list {
+            list-style: none;
+        }
+
+        .gear-list li {
+            font-size: 0.95rem;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--bg-light);
+            color: var(--text-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gear-list li:last-child {
+            border-bottom: none;
+        }
+
+        .gear-list li span {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            text-align: right;
+            padding-left: 10px;
+        }
+
+        /* --- TIMELINE BÖLÜMÜ --- */
+        .timeline-section {
+            padding: 80px 0;
+        }
+
+        .custom-timeline {
+            position: relative;
+            max-width: 950px;
+            margin: 40px auto 0 auto;
+        }
+
+        .custom-timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-row {
+            display: flex;
+            position: relative;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .timeline-year-badge {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-box {
+            width: 50%;
+            position: relative;
+        }
+
+        .timeline-box.left-box { padding-right: 50px; }
+        .timeline-box.right-box { padding-left: 50px; margin-left: auto; }
+
+        .timeline-card-node {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 6px;
+            transition: border-color 0.2s ease;
+        }
+
+        .timeline-card-node:hover { border-color: #b5b5b5; }
+        .timeline-card-node h3 { font-size: 1.1rem; font-weight: 700; color: var(--primary-color); margin-bottom: 8px; }
+        .timeline-card-node p { font-size: 0.9rem; color: var(--text-color); }
+        .timeline-card-node img { max-width: 100%; height: auto; display: block; margin-top: 12px; border-radius: 4px; }
+        .timeline-card-node a.timeline-btn { display: inline-block; margin-top: 12px; font-weight: 600; color: var(--primary-color); text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid var(--primary-color); }
+        .timeline-card-node a.timeline-btn:hover { color: var(--text-light); border-bottom-color: var(--text-light); }
+        }
+
+        /* --- DESTEK OL (BANKA BİLGİLERİ) BÖLÜMÜ --- */
+        .support-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .support-container {
+            max-width: 700px;
+            margin: 40px auto 0 auto;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .support-container p {
+            margin-bottom: 25px;
+            color: var(--text-color);
+            font-size: 1.05rem;
+        }
+
+        .bank-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .bank-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .bank-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-light);
+            min-width: 80px;
+        }
+
+        .bank-value {
+            font-family: monospace;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            word-break: break-all;
+            flex-grow: 1;
+        }
+
+        .copy-btn {
+            background: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: #333333;
+        }
+
+        .copy-btn.copied {
+            background: var(--success-color);
+        }
+
+        /* --- SIK SORULAN SORULAR --- */
+        .faq-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+
+        .faq-wrapper {
+            max-width: 800px;
+            margin: 40px auto 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--bg-light);
+            overflow: hidden;
+            transition: border-color 0.2s ease;
+        }
+
+        .faq-item[open] {
+            border-color: #b5b5b5;
+            background-color: #ffffff;
+        }
+
+        .faq-item summary {
+            padding: 20px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--text-light);
+            transition: transform 0.2s ease;
+        }
+
+        .faq-item[open] summary::after {
+            content: '−';
+        }
+
+        .faq-content {
+            padding: 0 20px 20px 20px;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            border-top: 1px solid transparent;
+        }
+
+        .faq-item[open] .faq-content {
+            border-top-color: var(--border-color);
+            padding-top: 15px;
+        }
+
+        /* --- VİDEO ALANI --- */
+        .video-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .video-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        .responsive-video {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .responsive-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- İLETİŞİM & SOSYAL MEDYA --- */
+        .contact-section {
+            padding: 80px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info-side h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .contact-info-side p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .social-links-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .social-icon-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .social-icon-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary-color);
+            transition: fill 0.2s ease;
+        }
+
+        .social-icon-btn:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            border-color: var(--primary-color);
+        }
+
+        .social-icon-btn:hover svg {
+            fill: #ffffff;
+        }
+
+        .contact-form-side {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            color: var(--text-color);
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            padding: 14px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #333333;
+        }
+
+        /* --- FOOTER --- */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-text {
+            color: #a1a1aa;
+        }
+/* --- PROTESTO & HAZIR ŞABLON ALANI --- */
+.protest-section {
+    padding: 80px 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.protest-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    max-width: 850px;
+}
+
+.protest-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: center;
+}
+
+/* Şablon Kutusu */
+.template-box {
+    background: var(--bg-light);
+    border: 2px dashed #a1a1aa;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.template-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.template-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.1); /* Protesto havası için siyah beyaz */
+}
+
+/* Logo Yerleşim Yuvası */
+.logo-placeholder-slot {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 110px;
+    height: 110px;
+    background-color: rgba(243, 244, 246, 0.85);
+    border: 2px dashed #dc2626; /* Dikkat çekici kırmızı kesikli çizgi */
+    color: #dc2626;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(4px);
+}
+
+/* Slogan Kuşağı */
+.template-slogan {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    color: #ffffff;
+    padding: 20px 15px 15px 15px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.template-footer-text {
+    margin-top: 12px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+/* Sağ Taraf: Metinler ve Kurallar */
+.protest-manifesto h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.protest-manifesto p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.protest-rules {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 25px;
+}
+
+.protest-rules li {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.protest-rules li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #dc2626;
+    font-size: 1.4rem;
+    top: -4px;
+}
+
+.protest-quote {
+    font-style: italic;
+    border-left: 3px solid #dc2626;
+    padding-left: 15px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* Mobil Uyum */
+@media (max-width: 768px) {
+    .protest-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .logo-placeholder-slot {
+        width: 90px;
+        height: 90px;
+        font-size: 0.6rem;
+    }
+    .template-slogan {
+        font-size: 1.1rem;
+    }
+}
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-bar { flex-direction: column; height: auto; padding: 20px 0; gap: 15px; }
+            .nav-right-container { flex-direction: column; gap: 15px; width: 100%; }
+            .header-socials { border-left: none; padding-left: 0; }
+            .about-grid, .manifesto-grid { grid-template-columns: 1fr; gap: 30px; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            
+            /* Mobilde Oklar Gizlenir, Doğal Parmak Kaydırması Aktif Kalır */
+            .slider-arrow { display: none !important; }
+            .route-card { flex: 0 0 100%; }
+            .gear-category { flex: 0 0 100%; }
+            .horizontal-slider { gap: 16px; }
+
+            /* Mobil Timeline Ayarları */
+            .custom-timeline::after { left: 20px; }
+            .timeline-row { flex-direction: column; align-items: flex-start; margin-bottom: 30px; }
+            .timeline-year-badge { position: relative; left: 0; transform: none; margin-left: 5px; margin-bottom: 15px; }
+            .timeline-box { width: 100% !important; padding-left: 45px !important; padding-right: 0 !important; }
+       
+
+
+
+	   }
+    </style>
+<link rel="stylesheet" href="gerisayim.css">		
 </head>
 <body>
-    <p>Eğer otomatik olarak yönlendirilmediyseniz <a href="https://www.youtube.com/@Ferdimen">buraya tıklayın</a>.</p>
+<div id="countdown-overlay">
+    <button id="close-overlay" aria-label="Kapat">&times;</button>
+    <div class="countdown-container-box">
+				<div class="logo-wrapper">
+    <img src="img/logo.png" class="spinning-logo" alt="Ferdimen & Aykırı Yollar">
+</div>
+        <h1>Son Video,</h1>
+        <p class="description">Hikayenin bu en güncel son parçasını kaçırmak istemezsin.</p>
+        
+        <div class="countdown-grid">
+            <div class="countdown-box"><span class="number" id="days">00</span><span class="label">Gün</span></div>
+            <div class="countdown-box"><span class="number" id="hours">00</span><span class="label">Saat</span></div>
+            <div class="countdown-box"><span class="number" id="minutes">00</span><span class="label">Dakika</span></div>
+            <div class="countdown-box"><span class="number" id="seconds">00</span><span class="label">Saniye</span></div>
+        </div>
+    </div>
+</div>
+    <!-- ÜST NAVİGASYON VE MENÜ -->
+    <header class="main-header">
+        <div class="container nav-bar">
+            <div class="logo-group">
+                <a href="#">
+                    <img src="img/logo.png" alt="Ferdimen Logo">
+                </a>
+            </div>
+            
+            <div class="nav-right-container">
+                <nav>
+                    <ul class="nav-menu">
+					    <li><a href="#hakkimda">Hakkımda</a></li>
+                        <li><a href="#harita">Rota Haritası</a></li>
+                        <li><a href="#kronoloji">Kronoloji</a></li>
+						<li><a href="#rotalar">Rotalar</a></li>
+                        <li><a href="#ekipman">Ekipman</a></li>
+                        <li><a href="#faq">S.S.S.</a></li>
+						<li><a href="#sablon">Şablon</a></li>
+                        <li><a href="#destek">Destek Ol</a></li>						
+                        <li><a href="#iletisim">İletişim</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-socials">
+                    <a href="https://www.youtube.com/@ferdimen" target="_blank" title="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M21.543 6.498C22 8.21 22 12 22 12s0 3.79-.457 5.502A2.752 2.752 0 0 1 19.617 19.43C17.904 20 12 20 12 20s-5.904 0-7.617-.57a2.752 2.752 0 0 1-1.926-1.928C2 15.79 2 12 2 12s0-3.79.457-5.502A2.752 2.752 0 0 1 4.383 4.57C6.096 4 12 4 12 4s5.904 0 7.617.57a2.752 2.752 0 0 1 1.926 1.928zM10 15.5l5.5-3.5L10 8.5v7z"/></svg>
+                    </a>
+                    <a href="https://polarsteps.com/ferdimen" target="_blank" title="Polarsteps">
+                        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm-1-13h2v4h3v2h-5V7z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <img src="img/logo.png" alt="Ferdimen Logo" class="hero-logo">
+            <h1 class="hero-title">Ferdimen</h1>
+            <p class="hero-subtitle">Adı yalnızlığından gelen kahraman</p>
+            <p class="hero-bio">
+                15 yılı aşkın süredir coğrafyanın kılcal damarlarını iki teker üzerinde pedallayan bağımsız bir "avare" ve dijital yol anlatıcısıyım. Hazır şablonları reddederek, modern dünyanın dayattığı tüketim çılgınlığına karşı az donanımlarla "Aykırı Yollarda" ham gerçekliğin izini sürüyorum.
+            </p>
+            <a href="#iletisim" class="hero-btn">İletişim</a>
+        </div>
+    </section>
+	    <!-- HAKKIMDA & FELSEFE -->
+    <section class="about-section" id="hakkimda">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-block">
+                    <h2>Hakkımda</h2>
+                    <p>Modern dijital dünyanın dayattığı algoritmik kalıplara, hız tüketimine ve "<strong>sayısallaştırılmış</strong>" başarı kriterlerine meydan okuyan, kendi deyimimle <strong>"avare" bir bisikletçi, özgür bir yol anlatıcısıyım.</strong>
+<br><br>
+Yolları kilometre taşlarıyla veya hız göstergeleriyle değil; arkamda bıraktığı hikayelerle, dokunduğum hayatlarla ve coğrafyanın ruhuyla ölçerim. Popüler kültürün "influencer" veya standart "içerik üreticisi" tanımlarını reddederek, dijital dünyanın bir "ırgatı" olmayı değil, yaratıcı özerkliğini korumayı seçmiş bir modern zaman seyyahıyım.</p>
+                </div>
+                <div class="about-block">
+                    <h2>Felsefem</h2>
+                    <p>Benin için bisiklet, sadece bir ulaşım aracı değil; bağımsızlığın, sadeliğin ve doğayla kurulan sansürsüz bir bağın sembolüdür. Genellikle dağ bisikleti (MTB) tercihlerimle bilinen bu yolculuk tarzım, dayanıklılığı ve her türlü araziye uyum sağlamayı esas alır.
+<br><br>
+Seyahat felsefesimde "görünmezlik" ve "hamlık" ön plandadır. Popüler rotaları tüketmek yerine, Anadolu'nun derinliklerine, unutulmuş patikalara ve kalıpların ötesindeki topraklara yönelirim. Rotanın detaylarını (GPX verilerini) paylaşmayı veya yolculuğu mekanik bir veriye dönüştürmeyi reddediyorum; çünkü bana göre yol, sadece gidilerek ve hissedilerek keşfedilmesi gereken kişisel bir deneyimdir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="manifesto-section">
+    <div class="container">
+        <div class="manifesto-grid">
+            
+            <div class="manifesto-card">
+                <div class="manifesto-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                </div>
+                    <h3>Meta Karşıtlığı</h3>
+                    <p>Bisiklet bir statü göstergesi, fetiş objesi ya da vites sayısıyla övünülecek bir tüketim ürünü değildir. O, yalnızca doğaya, tarihe ve insana ulaşmayı sağlayan en saf, en mütevazı ulaşım aracıdır. Amacın kendisi değil, bağımsızlığın ve sadeliğin sembolü olan bir yol arkadaşıdır.</p>
+            </div>
+
+            <div class="manifesto-card">
+                <div class="manifesto-icon">
+                    <svg viewBox="0 0 24 24"><path d="M22 6.92V17c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6.92c0-.77.44-1.46 1.13-1.78l8-3.72c.55-.25 1.19-.25 1.74 0l8 3.72c.69.32 1.13 1.01 1.13 1.78zM11 6H4v2h7V6zm9 0h-7v2h7V6zm-9 4H4v2h7v-2zm9 0h-7v2h7v-2zm-9 4H4v2h7v-2zm9 0h-7v2h7v-2z"/></svg>
+                </div>
+                    <h3>Tüketimi Reddet</h3>
+                    <p>Sırf yenisi çıktı diye ekipman değiştirmeyi ve bisiklet endüstrisinin kölesi olmayı reddeder. Bu felsefede esas olan sürdürülebilirlik ve emektir; arızalanan bagaj kaynak yapılır, yamalanan lastiğe güvenilir. Zorlu arazilere meydan okuyan dağ bisikleti (MTB) tercihi de bu dayanıklılık ve sadelik anlayışının bir parçasıdır.</p>
+            </div>
+
+            <div class="manifesto-card">
+                <div class="manifesto-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4.17 5.04c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41L6.15 12l-4.8 4.8c-.39.39-.39 1.02 0 1.41l1.42 1.42c-.39.39 1.02.39 1.41 0l6.21-6.22c.39-.39.39-1.02 0-1.41L4.17 5.04zm18.41 5.54l-6.21-6.22c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41l4.8 4.8-4.8 4.8c-.39.39-.39 1.02 0 1.41l1.42 1.42c.39.39 1.02.39 1.41 0l6.21-6.22c.39-.38.39-1.01 0-1.4zm-9.35 1.42l-2.83-2.83c-.39-.39-1.02-.39-1.41 0s-.39 1.02 0 1.41l2.83 2.83c.39.39 1.02.39 1.41 0s.39-1.03 0-1.41z"/></svg>
+                </div>
+                    <h3>Aykırı Yollar</h3>
+                    <p>Konforlu asfalt yollar insanı uyuşturur; gerçek keşif ise konfor alanının bittiği yerde başlar. Haritaların bile göstermediği patikalar, stabilizesi yüksek zorlu dağ geçitleri ve unutulmuş rotalar tercih edilerek hem fiziksel hem de zihinsel olarak kalıpların dışına çıkılır.</p>
+            </div>
+
+            <div class="manifesto-card">
+                <div class="manifesto-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20 12c0-4.42-3.58-8-8-8s-8 3.58-8 8 3.58 8 8 8 8-3.58 8-8zm-8 6c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-8.5V6h-2v3.5H7.5v2H10V15h2v-3.5h2.5v-2H13z"/></svg>
+                </div>
+                    <h3>Algoritmayı Kır</h3>
+                    <p>YouTube algoritmalarının, yapay etkileşim şablonlarının, beğeni veya izlenme kaygılarının boyunduruğu altına girmeyi reddeder. İçerikler popüler kültür malzemesi olarak değil; yolun tarihini, insanını ve o derin sessizliğini olduğu gibi geleceğe aktaran ham, sansürsüz birer dijital belge ve arşiv olarak üretilir.</p>
+            </div>
+
+            <div class="manifesto-card">
+                <div class="manifesto-icon">
+                    <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                </div>
+                    <h3>Yolun Gizemini Korumak</h3>
+                    <p>Yolculuğun kişisel ve ruhsal bir deneyim olduğuna inanılır. Rotanın milimetrik detaylarını (GPX verilerini) paylaşarak yolculuğu mekanik, dijital bir tüketim verisine dönüştürmeye karşı çıkar. Çünkü yol, bir başkasının çizdiği sanal çizgilerden değil; bizzat gidilerek ve hissedilerek keşfedilmesi gereken canlı bir süreçtir.</p>
+            </div>
+
+            <div class="manifesto-card">
+                <div class="manifesto-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                </div>
+                    <h3>Görünmezlik</h3>
+                    <p>Popüler ve turistik rotaları hızlıca tüketmek yerine, seyahatte "görünmezlik" ve "hamlık" felsefesiyle hareket edilir. Amaç, vitrinde olanı değil; Anadolu'nun derinliklerinde gizlenmiş, saklı kalmış toprakları ve o toprakların unuttuğumuz gerçek insani bağlarını sansürsüzce solumaktır.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- ROTA HARİTASI -->
+    <section class="hero-map-section" id="harita">
+        <div class="container">
+            <div class="map-container">
+                <div class="flourish-embed flourish-map" data-src="visualisation/7092325">
+                    <script src="https://public.flourish.studio/resources/embed.js"></script>
+                </div>
+				
+				<div class="flourish-embed flourish-chart" data-src="visualisation/11302675"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KRONOLOJİK TIMELINE -->
+    <section class="timeline-section" id="kronoloji">
+        <div class="container">
+            <h2 class="section-main-title">Kronoloji & Dönüm Noktaları</h2>
+            <div class="custom-timeline" id="timeline-container">
+                </div>
+        </div>
+    </section>
+	
+    <!-- ROTALARIM BÖLÜMÜ (OK NAVİGASYONLU) <img src="xxx" alt="" width="400"> <br> -->
+    <section class="routes-section" id="rotalar">
+        <div class="container">
+            <h2 class="section-main-title">Paylaşılan Rotalar</h2>
+            <div class="slider-wrapper">
+                
+                <!-- Sol Ok -->
+                <div class="slider-arrow left-arrow disabled" onclick="scrollSlider('routes-slider', 'left')">
+                    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </div>
+                
+                <!-- Sağ Ok -->
+                <div class="slider-arrow right-arrow" onclick="scrollSlider('routes-slider', 'right')">
+                    <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                </div>
+
+                <div class="horizontal-slider" id="routes-slider">
+                    
+                    <div class="route-card">
+                        <div class="route-card-content">
+                            <div class="route-meta">17 Bölüm // Orta Anadolu</div>
+                            <h3>Anadolu İrfanı Turu</h3>
+                            <p>Kırıkkale'den başlayıp Yozgat'ın derinliklerine uzanan, coğrafyanın tarihsel ve kültürel katmanlarını inceleyen kapsamlı bir belgesel serisi.</p>
+                        </div>
+                        <div class="route-links">
+                            <a href="https://www.youtube.com/@ferdimen" target="_blank">Video Serisi</a>
+                            <a href="https://polarsteps.com/ferdimen" target="_blank">Telemetri / Harita</a>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <div class="route-card-content">
+                            <div class="route-meta">6 Bölüm // Göller Bölgesi</div>
+                            <h3>Güz Güneyi Rotası</h3>
+                            <p>Afrodisias antik geometrisinden, Burdur havzasına ve yüksek geçitlere uzanan, sonbaharın ham renklerini barındıran solo sürüş hattı.</p>
+                        </div>
+                        <div class="route-links">
+                            <a href="https://www.youtube.com/@ferdimen" target="_blank">Video Serisi</a>
+                            <a href="https://polarsteps.com/ferdimen" target="_blank">Yol Notları</a>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <div class="route-card-content">
+                            <div class="route-meta">Balkan Sınırları</div>
+                            <h3>Trakya ve Istranca Hattı</h3>
+                            <p>Yoğun bitki örtüsü, eski göç yolları ve dik tırmanış yüzdeleriyle Trakya coğrafyasının bilinmeyen kıvrımları.</p>
+                        </div>
+                        <div class="route-links">
+                            <a href="https://www.youtube.com/@ferdimen" target="_blank">Arşiv Videosu</a>
+                            <a href="https://polarsteps.com/ferdimen" target="_blank">Rota İzi</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EKİPMANLARIM BÖLÜMÜ (OK NAVİGASYONLU) -->
+    <section class="gear-section" id="ekipman">
+        <div class="container">
+            <h2 class="section-main-title">Kullandığım Ekipmanlar</h2>
+            <div class="slider-wrapper">
+                
+                <!-- Sol Ok -->
+                <div class="slider-arrow left-arrow disabled" onclick="scrollSlider('gear-slider', 'left')">
+                    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </div>
+                
+                <!-- Sağ Ok -->
+                <div class="slider-arrow right-arrow" onclick="scrollSlider('gear-slider', 'right')">
+                    <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                </div>
+
+                <div class="horizontal-slider" id="gear-slider">
+                    
+                    <div class="gear-category">
+                        <h3>Bisiklet & Taşıma</h3>
+                        <ul class="gear-list">
+                            <li>Tur Bisikleti <span>Kromoly Kadro</span></li>
+                            <li>Arka Bagaj <span>Onarılmış / Güçlendirilmiş</span></li>
+                            <li>Ön ve Arka Heybeler <span>Su Geçirmez Seri</span></li>
+                            <li>Gidon Çantası <span>Hızlı Erişim</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="gear-category">
+                        <h3>Kamp & Barınma</h3>
+                        <ul class="gear-list">
+                            <li>Çadır <span>3 Mevsim Minimalist</span></li>
+                            <li>Uyku Tulumu <span>Sentetik Dolgu</span></li>
+                            <li>Mat <span>Hafif Köpük</span></li>
+                            <li>Kamp Ocağı <span>Çok Yakıtlı Sistem</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="gear-category">
+                        <h3>Arşiv & Dijital</h3>
+                        <ul class="gear-list">
+                            <li>Kamera <span>Aksiyon ve VLOG Donanımı</span></li>
+                            <li>Ses Kayıt Cihazı <span>Yol ve Ambiyans Sesleri</span></li>
+                            <li>Güneş Paneli <span>Bağımsız Enerji Kaynağı</span></li>
+                            <li>Navigasyon <span>Polarsteps Altyapısı</span></li>
+                        </ul>
+                    </div>
+					
+					                    <div class="gear-category">
+                        <h3>Arşiv & Dijital</h3>
+                        <ul class="gear-list">
+                            <li>Kamera <span>Aksiyon ve VLOG Donanımı</span></li>
+                            <li>Ses Kayıt Cihazı <span>Yol ve Ambiyans Sesleri</span></li>
+                            <li>Güneş Paneli <span>Bağımsız Enerji Kaynağı</span></li>
+                            <li>Navigasyon <span>Polarsteps Altyapısı</span></li>
+                        </ul>
+                    </div>
+
+                </div>
+				<iframe src='https://flo.uri.sh/visualisation/7092441/embed' title='Interactive or visual content' class='flourish-embed-iframe' frameborder='0' scrolling='no' style='width:100%;height:600px;' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
+            </div>
+        </div>
+		
+    </section>
+
+
+    <!-- SIK SORULAN SORULAR -->
+<section class="faq-section" id="faq">
+    <div class="container">
+        <h2 class="section-main-title">Sık Sorulan Sorular</h2>
+        <div class="faq-wrapper">
+
+<details class="faq-item" name="faq">
+<summary>Neden yüzünü sansürlüyorsun?</summary>
+<div class="faq-content">
+<p>Yüzümü sansürlemem tamamen kişisel bir tercih. Ülkemizde yüzsüzleri daha çok seviyor, baş üstünde tutuyorlar; belki de ben bu yüzden böyle yapıyorum. Şaka bir yana, süper kahramanların da maskeleri olur sonuçta! Ya da belki ajanlık kariyerim tehlikeye giriyor, kim bilir?
+<br><br>
+Gerçek sebebe gelirsek; insanlar, tanınan ve tanınmayan kişilere farklı yaklaşıyor. Tanınan biri olduğunda, 'Ferdimen gelmiş, hadi fotoğraf çekelim, video çekelim!' diye sosyal medyada etkileşim peşinde koşanlarla karşılaşıyorsun. Oysa tanımadıkları biri olarak karşılarına çıktığımda, daha sıradan ve samimi bir iletişim kurabiliyorsun. Beni tanımayan biriyle doğal bir sohbet etmek, samimi bir paylaşımda bulunmak bana daha çok keyif veriyor. İşte bu yüzden yolculuklarıma maskeli süper kahraman modunda devam ediyorum!
+<br><br>
+Ama bir not düşeyim: Yüzümü sadece herkese açık videolarda gizliyorum. Ancak Katıl üzerinden üye olan takipçilerim için yayınladığım özel videolarda böyle bir gizleme söz konusu değil. Orada süper kahraman maskesi çıkıyor, çok daha içten ve açık bir iletişim kurabiliyoruz.</p>
+</div>
+</details>
+ <details class="faq-item" name="faq">
+<summary>Ferdimen ismi nereden geliyor?</summary>
+<div class="faq-content">
+<p>Adım Ferdi, ancak çoğu insan beni "Ferdimen" olarak tanır. Bir gün bir arkadaşım, benim her zorlukla başa çıkabilme yeteneğimi "Süpermen" olarak tanımlamıştı. O esnada başka bir arkadaşım, bu benzetmeyi biraz mizahi bir şekilde düzelterek "Ferdimen" demişti. O günden sonra, bu takma ad benimle özdeşleşti.<br><br>
+"Ferdimen" ismi, yalnızca bir takma ad değil, aynı zamanda kişiliğimi yansıtan bir sembol haline geldi. Yola çıktığımda, karşılaştığım zorlukları hemen çözme becerim ve pratikliğimle tanınıyorum. Bisikletle yolculuk yaparken, karşımda bir engel olsa bile hemen bir çözüm üretirim. Ancak bu beceri, sadece bisiklet yolculuklarımla sınırlı değil. Hayatımın her alanında, sorunlarla başa çıkmak için pratik bir yaklaşım geliştiririm.<br><br>
+Yalnızlık da benim için bir özelliktir. Kendi başıma yola çıkarken, yardım almak yerine kendime güvenerek hareket ederim. Çoğu zaman, yanımda kimse olmadan sorunların üstesinden gelirken, yalnızlık aslında bana güç verir. "Ferdimen" ismi, yalnız başıma yol aldığımda, kendi iç gücümü ve becerilerimi hatırlatan bir hatırlatıcı haline geldi. Çünkü her ne olursa olsun, yalnızlıkla da olsa her zorluğu aşabileceğimi biliyorum.</p>
+</div>
+</details>
+
+
+ <details class="faq-item" name="faq">
+<summary>Wikiloc.com da rotaları neden yayınlamıyorsun?</summary>
+<div class="faq-content">
+<p>Açık konuşmak gerekirse, artık rota paylaşmıyorum; mayın eşekliğini bıraktım.  Önceden hevesle her rotayı açık açık paylaşıyordum ama zamanla bazı yerlerin çok hızlı tüketildiğini, doğallığın zarar gördüğünü ve bazı rotaların herkes için uygun olmadığını fark ettim.
+<br><br>
+Geçmişte rotaları ve kamp alanlarını paylaşmış olsam da, zamanla bu durum bazı istenmeyen sonuçlara yol açtı. Özellikle kamp kurduğum bazı noktalarda, bu lokasyonlara, Wikiloc gibi platformlardan rotayı indirip gelen kişilerin benimle aynı hassasiyetleri taşımadığını, doğaya zarar verdiklerini ya da yöre halkıyla sağlıklı bir iletişim kuramadıklarını gördüm. Hatta bazıları “Ferdimen gönderdi” diyerek tanıdıklarımı suistimal etme gibi olumsuz davranışlarıyla karşılaşıldı. Bu durum hem beni hem de o bölgelerdeki dostlarımı zor durumda bıraktı.  Tanıdığım insanların “Ne biçim insanlar gönderiyorsun?” gibi serzenişlerine yol açtı.
+<br><br>
+Bu tür olaylar hem beni, hem de beni gönülden destekleyen yerel dostlarımı rahatsız etti. Ben bir yerle bağ kurarak, saygıyla yaklaşarak ilerliyorum ama rota üzerinden gelen herkes aynı yaklaşımı göstermiyor. Bu yüzden artık rotalarımı herkese açık şekilde paylaşmıyorum.
+<br><br>
+Bunun yerine, kendi internet sitemde YouTube destekçilerime özel erişim imkânı sağlıyorum. Hem bu sayede gelen kişilerin gerçekten ilgili, duyarlı ve sorumluluk sahibi olması sağlanıyor, hem de doğayı ve ilişki kurduğum yerel insanları koruyabiliyorum. Hem de emeğimin karşılığı bir nebze korunmuş oluyor ve katkı sunan takipçilerime özel bir ayrıcalık sunabiliyorum.
+<br><br>
+Bu karar tamamen bireysel bir tercih değil, yaşanan tecrübelerden doğan bir gerekliliktir. Anlayışınız için teşekkür ederim.</p>
+</div>
+</details>
+
+ <details class="faq-item" name="faq">
+<summary>Sosyal medya kullanmadığın görünüyor. Peki seninle iletişime geçmek isteyenler nasıl ulaşabilir?
+</summary>
+<div class="faq-content">
+<p>Doğru görmüşsün; sosyal medya çöplüğünde vitrin mankeni olmuyorum. İnstagram, Facebook, WhatsApp da yok, çünkü Mark Zuckerberg gibi yavşak teknofeodal lordların evreninde teşhirde durmak bana göre değil. Gerçekten önemli bir şey söylemek istiyorsan <a href="#iletisim">İletişim</a> bölümünden ulaşabilirsin. Önemsiz şeyler içinse hiç zahmet etme. Her mesaja cevap vereceğimin garantisi yok. Ben istemedikçe kimse benimle iletişime geçemez.
+
+</p>
+</div>
+</details>
+    <!-- İLETİŞİM VE SOSYAL MEDYA
+ <details class="faq-item" name="faq">
+<summary>Soru</summary>
+<div class="faq-content">
+<p>Cevap</p>
+</div>
+</details> -->
+
+                <details class="faq-item" name="faq">
+                    <summary>Neden ana yolları değil de "Aykırı Yolları" tercih ediyorsun?</summary>
+                    <div class="faq-content">
+                        <p>Asfalt konforu ve ana yollar insanı uyuşturur, coğrafyanın gerçek dokusundan uzaklaştırır. Haritaların göstermediği patikalarda, yüksek irtifalı dağ geçitlerinde ve stabilize köy yollarında medeniyetin yapaylığından uzak, saf ve gerçek bir yaşam mücadelesi vardır.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item" name="faq">
+                    <summary>Turlarda ne tür ekipmanlar kullanıyorsun?</summary>
+                    <div class="faq-content">
+                        <p>Turlarımda lüks ve en son model <a href="#ekipman">Ekipmanlar</a> yerine; işlevsel, yıllarca test edilmiş ve onarılabilir donanımları tercih ederim. Kırılan bir arka bagajı yenisiyle değiştirmek yerine sanayide kaynak yaptırmayı, delinen heybeyi yamamayı seçerim.</p>
+                    </div>
+                </details>
+
+            </div>
+    </div>
+</section>
+<!-- PROTESTO & HAZIR ŞABLON BÖLÜMÜ -->
+<section class="protest-section" id="sablon">
+    <div class="container">
+        <h2 class="section-main-title">Duyarlı Dernekler İçin "Zorunlu" Şablon</h2>
+        <p class="protest-subtitle">Gelecekteki olası bir trafik cinayetinde, pusuya yatmış sözde duyarlı bisiklet derneklerinin/kulüplerinin acı üzerinden PR yaparken logo yerleştirmekle vakit kaybetmemesi için hazırlanmış resmi, açık kaynaklı protesto alanıdır.</p>
+        
+        <div class="protest-grid">
+            <!-- Şablonun Kendisi -->
+            <div class="template-box">
+                <div class="template-image-wrapper">
+                    <img src="img/ben.jpg" alt="Ferdimen" class="template-main-img">
+                    
+                    <!-- Sağ Üst: Logo İçin Ayrılan İkiyüzlülük Alanı -->
+                    <div class="logo-placeholder-slot">
+                        <span>DERNEK / KULÜP<br>LOGONUZU<br>BURAYA<br>EKLEYİN.</span>
+                    </div>
+                    
+                    <!-- Sol Alt: Klasik Sosyal Medya Sloganı -->
+                    <div class="template-slogan">
+                        #BisikletliÖlümleriDursun
+                    </div>
+                </div>
+                <div class="template-footer-text">
+                    "Bir reklam malzemesi olarak Ferdimen (1980 - 202X)"
+                </div>
+            </div>
+
+            <!-- Eleştiri ve Kullanım Kılavuzu -->
+            <div class="protest-manifesto">
+                <h3>Kullanım Kılavuzu & Şartlar</h3>
+                <p>Bir gün trafikte bir maganda yüzünden hayatımı kaybedersem, arkamdan samimi bir yas tutmak yerine bunu bir 'etkileşim fırsatı' olarak görecek kurumlar için kurallar basittir:</p>
+                <ul class="protest-rules">
+                    <li>Görseli sağ tıklayıp farklı kaydedin.</li>
+                    <li>Sağ üstteki gri alana kendi kurumsal logonuzu, şeffaflık (opacity) değerini %100 yaparak gururla yerleştirin.</li>
+                    <li>Altına her zaman kullandığınız, hiçbir şeyi değiştirmeyen standart kınama metinlerinizi ekleyin.</li>
+                    <li><strong>Önemli Şart:</strong> Bu hazır şablonu kullanırken, kazanın hemen ardından açacağınız bağış linklerini görselin altına eklemeyi unutmayın ki samimiyetsizliğiniz tamamlansın.</li>
+                </ul>
+                <blockquote class="protest-quote">
+                    "Ölümümün, kurumsal görünürlüğünüze ve sponsorluk dosyalarınıza katkı sağlamasını temenni ederim."
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- DESTEK OL BÖLÜMÜ -->
+    <section class="support-section" id="destek">
+        <div class="container">
+            <h2 class="section-main-title">Destek Ol</h2>
+            <div class="support-container">
+                <p>Aykırı Yollarda sürdürülen bu bağımsız seyahat felsefesine, reklamsız dijital arşiv çalışmalarına ve bağımsız içerik üretimine katkıda bulunmak isterseniz aşağıdaki kanallardan destek olabilirsiniz.</p>
+                
+                <div class="bank-card">
+                    <div class="bank-row">
+                        <span class="bank-label">ALICI</span>
+                        <span class="bank-value" id="bank-receiver">Ferdi Kızıl</span>
+                        <button class="copy-btn" onclick="copyToClipboard('bank-receiver', this)">Kopyala</button>
+                    </div>
+                    <div class="bank-row">
+                        <span class="bank-label">BANKA</span>
+                        <span class="bank-value">ENPARA</span>
+                        <span style="width:74px;"></span>
+                    </div>
+                    <div class="bank-row">
+                        <span class="bank-label">IBAN</span>
+                        <span class="bank-value" id="bank-iban">TR22 0015 7000 0000 0046 5881 43</span>
+                        <button class="copy-btn" onclick="copyToClipboard('bank-iban', this)">Kopyala</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- İLETİŞİM VE SOSYAL MEDYA -->
+    <section class="contact-section" id="iletisim">
+        <div class="container">
+            <div class="contact-grid">
+                
+                <div class="contact-info-side">
+                    <h3>Bağlantıda Kalın</h3>
+                    <p>Yol hikayelerini, bağımsız yayınları ve anlık telemetri paylaşımlarını resmi ağ istasyonları üzerinden takip edebilirsiniz.</p>
+                    
+                    <div class="social-links-container">
+                        <a href="https://www.youtube.com/@ferdimen" target="_blank" class="social-icon-btn">
+                            <svg viewBox="0 0 24 24"><path d="M21.543 6.498C22 8.21 22 12 22 12s0 3.79-.457 5.502A2.752 2.752 0 0 1 19.617 19.43C17.904 20 12 20 12 20s-5.904 0-7.617-.57a2.752 2.752 0 0 1-1.926-1.928C2 15.79 2 12 2 12s0-3.79.457-5.502A2.752 2.752 0 0 1 4.383 4.57C6.096 4 12 4 12 4s5.904 0 7.617.57a2.752 2.752 0 0 1 1.926 1.928zM10 15.5l5.5-3.5L10 8.5v7z"/></svg>
+                            <span>YouTube</span>
+                        </a>
+						                        <a href="https://polarsteps.com/ferdimen" target="_blank" class="social-icon-btn">
+                            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm-1-13h2v4h3v2h-5V7z"/></svg>
+                            <span>Polarsteps</span>
+                        </a>
+                        <a href="https://soundcloud.com/ferdimen" target="_blank" class="social-icon-btn">
+                            <svg viewBox="0 0 24 24"><path d="M4 11h1v4H4zm2-2h1v6H6zm2-1h1v7H8zm2 1h1v6H10zm2-3h1v9h-1zm2 1h1v8h-1zm2 1h1v7h-1zm2-1c0-.55.45-1 1-1s1 .45 1 1v5c0 .55-.45 1-1 1s-1-.45-1-1zm2 1h1v4h-1z"/></svg>
+                            <span>SoundCloud</span>
+                        </a>
+                        <a href="https://t.me/ferdimen" target="_blank" class="social-icon-btn">
+                            <svg viewBox="0 0 24 24"><path d="M2.38 11.23l18.44-7.11a.75.75 0 0 1 .98.92l-6.85 16.32a.5.5 0 0 1-.92-.04l-3.32-6.52a.5.5 0 0 0-.25-.23l-7.98-3.04a.36.36 0 0 1-.1-.3zM10.82 13.1l4.47-3.95a.25.25 0 0 1 .38.36l-3.41 4.58"/></svg>
+                            <span>Telegram</span>
+                        </a>
+
+                    </div>
+                </div>
+                
+                <div class="contact-form-side">
+                    <form action="https://formspree.io/f/xnjyjwnk" method="POST">
+                        <div class="form-group">
+                            <label for="name">İsim / Mahlas</label>
+                            <input type="text" id="name" name="name" required placeholder="Adınızı giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Posta Adresi</label>
+                            <input type="email" id="email" name="_replyto" required placeholder="E-posta adresinizi giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mesajınız</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Yol notunuzu buraya bırakın..."></textarea>
+                        </div>
+                        <input type="hidden" name="_language" value="tr" />
+                        <button type="submit" class="submit-btn">Gönder</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <p class="footer-text">© 2026 Ferdimen. Tüm Hakları Saklıdır. | Yeni gelmedik, geri geldik.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: SLIDER KAYDIRMA VE AKILLI OK KONTROLLERİ -->
+    <script>
+
+        // Tıklamayla Kaydırma Fonksiyonu
+        function scrollSlider(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            if (!slider) return;
+
+            // İlk kartın genişliğini dinamik alıp ona göre tam bir adım kaydırıyoruz
+            const firstCard = slider.querySelector('.route-card, .gear-category');
+            const cardWidth = firstCard ? firstCard.offsetWidth + 24 : 320; // 24px gap değeri dahil
+
+            if (direction === 'left') {
+                slider.scrollLeft -= cardWidth;
+            } else {
+                slider.scrollLeft += cardWidth;
+            }
+        }
+
+        // Akıllı Ok Durumu Kontrolü (Başa veya Sona gelindiğinde okları gizler)
+        function updateArrowVisibility(slider) {
+            const wrapper = slider.closest('.slider-wrapper');
+            if (!wrapper) return;
+
+            const leftArrow = wrapper.querySelector('.left-arrow');
+            const rightArrow = wrapper.querySelector('.right-arrow');
+
+            if (leftArrow) {
+                if (slider.scrollLeft <= 5) {
+                    leftArrow.classList.add('disabled');
+                } else {
+                    leftArrow.classList.remove('disabled');
+                }
+            }
+
+            if (rightArrow) {
+                // Max kaydırma payını hesaplama toleransı dahil (+5)
+                const isEnd = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5;
+                if (isEnd) {
+                    rightArrow.classList.add('disabled');
+                } else {
+                    rightArrow.classList.remove('disabled');
+                }
+            }
+        }
+
+        // Tüm slider'lar için dinleyicileri bağlama
+        document.addEventListener("DOMContentLoaded", function() {
+            const sliders = document.querySelectorAll('.horizontal-slider');
+            
+            sliders.forEach(slider => {
+                // Hem kaydırma bittiğinde hem de ekran yeniden boyutlandığında okları güncelle
+                slider.addEventListener('scroll', () => updateArrowVisibility(slider));
+                window.addEventListener('resize', () => updateArrowVisibility(slider));
+                
+                // Sayfa ilk yüklendiğinde bir kez çalıştır
+                setTimeout(() => updateArrowVisibility(slider), 300);
+            });
+        });
+
+        // IBAN Kopyalama Fonksiyonu
+        function copyToClipboard(elementId, button) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Kopyalandı!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Kopyalama başarısız: ', err);
+            });
+        }
+    </script>
+    <script>
+        // =========================================================================
+        // KRONOLOJİ / TIMELINE VERİ MERKEZİ (EKLEME, ÇIKARMA VE DÜZENLEMEYİ BURADAN YAP)
+        // =========================================================================
+        const turlarVerisi = [
+            {
+                tarih: "2026 Mart",
+                baslik: "Bu Biçim (Yeni Nesil) Logo değişikliği",
+                aciklama: "Bugüne kadar o 'çakma Superman' logosuyla bir yol yürüdüm, eğlendim, nostalji yaptım. Ama şimdi bir durup sorgulama vakti geldi. Ferdimen kendi hikayesini kimseye benzemeden yazmalı.",
+                resim: "img/logo.png",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2026",
+                baslik: "Yayın Ağının Genişlemesi & Podcast",
+                aciklama: "'Yeni gelmedik, geri geldik' ve 'Selesever' isimli sesli kütüphane/podcast serilerinin hayata geçirilmesi ve 2011-2020 seyahat arşivlerinin sayısallaştırılması.",
+                resim: "",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2025",
+                baslik: "Anadolu İrfanı Bisiklet Turu",
+                aciklama: "Kırıkkale'den Yozgat'a uzanan topraklarda 17 bölümlük kültürel mini-belgesel sürüşleri. Coğrafyanın kadim ruhunu dijital arşive işleme hattı.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2025/11/2025-anadolu-irfani.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=9je7oBF7aYI&list=PLwJbwS5nZYYB-4uKTd_VN10o9PpVA0mS1",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2025",
+                baslik: "Toros Canavarı Bisiklet Turu",
+                aciklama: "Akdeniz'in dik geçitlerini, sert coğrafyasını ve sarp patikalarını iki teker üzerinde test ettiğimiz zorlu bir dağ bisikleti tırmanış hattı.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2025/03/2025-toros-canavari.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=eRKU_7z8mE4&list=PLwJbwS5nZYYDYRm35LPQinRjPR-okvYk8&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2025",
+                baslik: "İçten Anadolu Bisiklet Turu",
+                aciklama: "Kırşehir'den başlayıp Niğde'de son bulan, Anadolu'nun samimi yüzünü, bozkırın derin sessizliğini ve yerel kültürünü soluduğumuz mini rota serisi.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2025/03/2025-icten-anadolu.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=EEk5ZH8EO18&list=PLwJbwS5nZYYA0y7VoHu1rCV-_dyBH8lXF&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2024",
+                baslik: "Kuzeyden...Galiba Bisiklet Turu",
+                aciklama: "Çorlu'dan yola çıkıp Zonguldak ve Sakarya üzerinden Karadeniz hattını taradığım kış seferi.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2024/12/2024-12-kuzeyden.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=u2zK1P2759k&list=PLwJbwS5nZYYAc3po9bVqF6LTyAlpsKvAN&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2024",
+                baslik: "Güz Güneyi Bisiklet Turu",
+                aciklama: "Sonbaharın renklerinde Afrodisias antik kentinin geometrisinden Salda Gölü'nün derin maviliğine uzanan, Ege, Göller Yöreesini ve Akdaniz Bölgesini kapsayan solo sürüş hattı.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2024/11/2024-guz.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=jULxYyUyHh4&list=PLwJbwS5nZYYCfksBmzoYD3tNF4aC-k7a-&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2024",
+                baslik: "Şubat Bisiklet Turu",
+                aciklama: "Kışın en sert döneminde, konfor alanını tamamen yıkarak soğuk iklim şartlarında pedalladığımız kısa ama yoğun dayanıklılık sürüşü.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2024/03/2024-subat.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=M40wA_VmbJA&list=PLwJbwS5nZYYBiYwROMSek0VcOq-6K9IYv&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2023",
+                baslik: "Aklım Kalmasın Bisiklet Turu",
+                aciklama: "Geride hiç keşfedilmemiş patika bırakmama amacıyla çıkılan, haritaların ötesindeki dağ köylerini bir bir birbirine bağlayan hat.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2023-aklim-kalmasin.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=m4GatBst6YQ&list=PLwJbwS5nZYYA8gg9_Gr-EiLm8IRMcvyIM&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2023",
+                baslik: "Yoklukta Gider Bisiklet Turu",
+                aciklama: "Minimum harcama ve minimalist donanımla, endüstrinin dayattığı lüks ekipmanlara inat yolların her türlü yoklukta da akıp gideceğini gösteren protest seyahat.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2023-yoklukta-gider.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=Xhzg2OWm2-c&list=PLwJbwS5nZYYBSkd6hfWUdR0__XeaHrkIG&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2022",
+                baslik: "Kış Kış Bisiklet Turu",
+                aciklama: "Mevsimsel zorlukları ve doğanın en çıplak halini yansıtan, kar ve fırtına hatlarında yön bulma becerisini sınayan kış rotası.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2022-kis.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=eumzbypehL4&list=PLwJbwS5nZYYAh1qeNJbBVXodbPF2Sagj7&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2022",
+                baslik: "Meriç & Gelibolu Bisiklet Turu",
+                aciklama: "Trakya'nın sınır hatlarından başlayıp tarihi Gelibolu Yarımadası'nın şehitliklerine ve siperlerine uzanan saygı ve hafıza sürüşü.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2022-meric-gelibolu.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=0h2IbyEaCtQ&list=PLwJbwS5nZYYDQQZgZNAlVF5IkxQYsa6Ga&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2022",
+                baslik: "Anadolum Benim Bisiklet Turu",
+                aciklama: "Kültürel katmanları, unuttuğumuz misafirperverliği ve bozkır coğrafyasının saklı güzelliklerini ham haliyle belgeleyen geniş çaplı belgesel turu.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/anadolumbenim-2022.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=PplHLEhJYXQ&list=PLwJbwS5nZYYAHKNylnsARW1bgDUE3pCMO&pp=0gcJCWUDOCosWNinsAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2022",
+                baslik: "Aykırı Yollar (Dağdan Taştan İzmir) Bisiklet Turu",
+                aciklama: "Asfalt yollardan tamamen uzaklaşarak İzmir'in arka dağ geçitlerini, stabilizesi yüksek dik patikalarını aşan ham dağ sürüşü.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2022-aykiriyollar-harita.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=3wMTBUutUEY&list=PLwJbwS5nZYYCs-Wplw00WVvSKYh2rCG-9&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2022",
+                baslik: "Sevkiyat (İstiklal Yolu) Bisiklet Turu",
+                aciklama: "Milli Mücadele'nin lojistik kalbi olan İnebolu - Kastamonu - Ankara hattını (İstiklal Yolu) o dönemin ruhunu hissederek pedalladığımız tarihi rota.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2022-sevkiyat-istiklal-yolu-harita.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=9zBZslb_SbU&list=PLwJbwS5nZYYAFOLHD6RDWcLPAyaXQU5OB&pp=0gcJCWUDOCosWNinsAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2022",
+                baslik: "Az Anadolu Bisiklet Turu",
+                aciklama: "Kısıtlı zamanda, yoğunlaştırılmış bir hat üzerinde Anadolu kasabalarını ve eski yerleşim yerlerini tarayan minimalist sürüş seyahati.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2022-az-anadolu-harita.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=z-C_10ZhZi4&list=PLwJbwS5nZYYBhfvbSKIJgvJs2RfNVVVfp&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2021",
+                baslik: "Alaşehir’den Kuşadası’na Doğru Bisiklet Turu",
+                aciklama: "Ege'nin iç kısımlarından kıyıya doğru, zeytinliklerin ve antik vadilerin arasından geçerek akıp giden solo sürüş rotası.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2021-alasehir-kusadasi-harita.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=_zK05ECyrn8&list=PLwJbwS5nZYYAaCs5_r8R8ucnCFZwyT1RQ&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2021",
+                baslik: "Karaburun Bisiklet Turu",
+                aciklama: "İzmir'in Karaburun Yarımadası'ndaki dik tırmanışları, sert rüzgarları ve masmavi kıyı kıvrımlarını keşfettiğimiz zorlu coğrafya sürüşü.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2021-karaburun-harita.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=s2Q-LU-HOxM&list=PLwJbwS5nZYYB3f-YmDeJenH3EFUj4tV5i&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2021",
+                baslik: "Bafa Gölü Civarı Bisiklet Turu",
+                aciklama: "Herakleia antik kenti kalıntıları ve Latmos Dağları'nın mistik kaya kütleleri gölgesinde tarihin içine pedalladığımız büyüleyici bir hat.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2021-bafa-harita.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=g0HVbZFw74I&list=PLwJbwS5nZYYACEqm4vvX-3ie9gMaOjdyE&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2021",
+                baslik: "Deli Divane Bisiklet Turu",
+                aciklama: "Plansız, sadece yolun götürdüğü yere gitme dürtüsüyle çıkılan ve yollardaki ham gerçekliğin izini süren kuralsız macera.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2021-deli-divane-harita.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=aqFdgdfOAuY&list=PLwJbwS5nZYYCSMyrqfM-YYMe0TvEsoZMA&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2021",
+                baslik: "Kumpasa Geldim Bisiklet Turu",
+                aciklama: "Görme engelli İsmail Odabaşıoğlu ile tandem bisikletle kumpasa gelerek yapmak zorunda kaldığım bisiklet turu. İsmail'e eşlik edecek arkadaşın bacağı ağrımaya başladığı için ihale bana kaldı.  ",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2021-kumpas.jpg",
+                linkUrl: "",
+                linkMetni: "Tur Yazılarını Oku"
+            },
+            {
+                tarih: "2021",
+                baslik: "Gelibolu 1915 Bisiklet Turu",
+                aciklama: "Tarihin en büyük siper savaşlarının yaşandığı topraklarda, geçmişin izlerini sessizlik içinde iki tekerle ziyaret ettiğimiz rota.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2021-gelibolu-1951.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=G8kfrYKHR6M&list=PLwJbwS5nZYYDLiyvUtvWYBthptH_UNUBX&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2021",
+                baslik: "Youtube Kanalı Aktif",
+                aciklama: "2013-2017 yılları arasında GGYİSS adıyla video yükleyip ara verdğim kanalı Ferdimen ismi ile tekrar aktif ettim. Bu arada blog yazılarıma ara verip 2021 Yılının başından itibaren her hafta düzenli olarak videolar yüklemeye başladım",
+                resim: "img/youtube-ferdimen.jpg",
+                linkUrl: "https://www.youtube.com/@Ferdimen/featured",
+                linkMetni: "Youtube Kanalı"
+            },				
+            {
+                tarih: "2020",
+                baslik: "Zafere Giden Yol Bisiklet Turu",
+                aciklama: "Büyük Taarruz'un izinde, Kocatepe'den Dumlupınar'a uzanan bağımsızlık hatlarını pedallayarak dijital hafızaya aktardığımız anlamlı sefer.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2020-zafere-giden-yol-harita.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=BB0ig5gnrpQ&list=PLwJbwS5nZYYC8pqjtgC2CywTe8Qw8xDFx&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },		
+            {
+                tarih: "2019",
+                baslik: "Of...Alanya Bisiklet Turu",
+                aciklama: "Karadeniz kıyılarından başlayıp dik dağ geçitlerini aşarak Akdeniz'e inen, Türkiye coğrafyasının iklim ve bitki örtüsü geçişlerini en net gösteren uzun hat.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2019-of-alanya.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2019",
+                baslik: "Kurtuluş (Ata) Yolu Bisiklet Turu",
+                aciklama: "Samsun'dan Amasya'ya, oradan kurtuluş mücadelesinin ilk adımlarının atıldığı tarihi güzergahlara uzanan kültürel sürüş hattı.",
+                resim: "https://www.ferdimen.com/wp-content/uploads/2023/10/2019-ata-yolu.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=1XKxd12Y-5w&list=PLwJbwS5nZYYC7zC7vAFTNRcsGw1oAKDnd&pp=sAgC",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2019",
+                baslik: "Sandras Dağı & Arapapıştı Kanyonu Bisiklet Turu",
+                aciklama: "Muğla'nın zirvesi Sandras'ın karaçam ormanlarından Arapapıştı'nın devasa kanyon duvarlarına uzanan yüksek irtifa ve doğa kampı turu.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOyNI0tq-MIucULVhFNZQDnwbPPoPJKSkltcbXdVJqbAD6YgloKNBiMjVkOlSmfCwT4Xqvd5UmErxv8TOX0jtlOGqRm78aM4EGhzF1NUl9y8kcoXAL0AKeZltmXrc8pIj5WaavdHmXbcYe/s640/bozdag360.jpg",
+                linkUrl: "",
+                linkMetni: "Tur Yazılarını Oku"
+            },
+			            {
+                tarih: "2019",
+                baslik: "Sardos 6. Şehitlere Saygı Turu",
+                aciklama: "Üyesi olduğum Keşan Saros Doğa ve Spor Derneği'nin düzelediği Şehitlere Saygı Turu.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDsctk6uENj5BBtGFYDp-4p_ajqTjTsJ02ee7bM1pFg6KXdC8RI4XKEtdMM86giK273dQFflnSP2lTBgNz34oxJaJPdezp93Ktm5LF99QqEfcQUCXHmFan1aXkL62AmhMPV8CT_fjxPauc/s1600/20180324B.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2018",
+                baslik: "Kıbrıs Bisiklet Turu",
+                aciklama: "Yavru vatanın bilinmeyen dağ yollarını, Beşparmak Dağları'nın dik yamaçlarını ve sakin kıyı kasabalarını pedalladığımız sınır ötesi seyahat.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0ueyMwtCt5OkdGtULCs7baY6iKdOHR0ckv6ViqVKKYFFBWUCs_Xgn3fstUa-1s9_YeHbWtI0fLkd_baLt3QAss85_nCzd2_05KZ0fZ9r_NZXCiJ6eZhAS3xgqKTlV8_kpU-v1L7iMPL75/s1600/2018kktc.jpg",
+                linkUrl: "",
+                linkMetni: "Tur Yazılarını Oku"
+            },
+            {
+                tarih: "2018",
+                baslik: "Batı Karadeniz Bisiklet Turu",
+                aciklama: "Yeşilin her tonunu barındıran, dik tırmanış yüzdeleriyle ve bol yağmuruyla bilinen sahil ve dağ şeridinin zorlu keşfi.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjf3nwKbcMDlMY4JH6C-4dtXJhTbH7nXBmqnZf6KUS19vLEICp0CObV_GihbkZP-1CxhfIdvG2ZaxHF5GMDReFehw_sUydbBUYVWNH-RcHBWXYozqA7CHSQy5cg7p5MWic9leoPNLvKeL_b/s1600/2018MDKB.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+			{
+                tarih: "2018",
+                baslik: "Bisikletle Yüz Yıllık macera Bisiklet Turu",
+                aciklama: "Görme engelli arkadaşım ile beraber tandem bisiklet sürdük.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjP3VdJ-8F7Bp2MiuWyXbuVT2olFYB6bSycU6RfYEn-66cC_yRqK3aalZF4Fu5qb5_dLzYYCb1nQLpFHQNnjxenVanRWMZ6PZnrvDFfloMyi7xLABQ3uaYwXJVb7wC5OKNiZm4vzhmWyLm_/s1600/2018yym.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2018",
+                baslik: "Kaz dağları (Yersen) Bisiklet Turu",
+                aciklama: "Mitolojinin ve bol oksijenin merkezi Kazdağları'nın dik eğimlerine karşı meydan okuyan, ciğerleri ve bacakları sınayan dağ turu.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglDwr-lfeELoxogZOJ4QvZNUxpqO28SnqvBREkcLQtuWropRy9OTJ4pCr44ic5GNqZPnM3oTSztky26otCmfh_ZT3Pw1eFlX1Oz1jD6cyFP0KI3BPqfuWI3lJO_5QTq6fd2sf0nYdoCCla/s1600/2018kazdaglari.jpg",
+                linkUrl: "",
+                linkMetni: "Tur Yazılarını Oku"
+            },
+            {
+                tarih: "2018",
+                baslik: "İstiklal Yolundan…Zafer Yoluna Bisiklet Turu",
+                aciklama: "Karadeniz'den İç Anadolu'ya, oradan Ege'ye uzanan ve kurtuluşun iki büyük lojistik hattını birbirine bağlayan devasa epik sürüş serisi.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-7zPSznVcZn2I6rSHpOyb28BvKy_nv3E8eaoWe7MqkrwmUk1n5TXB46ZjMjZMsK1I-mgNllXXTDeQnkN1k5pQ2veJrVQLt2Dfpp9E_XpXYuN4MArxYYQA5Lo0cZrHxRgyJHREKezYPnjA/s1600/2018-istiklal-yolundan-zafer-yoluna.jpg",
+                linkUrl: "",
+                linkMetni: "Tur Yazılarını Oku"
+            },
+            {
+                tarih: "2018",
+                baslik: "Suyun Kaynağına Yolculuk (B.Menderes) Bisiklet Turu",
+                aciklama: "Büyük Menderes havzası boyunca uzanan antik Likya ve Karya topraklarının tarihsel izlerini takip eden nehir rotası sürüşü.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBmHT5_c9_0suMlDnRkTV97Sc6ybIAjX6QIkNaMu_Lodbn7qWJPFZuLY58gWpIr8ofFaAkwy_20-zL-lB79F_iYlIxN-UFMJbll6IUZaojJ-PpH8iNs9c-n2yiAvdQ-oJTWOfmeqr4DIf_/s1600/2018-SKY.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+						{
+                tarih: "2018",
+                baslik: "Az Bilinen Antik Kentler Turu",
+                aciklama: "...",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJx3nJMgJ9o9nasSEHGwHn0nmvbeiS6ArNeDpnhiwJnypaGWSlGG41m7yNyNuszcTS_1-5kKYXlmz-r04RbCdmcMJDxYc5jSuNcjNJ-gHKh0heJUsxzv5tHDbdKUzlzif2rn7BV-pCU9tW/s1600/2018-abak.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+			{
+                tarih: "2017",
+                baslik: "Marmara Adası Bisiklet Turu",
+                aciklama: "...",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJwTLiOW9PRKwNnbukoR993fTHYOHce42pEPBlzyjf6D3XQyHX9Mg71A_Dnv40shfmXKynH3fU2fyH7bduEOdmg_FpahSRdVURVcKYL1Ywx-Ur9N8-LVfG6S_cKGh5hvzOqu0lh94wWlNx/s1600/2017-marmara-adasi.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2017",
+                baslik: "Trakya Bisiklet Turu",
+                aciklama: "Kendi evimizde, Istranca ormanlarının derinliklerinden sarı kanola tarlalarına uzanan yerel coğrafyayı tarama seyahati.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit2ixx6VFZ9BI__PAr7yabmwl2SM2oNOM5YIjrj8-366EGjY0GXFT66a_9OYuIUBYdEEd1tvHK8iFBbyoqy9iCho1tCdNtOXr6dcZYZQyhPb2rxQ3cqynyX29pws7VfM0fGE69Hn4cN-Ov/s1600/2017-trakya.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=edgibutU5R4",
+                linkMetni: "Tur Videosunu İzle"
+            },
+			            {
+                tarih: "2017",
+                baslik: "Gökova Bisiklet Turu",
+                aciklama: "Mavi ile yeşilin birleştiği Gökova Körfezi'nin az bilinen zorlu dik rampalarını ve sakin koylarını çadırımızla adımladığımız hat.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFwTliwm4FWChu3lQ1RZvvoCTxFZzIke0KaMxhMhf2aj6z4KyC7KBoIessCAq2uH77UQZXmFvLzkuu4Lb3OHgY_ovpB7ZHs-UtDarKzPpAqPun7U2KpYJFixOqxhIUmub8Owx5FydiOlb2/s1600/2017G.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=q31a7A0rKoA&list=PLwJbwS5nZYYBcZcBe5TIO-5dVifdJaD3K",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2017",
+                baslik: "Suyun Kaynağına Yolculuk (Bakırçay) Bisiklet Turu",
+                aciklama: "Bakırçay havzasının bereketli toprakları, Pergamon antik kenti ve çevresindeki köylerin kültürel dokusunu arşivleyen sürüş.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgx3EqEj7K6MSybd0ulfiE6rb2O-womdevV1EllLaweWsH0QyOYWpYp5ki1z6NtLVHkhOSYxtRRHt86ZPMOH7dH4ugR8VKph8j5lkR-Q66Xh6WIaNS-gnEK49g9aP_aKmY9yC36PYxTXtnT/s1600/2017S.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=jQg9RC5F3xs&list=PLwJbwS5nZYYDQd08oFxXxYvn8NGvuJpzK",
+                linkMetni: "Tur Videolarını İzle"				
+            },
+			{
+                tarih: "2017",
+                baslik: "Az Bilinen Antik Kentler Turu",
+                aciklama: "...",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh37M3z-uU0O2TbO_daUcd6ylu93Pgr6TJ7VrgRB_SOLFHneFCnuzY63RptnZZBijhvPeFbduNkwnS2o047LKRJTg5hBILXr01ZQa5lS9gconJdn69G5NNQ3XmbOSGX4G-CD1ahpeYwICDu/s1600/2017A.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=XJ0JzQFA_W8&list=PLwJbwS5nZYYAcbCTzy-ukedoC9Xfjz8Nq",
+                linkMetni: "Tur Videolarını İzle"
+            },
+			{
+                tarih: "2016",
+                baslik: "İzmir…Çorlu Bisiklet Turu",
+                aciklama: "Ege'den başlayıp Marmara'nın kalbine, Çorlu'ya doğru uzanan, şehirler arası yolların bağımsız felsefeyle aşıldığı uzun etap.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgALad0jBJFVAMlfpGWaFnhPMQfaOQd9cl_pOV1ERYwTjyOZ-jzLNrglXN8lhqnqM1_sEAHU8bjGk6rOHR-5g1MIYZ_ZFpBTqXa2eXG_0DZtznedGGvZ7hTY4I8OxV-oeR2U2IvlClhnN-4U_WSvgG0ahv5IWDhtwaDA-zLenKvJFKQQ7iFaxKjH1ZnBwz4/s1920/2016-izmir-corlu.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2016",
+                baslik: "Suyun Kaynağına Yolculuk (K.Menderes) Bisiklet Turu",
+                aciklama: "Küçük Menderes havzasındaki tarihi Efes, Şirince og dağ köylerini kapsayan, bölgenin tarımsal ve tarihi geçmişine ayna tutan seyahat.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzF9KTRELH8StRyNGlwp3-etD0Fa2KjpY2vDg_FFWaPEJAzyhVfXsNuyvqbAVU7SEdGeB9ZiONglEju5an6z4j2BhD2EJ6gJUSxBAIKy0MTsHJC6TvlI6KDuLTvm3aMCubia7KwxaayhmD/s1600/2016S.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+			{
+                tarih: "2016",
+                baslik: "Az Bilinen Antik Kentler Turu",
+                aciklama: "...",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEghrl0XyxEsvcpMq_vF2mqA_qjn6_Bz-HZeC0bcg5cdGDBga3Ix4gBaIdySqo7bGVIyx4BafpVg1OdDwSaM29tWSUcrR_NSTX68ZAPdT2UYtr_baCmzaIKQszV1XQN1LBwHJY9u5J91SjDG/s1600/2016A.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2015",
+                baslik: "Kendime Yolculuk Bisiklet Turu",
+                aciklama: "Yalnızlığın, içsel sorgulamaların ve yolun arındırıcı gücünün en üst seviyeye ulaştığı, ismimin hakkını tam olarak verdiğim kırılma dönemi.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvUDKx9DJ4_STbtoFXyjfgy24CnjgfHqqiZMaADyvMEBJaa4a0bx5yUSqTVKvAhwX7dt1_WO0SGcxb7n61qUwca7az6zFof3zikFBKnQr8t1E9xTzXLM6qpTzsGmk1cneFjtKIcEBHrNtX/s1600/2015-b.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2015",
+                baslik: "Buralarde Geziyorum (Mersin) Bisiklet Turu",
+                aciklama: "Akdeniz kıyı şeridinin dik rampa karakteristiklerini, narenciye kokulu köylerini ve Toroslar'ın eteklerini pedalladığımız sürüş.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdC89FLo-UYm4xPd8hW7n0PRfwsbGdYrSU0P5JhtC3QMMC8YBb6XKdEUeHkJ_td3lqlmxpmJp4pxdYcAbElU3CxAE-axDXDfgWkprwsDNzV6N3t5CEfo_A30-_WNKBquMbPBuv6-AOKCH6/s1600/2015-a.jpg",
+                linkUrl: "https://www.ferdimen.com/category/bisiklet-turlari/2015-buralarda-geziyorum/",
+                linkMetni: "Tur Yazılarını Oku"
+            },
+			{
+                tarih: "2015",
+                baslik: "Çanakkale 100. Yıl Bisiklet Turu",
+                aciklama: "...",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1jR9qdj3D34sOZVCtjoiVp-cTejc8dA6jONOANknKvtifUPGh11KwNqTlVNxfaRXDh91itjObwbNxkI81cNhKh_huDrLXiDHxOUFKIzP0keA5bPfw5Cak7YP1zKwJeWn1QYZEUBLdjUoO/s1600/2015.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2014",
+                baslik: "Frig-Lidya Bisiklet Turu",
+                aciklama: "Tarihin kaya mezarları, antik Frig Vadisi patikaları ve Lidya medeniyetinin altın yollarında kültürel ve arkeolojik derinliği olan solo hat.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwXf1KbYkyAB1yy54b-cxw6HyRdQX4EO3pDZVoom6ge78JprLGANVPQL8a63pea6_plHBLF2m5kN1F200PF8qxw8lOCFsaiF8f82tUHyI5rkh-SRS5zltpAexei8f-12x3HJJvQN528Bd_/s1600/2014.jpg",
+                linkUrl: "https://www.ferdimen.com/category/bisiklet-turlari/2014-frig-lidya/",
+                linkMetni: "Tur Yazılarını Oku"
+            },
+            {
+                tarih: "2013",
+                baslik: "Kuşadası...Çorlu Bisiklet Turu",
+                aciklama: "Ege kıyılarından Marmara'ya uzanan, rüzgara karşı verilen mücadeleyle ve çadır kamplarıyla şekillenen kurucu dönem turlarından biri.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqfsA5ljLhyMnp8Av8wGpMFK0vHuoyVuhtBc0evcDTV_u6xkOMRHwQzINOzmyFDFpYTKQVp-bKHPdKfXDM6wnxjlrx5c2A9cMDErdUo4yVFVNZzIQOIrmZIfxWvPBRMrrZ27slUVuoQRNdjJeaNd6oUoExEZRa1tyHELDzhJ4P4HECOsf31AhPFBX5lhRW/s1920/2013-kusadasi-corlu.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2013",
+                baslik: "Türkiye Bisiklet Turu",
+                aciklama: "Farklı coğrafi bölgeleri, binlerce kilometreyi ve sayısız insan hikayesini heybelerimizde topladığımız geniş ölçekli büyük sürüş deneyimi.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAMoWI3apN2lKOU0XS-U9WOZcpsxyUchNe5MMAYLA4f4SCG2NJqTrCHmKUkdGBfYNlXbE7F0NnHXRqYzl7CQkVmhhyZmb5mZHR5VXdCJ4F2AyRzY7KT2G_yHY-OJ9-p03zTXLfwS9x9S1I/s1600/2013.jpg",
+                linkUrl: "https://www.ferdimen.com/category/bisiklet-turlari/2013-turkiye/",
+                linkMetni: "Tur Yazılarını Oku"
+            },
+            {
+                tarih: "2012",
+                baslik: "Trakya Bisiklet Turu",
+                aciklama: "Bölgenin yerel yollarında, Istranca eteklerinde heybelerin ağırlığını ilk kez gerçek anlamda hissettiğimiz gelişim turu.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdM-Hg9UA6QfDuFNtsAAHlYUh_YhAlVH3DhscMH5jnWJIlzzT9jq7fiCFMdW3MZNwQ17BL-57hHsn6z2JLcG1yj6OrzDPW3pD3LCYx4-wovM3lD1AcaEC0P5E8PbhCS97kTSdz1zi90nBSRysYXEUZxGDFYHwnTxnT2mF6DuN291NYaVf9DMbKQa3dBXAZ/s1920/2012-trakya.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2012",
+                baslik: "Ankara...Antalya...İzmir Bisiklet Turu",
+                aciklama: "İlk Uzun Mesafe Deneyimi. Yolculuk kültürünün başladığı, heybelerin ilk kez dolduğu ve iki teker üzerindeki özgürlüğün keşfedildiği kurucu yıl.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhg6oe-cCbO6hR1x5cN7LHc_GLslBLDthxiO7JfnDsqpY110VmoqeXmx6U48kmPYef9kvJuhzx7izrUhiLPkOQZZC_UGJToHrWsr3QujPLaxxYSptjijg2iJJpBB2VtUMqEqdSMsu17XwPE/s1600/2012.jpg",
+                linkUrl: "https://www.ferdimen.com/category/bisiklet-turlari/2012-ic-ve-bati-anadolu/",
+                linkMetni: "Tur Yazılarını Oku"
+            },
+            {
+                tarih: "2011",
+                baslik: "Enez Bisiklet Turu",
+                aciklama: "Tarihi Enez kalesine ve Saros Körfezi'nin hırçın sularına doğru pedalladığımız, bağımsız turların ilk kıvılcımını çakan hat.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7OmitX-5CuKDe2BKVao6t4rBzvj4qaCaL9x_BJoSzqalgVm1xt1oPz8rzudPU1ohf7RVDr2puAZV8uaAM2g_Fda5P63JnUn95OQo_y09-pKls-0mmQ_r1E1bImYI09lKxSfsB1QkCE2fe/s1600/2011-enez.jpg",
+                linkUrl: "https://www.youtube.com/watch?v=00xVscZLVjs&list=PLwJbwS5nZYYDSBGtwNHYFLPH5jVaRwuDk",
+                linkMetni: "Tur Videolarını İzle"
+            },
+            {
+                tarih: "2011",
+                baslik: "Bisiklet Sporuna Başladım",
+                aciklama: "Çorlu Pedal Bisiklet Grubu ile beraber yolculuk kültürünün başladığı ve iki teker üzerindeki özgürlüğün keşfedildiği yıl.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEir-oGSQDljt9wKTG89UtE4XCjYMwPE5_R_a2XyWY6FcLst-JJWupe-DuHuLKCaFVerYNaOHYWHmq9XQNoxdTLE-CeWMZp-2k1SKzPZcvWvN3C9kmyiH580TuYj1iIeZ0A8UEKYe7JnUrSd/s1600/2011golbasi.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2009",
+                baslik: "Sigarayı Bıraktım",
+                aciklama: "Kurtuldum meyhanelerin mey kovasından... hor gördüğün herşeyi çıkardım hayatımdan.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibiUqT9pvxXsdCnWX1zfFMAQw59Osdju2FUe6PJHs4dkZTGJhcwmsQFx-oVJF-f20Xd_sYdOOzV5W5L1DeVAwKalkeR7_uEj6rYRYJFM8XcOixAjV7hDK7YG1OoJCXJf2JtKfahd_bDcaw/s1600/2009-sigaray%25C4%25B1-biraktim.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2006",
+                baslik: "Ferdimen İsmi Ortaya Çıktı",
+                aciklama: "Enez'de sıcak bir temmuz günü...",
+                resim: "https://yt3.ggpht.com/mXNXZS2UQReA49nvSyjYIt9jG_D-OjDJHSv3e52orkNRkAb-W7DDn29eKvapaM1Tq6Fb5f90okrXgQ=s288-c-fcrop64=1,00000000ffffffff-rw-nd-v1",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "2003-2004",
+                baslik: "Askerlik Meselesi",
+                aciklama: "Safranbolu 125. Jandarma Er Eğitim Alay komutanlığında Bando er olarak askerlik gibi bir şey yaptım.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1v0VzL2Lv4cZSixU5R9XbFRbUcgDywXyVmB3d0UEmapdF14Orxh79VMliOMEVT5O2x2jIyj84kayGADrJH07ZTRhUCinwQkWbEdji4FZR93dNl8R3C3nEqZ8ZcEg5srH4yACbHNn6dAxg/s1600/2003-askerlik.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "1999",
+                baslik: "Öldüm, Öldüm, Dirildim",
+                aciklama: "O güne kadar elim, ayağım, gözüm, kulağım birazda dilim var zannederdim, meğer birde kalbim varmış. Onun atışını gerçekten hissettiğim günlerde hayati bir tehlike atlattım.",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2rFcKgOMwsygYmAbMAFro7XwGX6jEPWRUXxXCtIGaPb4Jq_parkgBepsuzFG_-reEkKm4WvWxf6xznf70HJ-9QZQEjCWAD-3U62e0f2L8iBUPHKejbAWzG8dgw16IJmBCOZMZglL0EfSW/s1600/1999-bicak.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            },
+            {
+                tarih: "1980",
+                baslik: "İyiki Doğdum",
+                aciklama: "Soğuk bir kış gecesiydi...",
+                resim: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiudZuoh3gGzHVboTOiJ78Bhf3XFbFdBGhYtH4CtlL8RO0pZKKHBUUs0qMCKVoAVaoHKAY3QdrfUBnh__qpzt5HaCpUEvctj_6y3jvon2DknP7rQpzD03B6tN4-LdOwg4GrBweQ95G-CBtz/s1600/1980-dugumgunu.jpg",
+                linkUrl: "",
+                linkMetni: ""
+            }
+        ];
+
+        // Dinamik Timeline Oluşturma Motoru
+        function generateTimeline() {
+            const container = document.getElementById('timeline-container');
+            if (!container) return;
+
+            let htmlContent = '';
+
+            turlarVerisi.forEach((tur, index) => {
+                // Kartların sırayla sol-sağ dağılması için (Çift indeksler sağa, tek indeksler sola)
+                const sideClass = (index % 2 === 0) ? 'right-box' : 'left-box';
+                
+                // Resim etiketi (Eğer veri boşsa kod üretilmez)
+                const imgHtml = tur.resim ? `<img src="${tur.resim}" alt="${tur.baslik}">` : '';
+                
+                // Link etiketi (Eğer veri boşsa kod üretilmez)
+                const linkHtml = (tur.linkUrl && tur.linkMetni) ? `<br><a href="${tur.linkUrl}" target="_blank" class="timeline-btn">${tur.linkMetni}</a>` : '';
+
+                htmlContent += `
+                    <div class="timeline-row">
+                        <div class="timeline-year-badge">${tur.tarih}</div>
+                        <div class="timeline-box ${sideClass}">
+                            <div class="timeline-card-node">
+                                <h3>${tur.baslik}</h3> ${imgHtml}
+                                <p>${tur.aciklama}</p>
+                                ${linkHtml}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = htmlContent;
+        }
+
+        // Sayfa Yüklendiğinde Tetiklenecekler
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. Önce listeye göre Kronolojiyi oluştur
+            generateTimeline();
+
+            // 2. Slider oklarını dinle ve bağla
+            const sliders = document.querySelectorAll('.horizontal-slider');
+            sliders.forEach(slider => {
+                slider.addEventListener('scroll', () => updateArrowVisibility(slider));
+                window.addEventListener('resize', () => updateArrowVisibility(slider));
+                setTimeout(() => updateArrowVisibility(slider), 300);
+            });
+        });
+
+
+    </script>
+	<script src="gerisayim.js"></script>
 </body>
 </html>
