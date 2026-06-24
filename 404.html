@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Yönlendiriliyorsunuz...</title>
+    <script>
+        // Tarayıcıdaki URL parametrelerini alıyoruz (Örn: ferdimen.com/?git=youtube)
+        const urlParams = new URLSearchParams(window.location.search);
+        const hedef = urlParams.get('git');
+
+        // Yönlendirilecek adreslerin listesi (Bunu dilediğin gibi uzatabilirsin)
+        const yonlendirmeler = {
+            "youtube": "https://www.youtube.com/@Ferdimen",
+            "instagram": "https://ld.ferdimen.com/instagram", // Örnektir
+            "github": "https://github.com/ferdimen"
+        };
+
+        // Eğer eşleşen bir kelime varsa yönlendir, yoksa ana sayfada kal
+        if (hedef && yonlendirmeler[hedef]) {
+            window.location.href = yonlendirmeler[hedef];
+        } else {
+            // Eğer parametre yoksa veya yanlışsa sitenin ana içeriğini göster veya buraya yaz
+            console.log("Ana sayfadasınız veya geçersiz yönlendirme.");
+        }
+    </script>
+</head>
+<body>
+    <h1>Ferdimen.com</h1>
+    <p>Statik web sitesi test yayını.</p>
+</body>
+</html>
