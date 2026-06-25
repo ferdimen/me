@@ -1,11 +1,888 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Garmin Harita Portalı</title>
-	<link rel="icon" type="image/png" href="img/logo.png">
+	<link rel="icon" type="image/png" href="/me/img/logo.png">
     <style>
+	        /* --- Modern ve Kurumsal Tasarım Temelleri --- */
+        :root {
+            --primary-color: #1a1a1a;
+            --text-color: #333333;
+            --text-light: #666666;
+            --bg-light: #f9f9f9;
+            --border-color: #e5e5e5;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --success-color: #2e7d32;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-color);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- ÜST MENÜ & NAVİGASYON --- */
+        .main-header {
+            border-bottom: 1px solid var(--border-color);
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo-group a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-group img {
+            max-height: 45px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav-right-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--text-light);
+        }
+
+        .header-socials {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-left: 1px solid var(--border-color);
+            padding-left: 20px;
+        }
+
+        .header-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .header-socials svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-color);
+            transition: fill 0.2s ease;
+        }
+
+        .header-socials a:hover svg {
+            fill: var(--text-light);
+            transform: translateY(-1px);
+        }
+
+ 
+        /* --- YATAY SLIDER VE OK NAVİGASYON ALTYAPISI --- */
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .horizontal-slider {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            padding: 10px 4px;
+            
+            /* Sürgüyü/Kaydırma çubuğunu her tarayıcıda tamamen gizler */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+
+        .horizontal-slider::-webkit-scrollbar {
+            display: none; /* Chrome, Safari ve Opera */
+        }
+
+        /* Navigasyon Ok Butonları */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .slider-arrow:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .slider-arrow:hover svg {
+            fill: #ffffff;
+        }
+
+        .slider-arrow svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--primary-color);
+            transition: fill 0.2s ease;
+        }
+
+        .slider-arrow.left-arrow {
+            left: -22px;
+        }
+
+        .slider-arrow.right-arrow {
+            right: -22px;
+        }
+
+        /* Okların sınır değerlerde sönükleşmesi için */
+        .slider-arrow.disabled {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* --- ROTALARIM BÖLÜMÜ --- */
+        .routes-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+
+        .route-card {
+            flex: 0 0 calc(50% - 12px); /* Masaüstünde tam 2 kart */
+            min-width: 300px;
+            scroll-snap-align: start;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--bg-light);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .route-card:hover {
+            border-color: #b5b5b5;
+        }
+
+        .route-card-content {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .route-meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .route-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .route-card p {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        .route-links {
+            display: flex;
+            gap: 15px;
+            border-top: 1px solid var(--border-color);
+            padding: 15px 25px;
+            background: #ffffff;
+        }
+
+        .route-links a {
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            transition: color 0.2s ease;
+        }
+
+        .route-links a:hover {
+            color: var(--text-light);
+        }
+
+        /* --- EKİPMANLARIM BÖLÜMÜ --- */
+        .gear-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .gear-category {
+            flex: 0 0 calc(33.333% - 16px); /* Masaüstünde tam 3 kategori */
+            min-width: 290px;
+            scroll-snap-align: start;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+        }
+
+        .gear-category h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .gear-list {
+            list-style: none;
+        }
+
+        .gear-list li {
+            font-size: 0.95rem;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--bg-light);
+            color: var(--text-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gear-list li:last-child {
+            border-bottom: none;
+        }
+
+        .gear-list li span {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            text-align: right;
+            padding-left: 10px;
+        }
+
+        /* --- TIMELINE BÖLÜMÜ --- */
+        .timeline-section {
+            padding: 80px 0;
+        }
+
+        .custom-timeline {
+            position: relative;
+            max-width: 950px;
+            margin: 40px auto 0 auto;
+        }
+
+        .custom-timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-row {
+            display: flex;
+            position: relative;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .timeline-year-badge {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-box {
+            width: 50%;
+            position: relative;
+        }
+
+        .timeline-box.left-box { padding-right: 50px; }
+        .timeline-box.right-box { padding-left: 50px; margin-left: auto; }
+
+        .timeline-card-node {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 6px;
+            transition: border-color 0.2s ease;
+        }
+
+        .timeline-card-node:hover { border-color: #b5b5b5; }
+        .timeline-card-node h3 { font-size: 1.1rem; font-weight: 700; color: var(--primary-color); margin-bottom: 8px; }
+        .timeline-card-node p { font-size: 0.9rem; color: var(--text-color); }
+        .timeline-card-node img { max-width: 100%; height: auto; display: block; margin-top: 12px; border-radius: 4px; }
+        .timeline-card-node a.timeline-btn { display: inline-block; margin-top: 12px; font-weight: 600; color: var(--primary-color); text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid var(--primary-color); }
+        .timeline-card-node a.timeline-btn:hover { color: var(--text-light); border-bottom-color: var(--text-light); }
+        }
+
+        /* --- DESTEK OL (BANKA BİLGİLERİ) BÖLÜMÜ --- */
+        .support-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .support-container {
+            max-width: 700px;
+            margin: 40px auto 0 auto;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .support-container p {
+            margin-bottom: 25px;
+            color: var(--text-color);
+            font-size: 1.05rem;
+        }
+
+        .bank-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .bank-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .bank-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-light);
+            min-width: 80px;
+        }
+
+        .bank-value {
+            font-family: monospace;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            word-break: break-all;
+            flex-grow: 1;
+        }
+
+        .copy-btn {
+            background: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: #333333;
+        }
+
+        .copy-btn.copied {
+            background: var(--success-color);
+        }
+
+        /* --- SIK SORULAN SORULAR --- */
+        .faq-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+
+        .faq-wrapper {
+            max-width: 800px;
+            margin: 40px auto 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--bg-light);
+            overflow: hidden;
+            transition: border-color 0.2s ease;
+        }
+
+        .faq-item[open] {
+            border-color: #b5b5b5;
+            background-color: #ffffff;
+        }
+
+        .faq-item summary {
+            padding: 20px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--text-light);
+            transition: transform 0.2s ease;
+        }
+
+        .faq-item[open] summary::after {
+            content: '−';
+        }
+
+        .faq-content {
+            padding: 0 20px 20px 20px;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            border-top: 1px solid transparent;
+        }
+
+        .faq-item[open] .faq-content {
+            border-top-color: var(--border-color);
+            padding-top: 15px;
+        }
+
+        /* --- VİDEO ALANI --- */
+        .video-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .video-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        .responsive-video {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .responsive-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- İLETİŞİM & SOSYAL MEDYA --- */
+        .contact-section {
+            padding: 80px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info-side h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .contact-info-side p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .social-links-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .social-icon-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .social-icon-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary-color);
+            transition: fill 0.2s ease;
+        }
+
+        .social-icon-btn:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            border-color: var(--primary-color);
+        }
+
+        .social-icon-btn:hover svg {
+            fill: #ffffff;
+        }
+
+        .contact-form-side {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            color: var(--text-color);
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            padding: 14px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #333333;
+        }
+
+        /* --- FOOTER --- */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-text {
+            color: #a1a1aa;
+        }
+/* --- PROTESTO & HAZIR ŞABLON ALANI --- */
+.protest-section {
+    padding: 80px 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.protest-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    max-width: 850px;
+}
+
+.protest-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: center;
+}
+
+/* Şablon Kutusu */
+.template-box {
+    background: var(--bg-light);
+    border: 2px dashed #a1a1aa;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.template-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.template-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.1); /* Protesto havası için siyah beyaz */
+}
+
+/* Logo Yerleşim Yuvası */
+.logo-placeholder-slot {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 110px;
+    height: 110px;
+    background-color: rgba(243, 244, 246, 0.85);
+    border: 2px dashed #dc2626; /* Dikkat çekici kırmızı kesikli çizgi */
+    color: #dc2626;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(4px);
+}
+
+/* Slogan Kuşağı */
+.template-slogan {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    color: #ffffff;
+    padding: 20px 15px 15px 15px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.template-footer-text {
+    margin-top: 12px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+/* Sağ Taraf: Metinler ve Kurallar */
+.protest-manifesto h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.protest-manifesto p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.protest-rules {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 25px;
+}
+
+.protest-rules li {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.protest-rules li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #dc2626;
+    font-size: 1.4rem;
+    top: -4px;
+}
+
+.protest-quote {
+    font-style: italic;
+    border-left: 3px solid #dc2626;
+    padding-left: 15px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* Mobil Uyum */
+@media (max-width: 768px) {
+    .protest-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .logo-placeholder-slot {
+        width: 90px;
+        height: 90px;
+        font-size: 0.6rem;
+    }
+    .template-slogan {
+        font-size: 1.1rem;
+    }
+}
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-bar { flex-direction: column; height: auto; padding: 20px 0; gap: 15px; }
+            .nav-right-container { flex-direction: column; gap: 15px; width: 100%; }
+            .header-socials { border-left: none; padding-left: 0; }
+            .about-grid, .manifesto-grid { grid-template-columns: 1fr; gap: 30px; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            
+            /* Mobilde Oklar Gizlenir, Doğal Parmak Kaydırması Aktif Kalır */
+            .slider-arrow { display: none !important; }
+            .route-card { flex: 0 0 100%; }
+            .gear-category { flex: 0 0 100%; }
+            .horizontal-slider { gap: 16px; }
+
+            /* Mobil Timeline Ayarları */
+            .custom-timeline::after { left: 20px; }
+            .timeline-row { flex-direction: column; align-items: flex-start; margin-bottom: 30px; }
+            .timeline-year-badge { position: relative; left: 0; transform: none; margin-left: 5px; margin-bottom: 15px; }
+            .timeline-box { width: 100% !important; padding-left: 45px !important; padding-right: 0 !important; }
+       
+
+
+
+	   }
         /* Genel Sayfa Düzeni */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -169,12 +1046,70 @@
     </style>
 </head>
 <body>
-
-<div class="container">
-
-    <div class="search-container">
+    <header class="main-header">
+        <div class="container nav-bar">
+            <div class="logo-group">
+                <a href="#">
+                    <img src="/me/img/logo.png" alt="Ferdimen Logo">
+                </a>
+            </div>
+            
+            <div class="nav-right-container">
+                <nav>
+                    <ul class="nav-menu">
+					    <li><a href="/me/index.html#hakkimda">Hakkımda</a></li>
+                        <li><a href="/me/index.html#harita">Harita</a></li>
+                        <li><a href="/me/index.html#videolar">Videolar</a></li>						
+                        <li><a href="/me/index.html#kronoloji">Kronoloji</a></li>
+						<li><a href="/me/index.html#dosyalar">Dosyalar</a></li>							
+                        <li><a href="/me/index.html#ekipman">Ekipman</a></li>
+                        <li><a href="/me/index.html#faq">S.S.S.</a></li>
+						<li><a href="/me/index.html#sablon">Şablon</a></li>
+                        <li><a href="/me/index.html#destek">Destek Ol</a></li>						
+                        <li><a href="/me/index.html#iletisim">İletişim</a></li>					
+                    </ul>
+                </nav>
+                
+                <div class="header-socials">
+                    <a href="https://www.youtube.com/@ferdimen" target="_blank" title="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M21.543 6.498C22 8.21 22 12 22 12s0 3.79-.457 5.502A2.752 2.752 0 0 1 19.617 19.43C17.904 20 12 20 12 20s-5.904 0-7.617-.57a2.752 2.752 0 0 1-1.926-1.928C2 15.79 2 12 2 12s0-3.79.457-5.502A2.752 2.752 0 0 1 4.383 4.57C6.096 4 12 4 12 4s5.904 0 7.617.57a2.752 2.752 0 0 1 1.926 1.928zM10 15.5l5.5-3.5L10 8.5v7z"/></svg>
+                    </a>
+                    <a href="https://polarsteps.com/ferdimen" target="_blank" title="Polarsteps">
+                        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm-1-13h2v4h3v2h-5V7z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+		    <div class="search-container">
         <input type="text" id="table_search_input" placeholder="Aktif sekmedeki ülkelere göre anlık ara...">
     </div>
+    </header>
+<div class="container">
+ <details class="faq-item" name="faq">
+<summary>Açıklama ve Kurulum</summary>
+<div class="faq-content">
+<div class="container">
+<div class="container-page">
+Bu sayfada, <b>GPS</b> cihazları için güncel çevrimdışı haritalara ulaşabilirsiniz. Barlar, restoranlar, otobüs durakları ve mağazalar gibi <b>İlgi Çekici Noktalar (POI)</b> ile ilgili birçok ayrıntı içerirler . Yürüyüş, bisiklet, geocaching ve araba navigasyonu için mükemmeldir.
+
+Paylaştığım haritalar OpenStreetMap ve OpenTopoMap tabanlı olup, hiçbir telif hakkı sıkıntısı bulunmamaktadır. Ayrıca güncellik bakımından 2026 sürümüdür. Türkiye’den satın alınma, içinde Baytekin’in ücretli haritası olan bir cihazınız olsa bile, bu haritayı mutlaka denemenizi öneririm.
+
+Paylaştığım <strong>img formatındaki harita dosyaları</strong> el tipi Garmin GPS cihazları ile %100 uyumludur.
+<div class="alert alert-success">
+<h3>Kurulum (<em>Installation) :</em></h3>
+<h4><span style="font-size: 12pt;">Garmin</span></h4>
+* .İmg dosyasını microSD kartınızın / Garmin / klasörüne kopyalayın. Yerleşik belleğe takılması önerilmez.
+<span style="font-size: 8pt;"><em>Copy the *.img into the folder /Garmin/ of your microSD card. Installation in the onboard memory is not recommended.</em></span>
+<h4><span style="font-size: 12pt;">Basecamp</span></h4>
+*.Zip dosyasını C:/ProgramData/Garmin/Maps / klasörüne çıkartın ve Basecamp'ı başlatın. Başka kurulum gerekmez.
+<em><span style="font-size: 8pt;">Unzip the *.zip into the folder C:/ProgramData/Garmin/Maps/ and start Basecamp. No further installation required.</span></em>
+
+</div>
+<center><img title="Otoban" src="https://www.userbeam.de/osm/images/map_image1.jpg" alt="Otoban" border="1" /> <img title="eTrex 20'de görün ve hissedin" src="https://www.userbeam.de/osm/images/eTrex.jpg" alt="eTrex 20'de görün ve hissedin" /> <img title="Soldaki mezarlık" src="https://www.userbeam.de/osm/images/map_image2.jpg" alt="Soldaki mezarlık" border="1" /></center><center><b>Not:</b> Eski cihazlarda dosya ismini <b>gmapsupp.img </b>olarak yeniden adlandırmalısınız.</center></div>
+</div>
+</div>
+</details>
+
 
     <div class="tabs-container">
         <button class="tab-button active" onclick="switchTab(event, 'tab_garmin')">Garmin Standart Haritalar (OSM)</button>
@@ -182,7 +1117,7 @@
     </div>
 
     <div id="tab_garmin" class="tab-content active">
-        <div class="table-responsive">
+        <div class="table-responsive"> <!-- OSM BAĞLANGIÇ !-->
             <table id="country_table">  
                 <tbody>
 <tbody><tr><th colspan="4"><div class="center"><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AVRUPA</font></font><br><br></div></th></tr>
@@ -729,13 +1664,13 @@
 
 </font></font></div></td><td><div class="right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">94 MB</font></font></div></td></tr>
 </tbody>
-            </table>
+            </table> <!-- OSM SONU !-->
         </div>
     </div>
 
     <div id="tab_opentapo" class="tab-content">
         <div class="table-responsive">
-            <table id="opentapo_table">
+  <!-- OTM BAŞLANGIÇ !-->           <table id="opentapo_table">
 
 <tbody><tr class="continent" id="africa" continent="africa" onclick="toggle_continent(&quot;africa&quot;)"><td colspan="6"><h3>Africa</h3></td></tr>
 <tr class="header" style="display: none;"><th>Country</th><th>Garmin file</th><th>Garmin Contours file</th><th></th><th>Generated at</th></tr>
@@ -929,7 +1864,7 @@
 <tr class="country" id="uruguay" continent="south_america" onclick="update_layer(&quot;uruguay&quot;)" style="display: none;"><td>Uruguay</td><td><a href="south-america/uruguay/otm-uruguay.zip "target="_blank" "> Garmin</a> (114.9M)</td><td><a href="south-america/uruguay/otm-uruguay-contours.zip "target="_blank" "> Garmin contours</a> (33.5M)</td><td><a href="south-america/uruguay/otm-uruguay-basecamp.zip "target="_blank" "></a> (0.0P)</td><td>2026-06-22 21:37:26</td></tr>
 <tr class="country" id="venezuela" continent="south_america" onclick="update_layer(&quot;venezuela&quot;)" style="display: none;"><td>Venezuela</td><td><a href="south-america/venezuela/otm-venezuela.zip "target="_blank" "> Garmin</a> (349.5M)</td><td><a href="south-america/venezuela/otm-venezuela-contours.zip "target="_blank" "> Garmin contours</a> (333.7M)</td><td><a href="south-america/venezuela/otm-venezuela-basecamp.zip "target="_blank" "></a> (0.0P)</td><td>2026-06-22 21:40:27</td></tr>
 </tbody>
-            </table>
+            </table> <!-- OTM SONU !-->
         </div>
     </div>
 
