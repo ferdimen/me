@@ -2120,8 +2120,8 @@ Bu karar tamamen bireysel bir tercih değil, yaşanan tecrübelerden doğan bir 
                 const imgHtml = tur.resim ? `<img src="${tur.resim}" alt="${tur.baslik}">` : '';
                 
                 // Link etiketi (Eğer veri boşsa kod üretilmez)
-                const linkHtml = (tur.linkUrl && tur.linkMetni) ? `<br><a href="${tur.linkUrl}" target="_blank" class="timeline-btn">${tur.linkMetni}</a>` : '';
-
+                const linkHtml = (tur.linkUrl && tur.linkMetni) ? `<a href="${tur.linkUrl}" target="_blank" class="timeline-btn">${tur.linkMetni}</a>` : '';
+                const linkBlog = (tur.linkblogUrl && tur.linkblogMetni) ? `<a href="${tur.linkblogUrl}" target="_blank" class="timeline-btn">${tur.linkblogMetni}</a>` : '';
                 htmlContent += `
                     <div class="timeline-row">
                         <div class="timeline-year-badge">${tur.tarih}</div>
@@ -2129,7 +2129,7 @@ Bu karar tamamen bireysel bir tercih değil, yaşanan tecrübelerden doğan bir 
                             <div class="timeline-card-node">
                                 <h3>${tur.baslik}</h3> ${imgHtml}
                                 <p>${tur.aciklama}</p>
-                                ${linkHtml}
+                                ${linkHtml} ${linkBlog}
                             </div>
                         </div>
                     </div>
