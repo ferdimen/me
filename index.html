@@ -6,8 +6,26 @@
     <title>Ferdimen // Adı yalnızlığından gelen kahraman</title>
     
     <link rel="icon" type="image/png" href="img/logo.png">
-    
-    <style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />   
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.js"></script>   
+   <style>
+
+        
+        /* Harita Stili */
+        #map { width: 100%; height: 480px; border: 2px solid var(--border-color); }
+        .leaflet-popup-content-wrapper { border-radius: 0; border: 2px solid var(--border-color); background: var(--card-bg); }
+        .popup-img { width: 100%; height: auto; margin-bottom: 8px; border: 1px solid #ccc; }
+        
+        /* Liste ve Genel Stiller */
+        .video-card { background: var(--card-bg); border: 2px solid var(--border-color); display: flex; margin-bottom: 2rem; transition: 0.2s; }
+        .video-card:hover { transform: translateX(5px); box-shadow: -5px 5px 0px var(--border-color); }
+        .video-img-wrapper { width: 240px; flex-shrink: 0; border-right: 2px solid var(--border-color); }
+        .video-thumb { width: 100%; height: 100%; object-fit: cover; }
+        .video-content { padding: 2rem; }
+        .btn-inline { font-weight: 700; color: var(--border-color); border-bottom: 2px solid var(--border-color); text-decoration: none; }
+        
+        @media (max-width: 768px) { .video-card { flex-direction: column; } .video-img-wrapper { width: 100%; height: 180px; } }
         /* --- Modern ve Kurumsal Tasarım Temelleri --- */
         :root {
             --primary-color: #1a1a1a;
@@ -1080,6 +1098,7 @@
     </style>
 </head>
 <body>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     <!-- ÜST NAVİGASYON VE MENÜ -->
     <header class="main-header">
@@ -1094,12 +1113,13 @@
                 <nav>
                     <ul class="nav-menu">
 					    <li><a href="#hakkimda">Hakkımda</a></li>
-                        <li><a href="#harita">Rota Haritası</a></li>
+                        <li><a href="#harita">Gittim Gördüm</a></li>
+						<li><a href="#videolar">Videolar</a></li>			
                         <li><a href="#kronoloji">Kronoloji</a></li>
 						<li><a href="#dosyalar">Dosyalar</a></li>
                         <li><a href="#ekipman">Ekipman</a></li>
                         <li><a href="#faq">S.S.S.</a></li>
-						<li><a href="#sablon">Şablon</a></li>
+						<li><a href="#sablon">Vasiyet</a></li>
                         <li><a href="#destek">Destek Ol</a></li>						
                         <li><a href="#iletisim">İletişim</a></li>
                     </ul>
@@ -1216,7 +1236,13 @@ Seyahat felsefesimde "görünmezlik" ve "hamlık" ön plandadır. Popüler rotal
             </div>
         </div>
     </section>
-
+    <!-- VİDEO HARİTASI -->
+    <section class="timeline-section" id="videolar">
+        <div class="container">
+            <h2 class="section-main-title">Video Haritası</h2>
+            <div class="flourish-embed flourish-chart" <div id="map"></div>
+        </div>
+    </section>
     <!-- KRONOLOJİK TIMELINE -->
     <section class="timeline-section" id="kronoloji">
         <div class="container">
@@ -1553,7 +1579,7 @@ Bu karar tamamen bireysel bir tercih değil, yaşanan tecrübelerden doğan bir 
     <!-- FOOTER -->
     <footer class="main-footer">
         <div class="container">
-            <p class="footer-text">© 2026 Ferdimen. Tüm Hakları Saklıdır. | Yeni gelmedik, geri geldik.</p>
+            <p class="footer-text">© 2026 Ferdimen. Tüm Hakları Saklıdır.</p>
         </div>
     </footer>
 
@@ -2153,7 +2179,51 @@ Bu karar tamamen bireysel bir tercih değil, yaşanan tecrübelerden doğan bir 
             });
         });
 
+    function getYoutubeThumb(url) {
+        let videoId = "";
+        try {
+            const urlObj = new URL(url);
+            videoId = urlObj.searchParams.get("v") || urlObj.pathname.split("/")[1];
+        } catch(e) {}
+        return videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : 'img/logo.png';
+    }
 
+    const map = L.map('map').setView([39.0, 35.0], 6);
+
+    const lightMap = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; CARTO' }).addTo(map);
+    const topoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenTopoMap' });
+
+    L.control.layers({"Topoğrafik": topoMap, "Minimalist": lightMap}).addTo(map);
+
+    // 1. ÖZEL İKON TANIMLAMASI
+    const ozelPin = L.icon({
+        iconUrl: 'img/youtube.png',      // Kullanılacak görselin yolu
+        iconSize: [20, 20],          // Görselin boyutu [Genişlik, Yükseklik] (İhtiyaca göre değiştirebilirsiniz)
+        iconAnchor: [10, 38],        // İkonun tam olarak hangi noktasının koordinata basacağını belirler (Genişliğin yarısı, Yüksekliğin tamamı alt ucu temsil eder)
+        popupAnchor: [0, -38]        // Popup penceresinin pinin neresinden açılacağını belirler
+    });
+
+    fetch('data/video.json?v=' + new Date().getTime())
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById("videoContainer");
+            data.forEach(video => {
+                // Harita İşaretleyici
+                if (video.konum) {
+                    const [lat, lng] = video.konum.split(',').map(Number);
+                    const thumbUrl = getYoutubeThumb(video.url);
+                    
+                    // 2. MARKER İÇİNE ICON PARAMETRESİNİ EKLEME
+                    L.marker([lat, lng], { icon: ozelPin }).addTo(map).bindPopup(`
+                        <div style="width:180px;">
+                            <img src="${thumbUrl}" class="popup-img">
+                            <h4>${video.title}</h4>
+                            <a href="${video.url}" target="_blank" class="btn-inline">İzle &rarr;</a>
+                        </div>
+                    `);
+                }
+            });
+        });
     </script>
 </body>
 </html>
