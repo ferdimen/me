@@ -3452,7 +3452,7 @@ Kurtuluş Savaşının 5 önemli meydan muharebesinin 3' ü Eskişehir'de geçmi
         const socialContainer = document.getElementById("social-container");
         if (!socialContainer) return;
 
-        fetch('https://www.ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
+        fetch('https://ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
             .then(res => {
                 if (!res.ok) throw new Error("Sosyal medya JSON dosyası yüklenemedi!");
                 return res.json();
@@ -3522,7 +3522,7 @@ Kurtuluş Savaşının 5 önemli meydan muharebesinin 3' ü Eskişehir'de geçmi
             if (!navContainer) return;
 
             // JSON ARTIK YAZILAR KLASÖRÜNÜN İÇİNDEN ÇEKİLİYOR
-            fetch('https://www.ferdimen.com/yazilar/yazilar.json?v=' + new Date().getTime())
+            fetch('yazilar.json?v=' + new Date().getTime())
                 .then(res => {
                     if (!res.ok) throw new Error("Yazı listesi yüklenemedi!");
                     return res.json();
