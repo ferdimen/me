@@ -1,4 +1,12 @@
 [
+	 {
+        "meta": "2 Temmuz 2026 / Altyapı",
+        "baslik": "Yol Notları & Hikayeler bölümü eklendi",
+        "aciklama": "Yayın tarihine göre sıralanmış tüm blog yazıları ve tur günlükleri sistem eklendi. ",
+		"resim": "",		
+        "linkUrl": "/yazilar",
+        "linkMetni": "İncele"
+    },
 	    {
         "meta": "30 Haziran 2026 / Altyapı",
         "baslik": "Video Haritası eklendi",
