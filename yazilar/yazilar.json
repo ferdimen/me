@@ -1,10 +1,10 @@
 [
-  {
-    "id": "2019-sandras",
-    "baslik": "Sandras Dağı & Arapapıştı Kanyonu",
-    "url": "yazilar/2019-sandras.html",
-    "tarih": "2019-04-16",
-	"kapakresmi": "https://1.bp.blogspot.com/-1QilUl5nJGE/XMQgyqNP2pI/AAAAAAAAoBM/KU1VaFGnRDU_PO147_vfx9PDcOFtWh7mQCLcBGAs/s640/IMG_1160.JPG"
+    {
+    "id": "2021-kumpas",
+    "baslik": "Bir İhale Kalma Hikayesi",
+    "url": "yazilar/2021-kumpas.html",
+    "tarih": "2021-07-21",
+	"kapakresmi": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZp48ydz57h5q0VFgl7gAMEInkzmJiJZD5nnvVAu8rjUCguv9eu2vKZufcFgzui1Syp7GcfUIc7-jkNZCn3iwFrI9Z6d0YW_KEOn2vcQTPV3lvro2m-o-9fMm5Q3SI8GnwX1mllqOdm59zFB_DSXwik2LivKFK6UA2XZG_HhAB9mxO78jq5aJPk89Bfl8J/w640-h400/2021-kumpas-7154.jpg"
   },
   {
     "id": "2020-zgy",
@@ -12,6 +12,12 @@
     "url": "yazilar/2020-zgy.html",
     "tarih": "2020-06-20",
 	"kapakresmi": "https://1.bp.blogspot.com/-EMoL5G9RRKQ/Xx6SRJ0S6RI/AAAAAAAA3Jw/0JdfRUmljH852rI8viJ3WD7tZtQeH-FiQCLcBGAsYHQ/w640-h362/kocatepe-1.jpg"
+  },
+    {
+    "id": "2019-sandras",
+    "baslik": "Sandras Dağı & Arapapıştı Kanyonu",
+    "url": "yazilar/2019-sandras.html",
+    "tarih": "2019-04-16",
+	"kapakresmi": "https://1.bp.blogspot.com/-1QilUl5nJGE/XMQgyqNP2pI/AAAAAAAAoBM/KU1VaFGnRDU_PO147_vfx9PDcOFtWh7mQCLcBGAs/s640/IMG_1160.JPG"
   }
-  
 ]
