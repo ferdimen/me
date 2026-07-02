@@ -380,7 +380,7 @@
         const socialContainer = document.getElementById("social-container");
         if (!socialContainer) return;
 
-        fetch('http://localhost/me/data/sosyal.json?v=' + new Date().getTime())
+        fetch('https://ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
             .then(res => {
                 if (!res.ok) throw new Error("Sosyal medya JSON dosyası yüklenemedi!");
                 return res.json();
@@ -450,7 +450,7 @@
             if (!navContainer) return;
 
             // JSON ARTIK YAZILAR KLASÖRÜNÜN İÇİNDEN ÇEKİLİYOR
-            fetch('http://localhost/me/yazilar/yazilar.json?v=' + new Date().getTime())
+            fetch('yazilar.json?v=' + new Date().getTime())
                 .then(res => {
                     if (!res.ok) throw new Error("Yazı listesi yüklenemedi!");
                     return res.json();
