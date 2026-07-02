@@ -188,7 +188,7 @@
         const socialContainer = document.getElementById("social-container");
         if (!socialContainer) return;
 
-        fetch('https://www.ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
+        fetch('https://ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
             .then(res => {
                 if (!res.ok) throw new Error("Sosyal medya JSON dosyası yüklenemedi!");
                 return res.json();
