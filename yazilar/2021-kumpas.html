@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferdimen // Adı yalnızlığından gelen kahraman</title>
+    
+    <link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.css" />
+    
+    <link rel="stylesheet" href="https://www.ferdimen.com/data/css.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.js"></script>   
+    <style>
+/* Bilgilendirme (Info) Durumu İçin Özel Stiller */
+.alert-info {
+    background-color: #f0f7ff; /* Yumuşak pastel mavi arka plan */
+    border-color: #b3d7ff;     /* Açık mavi çerçeve */
+    color: #1a4870;            /* Okunabilirliği yüksek koyu mavi metin rengi */
+    border-left: 5px solid #3182ce; /* Sol tarafa vurgu yapan canlı mavi şerit */
+    box-shadow: 0 2px 4px rgba(49, 130, 206, 0.05); /* Hafif derinlik gölgesi */
+}
+
+/* Alert içindeki linklerin rengi */
+.alert-info a {
+    color: #123452;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.alert-info a:hover {
+    color: #0b2236;
+    text-decoration: none;
+}
+/* Genel Alert (Uyarı) Kutusu Temeli */
+.alert {
+    padding: 15px 20px;
+    margin: 20px 0;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Hata (Error) Durumu İçin Özel Stiller */
+.alert-error {
+    background-color: #fdf2f2; /* Gözü yormayan hafif pastel kırmızı arka plan */
+    border-color: #f8b4b4;     /* Yumuşak kırmızı çerçeve */
+    color: #9b1c1c;            /* Okunabilirliği yüksek koyu kırmızı metin rengi */
+    border-left: 5px solid #e02424; /* Sol tarafa dikkat çeken kalın canlı kırmızı şerit */
+    box-shadow: 0 2px 4px rgba(224, 36, 36, 0.05); /* Çok hafif bir derinlik gölgesi */
+}
+
+/* Eğer alert içinde link kullanırsan onun da rengini ayarla */
+.alert-error a {
+    color: #771d1d;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.alert-error a:hover {
+    color: #551414;
+    text-decoration: none;
+}
+ /* Genel Sayfa Düzeni */
+        .tur-sayfasi {
+            display: none; /* Varsayılan olarak tüm bölümleri gizle */
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .tur-sayfasi.aktif {
+            display: block; /* Sadece aktif olan bölümü göster */
+        }
+
+        /* Sayfalama Butonları */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        .pagination li {
+            margin: 0 5px;
+        }
+        .pagination button {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .pagination button:hover {
+            background-color: #3498db;
+            color: #fff;
+            border-color: #3498db;
+        }
+        .pagination li.aktif button {
+            background-color: #2c3e50;
+            color: #fff;
+            border-color: #2c3e50;
+            cursor: default;
+        }
+
+        /* Öne Çıkan Görsel Kutusu */
+        .post-featured-image {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 40px;
+            box-sizing: border-box;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        /* Görsel İçindeki Yazı Alanı */
+        .post-featured-content {
+            max-width: 800px;
+            text-align: left;
+        }
+
+        /* Kategori Etiketi */
+        .post-category {
+            display: inline-block;
+            background-color: #ff5722;
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        /* Yazı Başlığı */
+        .post-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            line-height: 1.2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Tarih ve Ek Bilgiler */
+        .post-meta {
+            font-size: 0.9rem;
+            color: #dddddd;
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Yazının Kendisi İçin Kapsayıcı */
+        .post-body-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #333333;
+        }
+
+        /* Dinamik Önceki - Sonraki Yazı Navigasyonu Tasarımı */
+        .post-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        .nav-box {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+        }
+        .nav-box:hover {
+            border-color: #3498db;
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .nav-box.prev { text-align: left; }
+        .nav-box.next { text-align: right; }
+        .nav-label {
+            display: block;
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+        .nav-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+
+        /* Mobil Ekranlar İçin Uyum */
+        @media (max-width: 768px) {
+            .post-featured-image {
+                height: 300px;
+                padding: 20px;
+            }
+            .post-title {
+                font-size: 1.8rem;
+            }
+            .post-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-box.next {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <header class="main-header">
+        <div class="container nav-bar">
+            <div class="logo-group">
+                <a href="https://www.ferdimen.com">
+                    <img src="https://www.ferdimen.com/img/logo.png" alt="Ferdimen Logo">
+                </a>
+            </div>
+            <div class="nav-right-container">
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="https://www.ferdimen.com/#hakkimda">Hakkımda</a></li>
+                        <li><a href="https://www.ferdimen.com/yazilar">Yazilar</a></li>
+                        <li><a href="https://www.ferdimen.com/#harita">Gittim Gördüm</a></li>
+                        <li><a href="https://www.ferdimen.com/#videolar">Videolar</a></li>
+                        <li><a href="https://www.ferdimen.com/#kronoloji">Kronoloji</a></li>
+                        <li><a href="https://www.ferdimen.com/#dosyalar">Dosyalar</a></li>
+                        <li><a href="https://www.ferdimen.com/#ekipman">Ekipman</a></li>
+                        <li><a href="https://www.ferdimen.com/#faq">S.S.S.</a></li>
+                        <li><a href="https://www.ferdimen.com/#sablon">Vasiyet</a></li>
+                        <li><a href="https://www.ferdimen.com/#destek">Destek Ol</a></li>
+                        <li><a href="https://www.ferdimen.com/#iletisim">İletişim</a></li>
+                    </ul>
+                </nav>
+                <div class="header-socials">
+                    <a href="https://www.youtube.com/@ferdimen" target="_blank" title="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M21.543 6.498C22 8.21 22 12 22 12s0 3.79-.457 5.502A2.752 2.752 0 0 1 19.617 19.43C17.904 20 12 20 12 20s-5.904 0-7.617-.57a2.752 2.752 0 0 1-1.926-1.928C2 15.79 2 12 2 12s0-3.79.457-5.502A2.752 2.752 0 0 1 4.383 4.57C6.096 4 12 4 12 4s5.904 0 7.617.57a2.752 2.752 0 0 1 1.926 1.928zM10 15.5l5.5-3.5L10 8.5v7z"/></svg>
+                    </a>
+                    <a href="https://polarsteps.com/ferdimen" target="_blank" title="Polarsteps">
+                        <svg viewBox="0 0 48 48"><path d="M22.8 21.2c1-.4 2.1-.3 3 .3c.2.1.4.2.6.1l2.4-1c.5-.2.7-.9.3-1.3L18.8 8.9c-.7-.7-2-.2-2 .8l.2 14.5c0 .6.6 1 1.1.7l2.4-1c.2-.1.3-.3.4-.5c.2-.9.9-1.8 1.9-2.2Zm2.4 5.6c1-.4 1.7-1.3 1.8-2.4c0-.2.2-.4.4-.5l2.4-1c.5-.2 1.1.2 1.1.7l.2 14.5c0 1-1.2 1.6-2 .8L19 28.8c-.4-.4-.3-1.1.3-1.3l2.4-1c.2-.1.4 0 .6.1c.8.5 1.9.7 2.9.2Z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+<!-- YAZI DETAY BÖLÜMÜ -->
+<section class="contact-section" id="yazi">
+    
+    <!-- ÖNE ÇIKAN GÖRSEL ALANI (Elle URL girilebilir) -->
+    <div class="post-featured-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEineax1gjmunqnJne3Gexyip1IFvPQi75K9jklyvINAt1H84_Lh9Y7ZPxD4fRIixHPZZwUZUt1SIcfJ9kYTNGzOVQqSFfzVYij_P2UtplMbbD_YDUyOP5SYN9giLSByR84L19iIonrLcUE-MCcLgk3uq35JDydm6ApjSfknQ_OjZR1GeGXk9QtoFEoim-Md/w640-h400/2021-kumpas-7170.jpg');">
+        <div class="post-featured-content">
+            <span class="post-category">Bisiklet Turu</span>
+            <h1 class="post-title">Kumpasa Geldim</h1>
+            <div class="post-meta">
+                <span class="post-date">26 Temmuz 2021 - 5 Ağustos 2021</span>
+                <span class="post-read-time">Tekirdağ > Gelibolu > Çanakkale > Bayramiç > Çan > Biga > Bandırma > Tekirdağ</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- YAZININ GERÇEK İÇERİK ALANI -->
+    <div class="post-body-content">
+
+
+    <div class="tur-sayfasi aktif" id="bolum-1"><h2>26 Temmuz 2021<br>Ergene – Çorlu – Balabanlı – Gündüzlü – Tekirdağ – İnecik – Karaçalı – Araphacı</h2>
+	<i><h4>Bir İhale Kalma Hikayesi: Tandem mi? Sabır Testi mi? İsmail’le Yola Çıkmak mı? Bir Daha Tövbe!</h4></i><img class="alignnone" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiVsLreUooclOg9Hyw3SVo_wJrXRF-Sn2jdLJkXKCshQRSvhpLta1KHpUQUDfayXrS-J4yKZxS-BDeTrbYqCL6a1Ognvv8ybmPPqh5spS4kXtl0dAHlqxBuSRTGrDzelLAyHaU93dOJbx9_jnyF_n95ProYxRtIwpIiAl4boE4oWsl9CQfUF83pahvYNtdg/w640-h400/2021-kumpas-6946.jpg" alt="" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /><br>
+Selam dostlar, şimdi arkanıza yaslanın. Sizi 2021 yazına, o asfaltın eridiği, beynimizin pekmez kıvamına geldiği günlere götüreceğim. Ama bu bir "<b>huzur dolu tatil</b>" yazısı değil; bu bir "<b>kumpasa geliş,</b>" bir "<b>ihale kalma</b>" ve bir "<b>tandemle imtihan</b>" hikayesidir.
+
+Açık konuşayım, o günlerde derdim <b>fotoğraf çekmek, video kurgulamak</b> falan değildi; tek derdim arkadaki adamı, yani İsmail’i sağ salim (ve mümkünse sinirlerimi bozmadan) menzile ulaştırmaktı. Iphone ile çekilen fotoğrafların windows ortamına aktarılması oldukça zahmetli bir iş olduğundan İsmail'in çektiği fotoğraflarında pek hayrını gördüğümü söyleyemem. O yüzden <b>görsel materyal zayıf, ama hikaye zehir gibi.</b>
+<h3><b>Büyük Kumpas: Enes’in "Ağrıyan" Bacağı</b></h3>
+Normalde bu turda <b>İsmail Odabaşıoğlu</b>’na pilotluk yapacak kişi Ankara’dan <b>Enes’ti</b>. Ama ne hikmetse, tam yola çıkılacakken Enes’in bacağı "<b>ani bir kararla</b>" ağrımaya başladı. Bak Enes, aradan yıllar geçti ama ben hala yemiyorum o bacak ağrısını! Sen o tarihlerde Trakya ve Ege’nin fırın gibi olacağını duydun, "<b>İhale Ferdi’ye kalsın</b>" dedin. O ihale de tam göbeğime düştü.
+
+İsmail görme engelli bir arkadaşımız. Hevesi var, yolu seviyor. Şimdi adamı ortada mı bırakayım? "<b>Gel ulan</b>" dedim ama o kadar isteksizim ki, sırf İsmail'in gözü korksun, "<b>Bu herif bizi öldürecek</b>" deyip vazgeçsin diye gittim ona ferdi kaza sigortası bile yaptırttım. Bir de şart koştum: "<b>Özel harcamalarım hariç tüm masraflar senden, yoksa pedala basmam!</b>" Kabul etti. Çıktık yola ama bu benim İsmail ile yaptığım son tur oldu. Neden mi? Sabredin, anlatacağım.
+<br><br>
+İsmail tandem bisikleti otobüsle <b>Ankara’dan</b> getirdi. Karşıladım, evimde misafir ettim. Ertesi sabah "Bismillah" deyip vurduk kendimizi yollara. Buralar benim çöplüğüm. Güzergahı ben belirlerim, kuralı ben koyarım. İsmail’i gerçek "<b>Ferdimen Tarzı</b>" ile tanıştırmanın vakti gelmişti.
+
+<img class="alignnone" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiab1Gv6JX4RIWYFPLA3DknllykTEnZxmEyZYl0wMpwP4y9EWt8VjKsMb_TOGvNiRS6B1DKfCtDnobM8Y0o8bTcFkMeD_yjm_WCTMf_TZyEpH4tUeYZqlg6NG9A8tbw8ZD3_802uHRRtXc4ZU8mYN3GE6RPBrOKAuV6VPJctTuE4FqpE7ohnz3FqeX07b9Z/w640-h400/2021-kumpas-5394.jpg" alt="" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" />
+
+Benim <b>navigasyon yeteneğim</b> iyidir, <b>teknik pilotluğuma</b> da laf ettirmem. Hareket halindeyken İsmail’e sürekli betimleme yapıyorum: "<b>Sağda ayçiçeği tarlası, solda bilmem ne.</b>" Festivallerde kız arkadaşlara takılırdık, "<b>Ayşe 100 metre ileride, Fatma sağda. Hemen yanaşır Merhaba Fatma nasılsın?</b>" diye goygoy yapardık ama burada iş ciddi. Festivalde yükü organizatör taşır, burada her şey benim sırtımda. Bir de tandem olayı sakattır; iki ayrı bisiklet olsan küser basar gidersin, bunda adam dibinde! Sövsen yüzüne gidiyor, sussan içine dert oluyor. Neyse ki İsmail kişisel temizliğini kendi yapabiliyor, en azından kıçını yıkamayacağız. Bir de onunla uğraşsak o yokuşlarda bisikleti uçurumdan aşağı atardım. gerçi o aşamayada gelmiştim.
+
+<img class="alignnone" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJ9TmnpXfIpzixS8FSrPjor29mZ58iDFD29EsgTSIWMxFQRtRCE6dnqGrVygHSvgmIko6bFbeUwj2dXuaX6qX-bkGsqQuaDluEtq7nWhKUQwhZTT19QrmGotD7nb69BfmU1s_4f8n3FitRIb7Vo34jhuxNsjYlfIT-kKclchrwFMIF8IsBuGEAtlYpZav0/w640-h400/2021-kumpas-6947.jpg" alt="" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" />
+
+Sıcağın altında çevre yolundan kaçıp ara yollara, tarlalara vurdum. İsmail daha <b>Tekirdağ’a</b> varmadan başladı: "<i><b>Ferdimen, sen gerçekten bozuk yolların adamısın!</b></i>" dedi. Ee, bizde asfalt fantezisi yok İsmail efendi, doğa ne verirse o! Günü, daha önce defalarca kamp attığım <b>Araphacı</b> civarında bir çeşme başında, kurbağa sesleri eşliğinde bitirdik.
+<img class="alignnone" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi73pYYt0xYFDgzi6zCIVtWMRqHYQJU9MoqEnosCN4UQFSee01LOah9CvRHPpiRnKe6MasDExAG4emIhPIRdW9koMf0s9u9TZm8LQ3EbNeBPqVLVmARtVOdcYCnipijr19Wg0GVqBJLWP9JsGTvudnJGU3GVdfhLL6iJv89v2CG_nCz8LRCbjg4G66o19J1/w640-h400/2021-kumpas-6949.jpg" alt="" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /><img class="alignnone" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEib7HC0ae3asmDBl4yK-dScZZbCwliPtNUYDv2NWtQ9qhkl5HqPQYKHa_Tt3xPUpBGq1RbrxBBwbTaVJTSDp_4azRLWkjmYI9VvFBMWJt_-jAzQBgfhooLwWO_B7eCd6ymeEBRJCVpNQVlJVga6CHWTQtEzOj0J6uLiP3oDx_mAHVBxNJfru3iZxMPoxKK1/w640-h400/2021-kumpas-6951.jpg" alt="" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></div>
+    <div class="tur-sayfasi" id="bolum-2"><h2>27 Temmuz 2021 Araphacı – Sağlamtaş – Evreşe – Güneyli</h2><img class="alignnone" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6ZBsPkKyqeX3J9xE4R-b8yGmNwT5pOIMOAva0fL6RxyzrQhLNBphtmCD6SUltUq9d33SGr99TyXM7KHFyauBVmlBvaV4WQnGSDxRxtf6zWvy1vf5A9OJQu0GKRCEH3Uv6Zlcg2N7btFa-5q9R_NpszRiEOlJrvXhvY74O4R10pKobZnAiHBZeWesAth24/w640-h400/2021-kumpas-6953.jpg" alt="" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /><img class="alignnone" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_jVoxGmgDVdn6r66HbJ4b_Y0KfM4lEGt7GEEY3CNyTmb9ok8Dl1C3RRLQRz7rdnpBfLgc6LfwA6LpSjhAEhreDXDlgr4Pt6s3non_RXKaqO5DKFtxNZfDc8lbp0yvzh8f55qQ2Mkr-4ZUqaY2gudc1aEKQSsjdx_q8-p8C27-UtN9kZvJ2B_ja8Hrr7j1/w640-h400/2021-kumpas-6959.jpg" alt="" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" />
+
+Daha yolun başındayız, ertesi gün şarkılar, türküler... İsmail’in hakkını yemeyeyim, sosyal yönü kuvvetli. Her yerde bir tanıdığı, bir "<b>alo</b>" diyeceği adamı var. <strong>Güneyli’ye</strong> vardığımızda yine yaptı numarasını. Kendileri orada olmasa bile bir tanıdığının yazlık bahçesini ayarladı. Çadırları kurduk ama benim kafada hala o "<b>tövbe</b>" bulutları dolaşıyor. Tandem sürmek sadece pedal çevirmek değil, arkandaki ruh halini de taşımakmış, onu anladım. <img class="alignnone" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqAUKu0wLTuRXmQwWcmBNcrpoPJr8istDdkU5_hQmapGQeRm9B_XcY1c0H6Amn8vvFocKFiE0c4jOeEdTwlCkO7nC1mqbScYwYL0Qnht7O7IZj0DAdyPRBWyyNQnnqlHEC6GE57ygIrxTkdnZ6US6IxUbVDXpBqciSWL-mw_yRE7uGhZ0O9MqMy-7pHSBu/w640-h400/2021-kumpas-6962.jpg" alt="" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /> </div>
+    <div class="tur-sayfasi" id="bolum-3"><h2>28 Temmuz 2021<br>Güneyli – Gelibolu – Lapseki – Suluca – Çanakkale</h2><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0g22Fteag0U6hbDVK39uLgTapLHJAZOKlwuMls46H74KFx0BAYYz-hPsHlFn89tqaxCyzfTUa9mAc43utlznxzJrdbBhFpFb139CUerW93twZR5INGgoTxnsB-4M2YWkiJFrQ7FRAF41nlDR27Q2dh3RSjkigCBEnpgtrVrcyG_uAJ-d3u5DaX-QEcp2q/s1920/2021-kumpas-6964.jpg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0g22Fteag0U6hbDVK39uLgTapLHJAZOKlwuMls46H74KFx0BAYYz-hPsHlFn89tqaxCyzfTUa9mAc43utlznxzJrdbBhFpFb139CUerW93twZR5INGgoTxnsB-4M2YWkiJFrQ7FRAF41nlDR27Q2dh3RSjkigCBEnpgtrVrcyG_uAJ-d3u5DaX-QEcp2q/s320/2021-kumpas-6964.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwz8hiOh1nOmYlBo_Gg3ttfotP5o2eMTFuCrTLbg0kFSC_TAujZBXOGS-Xlun_6WSb7GKa682dOMK2cvIpbOBjidnvGs9rkR2rP8t5EDn9OSJ20NNc6HtRhqwscxjvlQW1DcP-3Y2dfB4gIMTB7e4eyAQ9nZd1eeYxsqiJrIJTymAuqiShuJ5lPWyJvg3w/s1920/2021-kumpas-6965.jpg"><b><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwz8hiOh1nOmYlBo_Gg3ttfotP5o2eMTFuCrTLbg0kFSC_TAujZBXOGS-Xlun_6WSb7GKa682dOMK2cvIpbOBjidnvGs9rkR2rP8t5EDn9OSJ20NNc6HtRhqwscxjvlQW1DcP-3Y2dfB4gIMTB7e4eyAQ9nZd1eeYxsqiJrIJTymAuqiShuJ5lPWyJvg3w/s320/2021-kumpas-6965.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></b></a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjjDTw4GJa1Vzb0RXOUVXAtZep5n3DqngttwKEhr24kjXng3-fUtPixnyQjZCmjwwKCjJyu-nD55CJzFxVhRWm-m_HSS3aA1g9izZkN52EDqDJiv6FmChFgw-dCZptfOq8KLSoG0mZ3XXU0H6DHd7NSg5601TeqpV1cUvYvJRbixptap4FY-m3q6bU8Q3AX/s1920/2021-kumpas-6967.jpg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjjDTw4GJa1Vzb0RXOUVXAtZep5n3DqngttwKEhr24kjXng3-fUtPixnyQjZCmjwwKCjJyu-nD55CJzFxVhRWm-m_HSS3aA1g9izZkN52EDqDJiv6FmChFgw-dCZptfOq8KLSoG0mZ3XXU0H6DHd7NSg5601TeqpV1cUvYvJRbixptap4FY-m3q6bU8Q3AX/s320/2021-kumpas-6967.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-L0OvQ1yWnJcAKIfmkfBslUF0HSi2f5P3o_lRDVdwMrjDhSjKWVbNT_q03TDL6FvcUdhkL9gJq9jbJIErXwiajI3nOQTAM_6dHVjywWU7-t20lfR9FsC5O7RQX7wMxrqJE_IbJz3oY1-IegdpTtuwoDXGbflOVzR3Nt8TJ3B1OYqM51DRnxuFsNcNmDD_/s1920/2021-kumpas-6970.jpg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-L0OvQ1yWnJcAKIfmkfBslUF0HSi2f5P3o_lRDVdwMrjDhSjKWVbNT_q03TDL6FvcUdhkL9gJq9jbJIErXwiajI3nOQTAM_6dHVjywWU7-t20lfR9FsC5O7RQX7wMxrqJE_IbJz3oY1-IegdpTtuwoDXGbflOVzR3Nt8TJ3B1OYqM51DRnxuFsNcNmDD_/s320/2021-kumpas-6970.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a>
+
+<img class="alignnone" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhm22kWXfRq3fO83TbJND43cp3sx2QkXuL_rWO9nB60_ZOyXwM8cC8Yidg9_-NUA27EpSod5f7g9W0yYPwFBulBFrEMY2QwUOrgKfB8gbnTuuq672pM4ne2rI2T7WyZTLoeRGg1sh8dTL6kNfYFjcC7CrpQsaFkg4D3QSgKFe5d0070pY1wEHPJ_Ql900HQ/w640-h400/2021-kumpas-01.jpg" alt="" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" />
+Güneyli’den çıktık, Gelibolu’ya süzüldük. <b>Gelibolu</b> demek benim için <b>Selim ağabey </b>demek. Onu görmeden o topraklardan geçmek delikanlılığa sığmaz. Hamzakoy plajında <b>Selim ağabeyle</b> demli birer çay içip hasret giderdik.
+
+<img class="alignnone" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJiZ37fzPmzfxNdp17AcVeJt5opQRSzTybEs2CAy2dl9p8O2nm0VDA6SX9Js31FojJKbv_zBeUgUqYfcq71sV1Taf79CHpePpsmdhAFre-8m0vLXqDOAmYIESTpx0vPxW0q_-0PtCwQehyFV0Mn2MvvuBx-kqVfCYyall1FOW1VmlLeHJBdmOXm8wBjMAd/w640-h400/2021-kumpas-6975.jpg" alt="" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /><br>
+Sonra ver elini Lapseki, Suluca derken Çanakkale’ye vardık. İsmail yine yaptı yapacağını, bir tanıdığının evine kapağı attık. En azından sıcak bir duş alabildik, buna da şükür. </div>
+    <div class="tur-sayfasi" id="bolum-4"><h2>29 Temmuz 2021<br>Çanakkale – Eceabat – Gökçeada – Eşelek</h2><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgeIozBF62aTFIMix8L93xtXKRvm7vm6mn5asalYQ43nR4opTbADSs0y5uEKqe9SiIv3YlRHaYotwKSIpnU1IlC5vGM_GbazH4Ts9dUalkB8KBp9lmog289hMrEbOd9IMwrCvmsxPjGiCGox8f6nJ_nhuIs6m47gEgqrTUyzTQf22HH8YALTgZdj9fJJYFd/s1920/2021-kumpas-6976.jpg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgeIozBF62aTFIMix8L93xtXKRvm7vm6mn5asalYQ43nR4opTbADSs0y5uEKqe9SiIv3YlRHaYotwKSIpnU1IlC5vGM_GbazH4Ts9dUalkB8KBp9lmog289hMrEbOd9IMwrCvmsxPjGiCGox8f6nJ_nhuIs6m47gEgqrTUyzTQf22HH8YALTgZdj9fJJYFd/w320-h200/2021-kumpas-6976.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDZ_p-zrS4RIMHv9BAYZ3Q3tlMNQ0ASbFcRaR7XFZKo3Yk89O48A78WMUeNLnwJx8VGP933My-t5gf9D9d1CbLM1OaNJvUn_OrRYQwcIv1dVqaRY8SW8zywE_3S0j8LEPJBdyVWLKfuI0379ArE2aqfdd9STlJl2sb8hKZTNMx9OG708-XyHFtSQV4KXoG/s1920/2021-kumpas-6977.jpg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDZ_p-zrS4RIMHv9BAYZ3Q3tlMNQ0ASbFcRaR7XFZKo3Yk89O48A78WMUeNLnwJx8VGP933My-t5gf9D9d1CbLM1OaNJvUn_OrRYQwcIv1dVqaRY8SW8zywE_3S0j8LEPJBdyVWLKfuI0379ArE2aqfdd9STlJl2sb8hKZTNMx9OG708-XyHFtSQV4KXoG/w320-h200/2021-kumpas-6977.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGS0Es2hhNDq-n3ervSQaV4AAtS1trDwq-RktaKWzB_GNBQ6lPA51VJ763DMxvSNKfhdZO0O3SMbVtVyRTqekXH9uxT6vzBgdJEckdPdBSIgY9N4LCWOfqJrRVlyHIIfNLnhw5JI6uDTjDZKjsD_1ZqHz096Q5bbxoh8lzW3le8r3HL4-i9JPnMbogh591/s1920/2021-kumpas-6978.jpg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGS0Es2hhNDq-n3ervSQaV4AAtS1trDwq-RktaKWzB_GNBQ6lPA51VJ763DMxvSNKfhdZO0O3SMbVtVyRTqekXH9uxT6vzBgdJEckdPdBSIgY9N4LCWOfqJrRVlyHIIfNLnhw5JI6uDTjDZKjsD_1ZqHz096Q5bbxoh8lzW3le8r3HL4-i9JPnMbogh591/w320-h200/2021-kumpas-6978.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUcldfEI1tOKwQYLXl9Jlc1Njh4sQ36xLUUX4Ggi-LrCk7y25GGTyEiBa6od2NDwm7n44kaWFl1SCkOZN8Sa5Y-5KiUDuFxwr2ARcz3mJHrnAziBc7wwUyNKOK4LKN5bhW5cDLWgq1qeusVbvxQhyxScRXm9oHzeIG7mhFLXS2Y4pvGq6i8y_piQWn7xfV/s1920/2021-kumpas-6982.jpg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUcldfEI1tOKwQYLXl9Jlc1Njh4sQ36xLUUX4Ggi-LrCk7y25GGTyEiBa6od2NDwm7n44kaWFl1SCkOZN8Sa5Y-5KiUDuFxwr2ARcz3mJHrnAziBc7wwUyNKOK4LKN5bhW5cDLWgq1qeusVbvxQhyxScRXm9oHzeIG7mhFLXS2Y4pvGq6i8y_piQWn7xfV/w320-h200/2021-kumpas-6982.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a>
+
+Bugün feribot günü. Önce<b> Çanakkale’den Eceabat’a</b>, oradan <b>Kabatepe’ye</b> kadar pedallayıp <b>Gökçeada</b> feribotuna kendimizi attık. Ada havası başka arkadaş! <b>Gökçeada’ya</b> varınca eksikleri giderip doğruca <b>Eşelek</b> sahiline sürdük. Akşamına Çorlu’dan <b>Önder ağabey</b> ve bir arkadaşı daha bize katıldı da biraz neşemiz yerine geldi. Sahilde kampı kurduk, denizin sesini dinliyoruz ama benim içimde hala bir fırtına...
+<br>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbNUrENH9b0ixLJO9Abir4-0iVw-3tH_vVTStdcexOGeSLFkwnrGWsaTQd40HgeOxMpGHcM48YSu1C4ORkg91tfV6uPYAAJtaq2a1Y8Jv-rRiuQ0zXzovdET0hY_qLagByK6t-GV4D3sBzViXKcTzW3JORTkMFnrn0eEeoK-HYmmyn7-8SEygUJYslo0kc/s1920/2021-kumpas-03.jpg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbNUrENH9b0ixLJO9Abir4-0iVw-3tH_vVTStdcexOGeSLFkwnrGWsaTQd40HgeOxMpGHcM48YSu1C4ORkg91tfV6uPYAAJtaq2a1Y8Jv-rRiuQ0zXzovdET0hY_qLagByK6t-GV4D3sBzViXKcTzW3JORTkMFnrn0eEeoK-HYmmyn7-8SEygUJYslo0kc/s320/2021-kumpas-03.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwb_LmdglqtL0Sas6JqshyTCrTYsHUqdnc6Nvlp9HAY4MQ4bA5sI2DmU-3LXXgRxQiINELYcHdv2OilnGN2Ma3OCeMGWikQVfiTRbgb__HKY-i7W5rjkedUsGx3dS2Kz7LEVRaD856hmRSzsrK2gM6GnUovyIw2zAp5vSC_TIW2Gk5YnOH6fe1_1zQ9rM5/s1920/2021-kumpas-6989.jpg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwb_LmdglqtL0Sas6JqshyTCrTYsHUqdnc6Nvlp9HAY4MQ4bA5sI2DmU-3LXXgRxQiINELYcHdv2OilnGN2Ma3OCeMGWikQVfiTRbgb__HKY-i7W5rjkedUsGx3dS2Kz7LEVRaD856hmRSzsrK2gM6GnUovyIw2zAp5vSC_TIW2Gk5YnOH6fe1_1zQ9rM5/s320/2021-kumpas-6989.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqG4bKQacF7QiKb0YcZMReNbeVSwVEHt6kcmCw-M0driNWijYCK2gYLXinqDfyc4HfycUrwKpuqlfLneKPEoj8Zv_3XGWr-nu7xYyoghSHkLuTG0cLEnbt-3Y2pl7SqEWRz50qtUdjhyphenhyphenf0SyItp5d3mEg6z-YXfzA8vnljCAYFeKWah-Ms0wTk4wF2cvkU/s1920/2021-kumpas-04.jpg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqG4bKQacF7QiKb0YcZMReNbeVSwVEHt6kcmCw-M0driNWijYCK2gYLXinqDfyc4HfycUrwKpuqlfLneKPEoj8Zv_3XGWr-nu7xYyoghSHkLuTG0cLEnbt-3Y2pl7SqEWRz50qtUdjhyphenhyphenf0SyItp5d3mEg6z-YXfzA8vnljCAYFeKWah-Ms0wTk4wF2cvkU/s320/2021-kumpas-04.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCqdSJkf6cFNQrv5E0a8uAZHw6rIAouIf58ddirMNYEOZG48ZLTlMC53t589gEaWZuomiNgFcvJM8KyxeV1RzjRndoDzHYu_7Vy57WpVwW63HNXI4yqD0IBETJvB6BD2e0x7eCNmrQ43IBs3r8yLfBQu8lF5kMuj05VeIeWtmxX9sf0MJc57Poi4aOp2vQ/s1920/2021-kumpas-6990.jpg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCqdSJkf6cFNQrv5E0a8uAZHw6rIAouIf58ddirMNYEOZG48ZLTlMC53t589gEaWZuomiNgFcvJM8KyxeV1RzjRndoDzHYu_7Vy57WpVwW63HNXI4yqD0IBETJvB6BD2e0x7eCNmrQ43IBs3r8yLfBQu8lF5kMuj05VeIeWtmxX9sf0MJc57Poi4aOp2vQ/s320/2021-kumpas-6990.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a> </div>
+    <div class="tur-sayfasi" id="bolum-5"><h2>30 Temmuz 2021<br>Eşelek – Gökçeada – Eceabat – Çanakkale – Güzelyalı – Halileli – Tevfikiye</h2><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiriH39FF0KeflAICk-KdDDXK5WlMbk1XuOZ4QMTPAydC1IUayzueeZURuXFC89MB_X3o5QvWm7nmOyGURT9_HRqjf9CUjjFwsrrPcIQhcd4LBmi2KztF5Y80CAvSXdqOLs3GQsLcAfyEKff9_FdypwXD0eWRNaxjXC0-YTM-p7cE9CX8EjpobTqwVDMHx-/s1920/2021-kumpas-eselek.jpg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiriH39FF0KeflAICk-KdDDXK5WlMbk1XuOZ4QMTPAydC1IUayzueeZURuXFC89MB_X3o5QvWm7nmOyGURT9_HRqjf9CUjjFwsrrPcIQhcd4LBmi2KztF5Y80CAvSXdqOLs3GQsLcAfyEKff9_FdypwXD0eWRNaxjXC0-YTM-p7cE9CX8EjpobTqwVDMHx-/w640-h400/2021-kumpas-eselek.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a><br>
+<b>Eşelek</b> sahilinde uyandık. Benim huyumdur; arada sabah çadırdan çıkar çıkmaz gözümü açmadan kendimi suya atarım. Hele o sabahın ilk ışıklarında, yada gece karanlığında ortalıkta kimsecikler yokken suyla buluşmanın tadı başka. Arada bir "üryan"girerim ki, tenim doğayı tam hissetsin! Hey gidi hey, biz gençliğimizde neyse, konuyu dağıtmayalım. :)
+
+Normalde ben deniz suyunu, o yapış yapış tuz hissini pek sevmem. Benim kalemim göller, dereler, hatta dağ başındaki yalaklardır. Tatlı su adamıyım ben. Sırf o buz gibi tatlı suya girmek için Çorlu’dan kalkıp İzmir Selçuk Zeytinköy’deki <b>Kazan Gölü</b>’ne gitmişliğim vardır. Ama yiğidi öldür hakkını yeme, Eşelek’in denizi beni bile tavladı. O sabah denizin tadını iyice çıkardık.
+
+<a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgE9aepo0XxCNkbIHxRYjdeGLDr3UnucMdHoW2PtkVUES-Lr5fzcyAxoSMu3fuEE8aB_X-Pjae2TNapvOOiffVvNW25vkh8P1EuQWipV78Kl5YesWJwW8tbpHSI4eYV-zBO0BK8TPnwkkcjGJjwI1pjPRsohASVLnZVRPau_MMAQLjmmgVVlI1C8iFjvpAG/s1920/2021-kumpas-7002.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgE9aepo0XxCNkbIHxRYjdeGLDr3UnucMdHoW2PtkVUES-Lr5fzcyAxoSMu3fuEE8aB_X-Pjae2TNapvOOiffVvNW25vkh8P1EuQWipV78Kl5YesWJwW8tbpHSI4eYV-zBO0BK8TPnwkkcjGJjwI1pjPRsohASVLnZVRPau_MMAQLjmmgVVlI1C8iFjvpAG/w640-h400/2021-kumpas-7002.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a><br>
+Deniz sefası bitti, gerçekler başladı. Bugün yine feribot günüydü. Geldiğimiz yolları tersten katetmeye başladık. Güzergah şöyle: Eşelek’ten <b>Gökçeada</b> merkezine sürüş, oradan feribotla Kabatepe, ardından pedalla <b>Eceabat</b> ve hop, bir feribot daha; <b>Çanakkale</b>!
+
+<a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNKoidNXRuquANSrpPs3XhK0mi34h86ieU92KdsxOQjub7rwhdjiX_OblQwCUAdPwz8DVwMEezueZaMbYq_fyW3CzLPifkJfXOKPcObhKo1EOJytQJuxPu1F9uRH3bPgJl4JLA97eLuLB1UpgtToZOOf5YcMMnvroyYDhwi94i1pW2gIE-Y2kvPqCSS_HO/s1920/2021-kumpas-7004.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNKoidNXRuquANSrpPs3XhK0mi34h86ieU92KdsxOQjub7rwhdjiX_OblQwCUAdPwz8DVwMEezueZaMbYq_fyW3CzLPifkJfXOKPcObhKo1EOJytQJuxPu1F9uRH3bPgJl4JLA97eLuLB1UpgtToZOOf5YcMMnvroyYDhwi94i1pW2gIE-Y2kvPqCSS_HO/w640-h400/2021-kumpas-7004.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijbRp2rEIXqPy133flU2B1bITOjU3BpjwWD_yjTAPYe8FlIEZkFyTSgj0OTz0ZW0p4ieQ6ErsTSSLK6n2sv6Q7PoXlngGxsgVJFAEMWUXd-Xrs3bAl69b5lnmUEEZ8xYmP0XI3pXHXsnzQc0hdHFCkC2KLJm0eMldBc_3WYR3yf4F18ZE-em1F9gepaP_z/s1920/2021-kumpas-7024.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijbRp2rEIXqPy133flU2B1bITOjU3BpjwWD_yjTAPYe8FlIEZkFyTSgj0OTz0ZW0p4ieQ6ErsTSSLK6n2sv6Q7PoXlngGxsgVJFAEMWUXd-Xrs3bAl69b5lnmUEEZ8xYmP0XI3pXHXsnzQc0hdHFCkC2KLJm0eMldBc_3WYR3yf4F18ZE-em1F9gepaP_z/s320/2021-kumpas-7024.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicHtIPE9v3hqji-3YGbTcnUqG0Awg4r6SsL79BKpZERZ2fnF4HtaVZHGm69y3cUis1Nw1eaqoNvwT9KPt2GBXuxAziH4A44xpXof2_NZb-nrN7oyJfQFT2TPIIiOrqQUIWlI1UDMnekes6A2mdpeDg-8G5-flGI1VpOZGPpcT_bCC9DNVdpYo2IJIGolGr/s1920/2021-kumpas-7012.JPG"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicHtIPE9v3hqji-3YGbTcnUqG0Awg4r6SsL79BKpZERZ2fnF4HtaVZHGm69y3cUis1Nw1eaqoNvwT9KPt2GBXuxAziH4A44xpXof2_NZb-nrN7oyJfQFT2TPIIiOrqQUIWlI1UDMnekes6A2mdpeDg-8G5-flGI1VpOZGPpcT_bCC9DNVdpYo2IJIGolGr/s320/2021-kumpas-7012.JPG" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjWXe6daEoS4ho1Zugl3StTsWQbxecPygFFgV27uqvHtsIcPdKGekC4FuTKfTNIBvxwqMAfo6ZljEj0hjlYMDnuFoukNUFc5W94CG91H4sNM_KVFNLZ2tFl6X0H3SFeCOKX9b-rafirSikiTMXxllVm0lro8AjrjTSxFgKYs0qAwu9sRwwwgo8xPowV4BKK/s1920/2021-kumpas-7006.JPG"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjWXe6daEoS4ho1Zugl3StTsWQbxecPygFFgV27uqvHtsIcPdKGekC4FuTKfTNIBvxwqMAfo6ZljEj0hjlYMDnuFoukNUFc5W94CG91H4sNM_KVFNLZ2tFl6X0H3SFeCOKX9b-rafirSikiTMXxllVm0lro8AjrjTSxFgKYs0qAwu9sRwwwgo8xPowV4BKK/s320/2021-kumpas-7006.JPG" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh9lYggzyQwVqn7z7fM6saU08Ya0BOVulZWiuYVyBdBKOF-pjSsh2ZebrRKXKQEOV7-9AU5ylmUZaB0j3ckJeuLj5iE7oFjNNuNY38GbHz3wcwlFh6nU8N3pZWCoO4UiEeBMlMELLyW7BZZbWWeCj6rjYJl4rsDAUpUQ6mk_bUG9nCWkkF73RaHd2mh_3ju/s1920/2021-kumpas-7025.JPG"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh9lYggzyQwVqn7z7fM6saU08Ya0BOVulZWiuYVyBdBKOF-pjSsh2ZebrRKXKQEOV7-9AU5ylmUZaB0j3ckJeuLj5iE7oFjNNuNY38GbHz3wcwlFh6nU8N3pZWCoO4UiEeBMlMELLyW7BZZbWWeCj6rjYJl4rsDAUpUQ6mk_bUG9nCWkkF73RaHd2mh_3ju/s320/2021-kumpas-7025.JPG" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a>
+İsmail’e pilotluk yaparken kendimi bazen bir tur şirketinin animatörü gibi hissediyordum. Ama benim de bir "altın listem" var. Gidilecek, görülecek yerler konusunda taviz vermem. Onlardan biri de <b>Çanakkale Savaşları Tarih Müzesi</b>’ydi. Daha önce <b>Şafak ağabeyle</b> Gelibolu 1915 turu yaptığımızda kapalıydı, içimde ukde kalmıştı.
+
+İsmail biraz mırın kırın etti, "<b>Yorulmayalım, vakit kaybetmeyelim</b>" falan dedi ama kural bir: <b>Gidon benim elimde!</b> Ön tekerlek nereye giderse, arka tekerlek de kuzu kuzu oraya gelecek. Biraz dil döktüm, biraz pilotluk otoritemi kullandım ve o müzeyi ziyaret ettik. İyi ki de etmişiz, o atmosferi solumadan geçmek olmazdı.
+
+<b><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjdx9tiW8mxQ5MfkNEpw63urKgYbjYKT5aJVcMuYvaG3TXRxikMktHeWX2X5D-R07bxIivAPmXWkyP881RwYLigCQcFxYljUsSBBF4G94YHdp1mTSWe3BXtyQGmLrk_ckYWlZ7Q6vgdVG1t3uz1T9ldV60nFeKTHL83xf2LCLMe5OTPK-sdAiLlqmtYaA3/s1920/2021-kumpas-7040.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjdx9tiW8mxQ5MfkNEpw63urKgYbjYKT5aJVcMuYvaG3TXRxikMktHeWX2X5D-R07bxIivAPmXWkyP881RwYLigCQcFxYljUsSBBF4G94YHdp1mTSWe3BXtyQGmLrk_ckYWlZ7Q6vgdVG1t3uz1T9ldV60nFeKTHL83xf2LCLMe5OTPK-sdAiLlqmtYaA3/w640-h400/2021-kumpas-7040.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgD_p10w_wFeB7ih2RfZCnHJ2yRY_Fp2U_I-jBKiH5VKMLA0WzdIqgB1XPmuHOhn1bXTiBROH1hG9Zhprn2p_Ei5F_hJ7ct4l7bPQj8Xj9MDs5ILsNvRVevkPhPQfPBvOhZNV8uglnb43Sv3u47Y4aYLW6wAoJZCt0fbJIHJ5JVCR9sDRSFIlrj_erDF03a/s1920/2021-kumpas-5021.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgD_p10w_wFeB7ih2RfZCnHJ2yRY_Fp2U_I-jBKiH5VKMLA0WzdIqgB1XPmuHOhn1bXTiBROH1hG9Zhprn2p_Ei5F_hJ7ct4l7bPQj8Xj9MDs5ILsNvRVevkPhPQfPBvOhZNV8uglnb43Sv3u47Y4aYLW6wAoJZCt0fbJIHJ5JVCR9sDRSFIlrj_erDF03a/w640-h400/2021-kumpas-5021.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Çanakkale’den</b> sonra o gürültülü anayol trafiğine girmek yerine, Ferdimen tarzı bir "<b>kaçış</b>" planı yaptım. <b>Kepez</b>, <b>Güzelyalı</b> ve o muazzam manzarasıyla <b>Karanlık Liman</b> üzerinden süzüldük. Boğazın manzarası eşliğinde pedal çevirirken İsmail’e betimlemelerimi eksik etmiyordum tabii.
+
+<b><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyYblvHghJrvfiWmhz-c81dMNlQ_HMN4_g0coTdjYjqoaRAcbm4MODS7fFQsNEp_lizalVeDY3RUV_kuBwU4V3FRN7crx3x03d0yX7BXSMqKHs13-B-huSv08JXH6DN0prrVRi4of_BJ7brYBEJqH05g_3gScfIVaMop1Xrk9efd8HZjDcPfEZh38n79vh/s1920/2021-kumpas-7044.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyYblvHghJrvfiWmhz-c81dMNlQ_HMN4_g0coTdjYjqoaRAcbm4MODS7fFQsNEp_lizalVeDY3RUV_kuBwU4V3FRN7crx3x03d0yX7BXSMqKHs13-B-huSv08JXH6DN0prrVRi4of_BJ7brYBEJqH05g_3gScfIVaMop1Xrk9efd8HZjDcPfEZh38n79vh/w640-h400/2021-kumpas-7044.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Kumkale’yi</b> geçip akşam güneşinin o turuncu rengiyle birlikte Truva antik kentinin dibindeki <b>Tevfikiye</b> köyüne vardık. Köy kahvesine yanaştık, yorgunluk çaylarımızı söyledik. Köylülerle muhabbet koyulaşınca bize muhtarlığa ait bir alanı gösterdiler. "<b>Buraya çadır kurabilirsiniz</b>" dediler. Çeşme var, tuvalet var, hatta telefonları şarj etmek için elektrik bile bulduk. Bir bisikletçinin lüks anlayışı budur işte! Sorunsuz, sessiz bir gece geçirdik. </div>
+    <div class="tur-sayfasi" id="bolum-6"><h2>31 Temmuz 2021<br>Tevfikiye – Kumburun – Geyikli – Bozcaada</h2><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgv2xeZrJ5NIBuQDd2sdlrBv7o7KAVIPPEXrq_dsxUJJEH1i8rMKEIiCRFssaWo83LLlm6TyI4IneLBfLp-fjOXgLRRo_wK-tfSKk440nMrXgtqUTJdXqXXNYTMXkAKjwQBouYyKH-JGyB8SJpIFhDzAEPul-i1au7JOOsIBeT3IhYrtVeIVq8xw4UATCzW/s1920/2021-kumpas-7046.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgv2xeZrJ5NIBuQDd2sdlrBv7o7KAVIPPEXrq_dsxUJJEH1i8rMKEIiCRFssaWo83LLlm6TyI4IneLBfLp-fjOXgLRRo_wK-tfSKk440nMrXgtqUTJdXqXXNYTMXkAKjwQBouYyKH-JGyB8SJpIFhDzAEPul-i1au7JOOsIBeT3IhYrtVeIVq8xw4UATCzW/w640-h400/2021-kumpas-7046.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Sabah <b>Tevfikiye’de</b> mis gibi kalktık. Su var, elektrik var, keyif gıcır. İlk hedef: <b>Truva Antik Kenti</b>. Ben burayı ezbere bilirim ama yeni yapılan müzeyi görmeyi çok istiyordum. Tabii müzeye girişimiz tam bir "İsmail klasiği" oldu.
+<a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNlN30oKqNEBkSW-tpRArbBi3HnEw3q3Ms4hxyQdXe3F9mQG5kn6aGkWUVs9hfW1MR9163io-V-wvcf4vIvnBMM_l5bnaPI_7Nu6Qnyjv6p3eSFHd49FYR68Bsm0q2lNTuFVk9rLa77Y0rH6GXhWxNYSZ7ZKzT1WUlQgS_VFeqKvx1qA-y0e4_ncuVeLiS/s1920/2021-kumpas-7054.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNlN30oKqNEBkSW-tpRArbBi3HnEw3q3Ms4hxyQdXe3F9mQG5kn6aGkWUVs9hfW1MR9163io-V-wvcf4vIvnBMM_l5bnaPI_7Nu6Qnyjv6p3eSFHd49FYR68Bsm0q2lNTuFVk9rLa77Y0rH6GXhWxNYSZ7ZKzT1WUlQgS_VFeqKvx1qA-y0e4_ncuVeLiS/s320/2021-kumpas-7054.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguG1ddsOiywozKkOWG27UOyAVbUqaIuHio26S3_l-3Nl8PAdr1xCpwQzwM7LIdpDCNX-Bmw_MV7DgZ-Zg0V9hC2h53-Ri_Fwc1rPkGAdGGlcm6Q2zG8npRGuxwcopOxOlV2dYw_0K7nvcRv9OprRxZyWUxbjVnF2fp5cEs2NH9OjS43uzPKDe-g2wUQpIY/s1920/2021-kumpas-7066.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguG1ddsOiywozKkOWG27UOyAVbUqaIuHio26S3_l-3Nl8PAdr1xCpwQzwM7LIdpDCNX-Bmw_MV7DgZ-Zg0V9hC2h53-Ri_Fwc1rPkGAdGGlcm6Q2zG8npRGuxwcopOxOlV2dYw_0K7nvcRv9OprRxZyWUxbjVnF2fp5cEs2NH9OjS43uzPKDe-g2wUQpIY/s320/2021-kumpas-7066.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyIFN_Fr3Afwmd4zcsH2HkXD-FjgeNTXvteceklZnZEVyJNk28DGNWTr3_3vuQ-wAqm9qB-ivk66HcQDqj3qBs4KESQe8sWKz77yYJnQZT-WEpVkyUcIRwPqU8pMCwhU-FrOVSveWFeuaLGlzHasAdQRsQazBY8mWxvAGhHZ14ASYoK6dIm5xQzMNyMbrc/s1920/2021-kumpas-7050.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyIFN_Fr3Afwmd4zcsH2HkXD-FjgeNTXvteceklZnZEVyJNk28DGNWTr3_3vuQ-wAqm9qB-ivk66HcQDqj3qBs4KESQe8sWKz77yYJnQZT-WEpVkyUcIRwPqU8pMCwhU-FrOVSveWFeuaLGlzHasAdQRsQazBY8mWxvAGhHZ14ASYoK6dIm5xQzMNyMbrc/w640-h400/2021-kumpas-7050.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+İsmail görme engelli olduğu için ona her şey <b>ücretsiz</b>, ben de refakatçisi olarak yanına eklemleniyorum. Bakmayın İsmail’in öyle mütevazı durduğuna; nerede bir sosyal yardım, nerede bir indirim, nerede bir avanta varsa İsmail tam merkezindedir. Adamın ihtiyacı yok ama ruhu "<b>avanta</b>" seviyor. Yeri gelir, bir tane 3’ü 1 arada kahvenin muhabbetini saatlerce yapar. Sırf sussun, tantana yapmasın diye <b>IBAN’ına</b> para atmışlığım var, o derece!
+<p data-path-to-node="6">Sağdan soldan kopardığı avantaları, "<strong>yolunu bulup</strong>" bedavaya getirdiği işleri anlatırken ser verir sır vermez. O kısımlar hep gizli kalır, sanki devlet sırrı! Ama iş böbürlenmeye gelince, "<em><strong>Şuradan ev aldım, buradan engelli indirimiyle (ÖTV'siz) gıcır gıcır araba çektim</strong></em>" diye anlatmaya başlayınca sanırsın ki bu adam gece gündüz madende çalışmış, ömrünü taş kırarak geçirmiş. Bakıyorsun; anlatırken o evler, o arabalar hep "<strong>alın teri</strong>", hep "<strong>kendi başarısı</strong>"... Yahu biz biliyoruz işin aslını! Başkası bir şey kazansa "<em><strong>Havadan geldi</strong></em>" der, kendisine gelince "<em><strong>Tırnaklarımla kazıdım</strong></em>" olur. Bu riyakarlık, bu "<strong>gelenler havadan, aldıklarım alın teri</strong>" masalı beni benden alıyor işte. O sıcakta pedala basarken, arkamda bu böbürlenmeleri dinlemek, inan o tandemdeki ekstra 100 kilo yükten daha ağır geliyordu bana.</p>
+Ahmed Arif’in o meşhur şiirindeki gibi; <i>"</i><em><strong>Saldırıpta büyüyor</strong></em><i>"</i> bizim İsmail. Ama ben onu gördükçe şiirin devamını içimden okuyorum:
+<blockquote><em><strong>"Bunlar engerekler ve çıyanlardır,
+bunlar aşımıza, ekmeğimize göz koyanlardır,
+tanı bunları, tanı da büyü..."</strong></em></blockquote>
+Sırtımızda bir kambur gibi! Bazen o kadar bunaltıyor ki, insan düşünmeden edemiyor: Hitler zamanında engellileri ülkenin sırtına yük olduğunu düşünüp neden bu kadar radikal çözmüş? Çok iyi anlıyorum. Tabii ki bu işin şakası ama o sıcakta, o tandemde İsmail’in dırdırını çekerken insanın aklından her türlü "<b>aykırı</b>" düşünce geçiyor dostlar. Neyse, müzeye dönelim.
+
+<b><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3gUHl0qZqxw4l-zVXax3cVwdBdkn7zP6sQ5zia3c79pmwyjvtM_1tKKJylJ0F3Og95TmVGNgsFEHGwMbcjV9rnQ8DuGYaCzNhDvmO-bxpKO6qjzzbottgaQ7kJdpfvO5_MAatXJKgnCAUe2kzBs3tiQJ-ozhBdvKnZpZTwH2Hd3_Hippv7yc26sVuO3h6/s1920/2021-kumpas-7120.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3gUHl0qZqxw4l-zVXax3cVwdBdkn7zP6sQ5zia3c79pmwyjvtM_1tKKJylJ0F3Og95TmVGNgsFEHGwMbcjV9rnQ8DuGYaCzNhDvmO-bxpKO6qjzzbottgaQ7kJdpfvO5_MAatXJKgnCAUe2kzBs3tiQJ-ozhBdvKnZpZTwH2Hd3_Hippv7yc26sVuO3h6/w640-h400/2021-kumpas-7120.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigWMhasBDS5CisWeoYbx7vYhlV5RYp9giAwHAlDDJiOTPF2DiL6udb71L1GobTOFWe_Meb9dKlJ34Ljg7Cuolb_JCygN0-OpQTtXZIyTBLwze88yHLj583GKTwEOiQ0VB16hu8AMFQ3lUz5p7Be5RtxsD7-fExKOYLvz1covOt85mEajBAT6K2zNvV0aDa/s1920/2021-kumpas-7104.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigWMhasBDS5CisWeoYbx7vYhlV5RYp9giAwHAlDDJiOTPF2DiL6udb71L1GobTOFWe_Meb9dKlJ34Ljg7Cuolb_JCygN0-OpQTtXZIyTBLwze88yHLj583GKTwEOiQ0VB16hu8AMFQ3lUz5p7Be5RtxsD7-fExKOYLvz1covOt85mEajBAT6K2zNvV0aDa/s320/2021-kumpas-7104.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb83-5dW5kz_spl9gQ7DaJ0sl-Fh9VbVrKSanM5JOh35snSdHp0aINaHRM_E7vDZUd7jBM-RTV624umOITEhuJZOwOCVIJR4obZ7R_GMPF0ZEJ88lke4GVRf-kI-UV1qEkfIKbJ07U47RPsiCTWDjDw61EWgyldFG65fYyuu1l_UZt13PONNYJBhMmQZvw/s1920/2021-kumpas-7112.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb83-5dW5kz_spl9gQ7DaJ0sl-Fh9VbVrKSanM5JOh35snSdHp0aINaHRM_E7vDZUd7jBM-RTV624umOITEhuJZOwOCVIJR4obZ7R_GMPF0ZEJ88lke4GVRf-kI-UV1qEkfIKbJ07U47RPsiCTWDjDw61EWgyldFG65fYyuu1l_UZt13PONNYJBhMmQZvw/s320/2021-kumpas-7112.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjikkyy7l9LNAD468k83-7SH6jbAfYASbDhtHF_N8BZaQoB39XI6VmdaYqETK3-wja_R_QykLo0fypN8y9lEOWFKi8CzNB6MfWCFH8-6Jnj6UQzHfipyAvzCue6r7dshJkeJpj6B4uIdO2cDySItMQInPaxcLibnkNLYBUfW3oZwx62Gq0GyYXYEZeHagJK/s1920/2021-kumpas-7102.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjikkyy7l9LNAD468k83-7SH6jbAfYASbDhtHF_N8BZaQoB39XI6VmdaYqETK3-wja_R_QykLo0fypN8y9lEOWFKi8CzNB6MfWCFH8-6Jnj6UQzHfipyAvzCue6r7dshJkeJpj6B4uIdO2cDySItMQInPaxcLibnkNLYBUfW3oZwx62Gq0GyYXYEZeHagJK/s320/2021-kumpas-7102.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi-TCRcfKjjKH7ztnvsl_yUvrDvEiU4KIiq-1iuhAGwsPsC_Zb-YOyDoxDbcRyUAddrv8z9J7WVkppf12UqMP0hY7E2QDg30u461hjnA_-W1RuvWWPG5tungHLakr2krowqNWmUBMTT2rXeKQ3W5YX4zXlR5R65BN1l5TQ2hmaJS4_98JA8Lg2Zn3MFLBf5/s1920/2021-kumpas-7113.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi-TCRcfKjjKH7ztnvsl_yUvrDvEiU4KIiq-1iuhAGwsPsC_Zb-YOyDoxDbcRyUAddrv8z9J7WVkppf12UqMP0hY7E2QDg30u461hjnA_-W1RuvWWPG5tungHLakr2krowqNWmUBMTT2rXeKQ3W5YX4zXlR5R65BN1l5TQ2hmaJS4_98JA8Lg2Zn3MFLBf5/s320/2021-kumpas-7113.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><br>
+Truva Müzesinin</b> tasarımı şahane. Antik kentin tabakalarına göre kat kat inşa edilmiş. En alt kattan girip, tarihin derinliklerinden günümüze döne döne çıkıyorsunuz. En üstte terasta manzarayı çakıp asansörle aşağı iniyorsunuz. Mimari on numara, <b>Ferdimen</b> tavsiyesidir, gidin görün.
+
+<a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBB6oW_267NrBtCJ2Jf7wlZpvLN-UC9vWgl_B7y00xIcE-ot3RLz7L21DZVFi1U_25NkqarZkkv8ggjNUSCqADO4GJmm9rGERSAaoyUbgrHjL6xs2auZmbrPu3CrARMzvaM6gKT8-LR2IIgm-rpxG5NOGf7f28_7BNAJigAphDda8YkbFaar4uVSHBJ45D/s1920/2021-kumpas-7125.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBB6oW_267NrBtCJ2Jf7wlZpvLN-UC9vWgl_B7y00xIcE-ot3RLz7L21DZVFi1U_25NkqarZkkv8ggjNUSCqADO4GJmm9rGERSAaoyUbgrHjL6xs2auZmbrPu3CrARMzvaM6gKT8-LR2IIgm-rpxG5NOGf7f28_7BNAJigAphDda8YkbFaar4uVSHBJ45D/w640-h400/2021-kumpas-7125.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Müzeden çıktık, "<i><b>Yol bizi bekler</b></i>" dedik ama yol bizi değil, biz yolu beklemeye başladık. Sorunlar silsilesi başladı: Lastik patladı. Tamir ettim, yola çıktık, bir daha patladı. Bir daha, bir daha... Tam bir "<b>Dandik</b>" Lastik Dramı, ellerim nasır tuttu lastik sökmekten, pompa basmaktan.
+
+<b>Sebep?</b> İsmail’in milyon dolarlık tandem bisikletine taktığı o "<b>sikindirik</b>", uyduruk lastikler! Ben "<b>Ferdimen</b>" olarak en aykırı yollara girerim ama altımdaki ekipmana güvenirim. İsmail efendi bisiklete parayı bayılmış ama lastikten kısmış. O erimiş asfaltın sıcağında, güneş tepemizde boza pişirirken saatlerce o lastiklerle uğraştık. Sinirden vites kollarını kemirecektim.
+<h4 class="western"><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQ-epRibvE8nfOdzivmqOsVntKD5LN21fuFiTvYZUJAsixBw47wOk6_NKpvB_sauLaQc_qG4cqqRuAMqZE5q6VAF3AKROm-bIbRk53T4TzEH4MN6p3re_Gn5j7G0WcxzHMrKfm-o8EqaCO-r2gSa9_AmF0CFCjH2j1hqoj88bnO5JXxzyTQer1Ko07E-Ot/s1920/2021-kumpas-5098.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQ-epRibvE8nfOdzivmqOsVntKD5LN21fuFiTvYZUJAsixBw47wOk6_NKpvB_sauLaQc_qG4cqqRuAMqZE5q6VAF3AKROm-bIbRk53T4TzEH4MN6p3re_Gn5j7G0WcxzHMrKfm-o8EqaCO-r2gSa9_AmF0CFCjH2j1hqoj88bnO5JXxzyTQer1Ko07E-Ot/w640-h400/2021-kumpas-5098.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Görmediği Adayı Görme Sevdası!</h4>
+Geyikli iskeleye vardığımızda güneş batmak üzereydi. Benim kafa net: "<i><b>İsmail, gel hava kararmadan şuraya kampı kuralım, dinlenelim, yarın sabah taze taze adaya geçeriz</b></i>" diyorum. Beyefendi tutturdu: "<i><b>Hayır, şimdi gideceğiz, Bozcaada’yı göreceğim!</b></i>" Yahu arkadaş, neyi göreceksin? Zaten akşam oldu, zaten görme engellisin! Ama yok, orada fiyaka yapacak ya... Tuzu kuru tabii; çadır yerini ben bulacağım, güvenliği ben sağlayacağım, rotayı ben çizeceğim. Beni düşünen yok.
+
+<a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhgVzmVtK905rw7eJa7PSAnt8prAEq6p-HwGOtTTlT8okwGwoY5bht-sLpjBeD0AROXwKtxJ6tGT_0zvLF3UjMO0aVSmi_D0Z83v54qbL9wBQY_adYUt6y9maCiCt9FBtWYzDzM14muvCgDZR6USCGS6mtBacl94UI6gxxP7Np42MmMzuaX0x23vRZs5_Ir/s1920/2021-kumpas-5100.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhgVzmVtK905rw7eJa7PSAnt8prAEq6p-HwGOtTTlT8okwGwoY5bht-sLpjBeD0AROXwKtxJ6tGT_0zvLF3UjMO0aVSmi_D0Z83v54qbL9wBQY_adYUt6y9maCiCt9FBtWYzDzM14muvCgDZR6USCGS6mtBacl94UI6gxxP7Np42MmMzuaX0x23vRZs5_Ir/w640-h400/2021-kumpas-5100.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjo5Ci2_ctaQ85_E-xZNdsCSHukHmL5fAH0w_A956JK2NI1FNKZCAniZ3TW2RVwvgincOtM1gpPlqormqoykz8-gy9RyFQSDGz6rPepN6UqJeh0q5Sts9Ox0-WJF4cWof0DbP8KGctBwK7KxjZPWRJIk5l53AdztP14oiKVEXNE8haH6powLZ0QKEhe3Itx/s1920/2021-kumpas-5103.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjo5Ci2_ctaQ85_E-xZNdsCSHukHmL5fAH0w_A956JK2NI1FNKZCAniZ3TW2RVwvgincOtM1gpPlqormqoykz8-gy9RyFQSDGz6rPepN6UqJeh0q5Sts9Ox0-WJF4cWof0DbP8KGctBwK7KxjZPWRJIk5l53AdztP14oiKVEXNE8haH6powLZ0QKEhe3Itx/w640-h400/2021-kumpas-5103.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Diretmedim, "<b>Peki</b>" dedim, bindik feribota. Gittik adaya, alelacele bir plaj bulduk, beyefendi pozlarını verdi, muradına erdi. Ama benim bildiğim başıma geldi; dönüş feribotuna bindiğimizde zifiri karanlıktı. Geyikli’ye indik, dükkanlar kapanmış, her şey ateş pahası. Mecburen fahiş fiyatlara alışveriş yaptık. <b>Tevfikiye</b>’nin huzuru <b>Geyikli</b>’nin karanlığında eridi gitti. Gecenin bir yarısı, elimde fenerle, arkamda dırdır eden bir İsmail ile kamp yeri aramanın ızdırabını size anlatamam. O konuya hiç girmiyorum, tansiyonum yükseliyor. </div>
+    <div class="tur-sayfasi" id="bolum-7"><h2>1 Ağustos 2021<br>Geyikli – Gökçebayır – Ezine – Bayramiç</h2><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMvXcknUTSZtk71FAOPnHcNnm0Sjhr9bbc7LEL8Z8czPo_8dj4qGgby73cqed64u2ERLktDyaaJCWCRebzqxMnfltJQkWy9XivtGrh2VUro1T9nf_jrHJwVQNZdLn0cb-ubc4Pyh7RRqkzKGDqgNBvDIFScCCAYpjH4er0AB1CT2YWizvrO-nE0cV0nkdc/s1920/2021-kumpas-5108.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMvXcknUTSZtk71FAOPnHcNnm0Sjhr9bbc7LEL8Z8czPo_8dj4qGgby73cqed64u2ERLktDyaaJCWCRebzqxMnfltJQkWy9XivtGrh2VUro1T9nf_jrHJwVQNZdLn0cb-ubc4Pyh7RRqkzKGDqgNBvDIFScCCAYpjH4er0AB1CT2YWizvrO-nE0cV0nkdc/w640-h400/2021-kumpas-5108.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Dün gece <b>Geyikli’de</b> zifiri karanlıkta kıyıya çıktığımızda, İsmail efendi yorulmasın diye tek başıma tek çadırı kurdum. "<i><b>Gel beraber yatalım, uğraşmayalım şimdi ikinci çadırla</b></i>" dedim. Demez olaydım! Hayatımın en büyük stratejik hatalarından biriymiş meğer.
+
+Sabah gözümü açtım, ama nasıl bir sabah! Yıllar evvel beraber yolculuk yaptığım arkadaşlardan yolda osurmalara, geğirmelere alışkınım; bisikletçi adamın midesi biraz hareketli olur, anlarım ama çadırın içi sanki bir gaz odası...
+
+Üstüne bir de sabah ritüeli başladı. İsmail çantasından bir eczane dolusu ilaç ve krem çıkarttı. Başladı orasına burasına sürmeye. Sordum: "<i><b>Yahu İsmail, bu ne?</b></i>" Cevaplar peş peşe geliyor: "<i><b>Bu isil ilacı, bu kasık mantarı kremi, şu da ayak mantarı için...</b></i>" Dondum kaldım. Ulan biz kiminle aynı çadırı paylaştık? Adam resmen yürüyen bir mantar kolonisiymiş! İçimden diyorum ki: "<i><b>Tanrım sen koru, bu meretler bulaşıcı olmasın!</b></i>" O an yemin ettim; bir daha bu adamla aynı çadırı paylaşmak mı? Tövbe! Bundan sonra kendi çadırında ne hali varsa görsün.
+<h4 class="western"><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtGZQdWjkXUu7Jugh4uCCNNnnvPHO0B8fDg3jRqpjy6c-Vdzp60WzDA_xKu6X0oUgT5m11fhyphenhyphen_Z8M9C8QvKL-wVWCfNyYE_R6b3h9hpvgqruQGQ0D7BUYQCfBHqrcF31Qv9ZG-Gbr4GS0Tl6_HtXaJsWCqCwgE1ngzE1NKuyp5v29b5UkBeQFIJ1IgDTeM/s1920/2021-kumpas-7135.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtGZQdWjkXUu7Jugh4uCCNNnnvPHO0B8fDg3jRqpjy6c-Vdzp60WzDA_xKu6X0oUgT5m11fhyphenhyphen_Z8M9C8QvKL-wVWCfNyYE_R6b3h9hpvgqruQGQ0D7BUYQCfBHqrcF31Qv9ZG-Gbr4GS0Tl6_HtXaJsWCqCwgE1ngzE1NKuyp5v29b5UkBeQFIJ1IgDTeM/w640-h400/2021-kumpas-7135.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a></h4>
+Şimdiye kadar İsmail’in fantezilerini gerçekleştirdik, kahrını çektik. Ama artık dönüş yoluna geçiyoruz ve "<b>Ferdimen Turizm Animasyon A.Ş.</b>" olarak yönetim biçimini değiştirdim: <b>Diktatörlük!</b>
+
+Bundan sonra rota bende. Kendi fantezilerimi, daha önce gitmediğim yolları rotaya dahil edeceğim. İsmail itiraz mı edecek? Gidon benim elimde, ön tekerlek nereye giderse o da oraya tıpış tıpış gelecek. Arkadaki adamın tek görevi pedala basmak ve dırdır etmemek.
+
+<a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwi9OW8AByYVRVt3iPUSK1XvgMxC400sOkalQZQz8J3Hl99A646tL0PDnY1l6szGLn-0gdZ5N3CImo9ohGrCvXVCjW2LOU-35Awd5xCrahfaCUU7LyZVdGXmFZZhvYaUr0UZUAaqkvC99v1Q2Ls4m7S9JvCSVLLMShl2gt6z0K_tbZB5nzGirLe8hUakA2/s1920/2021-kumpas-7138.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwi9OW8AByYVRVt3iPUSK1XvgMxC400sOkalQZQz8J3Hl99A646tL0PDnY1l6szGLn-0gdZ5N3CImo9ohGrCvXVCjW2LOU-35Awd5xCrahfaCUU7LyZVdGXmFZZhvYaUr0UZUAaqkvC99v1Q2Ls4m7S9JvCSVLLMShl2gt6z0K_tbZB5nzGirLe8hUakA2/w640-h400/2021-kumpas-7138.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Bugüne dair aklımda yer eden tek bir şey var: <b>Sıcak.</b> Ama öyle böyle değil; sanki gökyüzünden aşağı ateş dökülüyor. <strong>Geyikli</strong> ile <strong>Bayramiç</strong> arası zaten topu topu 45-50 kilometre bir şey. Ama o tandemle, o nemle, o mantar muhabbetinin verdiği sinirle yol bitmek bilmedi.
+
+<a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgX7xgr9BlwTIRb01mKdz_tKvveP7YfbJR5q85_jMuGV26AKFvZTjuuLC1udm29gVq0w3FbLtMp7-3nFfvpmjhXMNezaJeCVOH-7e42wNe4KXQlzidqed6EXtk378qUg7O6EZvoaxMH4T8Q05L_K8C4nM1UBFBg2KqEah7gK1bsdTOrWM9crXvHbwzFAAAI/s1920/2021-kumpas-7145.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgX7xgr9BlwTIRb01mKdz_tKvveP7YfbJR5q85_jMuGV26AKFvZTjuuLC1udm29gVq0w3FbLtMp7-3nFfvpmjhXMNezaJeCVOH-7e42wNe4KXQlzidqed6EXtk378qUg7O6EZvoaxMH4T8Q05L_K8C4nM1UBFBg2KqEah7gK1bsdTOrWM9crXvHbwzFAAAI/w640-h400/2021-kumpas-7145.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Ağaç altı gördük mü daldık, çeşme başı gördük mü durduk. Suyun altında kendimize gelmeye çalışıyoruz. Ben bir yandan "<i><b>Ulan şu sıcağa bak, Enes bacağını bahane edip nasıl da kaçtı</b></i>" diye içimden ona sövüyorum.
+
+<a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3RypS6eSEIL3ItUlT8dqLd2Ww0J0dgHhHzvSn0w28BMkxrF3VRX75kEwx3fikT43kZEB6twC8T7lsi6xasf5SuUNCHvEy961rdQpYh9jY7rN1LbofVbMdjVg6hU8aH323uVHfCSo1b1nDjb3H29jZm2TYvJhRNy8hGiOA2i4p7iXXv4WfQL5m5pgVo8Ua/s1920/2021-kumpas-7145a.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3RypS6eSEIL3ItUlT8dqLd2Ww0J0dgHhHzvSn0w28BMkxrF3VRX75kEwx3fikT43kZEB6twC8T7lsi6xasf5SuUNCHvEy961rdQpYh9jY7rN1LbofVbMdjVg6hU8aH323uVHfCSo1b1nDjb3H29jZm2TYvJhRNy8hGiOA2i4p7iXXv4WfQL5m5pgVo8Ua/w640-h400/2021-kumpas-7145a.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+
+<a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiptVAAR8jVHSFF6vlp6EDaczvunuFjyQUgiUUwDzrPkUNisZg2GE5ozbuI8KVZLziTG7EqQHLkWuhtsWJp8iORq1cbLB9TazJ3ftHU4oz-JH3Ey7n7ZjDROv5th2RWBwKOOAtqi3STKhhWKsFBk-s16ihmVygpMPPZE6xQuhc2Rz0VuPeK71TqJmwNCQz7/s1920/2021-kumpas-7149.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiptVAAR8jVHSFF6vlp6EDaczvunuFjyQUgiUUwDzrPkUNisZg2GE5ozbuI8KVZLziTG7EqQHLkWuhtsWJp8iORq1cbLB9TazJ3ftHU4oz-JH3Ey7n7ZjDROv5th2RWBwKOOAtqi3STKhhWKsFBk-s16ihmVygpMPPZE6xQuhc2Rz0VuPeK71TqJmwNCQz7/w640-h400/2021-kumpas-7149.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Akşam <b>Bayramiç’e</b> vardığımızda kamp yeri arayacak halimiz kalmamıştı. Neyse ki İsmail sonunda kesenin ağzını hafifçe araladı. "<i><b>Gidelim öğretmenevinde kalalım</b></i>" dedi. Gittik, yerleştik. En azından sıcak bir duş, temiz bir çarşaf... </div>
+    <div class="tur-sayfasi" id="bolum-8"><h2>2 Ağustos 2021<br>Bayramiç – Muratlar – Etili – Çan – Biga</h2><a style="font-size: 15px;" href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiF8mjJ_BUybebNwuR6faFIES9-ZNRNxUg46jZAHXOim_s2yF8hZ00NOJjzok-ZC_EtiSqbu-Ic0cRjasOTgjnkuuAz42khyYeCAS-Ud-0lj0UCZjVeN_n4RqdluaeSZkKibh_gRWiXPuzaoNH5dty_hyphenhyphenbzkBi42WyQY-wFtxDbIzFJ04evKdBQR9xhkCI3/s1920/2021-kumpas-7150.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiF8mjJ_BUybebNwuR6faFIES9-ZNRNxUg46jZAHXOim_s2yF8hZ00NOJjzok-ZC_EtiSqbu-Ic0cRjasOTgjnkuuAz42khyYeCAS-Ud-0lj0UCZjVeN_n4RqdluaeSZkKibh_gRWiXPuzaoNH5dty_hyphenhyphenbzkBi42WyQY-wFtxDbIzFJ04evKdBQR9xhkCI3/w640-h400/2021-kumpas-7150.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a><a style="font-size: 1.25em;" href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVComL0RTzLhlJbcZLFRv586HXYdk45b91TL314TZD-AJRZ624MuaOTHCFBwpFvh2AubBkB008rWizz0g2S513nb8YKrb-ri75j-yD0Eqk5eJRvOUuE88HhCNL6Vf2WOQAXOwQpm6XN2Sh-b8aVu9hVXYXOpcWXKcILI4_w_V9tZYN1YYdBdIem4Sg8GOZ/s1920/2021-kumpas-7151.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVComL0RTzLhlJbcZLFRv586HXYdk45b91TL314TZD-AJRZ624MuaOTHCFBwpFvh2AubBkB008rWizz0g2S513nb8YKrb-ri75j-yD0Eqk5eJRvOUuE88HhCNL6Vf2WOQAXOwQpm6XN2Sh-b8aVu9hVXYXOpcWXKcILI4_w_V9tZYN1YYdBdIem4Sg8GOZ/w640-h400/2021-kumpas-7151.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a></h3><br>
+Sabah öğretmenevinde kahvaltımızı yaptık. Hazırlıkları tamamlayıp Bayramiç-Çan yoluna saptığımızda bizi neyin beklediğini biliyordum: <b>Tırmanış.</b>
+<h4 class="western"><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZp48ydz57h5q0VFgl7gAMEInkzmJiJZD5nnvVAu8rjUCguv9eu2vKZufcFgzui1Syp7GcfUIc7-jkNZCn3iwFrI9Z6d0YW_KEOn2vcQTPV3lvro2m-o-9fMm5Q3SI8GnwX1mllqOdm59zFB_DSXwik2LivKFK6UA2XZG_HhAB9mxO78jq5aJPk89Bfl8J/s1920/2021-kumpas-7154.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZp48ydz57h5q0VFgl7gAMEInkzmJiJZD5nnvVAu8rjUCguv9eu2vKZufcFgzui1Syp7GcfUIc7-jkNZCn3iwFrI9Z6d0YW_KEOn2vcQTPV3lvro2m-o-9fMm5Q3SI8GnwX1mllqOdm59zFB_DSXwik2LivKFK6UA2XZG_HhAB9mxO78jq5aJPk89Bfl8J/w640-h400/2021-kumpas-7154.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+"Bitsede Gitsek" Modu</h4>
+Artık "<b>psikolojik sınırın</b>" aşıldığı, maceranın yerini "<b>bir an önce bitsin de gidelim</b>" moduna bıraktığı o kritik günlere geldik. <strong>Bayramiç’te</strong> öğretmenevinin temiz çarşafları ilaç gibi gelmişti ama yol hala önümüzde bir yılan gibi uzanıyordu. Açık konuşayım; artık bu turdan keyif almayı, etrafa bakıp "<i><b>Vay be ne güzel doğa</b></i>" demeyi falan bırakmıştım. Yumdum gözümü, görevimi yaptım. Gidon benim elimde, arkadaki adamın canı sağ olsun ama benim canım burnumda. İsmail bu yolculuktan ne kadar keyif aldı, arkada o pedalları çevirirken ne fanteziler kurdu bilmiyorum; açıkçası o noktadan sonra pek de umurumda değildi.
+
+İsmail’i yarı yolda bırakmak da bir seçenekti elbet—şöyle dik bir rampada "<i><b>İsmail ben gidiyorum, sen başının çaresine bak</b></i>" deyip uzamak... Ama Ferdimen tarzına yakışmaz. Dişimi sıktım, "<i><b>Bu ihale sana kaldı Ferdimen, sonuna kadar götüreceksin</b></i>" dedim kendi kendime.
+
+<strong>Bayramiç</strong>’ten <strong>Çan</strong>’a kadar o bitmek bilmeyen tırmanışta sadece önümdeki asfalta odaklandım. Muratlar köyüne kadar ciğerimizi yolda bıraktık, sonra <strong>Etili’ye</strong> doğru inişe geçtik. Etili’ye bu benim ikinci gelişim; eski hatıralar şöyle bir canlandı ama kafamı dağıtmak istemedim. Mevzu belli: Menzile varmak.
+
+<a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYIJkbteOW4JzYx5Y9KgNeK-wm5jknVbImRm7xWJlUbxmC3lOay56k9ia_TaG2IfKIgJJZwiTzuaj3iNnNdKheULWWTJQ2sRmOEIMVcbbUrcTpTiVRpxRkSlGUDJk9W7MVRCHr_vJYwlKOzEW3_dXeoVIToLfwEsExxLdzTBWnQoqIoaF8JiEuo_4Pu-eM/s1920/2021-kumpas-7167.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYIJkbteOW4JzYx5Y9KgNeK-wm5jknVbImRm7xWJlUbxmC3lOay56k9ia_TaG2IfKIgJJZwiTzuaj3iNnNdKheULWWTJQ2sRmOEIMVcbbUrcTpTiVRpxRkSlGUDJk9W7MVRCHr_vJYwlKOzEW3_dXeoVIToLfwEsExxLdzTBWnQoqIoaF8JiEuo_4Pu-eM/w640-h400/2021-kumpas-7167.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a><br>
+<strong>Çan</strong> yoluna bağlandığımızda karşımıza bir de rüzgar sınavı çıktı. Tandem sürmek zaten iki kat direnç demek, bir de karşıdan rüzgar yiyince sanki arkada İsmail değil de koca bir yelkenli taşıyormuşum gibi hissettim. Bir şekilde kendimizi <strong>Çan’a</strong> attık. Oradan sonrası nispeten daha insaflıydı; inişler ve düzlüklerle ver elini <strong>Biga</strong>!
+
+<a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEineax1gjmunqnJne3Gexyip1IFvPQi75K9jklyvINAt1H84_Lh9Y7ZPxD4fRIixHPZZwUZUt1SIcfJ9kYTNGzOVQqSFfzVYij_P2UtplMbbD_YDUyOP5SYN9giLSByR84L19iIonrLcUE-MCcLgk3uq35JDydm6ApjSfknQ_OjZR1GeGXk9QtoFEoim-Md/s1920/2021-kumpas-7170.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEineax1gjmunqnJne3Gexyip1IFvPQi75K9jklyvINAt1H84_Lh9Y7ZPxD4fRIixHPZZwUZUt1SIcfJ9kYTNGzOVQqSFfzVYij_P2UtplMbbD_YDUyOP5SYN9giLSByR84L19iIonrLcUE-MCcLgk3uq35JDydm6ApjSfknQ_OjZR1GeGXk9QtoFEoim-Md/w640-h400/2021-kumpas-7170.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDtHQ-16Gi4lx1rNq_x4xKn6FoN1CIXz-68vw4Wji4DjT9zWTDIRjMcTHPpppJBKnv7aplQ1xmCVb334ixeaoxD4INcOXR8d1bSDbvr_ZhUdy8CnaIQHFfRJxMvOhd37KaUr0WJynQKlhGIAesQXpKozLwP7FQ8pLPMOLvCE1er_3vSndKtbR2cbahdrbH/s1920/2021-kumpas-7172.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDtHQ-16Gi4lx1rNq_x4xKn6FoN1CIXz-68vw4Wji4DjT9zWTDIRjMcTHPpppJBKnv7aplQ1xmCVb334ixeaoxD4INcOXR8d1bSDbvr_ZhUdy8CnaIQHFfRJxMvOhd37KaUr0WJynQKlhGIAesQXpKozLwP7FQ8pLPMOLvCE1er_3vSndKtbR2cbahdrbH/w320-h200/2021-kumpas-7172.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSx0cZTvUztrf-mLRs7MeurG3UhAifZr1X4gPoyWVbwBA6Xt6XEKbnZtCRClnXa3g8JV3Xp7h4EMTLHiWzs7qXYs0GlQsHLceHM8tIXJZn9jJdneW7uDdCkSyCRcC0Iz_5Am0ng_K5F-6VNb1R560iDDoIXsRnvgofWUVembZTLJP4FPZoKEULbrtoLgP7/s1920/2021-kumpas-7173.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSx0cZTvUztrf-mLRs7MeurG3UhAifZr1X4gPoyWVbwBA6Xt6XEKbnZtCRClnXa3g8JV3Xp7h4EMTLHiWzs7qXYs0GlQsHLceHM8tIXJZn9jJdneW7uDdCkSyCRcC0Iz_5Am0ng_K5F-6VNb1R560iDDoIXsRnvgofWUVembZTLJP4FPZoKEULbrtoLgP7/w320-h200/2021-kumpas-7173.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><br>
+Biga girişine vardığımızda ikimiz de bitik durumdaydık. Ben zaten pilotluktan, navigasyondan ve muhabbetlerden yorulmuşum; İsmail desen sıcak ve yoldan haşat olmuş. Ama ne yaptık? Tabii ki o meşhur bisikletçi kuralını bozmadık: <b>Perişan olsak da fiyakalı pozu çakarız!</b> Sanki az önce o rampaları ben çıkmamışım, o rüzgarı ben göğüslememişim gibi geçtik kameranın karşısına, "<i><b>Yoldayız, iyiyiz</b></i>" mesajını verdik. Sosyal medya bunu seviyor, İsmail zaten bu fiyaka işlerine bayılıyor. Ben ise içimden "<i><b>Ulan şu tur bitsin, bir daha tandem mi? Asla!</b></i>" diye sayıklıyorum.
+<h4 class="western"><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXdTCgu5r3_-Egu5KGHrSISk1TzzvsIi6LN39fpmTX8YUxO_ftH8K5bDZYIoqOtFEILJSCzY1V7eWzgEdzbZDUYgT60SfQYrFCRDW9zCRWPcYgnVe7RVSyGLqM8EIRMVJiWNjGyQB41uRg5PktolL6pCsShO51LZwAF5s5QkhCvrVfiGFg5OhujRKttRXj/s1920/2021-kumpas-7177.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXdTCgu5r3_-Egu5KGHrSISk1TzzvsIi6LN39fpmTX8YUxO_ftH8K5bDZYIoqOtFEILJSCzY1V7eWzgEdzbZDUYgT60SfQYrFCRDW9zCRWPcYgnVe7RVSyGLqM8EIRMVJiWNjGyQB41uRg5PktolL6pCsShO51LZwAF5s5QkhCvrVfiGFg5OhujRKttRXj/w320-h200/2021-kumpas-7177.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsN1U3hVNTicclucMoF0mAAII92iM4xtnIqBw9fuVILpjJWoslhQSQcmql3wkaqsKVWlf-4A2MvfZ1aUsvuE-n4uRqANfb3QC34FVHEoJendX6SlzzsTmbq1QxcRbU4mH-GYLX7jyQ-fR9l027ZYjM24s4Ip4K-RN3sENtZ_2AbXaQ0TSuVK2WNL6ZILMu/s1920/2021-kumpas-7175.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsN1U3hVNTicclucMoF0mAAII92iM4xtnIqBw9fuVILpjJWoslhQSQcmql3wkaqsKVWlf-4A2MvfZ1aUsvuE-n4uRqANfb3QC34FVHEoJendX6SlzzsTmbq1QxcRbU4mH-GYLX7jyQ-fR9l027ZYjM24s4Ip4K-RN3sENtZ_2AbXaQ0TSuVK2WNL6ZILMu/w320-h200/2021-kumpas-7175.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Biga’da Kurtarıcı: Velespitli Seyyah Sabri</h4>
+<strong>Biga’ya</strong> ulaştığımızda kalacak yer sorununu sağ olsun <b>Sabri (Velespitli Seyyah)</b> çözdü. Bisiklet camiasının böyle güzel adamları olmasa işimiz yaştı. Sabri, bir arkadaşının görev yaptığı spor tesisinin bahçesi için gerekli izinleri aldı. Çimenlerin üzerine, spor tesisinin o güvenli ortamına çadırları kurduk. En azından bu gece İsmail'in ayrı benim ayrı çadırda takılacağımızı bilmek en büyük lükstü benim için. </div>
+    <div class="tur-sayfasi" id="bolum-9"><h2>4 Ağustos 2021<br>Biga – Gönen – Kalfaköy</h2><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEje9x_SAskuntGHp-ala5RXSLzB-lLKcO4SaSdwQei4jsbvxJktTZXuUC704W8bURtQF5Mjzd7t9OPmgF839bqzayje9ouSrYb7OIFzCapBF-BWH8316txLs5mUmML1z3IJo05v3rbeI3fL1lS6N2_3CFrBPeeNslEujhNV_1amwAoBxIMm2PSf20bpoLzZ/s1920/2021-kumpas-7178.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEje9x_SAskuntGHp-ala5RXSLzB-lLKcO4SaSdwQei4jsbvxJktTZXuUC704W8bURtQF5Mjzd7t9OPmgF839bqzayje9ouSrYb7OIFzCapBF-BWH8316txLs5mUmML1z3IJo05v3rbeI3fL1lS6N2_3CFrBPeeNslEujhNV_1amwAoBxIMm2PSf20bpoLzZ/w640-h400/2021-kumpas-7178.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a></h4>
+Sabah Biga’da spor tesisinin bahçesinde, güneşin ilk ışıklarıyla gözümüzü açtık. Sağ olsun <b>Sabri (Velespitli Seyyah)</b> sabah sabah elinde bir poşet dolusu sıcak börekle çıkageldi. Sabri gibi adamlar bu camianın tuzu biberi; o dumanı üstünde börekleri muhabbet eşliğinde bir güzel gömdük. Karınlar doydu, çaylar içildi ama "<i><b>Yolcu yolunda gerek</b></i>" deyip kalkma vakti geldiğinde benim içimde hala bir bıkkınlık...
+
+<b>Biga’dan</b> çıktıktan sonra niyetim ana yoldan yardırıp en kısa sürede menzile varmaktı. Ama ana yola bir çıktık, karşımızda duvar gibi bir rüzgar! Yaklaşık 30 kilometre boyunca rüzgarla tokuştuktan sonra İsmail efendi yumurtladı: "<i><b>Ferdimen, benim bir Gönen-Manyas fantezim var, oradan mı gitsek?</b></i>"
+
+Normalde "<i><b>İşine bak İsmail</b></i>" der geçerim ama iki şey beni ikna etti:
+<ol>
+ 	<li>Karşıdan yediğimiz o lanet rüzgarı gidonu kırınca en azından yandan alacaktık.</li>
+ 	<li>Daha önce Manyas tarafını hiç görmemiştim. "<i><b>Hadi Ferdimen,</b></i>" dedim içimden, "<i><b>en azından görmediğin bir yer olur.</b></i>"</li>
+</ol>
+<a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkI8b2q39p4yi-OIHHdC8mRr6cit6-R_aXxJqDHEHtC5RC5e3lWX7cuANabv0WF8-OsjbofZhHywaiPUs-8yQpU80g-0ailMFJlWFA2wJ6gCGbv1WgNaEOuQ2WB2KVDjspSpjgTNTGI4WrN9SxPn-Adz3Gz8cQMXbvTxSqGc0DLnC9hPGpUYadzz8zJnmP/s1920/2021-kumpas-7180.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkI8b2q39p4yi-OIHHdC8mRr6cit6-R_aXxJqDHEHtC5RC5e3lWX7cuANabv0WF8-OsjbofZhHywaiPUs-8yQpU80g-0ailMFJlWFA2wJ6gCGbv1WgNaEOuQ2WB2KVDjspSpjgTNTGI4WrN9SxPn-Adz3Gz8cQMXbvTxSqGc0DLnC9hPGpUYadzz8zJnmP/w640-h400/2021-kumpas-7180.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a><br>
+Kırdım gidonu <b>Gönen’e</b> doğru. Ama modum öyle düşük, öyle bıkmışım ki... Pilotluğun, navigasyonun, arkadaki adamın derdinin yükü bacaklarımdan çok ruhumu yormuş. Gün boyunca ayıp olmasın diye sadece iki fotoğraf çekmişim. Beni tanıyan bilir; ben gördüğümü çekerim, yaşatırım. Eğer Ferdimen bir günde sadece iki kare fotoğraf çekmişse, bilin ki o gün "<b>robot moduna</b>" bağlamıştır.
+
+Sırasıyla <b>Ulukır, Sarıköy, Gündoğan</b> köylerini geçtik. Yol akıyor ama ben sadece önümdeki asfaltın bitmesini bekliyorum. <b>Gönen’e</b> vardığımızda hızlıca bir alışveriş yaptık; akşam azığı, su falan... Durmaya niyetim yok, <b>Manyas</b> yönüne doğru devam ettik.
+
+<b><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgY8gVMnOzbtSzWJVAneQV7dkaOm9to2itxMlZZrwhsH1zzALiUlIOFJd9rCCq83IQNKqwAkkHOKvOD8Q2Ix3QkoYolXMCe4WgIi7KCoDYulYHxF-3zIQsKAuTwlXebCB2JVIcFJxXckEuFxzswfA3dC7CHH6UExip3tUeI6AiCh2TsLAamCOYl2NY_ahKK/s1920/2021-kumpas-7181.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgY8gVMnOzbtSzWJVAneQV7dkaOm9to2itxMlZZrwhsH1zzALiUlIOFJd9rCCq83IQNKqwAkkHOKvOD8Q2Ix3QkoYolXMCe4WgIi7KCoDYulYHxF-3zIQsKAuTwlXebCB2JVIcFJxXckEuFxzswfA3dC7CHH6UExip3tUeI6AiCh2TsLAamCOYl2NY_ahKK/w640-h400/2021-kumpas-7181.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Gönen’den</b> bir 6-7 kilometre uzaklaştıktan sonra, <b>Kalfa</b> köyü yakınlarında gözüme bir çayır kestirdim. "<i><b>Tamam,</b></i>" dedim İsmail’e, "<i><b>burası bizim kamp yerimiz.</b></i>" Çadırları kurduk ama kurarken bir şeyi hesap etmedik: <b>Sulak alanın gazabı.</b>
+
+Burası <b>Manyas gölüne </b>yakın, her yer su, her yer bataklık... Haliyle etrafta "<b>kan emici</b>" sivrisinek orduları devriye geziyor. Rüzgar eserken sorun yoktu ama güneş batıp rüzgar dindiği anda saldırı başladı. Arkadaş, onlar sinek değil, her biri minyatür birer drakula!
+
+Doğa güzeldir, eyvallah. Ama bu sulak alanlarda kamp yapma romantizmini kim çıkardıysa gelsin o gece bizim halimizi görsün. Rüzgarın durmasıyla birlikte çadırın dışı resmen vızıldıyan bir ölüm tarlasına döndü.Benim tek derdim bir an önce çadıra sığınıp bu günü hafızamdan silmekti. </div>
+    <div class="tur-sayfasi" id="bolum-10"><h2>4 Ağustos 2021<br>Kalfaköy – Manyas – Aksakal – Bandırma – Erdek</h2><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIf-luhOmqi2eLkyJWGohNVYtuo2nwvK2IdUXAxk19tuc9vIJKueakcDklNFrvzcnJIj6_kbAiMpZiv3zn6se9MlTWOsqrp9Om_LxShebwVK3ZD-8bPr3nnUiZl64bQlzRPohPAzLz17gfmlCrjCv1y5QBOFjnFTtkgakmp60qQDgIsDzCiKObr1kKCh61/s1920/2021-kumpas-7183.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIf-luhOmqi2eLkyJWGohNVYtuo2nwvK2IdUXAxk19tuc9vIJKueakcDklNFrvzcnJIj6_kbAiMpZiv3zn6se9MlTWOsqrp9Om_LxShebwVK3ZD-8bPr3nnUiZl64bQlzRPohPAzLz17gfmlCrjCv1y5QBOFjnFTtkgakmp60qQDgIsDzCiKObr1kKCh61/w640-h400/2021-kumpas-7183.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a><br>
+Bilen bilir; benim motor yakıtsız çalışmaz. Sabah uyandığımda sağlam bir kahvaltı yapmadan yola çıkarsam, o gün enerjim biter, modum düşer, çekilmez adam olurum. Ama Kalfaköy’deki o sivrisinekli çayır kahvaltıya hiç elverişli değildi. "<b>Aman</b>" dedim, "<i><b>bir an önce kendimizi yola atalım, Manyas 30 kilometre, orada krallar gibi kahvaltımızı yaparız.</b></i>"
+
+<b><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZu6UWGPQCdTkXAlBJqhUHihuURDZT1Xd6a0RJ0qCgcREGFLwrA4dEY6LaEFBJLzwNxV84lK_cAAwgBXuH-38kPaQuYup47gN8yA4nkDPEmr7xqw3DbVIj21XwFGo3EcuWJhJxDt9mXR9bdQHVUtYvmuyb31H9Olwj2DqgpxXSfvSq9EXAPCRoD12PVAjE/s1920/2021-kumpas-7187.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZu6UWGPQCdTkXAlBJqhUHihuURDZT1Xd6a0RJ0qCgcREGFLwrA4dEY6LaEFBJLzwNxV84lK_cAAwgBXuH-38kPaQuYup47gN8yA4nkDPEmr7xqw3DbVIj21XwFGo3EcuWJhJxDt9mXR9bdQHVUtYvmuyb31H9Olwj2DqgpxXSfvSq9EXAPCRoD12PVAjE/w640-h400/2021-kumpas-7187.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Manyas’a</b> vardığımızda ben hemen o hayalini kurduğum kahvaltı hazırlıklarına giriştim. Ama İsmail efendinin yüzü bir karış asıldı. Adamın kahvaltı anlayışı farklı, benimki farklı. Benim "<b>ufak bir atıştırma</b>" dediğime o "<b>ana öğün</b>" muamelesi yapıyor. Bir şeyler sezdim aslında; hani fırtına öncesi sessizlik olur ya, İsmail’in o asık suratında bir "<b>hesap kitap</b>" patlamasının yaklaştığını anladım. Ama sustum, "<b>Vardır bir derdi, yakında kusar</b>" dedim.<br>
+
+<b><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaFTewGa6ZJTPbPD16s70-3fFCgxRze1ECWynKS8BLk17_wjJMqWYjj4x59RywIwWAntxivbVfD5U_Xpg3v8_uMjrr1ndLLdBwj8dg07bdX3UFPRprsGkoFZlupHIEfh87pv2lH1e9t80-hjgkoR9ZhO3CJdk0ilDPq9BOqvOZPMRxczIqC8IzinnSUZVC/s1920/2021-kumpas-7189.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaFTewGa6ZJTPbPD16s70-3fFCgxRze1ECWynKS8BLk17_wjJMqWYjj4x59RywIwWAntxivbVfD5U_Xpg3v8_uMjrr1ndLLdBwj8dg07bdX3UFPRprsGkoFZlupHIEfh87pv2lH1e9t80-hjgkoR9ZhO3CJdk0ilDPq9BOqvOZPMRxczIqC8IzinnSUZVC/w320-h200/2021-kumpas-7189.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUMqcJyzgF_SP6Gt3KvoW6IJeFgzqIvOAVl0K6NaaMGu4erRJBbzn3iplrhnbAgkJ6LrYF4j6TqV1VrK6VyJ4Ml2HgBdk4Sj_YJlSJNuuOLaQMb3WIyCPIYi2Ea_CugyqPnhbqGhiBPnu8RrK0voaYbt7eCB940ldauOlx0vVs0_hyphenhyphenteY6JNCTjvSuE1ja/s1920/2021-kumpas-7194.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUMqcJyzgF_SP6Gt3KvoW6IJeFgzqIvOAVl0K6NaaMGu4erRJBbzn3iplrhnbAgkJ6LrYF4j6TqV1VrK6VyJ4Ml2HgBdk4Sj_YJlSJNuuOLaQMb3WIyCPIYi2Ea_CugyqPnhbqGhiBPnu8RrK0voaYbt7eCB940ldauOlx0vVs0_hyphenhyphenteY6JNCTjvSuE1ja/s320/2021-kumpas-7194.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkPEnRqg_XPQ8T7IVLMxvcB7-DeofI_D-VDf7F7NlrFHFbV6dS2H6880QDfph3lW1MDxC95cqbefNcDYd4YlvK6G5dxWdOdjJJkA8IN4CFTV8-1-qHU2mniHemVmXxys9dkVCr62nE9gnxIJfIuxO3T-mf-iFx_x-tqpddbpxufNiu4XpK481KjK0AOENs/s1920/2021-kumpas-7197.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkPEnRqg_XPQ8T7IVLMxvcB7-DeofI_D-VDf7F7NlrFHFbV6dS2H6880QDfph3lW1MDxC95cqbefNcDYd4YlvK6G5dxWdOdjJJkA8IN4CFTV8-1-qHU2mniHemVmXxys9dkVCr62nE9gnxIJfIuxO3T-mf-iFx_x-tqpddbpxufNiu4XpK481KjK0AOENs/w640-h400/2021-kumpas-7197.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Manyas’tan</b> çıktık, bir 20 kilometre sonra <b>Bandırma-Balıkesir karayoluna</b> bağlanıp <b>Aksakal’a</b> ulaştık. Hava yine fırın gibi. Yol kenarında kavun karpuz satan bir tezgah gördüm. "<i><b>Gel İsmail,</b></i>" dedim, "<i><b>şuradan bir kavun alalım da hem serinleyelim hem enerji tazeleyelim.</b></i>"
+
+İşte ne olduysa o kavunu alırken oldu. Günlerdir içinde biriktirdiği o hesabını, o bakış açısını sonunda ortaya saçtı. İsmail döndü bana ne dese beğenirsiniz:
+<em style="color: #1d1f20; font-size: 1.563em;"><b>"Eee, sen de yiyorsun yiyorsun, hiç yol yapmıyorsun!"</b></em>
+
+O an sanki pedal ayağımdan fırladı, gidon elimde kaldı. Bu söz, tur boyunca en çok ağırıma giden, sabrımı paramparça eden laf oldu. Ulan insaf! Yapmadığımız dediğin yolda sadece o gün 100 kilometreye yakın yol devirmişiz. Masraf hesabını yapılıp yediğim lokma sayılmaya başlandıysa, o yol bitmiş demektir. Benim için bu tur <b>Aksakal’da</b> bitti aslında, gerisi sadece formaliteydi.
+
+İçimden neler geçmedi ki... "<i><b>Ebenin amı İsmail! Biz bu yola çıkarken şartları konuşmadık mı? Masraflar sana ait olacak, ben de sana pilotluk yapacağım demedik mi? Şimdi menzile yaklaştık, turun bitmesine az kaldı diye mi götün başın ayrı oynamaya başladı?</b></i>" diyesim geldi. Ama sustum.
+
+<b><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjJosAMaNC6PQZBuOT23KkFKwsRURR-OYTY-8TUzQHPwDFQk7O14u3yXVOPZEB9O67kYHXmiHU1je9R5lNyppNw1Qkn8o1jWkBIPKReaPKHetkKTXAZcT09lD1kMshYyvz9fNTl-OV0IhyphenhyphenZXefgpLmdc7xlppRTkFppzJp5-EhKv5i37TkD0jvewgJMwHu/s1920/2021-kumpas-7200.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjJosAMaNC6PQZBuOT23KkFKwsRURR-OYTY-8TUzQHPwDFQk7O14u3yXVOPZEB9O67kYHXmiHU1je9R5lNyppNw1Qkn8o1jWkBIPKReaPKHetkKTXAZcT09lD1kMshYyvz9fNTl-OV0IhyphenhyphenZXefgpLmdc7xlppRTkFppzJp5-EhKv5i37TkD0jvewgJMwHu/w640-h400/2021-kumpas-7200.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Aksakal’dan</b> sonra o pedalları nasıl çevirdiğimi bir ben bilirim, bir de Allah. <b>Erdek’e</b> kadar olan o yaklaşık 50 kilometrelik yolda tek bir kelime bile etmedim. Düşünsenize, tandem üzerindesiniz, aranızda 50 santim var ama aranıza <b>Everest Dağı</b> girmiş. <b>Bandırma’yı</b> geçtik, rüzgarı yedik, rampayı aştık ama ağzımı bıçak açmadı.
+
+<b><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFEu462Czp_76ihjX_6V0YtXng8FVJl6cr2-HzAh-zMydWl9MYkHaAdP8v456qbZs3lixFjTwjjgN_02lV3UaMbqmE9TJZoWh-Vo1D8Juf2orgvH2-TZ5xvUfRqsh6uMBxP3YYc8R5fb-jQMsW0F8fxfP6oICNjW66Lo0jO7vBX3ksMCG9zpUE2iPnfIUx/s1920/2021-kumpas-7202.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFEu462Czp_76ihjX_6V0YtXng8FVJl6cr2-HzAh-zMydWl9MYkHaAdP8v456qbZs3lixFjTwjjgN_02lV3UaMbqmE9TJZoWh-Vo1D8Juf2orgvH2-TZ5xvUfRqsh6uMBxP3YYc8R5fb-jQMsW0F8fxfP6oICNjW66Lo0jO7vBX3ksMCG9zpUE2iPnfIUx/w640-h400/2021-kumpas-7202.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Erdek’e</b> vardığımızda, daha önce defalarca kamp attığım, bildiğim o zeytinliğe yöneldim. Çadırı sessizce kurdum. İsmail’e bakmıyorum bile. Kendi kendimi teskin ediyorum: <i>"</i><i><b>Hadi Ferdi, bir gün daha... Sık dişini, şu ihale bitsin, bu adamın adını bile anmayacaksın.</b></i> </div>
+    <div class="tur-sayfasi" id="bolum-11"><h2>5 Ağustos 2021<br>Erdek – Avşa – Marmara Adası – Tekirdağ – Çorlu</h2><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwtz4zG4U92jLIpHTKETrjnt1UQeoTjnUI7l9G9TNWEP_ifRilifRxAemWfrJVrsx0SSi283scdcuVKA-5CJrj5kf5nRtcy3aT0x72qUWsRLd6RgQ9-GrYQQauKantA0jo1a1cxNspbPb1j-XX2G4KcNn_BRSrNCk1sT1gDGrV6uX2C0HQl_Qx7lW0dJLE/s1920/2021-kumpas-7203.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwtz4zG4U92jLIpHTKETrjnt1UQeoTjnUI7l9G9TNWEP_ifRilifRxAemWfrJVrsx0SSi283scdcuVKA-5CJrj5kf5nRtcy3aT0x72qUWsRLd6RgQ9-GrYQQauKantA0jo1a1cxNspbPb1j-XX2G4KcNn_BRSrNCk1sT1gDGrV6uX2C0HQl_Qx7lW0dJLE/w640-h400/2021-kumpas-7203.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a><br>
+Sabah o gergin sessizlikte çadırları topladık. İsmail’in dün <b>Aksakal’daki</b> söylediği laflar hala kulağımda çınlıyor ama bugün polemik günü değil, kurtuluş günü. Hazırlıkları tamamlayıp <b>Erdek</b> limanına sürdük. Bastık feribota, ver elini <b>Avşa</b>!
+
+<b><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiu4eS00z-Bl-qID6swDIQMnx6Xu4BVqMJa6f-uN7H6HxAWHNbSfbGngJzVZTJSy-Vo11BYoMzQ-6ZuG4pCQyQ7DRZChmvqM3hCRgqVvgcxsI_z4spG4eFDOJ0M1IGrodzGsTYRVt2iklzOvNB0PHkKQ6MYxkryKbOx6ritF95m6Vxi1uWTS4_LQnohppyu/s1920/2021-kumpas-7207.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiu4eS00z-Bl-qID6swDIQMnx6Xu4BVqMJa6f-uN7H6HxAWHNbSfbGngJzVZTJSy-Vo11BYoMzQ-6ZuG4pCQyQ7DRZChmvqM3hCRgqVvgcxsI_z4spG4eFDOJ0M1IGrodzGsTYRVt2iklzOvNB0PHkKQ6MYxkryKbOx6ritF95m6Vxi1uWTS4_LQnohppyu/s320/2021-kumpas-7207.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpYpyBvB7bcr4HMnLbYKIULAFHJOiclfBcFFQgOTA-EilM6rIy_98F8yxpYpQv2ZjA0UdVRCmR-kykdAnOPk5zNRJGqOwMBlnaVc1aaEt9qPW-8orPDBr4R8v1-gIDB_QSGP4-wGtqt35MpZjyCWKJMnWvJF_t7bDTHS-vTLuXtPnlh92aEw9oTlTcnuh_/s1920/2021-kumpas-5684.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpYpyBvB7bcr4HMnLbYKIULAFHJOiclfBcFFQgOTA-EilM6rIy_98F8yxpYpQv2ZjA0UdVRCmR-kykdAnOPk5zNRJGqOwMBlnaVc1aaEt9qPW-8orPDBr4R8v1-gIDB_QSGP4-wGtqt35MpZjyCWKJMnWvJF_t7bDTHS-vTLuXtPnlh92aEw9oTlTcnuh_/s320/2021-kumpas-5684.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Avşa’ya</b> indik. İsmail’in burada da "<b>tanıdıkları</b>" var tabii, nerede yok ki? Başladık adayı gezmeye. Ama arkadaş, gezecek ne var Allah aşkına? Çük kadar bir ada! Memleket görmeyen, dünyayı gezmeyen adam burayı bir şey sanıyor.
+
+Benim bu konudaki teorim bellidir: <b>"Miami’ye gidemeyen Bodrum’u, Bodrum’u gidemeyen Avşa’yı övüyor."</b> Züğürt tesellisi tam olarak budur! Bir de demezler mi "<i><b>Biz burayı çok seviyoruz, o yüzden buradayız</b></i>" diye... Yav he he! İsteseniz Bodrum’a gidersiniz ama burayı "<b>tercih</b>" etmişsiniz, yersen! Hep bir kurusıkı atma, hep bir "<i><b>aslında çok paramız var ama mütevazıyız</b></i>" havaları. <b>Avşa</b> dediğin yer, o daracık sokakları ve abartılmış havasıyla tam bir illüzyon.<br>
+
+<a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVQMI9skfWXX4BLZTHpWDkDhySPzf3BVBAALOFOw2aMjlc9VidJzAVdEJgwno02KceWpLgvzof1sdsXjwZbT1UwicIsnh6ycARlsjwXQYb1IRYawAtqJDD-4m_dWVQZXtK_Cas0Hma0OLG1JAHVef4X3NigOX60t2gaQ1Q4LOjvj6TYRJ44nIgFah77RqX/s1920/2021-kumpas-5730.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVQMI9skfWXX4BLZTHpWDkDhySPzf3BVBAALOFOw2aMjlc9VidJzAVdEJgwno02KceWpLgvzof1sdsXjwZbT1UwicIsnh6ycARlsjwXQYb1IRYawAtqJDD-4m_dWVQZXtK_Cas0Hma0OLG1JAHVef4X3NigOX60t2gaQ1Q4LOjvj6TYRJ44nIgFah77RqX/s320/2021-kumpas-5730.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTsbPQMWtJr-t9OxQNwRc6nwxshRZ5iblbFRCdGNjBA1szEOBme8G4ujeoKCAOZWig7BFRAbFCAUW5upTVE2XZGk8M_-aeMmHPZ6sxdDMvTSdQ9fLPixIPY2H8Om9oOwB9W4VOP9Y678qFpcG3h_y7U166kIdusBdtHqbPq_hBOBvNO6qtRZDshpIfcy8a/s1920/2021-kumpas-5685.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTsbPQMWtJr-t9OxQNwRc6nwxshRZ5iblbFRCdGNjBA1szEOBme8G4ujeoKCAOZWig7BFRAbFCAUW5upTVE2XZGk8M_-aeMmHPZ6sxdDMvTSdQ9fLPixIPY2H8Om9oOwB9W4VOP9Y678qFpcG3h_y7U166kIdusBdtHqbPq_hBOBvNO6qtRZDshpIfcy8a/s320/2021-kumpas-5685.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvjTRfQV6YTp0Sx9RYxgQe8AYIN_eDA7rOlydU0AAwK4hyGucUare3ghtVbPfxWQ17VswbvhPv8Uji7-Qv80-sReQR5qOTVA8Kli4O4IjvxsG3sP57jvk463F1uuO3zXPwAJsCOw6Uv20xXYZ0RvE8OoxW0628ytIH5G7-1us0qcTAIc4rhCrYsD14XVqD/s1920/2021-kumpas-7212.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvjTRfQV6YTp0Sx9RYxgQe8AYIN_eDA7rOlydU0AAwK4hyGucUare3ghtVbPfxWQ17VswbvhPv8Uji7-Qv80-sReQR5qOTVA8Kli4O4IjvxsG3sP57jvk463F1uuO3zXPwAJsCOw6Uv20xXYZ0RvE8OoxW0628ytIH5G7-1us0qcTAIc4rhCrYsD14XVqD/s320/2021-kumpas-7212.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgY-sGWIyMOKpO_D75Osmk0uTC9z7pSvHeIBlKmdd3WIUyK-hc49opzf9PhlKcH5-vABUWUFRemOplaI2IaFD7UnRP45mzZTCbiah-SR0pc4Iua5AwdsARe_2W5i6-jCf3PbvCXbiu4s4TFerX3W77IURf1wbJQmE-h6uyp7ZRfJE9YI-sAdvyorPhYLPxk/s1920/2021-kumpas-7213.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgY-sGWIyMOKpO_D75Osmk0uTC9z7pSvHeIBlKmdd3WIUyK-hc49opzf9PhlKcH5-vABUWUFRemOplaI2IaFD7UnRP45mzZTCbiah-SR0pc4Iua5AwdsARe_2W5i6-jCf3PbvCXbiu4s4TFerX3W77IURf1wbJQmE-h6uyp7ZRfJE9YI-sAdvyorPhYLPxk/s320/2021-kumpas-7213.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><br>
+Neyse, fiyakalı fotoğraflar çekildi, "<i><b>Buraları da gördük</b></i>" dedirttik. Sonra tekrar feribotla <b>Marmara Adası</b>’na geçtik. Orada da benzer pozlar, benzer fiyakalar... Sonunda bizi <b>Tekirdağ’a</b> götürecek feribota kapağı attık.
+
+<b><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4ypf-UoH2FFp5CUYrEFiX2txDaUSftia96ZiCaz3JsGp7Wa6PtKIh-ybqgPi3PM0_wusA2WZrKDArQSK4WktkkXD7Tg-k7QUkVqnAq05ihZXs2i6VFdGYIsxV9dz0CDZRICME5e9EyzjVP05NPdLcFDK4JNLgSrKNkK7e4aIizG7aw_dL4QkvBj72u9lu/s1920/2021-kumpas-5695.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4ypf-UoH2FFp5CUYrEFiX2txDaUSftia96ZiCaz3JsGp7Wa6PtKIh-ybqgPi3PM0_wusA2WZrKDArQSK4WktkkXD7Tg-k7QUkVqnAq05ihZXs2i6VFdGYIsxV9dz0CDZRICME5e9EyzjVP05NPdLcFDK4JNLgSrKNkK7e4aIizG7aw_dL4QkvBj72u9lu/w640-h400/2021-kumpas-5695.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a>
+Tekirdağ’a</b> indiğimizde dünya varmış dedim. İsmail’i doğruca otogara götürdüm. Efendi buradan doğrudan işe gideceği için onu oradan <b>"sepetledim."</b> Tandem bisiklet de emaneten bir süreliğine bende kaldı. O an, İsmail otobüse binerken üzerimden bir kamyon yük kalkmış gibi hissettim.<br>
+
+<a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiAOfREI8WSGR3XkUfVkCbFMAEBFMoylZJAvZyGgcUVTS9yi_r95-YSlXGk90i6mp2v9X0S_UhjshsR45y4zJUaBRxFJ7F8xu23Ruz5A82OmOMDGxgWfES7jqs6uEfvlF4f7L3-pE5OKg06L99lwq7skLqWCZfNKBn0SWaIYKJqm4bQrHHyLkS9-CJMRy-l/s1920/2021-kumpas-7219.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiAOfREI8WSGR3XkUfVkCbFMAEBFMoylZJAvZyGgcUVTS9yi_r95-YSlXGk90i6mp2v9X0S_UhjshsR45y4zJUaBRxFJ7F8xu23Ruz5A82OmOMDGxgWfES7jqs6uEfvlF4f7L3-pE5OKg06L99lwq7skLqWCZfNKBn0SWaIYKJqm4bQrHHyLkS9-CJMRy-l/s320/2021-kumpas-7219.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBk3htT5mbxe_C80hK99CRBqSM_R4LZL8dAEbYjVIKG9K9OndNGnTinek-0TiKlmk-vfhYLg6y0AnmC1lWy7_05mNP796jooW4WHUbVdM70Y3Fw0ZHunw9eeAX-5N896_IaVEi4pXXK1RiX7v8Bu9cmj8gj3fOjeSm41aBqZWO-ZlYRPAnY3ulVApYKmf-/s1920/2021-kumpas-7217.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBk3htT5mbxe_C80hK99CRBqSM_R4LZL8dAEbYjVIKG9K9OndNGnTinek-0TiKlmk-vfhYLg6y0AnmC1lWy7_05mNP796jooW4WHUbVdM70Y3Fw0ZHunw9eeAX-5N896_IaVEi4pXXK1RiX7v8Bu9cmj8gj3fOjeSm41aBqZWO-ZlYRPAnY3ulVApYKmf-/s320/2021-kumpas-7217.jpg" width="320" height="200" border="0" data-original-height="1200" data-original-width="1920" /></a><br>
+Ama yol bitmedi! Tekirdağ’da arkadaşlarım <b>İslam ve Murat ağabey</b> ile buluştuk. Onlar tandemi görünce çocuklar gibi şenlendiler. Bir süre tandemle gönüllerince eğlenip tur attılar. Sonra planı yaptık: Ben ve Murat ağabey tandeme bindik, İslam da motosiklete atladı. <b>Tekirdağ</b>’dan <b>Çorlu</b>’ya, kendi çöplüğümüze doğru yola koyulduk. Murat ağabeyle o yolu tepmek, arkamda bir "<b>hesap makinesi</b>" yerine gerçek bir dostun olduğunu bilmek pedalımı hafifletti. <b>Çorlu’ya</b> vardığımızda Murat ağabey İslam’ın motoruna binip gitti, ben de tandemi eve çıkardım.
+<h4 class="western"><a href="https://www.blogger.com/blog/post/edit/4110266561926605607/3162812932170409677#" data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIfwWunovNDHxs7k0lXVpZS5MmGaa8K_F1gxiU1JKRCl9HzdzPLgIMPqovNe6A2pqirynVtyyqOClsFK6i8z5F6vhL4eX7TVRuELathCJ3dJlI6oFOx02fGi2pjahf1PUjrWFQhUrr7lX-VNI0Phyphenhyphenk0iKo4Ho3gclDUIIHsl2MmIgJ82yXsJo6mX3SvPa0/s1920/2021-kumpas-7234.jpg&quot;,&quot;style&quot;:&quot;&quot;}"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIfwWunovNDHxs7k0lXVpZS5MmGaa8K_F1gxiU1JKRCl9HzdzPLgIMPqovNe6A2pqirynVtyyqOClsFK6i8z5F6vhL4eX7TVRuELathCJ3dJlI6oFOx02fGi2pjahf1PUjrWFQhUrr7lX-VNI0Phyphenhyphenk0iKo4Ho3gclDUIIHsl2MmIgJ82yXsJo6mX3SvPa0/w640-h400/2021-kumpas-7234.jpg" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /></a></h4>
+Birkaç gün dinlenip o travmaları atlattıktan sonra, tandemi güzel bir iş için kullandım. Arkadaşım <b>Gözde</b> ile uzun zamandır planladığımız ama onun kondisyonu elvermediği için gidemediğimiz bir <b>Saray turu</b> vardı. Tandemin sağladığı o "<b>iki kişilik güç</b>" sayesinde Gözde’yi yormadan şahane bir tur yaptık. İşte tandemin gerçek amacı budur; dert değil, keyif ortağı olmak!
+<h3 class="western">Son Söz:</h3>
+2021 yazındaki bu tur benim için büyük bir derstir. Şimdi anlıyorum ki <b>Ankara’dan</b> Enes, o "<b>bacağım ağrıyor</b>" dümeniyle aslında yüzyılın kaçışını yapmış. Adam biliyormuş başına geleceği!
+
+<b>Bu turdan ne mi öğrendim?</b>
+<ol>
+ 	<li><b>Tandem bisiklet sabır işidir: peygamber sabrı ister. </b></li>
+ 	<li><b>Pilotluk Sorumluluktur: Ama arkandaki adamın karakteri, senin yol bilgin kadar önemlidir.</b></li>
+ 	<li><b>Tandem Bir Sınavdır: Ve ben o sınavı geçtim ama bir daha o sınıfa girmeye niyetim yok.</b></li>
+ 	<li><b>Alın teriyle alınan yola "lokma sayan" adamla çıkılmaz.</b></li>
+</ol>
+İsmail’e "<b>Eyvallah</b>" dedik, yolunu ayırdık. O günden sonra İsmail ile bir daha tur yapmaya, hatta tandemle "<b>ihale</b>" almaya tövbe ettim. Ferdimen tarzı budur; yaşar, görür, dersini çıkarır ve lafını esirgemez.
+
+Bir maceranın daha sonuna geldik. Bakalım bir sonraki rotada başımıza neler gelecek? Pedala basmaya devam, tabii <strong>tek başıma</strong> ya da kafa dengi adamlarla! Takipte kalın, pedalla kalın! </div>
+
+    <ul class="pagination">
+        <li class="aktif"><button onclick="sayfaDegistir(1)">1</button></li>
+        <li><button onclick="sayfaDegistir(2)">2</button></li>
+        <li><button onclick="sayfaDegistir(3)">3</button></li>
+        <li><button onclick="sayfaDegistir(4)">4</button></li>
+        <li><button onclick="sayfaDegistir(5)">5</button></li>
+        <li><button onclick="sayfaDegistir(6)">6</button></li>
+        <li><button onclick="sayfaDegistir(7)">7</button></li>
+        <li><button onclick="sayfaDegistir(8)">8</button></li>
+        <li><button onclick="sayfaDegistir(9)">9</button></li>
+        <li><button onclick="sayfaDegistir(10)">10</button></li>
+        <li><button onclick="sayfaDegistir(11)">11</button></li>		
+    </ul>
+    </div>
+<div class="post-navigation" id="yazi-navigasyon"></div>
+
+
+    <script>
+        function sayfaDegistir(sayfaNo) {
+            // Tüm bölümleri gizle
+            const sayfalar = document.querySelectorAll('.tur-sayfasi');
+            sayfalar.forEach(sayfa => sayfa.classList.remove('aktif'));
+
+            // Tüm butonların aktiflik tarzını kaldır
+            const butonlar = document.querySelectorAll('.pagination li');
+            butonlar.forEach(btn => btn.classList.remove('aktif'));
+
+            // Seçilen bölümü göster
+            document.getElementById(`bolum-${sayfaNo}`).classList.add('aktif');
+
+            // Seçilen butonun tarzını aktif yap
+            butonlar[sayfaNo - 1].classList.add('aktif');
+
+            // Sayfa başına otomatik kaydır (sabit menünün hemen altına hizalar)
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+
+
+    <!-- İLETİŞİM VE SOSYAL MEDYA -->
+    <section class="contact-section" id="iletisim">
+        <div class="container">
+            <div class="contact-grid">
+                
+                <div class="contact-info-side">
+                    <h3>Bağlantıda Kalın</h3>
+                    <p>Yol hikayelerini, bağımsız yayınları ve anlık telemetri paylaşımlarını resmi ağ istasyonları üzerinden takip edebilirsiniz.</p>
+                    
+<div class="social-links-container" id="social-container">
+    </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const socialContainer = document.getElementById("social-container");
+        if (!socialContainer) return;
+
+        fetch('https://ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
+            .then(res => {
+                if (!res.ok) throw new Error("Sosyal medya JSON dosyası yüklenemedi!");
+                return res.json();
+            })
+            .then(data => {
+                let htmlContent = '';
+
+                data.forEach(hesap => {
+                    htmlContent += `
+                        <a href="${hesap.url}" target="_blank" class="social-icon-btn">
+                            ${hesap.svg}
+                            <span>${hesap.ad}</span>
+                        </a>
+                    `;
+                });
+
+                socialContainer.innerHTML = htmlContent;
+            })
+            .catch(err => {
+                console.error("Sosyal medya butonları yüklenirken hata:", err);
+                // Hata durumunda boş kalmaması için manuel bir yedek bırakabilirsiniz:
+                socialContainer.innerHTML = `
+                    <a href="https://www.youtube.com/@ferdimen" target="_blank" class="social-icon-btn">
+                        <span>YouTube</span>
+                    </a>
+                `;
+            });
+    });
+</script>
+                </div>
+                
+                <div class="contact-form-side">
+                    <form action="https://formspree.io/f/xnjyjwnk" method="POST">
+                        <div class="form-group">
+                            <label for="name">İsim / Mahlas</label>
+                            <input type="text" id="name" name="name" required placeholder="Adınızı giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Posta Adresi</label>
+                            <input type="email" id="email" name="_replyto" required placeholder="E-posta adresinizi giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mesajınız</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Yol notunuzu buraya bırakın..."></textarea>
+                        </div>
+                        <input type="hidden" name="_language" value="tr" />
+                        <button type="submit" class="submit-btn">Gönder</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <p class="footer-text">© 2026 Ferdimen. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+    <script>
+        // HER YAZI HTML DOSYASINDA BU ID ALANINI O YAZIYA ÖZEL DEĞİŞTİRİN
+        const MEVCUT_YAZI_ID = "2021-kumpas"; 
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const navContainer = document.getElementById("yazi-navigasyon");
+            if (!navContainer) return;
+
+            // JSON ARTIK YAZILAR KLASÖRÜNÜN İÇİNDEN ÇEKİLİYOR
+            fetch('yazilar.json?v=' + new Date().getTime())
+                .then(res => {
+                    if (!res.ok) throw new Error("Yazı listesi yüklenemedi!");
+                    return res.json();
+                })
+                .then(yazilar => {
+                    const currentIndex = yazilar.findIndex(yazi => yazi.id === MEVCUT_YAZI_ID);
+                    
+                    if (currentIndex === -1) return;
+
+                    let navHtml = '';
+
+                    // Eğer JSON'daki URL'ler 'yazilar/xx.html' şeklindeyse ve post.html de 'yazilar' içindeyse 
+                    // tarayıcının 'yazilar/yazilar/xx.html' aramasını engellemek için url temizleme fonksiyonu:
+                    function urlDuzenle(url) {
+                        if(url.startsWith('yazilar/')) {
+                            return url.replace('yazilar/', '');
+                        }
+                        return url;
+                    }
+
+                    // Önceki Yazı Kontrolü
+                    if (currentIndex > 0) {
+                        const prevPost = yazilar[currentIndex - 1];
+                        navHtml += `
+                            <a href="${urlDuzenle(prevPost.url)}" class="nav-box prev">
+                                <span class="nav-label">← Önceki Yazı</span>
+                                <span class="nav-title">${prevPost.baslik}</span>
+                            </a>
+                        `;
+                    } else {
+                        navHtml += `<div style="flex:1;"></div>`;
+                    }
+
+                    // Sonraki Yazı Kontrolü
+                    if (currentIndex < yazilar.length - 1) {
+                        const nextPost = yazilar[currentIndex + 1];
+                        navHtml += `
+                            <a href="${urlDuzenle(nextPost.url)}" class="nav-box next">
+                                <span class="nav-label">Sonraki Yazı →</span>
+                                <span class="nav-title">${nextPost.baslik}</span>
+                            </a>
+                        `;
+                    } else {
+                        navHtml += `<div style="flex:1;"></div>`;
+                    }
+
+                    navContainer.innerHTML = navHtml;
+                })
+                .catch(err => console.error("Navigasyon hatası:", err));
+        });
+    </script>
+</body>
+</html>
