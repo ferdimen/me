@@ -3889,12 +3889,12 @@ Kop Şehitleri Abidesi: İlçe merkezine 27 km uzaklıkta bulunan Kop dağı sı
                         return url;
                     }
 
-                    // Önceki Yazı Kontrolü
+// Sonraki Yazı Kontrolü
                     if (currentIndex > 0) {
                         const prevPost = yazilar[currentIndex - 1];
                         navHtml += `
                             <a href="${urlDuzenle(prevPost.url)}" class="nav-box prev">
-                                <span class="nav-label">← Önceki Yazı</span>
+                                <span class="nav-label">← Sonraki Yazı</span>
                                 <span class="nav-title">${prevPost.baslik}</span>
                             </a>
                         `;
@@ -3902,12 +3902,12 @@ Kop Şehitleri Abidesi: İlçe merkezine 27 km uzaklıkta bulunan Kop dağı sı
                         navHtml += `<div style="flex:1;"></div>`;
                     }
 
-                    // Sonraki Yazı Kontrolü
+                    // Önceki Yazı Kontrolü
                     if (currentIndex < yazilar.length - 1) {
                         const nextPost = yazilar[currentIndex + 1];
                         navHtml += `
                             <a href="${urlDuzenle(nextPost.url)}" class="nav-box next">
-                                <span class="nav-label">Sonraki Yazı →</span>
+                                <span class="nav-label">Önceki Yazı →</span>
                                 <span class="nav-title">${nextPost.baslik}</span>
                             </a>
                         `;
