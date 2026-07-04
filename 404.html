@@ -727,17 +727,33 @@
         };
         // Eğer yazılan URL listemizde varsa yönlendir
         if (linkler[path]) {
-            // WHATSAPP GÜVENLİK KONTROLÜ: Gelen istek whatsapp linkiyse uyarı penceresi aç
-            if (path === "/whatsapp") {
-                alert(
-                    "⚠️ SOHBET ANAHTARI DOĞRULAMASI\n\n" +
-                    "Spam koruması ve yeni kullanıcı özelliği nedeniyle lütfen aşağıdaki anahtarı aklınızda tutun veya kopyalayın:\n\n" +
-                    "👉 Anahtar: 6274\n\n" +
-                    "Sohbet ekranı açıldığında bu anahtarı bana iletmeyi unutmayın. Tamam'a bastığınızda yönlendirileceksiniz."
-                );
+            if (path === "/me/whatsapp") {
+                // 'xxxx' değerini kendi gizli anahtarınızla değiştirebilirsiniz
+                const anahtarKelime = "6274"; 
+
+                // Modern tarayıcılarda panoya otomatik kopyalama tetikleniyor
+                navigator.clipboard.writeText(anahtarKelime).then(function() {
+                    alert(
+                        "🔐 SOHBET ANAHTARI KOPYALANDI!\n\n" +
+                        "Spam koruması için gereken '" + anahtarKelime + "' anahtarı panonuza (hafızaya) otomatik kopyalandı.\n\n" +
+                        "WhatsApp sohbeti açıldığında mesaj alanına doğrudan yapıştırıp (Ctrl+V) bana gönderebilirsiniz.\n\n" +
+                        "Tamam'a bastığınızda yönlendirileceksiniz."
+                    );
+                    window.location.href = linkler[path];
+                }).catch(function() {
+                    // Tarayıcı güvenlik/izin engeline takılırsa manuel kopyalama mesajı gösterilir
+                    alert(
+                        "⚠️ SOHBET ANAHTARI DOĞRULAMASI\n\n" +
+                        "Spam koruması için sohbet anahtarınız:\n" +
+                        "👉 Anahtar: " + anahtarKelime + "\n\n" +
+                        "Lütfen bu anahtarı not edin ve WhatsApp sohbet ekranında bana iletin."
+                    );
+                    window.location.href = linkler[path];
+                });
+            } else {
+                // Diğer tüm normal linkler beklemeden yönlenir
+                window.location.href = linkler[path];
             }
-            // Doğrudan veya uyarı onaylandıktan sonra hedef adrese uçur
-            window.location.href = linkler[path];
         } else {
             // Eğer listede olmayan rastgele bir şey yazıldıysa gerçek bir 404 sayfasına yönlendir veya mesaj yaz
             document.write("<img src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaqj93PCT2UnBtriYPx8D2XqdVQ5VZNguPu804RtHO_wWV5FKN2xFOOX1MKstCW_Deo_QJcCrd072gJirfc17m4YCo7RUAAcSvaaE5MCSZFOq1-_nzOPxj3k7v0M5elhivxT1GcL4XBGPsRpqer31nV_JwF9pXiJ2mGGo6zo2cnY6EWnvJU9lsyb3ymTR7/s320/404.jpg' class='spinning-logo' alt='Ferdimen & Aykırı Yollar'><br>");
