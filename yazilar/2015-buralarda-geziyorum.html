@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferdimen // Adı yalnızlığından gelen kahraman</title>
+    
+    <link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.css" />
+    <link rel="stylesheet" href="https://www.ferdimen.com/data/css.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.js"></script>   
+    <style>
+/* Bilgilendirme (Info) Durumu İçin Özel Stiller */
+.alert-info {
+    background-color: #f0f7ff; /* Yumuşak pastel mavi arka plan */
+    border-color: #b3d7ff;     /* Açık mavi çerçeve */
+    color: #1a4870;            /* Okunabilirliği yüksek koyu mavi metin rengi */
+    border-left: 5px solid #3182ce; /* Sol tarafa vurgu yapan canlı mavi şerit */
+    box-shadow: 0 2px 4px rgba(49, 130, 206, 0.05); /* Hafif derinlik gölgesi */
+}
+
+/* Alert içindeki linklerin rengi */
+.alert-info a {
+    color: #123452;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.alert-info a:hover {
+    color: #0b2236;
+    text-decoration: none;
+}
+/* Genel Alert (Uyarı) Kutusu Temeli */
+.alert {
+    padding: 15px 20px;
+    margin: 20px 0;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Hata (Error) Durumu İçin Özel Stiller */
+.alert-error {
+    background-color: #fdf2f2; /* Gözü yormayan hafif pastel kırmızı arka plan */
+    border-color: #f8b4b4;     /* Yumuşak kırmızı çerçeve */
+    color: #9b1c1c;            /* Okunabilirliği yüksek koyu kırmızı metin rengi */
+    border-left: 5px solid #e02424; /* Sol tarafa dikkat çeken kalın canlı kırmızı şerit */
+    box-shadow: 0 2px 4px rgba(224, 36, 36, 0.05); /* Çok hafif bir derinlik gölgesi */
+}
+
+/* Eğer alert içinde link kullanırsan onun da rengini ayarla */
+.alert-error a {
+    color: #771d1d;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.alert-error a:hover {
+    color: #551414;
+    text-decoration: none;
+}
+ /* Genel Sayfa Düzeni */
+        .tur-sayfasi {
+            display: none; /* Varsayılan olarak tüm bölümleri gizle */
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .tur-sayfasi.aktif {
+            display: block; /* Sadece aktif olan bölümü göster */
+        }
+
+        /* Sayfalama Butonları */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        .pagination li {
+            margin: 0 5px;
+        }
+        .pagination button {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .pagination button:hover {
+            background-color: #3498db;
+            color: #fff;
+            border-color: #3498db;
+        }
+        .pagination li.aktif button {
+            background-color: #2c3e50;
+            color: #fff;
+            border-color: #2c3e50;
+            cursor: default;
+        }
+
+        /* Öne Çıkan Görsel Kutusu */
+        .post-featured-image {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 40px;
+            box-sizing: border-box;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        /* Görsel İçindeki Yazı Alanı */
+        .post-featured-content {
+            max-width: 800px;
+            text-align: left;
+        }
+
+        /* Kategori Etiketi */
+        .post-category {
+            display: inline-block;
+            background-color: #ff5722;
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        /* Yazı Başlığı */
+        .post-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            line-height: 1.2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Tarih ve Ek Bilgiler */
+        .post-meta {
+            font-size: 0.9rem;
+            color: #dddddd;
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Yazının Kendisi İçin Kapsayıcı */
+        .post-body-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #333333;
+        }
+
+        /* Dinamik Önceki - Sonraki Yazı Navigasyonu Tasarımı */
+        .post-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        .nav-box {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+        }
+        .nav-box:hover {
+            border-color: #3498db;
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .nav-box.prev { text-align: left; }
+        .nav-box.next { text-align: right; }
+        .nav-label {
+            display: block;
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+        .nav-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+
+        /* Mobil Ekranlar İçin Uyum */
+        @media (max-width: 768px) {
+            .post-featured-image {
+                height: 300px;
+                padding: 20px;
+            }
+            .post-title {
+                font-size: 1.8rem;
+            }
+            .post-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-box.next {
+                text-align: left;
+            }
+        }
+/* ==========================================================================
+   KİLİTLİ 16:9 YOUTUBE EMBED STİLLERİ (data/css.css için)
+   ========================================================================== */
+.custom-youtube-box {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 680px !important;    /* Okuma alanına tam oturan ideal genişlik */
+    margin: 30px auto !important;
+    aspect-ratio: 16 / 9 !important; /* Çerçeveyi kesinlikle 16:9 oranında kilitler */
+    background-color: #000000 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;     /* Çerçevenin dışına taşmaları tamamen engeller */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Çerçeve içindeki poster ve video iframe'inin boyutunu milimetrik kilitler */
+.custom-youtube-box iframe,
+.youtube-poster {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Kapak Resminin Çerçeveye 16:9 Formatında Tek Resim Olarak Tam Oturması */
+.youtube-poster {
+    background-size: cover !important;     /* Resmi esnetmeden veya dizmeden kutuya tam sığdırır */
+    background-position: center !important;   /* Resmi tam ortalar */
+    background-repeat: no-repeat !important; /* Resmin kesinlikle dizilmesini/tekrarlamasını engeller */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 2 !important;
+    transition: filter 0.3s ease !important;
+}
+
+.youtube-poster:hover {
+    filter: brightness(0.85) !important;
+}
+
+/* Küçültülmüş ve Kibar Oynat Butonu */
+.youtube-play-btn {
+    width: 54px !important;   /* Buton boyutu küçültüldü */
+    height: 38px !important;  /* YouTube standardında kibar dikdörtgen */
+    background-color: rgba(26, 26, 26, 0.9) !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background-color 0.2s ease, transform 0.2s ease !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+}
+
+.youtube-poster:hover .youtube-play-btn {
+    background-color: #dc2626 !important; /* YouTube kırmızı tonu */
+    transform: scale(1.05) !important;
+}
+
+/* Butonun İçindeki Küçük Oynat İkonu (Üçgen) */
+.youtube-play-btn svg {
+    width: 16px !important;  /* İkon boyutu küçültüldü */
+    height: 16px !important; /* İkon boyutu küçültüldü */
+    fill: #ffffff !important;
+    margin-left: 2px !important; /* Kusursuz merkezleme için küçük sağ kaydırma */
+}		
+    </style>
+</head>
+<body>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <header class="main-header">
+        <div class="container nav-bar">
+            <div class="logo-group">
+                <a href="https://www.ferdimen.com">
+                    <img src="https://www.ferdimen.com/img/logo.png" alt="Ferdimen Logo">
+                </a>
+            </div>
+            <div class="nav-right-container">
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="https://www.ferdimen.com/#hakkimda">Hakkımda</a></li>
+                        <li><a href="https://www.ferdimen.com/yazilar">Yazilar</a></li>
+                        <li><a href="https://www.ferdimen.com/#harita">Gittim Gördüm</a></li>
+                        <li><a href="https://www.ferdimen.com/#videolar">Videolar</a></li>
+                        <li><a href="https://www.ferdimen.com/#kronoloji">Kronoloji</a></li>
+                        <li><a href="https://www.ferdimen.com/#dosyalar">Dosyalar</a></li>
+                        <li><a href="https://www.ferdimen.com/#ekipman">Ekipman</a></li>
+                        <li><a href="https://www.ferdimen.com/#faq">S.S.S.</a></li>
+                        <li><a href="https://www.ferdimen.com/#sablon">Vasiyet</a></li>
+                        <li><a href="https://www.ferdimen.com/#destek">Destek Ol</a></li>
+                        <li><a href="#iletisim">İletişim</a></li>
+                    </ul>
+                </nav>
+                <div class="header-socials">
+                    <a href="https://www.youtube.com/@ferdimen" target="_blank" title="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M21.543 6.498C22 8.21 22 12 22 12s0 3.79-.457 5.502A2.752 2.752 0 0 1 19.617 19.43C17.904 20 12 20 12 20s-5.904 0-7.617-.57a2.752 2.752 0 0 1-1.926-1.928C2 15.79 2 12 2 12s0-3.79.457-5.502A2.752 2.752 0 0 1 4.383 4.57C6.096 4 12 4 12 4s5.904 0 7.617.57a2.752 2.752 0 0 1 1.926 1.928zM10 15.5l5.5-3.5L10 8.5v7z"/></svg>
+                    </a>
+                    <a href="https://polarsteps.com/ferdimen" target="_blank" title="Polarsteps">
+                        <svg viewBox="0 0 48 48"><path d="M22.8 21.2c1-.4 2.1-.3 3 .3c.2.1.4.2.6.1l2.4-1c.5-.2.7-.9.3-1.3L18.8 8.9c-.7-.7-2-.2-2 .8l.2 14.5c0 .6.6 1 1.1.7l2.4-1c.2-.1.3-.3.4-.5c.2-.9.9-1.8 1.9-2.2Zm2.4 5.6c1-.4 1.7-1.3 1.8-2.4c0-.2.2-.4.4-.5l2.4-1c.5-.2 1.1.2 1.1.7l.2 14.5c0 1-1.2 1.6-2 .8L19 28.8c-.4-.4-.3-1.1.3-1.3l2.4-1c.2-.1.4 0 .6.1c.8.5 1.9.7 2.9.2Z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header><script src="youtube.js?v=1"></script>	
+<!-- YAZI DETAY BÖLÜMÜ -->
+<section class="contact-section" id="yazi">
+    
+    <!-- ÖNE ÇIKAN GÖRSEL ALANI (Elle URL girilebilir) -->
+    <div class="post-featured-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://lh3.googleusercontent.com/pw/AP1GczMq0fBVHcdrsyq_TjxkWarKpoL4Lokd6Dn7yCjguRpvvglwWO4AwabzWBpBcqak6POP5zArU1Ru9D4JzejNzC4NWIybVOQ_ADinL56YgzYWbcWyJuc=w1920-h1080');">
+        <div class="post-featured-content">
+            <span class="post-category">Bisiklet Turu</span>
+            <h1 class="post-title">Buralarda Geziyorum</h1>
+            <div class="post-meta">
+                <span class="post-date">15 Mayıs 2015 - 13 Haziran 2015</span>
+                <span class="post-read-time">Tekirdağ > Çanakkkale > İzmir > Denizli > Salda > Antalya > Ermenek > Mersin</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- YAZININ GERÇEK İÇERİK ALANI -->
+	<link rel="stylesheet" href="album.css">    <script src="album.js"></script>
+<div style="text-align: center; margin-bottom: 40px; width: 100%;"><p style="color: var(--text-light, #666);"></p></div>
+[fotoalbum]
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPr2-mT_O996r8oF9wnWqzAjJK-DO2jspp3Xx3c04kq0QF7xb9NT3zUbi-hYhDANjpMRJfLVJ1tQLPDkxVTPEOhitdct7aGEWKusDh2ln98NKeRDTw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPYbmNbbp_KFqlIRbggz6YXj75yAU_L4GTscEGlHZQUpkAC83aAwvWxHUFzrA-M7aDnrAVojLPsSkVCvfhsm6sJfQC3VJJ7O4lu2hyC1Phep9DICpo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNEWWQVHrMwizpmxkg0KYq5EFtbEGfhgaRFAG45upcnyNFVr97L3HvRZQdv90gaFXlLoVev0XoqGTQzfReanpmVcj2wRUmEdIweKmkx7NWVDdGluOY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOCFqRwrZoQuINJ-kxT0xFK2lb2TVQl2QYIa7KRApryj3IPXIXEdCa4CWbErF8jx9tbTZpO75N57uSmXJeMhwdoPGbdWWpCFigdhOBf2vdBrT5Sd4c=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM6lbFrdWczSCymjMURCEpDwfZ8GczO6ZalXdfK5KRXlvX1aisHwZWIX25kFbGgI7t_Mzq0aMu4uPUuq0TcdGAEEjIAZNWNo2VJYxtLeQK0tQTbOfo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNf2jhCuK9EJZWOlehm32_tEb3R2w4RQMgItLcdDixY-8s-F0R_0oeqbmPLd0xxa0hohvwwsIpnVgXThiHK91gYo2SNhlKtQxgr3FjJ3JLKDM5tR54=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP6XQkmh12vI_-dbvLZpYEoMFcYpV8dnKJj00e2da5LBjKLdB9WsI8B8QxRCJaZD7jOPBvkrBLcW3Uo2nIwsl-ygbImr4-_jFBMVWmc3Pr949q5Zn0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMHLEyBZwyP0fhgGbjUvF5Hca4MIrCDEPh0TzISCuq_1FGVk3wsWYjoxvz9FRC79pyk1qcj1yHTrM0kkpnBjWZDC_FHJh-gzZI6aRXXW-H6JTYSC-Q=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPuivCgTyV_NbepKpg_hmRieQxUMA6BSJ1phfxlI9gD17Yz6ueI-OnkikPDk4Mm3BN7hlwnXsNrcgR_gr7jrMw2_bOKTd8lrKSQTFzehMBYDCmqqqA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNvq3AUUnKGP2oskaAdGhIBXyS1oGEagu5VbSUL8u_hsvjBmsEesaaiMtNHj45vKHJfRmPEhjXPShSmUlpqqTSBCMhSXbQCz08sqA_ZWbQl58Ur5dc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN2hX31pcGjmdnJEpjEn2IswrHkmwtEDw_G0QMWGrx95z94ffIkgZ09-LNUMxbMzELZlW_3O3Muvarx1QylWe6mxgqMB55ELW3Tt1cESxew_7cWSY8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMD-0RO24NYsVCR5k8McXETmJh82OfcFdZjeAspIFIfOR1It3NqCnCD-mkdzm-kT0qYRKyqdTlAIXZtdjmJZJVpVvSoh3tD_R71D3z1tTS7N4Nj4vE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNNRuFWMGhjpKiX_pLv7TK9X4mNu3zJa14Wsjdi8PqpV2epJ6OQTD9RTfFd1kyRMtamdPrLiG_PHoinE59znXGzSvW4OLP2lRvzWGK0QPvMLpoHW38=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO1IfDoJ1tAYU3RtmAt3udHlrmf9jw33ohGWJ34iwwd7jXArNk0IeiOPjoYESWAYAs0x9lZqAX64z5ygTpjJ6mmV-DoSM69F9PThVpVtavmIyswv8M=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOhwDvQWEad9K1rYFHsU-tT7Th97u15AZAy-FSHzso5A7PAuYnOu1iWaqYhdohn77ij21JBMa58wPW8nFv8b596b5yJOQXYRlSTiTB3283DPaDFkFo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOlsXn7tWgJimMqNRlTgJtrxULuKSboxcgu62czlB2NtFywjZ1JjsE31mi2HTafyrCGbgR49SgoZfXiIM3cWEuxtf-jbDpLiZ5gG23G3SEwBeaHVSM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPjipoNOggeWCyBNFPfOJ3GFLZk8wbUSX94fvH1MZWhQC8XdWn-WXANeSq4FxNR5C3lXyoTJoIn2P6fy6aN2W0BRthtekDqpxmwFRImbF1diRpbN3A=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMpQQN88q636QBb2Dbd6M53q52hERbYc492NPeITEz-z7SpGBCcXzSRiJJ8ARwxSyvT6sGvvtFXeefQGKfepwgxK76PQl4i3P0aLCgEJQWxKBsx6kQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM7gRCyKWHBYSzWfK8xP1nighxR8zXeOrQiOoitI6lJR3LwMz4p_1K2-VwSi4rCyH2qX9o2bKHpLMJUu48qsu_wv2tHDtAL1PHetZfiMNaTB2x3yIw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM8RAXEMDWb56ehVgEEvv3LMPKVDd1DN3Zqw3AD1IQDcA_ITEWCQa_bEgM_HA2dC4APhCORp0AG1n7L7wWfrctQ7hB4d1CqnxkYYq4uaG3ynqfoSb8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMwD8C006SpbUA6Dvig_89hLDiU4KLra3qV_lrK8RimA43SKpBdqPB__dED0L6Ff-wqxK57fdgrb2cTrKfFZaqEkasPWCArar0ulV_AkIbpW9unTTg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNgd6XcsrMDQ3afxWapgUEAqCOnp1q0nkvflpwGBOC9FkAGbIJx4PHTtVBJvSTTY_iBbAue1k6rnl6eYz1zqPx-HPq0hTOYpWt1Pon71a_UjMm0FIw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNcRYABFbIIwUOcgSfVnAFK2GQGv-k-tShjedEweoZ-g-v1Sb9ecIaslzyOkBftw-FziXfOexJItHIUQjQrc-oxtEOJPDqFE4fP55kgGlRkzj2G5i4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMqwo5QQ-D_1cHZxLC7N0_z2S4xFQYrcgPEiE49-P1KQHimcZaTI2vhTWMBgQOyV2vpDnMViiOGhXS-UpOBVPF5fqGUwzeJ_eMifS738I8pwqXpqvw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOMBphvGeQzfOWQzLQ6RuLnoXnIi-NuzUoW2bh0NXe1ajac-ZONEIJCYRSk00obwUvqEpFlvZZfKP_irDGMhxJF_WHenbvkka6qzSGYajY2EKr9Efk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP3jyptfVxbsUA-htsnJn9ip0urPJTg8HXglOtrI9F1RJ6bLrBKiL3JV5GpSfDzNOdF1pmaPoW9VpYj4OR7vspZZKqSGKxRY-Mb9FpRTZow698i5ao=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMt7KQIF1s-4mjyQL4nTHAtWUoA1_DR-uHhn0yw-HadckuGbOkcjcZ4M2eoFwAl231d14xNYo-CSjQPMPueK0bHfPoRanp3sAuT3lzelXvwdMkiCtI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOzJkofafDLhCN7IgLFYHfgNtXaR1zSb-xDPF_E5BpLZcb_JBf8LrE4Gocx7puR1xG7ivb0Df9OnDBM0J3Bt6hxHfu6jURZysJSVFsfWNOvdgczSyM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP9dFRGHr-38YdNYtWQPNKYu_appSF4pfXkdf92LBZWY8xfF7F6rnFG4okLvbwhwxSjUxSRAKoKxsuyRyzdPqNwUxM3eHrcMW_6ATwpr4H7wKo1iTY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMwEfcmHVXzoapX8V1rZUtINGbBVsElP45Ls8upnb893zE2FW86uH0khdOoStHQ2Y9CzLCuzfx3UWxveNQQANRYcpYbNWPZP5nFdMGDDyMLp2cy-ho=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPFrS5zBlnZgxyQALMKdLuDJj-0OgN4f5NEvC_LQXv5_BsSzDjHJ4N43hLr_96lgGPVCBjXjpuEQwbY4Df7TvggLeAI2gNXRwAByyqJ6DIoI4ZyqyM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMWGiQMkp5rYE8Ywu1R0bQ_fU1Uea2g965c3RP1HGhHwdSjZToriWACdSERVKXzlXrXRAx3KQCXyMuVeIPxqpxdCROq6SX3TpCdtjfEQKF-DTUWUFI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMg1J-f4dQvwhhGQ8lTGYSt-MjVT8zr6VxbQ1eC4QvZ0jAlRfRavXL8awavqekzdmH-89_B75dhPfg6-wvHtL3kjNmAN-hosIF-jJYvY0nEI95w2Hs=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM3XkwF8bIChYbsQDvWJUM_k94293UUB1Sp5Q5O7JAW8WPwNooTc0CpCy-nPRdLtYwEV5_GVMDUpllTTd7f4MJBEgxnXJQHJ2vkrMsNkBZYvXDaA6k=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPtxm1Khe6f5EhVmJ0z1tNh5D6gcwg9ryRiIPZk_zRuwHA9BgFhxm-Ix-jwdglV_MzAPtY1SQOERPH3L49SVg0cwFeNhfrIOAV5mezOaGIRJ22N0dE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN1LOBDhbEGlOvdOkCI3kQK9cpb5FkGhnCFiC1PkZ_ksgYyxRQb4Dc6PYXBXjXziVph7dbdRrbj13f5KSNz9rYoA3fHm_JhUVbDqW-RfG9dmciywV4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP8L3gvnbG4wF6ni_zkDv8VlZbUOqcFuHOkz2chMvQBTtVU27Kq956mQmM2FIj06gJDVfMoXZuQhWr-KhHVPcZELLNjdC4Cogf6jeh6DT7yih4_lNs=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM-nFp6gb024aR_5fnirkLTtsE0dwK34PddY79UWMT6IlPbzQ_qleeXDW4B5S1-1sFF2mRCNCZ98QKnVKWg0k1nL0rY_-LK7POQ1emDdRlkHPXoFQo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO_NMoadhPzHxbCMNTRKTiSky3u2jmouetl6pFjZOCTaZj2ZeqDpWEMt_r19dlQP_p1ePUgdQmrfKwYUGUtlSusAEJQBWEOHvq89UMaBJCfJdIYYfc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOcuzkNleHVGWqEq7qlprR1EXkMbIG4xWAqfdUCNdxessvCi68S6Rdr7vdc67V4D2keh8o8rUm1E26BW8JXdf5TRzxSsJjvU0xdoI-c1qu0ZAerxrM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN3E9SslPLbROtQg_-SsOAJsPxMjVVcmwpTlhIWNiMJhDv36p9cCwTFbaURlpEBhZwbuQNRnC5VtqaUzK_ZtIWXFF2b8ipuFBvo5_D4vsG86e_zeww=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNNIL3DuEfwfxw8SodVIuWl06vFV5QRb_CfTSxS1LjlHVfPXT6TQ0RMXcwGOpRkFj7QGA45kQxA1x6k2x6ciWt5krwQPkVWomiNujfSstwqSUCUehU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN6tTKws-XB0ljfNpJhH-jo3wmxEM2zNAEmjbGaoNQegNEDcp2f6vuaHxBLYhshzZDDDIWdTgFIYX4ySDMvE4HdjsSMUdV7yTnPSz4u_SR8g1S1ews=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN5NgyE0zdIoJv9pjHUI_bYkeqJTlZwmyyC8gJu9JhWbFn-FU9BTaSL3wyIX1bbsZa2FruYVIHtV9X-o_Xp8FvA8pgHguwk1ILKW3amLxkI7dPoqf0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM0tzKtkOGRJNDa_9qL_-pr3QQE63IWWwb8CSNY9tSS6WgimQ5TW6_8k0g1nR8oTzTqXdI04j4IFoOh_fh4iT-LXo1-pI48JQc-tDAlGkLYKsM10DM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMvSHG9hjVwqLZumpheetiudINzpPC7Y193sBknKa1QHkHkIjG3FyZgY6oHsSX5fD__LbdCEqufgRTkCyE3KF5j20wFD0yiWeRiKjP_nC61aNSeJ8o=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNvqkEavAbCOU_PjiKLMc1JQH4jqttWAfF1_qfO5KvXbECJKsYA5GSq4Aw5mHkpb3dHNtNB21wneYQRat7P3yymnjPP9b8K7MSxgp-hkgxsEf03YN0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPe-oVyOmGF734XJg9iTn1YNWCWXsw9kvnOgvLp4D53x6RMcWzyqnwaxtCQrJYgvjF_yZBiG0aH1656gw6-dCatBnElCHRaHPMNhavYm4Hrye4ErPk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNUzwMscNAUIMCirntuzbV29T3BTOFHcfiWUI_RAZ8pRg7JEsSRV4IPfJZZ79xQjI6JmNbIC9AnREAAsvdPbX_vxS6IPTFuLoNV04nbM6BRlehwc5E=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPo4Skg1kGEE4zqPhyRmqXX1xickdWCSr8IQqxWnS4dnVNXgyFLvGxv4E_wEMmYNQd8HUsl5d4H90BKWBoxq3gMZGQJNKUbX5xjIRf7_LyW9AzgYws=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOWM9AR1uVRBcBrlVIbjmyZgoUS4fPbcOPquyMWCqobkVjcEgcZ7TXQc1nCML1VqKvdAvjKqacGpqqXh3ZJ_hNJmLu36fXLumULBuIFrEpVManIjmg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP2vEKaYkUGQzPHNxNJf_rqHFdKRic3iB7-vYwR_AqlhFBcYO7JvUYcoXW6DmvlrIcym2HpktOfpZeQRS0TKVgqLSFO-PK3rDTu2X3sRWhUD32LFp8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMqrDJzbkr0DZ1yK9Trlo74R1gVvPAS4enKG0ie5YxIuRlrr-ADkfn2Dc68XzmUfn011TPSiSUc4_17c3y5HcZW-NA3SL17muWX1lAyo79x2bcOEnc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOpHyJAfbNRhYvVrEw1dp0i4aGsw6bSq6pkxAeu9BSESxDT3-K_0RyaTjwrlp4MqepjuLyOBWZPRHYYI37WNAcjPPzaS_sQiJjZ-EgRWeL34flMcIk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPOSZmgt7AOi_5o7XloenPD7_js-cF4dhwxPa9We9ZzUT7SHNNs04OFzEVt7YqFkGa6XBKpJONYGpw9vZS3esDnBQWeZ24pUGcTi86GJ0XXjAsWtjY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOSxTy7m9nvc6RWpBuoj1rKGHGyVDRYiJwQAN32_jyHEdXnmFUPOIAF0cqV9KpEvZUlHzQvNuZnPFRtoPhCRmo44ZPCTQ20BPW4FHci38ZgD-DpTIY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMb4TpuTISeG0k6vEVOefgCM_k4GusRkrIa7SmvHBRdoaHxnx101VpKovENnHTttIZNwqcTqlAJDmMMjrbEJxkjJBIx2zkTflxtp7-xpogydDJ7pVI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOGeCCVx3-UBo9HpRbYTd6pj5EV2n5ZguBuaR3TWxuqiw60CmdHUguO5a_jWkccGPKk7BrfrgQi4iOEiuGyZOTN2f_aQJ1MBSO-rBgBTshH3LwWxSA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPeXDcvo_maiH0zZvGao8N4KPfoNdBBvXmzr477eNVxFqNWe-pRPcADgOBBTAu3Hd-BA2mgny7Eoaa67r1jo4XbCv18ky6ANIu6tF8N3Nim-VuKNdc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNbMqBU8IwFgIfwnX7Rf9fANz0qlFptnDP421nDdDgyIqJINdVIGYopCQIPOJ7wrEmlzBwjgZUUL3B79-ZJbxr2BmbFEXPAqLHXr3KAAlmNtcqWUXc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOa3-cngbzsckLpRzKZpoATxUtE0ISelT5J2qKZGzjFznnv3osqhxvQxjZy-ZoXrJT4SxLQEFrDRP1wvvp_b0GFSIdFiMZlJcvQK3Rf2FH_Qf95Rlg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPiPwjCm4YbUmOmBGd32GAWHMA0dUKQsaFDIK01Lt0yexB_oBVMJlJ6f3_8knBx0Bki0kPTfDzS0V6geMY4gsRMW4j3pBwiAzZaZNPpB1L2ET6c7r0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPGBpmt-BA5kFrxvv6MtjAJNGRj5PGHIGU_4hvD6mya_hXy32qMAX9-51E1vSg7g3xAIHefAYm_hKSv0tBc97CvVpsPIQ446pmIfEHwU1dYAGco44g=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNIX22aoiz1W8992O_IVrO4n5ldo1qNFlP5aS23tInVSH2lzMQugO5SFy1igBq4QttQ6VYutlqz-oCxsLts6PmwC000yYraqPc5hAvXk1iDKDEtaMM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOcJGFQYHLuM1X6aDQe3Sue_e5WeVvqMzKaLs5bGKSbxccrrdCllSDUTVkdw7XYp1PWXBa1kv0g4DEyn4ftsf--GZW-reKamj1Tnm_K0ahRcNEm-q4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMq8XsP9MbevtnpTGIghnWdrYgIXHnYihz-8JLLrcaB4Gby1IzEYlMQS2W0fmMp7o2maS74bM0c2MzJravKB33tE3co9saCFha3CENqP_xxxQ2lY2E=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMrGz1WuF_AKh5P26SARrBtLyJCoxWWUOK5gCp3lprI4pwyG774sOCNAub_jxgNIxndJZqYdqOFlajWjgYoc3WiswhIL4ZilEhRgfc4GLdGA0rsKyE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMMUycjFOICqIocJOW8iMWLyk7yCIJIdHbfKRVcyxynzAtIAvcwogI0LWMz_qk1DI1yFV-2RF8cozbz2p_gtipbJlao99YvoEnmQE5q4-05hibkjbs=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOL_YdWg_8wFy45Z2KHx33v3Z7JzIaTNimSKArxj7SG5jpkTxcmmkeS7taQemqe6xForQ4qReX5k3gXPiesQulzBrQ2ly6CGZyJmu6Lu16Uy4NkSrs=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP_fg79Id8UxFCxK-KqltcEaSFPvoz1gRXnfK6nNt6ALKMM7iH4Sshs5UiZl4HwFvaFtQDifXrHGOb2TdUbhmuDfxY0piI-YsmBvv5y852GOfP1nHw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN0tpe2inxDcVmeCKjhf_fHJ5Rn-BmrEE0uthPEX9amIo89Bj-SdH68OYDbyO2GK5yPWuuXxFzX0SlU57nsz9h5AMu-EF1xRDCtmlkAwOx4o2po7Iw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMaR8favWokX97lpbvWUhDl9faevnPH_waduUka-MqNP-SLLvnQ5D4pwLwI4dDlBVp7HClkVdJj6LolqW9qaxo3tyx-RkO_RrXg__zlx6EqzyziIuQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPXcj52Pjs0zU507JVjzYw2tP4pLb1LAQ-2Hgv0UYldCxQOPrmFn6fYDivUFtlD0KtDIA-7CjZSwkW1Ai-97KgDqPjOVwTtihrUyh-yqveXtZ6bCWI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPEK_Eg5POwsBxPGaS_t7sF_CD9OkLGq51BMYxNdDg1AtiUZOeJWBCg2qOUz9M33qrJjXi4x68nIb6gLiUqYXzuE9ydm37J27Mg9e7yJ1F-9dQnxX4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPsHeBAgXgQMdWoIsjgTsI-LOQH1RmoAG6DUeMsF2xdxQZcLH3CYzB3U0vnJ3OayJwrIkD-uCTpDvkqTS4Sbc8fDh7Qwatx0NuWAZZvU2ojK_KJuZ4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNCWbO-cMA4jhuB3aysmRU2Frwje_OflFP4I9-3w-J0iPbhAWVKsi5B_KgkXWwUw--ifOaJmyU_C2LSDjd44tk6mFItOtaz9w_ZtxHjBpr3t-qckXU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP-ll54ezqMfExmXNVkghYiZsITV3DogdmL4ZrRm4_P4bVfPJEgi4R1xqPalilaiG2zKPNkIIYOtIIHI2ZJlPyRRYJRwKNkGLhHuXl9EWPzaO2XkUk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN-rlqfslIjkK_gYhTa5T7QPKkLruZP3ZKj8Ef5aRrCv7zBQjnPO_zfK5qdSCQj9yU7B33z-AExyxY39XkVxSERUnVNOYYQPuVvonVJP7djrsq8kRo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNNxakTY4B6MMs-JwxGh0_5tkQjNISDUWwxVFI8s-ZHo-ap2MYRDVVnpE5Z87PcVFghCKOYb-yxjRenIIkwgmNt4JKHNEBBTbvVkXhVkrwqIbOOAVk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN4NPUEN1XV7m3a12Qbuz-tTH2_q8TTmQhJ2SL1R6Phdy1TF2f_-3R36Cfj_EO_mvCXPoI2pDQwwjwHxUi5pDcbMA23qxQHqG1zZCVJVFeFtZTbmoc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMCish9t6Q7QuGMGxy1M3rc1cI2IKyDfBJGj_cpkqttHbq6FZydn1OkGDyfIOmkwejAABzxeztxpnWnnwUb8Fn8HnfN9hnh25Aoxv3U3BTBTmx5BNc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMOwgjUFr4k1v_1M_GbuWEStKjyNt34eNUzxoepgcK_QMHD6e4I5LgZ1BUaM5HOgEcqo1urntqAD1Zn6fNIRmdx3TwcFBZ3_n-cbw5Akrg0621GSyc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO92S9VtZQgULd6doSgnL6XHlgK25BdLAFgkp1NvoLjirShGOx1JQ0l0MXhlf5vbPfF9ao3gS2-axYucXcHQawpRr38lQNp74Nq-T_5WNoR_jr7pPQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOeUhUdE0kWpsrUyu9196JBKLxHZlpnCgWErQNp1HylRuIvM9CDJXjt7bNrz5wA8n4aci7aXjGqJea1zKbg28AosHL1QlHKgaEfDJD-zU1sbaA9nDI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOloq2HU24yvmAAQFsMHIwCd6E_HK7B3UGQFs3zU1Um7l7hlcupn5A035RRXMrikue01aDuKerjpydqjt880QVEowd4D6GVVlyy3LfCt4CHzFULHQU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMepjevXglv7lJxCWhvDzLCEHze3BUOFAXGmGqhw8yMbl7prdaGpyy0lZum9ELWf5hRxs1HbVuG46JEOAoQfaR3wk195h6BpOZwqtOUWUIA-nmCJJg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMznNOFem5iBcUxEKwtyNoI--30Fz3YwRyx2w234Jr6JXPhLshnR7FPD6VhCFKbca9blhh7fsRMjHelOxcGzoE0yCN90FqL7R4gOGc6btgPI1dzaWE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMUhYwzQOrxS3P06pbsqZh1Mb2vHHkhfe99xzW4DY-ahsavjUUYsMXI2X49HRKLHpG_xu5NbRtyIuoTvsUAEyUXEuiKod6abCjIdd-_OFuCAiSngbE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNAfg-PmETF0wQw--OxBurlVgFoEUlF8CFoB5CnpyCayhxlkmkNqp9KH0v0EHgBICJrZhjZ0l_EeFxWrq5zmNWXW_3jNaZFkUo5tWz6GMH3WkrxEBE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNpvLYzp9m4tGupEa3pXXSlb_GnmffvqZ1kDaYgH7bwx91-G5tQYKbv5ksVnzGxO2Qgl7JGpNi_qUyK8rJlT30SGz0et2Sx7FZJNm9czQYTb4A-hTc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPLWOzt7n5mWoTo8Hc1k9fWgROGgL2LTf9_ZOBbkbQmFh9W0QbKQ1ro9GH0dAyVW-qi1oGxm3cbcYb8VL2y62fRhtzbBQbPmzvyAoLEaeyalrKUulQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO-XfI_7ZIR4GZx_Ieew9uppEOmlnw7BYB5FcitsowU4sTs2xWCN0a2akewQ1z39HGP8Xoqczh5MVtV0EPNLzTsBFe198gd8XSi7viAq0izv65eXfc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNfOyBQNUgbKpUI6Q3HleM4J3T1yyzhpKF9QLfGOvvvX7yrgMQf_fLAI-pSif2NJKTR8Hq4pxYJkxjm5M1cHX6lPGbrgpo3tz3Q3H4Af2VPw30xsVM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNN_-lo71qhUasIGpDCiH0puwhHOFgYG_7RjSwt86NAdPYhMrasCS6MDApZiukGd5Er2fwQprc3elBs-1a_CVEmkDLfalsxtbztMqgqqXYRWN0cbY8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOQ-ssDrQ2NbEQjPmQpv_G_qUy55U_GezBbCD8lKL3aFlwYCrQc8Ook68EKp7AyZNRC8z5XR2cVHULwF5_ArjQ7C9DGKTHi6HcU5zi_TKr9TzQVbS0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPaJgK0DfkbEi5NA5Wsu_mGFfRsKiMB7NVdLDJ12jRW3bZBrnLUg0ipvd7uNJ1qX1aoRQHl6wFg-4i5go4xRTGCinkYcrDEBZd2ks1Z5AJoOSgKrW8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOeePo888ovOfru_FcafXzvLAKSzYLtgJK_CpmTJsLENwa8dyXhoi3gzKob9GWhKub4T5gDOc6D8Dfz5kifAFCTMoYLyNafyXbMXIqeNZc63i3vtmE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNfymCBmxOInlzfS9gsIZE8PKOLRqAcxxTcaysYOSDBepL80CIi-qNKjRtR1X8_nNOIlZAS9kyZaw6yxuzJxLvGuhWEmW7DW4WdK-d9Ki-kI0MvNoQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNt5FosYMTb9kRwsGdXzrA9s_ZCV_5q8IkEMvfhWMrm-jjeW9uRjSHVvR09SrjzyHg4lsAZ0bCDTiOUjlz4gJ4ctsTHbQE_HpxxhfVwZ-SLw-W5qAQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNYmFMvxZ19Z5pF0mOqLmNwE09FPJ6qpm7jclLbg21SdwLTUwPaZS6NGmpyc9-D3zr-uAc_E5-vvSlOy22o_P8n2jSUfQa3mezSM1wttDPaFAtCP2w=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPUuQ0yDHpqkChkiIaSvdXThwVc1WGfK-z3rx9wVK296rz_lFbdn-J5sUT0fn_5KcGIhz78Vi7IuEGBSOjRJi9UFG8KMCmKr9YQttX6xnw-k2Qm1Sc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMFF8gcbiYiOyZiFo89bBFcea0jWxwGCXzSqROl3rR_3L63Z_7vtbFwUOKa0Uzz_8puzs-Uk_Mb3DNvIq0Hm0Ccukf-6JXZw6iCDuuuSC27oxBG4JU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMNXcPIEqA9PyY7FLI1rJndzluzW8f2ZcmfRF7WqldrVMTELAdsIgxRnFLE_1ycoZeBvOAGlW1I3oEaMGw9EcRa-PNivIb3a8tKFQdeQ9TVFR8wtJM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOKevtm1V-BbXkHR6hD8OkVRoRl46zLuC-ZGW4-2-_W17_zbE-MtFi5EHo0YTD1hrH4wsUGCuPWOt2xoaZ7c9DL0vGrPx4u8O8wbUSr6wUy_HurvM4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM3Fsb6izNmwi56Fxz6JDc33814mxJbpJFMLbrezSLdj2m3KuuelvV8H6aC2Uo4LtGs_3ypa8J3wfyhOhS09eS3QlLsaKhKcK9z-QunzURSlb3L9OA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOxQP1pvPmspMRXUw8aycqF5XySGfd-S0gtMbxw3qdbeqmgNQnObiZuPMY6TCkayI0I1ETE-LTtuuffADVdrtOEjMLpAzR7tkWUcCeD62Q0yU_IhRg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPCcwMDmz8tTSJiiz_rSr00vvSW3IapP721IFdrynt2kphTIcDGGAVxdqEtqmE99cezoPrCF4KCd2R2lB7bhaZmWgjbQnp7_y8cRNA7Q0GKyEsIUYs=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMJB5wyqQjCxgrcD1Eiu3LsmkcSyY_kXmkNHB4T1md5iqoLVKJtTbzX_fWz5NRs_lkEbJThKFQi7woeCR38vCfJHRd256aPfvzWm04QUFdFnn4eAVU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMKIKGtWMt33yivJfAzkPcCuWcJwCqcDrFeY-w1wNoCcS-9aIHVkKnIJxo8zgme65Km27BqrjQZs9TVvJqVcxxa2tTvlO6Iq4aCXsGBps2y-xIuErE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMKmpCFjHgNaPbbsv_vDTmc8e_97jMWkDC7idANereiauDVpkG8C78kPC5iygXYcEFfZ6s3s4ke9iLtXzp3VvGXfSFC7DtNuxPcZXj9rLGk8vH3yno=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMq0fBVHcdrsyq_TjxkWarKpoL4Lokd6Dn7yCjguRpvvglwWO4AwabzWBpBcqak6POP5zArU1Ru9D4JzejNzC4NWIybVOQ_ADinL56YgzYWbcWyJuc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNiLORAbBoJY4xS9GI4VpOkMWboHyp70FlicU06S5A6Nxby3jtCuYlm0J-VbtoGcvXDfALrHIuhgLWUJ0gBvn0n7MdmcPtJHM2c03D-0CPDy9_pHJ0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO5rtmo4JUFXMlb0GYQexiSdfLxVM4-j8y-tHOSUn6p2ypN6oKe04KCltpM4fIAGV3IlBxAtklJvUjSrR1A2p1HO6sDrssafuIlBRQomvzyZrgeags=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNVLMnIjx8LtTUXmzS1rYTNy-Ra-T5AklJxbQ1twmBLm7_Q-ZPeXBqyhqU37b6xylaDwkxjXqzXm9D2c-E7pVTGyQ2Xn3RtNeZ3goMjie19Opcz3HU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO6vB4MHEwEmUVsMJzEef15bvSl3lp5aekkHsUebO-mUewOHlhvsS1AUmmIT8JG337K_jeWDMsodbDgWTQQbbemC20wzrKeSRr6d9ZNcd7HuJ5Iy2I=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPzJC9FQVGByd27aGQPizoD6u3Rztx9E2BRXwDnclXS6rWyMrs7y9FLXRYo8WALn9etpA2Jek3dVGaLh21m1VGzmxia1qRB1EDfLtQvNKEW3lCmpz4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNVciPG-mYKDZ-RJtBM3P15TDm3dETFn4fiu-h9gZzSEabwvHF6a3mHs1EDVEcw0tzPVZbz0898AIyyuso5eEYFoJZ3MZ1h64FrfQ8wSPyZxfYA1oA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOYvbNnuJrp4fldOrOMsMKA-JfPBpG_qhItRULWlxyEcyf6V1LwYDg-3OswVKvUfwPC05NMRqAxoblrHcVqEOSfxyVNAQ1SgTQ5PII3-a_4Ova5Dlk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOejYB7v627H8QfK3kHfxQlxJ8dUnK9_5v8_NkmJ01B_hKHT_rbL90zHX9RuuWjiQOOFaT9z5KqrAc0ubb9FLmU5FmrF8wXX2drEB7smPzEp4C9vGM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPIJcdCAgVoOoPdlPCkeVOOsDMJ2M47GfLN87rZbdkYVhzVP8WE4IRO2plDW2Ll1p-fYh0yYQYCF4uru51QtVmMdLqC5lyTUPRkDMLsXb0Q3v40MXM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO3ogw539-MOUVWM8OdlrJcZ_fjEavCRal0xz-zmpXAjA8COzQ5AUdGuV7hGgKxpOOxFcEiQ3eTajw7HRPcmVemHrjOBAkkPgsKX0KB_rvQT-Xek8M=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPIpRzfkgv_o0Dvq1oy7SDZ4k68H7pbaAtUHk_3yTxqYruZyKN3X_liWDoITFUloBQeC_LcoGX2aazf1jZfx5bndecPn-oerUGZGcV6SyWRs1znj1U=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMAicZ5DuTxhKEiHFKg5YzmVY7o_K0fSitutDJAwX16PQxoDcAgyKrtiOhvK6y0ENGM9Ak-0h8IPvVUzl220CofAWlGcvBXH9cf646w-SmK0vcTwHo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMprWiFQUOrs4SkStWjWyq9Lsx5pQBDiTxJnpXqw8PzfgQpNjupAyt3ZEyFMgu-suEnDup40vCTG-8OxkMbxw84JvzMgOBy1yW5W4lsXNBMtSu8mO8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMZquCDH9CicGJbJxB72I2dq7Fq5neatRiZ6ZDhNUfSYQoK6llaGh7OT5hJG08nk9nkEesxovJqt815AyRjYDlrqIW64Jn_Q5NwuE16ttPSXOSq68E=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP2C3ecOSihjxR1h1pbR3m6Nqjb4CNn4i_AvA_TFTDNvDoQNCqD8WczrhyDZJhmfAEfnVkCMkkoCFKYcC5MjbUK4tHAZs6CciBN9pR55uqbh6iXuAM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPS6XsurEpR9Lw4xfRZZ4uCzxsCMaxiprA2g8-KO5EF59tT8pJrPIcw7IvxhMM0NhzCdCcObb3guGgdUHLWErtvssl35Mn46Sbr4Vn6Y2q_YnwkbPY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMVEPDb5pEMDtGMjs7Ch1zUCHccw_Gynk9prindIy3Y5UYSerKziFsSAitO2IFSQTnOfnbfTmYJ42builpBAbQcUllqRTXJGpb--z823hSzyNcKTzs=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM-YB6VbC7bnx8zfDPflHqHsJHh5SKD5V_cdi7gJvzEtH23Lbe4Pkv7fjS1EtRCt8OaPUWSBkoeX6x291AnIkPmRpvkz65SU_PHzYIuEenWDqO-7XI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOLUpMsI9Y2VfmdeNHh4sW3OOl6uiSiwVP5LlONwzCZjt_bXH-71upsVlIVFWocXoWI39_kYA5I9gOsV9vfEf-ipoR4zCJlBNByrl2jmxFmzl6p2Rg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPpnmUcLnXQZ9QotCfVPjfy_4VxNpAJMsp2DfTjImT7OLGxHaDjxUM2ldPzSaP4mihxTd-NnJC4TP41bwcjEMLlJI9BxKLCsRGC7Oj5J9g0Au3B2Lg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNFg6JIS9bEDEuiJls7TeEdC3AMSqMLcnt71ZQbS7lfRv2vaPNugNTvxzURJ-EPFS8tm_IpnKNGh57pelvQCMSdpc7gs3-hnxCpCXgBO3U9xh7Y0BA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMmNidOWY51t3-TWRDk34E1qSHAoQ-bgnU5ZBUFHXgAO17b55eq6wlajON9mQRYOhzzYzLjl9HIP5CzsRTJWeT1461eFOdxr1g6cXU5FVgqI4gkob4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOIZUUckgiAyhCwlME76RvoAYt6ioHeC-hu0VEvOUhvqU-jB1UWbRWrpaK6O2Blarb6uPKVdJnmbKEeHzfGlrb42J7-hl-D1VnXk0-m3ptZqhoIitw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM3r1pUqLhkTZWw5JK4Fx4wVXw62dksGqu1vAHlLoFTUBjDcwtzY7lLGCzdo2fGM-cONSfyW7evCe4WJKM4KsyauCKO7p86O7TL1wr9pbqHP4YoqaI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMjQxuQkupnU5B36QwzwLSQljAyarIYx1IvAJrfPZbI-kJ1n5DS5DPePPw2UD_SSvOl8mFGMa1c4wkLTCFIuvxy2Onp2zTnYALSQ86As-VpIc6kaKs=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPOrUhukeEm-DAY-Ey7Pg_UqoGq91mn9mJiMjyIDi4gWF_cWSqlj84rQQlLNNI4TZYdUvqnZaCw6lWF2uE-jqD7WGQazp8G4PNcOOKPQHKaeXefXeU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOi75WdlC-Pl2PhOJkp4pPFc14fHHogGDobQltJxZHX8ghU9DHNLMlR5LRv9mZS-Pu3xpUMxpuXBn0VQi6XPVlXuWN76i3KFURLrvkYxP2OSuONUzA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM9MY1gkzT53RBWlpSy6Dh-FQbOJD9Volg9fiNlg563CEqjYTPm_azLdzN2oOyd-qqusOv2ZjHJm4_5T9_iQi1Kfw60arqe93ofO5XWgP7mS3OVHnU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNvS5ojQYzrkh4KNIPT3y3h4rwk4oYyE_KMJM-vMvUj1WPL6ucpSgStXeHEsED79jmGZEg4wZmkSgfZeVYcHN0Xc1f1NzASPHvs7V4ay14vXm_lyjE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNvr8WyLH6H7g_Ho47j0EqGjFGOG2HHMliFrKla_1Lce2GYoo5jeqIKLdhdBc-cnwdtLnAWxc2xfC2GmzUAHPXXwQZtuYZwo853HofR0V5ECmlndXE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPSeg4MeSDIUx_TV97PYzQztmlyNAHqEWKaLhTfvDHO1uydd86XU9-BgapVo0K6UK2An4bs5EE9HlpaOfpmHIWQvQwGGFWJ9jYMrKZG-OmcAddYS98=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPNgjYR-ytTIp44rV8VqN619yuGnbpKJDhdeMZ92kkKMAShNjWIA6-W9Qh-nHydK4wcyhTxHxXZH-kSzmIrqBNV8zyBISIcyzuTWiDsoemF6lF6yyc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN3kDRuhUy9yC6NncI-hfukmEgq_0-emop33_NCvhDhLZ4tpjvkw3IxCh6jIEfUYvYtunOKwvj0z9mQma-hZ_Chc1PcBwN4hjWkNxVSwMmz8bF3SjI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN8-jhyCSbbXlU4Lez1Nquhh8XXrz1lBTJrDLnRXri8YMOZwq8f5lAh3lq306fVmdsxsbPd58tBSXml1oDbzrXtRWH8u24BMXtVSPIfFjCH_-hzDZ0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOk844jkylRKjzzj8vqXNnskI-KzIJH0ysu-gTm9GNFvwGLn37UqvzoYkxUhCdztiExnARPd4dHNrU2n_PjBoInCwrsTxQutW1l2BUjNNsYkILtKJM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMJ2g8K6_dtsjqRkO95J6IJu2eKM2ajklb_0Fm1nT1YoG4rH_b7b52heLhPppd9R2r13Y2WlGsJkNnMtanp1w6YlRpdf2TLj7wgfc-8IIXbf-2WTvk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMXZLwxwtS7uji6tOuPW-gdkC1bOpdMjrh6-zqK0DMbY-3w4-s9A99A55WFDi57HCtOsveAuVNBtXsop_f6-2za2Qz8P75i5bZzDWUb2sZdM2iXaxM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOOOTc2pysqgFXcqP7qJSAVXhqFgjieixkVvGYAJ6Y7FBMfTuaFpsYBjyuwqptwdUTkBRDstjgiWFF1VTAysBTM8ST80aH6nJWPXCok_PT2miKrnuY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOHztsxUvF0ogYadnoCgbLgAPQw_QoX2N26T375dRei8gomtw-xctHrjpbsa9kn6xSprZ6G1wwn0g-h0j_M9L0nXNPiVIfzBu5p4T9B2c9MHpYtnLw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP7SVp8W3zW54KSR_jPJvdXt4lVUqQdE3M2BrRD6fCBzLJIQsMQ9w7rAq0j5XAahBGETgtWFbg6jMQKOftkDXyDw649-nKa_xbXoy9CscWQMM0M1IE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMNVmPl0jGF5kJFbgNu4C2PCVWkVI9A2vKUpyG_palxn5eHd6g98hfA4-eXJUJoPwL59uLmUwKK2tz-NGhh3LVRJY04zM4A5-6jJ9q63oF2JkfvsRA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM278OUv1TQyUt6L4Bz_n4X2wook2cKIFLd7Vf2fHkdwLaqIm8_nVAoyR2qDcqBuA9d5mzztcA2aoCfsbkZnNkLheJd6mlrSOE29pOEVqlAhs7-F1A=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMIciFwtM15r9P2e_JIU4C41QMZhqwUgcLds6-EhTnrg2CMPLzht9nZAx9cf6C8cWfnJBVKHVSN6yFUQXvtjyCJXJJop1sKx19bD6Whn0VBE2p3mPE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN5ao2_3B0rea1n5oPx7L8wldm87z8BI3BFS00q3muT_SJjJEaxmWpfi0_dNBzLmhu1EletZU3iT6UAPlVGQBYsC-VV8-YUcXVJTx2Mf4xm09duaBw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMUQ5mkCh5iDeJEKFsMsp6tAQUOaGknfDY8JjuovRE-HgteSvVghA5x-aOv9Zo7vGhN4Lib3SOwbVQ91sW-BmlMYFIFqRWE3jy7oqZ-SmvTEE1gl3g=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMIJtkKZRIrhH6FyFWwJaate1Q7skMoONR9iSSm-hAl07Dv_pFkm8pcwf1N79Nk_-8I_vHnNR2FlHwNRSQuaVyg0Cn25m3oJBmwG8qsDsUk7AqVXcE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMaa8_vUXmeCsBUR4Tb7RiD-JPPsbWjwdBxOTfT5sGNsfqOhvgobnFGMjR5rFHHltZGOdL6zlyz-baxQsrgsVL8bsj1vP6O6UD_ruRX-kzlgp-SheI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOvSJ8HhzLjXQ25IkKIfC1iq9kqRNp1ZwX8eyKFOZ6dI_XcYteIws7aPvQ2I1vSqnyy0w8tYBBwMS5Ob3Rv2Y5m_jOJBihL3YdToOkzeUhPAcztOX0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMkU1doohgXZLUuqJl4rU4eqTi3Vf7zEG0s4LCoDXiVjRXzw9PFkG-xRsNN-3a3dKHma1f0ZdVS4rHnQ8ypWC8P3Dqx0WFs0tLc162GOHNnCMc0lIc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNUmH3QXnID-cL0Qxj-2X5qL7NFvHh9qlI3PWswcJiY3GIsqWa4fLyhV6hpsDQgydMR-MBlUa9URu0-zwlUOkXQcka80kZjtvqw6VCUMbfrEeWjXGg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPB1O8M_umLFIEPx0ck6YNeZcLLBgZ91HsGzMkj6mqclnpF8xjcRlOsOZVMu8Xc1LlpUJZs24xCwyH46D_15QksXQnkC5WhmiTXQocv6OVbh-iKpwg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNYUFYAtxXNpmOXO-xxblK1qD_cpBEfxQyLW3On-sKKpRlPEBq0Z8Kb_YjZnGR2iboNHpAngwpr7MVtd8Ieh082cET_ZuDsa5uoB8SAroXnM-h6hxM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNHPksJJUJluSzATQKXSyvibFvwwWd4Stm94_bi_zmMvz5tcqLDfmGAh726CeBDlobk42VgrcbaykSR1hau-lMKvKBqH5HtIsIhFF45bcAAsyl39cs=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPp_T7lc-FypGFDDBrdLNmkVzbZbKz-B5iqj5rD1efE59ivoSWoV0DvW86KXa4KL8TtqV09oQvuM9TfHgx7QQ_9tzaoqhyKzG41ISpLsNaupsIk31s=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNd_Nhie_aNP_4zXXnP98813WdY5LWQa9bKI-VL-65YrMKlUczrodzkEmXMH2NGUyFFvXcLY1xAOaqXoF9TSWGut0KGZBl9-tDveRtb0cepdIT1Ovw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM6B1MxcNH2fiOwjAKzgDEne87SANjGL4w7N6GbAZJOP3ddnrHoob2kpBGeiE3z0YXIK4VKdVRo35IU8AfEbKdHoTjx6giFcGi7Eznw2237Kdoc9yU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNxZJ_fh7VAhcgSoSKatbMeBIFLTVq1F0pXR5m2agj3jnpozNd2jB9JPvseuWYqMWrbSTMNENVU3PEVhiNG4P4iBWo-WLaYKBf4uDO81DAHcgq2jAE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMi_V0ytdzJU8tPSFGMdt9MAQ5DWk6UrjrdTHq7GYHBUgFexRiL4PgQTyD07VIUN3dZU-hb0YJOXa7R0siru95id0Y3PbBHNjEdx60_yF1gQ9y1dm0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN4VAtTC0kUXLSN2xx0AKHiGUNdez3GAzpl7ZpD98szv75FG0DNf1CfnCwLd2dff7XvfmDfMAT6cs50oxMw8ZX2JlSb0qZrbDrfBu_7VRbTlgTUZs8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNOAGuvt6YLFIbwpcw9F1Os_trCPmG7N8hDnCMWtlF1RgQd7mRO5DpZordslOTNyI-WG_Mzm4ALENHI3SFxysRiupSU43xK83n0Mjg7i_iqNZs9cPY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOsXfeISFt6l12fgGsaYE0uvm3qe2LTfCF8JEAT88BSolhks93QwAULb9XSPIL8q5IgukmhHaCEQkpk77Sv6oI8iw6lnUGrF3HIQVqb6V16-L8bSkU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMu6MDIOuv_vXijZRuSn6Q1yF5iPhLsCGEi4mZR67-Ix7ZHL43pCoyQ-Os61hore7vhAO-yzCes8nOKTW9U_JPd_J26rtJrKOET-f32RRXvNHJq10I=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPPYvJIG_h410dhJtNG5hJcuCGamrxARvfwVut6Cy2cwvX04FWeSG-0aYBSzdDUDPNpRTNDa8HnLimbFQQ9ouD5sgHKbhfn74RZsbTxOhXtxLX3rRo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNkgoR4TXrJa3aRFctegEwk0Y9Tv73NRuIgxmDyWRvo6E167Z7dU5HVBEkPNJlw36nbrdqdq3PUpqGwLspvo9i_TxawRMX26R4xVGbqD14eobgdgMI=w1920-h1080"></object>
+[/fotoalbum]
+    <!-- 
+    <div class="post-body-content">
+
+
+    <div class="tur-sayfasi aktif" id="bolum-0"><h2>BAŞLIK</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-1"><h2>1. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-2"><h2>2. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-3"><h2>3. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-4"><h2>4. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-5"><h2>5. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-6"><h2>6. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-7"><h2>7. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-8"><h2>8. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-9"><h2>9. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-10"><h2>10. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-11"><h2>11. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-12"><h2>2. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-13"><h2>3. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-14"><h2>4. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-15"><h2>5. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-16"><h2>6. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-17"><h2>7. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-18"><h2>8. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-19"><h2>9. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-20"><h2>20. Gün</h2>xxx </div>	
+    <ul class="pagination">
+        <li class="aktif"><button onclick="sayfaDegistir(0)">Videolar</button></li>
+        <li><button onclick="sayfaDegistir(1)">1</button></li>
+        <li><button onclick="sayfaDegistir(2)">2</button></li>
+        <li><button onclick="sayfaDegistir(3)">3</button></li>
+        <li><button onclick="sayfaDegistir(4)">4</button></li>
+        <li><button onclick="sayfaDegistir(5)">5</button></li>
+        <li><button onclick="sayfaDegistir(6)">6</button></li>
+        <li><button onclick="sayfaDegistir(7)">7</button></li>
+        <li><button onclick="sayfaDegistir(8)">8</button></li>
+        <li><button onclick="sayfaDegistir(9)">9</button></li>
+        <li><button onclick="sayfaDegistir(10)">10</button></li>
+        <li><button onclick="sayfaDegistir(11)">11</button></li>
+        <li><button onclick="sayfaDegistir(12)">12</button></li>
+        <li><button onclick="sayfaDegistir(13)">13</button></li>
+        <li><button onclick="sayfaDegistir(14)">14</button></li>
+        <li><button onclick="sayfaDegistir(15)">15</button></li>
+        <li><button onclick="sayfaDegistir(16)">16</button></li>
+        <li><button onclick="sayfaDegistir(17)">17</button></li>
+        <li><button onclick="sayfaDegistir(18)">18</button></li>
+        <li><button onclick="sayfaDegistir(19)">19</button></li>
+        <li><button onclick="sayfaDegistir(20)">20</button></li>			
+    </ul>
+    </div>YAZININ GERÇEK İÇERİK ALANI -->
+<div class="post-navigation" id="yazi-navigasyon"></div>
+
+
+    <script>
+        function sayfaDegistir(sayfaNo) {
+            // Tüm bölümleri gizle
+            const sayfalar = document.querySelectorAll('.tur-sayfasi');
+            sayfalar.forEach(sayfa => sayfa.classList.remove('aktif'));
+
+            // Tüm butonların aktiflik tarzını kaldır
+            const butonlar = document.querySelectorAll('.pagination li');
+            butonlar.forEach(btn => btn.classList.remove('aktif'));
+
+            // Seçilen bölümü göster
+            document.getElementById(`bolum-${sayfaNo}`).classList.add('aktif');
+
+            // Seçilen butonun tarzını aktif yap
+            butonlar[sayfaNo - 1].classList.add('aktif');
+
+            // Sayfa başına otomatik kaydır (sabit menünün hemen altına hizalar)
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+
+
+    <!-- İLETİŞİM VE SOSYAL MEDYA -->
+    <section class="contact-section" id="iletisim">
+        <div class="container">
+            <div class="contact-grid">
+                
+                <div class="contact-info-side">
+                    <h3>Bağlantıda Kalın</h3>
+                    <p>Yol hikayelerini, bağımsız yayınları ve anlık telemetri paylaşımlarını resmi ağ istasyonları üzerinden takip edebilirsiniz.</p>
+                    
+<div class="social-links-container" id="social-container">
+    </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const socialContainer = document.getElementById("social-container");
+        if (!socialContainer) return;
+
+        fetch('https://ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
+            .then(res => {
+                if (!res.ok) throw new Error("Sosyal medya JSON dosyası yüklenemedi!");
+                return res.json();
+            })
+            .then(data => {
+                let htmlContent = '';
+
+                data.forEach(hesap => {
+                    htmlContent += `
+                        <a href="${hesap.url}" target="_blank" class="social-icon-btn">
+                            ${hesap.svg}
+                            <span>${hesap.ad}</span>
+                        </a>
+                    `;
+                });
+
+                socialContainer.innerHTML = htmlContent;
+            })
+            .catch(err => {
+                console.error("Sosyal medya butonları yüklenirken hata:", err);
+                // Hata durumunda boş kalmaması için manuel bir yedek bırakabilirsiniz:
+                socialContainer.innerHTML = `
+                    <a href="https://www.youtube.com/@ferdimen" target="_blank" class="social-icon-btn">
+                        <span>YouTube</span>
+                    </a>
+                `;
+            });
+    });
+</script>
+                </div>
+                
+                <div class="contact-form-side">
+                    <form action="https://formspree.io/f/xnjyjwnk" method="POST">
+                        <div class="form-group">
+                            <label for="name">İsim / Mahlas</label>
+                            <input type="text" id="name" name="name" required placeholder="Adınızı giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Posta Adresi</label>
+                            <input type="email" id="email" name="_replyto" required placeholder="E-posta adresinizi giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mesajınız</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Yol notunuzu buraya bırakın..."></textarea>
+                        </div>
+                        <input type="hidden" name="_language" value="tr" />
+                        <button type="submit" class="submit-btn">Gönder</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <p class="footer-text">© 2026 Ferdimen. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+    <script>
+        // HER YAZI HTML DOSYASINDA BU ID ALANINI O YAZIYA ÖZEL DEĞİŞTİRİN
+        const MEVCUT_YAZI_ID = "2015-buralarda-geziyorum"; 
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const navContainer = document.getElementById("yazi-navigasyon");
+            if (!navContainer) return;
+
+            // JSON ARTIK YAZILAR KLASÖRÜNÜN İÇİNDEN ÇEKİLİYOR
+            fetch('yazilar.json?v=' + new Date().getTime())
+                .then(res => {
+                    if (!res.ok) throw new Error("Yazı listesi yüklenemedi!");
+                    return res.json();
+                })
+                .then(yazilar => {
+                    const currentIndex = yazilar.findIndex(yazi => yazi.id === MEVCUT_YAZI_ID);
+                    
+                    if (currentIndex === -1) return;
+
+                    let navHtml = '';
+
+                    // Eğer JSON'daki URL'ler 'yazilar/xx.html' şeklindeyse ve post.html de 'yazilar' içindeyse 
+                    // tarayıcının 'yazilar/yazilar/xx.html' aramasını engellemek için url temizleme fonksiyonu:
+                    function urlDuzenle(url) {
+                        if(url.startsWith('yazilar/')) {
+                            return url.replace('yazilar/', '');
+                        }
+                        return url;
+                    }
+
+ // Sonraki Yazı Kontrolü
+                    if (currentIndex > 0) {
+                        const prevPost = yazilar[currentIndex - 1];
+                        navHtml += `
+                            <a href="${urlDuzenle(prevPost.url)}" class="nav-box prev">
+                                <span class="nav-label">← Sonraki Yazı</span>
+                                <span class="nav-title">${prevPost.baslik}</span>
+                            </a>
+                        `;
+                    } else {
+                        navHtml += `<div style="flex:1;"></div>`;
+                    }
+
+                    // Önceki Yazı Kontrolü
+                    if (currentIndex < yazilar.length - 1) {
+                        const nextPost = yazilar[currentIndex + 1];
+                        navHtml += `
+                            <a href="${urlDuzenle(nextPost.url)}" class="nav-box next">
+                                <span class="nav-label">Önceki Yazı →</span>
+                                <span class="nav-title">${nextPost.baslik}</span>
+                            </a>
+                        `;
+                    } else {
+                        navHtml += `<div style="flex:1;"></div>`;
+                    }
+
+                    navContainer.innerHTML = navHtml;
+                })
+                .catch(err => console.error("Navigasyon hatası:", err));
+        });
+ </script>
+</body>
+</html>
