@@ -14,11 +14,46 @@
 	"kapakresmi": "https://1.bp.blogspot.com/-EMoL5G9RRKQ/Xx6SRJ0S6RI/AAAAAAAA3Jw/0JdfRUmljH852rI8viJ3WD7tZtQeH-FiQCLcBGAsYHQ/w640-h362/kocatepe-1.jpg"
   },  
   {
+    "id": "2019-ormanin-kalbi",
+    "baslik": "Ormanın Kalbine Yolculuk",
+    "url": "yazilar/2019-ormanin-kalbi.html",
+    "tarih": "2019-11-12",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOMb9-D86O_a2ejisjajV-i5cLFkC8nRUoizdq381xClqSo2mLDcFf72Y--gM2cU6ORMqzZvhml6becVhXMD8ojGp80Xc7ICeDR7H3TJfEGmMiFRiw=w1920-h1080"
+  },    
+  {
+    "id": "2019-bartin-bf",
+    "baslik": "Bartın Bisiklet Festivali",
+    "url": "yazilar/2019-bartin-bf.html",
+    "tarih": "2019-10-17",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNfJopKYABaQWwqCUdPozdXIteJwQAd3q8Jvr8Pt8ZzuHxZWKPjlTheXupzlWztMfv7q9nvj7ZRooo0FHW4zJyj5tGgsS07b3MSAUxlJ37Nlcz0GHc=w1920-h1080"
+  },  
+  {
+    "id": "2019-of-alanya",
+    "baslik": "Of...Alanya Bisiklet Turu",
+    "url": "yazilar/2019-of-alanya.html",
+    "tarih": "2019-09-04",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNGv0aGhMhYG63xrGmX_HpMd0CW7Xt-S7jJq87bKowB7_YPuuk9UkDbTEQ1_FnLHf1Ft6gF_IDEeAEMU0Keoytfd_WzYn72sOJlA0F6ZjkI8hh1fTQ=w1920-h1080"
+  },    
+  {
+    "id": "2019-monapetra",
+    "baslik": "Evciler - Monapetra Bisiklet Turu",
+    "url": "yazilar/2019-monapetra.html",
+    "tarih": "2019-08-03",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczM36Y3SImqkmflSckUZh8tDDWs7izfQF2WiGfch_Uo76f5rRwA847NeszuBFkYOI26LvQW6ePZaiiI6__Yg5NQ_2pFx24BATb7oKt5amOlD0LLwNLQ=w1920-h1080"
+  },  
+  {
     "id": "2019-ata-yolu",
     "baslik": "Ata/Kurtuluş Yolu",
     "url": "yazilar/2019-ata-yolu.html",
     "tarih": "2019-06-12",
 	"kapakresmi": "https://1.bp.blogspot.com/-oiUudtp9Gr8/XSxuXzghUYI/AAAAAAAAoaY/2hp-ugwnq9EhjeCZ-74jdz7c2OrdBDCUQCLcBGAs/s640/ata%2Byolu%2B%252811%2529.JPG"
+  },  
+  {
+    "id": "2019-gelibolu-denemesi",
+    "baslik": "Gelibolu Denemesi",
+    "url": "yazilar/2019-gelibolu-denemesi.html",
+    "tarih": "2019-06-05",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPdanEbw1SkvbVm6pcQKH3ThgYXaJtMURtHwl5zP5Pt0ghHxE8NGGRQ825uAD_fvqau1a5xs1NClL0n37UH6xaMM1m2IJ9izdIznoiJsyYL6fvwVLc=w1920-h1080"
   },
     {
     "id": "2019-sandras",
@@ -26,14 +61,21 @@
     "url": "yazilar/2019-sandras.html",
     "tarih": "2019-04-16",
 	"kapakresmi": "https://1.bp.blogspot.com/-1QilUl5nJGE/XMQgyqNP2pI/AAAAAAAAoBM/KU1VaFGnRDU_PO147_vfx9PDcOFtWh7mQCLcBGAs/s640/IMG_1160.JPG"
-  },
+  },     
+  {
+    "id": "2019-sardos-6-sehitlere-saygi-turu",
+    "baslik": "Sardos 6. Şehitlere Saygı Turu",
+    "url": "yazilar/2019-sardos-6-sehitlere-saygi-turu.html",
+    "tarih": "2019-03-23",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNTpumO7sog2x_TLt1T8XwsrjJCFWpr91O8CpCU5lrFcq7b5K-10cyd_Pw8PANCHapXQTV_wdWZ9zqGT2Ghn1OqaYSV9TG18DtDSvM0UOFKIddzl1c=w1920-h1080"
+  },    
   {
     "id": "2018-kibris",
-    "baslik": "2018-kibris",
+    "baslik": "Kuzey Kıbrıs Türk Cumhuriyeti",
     "url": "yazilar/2018-kibris.html",
     "tarih": "2018-12-8",
 	"kapakresmi": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8wDsWQKL33NvO9N4Abw9ocAvPm6B3zSON_V-xCLjX2yFxQ7U0Xyfqr2dp7MnAyNCw0HZcSAiV7yJKAzprsStGWnoiL_KVPpPnU7NOuql0cgkEx91aU5UUd2Zh8kz081LQbJSNmdSOMRth8nZsgQVahDSm1MOgwRQ6sJOLbpeQDQJ3Is_5pb9_0RKU-b5r/w640-h400/Kibris-c-0338.jpg"
-  },   
+  },  
   {
     "id": "2018-abant-safranbolu",
     "baslik": "Batı Karadeniz Bisiklet Turu",
