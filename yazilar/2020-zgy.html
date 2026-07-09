@@ -234,6 +234,76 @@
                 text-align: left;
             }
         }
+/* ==========================================================================
+   KİLİTLİ 16:9 YOUTUBE EMBED STİLLERİ (data/css.css için)
+   ========================================================================== */
+.custom-youtube-box {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 680px !important;    /* Okuma alanına tam oturan ideal genişlik */
+    margin: 30px auto !important;
+    aspect-ratio: 16 / 9 !important; /* Çerçeveyi kesinlikle 16:9 oranında kilitler */
+    background-color: #000000 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;     /* Çerçevenin dışına taşmaları tamamen engeller */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Çerçeve içindeki poster ve video iframe'inin boyutunu milimetrik kilitler */
+.custom-youtube-box iframe,
+.youtube-poster {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Kapak Resminin Çerçeveye 16:9 Formatında Tek Resim Olarak Tam Oturması */
+.youtube-poster {
+    background-size: cover !important;     /* Resmi esnetmeden veya dizmeden kutuya tam sığdırır */
+    background-position: center !important;   /* Resmi tam ortalar */
+    background-repeat: no-repeat !important; /* Resmin kesinlikle dizilmesini/tekrarlamasını engeller */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 2 !important;
+    transition: filter 0.3s ease !important;
+}
+
+.youtube-poster:hover {
+    filter: brightness(0.85) !important;
+}
+
+/* Küçültülmüş ve Kibar Oynat Butonu */
+.youtube-play-btn {
+    width: 54px !important;   /* Buton boyutu küçültüldü */
+    height: 38px !important;  /* YouTube standardında kibar dikdörtgen */
+    background-color: rgba(26, 26, 26, 0.9) !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background-color 0.2s ease, transform 0.2s ease !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+}
+
+.youtube-poster:hover .youtube-play-btn {
+    background-color: #dc2626 !important; /* YouTube kırmızı tonu */
+    transform: scale(1.05) !important;
+}
+
+/* Butonun İçindeki Küçük Oynat İkonu (Üçgen) */
+.youtube-play-btn svg {
+    width: 16px !important;  /* İkon boyutu küçültüldü */
+    height: 16px !important; /* İkon boyutu küçültüldü */
+    fill: #ffffff !important;
+    margin-left: 2px !important; /* Kusursuz merkezleme için küçük sağ kaydırma */
+}			
     </style>
 </head>
 <body>
@@ -259,7 +329,7 @@
                         <li><a href="https://www.ferdimen.com/#faq">S.S.S.</a></li>
                         <li><a href="https://www.ferdimen.com/#sablon">Vasiyet</a></li>
                         <li><a href="https://www.ferdimen.com/#destek">Destek Ol</a></li>
-                        <li><a href="https://www.ferdimen.com/#iletisim">İletişim</a></li>
+                        <li><a href="#iletisim">İletişim</a></li>
                     </ul>
                 </nav>
                 <div class="header-socials">
@@ -273,7 +343,7 @@
             </div>
         </div>
     </header>
-<!-- YAZI DETAY BÖLÜMÜ -->
+<!-- YAZI DETAY BÖLÜMÜ --><script src="youtube.js?v=1"></script>	
 <section class="contact-section" id="yazi">
     
     <!-- ÖNE ÇIKAN GÖRSEL ALANI (Elle URL girilebilir) -->
@@ -312,7 +382,8 @@
         <li><button onclick="sayfaDegistir(19)">19</button></li>
         <li><button onclick="sayfaDegistir(20)">20</button></li>		
         <li><button onclick="sayfaDegistir(21)">21</button></li>		
-        <li><button onclick="sayfaDegistir(22)">22</button></li>		
+        <li><button onclick="sayfaDegistir(22)">22</button></li>
+        <li><button onclick="sayfaDegistir(23)">Videolar</button></li>			
     </ul>
     <div class="tur-sayfasi aktif" id="bolum-1">
         <h2>2020/06/20 Zafere Giden Yol 1. Gün (Ankara – Malıköy – Alagöz)</h2>
@@ -3381,7 +3452,16 @@ Kurtuluş Savaşının 5 önemli meydan muharebesinin 3' ü Eskişehir'de geçmi
 <div style="color: #777777; line-height: 16px;"></div>
 <div class="separator" style="clear: both;"></div>
 <div class="separator" style="clear: both;"></div>
-    </div>		
+    </div>
+    <div class="tur-sayfasi" id="bolum-23">	  
+	[youtube]https://youtu.be/BB0ig5gnrpQ[/youtube]  
+	[youtube]https://youtu.be/jdLUHbdD23Y[/youtube]  
+	[youtube]https://youtu.be/69Gu1fLdJlQ[/youtube]  
+	[youtube]https://youtu.be/JrTf_uQKGTk[/youtube]  
+	[youtube]https://youtu.be/ECDx-XcMD2g[/youtube]  
+	[youtube]https://youtu.be/_HQMtQ2SgwY[/youtube]  
+	[youtube]https://youtu.be/MEA9qJ4B3aU[/youtube]  
+	</div>
     <ul class="pagination">
         <li class="aktif"><button onclick="sayfaDegistir(1)">1</button></li>
         <li><button onclick="sayfaDegistir(2)">2</button></li>
@@ -3405,6 +3485,7 @@ Kurtuluş Savaşının 5 önemli meydan muharebesinin 3' ü Eskişehir'de geçmi
         <li><button onclick="sayfaDegistir(20)">20</button></li>		
         <li><button onclick="sayfaDegistir(21)">21</button></li>		
         <li><button onclick="sayfaDegistir(22)">22</button></li>		
+        <li><button onclick="sayfaDegistir(23)">Videolar</button></li>		
     </ul>
     </div>
 <div class="post-navigation" id="yazi-navigasyon"></div>
