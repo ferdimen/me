@@ -1,4 +1,60 @@
 [
+   {
+    "id": "2025-anadolu-irfani",
+    "baslik": "Anadolu İrfanı Bisiklet Turu",
+    "url": "yazilar/2025-anadolu-irfani.html",
+    "tarih": "2025-09-23",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPNNbSLazaFY72cR0mrRujKrlWYhHV_DmFctRQ8NFJqqU2W7uQhrQDCvKJJRj8UZT7MWWHvJBFhiPejOWiN6fi_F1HbcXjmHVlY8_ckJru_fh0ISS4=w1920-h1080"
+  },     
+  {
+    "id": "2025-toros",
+    "baslik": "Toros Canavarı Bisiklet Turu",
+    "url": "yazilar/2025-toros.html",
+    "tarih": "2025-03-18",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMtrdvQFjvK0Zz2gccWGIusnEeMWneXkyU1a3xRnS6MIfdbjlnvRXyeBG1UvNDxIcvkqyNdDCWUTbQxHgtL3hczqOmkxxFR1jBI24EwBIGz2w0Bnig=w1920-h1080"
+  }, 
+    {
+    "id": "2025-icten-anadolu",
+    "baslik": "İçten Anadolu Bisiklet Turu",
+    "url": "yazilar/2025-icten-anadolu.html",
+    "tarih": "2025-03-ı1",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMa0h8ndvU3yhkKipHqvrGX2-_sLAFalBxwkIx0NcU5kczSTYS98yOGYfmGOhBILEaqlSlKwyGZMOAy1QkfaHPHpQ0z4wNt7dqDDwX6zyDigIIZRgM=w1920-h1080"
+  },      
+  {
+    "id": "2024-kuzeyden-galiba",
+    "baslik": "Kuzeyden...Galiba Bisiklet Turu",
+    "url": "yazilar/2024-kuzeyden-galiba.html",
+    "tarih": "2024-12-5",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOn97ZGuV0B-EwPmIWbZG4SEQCskq3Zp9NQXC7OhWPHX7wmu-QqAvBpqBj1eGwqWx-FRzkYqzPMS7as7cXM7sU0fzZXCqHk6DebFAuVgljDH8rul8o=w1920-h1080"
+  },    
+  {
+    "id": "2024-guz-guneyi",
+    "baslik": "Güz Güneyi Bisiklet Turu",
+    "url": "yazilar/2024-guz-guneyi.html",
+    "tarih": "2024-10-12",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMONtyOuN6taVTJcvETcKDhejUAapRMS0jUfzdHaf4fZgRCUoMhd77slFi7C5U2BrwsfJn4pj94zyi7apn39-S5lEW3xobXdXT2aCuCQr6lpLj1rWI=w1920-h1080"
+  },    
+  {
+    "id": "2024-subat",
+    "baslik": "Şubat Bisiklet Turu",
+    "url": "yazilar/2024-subat.html",
+    "tarih": "2024-2-6",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOReXKfbnA57vu8BvuuUJbW4N5qf3P2vvpWalxf3kY9haFNP9jNwIRakutlrlsVbflSPVIfi2KcAOqiyr47o-DQtADMD3kSUMSOLUYCTkTguuXv5Uc=w1920-h1080"
+  },    
+  {
+    "id": "2023-aklim-kalmasin",
+    "baslik": "Aklım Kalmasın Bisiklet Turu",
+    "url": "yazilar/2023-aklim-kalmasin.html",
+    "tarih": "2023-7-12",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOjvOIVxX5AXBxh7uXeZM6pNRs4CZiDTyayZOSFC0CmgRFHHZjr95w7hc1isYWe8BSPYYPLstoUZwwBhk454xo9TUCM1nAXOpZNWRuJiOqe272qxS4=w1920-h1080"
+  },   
+  {
+    "id": "2023-yoklukta-gider",
+    "baslik": "Yoklukta Gider Bisiklet Turu",
+    "url": "yazilar/2023-yoklukta-gider.html",
+    "tarih": "2023-4-24",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMhD2k1VFJhXTorMyuMKt5CxPJzN2gGSKHCwRqk3MYqE09xPluM8qPceH8tjPa0VsLskAykF9g4FzLuXIMxfRpBE4vl-LKNproiin4vI06rQEwlP7Q=w1920-h1080"
+  }, 	
   {
     "id": "2022-kis-kis",
     "baslik": "Kış Kış Bisiklet Turu",
