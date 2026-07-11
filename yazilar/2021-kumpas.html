@@ -259,7 +259,7 @@
                         <li><a href="https://www.ferdimen.com/#faq">S.S.S.</a></li>
                         <li><a href="https://www.ferdimen.com/#sablon">Vasiyet</a></li>
                         <li><a href="https://www.ferdimen.com/#destek">Destek Ol</a></li>
-                        <li><a href="https://www.ferdimen.com/#iletisim">İletişim</a></li>
+                        <li><a href="#iletisim">İletişim</a></li>
                     </ul>
                 </nav>
                 <div class="header-socials">
@@ -290,7 +290,20 @@
 
     <!-- YAZININ GERÇEK İÇERİK ALANI -->
     <div class="post-body-content">
-
+    <ul class="pagination">
+        <li class="aktif"><button onclick="sayfaDegistir(1)">1</button></li>
+        <li><button onclick="sayfaDegistir(2)">2</button></li>
+        <li><button onclick="sayfaDegistir(3)">3</button></li>
+        <li><button onclick="sayfaDegistir(4)">4</button></li>
+        <li><button onclick="sayfaDegistir(5)">5</button></li>
+        <li><button onclick="sayfaDegistir(6)">6</button></li>
+        <li><button onclick="sayfaDegistir(7)">7</button></li>
+        <li><button onclick="sayfaDegistir(8)">8</button></li>
+        <li><button onclick="sayfaDegistir(9)">9</button></li>
+        <li><button onclick="sayfaDegistir(10)">10</button></li>
+        <li><button onclick="sayfaDegistir(11)">11</button></li>		
+        <li><button onclick="sayfaDegistir(12)">Güzergah</button></li>		
+    </ul>
 
     <div class="tur-sayfasi aktif" id="bolum-1"><h2>26 Temmuz 2021<br>Ergene – Çorlu – Balabanlı – Gündüzlü – Tekirdağ – İnecik – Karaçalı – Araphacı</h2>
 	<i><h4>Bir İhale Kalma Hikayesi: Tandem mi? Sabır Testi mi? İsmail’le Yola Çıkmak mı? Bir Daha Tövbe!</h4></i><img class="alignnone" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiVsLreUooclOg9Hyw3SVo_wJrXRF-Sn2jdLJkXKCshQRSvhpLta1KHpUQUDfayXrS-J4yKZxS-BDeTrbYqCL6a1Ognvv8ybmPPqh5spS4kXtl0dAHlqxBuSRTGrDzelLAyHaU93dOJbx9_jnyF_n95ProYxRtIwpIiAl4boE4oWsl9CQfUF83pahvYNtdg/w640-h400/2021-kumpas-6946.jpg" alt="" width="640" height="400" border="0" data-original-height="1200" data-original-width="1920" /><br>
@@ -481,6 +494,7 @@ Birkaç gün dinlenip o travmaları atlattıktan sonra, tandemi güzel bir iş i
 İsmail’e "<b>Eyvallah</b>" dedik, yolunu ayırdık. O günden sonra İsmail ile bir daha tur yapmaya, hatta tandemle "<b>ihale</b>" almaya tövbe ettim. Ferdimen tarzı budur; yaşar, görür, dersini çıkarır ve lafını esirgemez.
 
 Bir maceranın daha sonuna geldik. Bakalım bir sonraki rotada başımıza neler gelecek? Pedala basmaya devam, tabii <strong>tek başıma</strong> ya da kafa dengi adamlarla! Takipte kalın, pedalla kalın! </div>
+    <div class="tur-sayfasi" id="bolum-12"><h2>Güzergah</h2><iframe width="720" height="480" src="https://www.polarsteps.com/ferdimen/5999605-2021-kumpasa-geldim/embed"></iframe> </div>
 
     <ul class="pagination">
         <li class="aktif"><button onclick="sayfaDegistir(1)">1</button></li>
@@ -494,6 +508,7 @@ Bir maceranın daha sonuna geldik. Bakalım bir sonraki rotada başımıza neler
         <li><button onclick="sayfaDegistir(9)">9</button></li>
         <li><button onclick="sayfaDegistir(10)">10</button></li>
         <li><button onclick="sayfaDegistir(11)">11</button></li>		
+        <li><button onclick="sayfaDegistir(12)">Güzergah</button></li>		
     </ul>
     </div>
 <div class="post-navigation" id="yazi-navigasyon"></div>
@@ -629,7 +644,7 @@ Bir maceranın daha sonuna geldik. Bakalım bir sonraki rotada başımıza neler
                         return url;
                     }
 
-// Sonraki Yazı Kontrolü
+ // Sonraki Yazı Kontrolü
                     if (currentIndex > 0) {
                         const prevPost = yazilar[currentIndex - 1];
                         navHtml += `
