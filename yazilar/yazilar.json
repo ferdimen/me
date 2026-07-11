@@ -1,4 +1,74 @@
 [
+  {
+    "id": "2022-kis-kis",
+    "baslik": "Kış Kış Bisiklet Turu",
+    "url": "yazilar/2022-kis-kis.html",
+    "tarih": "2022-12-27",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMpZWk1FTAu704BO_wJSw9LzDJZCBmC67k_cZscbQYKLsdanhPoxSmIiXxtaA2UjoZCAKN8xasawJVTxb78rq0N56tOkyVWYKro_f5RJRcc2Pn263I=w1920-h1080"
+  },  
+  {
+    "id": "2022-trakya-ve-gelibolu",
+    "baslik": "Trakya ve Gelibolu Bisiklet Turu",
+    "url": "yazilar/2022-trakya-ve-gelibolu.html",
+    "tarih": "2022-11-15",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNElSizejS6ia3j1i1cndMIBXLOmF1aiJ6myWki6lylab8IgVnZfV95uztuYnciVRSF-pug_ilxT_neFgABy8e0fdxSvOtSuqGtH98NatdBH2T4jAg=w1920-h1080"
+  },   
+  {
+    "id": "2022-anadolum-benim",
+    "baslik": "Anadolum Benim Bisiklet Turu",
+    "url": "yazilar/2022-anadolum-benim.html",
+    "tarih": "2022-7-20",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNM85w_Vl5cgJCm9L1Nr1AmbmjvoZAOxnyDsBxGAZFZcMfebGrqwmq4tf-uZLYFCtIzq5BAhCNvjN8a4Sz3HY4hSz3qijxvNMBqS74olimpsc2N8po=w1920-h1080"
+  },  
+  {
+    "id": "2022-aykiri-yollardan-izmir",
+    "baslik": "Aykırı Yollar (Dağdan Taştan İzmir)",
+    "url": "yazilar/2022-aykiri-yollardan-izmir.html",
+    "tarih": "2022-6-27",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMhm7ZidBmvoGNGXp5l9XX32Hf6eWEY-in2fyl1X_LI5LpfzY01Jf19QdOJcUkJy1YQKdTE_Qawd8u80sLBRXpBFAnHY9l0aGGYcax7CnnieGEG9a4=w1920-h1080"
+  },   
+  {
+    "id": "2022-istiklalyolu-sevkiyat",
+    "baslik": "Sevkiyat ve İstiklal Yolu",
+    "url": "yazilar/2022-istiklalyolu-sevkiyat.html",
+    "tarih": "2022-6-9",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOFhSAc86GUklX4HXz4UkPTdv4wZZilZIV2nGDrHiS4tcqX2rr3ovrxxxawK70eopblkHK_zXm5TtGWwTXr5Kf-uruEAnF5OtkpmkiTVaawhtPeuvU=w1920-h1080"
+  },  
+   {
+    "id": "2022-az-anadolu",
+    "baslik": "Az Anadolu Bisiklet Turu",
+    "url": "yazilar/2022-az-anadolu.html",
+    "tarih": "2022-4-25",
+	"kapakresmi": "http://ferdimen.com/img/bg11.jpg"
+  },  
+     {
+    "id": "2021-alasehir-kusadasi",
+    "baslik": "Alaşehir - Kuşadası Bisiklet Turu",
+    "url": "2021-alasehir-kusadasi.html",
+    "tarih": "2021-11-19",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNMdByy50O0d6GOVXde3HO0sxT1nVRa_68DMmMJUgRhsdwTs2esZcVwxFqQ1Elv5CwQdocJm9weKbk-L_xWGLqzzjc16jp-P6gpk-Y_s6UpYewiYEo=w1920-h1080"
+  },  
+   {
+    "id": "2021-karaburun",
+    "baslik": "Karaburun Bisiklet Turu",
+    "url": "2021-karaburun.html",
+    "tarih": "2021-11-9",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPoybDc5jXn7gX2K-eSwC51FW-VCL7QDfcX2gXwFb3JtBZiHeKKiKl7_WtJrMhrjuJnQDvPJo2548BW8azRIfncfEzHCk4kJzn45FkJ4EOCse-CpG0=w1920-h1080"
+  },     
+  {
+    "id": "2021-bafa-golu",
+    "baslik": "Bafa Gölü Bisiklet Turu",
+    "url": "2021-bafa-golu.html",
+    "tarih": "2021-10-27",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMEI5D5SPNDmwFqLFniv3KffOWDup-qNPefJ7ntEEK8X03KO53eheKsvrEFNbRlYj7h-7_sMGiyQ1UUF-vkdpEvylKg0i1Svo8KD66fs3ZjdGPq48o=w1920-h1080"
+  }, 
+  {
+    "id": "2021-deli-divane",
+    "baslik": "Deli Divane Bisiklet Turu",
+    "url": "2021-deli-divane.html",
+    "tarih": "2021-9-1",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczP39gncQtzr1mTkEu7mbWYx9g11X1N7ubzvMcng3zms1G2SNL2mAhlFXM_o9F6vc6tlAIqKLhEOMexqfYBuyyo4EEVcLTZVGxXRRkFk4CkFUUZjY6M=w1920-h1080"
+  },  
     {
     "id": "2021-kumpas",
     "baslik": "Bir İhale Kalma Hikayesi",
@@ -6,6 +76,13 @@
     "tarih": "2021-07-21",
 	"kapakresmi": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZp48ydz57h5q0VFgl7gAMEInkzmJiJZD5nnvVAu8rjUCguv9eu2vKZufcFgzui1Syp7GcfUIc7-jkNZCn3iwFrI9Z6d0YW_KEOn2vcQTPV3lvro2m-o-9fMm5Q3SI8GnwX1mllqOdm59zFB_DSXwik2LivKFK6UA2XZG_HhAB9mxO78jq5aJPk89Bfl8J/w640-h400/2021-kumpas-7154.jpg"
   },
+  {
+    "id": "2021-gelibolu-1915",
+    "baslik": "İntikal ve Gelibolu 1915",
+    "url": "yazilar/2021-gelibolu-1915.html",
+    "tarih": "2021-06-2",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMy5CDO326UxYLtpJoSMxZGAwkjZelMghlOs-Oq5Y24t-1y4sRP8ekTuOsaB5bWSpEVq3Wu_HAfqFhABvuxCtea49r2vuPZCY9t93OVUpdVpzkPR5Q=w1920-h1080"
+  },  
   {
     "id": "2020-zgy",
     "baslik": "Zafere Giden Yol",
