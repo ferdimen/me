@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferdimen // Adı yalnızlığından gelen kahraman</title>
+    
+    <link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.css" />
+    <link rel="stylesheet" href="https://www.ferdimen.com/data/css.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.js"></script>   
+    <style>
+/* Bilgilendirme (Info) Durumu İçin Özel Stiller */
+.alert-info {
+    background-color: #f0f7ff; /* Yumuşak pastel mavi arka plan */
+    border-color: #b3d7ff;     /* Açık mavi çerçeve */
+    color: #1a4870;            /* Okunabilirliği yüksek koyu mavi metin rengi */
+    border-left: 5px solid #3182ce; /* Sol tarafa vurgu yapan canlı mavi şerit */
+    box-shadow: 0 2px 4px rgba(49, 130, 206, 0.05); /* Hafif derinlik gölgesi */
+}
+
+/* Alert içindeki linklerin rengi */
+.alert-info a {
+    color: #123452;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.alert-info a:hover {
+    color: #0b2236;
+    text-decoration: none;
+}
+/* Genel Alert (Uyarı) Kutusu Temeli */
+.alert {
+    padding: 15px 20px;
+    margin: 20px 0;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Hata (Error) Durumu İçin Özel Stiller */
+.alert-error {
+    background-color: #fdf2f2; /* Gözü yormayan hafif pastel kırmızı arka plan */
+    border-color: #f8b4b4;     /* Yumuşak kırmızı çerçeve */
+    color: #9b1c1c;            /* Okunabilirliği yüksek koyu kırmızı metin rengi */
+    border-left: 5px solid #e02424; /* Sol tarafa dikkat çeken kalın canlı kırmızı şerit */
+    box-shadow: 0 2px 4px rgba(224, 36, 36, 0.05); /* Çok hafif bir derinlik gölgesi */
+}
+
+/* Eğer alert içinde link kullanırsan onun da rengini ayarla */
+.alert-error a {
+    color: #771d1d;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.alert-error a:hover {
+    color: #551414;
+    text-decoration: none;
+}
+ /* Genel Sayfa Düzeni */
+        .tur-sayfasi {
+            display: none; /* Varsayılan olarak tüm bölümleri gizle */
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .tur-sayfasi.aktif {
+            display: block; /* Sadece aktif olan bölümü göster */
+        }
+
+        /* Sayfalama Butonları */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        .pagination li {
+            margin: 0 5px;
+        }
+        .pagination button {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .pagination button:hover {
+            background-color: #3498db;
+            color: #fff;
+            border-color: #3498db;
+        }
+        .pagination li.aktif button {
+            background-color: #2c3e50;
+            color: #fff;
+            border-color: #2c3e50;
+            cursor: default;
+        }
+
+        /* Öne Çıkan Görsel Kutusu */
+        .post-featured-image {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 40px;
+            box-sizing: border-box;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        /* Görsel İçindeki Yazı Alanı */
+        .post-featured-content {
+            max-width: 800px;
+            text-align: left;
+        }
+
+        /* Kategori Etiketi */
+        .post-category {
+            display: inline-block;
+            background-color: #ff5722;
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        /* Yazı Başlığı */
+        .post-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            line-height: 1.2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Tarih ve Ek Bilgiler */
+        .post-meta {
+            font-size: 0.9rem;
+            color: #dddddd;
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Yazının Kendisi İçin Kapsayıcı */
+        .post-body-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #333333;
+        }
+
+        /* Dinamik Önceki - Sonraki Yazı Navigasyonu Tasarımı */
+        .post-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        .nav-box {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+        }
+        .nav-box:hover {
+            border-color: #3498db;
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .nav-box.prev { text-align: left; }
+        .nav-box.next { text-align: right; }
+        .nav-label {
+            display: block;
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+        .nav-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+
+        /* Mobil Ekranlar İçin Uyum */
+        @media (max-width: 768px) {
+            .post-featured-image {
+                height: 300px;
+                padding: 20px;
+            }
+            .post-title {
+                font-size: 1.8rem;
+            }
+            .post-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-box.next {
+                text-align: left;
+            }
+        }
+/* ==========================================================================
+   KİLİTLİ 16:9 YOUTUBE EMBED STİLLERİ (data/css.css için)
+   ========================================================================== */
+.custom-youtube-box {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 680px !important;    /* Okuma alanına tam oturan ideal genişlik */
+    margin: 30px auto !important;
+    aspect-ratio: 16 / 9 !important; /* Çerçeveyi kesinlikle 16:9 oranında kilitler */
+    background-color: #000000 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;     /* Çerçevenin dışına taşmaları tamamen engeller */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Çerçeve içindeki poster ve video iframe'inin boyutunu milimetrik kilitler */
+.custom-youtube-box iframe,
+.youtube-poster {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Kapak Resminin Çerçeveye 16:9 Formatında Tek Resim Olarak Tam Oturması */
+.youtube-poster {
+    background-size: cover !important;     /* Resmi esnetmeden veya dizmeden kutuya tam sığdırır */
+    background-position: center !important;   /* Resmi tam ortalar */
+    background-repeat: no-repeat !important; /* Resmin kesinlikle dizilmesini/tekrarlamasını engeller */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 2 !important;
+    transition: filter 0.3s ease !important;
+}
+
+.youtube-poster:hover {
+    filter: brightness(0.85) !important;
+}
+
+/* Küçültülmüş ve Kibar Oynat Butonu */
+.youtube-play-btn {
+    width: 54px !important;   /* Buton boyutu küçültüldü */
+    height: 38px !important;  /* YouTube standardında kibar dikdörtgen */
+    background-color: rgba(26, 26, 26, 0.9) !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background-color 0.2s ease, transform 0.2s ease !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+}
+
+.youtube-poster:hover .youtube-play-btn {
+    background-color: #dc2626 !important; /* YouTube kırmızı tonu */
+    transform: scale(1.05) !important;
+}
+
+/* Butonun İçindeki Küçük Oynat İkonu (Üçgen) */
+.youtube-play-btn svg {
+    width: 16px !important;  /* İkon boyutu küçültüldü */
+    height: 16px !important; /* İkon boyutu küçültüldü */
+    fill: #ffffff !important;
+    margin-left: 2px !important; /* Kusursuz merkezleme için küçük sağ kaydırma */
+}		
+    </style>
+</head>
+<body>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <header class="main-header">
+        <div class="container nav-bar">
+            <div class="logo-group">
+                <a href="https://www.ferdimen.com">
+                    <img src="https://www.ferdimen.com/img/logo.png" alt="Ferdimen Logo">
+                </a>
+            </div>
+            <div class="nav-right-container">
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="https://www.ferdimen.com/#hakkimda">Hakkımda</a></li>
+                        <li><a href="https://www.ferdimen.com/yazilar">Yazilar</a></li>
+                        <li><a href="https://www.ferdimen.com/#harita">Gittim Gördüm</a></li>
+                        <li><a href="https://www.ferdimen.com/#videolar">Videolar</a></li>
+                        <li><a href="https://www.ferdimen.com/#kronoloji">Kronoloji</a></li>
+                        <li><a href="https://www.ferdimen.com/#dosyalar">Dosyalar</a></li>
+                        <li><a href="https://www.ferdimen.com/#ekipman">Ekipman</a></li>
+                        <li><a href="https://www.ferdimen.com/#faq">S.S.S.</a></li>
+                        <li><a href="https://www.ferdimen.com/#sablon">Vasiyet</a></li>
+                        <li><a href="https://www.ferdimen.com/#destek">Destek Ol</a></li>
+                        <li><a href="#iletisim">İletişim</a></li>
+                    </ul>
+                </nav>
+                <div class="header-socials">
+                    <a href="https://www.youtube.com/@ferdimen" target="_blank" title="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M21.543 6.498C22 8.21 22 12 22 12s0 3.79-.457 5.502A2.752 2.752 0 0 1 19.617 19.43C17.904 20 12 20 12 20s-5.904 0-7.617-.57a2.752 2.752 0 0 1-1.926-1.928C2 15.79 2 12 2 12s0-3.79.457-5.502A2.752 2.752 0 0 1 4.383 4.57C6.096 4 12 4 12 4s5.904 0 7.617.57a2.752 2.752 0 0 1 1.926 1.928zM10 15.5l5.5-3.5L10 8.5v7z"/></svg>
+                    </a>
+                    <a href="https://polarsteps.com/ferdimen" target="_blank" title="Polarsteps">
+                        <svg viewBox="0 0 48 48"><path d="M22.8 21.2c1-.4 2.1-.3 3 .3c.2.1.4.2.6.1l2.4-1c.5-.2.7-.9.3-1.3L18.8 8.9c-.7-.7-2-.2-2 .8l.2 14.5c0 .6.6 1 1.1.7l2.4-1c.2-.1.3-.3.4-.5c.2-.9.9-1.8 1.9-2.2Zm2.4 5.6c1-.4 1.7-1.3 1.8-2.4c0-.2.2-.4.4-.5l2.4-1c.5-.2 1.1.2 1.1.7l.2 14.5c0 1-1.2 1.6-2 .8L19 28.8c-.4-.4-.3-1.1.3-1.3l2.4-1c.2-.1.4 0 .6.1c.8.5 1.9.7 2.9.2Z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header><script src="youtube.js?v=1"></script>	
+<!-- YAZI DETAY BÖLÜMÜ -->
+<section class="contact-section" id="yazi">
+    
+    <!-- ÖNE ÇIKAN GÖRSEL ALANI (Elle URL girilebilir) -->
+    <div class="post-featured-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://lh3.googleusercontent.com/pw/AP1GczOn7_sUDxEsXLX76JfPSzonDlv5j0JG-5OwcD3VvVARY5O89BMddZhM-a8AVPakpQ4ptoRqV7GzyqUzeyZ6n-ez3VWJ_RFpYwE3i9sAVHibjRNFbWQ=w1920-h1080');">
+        <div class="post-featured-content">
+            <span class="post-category">Bisiklet Turu</span>
+            <h1 class="post-title">Anadolum Benim</h1>
+            <div class="post-meta">
+                <span class="post-date">20 Temmuz 2022 - 9 Ağustos 2022</span>
+                <span class="post-read-time">Kuşadası > Alaşehir > Sivaslı > Atabey > Emirdağ > Eskişehir > Geyve > Gölcük > Darica</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- YAZININ GERÇEK İÇERİK ALANI -->
+    <div class="post-body-content">
+    <ul class="pagination">
+        <li class="aktif"><button onclick="sayfaDegistir(1)">Videolar</button></li>
+        <li><button onclick="sayfaDegistir(2)">Fotoğraflar</button></li> 
+        <li><button onclick="sayfaDegistir(3)">Güzergah</button></li> 	
+    </ul>	
+
+    <div class="tur-sayfasi aktif" id="bolum-1"><h2>Teker İzi ve Alın Teriyle Yazılan Bir Yol Hikayesi</h2><h3><b>Anadolum Benim: Pedalların Arasındaki Özgürlük ve Ter – Bir Bisiklet Manifestosu</b></h3>
+Oturup klavye başında "<strong>ah şuraya gitsem, vah burayı görsem</strong>" demekle bu işler olmaz. Yola çıkmak ister, konfor alanını terk edip güneşin alnında, rüzgarın koynunda pedallamak ister. 2022 yazında, "<strong>Anadolum Benim</strong>" dedim ve vurdum kendimi yollara. Ne lüks otel aradım ne de yumuşak yatak. Çadırım çantamda, yol arkadaşım altımda, Anadolu'nun tozunu yutmaya gittim.
+
+Bu seri, bir adamın kendiyle, doğayla ve yolla olan imtihanıdır. Ferdimen tarzı dürüstlükle, süslü cümlelere kaçmadan, ne yaşadıysam onu anlattım. Hazırsan, kemerleri bağlama, kaskını tak; başlıyoruz!
+
+<hr />
+
+<h3 class="western">1. Bölüm: Yola Çıkış ve İlk Sınav</h3>
+Yolculuk Kuşadası Davutlar sahilinden başladı. Sabahın köründe kalkıp yola revan oldum. Düz yol bisikletçinin en büyük düşmanıdır, sıkıcıdır. O yüzden Magnesia Antik Kenti'ne saptım, tarihin tozunu yuttum. Akşamına Aydın’da disk frenin sürtmesiyle uğraştım ama yılmadım. Köşk taraflarında bir zeytinliğe çadırı kurdum. Zeytin ağaçlarının gölgesi, saraylardan kıymetlidir, bilene.[youtube] https://www.youtube.com/watch?v=PplHLEhJYXQ [/youtube]
+
+<hr />
+
+<h3 class="western">2. Bölüm: Tarihin Gölgesinde ve Yüksek Rakımlar</h3>
+Sabah Nysa Antik Kenti'ni ziyaret etmeden geçmek olmazdı. Aydın’ın saklı hazinesi burası. Sonra Nazilli üzerinden vurdum kendimizi dağlara. Nazilli sıcağından kaçıp 1000 metrelere tırmandım. Kestel, Demirciler derken oksijeni ciğerlerimize çektim. Tırmanış zor ama zirvedeki huzur paha biçilemez.[youtube] https://www.youtube.com/watch?v=-EmBLfKfOFA [/youtube]
+
+<hr />
+
+<h3 class="western">3. Bölüm: Telefon Krizi ve Dağların Çağrısı</h3>
+Alaşehir Yeşilyurt’ta uyandım. Telefon bozuldu, gittik yenisini aldım; teknoloji bazen adamı yarı yolda bırakır ama biz yolu bırakmayız. Sıcak dersen cehennem provası gibi, ama durmak yok. Türlübey’e doğru tırmanışta, o orman yollarının sessizliği her şeye bedeldi.[youtube] https://www.youtube.com/watch?v=J9BmWsiz-dk [/youtube]
+
+<hr />
+
+<h3 class="western">4. Bölüm: Fırın Gibi Vadiler ve Halı Saha Kampı</h3>
+Güney ilçesinden Adıgüzel Barajı'na iniş... Arkadaş, orası vadi değil fırın! Sıcak yüzüne fön makinesi gibi vuruyor. Akkent’te eski bir okulun halı sahasına çadır kurdum. "<strong>Burası tekin mi?</strong>" diye sorduk, gençler sağ olsun "<strong>Abi biz varız</strong>" dediler. İşte Anadolu insanı budur. Çivril’e vardığımızda pilim bitmişti ama ruhum dimdikti.[youtube] https://www.youtube.com/watch?v=p-OGWu-t1t8 [/youtube]
+
+<hr />
+
+<h3 class="western">5. Bölüm: Tarihi Yüzleşme ve Sivaslı Yolları</h3>
+Çivril’den çıktık, <strong>Cabar Şehitliği</strong>’ne uğradım. Tarihimizi bilmeden bastığın yer toprak parçasıdır sadece. Sonra ver elini Sivaslı. <strong>Sebaste Antik Kenti</strong>’ni gezdim, iki taşın arasında geçmişi aradım. Akşamına Yazıtepe’de Hacılar Çeşmesi başında, buz gibi suyla yıkanıp kendime geldim. Basit mutluluklar bunlar, parayla satın alamazsın.[youtube] https://www.youtube.com/watch?v=8wjxBtD-Y-8 [/youtube]
+
+<hr />
+
+<h3 class="western">6. Bölüm: Lastik Patladı Diye Yolu Mu Bırakacağız?</h3>
+Hocalar ve Sandıklı rotasındayım. Yolun ortasında lastik gümledi. Sıcak tepemde, gölge yok. Söve saya, ter içinde o yamayı yaptık. "<strong>Bu işler böyle gitmez</strong>" desen de gidecek, başka yolu yok. Akşam Kızılören’de baraj kenarında huzuru buldum. Her zorluğun arkasında bir kolaylık vardır dedikleri bu olsa gerek.[youtube] https://www.youtube.com/watch?v=qBBdKitIO8w [/youtube]
+
+<hr />
+
+<h3 class="western">7. Bölüm: Kene Vakası ve Hastane Yolları</h3>
+Sabah bacağımda bir kene! Panik yok, doğru hastaneye. Doktor halletti sağ olsun. Yolda Ayhan ve Okan abilerle karşılaştık, iki lafın belini kırdık. Keçiborlu’ya vardığımda, bir okul bahçesine sığındım. Sağlık şakaya gelmez ama yol da beklemez.[youtube] https://www.youtube.com/watch?v=mYgUJVjVBI0 [/youtube]
+
+<hr />
+
+<h3 class="western">8. Bölüm: Gece İnişi ve Köpeklerin Nefesi</h3>
+Isparta, Gönen, Atabey... Manzara şahane, Dedegül Dağı karşımda. Ama bir tırmandım ki sorma. Zirveye vardığımda güneş batıyordu. Karanlıkta, bozuk yolda, köpek sesleri arasında Uluborlu’ya iniş yaptım. Adrenalin mi arıyorsun? Al sana adrenalin.[youtube] https://www.youtube.com/watch?v=V_TDdcB3VR4 [/youtube]
+
+<hr />
+
+<h3 class="western">9. Bölüm: Yazı Tura ve Cami Avlusu</h3>
+Senirkent’ten çıktım, yol ayrımına geldim. Yalvaç mı Şuhut mu? Attım parayı, yazı geldi; istikamet Şuhut tarafı. Çayıryazı’da köy kahvesinde, cami imamı "<strong>Gel bahçeye kur</strong>" dedi. Muhtar da onay verince, o gece Allah’ın misafiri olduk. Plan yaparsın, yol bozar; yol sana kendi planını dayatır.[youtube] https://www.youtube.com/watch?v=_3Sd8b6p1XE [/youtube]
+
+<hr />
+
+<h3 class="western">10. Bölüm: Trafik Terörü ve Sanayi Tozu</h3>
+Çay, Bolvadin hattı... D300 karayolundan nefret ettim kardeşim. Kamyonlar, gürültü, toz... İnsanın yaşama sevincini sömürüyorlar. Ara yollara kaçtım, huzuru buldum. Akşam Çobanlar’da bir parkta çadırı kurup kafayı dinledim. Anayol pişmanlıktır, bunu bilir bunu söylerim.[youtube] https://www.youtube.com/watch?v=cp7fpIS7_xI [/youtube]
+
+<hr />
+
+<h3 class="western">11. Bölüm: Bilmiş Kargo ve Gurbetçi Diyarı</h3>
+Sabah PTT kargocu bir dayı durdurdu, "<strong>Tekirdağ bu taraf değil</strong>" diye akıl veriyor. Navigasyon bilmez, yol bilmez ama fikir sahibi. İsçehisar, Bayat derken Emirdağ’a geldim. Her yer gurbetçi, trafik İstanbul’u aratmıyor. "<strong>Gurbetin Başkenti</strong>" diyorlar ama ben o kalabalıktan kaçıp Yarımca köyünde sessizliğe sığındım.[youtube] https://www.youtube.com/watch?v=3QtFEO-Iy3Q [/youtube]
+
+<hr />
+
+<h3 class="western">12. Bölüm: Han Yeraltı Şehri ve Yine Lastik</h3>
+Eskişehir Han ilçesine vardım. Tarihi İpek Yolu üzeri. Yeraltı şehrine girdim, ürkütücü ama büyüleyici. Yine lastik patladı, yine sıcak. Geri dönüp Han’da belediye parkında geceledim. Bazen ileri gitmek için bir adım geri atmak gerekir.[youtube] https://www.youtube.com/watch?v=4IsQkppheOc [/youtube]
+
+<hr />
+
+<h3 class="western">13. Bölüm: Frig Vadisi ve Polisin "Güvenliğini Sağlayamayız" Demesi</h3>
+Yazılıkaya, Midas Anıtı... Buralar başka bir dünya. Tarih fışkırıyor. Seyitgazi üzerinden Alpu’ya geldim. Polise yer sordum, "<strong>Buralar tekin değil, güvenliğini sağlayamayız</strong>" dediler. Bak sen şu işe! Devletin polisi vatandaşına yer gösteremiyor. Neyse ki bir esnaf abi deposunu açtı, insanlık ölmemiş.[youtube] https://www.youtube.com/watch?v=EYNmbtrGVbA [/youtube]
+
+<hr />
+
+<h3 class="western">14. Bölüm: Yama Tutmayınca Eskişehir Yolları</h3>
+Alpu’dan çıktım, lastikteki yama sıcakta eridi gitti. Sıcak kaynak yaptım o da tutmadı. Mecbur rotayı kırdım Eskişehir merkeze. Yedek lastik aldık, Velesbid Bisiklet Evi’ne sığındım. Bisikletçi dostu mekanlar candır. Planlar değişse de hedef değişmez.[youtube] https://www.youtube.com/watch?v=gRORcdL6cgI [/youtube]
+
+<hr />
+
+<h3 class="western">15. Bölüm: Sakarya Nehri ve Mihalgazi</h3>
+Eskişehir’den çıktım, Sakarya Nehri vadisine süzüldüm. İnhisar, Mihalgazi... İklim değişti, Akdeniz havası geldi. Meyve sebze cenneti buralar. Akşam Mihalgazi’de bir okul bahçesine kuruldum. Okul bahçeleri candır, hem güvenli hem sessiz.[youtube] https://www.youtube.com/watch?v=ikZcQaHwoKo [/youtube]
+
+<hr />
+
+<h3 class="western">16. Bölüm: Tatlı İnişlerin Acı Çıkışları</h3>
+Mihalgazi’den Sarıcakaya’ya, oradan Yenipazar’a. Tırman babam tırman. Ama ne dedim? "<strong>O tatlı inişlerin acı çıkışları olur.</strong>" Köpekle ekmeğimizi paylaştık, doğayla bütünleştik. Yenipazar’da şanlı bayrağımızın altına çadırı kurdum. En güzel otel burası.[youtube] https://www.youtube.com/watch?v=4pZsEoPUzxE [/youtube]
+
+<hr />
+
+<h3 class="western">17. Bölüm: Taraklı Yolları ve Yine O Lanet Yama</h3>
+Yenipazar’dan Gölpazarı’na geçtim. Yine lastik, yine hüsran. Sakarya il sınırına girerken moral bozdu ama yedek lastiği taktım devam ettim. Taraklı’da bir dere kenarı buldum, yonca tarlasının yanı. Su sesiyle uyumak gibisi yok.[youtube] https://www.youtube.com/watch?v=cxmPqkhAdjI [/youtube]
+
+<hr />
+
+<h3 class="western">18. Bölüm: Kamyon Solluyorum Kamyon!</h3>
+Taraklı, Geyve, Pamukova... Meyve bahçeleri arasından geçtim, Memiş’in yerinden meyve aldım. Sonra vurdum kendimi Bakacak köyüne tırmanışa. Rakım yükseldi, hava serinledi. Bir çeşme başı buldum, dağ başında duşumu aldım. Temizlenmek sadece bedenen olmaz, ruhen de arınmaktır bu. [youtube] https://www.youtube.com/watch?v=VFyRD6nG-9g [/youtube]
+
+<hr />
+
+<h3 class="western">19. Bölüm: Ölümden Döndük! Final</h3>
+Son gün Kartepe eteklerinden indim. Karpuz Çatlatan Vadisi'ne girecektim, yol bozuktu yemedi, döndüm. Anayola bir çıktım, kamyonun teki üzerime çelik plakalar saçtı! Az kalsın biçiliyordum. "<strong>Ölüm ne kadar ucuz</strong>" dedim, bastım pedala. Darıca’da arkadaşım İsmail’e vardım, oradan Marmaray ve otobüsle eve dönüş.
+
+Bu tur burada bitti ama yol bitmez. Tekerlek döndükçe biz özgürüz.[youtube] https://www.youtube.com/watch?v=X7h7l9mfw2U [/youtube]
+
+<hr />
+
+Evet dostlar, 19 bölümlük "<strong>Anadolum Benim</strong>" macerası böyle geçti. Acısıyla tatlısıyla, patlayan lastiğiyle, bitmeyen yokuşuyla muazzam bir tecrübeydi. İzleyin, izlettirin, en önemlisi de siz de çıkın o yollara!
+</div>
+    <div class="tur-sayfasi" id="bolum-2"><h2>Fotoğraflar</h2><link rel="stylesheet" href="album.css">    <script src="album.js"></script>
+<div style="text-align: center; margin-bottom: 40px; width: 100%;"><p style="color: var(--text-light, #666);">*****</p></div>
+[fotoalbum]
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMMKmVJQxGDh569oOkyUA75lM-il6c_lIEKMMbnygj7Lkn8edUMLL9147azbOi4ygAvk1zJX_sdUdlxkIs4oVoeWNMmZDhqVvT4qNIaob5pjcQLcgM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMkP3UUCz5EhgcQ5yLVMJlQ_G-7P6Vd3AB8tGkT5Hvu68jXje1yeajAQb4U1J__-ncAQPlmoqbPdpsBc5ZWj2qIsOB1iHK8oiWT-XFP8i6Lq72B7PY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOOdldCFgVUq4cI0EwAV2X6Y-773DOCgtEGb1W2q9t0zwvEsIGYe6AClaGCzOzAL-s3RUj01gyo4N_2l0R1OwDViNWDa7byDLOiuVV1qLnNQQKp188=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM5rCOpgDU4xFkjj1qbsPA3L6FoiAv9V468hrSaVMD8sEOjoMozlX39ePfXtV2HYKUy5zRZj24izloBEJQsoIWsvh2exOcM0-h4fi3ubmDTDCrSP98=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOBWDwSBrpHRJ5RkhXUyjaNprme-RlZPspisxQd6epPpGabN5w-Pd4pMe5ucbGYahWID9lZzJxGLON98OjWhx9-7kj_60M-eN5KlZZHmcuW1cBs5Co=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNJ7StmE2ssvNXD5sZeqWh--Yue3zNNePdKqSk--VXEgAQS0TDDi7yYn_6u1PPha-tch4x4qc0oWL26rRh1qRzX9SgJ1x-PfvNEr3B4-51-j0LHk6Q=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM3Lxn8WwIUeQBoGplpiIvf6IbPcKVHcDAMSysFzSUs6CVmTVQnXskXeikJh6ONoZgBdSj27CDSgDZHHz-c35Cvo7NF5fi9gnyuYS8h5wwbQVhGZ4s=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMfyeWYxOxu6XN6PfvmALXy0IVTNmvM0XABQFw70ZEvxpUttVpzUKs4dYmhx0bToScmdphg4tHi7klKCttK3K7VkC0EYARPlW_vP2B5wIYyZzMk01c=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNBK7UBfBeOArDn86AZIN2tsengL6rjjGI6NAYuF_k70OzovlQ9n9Infm9VchfaEwpThh32cLNDOrmXplXLl5a9yobZNcU3nqYizZBTv4zZ0pTNXJk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPUBDEtNC5lE3YdSmM-QMe15aZgoQ9bGG1yLD_QFSaCsJewPPd-u0j3jmPQrx6yVPStBXY0oJJ7_VQQRj5xhk49Ii08jeNZpfw9Pw8iRGMFK1uUCuQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNE7SRfob3N9jQSYtit7mTvXICqZHs7njtgU8lE6S61_RPDKMOpaLl7IcDoIju3MnAJsKxoFty__bN7IThYe234ZTtqZlS1Voutwh37SfssXeju05M=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN-Cm9eV_kFINrAqtj4_dPIjxm2hgCNdvF2sazND88lU5r042sMLqeuA_r_6Q7r1nK9ibbVfJ8gQQBSZsPZIwoQkMbgaxEYidh3YFeFHXskmIS-v4s=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNur4m3XZwnUu9tSsery3dVvw7o1FkGkpDbECV_9lZR76K4qdAsu8ndfUXGtux7Vw9HuzGhBwkN5JyyeGoij5rQD3FmOYi33eVDJfA8vXF1y_TqYzA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOIwRWR9wQHAl85VZn4LlGXX2JeFzFzutLzsDUm_5Fcc_CFaZV0DouRbmDwHaQReLgxrymSIMG6bFUjkber2nuHszQkuRmVN85QHuPEaVFNtn2Zxpg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMqsSQT5Gire4sIbUq2qQIeX_o-_3HOAd1V-oIMQENkIXybSO_noU9I5huHZHgzunYidejRoUTsOMPPtTaw-dpITeg-2-iHhFGYtyoXIThgiBch5y0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPGRcGrG7-5fn98qP1t-hBxZ0UU2zmxyn252JC5hxMk8HNcFL8Cbkv2c_WwBvzXoBFrU_23Owu-9sgx-EX4ISOsQHhFr3JAbSfxNk1W3db_Jyiepy8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczORQcukIK5DyHYsZ2BxhdrvtpOcxvFXwUXqwHlumaCJVF1sPfnewxngriwQouEsw4_Vl6h__zPt_3ODY_SCuoaKh2SCVS_Ws3IFd9tf5UVk91sCH1E=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNnCZiSkETvFYgzmAHiHyrpITceh6_D_pIUhtA1hBQwwkoIJrw-ZusUq3MOYUSzWcPB-ZORGFIlUAcaKqksfq5hCCWxqObKj8BUV7_CcYhU9ff83Yw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNGZ4g968J_csiap3iL1B8hXCFoWHUfGHhzPLXELxlqoeUNjE5RAT48lMLOK1EkXNuE9weBrzBY8WWmNRmnt1l7hDTIOrPPpxR_zmkE9AkIes146Bc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNgTrAR0nFkn2SBcxA7BDP5-3JIBFoPUa31kAkjnSoAWdUvinwaJ2XwToBI1RpF1CMvYEw3_nCbR7CnPhdG-08spLl3o6lDRAM3DoM0RDLwEBThArg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMMNkVvXfaZVJPrgOOK5ORkFEprm1ydoDaZ9bVgyzgIRjJF85r45i7deJMbxXPcPmEUN608JlZZ2Oyc1IeErZUG96Iw07M1vPXlxm0R-Z0RRVByT4w=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMG3dfHf9STCgVpUopT6wGhfEH7s8TIcpzE-e1JrQlSZM26QAEIpol1TLWR8uufVyzZxUJuRJZ6wyLIPc0soivFtOV9i9LWjYg-oaW5lifhUEJo0OU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPJeCYv4URnpTi_gW7E4w7d_mX_fnDj27qEAkQJvEglRDV1u8nh9rYF97c3Dw8-qNOJPq9GvqeMTKSk8gs2homkGsrjEje4MkUHUTfiTkJHVcueiKQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM9DlCQ4Y8aSTJDuW4vHNegPwfjJNs5y5bt1xw5elXQd5MPezfnMVcipa-dMt5XHB5ty3_vX3xtNYfr_OVCQRtCVRWDBeefJdFjeIRC-RhefoHLJSs=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOBQw1UQ9EkVAGuuAtq8WuAvg_-BC9Ep8pd_d7gsfJjJ0xQpzFHqI4jVwPVWbmc1ZuwewkgydJ4--De1M0ihaORBo5gfNKBi67OHDVMoLRva_GGGu0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM_UXPdciT4U_INXyV_G53U6kjq0mFQ2-f59kgioS_dtYWi6hp-uJWMb-u94KeIFuerKB0DcYQ8Zn78aPllRQ_klzUaRtJ1ETYPtGeiY1X__vDBB5E=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP460sVrWomk3vtyf-hPZSDHbfIejTqWlh8gLJCt2285pjMxHITgA9PI18rxEjwCWcnJoepqSSCOS34_DcsM8gUj6r7qbQ5DrA5cMAAoIuXw2rOYy8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN2FG4S4SW1epSes7dzrFe_XoVt9FKSEBYw5hOqxMXtHAIlzCZrQFjFSNsOej-Pm0lCcMb7oQ5nrTshvCwCYlAFW60Eq-QhZWqLeLNR7BEljZKYgXg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNAD9oeegVsic56nYO73F8cGG68GnErVuOlJB1ZyroN6YboAN19i8YFr_I0zznOPO9GNHbHlvX7Wkby0xAAUv_wDatO6iVxkI-if526vx0MSiNY13Q=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN7qH2d8Z9SVO5BDEvALJNqo9mlEJ23NyRgtRg0SV-FMUKFVb5m_O2hDAYW1yPFbMji-J_JK6gCQR7v988aYQS9hTqov8ndZtEXiqWU9NxagRwCPJ0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOAiDgdYr0ZXw2hsY8M-OTV8L5jNMYVE3olHFtPxNc3wIeCzkUL7BJT5klJWS_1H0L_Vx9PElMmQRFhi2W5zGg2-1-xHdbCgDKwi1wIyPoHaVlvqlM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMQ6HFJCNqBiLSU-0wkBNcISPmW6NBUNrkwqKFG9ONNsT9EdcGLh5B1Z0U4-6ZyFCKgU-1ti3_sCMaHQrQWsmXjR0oxa8vIYX3QCjBRwX7JBRqnXks=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMSTmN73rzA45FZgQAj5T3UL0gJ9T4UK5CodVPy_QQ4j8QsuXr07msdnaK79hJ0iwNFZX5Mf5TMhCJDgYMMpdGKUZQPajkT7IYI9pefmeF1ltwdw1U=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPmah1LKOA2ns1ybRTquxsh67vvmHDgw5kDrGig2PIP0IfTZqq7fUYWMtTdluuaFsdnF-JqaicKzVTQnJjF656e_L9WPSjnwNx30imaa97BPbHMNFc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOZrT0e16vTefycOE0K6_ZDVzHjBjQ6FtVY0W_mXPhjXOppbKgjQjiCR4LrTgnD_b0OW9BvIxV8eWSV7Ou0vrAhg4ab-RQGJZjZNotOGPy0BvwiL5Q=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMGaEew_n9vtP9y7MvMA3m_R53ENGGuLu9u0r9vgpoA7j5FBH7CeyRI8F691eB1bMb8qaMlIzNOqdBGLIrQk8qP20JBaGbuFewJgPjIqBLmZk1FwYI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOL8elZkZBGtQuhUXa9xdCM1R3TVxDuYrelqpEU0vnvAHIzlNzmD0GY9M3wJj3gkobHcHrahCgtThoUkyqML2WwK1CXReVab-xQk8SMImCIguV6NN8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOd4qrHbiomYMItIhcKHAJS5MCBnKIKx0G8dwZpZV1DK0m294lmVX5NQsSJ4s4uBD3lpxr_cy6zvB-XGpTOYP0lV2wfCIQvtmF8O7WWOOSGAT6tyM0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMDFeXVV74MXLZiKRdDd5X1f9CzmvoDavFvtrUF6fxdrC8t_B5vtEy3uuwUaaRIn1WKVAdcnk27dB4pejfWJlO84Cww-OW6yzHMYX3OlDXqEUVY35s=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNPgiLW_oBtBkcwMzezpIBSGCbQ6aRw19fBsllweqgaZfGBIR-y-CwW-TTTMCljrtc9fAz9E3Ug1dx0KssnRSc_7wVhxrH5zR1ZJCZvcSswgqN_B-U=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPXw8PQd6RSwB-iGeg7QWYHMPqvvZd45-NqvAKHb7JP1LsGUBIAzEATj0c31AUzpJJitdnVHlk-6GWvZ8FIEVXWnK4ObcJ73hM5jMxcrR2F4b9bVU0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMyZ0f6O4L9w49rhDva1q8ANZxFnKdXLkUxUgvybMSmD8A-NCDTQrZ-g9rG02sEhCWR_76ejs2hv5vvZdYmuGHf1pNgfU8YQ0k-dw73PZmlbHQgxfs=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPBoDYU8sRPJpSblukV0YF-0f1PaZ6ZgRsJWXRKt8EjgOSKH5p30drQBFCy01u_DyNapXccFjfimpTqYCAMt2pvzbOLwy4DXaDCmXyYxXgxkvqxEDo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP81JgioRwHM1R9q3Eaqb-w8T5E53hwdDv5Y9AE6Gl5bROKMc8yiJg49vCdYyk699TAqvKSvamp5yOd0pxOZHueCTXKusoapzYIDdYixq-tgnIJnMk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP-jwmgEhwVG2EKfA2lbw5Gh0X0cXgmC8AUA5wODCSLVs73UwHkATfIGEnafISuKscwFyAe0JVtpVrZA8pPKPmeFywzs4vbOG88S090DB23PPgJDVU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOag0fay2cszsPlIczlFwFUP1KyNLWDSvwqTUNlTMPtTVmRl00pjWJCYWKlL9ZaN4w3i_MXjmd40T__1f0xs7bhmMpK5Xb2N3rNkOOGedehJBULPX0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOjEu6JBcoMCPL5p95SCdKO20X2jlF7mkmN5KN0koQ4jeNBcdZr56CpGtrVe74PgsowlBuocbuzAAlLC6BZZFOoluVA8C6Xyy3jgWBfV2p6ozh3ulE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNM85w_Vl5cgJCm9L1Nr1AmbmjvoZAOxnyDsBxGAZFZcMfebGrqwmq4tf-uZLYFCtIzq5BAhCNvjN8a4Sz3HY4hSz3qijxvNMBqS74olimpsc2N8po=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNOgK_HshifizxbKGDWbB_4sn2doERQLGYbFNjG_uLuA4nNjgdP299rJHKJjSQyaT1tRb2PLL0Zkw1ZwDhy6sw7UfgUMxiBrOZGFv8PXoUkH9PNJtM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczODciPV3XLbRjw6BcyM5t4Lww1-fSOlXqAwRUW1y7mGWe2c6LRC4tViccb6nehHhgeKlZRp2ltRwhQqOM_ATCCQRsrNScufn120f9T1hcqd3Ni74Hk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP5OiIMDYjVZ-_TjNfo_PNZOJX-HDghh5OBS5vSG_Xo39AJbHz3WOPjENkMCAZkYnOgwhHNGUx8hWE-5kIdJLV5NurY2cYKZCNI9KeGUbtw8mffFHo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOLINvYiR1DakZmtBxy28_VDOK8oAo-p7dLJv1XYUA6hYlNweHmeRI4nVnkMJLpjKZanM1cl60CsxlE8toTFHD3fz71_HUL3FNzXph6FGwaTVG3-w4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP9Cw_kyMY1zfXqYQn_jPRQsRpWExr4mq-07M15m7f5x3qj2Eq5cx2f4VbOFCc9AFoJzW8FZpriEHozmMRyAEj4kzIhm3gfGmFnBvB7rl4XiQSu3iY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNweZVoCAUkNKQ5wP0StvvaaBNnL0aNTI5i2azf_-CAmxe4bTnr_6NL7w5adlPvjUE3kSI7uJ6C8f8ZVFN-yDLDUoUe6GmmeIvTatU8MjaH8CQomtw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPssTMtR98iVxiU2BzwyxesbEnecrbgOUeE-B6TVJh5jM8S4In1Cpvx7XOnxNUTWYcEczHxDMzKzT7FFgljZdAm5RNGQCuAAHRoOAWDCmKbdoR0VJY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOFQZTCApAMujQanXucp1eCPgImSKx4YO6NCKgiOsFpy4tveOlLTH97eHlZCfv6SMmZoxpOWq7xUJq5unwYOyQ5vJPg9MloQwht_ji4gG6DBA7WJUw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPi0IqGFHfdLLvFtehP9Fl2gufHI79iWhymm3trM3_uxLTbh0rco7-QzoGYwVNZ9n0YGEk4yhPwHxpK3O8iE6JLnkX6WJWdZkyHILG-I732nWt_jXc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOs0dPjI9PQAhKLImx8bi-ziP9NbR9WhnFjF2QWqnKIkQaqVx3Y72kfzy3zN-6q2Kg5ZkqrSkRZDe-cZ1MiiHc-3BJ2rNbdF_PvmCTroqoV3LbKXBQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM992y42dZa0x-pQ84d4ZKZuqFI6Cy8Y1s0LadvQm8ik0_3x4NKAzPLxD_so5n47URRVYTadXxBQOEQQSpfwDAuV4Muk1_OJj89jRtM-L961Vn7Lt8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOit_MGOlGiftIY9XKzPdKBeUoK7og8xELGvafjPLC9hqqn0Stk6yq_lUB29vNF_qLtNAL1XUQv7G_tkWT-d65cgiYv9sVRiEQhumps6BwE8Zp_V7c=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOZwYzYN9FGZvJty8FNfs8wzfl0Uuht2E6rPCwVmechiROAimeV14D0y3c_iI9wDCa4h7K3kPMMZC1YMB6EJQ3FlxnUwsTwhZJAF4cd1leXGaVyzBo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOKyihuEKvus_JxHPhD4uICb_aQQjXyEzyaFc7utGMhqvQ4STqrHr6X4MnugTNyNufKiaCHBQw-zBrKk0y4_x8l8nUp22gvlgEH6W7K7w4ohemBvaI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPENg1JZrfxjfoH6xc2hGsL3oekXDpXdYpGmKnxlmOE6Awc1m9JemluWuKGFq7Vhc1byvNsSU0Pl4bzZTU7w5ustfuRCjBwd7vxuu6NparMmylni48=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMHkZogvkWT772rCIgidjSvAxwDcPDGUZ1jF_tmzVH0QR_uOGbdko_w-g54_MAlQiiWngp_2NEhvppxjg1g5H5fMY7gbtf5oMT8V_6z1fS8tW8HHOU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPNGe-8qJ7MaHdNrQZFs4qtngOfKVffxT9__NZJjPsVlRj2KyhTP2av7UiE7rRuHD6D_pT9uF00pXesISwZ4y2pkbrifjC06a_MfIDnDW2Pr4UHfXw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP_WFrxy9ftY6BBndeFeO3268aHs9URsx1efJD15ReaKzxkZwH_sax9RtNF06aXHyhd_hbLizK2iYtHpcOLDbt2gPqFC_qSqQDYy8RgPCnF3dE_p4w=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOFNqr4a5nOTH1cDllgdoY23zhyh1CfBWu7yKeKy7wC3WkoUBrK4eD5p_x6z-ShwPjM64Dv4NBaTrpu9r6SgQBen2_HtJt4NvGAgtbWmSVQKE0H2FU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN_PFjCVHGiqSOost19wrr0mROoS2wBBLPibHciZGOAEcnx915W-XUIgPDS84jCpM3IyqH7Nj9Nomi1q0yxSmrGZjLYerynn9FD4n-Dhyle6B138H4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMuVDMC-yG5OWuczlxC1_4X4B3lwnwxw9RcaBKPNl-pnUEXZzDN_c-PaDuTlDCax77mybotBF2Holyx8MCyOBBupWzgRujg8DwwwGLJ7dOFBE3iXZ4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPOakur5il8tqrCw0K5SgSIm97j46h3ltgxn26h0-7t2GjMcbs-xY-KW66F1HWblYEU79gzwMhhdobEJvbd7uzN3IRNCYiwBGeDMHHri-Se2zCOlEI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOBUJM7I4ozkBkbU5cOPwWU5SuzuGAzmkwGEN1PnhAzM1A0ZlFljdKPg58lAXI3ZK-a5voUrrjD8L79fv0gEcegdkOvY-VAezGtISA5wX4hHSyOsP0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMrlFk3OsXdMhUhLXdydpd_s4D6HUDXApeZFd6XTXQ4xMyhHshW15CfGt4oF1IWHkWlD91IjR4Ld5Q-LDakuYBfrf03Sgy44j6i_wFSbFEj1MTE14k=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMhbkuf26eFwzocufxToLogv0vxKKkcgtTHIkMl9hoXCo1OmUJF6Dnyw2LJgX2YzZQtDPb7u7hq5Z1mMVZIjwkZgd_-Nu-7-rslwTNqofSSAKvT0GU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNPIsgSZTuimAVkjsJBXal6qYnJgrL5EpQs8MPeUyDs2KaAkZ9mqw6mlImMzxBpeelri1Zv9fDjE_HA6JCb27ouuv8ntVHvB1FLkAMdjwdQHFbGggg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMBIoaZ9QMoD72HwVvTQw4nSlFB242Pcy_SUjy2FvTxv8mom7NcYfjIl5APGTlCAz86JqPNwehJMXbenMiemzYtEn97IJTO8qiDuPwMBQg3jUnfHgM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOg1r6CQDADMlt4nLn7m7Dgadpe3QNIPAvsc_ypUaDVioHFPkjxJBBGTaeSELlnF4hxrXzJb_Kzxj6UgK38QYDpcku8gbaCN0atyIuKhA56IBsoSm4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOnQgOxBjv8SFyp6BzCgVLhDnVO1JXykVgGyM1jg1l5PBNcg6wdVpUIE-fNy9kupzp5P9kcU2Tdj1ywNA3B6UAe7vDp_DllwtWLtktr8tTu27_XcDw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPsuA7qsNPc0COjYq_MMi5b7484ILYXl5sRFgQtOnxFKATn0taAFyRY6ySBJEg6-fXKjyL320JZS6whtuJ3ytiBkbVDh1X_myyXbmjz96rIDjAGa90=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNJK0_6CPyWGoDLzCpcKnaF447ZUR657IGZ8mVpXC5E962jOyda-n10k3jOQd8T1Bxi0DkqDoHiLUUAGQdJQ7-46_Frq76OMNub5mkPOJJq9teJzHg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOvZ3ciImxwf0ZPKVx4ausbuEkrcnBavSiiwf5afz3YaAAELXPtScaT-hSaH2aOlZAPk4X6-sIMNF1YmGFB8X6istCLJW6H-B5yHXMveYGb47En14o=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOn7_sUDxEsXLX76JfPSzonDlv5j0JG-5OwcD3VvVARY5O89BMddZhM-a8AVPakpQ4ptoRqV7GzyqUzeyZ6n-ez3VWJ_RFpYwE3i9sAVHibjRNFbWQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMc39c5uTB-60WATAp8QCy-btEbCdVn_YYwB6AtWWzv_2USV1HBOAcTzFeNrvFzOhvbGJnIFojqrz3PsHvpwengM9Y9o-ltW5uvsJAOaAyjAZ2D3YM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPq9tWydveMOT4spUtKPDPt2UKgNeA0SR5kVwVymOzfvwr8otCfl5ZzabWMI64xXqDg8HRIDmXusS0HrDkzb2_AKokPHhV9yqfYwVStiYTGE2X3kYY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNtZzyaT_Ye7dXb1v75OiXWm6t2GhN6nUfj4bUeAQs7ydWE8XrQlnqxca9_0jlCOnUnhGG1pxfn4xHIBV3QJp5I7vhj-8IXi4zINeiFvdqE9mQ--b8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPwEyA274YNtRfCNGQdGYugUlQe9toG7GuMYM4e5vDognMpegGw1R3LiCDz9j7azKMVRjeOr3ElVTlstSsx1FqiHgnOKbR6xXjJpkRExLp94IJa4BY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOSbKnuApQjPtBEp6-D-1FtTWBbFJLwFsVIoW6GSjw1WWtwwCee4RGY4XoR9V80qitLWja_NhXUXRZcQaf0phOzlD54TZP3EA8xmcJUcwQgK8usvsY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNUId16CEVKXmC3X0Ll9fl2fb6MHB71cZL8U2ZsB2gLkaqTgbEstbQtvJSv_icqtLYOoPDtM20LecZhUigtT3fIrFtswjQEAPdd1sNPrLYsJYwXSSI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOg-5o1_VCuaR3Uudc3pa8AgW8L2wXEZvS-bakcPXZUtJo5mWVJo5FVXBNf07Tw7e43P_np0q4EX8_o1Xl16LaCUytDGT5XwN4h5RNqNVniJGQ0th8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNFmz_77x-Fp1rY8jM0G9YWJmGWjafyCOCDo9taQsvITnP6q5JE2jM6DXXM8YP2dFhKPi9BXeyHV7g50lT_KhwJ8zpdyfPq_1iscx3RJFbmpqWhnMA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN31x14biUTa9il8fmjM0k00qqwD6f35qtQcRWmECcNA2IcWqCX_FkSgka29MWnAVPMURLGL0E_s-9Rpwp3_90BJMQ8lgEiB0W_XEJvrlLEtqmNmp8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP0qkz6860-MMWPpJKoOF5FNd47_BCRYRFHAImgoVAZGb_pzWV_9VWdJZsxRYTggkAeO3NSUAaQzxLN1ZZQsHOuQHhxYvjIuwhTHDX_joyVA3AwRXo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMrzwJv-TFsGWe3RT1MRk0joB8yQdYz-LuC5-1L23_wWfRXLFLlycVT86bFTaz2sZxA9fCsJhSwRqFlsBQS-Oy5BzuGdVSvg7z0F9nYfzIHqc_rFEE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOVzQV3ajVEYBu8D5RhPTrGzBAeBxODYTzp4sCR3YPLvU30m3UnaSDYWnK8fdcAKQqLEC8DmSQ8WM8r2juF7LUvBXOTWst1XHgecdMRU7zKUnWeA_s=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOxWXLnHOP5aDKNgPAwPj39bNcLGc5XKpkn9qMb7efh4Tl6hRJqJP04cmzP0jjSSYsyaYapkcqdDIDigJnztt6av_YA5J25A1Td6Bcaq-KSZnQ2Kfg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNMy7jt02zd5-boAmVOJWixKZExsxCWCixn527jtJc1kQzPiyvgDs8R3l_-N409ibaWyWCcg6fx9Xh-fmfWZndBUTSCT7W20FzUYg-Cd8JU2wa71Rs=w1920-h1080"></object>
+[/fotoalbum] </div>    
+<div class="tur-sayfasi" id="bolum-3"><h2>Güzergah</h2><iframe width="720" height="480" src="https://www.polarsteps.com/ferdimen/5955588-2022-kusadasi-darica/embed"></iframe> </div> <!-- 
+    <div class="tur-sayfasi" id="bolum-4"><h2>4. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-5"><h2>5. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-6"><h2>6. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-7"><h2>7. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-8"><h2>8. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-9"><h2>9. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-10"><h2>10. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-11"><h2>11. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-12"><h2>2. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-13"><h2>3. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-14"><h2>4. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-15"><h2>5. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-16"><h2>6. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-17"><h2>7. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-18"><h2>8. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-19"><h2>9. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-20"><h2>20. Gün</h2>xxx </div>	-->
+    <ul class="pagination">
+        <li class="aktif"><button onclick="sayfaDegistir(1)">Videolar</button></li>
+        <li><button onclick="sayfaDegistir(2)">Fotoğraflar</button></li>
+        <li><button onclick="sayfaDegistir(3)">Güzergah</button></li><!--  
+        <li><button onclick="sayfaDegistir(4)">4</button></li>
+        <li><button onclick="sayfaDegistir(5)">5</button></li>
+        <li><button onclick="sayfaDegistir(6)">6</button></li>
+        <li><button onclick="sayfaDegistir(7)">7</button></li>
+        <li><button onclick="sayfaDegistir(8)">8</button></li>
+        <li><button onclick="sayfaDegistir(9)">9</button></li>
+        <li><button onclick="sayfaDegistir(10)">10</button></li>
+        <li><button onclick="sayfaDegistir(11)">11</button></li>
+        <li><button onclick="sayfaDegistir(12)">12</button></li>
+        <li><button onclick="sayfaDegistir(13)">13</button></li>
+        <li><button onclick="sayfaDegistir(14)">14</button></li>
+        <li><button onclick="sayfaDegistir(15)">15</button></li>
+        <li><button onclick="sayfaDegistir(16)">16</button></li>
+        <li><button onclick="sayfaDegistir(17)">17</button></li>
+        <li><button onclick="sayfaDegistir(18)">18</button></li>
+        <li><button onclick="sayfaDegistir(19)">19</button></li>
+        <li><button onclick="sayfaDegistir(20)">20</button></li>	-->		
+    </ul>
+    </div>
+<div class="post-navigation" id="yazi-navigasyon"></div>
+
+
+    <script>
+        function sayfaDegistir(sayfaNo) {
+            // Tüm bölümleri gizle
+            const sayfalar = document.querySelectorAll('.tur-sayfasi');
+            sayfalar.forEach(sayfa => sayfa.classList.remove('aktif'));
+
+            // Tüm butonların aktiflik tarzını kaldır
+            const butonlar = document.querySelectorAll('.pagination li');
+            butonlar.forEach(btn => btn.classList.remove('aktif'));
+
+            // Seçilen bölümü göster
+            document.getElementById(`bolum-${sayfaNo}`).classList.add('aktif');
+
+            // Seçilen butonun tarzını aktif yap
+            butonlar[sayfaNo - 1].classList.add('aktif');
+
+            // Sayfa başına otomatik kaydır (sabit menünün hemen altına hizalar)
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+
+
+    <!-- İLETİŞİM VE SOSYAL MEDYA -->
+    <section class="contact-section" id="iletisim">
+        <div class="container">
+            <div class="contact-grid">
+                
+                <div class="contact-info-side">
+                    <h3>Bağlantıda Kalın</h3>
+                    <p>Yol hikayelerini, bağımsız yayınları ve anlık telemetri paylaşımlarını resmi ağ istasyonları üzerinden takip edebilirsiniz.</p>
+                    
+<div class="social-links-container" id="social-container">
+    </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const socialContainer = document.getElementById("social-container");
+        if (!socialContainer) return;
+
+        fetch('https://ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
+            .then(res => {
+                if (!res.ok) throw new Error("Sosyal medya JSON dosyası yüklenemedi!");
+                return res.json();
+            })
+            .then(data => {
+                let htmlContent = '';
+
+                data.forEach(hesap => {
+                    htmlContent += `
+                        <a href="${hesap.url}" target="_blank" class="social-icon-btn">
+                            ${hesap.svg}
+                            <span>${hesap.ad}</span>
+                        </a>
+                    `;
+                });
+
+                socialContainer.innerHTML = htmlContent;
+            })
+            .catch(err => {
+                console.error("Sosyal medya butonları yüklenirken hata:", err);
+                // Hata durumunda boş kalmaması için manuel bir yedek bırakabilirsiniz:
+                socialContainer.innerHTML = `
+                    <a href="https://www.youtube.com/@ferdimen" target="_blank" class="social-icon-btn">
+                        <span>YouTube</span>
+                    </a>
+                `;
+            });
+    });
+</script>
+                </div>
+                
+                <div class="contact-form-side">
+                    <form action="https://formspree.io/f/xnjyjwnk" method="POST">
+                        <div class="form-group">
+                            <label for="name">İsim / Mahlas</label>
+                            <input type="text" id="name" name="name" required placeholder="Adınızı giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Posta Adresi</label>
+                            <input type="email" id="email" name="_replyto" required placeholder="E-posta adresinizi giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mesajınız</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Yol notunuzu buraya bırakın..."></textarea>
+                        </div>
+                        <input type="hidden" name="_language" value="tr" />
+                        <button type="submit" class="submit-btn">Gönder</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <p class="footer-text">© 2026 Ferdimen. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+    <script>
+        // HER YAZI HTML DOSYASINDA BU ID ALANINI O YAZIYA ÖZEL DEĞİŞTİRİN
+        const MEVCUT_YAZI_ID = "2022-anadolum-benim"; 
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const navContainer = document.getElementById("yazi-navigasyon");
+            if (!navContainer) return;
+
+            // JSON ARTIK YAZILAR KLASÖRÜNÜN İÇİNDEN ÇEKİLİYOR
+            fetch('yazilar.json?v=' + new Date().getTime())
+                .then(res => {
+                    if (!res.ok) throw new Error("Yazı listesi yüklenemedi!");
+                    return res.json();
+                })
+                .then(yazilar => {
+                    const currentIndex = yazilar.findIndex(yazi => yazi.id === MEVCUT_YAZI_ID);
+                    
+                    if (currentIndex === -1) return;
+
+                    let navHtml = '';
+
+                    // Eğer JSON'daki URL'ler 'yazilar/xx.html' şeklindeyse ve post.html de 'yazilar' içindeyse 
+                    // tarayıcının 'yazilar/yazilar/xx.html' aramasını engellemek için url temizleme fonksiyonu:
+                    function urlDuzenle(url) {
+                        if(url.startsWith('yazilar/')) {
+                            return url.replace('yazilar/', '');
+                        }
+                        return url;
+                    }
+
+ // Sonraki Yazı Kontrolü
+                    if (currentIndex > 0) {
+                        const prevPost = yazilar[currentIndex - 1];
+                        navHtml += `
+                            <a href="${urlDuzenle(prevPost.url)}" class="nav-box prev">
+                                <span class="nav-label">← Sonraki Yazı</span>
+                                <span class="nav-title">${prevPost.baslik}</span>
+                            </a>
+                        `;
+                    } else {
+                        navHtml += `<div style="flex:1;"></div>`;
+                    }
+
+                    // Önceki Yazı Kontrolü
+                    if (currentIndex < yazilar.length - 1) {
+                        const nextPost = yazilar[currentIndex + 1];
+                        navHtml += `
+                            <a href="${urlDuzenle(nextPost.url)}" class="nav-box next">
+                                <span class="nav-label">Önceki Yazı →</span>
+                                <span class="nav-title">${nextPost.baslik}</span>
+                            </a>
+                        `;
+                    } else {
+                        navHtml += `<div style="flex:1;"></div>`;
+                    }
+
+                    navContainer.innerHTML = navHtml;
+                })
+                .catch(err => console.error("Navigasyon hatası:", err));
+        });
+ </script>
+</body>
+</html>

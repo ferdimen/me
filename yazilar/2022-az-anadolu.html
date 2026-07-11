@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferdimen // Adı yalnızlığından gelen kahraman</title>
+    
+    <link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.css" />
+    <link rel="stylesheet" href="https://www.ferdimen.com/data/css.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.js"></script>   
+    <style>
+/* Bilgilendirme (Info) Durumu İçin Özel Stiller */
+.alert-info {
+    background-color: #f0f7ff; /* Yumuşak pastel mavi arka plan */
+    border-color: #b3d7ff;     /* Açık mavi çerçeve */
+    color: #1a4870;            /* Okunabilirliği yüksek koyu mavi metin rengi */
+    border-left: 5px solid #3182ce; /* Sol tarafa vurgu yapan canlı mavi şerit */
+    box-shadow: 0 2px 4px rgba(49, 130, 206, 0.05); /* Hafif derinlik gölgesi */
+}
+
+/* Alert içindeki linklerin rengi */
+.alert-info a {
+    color: #123452;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.alert-info a:hover {
+    color: #0b2236;
+    text-decoration: none;
+}
+/* Genel Alert (Uyarı) Kutusu Temeli */
+.alert {
+    padding: 15px 20px;
+    margin: 20px 0;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Hata (Error) Durumu İçin Özel Stiller */
+.alert-error {
+    background-color: #fdf2f2; /* Gözü yormayan hafif pastel kırmızı arka plan */
+    border-color: #f8b4b4;     /* Yumuşak kırmızı çerçeve */
+    color: #9b1c1c;            /* Okunabilirliği yüksek koyu kırmızı metin rengi */
+    border-left: 5px solid #e02424; /* Sol tarafa dikkat çeken kalın canlı kırmızı şerit */
+    box-shadow: 0 2px 4px rgba(224, 36, 36, 0.05); /* Çok hafif bir derinlik gölgesi */
+}
+
+/* Eğer alert içinde link kullanırsan onun da rengini ayarla */
+.alert-error a {
+    color: #771d1d;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.alert-error a:hover {
+    color: #551414;
+    text-decoration: none;
+}
+ /* Genel Sayfa Düzeni */
+        .tur-sayfasi {
+            display: none; /* Varsayılan olarak tüm bölümleri gizle */
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .tur-sayfasi.aktif {
+            display: block; /* Sadece aktif olan bölümü göster */
+        }
+
+        /* Sayfalama Butonları */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        .pagination li {
+            margin: 0 5px;
+        }
+        .pagination button {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .pagination button:hover {
+            background-color: #3498db;
+            color: #fff;
+            border-color: #3498db;
+        }
+        .pagination li.aktif button {
+            background-color: #2c3e50;
+            color: #fff;
+            border-color: #2c3e50;
+            cursor: default;
+        }
+
+        /* Öne Çıkan Görsel Kutusu */
+        .post-featured-image {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 40px;
+            box-sizing: border-box;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        /* Görsel İçindeki Yazı Alanı */
+        .post-featured-content {
+            max-width: 800px;
+            text-align: left;
+        }
+
+        /* Kategori Etiketi */
+        .post-category {
+            display: inline-block;
+            background-color: #ff5722;
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        /* Yazı Başlığı */
+        .post-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            line-height: 1.2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Tarih ve Ek Bilgiler */
+        .post-meta {
+            font-size: 0.9rem;
+            color: #dddddd;
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Yazının Kendisi İçin Kapsayıcı */
+        .post-body-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #333333;
+        }
+
+        /* Dinamik Önceki - Sonraki Yazı Navigasyonu Tasarımı */
+        .post-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        .nav-box {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+        }
+        .nav-box:hover {
+            border-color: #3498db;
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .nav-box.prev { text-align: left; }
+        .nav-box.next { text-align: right; }
+        .nav-label {
+            display: block;
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+        .nav-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+
+        /* Mobil Ekranlar İçin Uyum */
+        @media (max-width: 768px) {
+            .post-featured-image {
+                height: 300px;
+                padding: 20px;
+            }
+            .post-title {
+                font-size: 1.8rem;
+            }
+            .post-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-box.next {
+                text-align: left;
+            }
+        }
+/* ==========================================================================
+   KİLİTLİ 16:9 YOUTUBE EMBED STİLLERİ (data/css.css için)
+   ========================================================================== */
+.custom-youtube-box {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 680px !important;    /* Okuma alanına tam oturan ideal genişlik */
+    margin: 30px auto !important;
+    aspect-ratio: 16 / 9 !important; /* Çerçeveyi kesinlikle 16:9 oranında kilitler */
+    background-color: #000000 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;     /* Çerçevenin dışına taşmaları tamamen engeller */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Çerçeve içindeki poster ve video iframe'inin boyutunu milimetrik kilitler */
+.custom-youtube-box iframe,
+.youtube-poster {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Kapak Resminin Çerçeveye 16:9 Formatında Tek Resim Olarak Tam Oturması */
+.youtube-poster {
+    background-size: cover !important;     /* Resmi esnetmeden veya dizmeden kutuya tam sığdırır */
+    background-position: center !important;   /* Resmi tam ortalar */
+    background-repeat: no-repeat !important; /* Resmin kesinlikle dizilmesini/tekrarlamasını engeller */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 2 !important;
+    transition: filter 0.3s ease !important;
+}
+
+.youtube-poster:hover {
+    filter: brightness(0.85) !important;
+}
+
+/* Küçültülmüş ve Kibar Oynat Butonu */
+.youtube-play-btn {
+    width: 54px !important;   /* Buton boyutu küçültüldü */
+    height: 38px !important;  /* YouTube standardında kibar dikdörtgen */
+    background-color: rgba(26, 26, 26, 0.9) !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background-color 0.2s ease, transform 0.2s ease !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+}
+
+.youtube-poster:hover .youtube-play-btn {
+    background-color: #dc2626 !important; /* YouTube kırmızı tonu */
+    transform: scale(1.05) !important;
+}
+
+/* Butonun İçindeki Küçük Oynat İkonu (Üçgen) */
+.youtube-play-btn svg {
+    width: 16px !important;  /* İkon boyutu küçültüldü */
+    height: 16px !important; /* İkon boyutu küçültüldü */
+    fill: #ffffff !important;
+    margin-left: 2px !important; /* Kusursuz merkezleme için küçük sağ kaydırma */
+}		
+    </style>
+</head>
+<body>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <header class="main-header">
+        <div class="container nav-bar">
+            <div class="logo-group">
+                <a href="https://www.ferdimen.com">
+                    <img src="https://www.ferdimen.com/img/logo.png" alt="Ferdimen Logo">
+                </a>
+            </div>
+            <div class="nav-right-container">
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="https://www.ferdimen.com/#hakkimda">Hakkımda</a></li>
+                        <li><a href="https://www.ferdimen.com/yazilar">Yazilar</a></li>
+                        <li><a href="https://www.ferdimen.com/#harita">Gittim Gördüm</a></li>
+                        <li><a href="https://www.ferdimen.com/#videolar">Videolar</a></li>
+                        <li><a href="https://www.ferdimen.com/#kronoloji">Kronoloji</a></li>
+                        <li><a href="https://www.ferdimen.com/#dosyalar">Dosyalar</a></li>
+                        <li><a href="https://www.ferdimen.com/#ekipman">Ekipman</a></li>
+                        <li><a href="https://www.ferdimen.com/#faq">S.S.S.</a></li>
+                        <li><a href="https://www.ferdimen.com/#sablon">Vasiyet</a></li>
+                        <li><a href="https://www.ferdimen.com/#destek">Destek Ol</a></li>
+                        <li><a href="#iletisim">İletişim</a></li>
+                    </ul>
+                </nav>
+                <div class="header-socials">
+                    <a href="https://www.youtube.com/@ferdimen" target="_blank" title="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M21.543 6.498C22 8.21 22 12 22 12s0 3.79-.457 5.502A2.752 2.752 0 0 1 19.617 19.43C17.904 20 12 20 12 20s-5.904 0-7.617-.57a2.752 2.752 0 0 1-1.926-1.928C2 15.79 2 12 2 12s0-3.79.457-5.502A2.752 2.752 0 0 1 4.383 4.57C6.096 4 12 4 12 4s5.904 0 7.617.57a2.752 2.752 0 0 1 1.926 1.928zM10 15.5l5.5-3.5L10 8.5v7z"/></svg>
+                    </a>
+                    <a href="https://polarsteps.com/ferdimen" target="_blank" title="Polarsteps">
+                        <svg viewBox="0 0 48 48"><path d="M22.8 21.2c1-.4 2.1-.3 3 .3c.2.1.4.2.6.1l2.4-1c.5-.2.7-.9.3-1.3L18.8 8.9c-.7-.7-2-.2-2 .8l.2 14.5c0 .6.6 1 1.1.7l2.4-1c.2-.1.3-.3.4-.5c.2-.9.9-1.8 1.9-2.2Zm2.4 5.6c1-.4 1.7-1.3 1.8-2.4c0-.2.2-.4.4-.5l2.4-1c.5-.2 1.1.2 1.1.7l.2 14.5c0 1-1.2 1.6-2 .8L19 28.8c-.4-.4-.3-1.1.3-1.3l2.4-1c.2-.1.4 0 .6.1c.8.5 1.9.7 2.9.2Z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header><script src="youtube.js?v=1"></script>	
+<!-- YAZI DETAY BÖLÜMÜ -->
+<section class="contact-section" id="yazi">
+    
+    <!-- ÖNE ÇIKAN GÖRSEL ALANI (Elle URL girilebilir) -->
+    <div class="post-featured-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('http://ferdimen.com/img/bg11.jpg');">
+        <div class="post-featured-content">
+            <span class="post-category">Bisiklet Turu</span>
+            <h1 class="post-title">AZ Anadolu</h1>
+            <div class="post-meta">
+                <span class="post-date">25 Nisan 2022 - 8 Haziran 2022</span>
+                <span class="post-read-time">Kuşadası > Seydikemer > Seydişehir > Karaman > Kayseri > Kırıkkale > Çaycuma</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- YAZININ GERÇEK İÇERİK ALANI -->
+    <div class="post-body-content">
+    <ul class="pagination">
+        <li class="aktif"><button onclick="sayfaDegistir(1)">Videolar</button></li>
+        <li><button onclick="sayfaDegistir(2)">Fotoğraflar</button></li> 
+        <li><button onclick="sayfaDegistir(3)">Güzergah</button></li> 	
+    </ul>
+
+    <div class="tur-sayfasi aktif" id="bolum-1"><h2>A'dan Z'ye Anadolu Bisiklet Turu</h2>
+<h2 class="western"><strong>1. ETAP: Ege'den Başlangıç</strong></h2>
+Selam dostum, hoş geldin.
+
+Eğer buradaysan, muhtemelen sen de benim gibi konfor alanını terk etmeyi, yollarda perişan olmayı ama günün sonunda "<b>yaşadım be!</b>" demeyi sevenlerdensin. Ya da sadece benim bu sefil ve acınası hallerimi izleyip "<b>iyi ki evdeyim</b>" diye şükrediyorsun. İkisi de kabulüm.
+
+Sana 2022 yılında yaptığım, adını biraz mütevazı, biraz da gerçekçi koyduğum "<b>AZ ANADOLU BİSİKLET TURU</b>"nu anlatacağım. Neden "<b>AZ</b>"? Çünkü <b>Aydın</b>'dan başladım, <b>Zonguldak</b>'ta bitirdim. <b>A'dan Z'ye</b> yani... Ama kalkıp da "<b>Bütün Anadolu'yu gezdim</b>" havası atmayalım şimdi, haddimizi bilelim. Anadolu büyük, biz faniyiz. Az gittik uz gittik, işte o yolun hikayesi.
+
+Hazırsan, Aydın'ın sıcağından Torosların eteklerine uzanan o ter, toz ve macera dolu günlere dönelim.
+
+<h3 class="western">1. Bölüm: Başlangıcın Gazı ve Asfaltın "Güzelliği"</h3>
+Tura <strong>Kuşadası</strong>'ndan, Ege'nin o cafcaflı kalabalığından kaçarak başladım. Tarih 25 Nisan. İlk pedalı çevirdiğimde içimde o klasik "<em><strong>Ulan ne yapıyorum ben?</strong></em>" sorusuyla karışık bir özgürlük hissi... Kadınlar Denizi'nden <strong>Söke</strong>'ye doğru, ama öyle ana yoldan değil, kıyı kıyı, sakin sakin.
+
+Tabii planlar her zaman çarşıya uymaz. Söke ovasına indiğimde asfaltın o "<em><strong>tırtıklı</strong></em>" hali beni benden aldı. Hani bisikletin üstünde böbrek taşı düşürürsün ya, heh işte öyle bir yol. "<em><strong>Perişanım</strong></em>" diyorum videoda, yalan yok. Ama Bahadır kardeşimin lokantasında yediğim o kuru fasulye pilav olmasa ilk günden pes ederdim belki. Akşamına <strong>Koçarlı</strong> taraflarında, Çiftlikköy'de kafama göre bir yer bulup çadırı kurdum. Bu işin felsefesi bu; plan yapma, yola uy.[youtube] https://www.youtube.com/watch?v=z-C_10ZhZi4 [/youtube]
+<h3 class="western">2. Bölüm: Tarihin İçinde yolculuk</h3>
+Sabahın köründe kalkıp yola düştüm. Hedef belli belirsiz ama rota üzerinde <b>Alabanda Antik Kenti</b> var. Gittim, gördüm ama içim cız etti. Koca tarih orada yatıyor, meclis binası, tiyatro... Ama gelin görün ki ödenek mi yok, ilgi mi yok, kaderine terk edilmiş. "<em><strong>Taş toprak</strong></em>" deyip geçme, orada yaşanmışlık var.
+
+Akşamına Eskiçine tarafında, bir bekçinin tavsiyesiyle su kenarına, okaliptüs ağaçlarının altına kurdum otağımı. Huzur desen var, sinek desen o da var.[youtube] https://www.youtube.com/watch?v=tbTCjobA_ho [/youtube]
+<h3 class="western">3. Bölüm: Drone Kurtarma Operasyonu, Trafik Terörü ve Dost Meclisi</h3>
+Sabahtan günün ilk bombası patladı. Drone uçurayım dedim, gittim aleti ağaca taktım. "<em><strong>Al başına belayı Ferdimen</strong></em>" dedim. Neyse ki Atakan abi diye biri çıktı geldi, kurtardık aleti.
+
+Bisikletçinin en büyük düşmanı ne rampa ne rüzgardır. En büyük düşman, <strong>emniyet şeridini gasp eden</strong> işgüzar belediyecilik ve saygısız şoförlerdir. <strong>Yatağan</strong>'dan <strong>Muğla</strong>'ya giderken o ana yolda çektiğimi bir ben bilirim bir Allah. Kamyonlar yanımdan vızır vızır geçiyor, emniyet şeridi hak getire. Ecel terleri döktüm resmen.
+
+Ama <strong>Muğla</strong>'ya varınca işler değişti. <b>Pedalla Bisiklet</b>'ten Serkan kardeşime uğradım. Sağ olsun, dostluğuyla yorgunluğumu aldı. Turculuk biraz da budur; yolda çektiğin çileyi, dostun bir bardak çayıyla unutursun.[youtube] https://www.youtube.com/watch?v=jP8PRuOHDe4 [/youtube]
+<h3 class="western">4. Bölüm: Benzin Vermeyen İstasyon ve Zeytinlik Huzuru</h3>
+<strong>Muğla'dan</strong> çıktım, <strong>Ula'ya</strong>, oradan <strong>Akyaka</strong> tarafına saldım kendimi. "<em><strong>Saldım</strong></em>" dediğime bakma, "<em><strong>Balata düşmanı</strong></em>" bir iniş bu. İnerken bileklerim ağrıdı frene basmaktan. Ama manzara, o çam kokusu... Paha biçilemez.
+
+Yolda ocağım için benzin almam gerekti. Gittim bir istasyona, adam "<em><strong>Şişeye benzin yasak</strong></em>" dedi. Yahu kardeşim, dağ başında kalmışım, yemek pişireceğim, altı üstü yarım litre benzin. Yok! Jandarma yasaklamışmış. Sanki Molotof yapacağız, makarna haşlayacağız alt tarafı! Neyse, başka bir yerden hallettik. Akşamına <strong>Zeytinalanı'nda</strong> bir zeytinliğe sığındım. [youtube] https://www.youtube.com/watch?v=zCJRNjHrVIw [/youtube]
+<h3 class="western">5. Bölüm: Kırılan Jant Teli ve "Güzel Hayat"</h3>
+Sabahın nurunda kalktım, hedef <strong>Elcik</strong>. Ama önce <strong>Yuvarlakçay'a</strong> uğradım. Tamam, suyu güzel, doğası harika ama her yer birbirinin kopyası işletmelerle dolmuş. Herkes suyun üstüne bir salıncak kurmuş, fotoğraf çektirme derdinde. Turistik yerlerden kaçışım boşuna değil.
+
+Derken, "<em><strong>Çat</strong></em>!" diye bir ses. Jant teli kırıldı. "<em><strong>Hayat sana güzel Ferdimen</strong></em>" diyorlar ya, al sana güzel hayat. Dağın başında, güneşin alnında jant teli değiştirmekle uğraş. Neyse ki hazırlıklıyım, hallettik. Sonra ver elini tırmanış. İttire kaktıra, söve saya çıktım o rampaları. <strong>Elcik köyüne</strong> vardığımda pilim bitmişti ama o köy meydanındaki kapalı pazar yerine çadırı kurunca dünya varmış dedim.[youtube] https://www.youtube.com/watch?v=2mqnFfOkZec [/youtube]
+<h3 class="western">6. Bölüm: Matkap Peşinde Bir Gün</h3>
+Bu bölümün adı "<em><strong>Matkap Aranıyor</strong></em>" olsa yeridir. Bisikletin bagaj vidası kırıldı, içinde parça kaldı. Sökmem lazım, matkap yok. kapı kapı gezdim, kahvelere sordum, "<em><strong>Matkap var mı?</strong></em>" diye. Millet uzaylı görmüş gibi bakıyor. Sonunda Çöğmen köyünde bir abimiz sağ olsun işimizi çözdü.
+
+Sonrası yine tırmanış, yine rakım. 1000 metreleri devirdim. <strong>Nif</strong> köyüne vardığımda hava serinlemiş, yayla havası çarpmıştı. Okulun bahçesine kampı attım. Dağların sessizliği, yorgunluğun en güzel ilacı.[youtube] https://www.youtube.com/watch?v=9Sg_hw6WJEg [/youtube]
+<h3 class="western">7. Bölüm: Kestirme Yol Tuzağı ve Seydikemer</h3>
+"<em><strong>Şuradan bir kestirme var</strong></em>" dediler mi, orada durup iki kere düşüneceksin. Nif'ten çıktım, haritada yol var görünüyor, gerçekte ise tarla. Yine de manzarası yeter. Yeşilüzümlü üzerinden, Bekir Beli'ni aşıp Seydikemer'e doğru süzüldüm.
+
+<strong>Seydikemer'de</strong> hastane şantiyesinde çalışan bisikletçi bir kardeşimle, <strong>Erol'la</strong> karşılaştım. "<em><strong>Gel abi yemek yiyelim</strong></em>" dedi, şantiye yemeğine konduk. Beleş yemek bisikletçinin yakıtıdır, affetmem. Geceyi Seydikemer Belediyesi'nin mesire alanında, betonun üstüne çadır kurarak geçirdim. Ertesi gün büyük tırmanış var, Karabel beni bekler. Ama o, bir sonraki etabın konusu...[youtube] https://www.youtube.com/watch?v=Qc45bJJRFpQ [/youtube]
+
+<!--nextpage-->
+
+
+<h2 class="western"><strong>2. ETAP: Batı Torosların Büyüklüğünde Kayboluş</strong></h2>
+Selam dostlar, Ferdimen ben. Sefil ve acınası hayatıma, Anadolu'nun tozlu, rüzgarlı ve rampalı yollarına tekrar hoş geldiniz.
+
+Önceki bölümde "<strong>Az Anadolu</strong>" turunun ilk etabını anlatmıştım. Hani şu Aydın'dan başlayıp, "<strong>Belki Zonguldak'a varırım, belki yolda telef olurum</strong>" dediğim tur... Kaldığımız yerden devam ediyoruz. <strong>Seydikemer'de</strong> bırakmıştık, şimdi önümüzde <strong>Karabel Geçidi</strong> gibi bir bela ve arkasından gelen "<em><strong>Hayat sana güzel Ferdimen</strong></em>" dedirten ama aslında canımıza okuyan o yollar var.
+
+Hazırsanız, çayınızı kahvenizi alın, ben de size o rampalarda döktüğüm terleri, yediğim ayazı ve dostlarla geçen o şahane ama yorucu günleri anlatayım.
+<h3 class="western">8. Bölüm: Karabel Geçidi ve Yağmurla Köşe Kapmaca</h3>
+<strong>Seydikemer'de</strong> sabahın köründe kalktım. Hedef belli: <strong>Karabel Geçidi.</strong> Ama mesele sadece tırmanmak değil, mesele yağmur gelmeden o lanet geçidi aşmak. <strong>Gökay</strong> uyarmıştı beni, "<em><strong>30 km tırmanacaksın, pilin biter</strong></em>" diye. Haklıymış.
+
+Saatlerce tırmandım. Yağmur ha çiseledi ha çiseleyecek derken, 1300 metrelik zirveye vardığımda gök delindi. "<em><strong>Hayat sana güzel Ferdimen</strong></em>" diyorlar ya, o sırada bir tezgahın altına sığınmış, titreyerek makarna suyu kaynatmaya çalışıyordum. Sırılsıklam oldum ama o geçidi aştım ya, gerisi teferruat. Akşamına Kınık taraflarında bir mescide sığındım. Mescitler olmasa halimiz haraptı zaten.[youtube] https://www.youtube.com/watch?v=9tH_DbtjshM [/youtube]
+<h3 class="western">9. Bölüm: Altınyayla Tuzağı ve Gölhisar</h3>
+Sabah "<strong>Dont</strong>" diye bir yerde uyandım. İsim manidar, İngilizce bilenler anladı. "<strong>Gitme</strong>" diyor ama biz gidiyoruz. Bugün rota <strong>Altınyayla</strong> üzerinden <strong>Gölhisar</strong>.
+
+Haritaya bakıp "<em><strong>Şuradan kestirme yapayım, Altınyayla'ya ineyim</strong></em>" dedim. Demez olaydım. O inişin bir de çıkışı varmış! Altınyayla'ya inip tekrar o rampayı çıkarken kendime ve harita bilgime epey bir saydırdım. Sonunda <strong>Dirimli Beli'ni</strong> aşıp <strong>Gölhisar'a</strong> vardım. Gölhisar'a girerken yağmur yine bizi karşıladı ama olsun, en azından varmıştık.[youtube] https://www.youtube.com/watch?v=7iBRJWAdpJ4 [/youtube]
+<h3 class="western">10. Bölüm: Kibyra Antik Kenti ve Gladyatörlerin Ruhu</h3>
+<strong>Gölhisar'a</strong> gelip de <strong>Kibyra'yı</strong> görmeden gitmek olmaz. Bisikleti aşağıda bırakıp tırmandım antik kente. Burası gladyatörlerin şehri. Stadyumu, meclis binasını görünce insan "<em><strong>Vay be, adamlar ne yaşamış</strong></em>" diyor.
+
+Ama gezmek de yorucu iş kardeşim. Bacaklarım tırmanmaktan iflas etti. Tiyatronun tepesine çıkamadım bile acıdan. Akşamına yine sefil bir halde, güvenlik kulübesinin yanında sabahladım. Tarihle iç içe, konfordan uzak...[youtube] https://www.youtube.com/watch?v=SVEugNEDYDY [/youtube]
+<h3 class="western">11. Bölüm: Lastik Patlağı ve "Bozmayacağım Moralimi" Mantrası</h3>
+<strong>Gölhisar'dan</strong> çıktım, hedef <strong>Çavdır</strong> ve ötesi. Ama gün ters başladı. Lastik patladı, içindeki sıvı tamir etsin diye beklerken bir yandan da kahvaltı yaptım. Ufacık bir cam parçası bütün keyfimi kaçırdı.
+
+Sonra <strong>Çavdır'dan</strong> <strong>Tefenni'ye</strong> doğru köy yollarına saptım. Başpınar, Hasanpaşa derken o rampalar bitmedi. Bir ara o kadar bunaldım ki kendi kendime "<em><strong>Bozmayacağım moralimi, hiçbir şeyin canımı sıkmasına izin vermeyeceğim</strong></em>" diye şarkı söylemeye başladım. Delirdik mi? Belki biraz. Akşamına Kılavuzlar köyünde camiye sığındım. Muhtar sağ olsun, dışarısı buz gibiydi, bizi içeri aldılar.[youtube] https://www.youtube.com/watch?v=JE-bFmOffog [/youtube]
+<h3 class="western">12. Bölüm: Kemer Soğuğu ve Rüzgar Savaşı</h3>
+Mayıs ayındayız ama hava Kasım gibi. Kılavuzlar'dan çıktım, donuyorum. Şortla gezen adam tayt giydi, mont giydi, yine ısınamadı. Pillerim bile soğuktan bitti.
+
+<strong>Burdur Kemer</strong>'e vardım, oradan Akçaören, Aksu... Rüzgar bir ara arkamdan esti, "<em><strong>Oh be</strong></em>" dedim. Ama sonra yine karşıma geçti. Aksu'dan sonra bir köyde yine cami cemaatine sığındım. "<em><strong>Ben dağdan indim, yorgunum</strong></em>" dedim, sağ olsunlar ses etmediler. Bisiklet turu dediğin biraz da insanlara güvenmek değil mi zaten?[youtube] https://www.youtube.com/watch?v=HubhebDiH4g [/youtube]
+<h3 class="western">13. Bölüm: Bucak, Kremna ve Büyük Buluşma</h3>
+Bağsaray'dan <strong>Çeltikçi'ye</strong>, oradan <strong>Bucak'a</strong>... <strong>Bucak'ta</strong> "<em><strong>Kremna Antik Kenti var, görmeden geçme</strong></em>" dediler. Dedim "<em><strong>Çıkarız</strong></em>." Çıkmaz olaydım! O nasıl bir rampa, o nasıl bir bozuk yol! Antik kente vardım, manzara şahane ama yol bizi perişan etti.
+
+Daha sonra <strong>Gökay</strong> ile buluştuk. <strong>Antalya'dan</strong> kalktı geldi deli. "<em><strong>Hoş geldin</strong></em>" dedik, sarıldık. Bundan sonra bir süre iki kişiyiz. Bakalım iki deli bir araya gelince ne olacak?[youtube] https://www.youtube.com/watch?v=617A5MvV4Sc [/youtube]
+<h3 class="western">14. Bölüm: Melikler Köprüsü ve Sütçüler İşkencesi</h3>
+<strong>Gökay</strong> yanımda, rehber o. "<em><strong>Gel abi seni şuradan götüreceğim, çok güzel yol</strong></em>" dedi. <strong>Melikler Köprüsü'nden</strong> geçtik, <strong>Karacaören Barajı</strong> manzarası efsane. "<em><strong>Hayat size güzel</strong></em>" diyorsunuz ya, heh işte o anlar güzeldi.
+
+Ama sonra... <strong>Sütçüler rampaları</strong> başladı. "<em><strong>Çandır Kanyonu, Yazılı Kanyon göreceğiz</strong></em>" diye bizi öyle bir yola soktu ki, taş düşse kafamızı yaracak. İndik, çıktık, indik, çıktık... Sütçüler'e vardığımızda pilim bitmişti. Akşamına yine bir caminin kadınlar bölümüne sığındık. <strong>Reşit Hoca</strong> sağ olsun, bizi dışarıda bırakmadı.[youtube] https://www.youtube.com/watch?v=WwBF52rd7sg [/youtube]
+<h3 class="western">15. Bölüm: Torosların Zirvesi ve Zindan Mağarası</h3>
+<strong>Sütçüler'den</strong> çıktık, <strong>Aksu'ya</strong> doğru yine tırmanış. Ama ne tırmanış! <strong>Gökay</strong> önden uçuyor, ben arkadan söve saya geliyorum. Yolda <strong>Kasımlar</strong> sapağında bir sedir ağacı altında ton balıklı makarna yaptık. İşte o an bütün yorgunluğa değdi.
+
+<strong>Aksu Çayı</strong> boyunca ilerleyip <strong>Zindan Mağarası'na</strong> vardık ama geç kalmışız, kapalıydı. "<em><strong>Nerede kalacağız?</strong></em>" derken <strong>Musa</strong> diye bir arkadaş çıktı, "<em><strong>Bizim boş ev var, gelin kalın</strong></em>" dedi. Dört ayak üstüne düştük resmen. Yatak var, çatı var, daha ne olsun?[youtube] https://www.youtube.com/watch?v=q7O-MyeOuVA [/youtube]
+<h3 class="western">16. Bölüm: Dedegöl Dağı ve Vali Çeşmesi</h3>
+Sabah lüks evimizden ayrılıp yine dağlara vurduk kendimizi. <strong>Dedegöl Dağı</strong> karşımızda, heybetli heybetli bakıyor. "<em><strong>Aşacağım seni Dedegöl!</strong></em>" dedim. 1850 metredeki <strong>Vali Çeşmesi'ne</strong> kadar tırmandık. Manzara bir tarafta <strong>Beyşehir Gölü</strong>, bir tarafta <strong>Isparta dağları.</strong>
+
+İniş ise tam bir macera. <strong>Yenişarbademli'ye</strong> indik, oradan <strong>Konya sınırına</strong> geçtik. Kurucaova'da muhtar bize biraz yokuş yaptı, "<em><strong>Yer yok</strong></em>" falan dedi. Biz de inat ettik, kuytu bir köşe bulup yerleştik. Konyalı dayılara rağmen keyfimizi bozmadık.[youtube] https://www.youtube.com/watch?v=y7CXgqVBE2c [/youtube]
+<h3 class="western">17. Bölüm: Beyşehir Gölü ve Seydişehir Yolu</h3>
+Sabah <strong>Kurucaova'da</strong> bisiklete bakım yaptık.<strong> Gökay usta</strong> sağ olsun jant tellerine el attı. Sonra ver elini <strong>Beyşehir</strong>. Göl kenarından, kuş gözlem kulesinden manzarayı izleyerek süzüldük.
+
+<strong>Seydişehir'e</strong> vardığımızda <strong>Kuğulu Park'ta</strong> kampı kurduk. Burada Ömer ve diğer bisikletçi dostlarla buluştuk, yemek yedik. Yağmur yine bizi yakaladı ama bu sefer hazırlıklıydık, mescide kapağı attık.[youtube] https://www.youtube.com/watch?v=AFOQNhuyyRc [/youtube]
+<h3 class="western">18. Bölüm: Veda Vakti ve Yeni Bir Başlangıç</h3>
+<strong>Seydişehir'de Hüseyin abimiz</strong> bizi gezdirdi. Taraşçı Barajı, dağlar, taşlar... Adam tam bir doğa insanı, bize mantar pişirdi, çay demledi. "<strong>Survivor Anadolu</strong>" resmen.
+
+Ve sonunda ayrılık vakti geldi. <strong>Gökay</strong> Antalya'ya döndü, ben yine tek başıma kaldım. Ama yalnızlık uzun sürmedi, bu sefer de<strong> Şafak abim</strong> çıkageldi. Kuğulu Park'ta, bir dost gitti, bir dost geldi. Yollar böyle işte, gidenler, gelenler ve hiç bitmeyen o pedal çevirme arzusu...[youtube] https://www.youtube.com/watch?v=ZIo1HFtQan4 [/youtube]
+
+İşte böyle dostlar. Torosları aştık, yağmurla ıslandık, güneşle kavrulduk ama "<strong>Az Anadolu</strong>" turuna tam gaz devam ettik. Sefil ve acınası hayatımın bu bölümü de böyle geçti.
+
+Bir sonraki etapta görüşmek üzere. Kendinize iyi bakın, yollarda kalın. 
+
+<h2 class="western"><strong>3. ETAP:  Konya‘nın düzünden, Torosların yokuşuna,</strong></h2>
+&nbsp;
+
+"<strong>Az Anadolu</strong>" turunun üçüncü etabıyla, yani <strong>Konya</strong>'nın uçsuz bucaksız düzlüklerinden, Torosların rüzgarlı geçitlerine ve Kayseri'nin sanayi tozuna bulandığım bölümlerle karşınızdayım. Seydikemer'de başlayan bu macera, <strong>Seydişehir</strong>'de Şafak abimle buluşup yolları ayırmamızla devam etmişti. Şimdi ise <strong>yalnız kovboy misali</strong>, bazen rüzgarla, bazen patlak lastikle, bazen de kendi gölgemle kavga ede ede ilerliyorum.
+
+Buyurun, Konya ve Kayseri bozkırlarında geçen, zaman zaman "<em><strong>ben ne yapıyorum burada?</strong></em>" dedirten o günlerin hikayesi...
+<h3 class="western">19. Bölüm: Ayrılık Vakti ve Bozkır'ın Sürprizleri</h3>
+<strong>Seydişehir</strong> Kuğulu Park'ta Şafak abimle yaptığımız kahvaltının ardından yolları ayırdık. O kendi yoluna, ben kendi çileme... Hedef <strong>Bozkır</strong> ama önce <strong>Yalıhüyük</strong> ve <strong>Ahırlı</strong>'dan geçmem lazım.
+
+<strong>Konya ovası</strong> dediler, düz dediler ama rüzgarı hesaba katmadılar. <strong>Yalıhüyük</strong>'te bir nane yok, <strong>Ahırlı</strong> desen öyle. Ama <strong>Bozkır</strong>'a gelince iş değişti. Burası bayağı büyük şehir "<em><strong>Burada kalınmaz</strong></em>" deyip bastım pedala. Akşamına <strong>Akören</strong> yolunda, dere kenarında ıssız bir mescide kapağı attım. Çeşmesi var, tuvaleti var, daha ne olsun? Saray yavrusu mübarek.[youtube] https://www.youtube.com/watch?v=6V2iLy1iGiI [/youtube]
+<h3 class="western">Bölüm 20: Pınarcık - Mavi Boğaz Kanyonu - Sopran Yaylası - Akören</h3>
+Bu bölüm öyle "<em><strong>lay lay lom</strong></em>" bir bölüm değildi. Pınarcık'ta gözümü açtım, sabahın köründe düştüm yollara. Haritaya baktım, dere kenarından eski bir yol var dediler. "<em><strong>Ferdimen, macera seni çağırıyor</strong></em>" dedim, daldım Çarşamba Çayı'nın kenarına. Su sert akıyor, insanı mert derler ya Bozkır için, heh işte tam oradayız.
+
+Manzara desen, "<em><strong>nefes kesici</strong></em>" lafı az kalır. <strong>Mavi Boğaz Kanyonu</strong>'na bir girdim, fotoğraf çekmekten pedal çeviremedim desem yeridir. Ama her güzelin bir kusuru var; o güzelim kanyon bitti, Beyşehir Kanalı bitti, başladı tırmanış. Sopran Yaylası'na, 1650 metreye tırmanırken ciğerim soldu. Tam "<em><strong>zirveye vardım, oh be</strong></em>" derken, gök delindi! Öyle bir yağmur, öyle bir fırtına... <strong>Akören</strong>'e kendimi zor attım. Islanmış sıçana dönmüş vaziyette, bir çay bahçesine sığındım. Akşamı da orada bir mescitte ettik mecburen. Doğa "<em><strong>Burası benim çöplüğüm, ayağını denk al Ferdimen</strong></em>" dedi resmen.[youtube] https://www.youtube.com/watch?v=rM_kjQ-GFek [/youtube]
+<h3 class="western">21-22. Bölüm: Akören'den Çatalhöyük'e ve Güneysınır'a Yarış</h3>
+Sabah <strong>Akören</strong>'de polislerle çay muhabbeti yaptık. "<em><strong>Teşkilatım sağlam</strong></em>" deyince güldüler. Yola düştüm, hedef <strong>Çumra</strong>. Yol boyu ağaçlar büyümüş, gölge yapıyor ama <strong>Çumra</strong>'nın trafiği adamı bezdiriyor.
+
+Çumra'ya gelmişken Çatalhöyük'ü görmeden olmaz dedik, gittik. Tarihin sıfır noktası diyorlar, biz de tozun toprağın sıfır noktasındayız. Akşamına <strong>Güneysınır</strong>'a varmak için güneşle yarışa girdim. Ovanın ortasında çadır kuracak yer yok, her yer tarla. Sonunda karanlıkta <strong>Güneysınır</strong>'a vardım, bir benzinliğin mescidine sığındım.[youtube] https://www.youtube.com/watch?v=vTitI-pWQMo [/youtube][youtube] https://www.youtube.com/watch?v=s0xykf7aHu4 [/youtube]
+<h3 class="western">23. Bölüm: Konya Ovası'nın Bitmeyen Yolu</h3>
+<strong>Güneysınır'da</strong> mescitte geçen gecenin ardından <strong>Kazımkarabekir</strong> üzerinden <strong>Karaman'a</strong> sürdüm. "<em><strong>Konya Ovası düzdür, bas git</strong></em>" diyenlere selam olsun, rüzgar karşıdan esince o düz yol oluyor sana Çin Seddi.
+
+<strong>Karaman'a</strong> girdim, kalesine çıkamadım kapalıydı. Sanayinin tozunu yutarak <strong>Ayrancı'ya</strong> doğru devam ettim. Yol bitmiyor arkadaş! Git git git... Rüzgar dövüyor, güneş yakıyor. Akşamına <strong>Ayrancı'ya</strong> zor attım kendimi. Yolda metruk bir benzinlikte kalacaktım, "<em><strong>tekinsiz</strong></em>" geldi, vazgeçtim. Ayrancı'da güvenli bir liman buldum sonunda.[youtube] https://www.youtube.com/watch?v=j0EIChvgBGg [/youtube]
+<h3 class="western">24. Bölüm: Ayrancı'dan Ereğli'ye ve Ulukışla Çilesi</h3>
+<strong>Ayrancı'da</strong> hastane bahçesinde kahvaltı yapıp <strong>Ereğli'ye</strong>, oradan da <strong>Ulukışla'ya</strong>... Konya il sınırından çıkıp <strong>Niğde'ye</strong> girmenin mutluluğunu yaşarken, <strong>Ulukışla</strong> yolunda emniyet şeridi olmayan o lanet rampayla tanıştım. Kamyonlar yanımdan teğet geçiyor, ecel terleri döküyorum. "<em><strong>Aklınız varsa bu yoldan bisikletle gelmeyin</strong></em>" dedim videoda, hala arkasındayım.
+
+Akşamına <strong>Ulukışla'da</strong>, <strong>Öküz Mehmet Paşa Kervansarayı'nın</strong> önüne çadırı kurdum. Tarih kokan bir mekanda, karga sesleri eşliğinde uyumaya çalıştım.[youtube] https://www.youtube.com/watch?v=d7uJfCTICX0 [/youtube]
+<h3 class="western">25. Bölüm: Pozantı İnişi ve Yağmurla Dans</h3>
+<strong>Ulukışla'dan</strong> <strong>Pozantı'ya</strong> o meşhur iniş... Ama ne iniş! Kamyonlarla yarışıyorsun resmen. Tam "<em><strong>Oh be, iniyoruz</strong></em>" derken yağmur bastırdı. Çiftehan'da sırılsıklam oldum.
+
+Sonra Kamışlı tarafına döndüm, bir kulübe buldum, zengin villalarının olduğu bir yerde, "<em><strong>fakir ama gururlu</strong></em>" bir şekilde nohutlu pilavımı yedim. Jant teli durur mu? o da kırıldı. "<em><strong>Hayat sana güzel Ferdimen</strong></em>" serisi devam ediyor. Akşamına Yazıcak köyünde, terk edilmiş bir binanın sundurmasına çadırı kurdum. Kırlangıçlarla oda arkadaşı olduk.[youtube] https://www.youtube.com/watch?v=1TG5mdAhPog [/youtube]
+<h3 class="western">26. Bölüm: Rüzgarın Oğlu ve Çamardı</h3>
+Sabah Yazıcak'tan çıktım, rüzgar karşıdan öyle bir esiyor ki, pedal çevirmek işkence. Ama manzara... <strong>Aladağlar</strong> karşımda, <strong>Demirkazık zirvesi</strong> "<em><strong>Gel gel</strong></em>" yapıyor. Yelatan boğazında rüzgarla boğuşa boğuşa <strong>Çamardı'na</strong> vardım.
+
+Akşamına <strong>Çamardı</strong> çıkışında, daha inşaatı bitmemiş bir mescidin içine çadırı kurdum. Priz var, çatı var, manzara var. Beş yıldızlı otel konforu mübarek.[youtube] https://www.youtube.com/watch?v=VRhdWfdFja8 [/youtube]
+<h3 class="western">27. Bölüm: Aladağlar'dan Erciyes'e Selam</h3>
+<strong>Çamardı'dan</strong> çıktım, <strong>Bulduruş Geçidi'ni</strong> aştım. 1720 metre! Orayı aşınca karşımda bütün heybetiyle <strong>Erciyes Dağı</strong> belirdi. Aladağlar arkada, Erciyes önde.
+
+İçmeli, Dündarlı derken <strong>Yahyalı'ya</strong> doğru sürdüm. Dündarlı'da elma bahçeleri, soğuk hava depoları... Yolda İçmeceler'de şifalı sudan içtim, dayı "<em><strong>Çok içme cırcır olursun</strong></em>" dedi ama dinleyen kim? Akşamına <strong>Yahyalı'da</strong> bir okulun bahçesine kampı attım.[youtube] https://www.youtube.com/watch?v=Iajj_gpNmWc [/youtube]
+<h3 class="western">28. Bölüm: Develi Ovası ve Rüzgarın Azizliği</h3>
+<strong>Yahyalı'dan</strong> çıktım, Develi ovasına düştüm. Rüzgar arkamda, basıyorum gidiyorum. "<em><strong>Dünya tersine dönse bile</strong></em>" şarkısını söyleyerek <strong>Develi'yi, Yeşilhisar'ı</strong> geçtim.
+
+Ama <strong>İncesu'ya</strong> yaklaşırken Erciyes bulut topladı, hava karardı. İncesu'da bir okul bahçesine çadır kurdum, polis geldi "<strong>Kaldır</strong>" dedi. Gittik 15 Temmuz parkına kurduk. Devletin polisiyle inatlaşacak halimiz yok ya.[youtube] https://www.youtube.com/watch?v=fOXvr1aLnug [/youtube]
+<h3 class="western">29-30. Bölüm: Kayseri Sanayisi, Kültepe Kaniş-Karum ve Sarımsaklı Barajı</h3>
+<strong>İncesu'dan Kayseri</strong> merkeze, oradan sanayiye... <strong>Kayseri</strong> trafiği adamı yutar. <strong>Hacılar</strong> üzerinden <strong>Talas'a</strong> geçtim, hdd'nin hafıza dolmuştu, sahibinden.com'dan bulduğum bir arkadaştan hdd aldım. Turun devamı için şart.
+
+Havanın kararmasına yakın saatlerde Kayseri'den ayrılmak üzereyken arka bagaj problem çıkarttı mecburen bir cami bahçesine sığındım ertesi gün son hazırlıklarımı yaptım. Lastik, vida, bakım...  Kayseri'den <strong>Bünyan</strong> yoluna saptım ama önce <strong>Kültepe Kaniş-Karum</strong> ören yerini gezdim. Burası Anadolu'da ticaretin, yazının başladığı yer. Asurlu tüccarların mekanları...
+
+Tarih turunu bitirip tekrar yola düştüm. <strong>Bünyan'a</strong> gitmekten vazgeçip Sarımsaklı'da kalmaya karar verdim. <strong>Sarımsaklı Barajı'na</strong> doğru yola çıktım ama lastik yine "<strong>Ben gidiciyim</strong>" dedi. İnat ettim, tamir etmedim. "<em><strong>Seni o kampa kadar sırtımda taşırım ama tamir etmem</strong></em>" dedim ve yaptım, Öyle de inadım. Akşamına Sarımsaklı Mesire Alanı'nda, patlak lastikle günü bitirdim.[youtube] https://www.youtube.com/watch?v=Y6YtuycAiWQ [/youtube][youtube] https://www.youtube.com/watch?v=hNaCrcOdQTQ [/youtube]
+
+Ertesi gün <strong>Bünyan</strong> üzerinden <strong>Sivas</strong> yoluna devam edeceğim ama o bir sonraki etabın konusu.
+
+Şimdilik benden bu kadar. <strong>Konya'nın</strong> düzünden, Torosların yokuşuna, <strong>Kayseri'nin</strong> sanayisine... Yorulduk, ıslandık, tozlandık ama yoldayız.
+</b>
+
+<!--nextpage-->
+<h2><strong>4. ETAP: Orta Anadolu'nun Göbeğinde Bir Başına</strong></h2>
+Evet, geldik turun 4. etabına. Artık Ege'nin, Akdeniz'in o tatlı havası bitti. İç Anadolu'nun o uçsuz bucaksız, insanı hem büyüleyen hem de yalnızlıktan çıldırtan bozkırına, sarısına, sıcağına düştük.
+<h3><b>Bölüm 31: Sarımsaklı - Bünyan - Büyük Tuzhisarı - Özvatan</b></h3>
+<strong>Kayseri</strong> düzlüklerindeyiz. <strong>Sarımsaklı baraj gölünde</strong>, kadınlar mescidinde uyandım. Sabah sabah bisikletin lastiğiyle bir "<em><strong>infaz</strong></em>" seansımız oldu, eskisini doğrayıp yenisini taktım. Yola bir çıktım, istikamet <strong>Bünyan</strong>.
+
+Ama asıl olay <strong>Tuzla Gölü</strong> civarında koptu. Rüzgar bir döndü arkadaş, tam karşıdan tokat gibi çarpıyor suratıma. Pedal çeviriyorum, bisiklet gitmiyor. Sanki arkadan biri tutuyor. "<em><strong>Avarayam</strong></em>" türküsünü çığıra çığıra, rüzgarla kavga ede ede <strong>Özvatan'a</strong> vardım. Kızılırmak'la bir süre yarenlik ettik, o biraz moral oldu ama günün sonunda pestilim çıkmıştı.[youtube] https://www.youtube.com/watch?v=YIt8i3M3jRo [/youtube]
+<h3><b>Bölüm 32: Özvatan - Felahiye - Çandır - Boğazlıyan</b></h3>
+<strong>Özvatan'dan</strong> sabahın köründe o tırmanışla başladık güne. Uykun açılsın diye kahve içmene gerek yok, <strong>Felahiye</strong> yokuşunu vur, cin gibi oluyorsun. <strong>Kayseri</strong> bitti, <strong>Yozgat</strong> il sınırına, <strong>Çandır'a</strong> girdim.
+
+Ve gelelim turun en "<em><strong>lanet</strong></em>" yerine: <strong>Boğazlıyan</strong>. Bak açık konuşacağım, ben bu turda çok yer gördüm ama <strong>Boğazlıyan</strong> kadar beni geren yer olmadı. "<em><strong>Timur bile Anadolu'yu işgal ederken Boğazlıyan'a uğramamış, etrafından dolaşmış</strong></em>" diyorlar, adam haklıymış. Gözüm tutmadı, tekinsiz geldi. Gittim polise, "<em><strong>Burası sakat, nerede kalayım?</strong></em>" dedim. Beni bir benzinliğe yönlendirdiler. "<em><strong>Yazın bunu kenara</strong></em>" dedim, "<em><strong>Bir daha gelmeyecekler listesi, numara 1: Boğazlıyan.</strong></em>"[youtube] https://www.youtube.com/watch?v=zuDw5Ca-96A [/youtube]
+<h3><b>Bölüm 33: Boğazlıyan - Yenifakılı - Kozaklı</b></h3>
+<strong>Boğazlıyan</strong> travmasından sonra kaçarak uzaklaştım oradan. <strong>Yenifakılı'ya</strong> geçtim, oranın jandarma komutanı sağ olsun, insana insan olduğunu hatırlattı. Güzel bir sohbetten sonra ver elini <strong>Nevşehir Kozaklı.</strong>
+
+<strong>Kozaklı</strong> ilaç gibi geldi. Kaplıcalar diyarı mübarek. Belediyenin tesislerinde, parkta, sıcak suya girdim, çamaşırları yıkadım, kendimi yıkadım. Üstümdeki o bozkır tozu, yorgunluğu aktı gitti. "<em><strong>Oh be dünya varmış</strong></em>" dediğim anlardan biriydi. Parkta çadırı kurdum, keyfime baktım.[youtube] https://www.youtube.com/watch?v=NZRFV1kZivw [/youtube]
+<h3><b>Bölüm 34: Kozaklı - Şefaatli - Yerköy - Çiçekdağı</b></h3>
+<strong>Kozaklı'dan</strong> çıktım, tekrar <strong>Yozgat</strong> sınırlarına, <strong>Şefaatli'ye</strong> daldım. Ama ne dalış... Sıcak bir yandan, o bitmeyen sarı tepeler bir yandan... Bir ara "<em><strong>Ne işim var lan benim burada?</strong></em>" diye sorgulamaya başladım. Bisikletten soğudum resmen.
+
+Tam "<em><strong>Bittim ben</strong></em>" derken, <strong>Delice Çayı</strong> diye bir cennete düştüm. Ağaçlıklı, serin, su sesi... Cehennemden cennete geçiş gibiydi. Orada biraz kendime geldim. Sonra <strong>Yerköy</strong> ve <strong>Çiçekdağı'na</strong> sürdüm. Akşam nerede kaldım dersiniz? Çiçekdağı Emniyeti seferber oldu, en son cami bahçesi güvenli olur dediler, hocadan izin alıp çöktük bahçeye.[youtube] https://www.youtube.com/watch?v=QM8_I94zSg8 [/youtube]
+<h3><b>Bölüm 35: Çiçekdağı - Akçakent - Akpınar</b></h3>
+Bu bölümün adı "<em><strong>İşkence</strong></em>" olmalıydı. Çiçekdağı'ndan çıktım, <strong>Akçakent</strong> diye bir yere gidiyorum. Arkadaş, yol değil, testere ağzı! İniyorsun, çıkıyorsun, iniyorsun, çıkıyorsun. Bir ara sinirden güldüm, "<em><strong>Böyle yol mu yapılır zalimler!</strong></em>" diye bağırdım dağlara.
+
+<strong>Akçakent'e</strong> vardım, ilçe demeye bin şahit lazım. 3-5 kişi toplanıp "<em><strong>Hadi ilçe olalım</strong></em>" demişler sanki. Oradan da <strong>Akpınar'a</strong> inmeye çalıştım ama güneş battı, karanlığa kaldım. <strong>Eldelekli Demirel</strong> köyüne sığındım. Sağ olsun köylüler, Erdem kardeşim misafirperverlik gösterdi, karnımızı doyurduk. Yoksa o yorgunlukla dağ başında kurda kuşa yem olacaktık.[youtube] https://www.youtube.com/watch?v=Y01KdoTcGl0 [/youtube]
+<h3><b>Bölüm 36: Akpınar - Kaman - Çelebi</b></h3>
+Köydeki cami bahçesinde uyanıp <strong>Akpınar</strong> merkeze indim. Oradan <strong>Kaman'a</strong> geçtim ama koca <strong>Kaman'da</strong> oturup yemek yiyecek bir bank bile bulamadım, gittim bir ağaç dibinde kendi makarnamı kendim yaptım.
+
+Sonra rotayı <strong>Kırıkkale</strong> tarafına, <strong>Çelebi'ye</strong> kırdım. Yol stabilize, toprak... Ama benim sevdiğim yollar bunlar, trafik yok, kafa dinlemelik. <strong>Çelebi'ye</strong> vardım, yine belediyenin parkına, kamelyanın altına serdim matı. Akşam yemeği, çay, sessizlik... Sefil hayatımın kral olduğu anlar.[youtube] https://www.youtube.com/watch?v=OZCv4dAdPaA [/youtube]
+<h3><b>Bölüm 37: Çelebi - Keskin - Kırıkkale - Bahşılı</b></h3>
+Bugün  31 Mayıs, benim için özel bir gündü. "<em><strong>Ferdimen</strong></em>" oluşumun, yani tek başıma yollara düşüşümün, o ilk arkadaş kazığını yiyip "<strong>Bundan sonra yalnızım ulan!</strong>" deyişimin <strong>10. yıl dönümüydü</strong>. <strong>Kırıkkale Keskin</strong> yollarında bunu kutladım kendi kendime.
+
+<strong>Keskin'de</strong> bir parkta kuru fasulye-pilav gömdükten sonra <strong>Kırıkkale</strong> merkeze aktım. Bisikletin arka göbeğinden "<em><strong>takır tukur</strong></em>" sesler gelmeye başladı, "<em><strong>Eyvah yolda kaldık</strong></em>" dedim. Neyse ki Kırıkkale sanayide genç bir usta, <strong>Oğuzhan</strong> kardeşim yetişti imdadımıza, halletti sorunu. Akşam da şehrin gürültüsünden kaçıp <strong>Bahşılı'ya</strong> attım kendimi.
+
+İşte böyle dostlar... Tozla, toprakla, terle, bazen küfürle ama en çok da inatla geçen bir etabı daha bitirdik.[youtube] https://www.youtube.com/watch?v=6uhEwrBwyuw [/youtube]
+
+<!--nextpage-->
+
+
+<h2><strong>5. ETAP: Hastalık, Yokuşlar ve Final</strong></h2>
+A’dan Z’ye (ama mütevazı adıyla Az Anadolu) turumuzun final perdesine, yani 5. etabın o meşhur "<em><strong>finish</strong></em>" çizgisine (ya da çizgisinin hemen kıyısına) gelmiş bulunuyoruz.
+
+Hazırsan, kemerleri bağla... Ya da dur, bisiklette kemer yok, kaskını tak. Bozkırın sarısından kurtulup Karadeniz'in yeşiline doğru pedal çevirdiğim, hastalıktan geberdiğim ama inadımdan vazgeçmediğim o günlere dönüyoruz.
+
+İşte benim ağzımdan, turun o çetrefilli son günleri:
+
+Evet dostlar, İç Anadolu'nun kavurucu sıcağını ve bitmek bilmeyen düzlüklerini geride bırakmaya niyetlendik ama coğrafya "<em><strong>Dur bakalım Ferdimen, o kadar kolay değil</strong></em>" dedi. Kırıkkale'den Zonguldak'a uzanan, hem bedenen hem ruhen sınandığım o son virajdayız.
+<h3><b>Bölüm 38: Bahşılı - Yahşihan - Kalecik</b></h3>
+<strong>Kırıkkale Bahşılı'da</strong> bir mescitte uyandım. Polisler "<em><strong>Şurada mesire alanı var git oraya kur</strong></em>" dediler ama baktım yer toz toprak, hava yağdı yağacak... Dedim "<em><strong>Ferdimen, sen gel bu mescide kıvrıl, geceyi güvenle atlat.</strong></em>" Sabah Kızılırmak kenarında krallar gibi kahvaltımı yaparken belediyenin ot biçme timleri geldi. Arkadaş, nereye gitsem şu ot biçme makinelerinin sesi! "<em><strong>Otlara özgürlük!</strong></em>" diye bağırasım geldi.
+
+Yola koyuldum, <strong>Kırıkkale'nin</strong> o tozlu yollarından, kamyonların arasından sıyrılıp rotayı <strong>Kalecik'e</strong> kırdım. <strong>Ankara yolu</strong> ana baba günü, <strong>Çankırı yolu</strong> ise bomboş... "<em><strong>Herkesin Ankara'da dayısı var herhalde</strong></em>" dedim, bastım pedala. <strong>Kalecik'e</strong> vardığımda bu senenin ilk dutunu yemek nasip oldu. Ama <strong>Kalecik</strong> rüzgarı öyle bir çarptı ki, "<em><strong>Ben gidiyorum</strong></em>" dedim, rüzgar "<em><strong>Hayır gidemezsin</strong></em>" dedi. Akşamı zor ettik, yine bir mescide kapağı attık.[youtube] https://www.youtube.com/watch?v=dh9Gh1hsr2s [/youtube]
+<h3><b>Bölüm 39: Baykuşboğazı - Akyurt - Esenboğa - Sancar</b></h3>
+Sabah<strong> Baykuşboğazı geçidinde</strong> gözümü açtım. Tırmanış var, hedef 1350 metredeki<strong> Teke Beli.</strong> Tam "<strong>Şeytanın bacağını kırdık</strong>" derken, lastik "<em><strong>Pısss</strong></em>" dedi. Güneşin alnında, sineklerin tacizi altında lastik değiştirmek... İşte sefil hayatımın özeti.
+
+Lastiği halledip yola devam ettim ama ana yoldan gitmek istemedim. Kestim <strong>Esenboğa Havaalanı'nın</strong> arkasından, köy yollarından <strong>Kazan'a</strong> doğru. Yolda köpekler sardı etrafımı. Taktik belli: "<em><strong>Sen misin erkek lan!</strong></em>" diye ben onlara havlayınca suspus oldular. Akşam <strong>Sancar</strong> köyüne vardım. Muhtar yok, köy konağının bahçesine, çeşme başına kurdum otağımı.[youtube] https://www.youtube.com/watch?v=8nP5p0sOiHA [/youtube]
+<h3><b>Bölüm 40: Sancar - Kazan - Kızılcahamam - Bulak</b></h3>
+Sabah Sancar'da Sabit Amca ile çay keyfi yaptık. Eşyaları orta yerde bırakıp çaya gittim, normalde yapmam ama köy yeri güvenli geldi. Yola bir çıktım, istikamet <strong>Kızılcahamam</strong>. Ama yolda bir haller var, her yer jandarma, polis... Meğer biri geçecekmiş. O kadar tantana, o kadar güvenlik... "<em><strong>Dünya lideri geliyor</strong></em>" dediler, biz de kenardan geçtik gittik.
+
+<strong>Karga Sekmez</strong> geçidini aşıp <strong>Kızılcahamam'a</strong> indim ama durmadım. Bulak köyünde bir düğün salonu/sosyal tesis buldum. Aza Ömer Abi "<em><strong>Kur çadırı rahatına bak</strong></em>" dedi. Gece düğün müğün olur mu dedik ama şansımıza sakindi.[youtube] https://www.youtube.com/watch?v=MgVlqlJ4P0s [/youtube]
+<h3><b>Bölüm 41: Bulak - Akyarma Geçidi - Dörtdivan</b></h3>
+Bugün felaket... Sabah kalktım ama kalkamıyorum. Kolum kalkmıyor, her yerim ağrıyor. Saat 11 oldu, ben hala yola çıkamadım. Şifayı kapmışız belli. Ama Ferdimen durur mu? "<em><strong>Ölmek var dönmek yok</strong></em>" dedim, vurdum <strong>Akyarma Geçidi'ne.</strong>
+
+Yolda karayolları ekibi durdu, "<em><strong>Gel atalım arabaya çıkaralım seni</strong></em>" dediler. Dedim "<em><strong>Yok ağa, ben o zirveye kendi gücümle çıkacağım, o madalyayı göğsüme takacağım.</strong></em>" Ateşler içinde, inleye inleye çıktım o 1570 metreyi. İnerken bir de sağanak yağmur yedik, tam oldu. Otoyola girmemek için köy yollarında kaybolurken açlıktan ölmek üzere olan bir köpek buldum. Kendi halime mi yanayım, onun haline mi bilemedim. Akşam <strong>Dörtdivan'a</strong> vardığımda pestilim çıkmıştı.[youtube] https://www.youtube.com/watch?v=6A7iQJa4IpM [/youtube]
+<h3><b>Bölüm 42: Dörtdivan - Yeniçağa - Mengen - Devrek</b></h3>
+<strong>Dörtdivan'da</strong> "<strong>Kadılar Camii</strong>"nin tuvaletini görünce "<strong>Burası evden temiz</strong>" dedim. Böyle lüks tuvalet görünce insanın içi açılıyor valla. Hastalık hala devam ediyor ama biraz toparladım. <strong>Yeniçağa</strong> üzerinden <strong>Mengen'e</strong>, oradan <strong>Devrek'e</strong>...
+
+Yol manzarası şahane, bir yanım orman, bir yanım dere. "<em><strong>Peygamber vitesi</strong></em>"ne taktım, saldım aşağı. Ama <strong>Mengen'den</strong> sonra yine tırmanış... <strong>Dorukan Tüneli'ni</strong> geçince artık iklim değişti, hava değişti. Karadeniz'in o nemli, yeşil havasını ciğerlerime çektim. <strong>Devrek'te</strong> bir mesire alanına girdim, "<em><strong>Yasak</strong></em>" dediler, "<em><strong>Müdürü ara</strong></em>" dedim, izin kopardık. Gece parkın kralı bendim.[youtube] https://www.youtube.com/watch?v=zs8V1Rm_fdQ [/youtube]
+<h3><b>Bölüm 43: Devrek - Gökçebey - Çaycuma</b></h3>
+Ve geldik sona... <strong>Devrek'te</strong> o parkta sabahladım ama "<em><strong>Motoru bozduk</strong></em>" arkadaşlar. Önceki akşam yediğim tavuktan mı nedir, midem iflas etti. Bir gün boyunca parkta yattım, haşlanmış patates, havuç ve muz püresiyle hayatta kalmaya çalıştım. Sefillik diz boyu...
+
+Ertesi gün kendimi toplayıp <strong>Çaycuma'ya</strong> doğru sürdüm. Aslında hedef <strong>Zonguldak'tı</strong> ama hem hastalık hem yorgunluk... <strong>Çaycuma</strong> Kent Ormanı'na geldim, çadırı kurdum. <strong>Şafak Abi</strong> ile buluşacaktık, o <strong>Zonguldak'tan</strong> gelecekti. Ve burada, 9 Haziran itibariyle, Aydın'dan başlayan bu delilik, "<strong>Az Anadolu Bisiklet Turu</strong>" <strong>Çaycuma'da</strong> noktalandı.
+
+Z'ye varamadık belki ama Z'nin sınırlarına girdik. A'dan çıktık, Anadolu'nun tozunu yuttuk, yağmurunu yedik, yokuşunu çıktık. Bu da böyle bir hikayeydi. Başka sefil maceralarda görüşmek üzere, esen kalın![youtube] https://www.youtube.com/watch?v=xKa5qgkuj1w [/youtube]
+</div>
+    <div class="tur-sayfasi" id="bolum-2"><h2>Fotoğraflar</h2><link rel="stylesheet" href="album.css">    <script src="album.js"></script>
+<div style="text-align: center; margin-bottom: 40px; width: 100%;"><p style="color: var(--text-light, #666);">*****</p></div>
+[fotoalbum]
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOhPsaHFrheZvJuyVrZtiOt3BlQs61qHKOk5OUNr5cPMsbOgRQ_3ONzs5HsZ8U6iAFsWqkT0O9xaeCaSp311eo5S2X5IDhx9H9E4qnb_mDgC06OHkA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOTr71Pnc6pXkE5SsjLRr3AegrElSNafjn6fdPdHYmGQOKlRNb7XUbwT01Wbi_POkV5ckV2CowZxaYsjEAnvTNVlXTG88h5qjykB0xILFWkWVtTQHQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOeRm4ONDROGd1zrxl7qKjgddVKo35WTpEhlCyhBv6ScmJ_Xc0JM1JIpN5B-ZgUgWQBHRwk6evE5swKeWxKzUYkiGxqyyWK888Zob27CfQgl6XBx4Q=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMftHqtibbeR2RQY7YkMXagyAXW_hLxk77j2n4LnT4hZ9wAllC_a8rx86zOIAnvlpDywegOuFa2mH42NG1AxKVqAq5RGMLfsp_9QU8Tvf-ahZngb58=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNARxo30KtyILkQ4Q225f6lFr3BHVADNUT5cnrrdEdEe_8J3OallAvG-knRH2bs2Ymv3UjD2K3Aakeo5AYX8J2l4MMIMsh2fEu-_4cDZ7Ev2bGm0WI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPaTZye4d8-c1rh1kTjr2V1Voq8rCFgl_01EiCtGMdele2F5xGpFNOV3BM-G8OcEPNgC-MKSGKqCAMJw_G-FDznREFLIgYuQPP-5mAJfYlCRhsJTA8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMmt7NCIxT6R_l6R4TQ8Q9f_Bz1L-QS3i6RkHFOXfr-CE-CkxF3-gVfQFWQJyUrS5GiXobUFd5nIMoy8pKWKQVKKV5s7h0X03nw_zHHhv3qar-xdjI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM9xHseJSeUIoP78vnV7OK5U5dgNc1m73Iyo85g1qldEuJLRMXY04E79sShNbeF8twjt_PMhwUUnwiq7PHR2eojzR4q3VsvFFD45latO_ooUbhTUEM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPNMP8Y6dtMMH_AfizHXA--8r-DY9qLK6HaYGGJpPOoE9UO1gb8ClNtzlDjBrCTgyY79Ghchr_9X4lOkbQX4VxJ_2yfZBMQzfnX_BaqTqndnj1yEpM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO6lpqar7zkBDpjhVhD1fR4GMKdg8suYaTSf3BfLN4C3ogeFqsQVRXdE33prRkjjbNFCiOR5ShWHVACilf0ZSxYF6kIlWhgxRi3ZjA0_yq45dSHsSY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP-fczpoxPWjZYKQS0WMOVOKyEYX9ugZF_rrpxYgadH5XCD4k5IA8roLhj-Fv_S-YnUPVimhg4mUBYjg4IYZK2ETzq3xI_B6tRtjHGwpYWdunSPVX0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNy7mV0O5tjQIw2ciwSecIfbngYggpmvj8_OVimNV_TthYuN50KqltWzSTCsfJisaVGAlDoS4ZI5cOEnMUMCLJs8ze3dPIFQzxzk1PR9jqDvef-6RI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMza1foo2AVKybSUecfgv63YR0HwXL79ID2IM7APQJOuqfJxZSeS3VnD_SgaEIqR4iJd07ixJT6tPVN6vaMSabA6pZ6nfzznpkDC4vMFGhlsir0_j4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNMTBgPlzZcTRY1zQL1emL0ZFjdgq_XWhYS4AM00t7Nj1mvREvxhgtkaHcN95FuWA-EUQqPA_Uky4-nVrc0Bl6L1LDfBCiawZE896uj4EhuQKJhAqg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOOf3hRzQ6LPVla45FpQrbKUaopD1z-Rt9PbxgWBUqtPkd6TLWdqO7kACLlanbfVWPQPb1DzI64e4_UBUsVpfQ7pFFBL-YahwINdNnCYihUFK_lGMs=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMpYeF6834CBW1hwMxt1UpdaKTIfEjzNGN7ISbloBPHPjPbbaHm9dWvxlrD_r6Tk-FtCam59fRjyDeF1ZsJEYcZQiHa5G72H-4YgJuz5kkDhuVPT78=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMoR3pxHBLDNjUg3ejWH--v8SXp_85OHZn07kpGKCt5n7T__T_HidmHLMv_uMERcTXQLQpEcb6khQZnUqB2khk3yPNo5q9lz43ZgfgzSTiEL-StVkc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOoIQrAXRX5v-k-ufBdHdHW2--W1JfwANChPLD8_br8Fy-HvCjc7RKXSDepbutGKU7K-C2bdhzkfcGVa7OWGmfUDa6679T6kOKBj2-fEwNXGts4diA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMvmHcrzZt1j21Ofkjwvcj6Fwd5G2OFdGuVa2teZGHtmqeug4RHKKJYOMYBudd9jlOfbh9_4qQCYcMRlMftjtjpYiEu_2vIjJwjisZ6tBmqZmknIlg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNek6tVs-EAuZsOKDY7YcqMr50KIq37b7Z0o7GoJ6fT4FiMyjaPBq_aAfYgeIyIO_SWJ8Ew8ewVZWWecvuawc5CnSXoqSkpPrk8xuzMoOPn9QNa_wQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNDJ4meSPNa0NGUzK9OgwcmM-Bkl0gD6vwThJPb8RrNRZHOd3H8U576OwCVWJi8xz3reZiaEV-iz7xIwXGDudHkhcWl3idBaCNEK_fLuXx9mxYzo1E=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPvDxvrAaDnYkqErF1HTGahbriZZVdAyKbABxh0In8XJmie7KhaiQWoSyl-3knRCf8ty7zqqvezhb5NfgKVoE-s3l_mHFsBBxdChWAgc7KaM1og_lc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO4-INOnfSxIgYXD6ox9UaThDnM6H8NoAGurVQqJ9v7eRh1NFyIoUl7SWWKywNbnsH9-1zNm5igC-cdaTllyc79_vuhldljW0TFbngoTuHWXeqiP60=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNWy34d6xYCJRzy35nTVqhx4TU1zO3TlS_bAWvdnZJG4Hm1UN_AQb2ChEJ1ji-shKsJlpMxjvldpNIdMnOcIvpES4zWBELWzGFAnc8nS66gfMrY8n4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNs96fFG-0t4Sh80bUeBPXWg9p0TzsMynohUoaVpPAHPvmnhSp_A9VJi784dlg68oRsqfD8-thE6yYUgxoY2qua-Amjb4xl4QxzooMRaK3ZeQJoUuU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOejV7NdiM4PYhXltNM5wCgEsrBIDnTHVS4KTKtyEg1KNnETfJQ8DTrfnHU0cPot-nn0vrgYJG22I5irT0xwBWiKGzl9XXXLU1ObiDPCCovEYVL_0w=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN1m8W0-5HxmJYtM1q2rKIW_BjrTupj7xosJYhzpQhMPyrT8whLk79ocB7M3T1UvV3rPyA-qdWw7L5V4KffAbNb9WmawKPs2RG47FrnVBLwnFWuS2M=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOWWXhAY_9Ztpl3jYgi2uz1e5FA4Svz9f6r9OtQWCps9JfconUW2WF-TQ0jjFDesWbL3O_c_-1nXGpcuk31ZhfKBrwJKGLD7fmzVftOlismp2L7tF0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNpV2pmihiWjBQur4ibwKfSJxj0lCUbDb7xMzI5nR0tsm96p8peY0Hv4UZWT5le2bRwE-N916VrwMIvkqSH1JDJVoFo6S_myYCXNBBWfzQvq_urb6s=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPAsEUdBsxXKkad7xQ8ZZV18Zl9aBx6QSDLwvBqDwQt_jGQvHBzJHagwBcKsHMZSztrAtE7fNSGgJ6kxjdH54an2B-9bi4qLqG-t4ts4-feKHJcCeM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMvEWV5w6Nb5Uz6GKZma6f39EjFy8DST6GDId0uzOYv4Hf2EHIU5uEhpfvQRfC48LImKX2zyXeToRbqlC5dLl7OeCBP3BbHkXW6oyCc2q-nsHi0Oh4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN_8fQ-U4zTrTE6AizHmCAmKnN-ZqXJpbKU-wZwY07bVWZgk0zYi_L8UsmJCCK0LCIY2usSHYTOoX9pQHE6Lwhq2FXeD3DAEnSomzXoGDwmvOFSmxI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN1-6omJaldrrB7b3Swzl9Szvh2ZaxCQyg_4oXZfHS4IlHAG50W7ZadvhDobcICZQiilWiK5xIynMhdmHX-RVGPeA7TlVoSzBN3BtioRI2VPdbXeoo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP25o-XBgd36QHacqPKzBUCrBXY3csyd7Huz2u42DcYN-U_RUPKwxW76sUNsapFMUBPPfF2EyWyTAnHuprsXRZhnXkOqCyVBFj1QZIqYF2guouI1D0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOBnGUut2VSTsvOj-kY_aEo4prF0C-P-Z062459n3QOn_PUTWqhHmoYImjjYM8N_A96PwfaEXuNTnT0M_wp8EV4WjLI_4O5QG1a6BTQR9P9GER1evg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN-ED2PqHgKmPwSYZ2xxbJ28fv6T7LMafm2F8IwcSps94F67zCayFCuA-Pz_0Ewb70DmZk5nyOBg0lROLMQZLdywycDyhjPrzBXlI19usU114ckPtE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPYPrloLHagg5fiS_4wPKH6IntYh_Gm18VpgZt2ycdeT0UWzryNMLk7LauXGOatM17KqLJPHWy5zQuJ7YYfsyq3xGZt3HvpCbG_PEaJgFq4DGUGVw4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP_LzV3xQwgKOdFQnBPNFwx92MNuJWOf6Il8mwc521Djs-oyscWvQuClwVJngiZ33DphP-1rc0AJdQck97T0FDgsq_JcOvKU3PPpvFk6GyPwUAijQE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMmm-E_A8v6RSApKpbqFjpZx6J56i2zi2ONjN3ditfP_ph2ue1d8KJ4_P3VeV0wMZTyW578mGqvbUg9lI5msXfZgv-MfN2jX9jO6C8BIFtb3W-Yx-Y=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPvAM8f5hNWnDf3LmNGpgXvOIGrH9HHqaR_jVyGD6O9stfYEZff3FvwmeMfguMAMAR5OKQ4wxksP59fFi1SUvR6I533JwlzLNF3Qfy8Hsi4bP2o49c=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPk7xmEjQJvYwKgALxs8s8gZjyqZZ2j1mZzAH8oq2YUEJTTmzSxOaKNzB2ON8jo_-bO0T7oJvtpoKi8UAxydL5c74zDzZSuTiw3dn1STK8UOgJjj6Y=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMtJERUOkWaSaQJztxDj3RWvz-vUJWVEOYeZRS4Agphqps3SAW1_TsXs-McjSIJyUEnM6dEaQwNNoEp0lCfDU0f1v5FcNjet1zfDUQwROAmo536ELI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO44pnwUDyLPd7gAtoneby-w69EK6yjSofmQ5c7KFYMhYy5UfX9-tWlkFjMLh4HLxb-T0bkV8WfEM2DKnPCuFOYN_ILjnqMq_nRV1w_sj4O29FaYqE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMoFiutlJMvlEADEbY8rLHgunMgRKjZHD4zoHIDiQLSjFwLnXxi3hWgCpfvdLelnVVG3-QhThIPSEk_EUCozhufgcqRbkp3ZAe0JXxTghLNxaGfGkU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPW7M2dM4ND2qztYDmpUjWN1s_Wf3J-eNPnoiVzSQezlMvSmPjZ6pnN9EWOQx2mSFX6qM8pfPNsxLHTj5PXWFQyjpz2CiKny_KqFF4pW1LQu32tvgU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPaJzgLVxJxObCsKJlumh_NxSZ7-qTPcfbD0OocAySCnW9uSkr9xEmKA1UqOaIgDcQVl-vHnHwCVyty7UtF1Ftm6ekniFVw97mHtkuEQ0RhMu2ZEhY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO3k_Xp-dDXrNXr3KiK7_4_TbYbs99giNeJvFYdLR0frNU1Up52dwQNY7YTB5BYLUKdq7nsFERZ21gBJP3XGpbHOGoteyOAZYGSW0imCmvIXxYO51s=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO1X6iFsYyQqnEsFVc8MI4y6L2F8DZnhQrX-qmolygUUF70KiEuAhhEBBIcTxOEholInB7cbRxBcBmCxLprsmTsdpecndteQRK-46PmTYrYtImgPqo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNJ4GvyxjY65JQvMI8ITwlLK6fo81N8VzQZ-4UmUPS788gAEhtx8RvbPtk5tIImNmQFvlHo22npvf5RyskT_Vp41DEbHqwOJa_EdKMBqaCPK9RpT1Q=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPhU23l0F1lSIuk1FtZOHn3qDmRVvCa2VsDgeEvxXi3rgC8_gPEks5wHInjHKNJgzTiZVnJUzSU7Og_8ncsJCOphkpoN-pulM2g881MasioEOPAzO0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMXYrTwtfA8x4-w_LXTVfCvD73krvuKqIKR65-YkV-u3Ef1NrJeDsp7_NcpqgYaqajtnt7YanwPE9c_5TmDpEzyboof-2h1uhoUzABQdsQ9dwTtIxk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPSpw0-6dW8UBNVO9e22PiMPp5JD0awgAG30WwOYKvPvTzCjzPwnN3IAt2qdZ21oH_OoIgZIkSdjgyY8-AfbYxN6XkKTjqp7z0HDpPDiLS7IDLrgo4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPC2Jptn8JjCxqgWw73zlilT86aLYgnwdnlngiTSr7QBg3A0h6V33Figm4-2ZgCFu6NdSKpNS_tKoGbSQ_BkWA18dH4Z0Aaw3WM6BceQ1Csyvz5kBQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNLlDX7cjru71I2qbrRdk6nUqs7NeZ2pNAIeZrhHerRXZq7zOXF-GhM1wVde8yEJ1L__i-TyfHJC6SXrkQmz_Qi8syRo7sF7ywRGap45rwQMyXMOAI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMTqfkfyHqtnWibM4AtTK0bg8jXjTnW4mixKqM52zU28en8oFi83ECfpo2MQwkI8F72BSalxGwgfWSXmLv3AVtbcMcw48YJlDrPvo13fLMWYPJ0Gc0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNCJU9hyJU4RhjH1A2D844Makfm_cr2pGugpe_fswbHCjG-jle-hIIbUAzglfizwq6C_elPUKqZ8LwAM1L0pR0AvDEfXJNyik5-Gl5cOU7eM4wxqUA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNQy3Lhq0WisF5v2VI1zXIqrpaAty9SljtM44PV0-q37i9XN9vvJ2GEZVTEz7ojDzkAbyFrcun3x04F2oJ40FLG_dr4eVdk2z0CqJEG1O6AkQj4nlU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM2dSfV3PAP9rx1X2Ln7xOHv3DlasVYiQJmNx8NlZgmcMeNArV7hWENBNl6PsR-XO2iCscJ8v2FuWTHW1E5kYr8yWqGM-Xgz4mD_OGSkjaOq_feDVU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOX90F82iXqmngeAjba8Z8THlJbEJVxl4dTMhR6ALGhBNZgpmGLq6weS3G3JRz5edWsQxCdKCqEFhowbSGubJXCVWt8UnS8wH1MzO0myfhKPuOkCJc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOXh99_5hY1ivtiiTdkfti7bdymcu66kwhfDs52s_JGxtjQVXvpAbSGPMUXEzdx2i7tTm7kMfF4wSDc8uLTQSunnEcQ5Gva1apI3mnT2uMf69hp0J0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMcINxMtMIFmGp2txJAH7QE_FCfR_y-wqEKK4frHc05DkRwrk1Zgi6Exx02lKn_6g7C6gSaKQZJRhE59EY-U0vmxhz4APZBrAVEtXOK8Iu3O6UU4Ek=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPfwzVZvDxLVo6MQoK1HBZTVbaB-HdI3_vNLLY0fNM-nn060pBy0jyXiuR2s9sd0PgZaMtCVB5J2cfFB4WPZRI02M32gVpKkVxXTwAOexFhRkzwKXk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNxAhIDj95SfDStYJ2qmeGzTlVpPZtTVFLqtp7-oob5FeX1uvHB279VNwa4zRCsxCfaDrNEeVKM4rFojY8IMLVLhIwiR6ZMJM479J8nCVVmYbIb0Kc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOe_TUqceijUIAFZI_cWvx2vjAQHdlOsFswJm1hUTdkonfANvMSkYh1mvujMMe_byIeIiiAbBcEvb3MZYEQqH0zOLgNIkW4YQOZFB3zj8N3ygyOk7E=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOHJ0-OFWP5r9dDbwtJUeSS8f9LGvEq4dBgdskGDUkrFWa_4rkprCRiXs9n623EovM2chAXRmDjVgu9ucTOt6KwkMugaH4o61Q7lB1r9B5DxjOSWhE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPt35qscERYzbFXtiCQfm4AoJbJBR8b5N7Eue3v2y35GqkZLE6H-OiTVUgRmSsQra9UKAe208e4K4wL3xxUHUZH9vjbPwKkJR-2CJIJYfU5eTM8_c4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMp_w2aDxCyZgOtJrnTZdSn7QxB1bu_avAAUxwwlDqcs8qoiOALZUMV2PieZZOORAL9zJMH4oRT2ltjCJUpnbdsl-nUP-oWXeNz2gOlKj0U4NQzMuo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMvKym_8IAw_r3MsyAjhri9vvm4WJAHOkgMy7au5LX_bECBspLYNhC6bLRtV6R7d3xwqN5h5NBa6AVSGHzIOeI_UUFAgC9l-c-swHbpAihvsLym2IM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPyytgugh6XysgmtyFIsZE9xjHWsOE9uj9wwCblrs-8VU5WfaeZtQx-9Ohg0Wy_tUnLpAgevLU15xen0_A7f41IansxYUIr_sglE89RQMlopHEP2IM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMrU__PR1bk34XgfnDujUSSzXV_WXDeZhMclU3lqZAcG0aCRPobcvJbap_GRA5E3vhgqDCmX0BfJ7hY_v6PvvSqjEv2blnXOg0ZqPbUXr3yur7-OZU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPsMSA29r98YAVxgO4A981RL82YgTNKdZFeRROl9o0xqI5-YAbZw5RVdIOOreJXmNk9637qVPAV1a0bKywvA66VOnjyR4-K2D3WT9Vdukvkp_5gxyI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPlPFnIqv4_PI_AgrBr9rs3V3edz_KfS51uWjxenNDC2pxB4j4Py1kJqGxROwjjlWbWiWk9WgSmwj0B5FG6TaTgoxlBzeR4uW5IAq516_uoOKoPOnk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOOK7rZTKrfeVPLOcaCVTnr3lGPAvWBzlbWNc9P_9_qyiBdP4MZa2ybvS5BeYgvhORDlsCu7t2tOo-tYU8fzon-q9WZkjp3VlAzQICWQFKBrgMWD0w=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNEhAgcJF-h-_ULH4cjr3dkjqOYmaOBHpZ6fQznCuZN7H85v4bCl0l1WLA9aF7XySqAFgqqDNzMTJhN1fpb38Zdcqa6Ms117_HU50piepnHWKY22Nk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNFj2K9TQaT_wb0NayGgYwL_h1zrBr5f8vEKOoz5hoN3IhsrVgxk15PtGrnCyLxLOzVeYZcXCrkSskW-4b7wKn2e6bEJHobH69CUIAyQ3B3YcUKaRM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO1Nx_UoDHNkySkcHlDq6RaWQshH56XZckF4LVArvAsRhW2lbhuZpeBdbHWa-XMxxJLycVRRBhemIErmcBqYlnjPIEEjBBHGkvztjm4EE3YtdVgdNA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMoqi8DxbDtIxzXMqC3PaDX0F0bLSCaJp6cx9CpLpXmCRp2E7xgIJZZgZ4Hm8wSzqyeeMqjofwVN4LJhF3wXpFddI30WWdnBbW11xPpQilF-EoWAl0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNDqqTioYCS_U2PDihkSFlrVgNFf-NWcirt05kdSg3s8vxNMZHbZisbTLLELZqZqKsfiA7RHUfQ6ZFl8HtzSYsfnAGHjFWamotSwDswwE9Zh4IKTII=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOMPTSX6cTICL2db0sUaXlXQ3mklArxebhnCuH3noa6F1UTZ6y9Elqu4UwQxi8alM71__Tra4byhwgwIxw5BF3Kf8SANL5EjZlqKtbpB9LP5e0jZps=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOBZOkglinJd2Et6nKccrFa5i91KPegW8_uqSPJjTIw92CRMqMykbKzQ5QKI-blh0UE-VRobYS8I3osuSLWMq3j974Yu8sr3BO_j9X9_6y3PkC4Tao=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPI6yEM4QnnAL7jqRy4mZllr-xFjv8Onyed0qrGFgNw84hx5X3zAgfWX3JsiainUc2jFPp2R-ZeS4OCF76cxGCmrIq2zWIwjLIOeDbWgZ5qg8Np_RA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNOZhN6sOPnxAaxUnjBUdOjHATXYHlULwiA-Tms-OnSPrJDv_7vp2d-8-DhMUa8XlA6gMcPSA--GxWX8eJE7MMz6OLbHZYkYLp54hm_hivT05g3618=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM35ME6qbWxWa8rU5Cwp9pMwef1mWGvHijbzWEpwH4IOqUJpLQYbHS-YiulmgXz0rDph0yVSqhWvAx4sO4Ym_PsxvLiRJrrgCJQyW3cpputVfQGt14=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPGkanizazy-7XR17PejfME4aBQLR0OzZJVkWNlLrKNA_hHCZqTjMBpCTrPeM3ZsjQkPBS_Q4OsMDC5NjiR9Snd_jdR6pzv57V4O54CVmxuiQ6Tdks=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPpSDorqW4i2yKEOauinZmw65HDKzqDw-BopSxb1o-3kF10aIZdEgS91l0Gd1J-062Bzo1p8Tsb8-gge4OGvb_jqNQtA_8k2nPVI6QWQB4U2lwXWQg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMe6sVOTfhqUM8uYgbclOFs2aiNcBJ4Y9yRcA86TB2Q6powleBJF_4CCq3ABgorGNi3nBFk3jZa8A-tEZxbvX5EkDXBfUsY0zxhbljZzjmQDfehkPk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOA7rnrF-hpckUeUQHYnPSoLyVKEUMvKllM8w60k5JorNk_mdlqe4JgZt_f9BucAtBi0veMKxoFbPNl1a3qsF5j0irfypZvEy1DLQz0wHUEzbqmCd8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN8UrQr64OD2ENueEJ0dHIFB690tOh0QVCq1M96E9sRLZMypEOXZN_pb4bXL3rgo87P5kBj3fkBnsDxYTs5YzpiUTl4XVqwAWMRskw6FfDcw7-whsU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNPYqsiUtXiEoEoCnX5cQ3fhFyI0H1Q8z4DGjJOEmT5j0bC1z1eZ8criNdwXldvqUdHMDtWi97YchR2k6xoHGgh6qLtWdFWGYtUmNX1maBIULzos2M=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNNedxg4WYP0gwyYt-4DZiDoTH7RgGVQDtjzNRobXvfPCTps6KRc7YgFDJlKHhoGWohLo-DHApkSMzUfRT5-JWCWT3wpfRCxuNodMap1WxhiGccwME=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPw7oVsV2nn9xeB3tZX3TIkXqRyEInPSYFuK6xZIm_jOkMpR_5Puh0b1vYRMRVz5AOf7YuS_87zqya2_eY1O3x0ryjUF1KlybiwZEHlW7dEZ5vqUSU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMe5vCRCYQBCz_fVzg6FIOEhy5l-jgrRrTEt45xlV41PowQV5a8a9HRG-1n5H8P1GQK8o2Yml_4UsaYSnFTHQ95GdlkRhl-QZk5X269gEYoMlZBLAk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPwN0qygY0wxiRH1ni8qXlWFoKHP2pQRMKa9k-mTc0sCviZqCi2ItAj5qGD0S2v2BZtpf2s_yY5lCyorNAru79F9CJZuh8ZnR_EDXyKLjj10rodsuw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNj94YgtdDKVu0-xCM0ApBtjcEA6RDtdPepig5rePdbp7ENaJZjP7PqdOsn2TV4qQRGV6VNcT4XGrjB3fDdHTRJ3KpFauAK7nDkExWTkSDmOdrq26U=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNoEBLjckq67TjYPGDvIi9Ex1e2J5DqDdYQnGZeeEL7umuVXreyHyGs7BO8FRP7a4vxGX7__D7his1W-sQQKWAgce_x5TS1qbONDbZx7I9Kph_kLt0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMGRw7uFnZ2vgwhUDpxI4Xjc5iNp4S8tvNvJyLS1GLIH1S8Vf0JBO49xRzSJzVqLx19gJ3IjCYKSq4d7R2Si5C9q7wS4TcOtviC19mnmkeAC6a30UE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNk3vIM9G-UTdT_-WTgFuUIbQHAVPdLfHjQIiwbiQxnbyf0BU8MOOBGr6wlEbibkrrPEMMkmQp9frz7TdmUc1EwPxGKNcZblPhxPl5YYixFIKsjVqw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNkyQ-BIPEdgvJWDtTDCKRuyQ7okY4zLG7vChNWa7ryQdwmu967BChtpL-ICkUrjZFee1YUkB_hUUh9WPVZf8_tK4kYkwUi0YWJUy0QEVaUPH2laME=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOvrG_LyJmeYYXqFvF9aqg8ATNN0keQiKi2ecWT4iC9taacsIE6Xr4wmKvo8lXksJIDGW-Vf97nGp_5CD-TgQlCpb7DHSWBy2ktmxu_zdOVxY1lwaE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMeYs26mbqDLTQ-gL8f7onLsz9J28_O32jPP2Pk86FRz7_9XT5oXrl53NVr_dntiytox3bIFEnLkWwoJ2msEyD-rPv0AeUvJuH7Q_a_yD6EdVrBTnw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPUqNsjLzI0PclP-xjUnCUmNrdzjhi14z29OJByyvEebliSWOHEG2G1rl3nqxp3vHVotvqMEZ0fV9chMMKXmSvwvoSK4oFy9K3qiGo7V787FeLnUNU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO8nexsFdP7NaLJiC3x7XNdjKzt5aqnoqYDUUu_EpMyKOw3TFVO8PqH55-PHTZTl3OMISy5ZrCsMjbaMDjQ5VfdOUFZkPZtNFStRdeiI4mu91-eFfk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOj7xvo5Z53uK2Hg_7EaPUPTilaXZM4nVdQdDIXjCf9xMqjTB8wbjfvfz2ndZ9ABT_juLt-Eua6HI0KXO0-uVz2G40aGIQfuBUFoEiu3UKoNliQ0IA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOQQYkJn2gQKTAevQjmKWkf5YN50cFXV8y4g_KkWRuwwrPa3nc53js8nvh9QuaT7JggKQW3TIGMvv-A5Ha49vnzcbmmX7Vfz8Ydx3nzHbn04n83GWc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOdMntuhyj_ahCOe_qzHZeqsMiuM88Tp9heb7VTlmdwEaOKWAMADMFEkaX1OXGYw1gk25wMDcYDmogE7145ffKBEIxOm15NJ9cP9WVEmNNAEtj7MZI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO2S2NCVXQvxfi7riMPaB1klG0RacL0TvFGYw8aoHI8SXcPRPV6Wwx_-xa0SO_hi5VubhZoaOHbwme1gsRloGoGl4Z8xu3e8XhrobNPpW1-TCn1c2M=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOu0LgaotHKOJ9oCkmTRzoD5Kz-TD-S-0dY1EDs2oPlfDm4PBPEiL-d-XMcN-PDLVKbIbB7iWO-aCfvzPAGg3buBDsAKWXlQC0exxce0xZEeGyTreA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMFOQX_wo4n8npPX_G4ENkRo4fcsowALyd6z7ndze96shg17R2rl2KNNj47N7p--pv8S3PQVMPnS0y2nEF0fR-aRvc9pFKYKMfOy8EN0sjGlf29A5o=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPsGd7awS-NcYAzZiDENeZQot_ffQu9Vh_xhznoBa2T39KSfrfgkntbMMyMpmpwbdcy_gd0vEHHKSjReLqFqukfmib3F9svAsZu_Jei06WPG64R0WI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPUrBRKmxKNgjIAFQBVf5diPMG92i5dbBO4RRY9qVrdMdWNMnUH1_ywCQa_yjVvtkH3z-qnzEEUdWrLOZ-PJdl0BI17xt0Ctc60acbFdsiqbXqKjYE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOch9ALCp9cUeCd8ztjaG4A6_sntMVAcQp8IAHL_4kvhbxCzH_Oz0079WicpiiVnpb9Q4oneUct7UtFvreB3xsSOI_SlveyYmmyehl13h7_dUSLK24=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN2cxbDeUY0DS6uPlQoQrdfgl4ZL_WCzPgDwfkaj3VfkxNiyvSPj48gKbHWD0jWiDpNTgpin8qA8VZjvUnM4eLjjGNIRcPdR2rBzP0hdvnPJ_RTjVU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNxFzlIIAwf8wAXQdX9TuPpLUadx2zzgdyOuh6NAiiNoi7Hft38NWDq1Ev61wNNMsztxTLwmzx2rNmEU2oFrlmLFHxOuMnodI65wLvHDolhYYI5yeQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMkFwvzvZP3cx7OqpdcsL68ovuMJwz8yrjvY_PvLGzf8HGIJt6ShLq-YwMqzjML1Y9mykAjOrlXZzqBi64rwrOolHWXkZy9ho6ua1eMoYXHP-gEEHU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOrPwZnlv4sdBKlxbNIceiFe4job7uLLbPgY8EYwMtVp7nEWlw8YuUO9eCGHevoCWxaDwg9lcOw7s4RrFQNMq9yQf3FwzU2-xZ_xKiTKVcC69Pb8rY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOtEwm0iYQTBZPGdJK4PmUq3gAfNhleM8WtedNZxDaOpgb0jlAZLHjcxM9XZjEUwPIwi8gBQ-B8h1j-zDF8BuemsGkueS3gR1wOdrGRtR0eSiGRo3Q=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOo2bGw286sanfrD-UCrlfjBbDhQ9Xfv2r_Q85yRayNi_MyLSGWEj4XZ6TGyRj9wXM1fUakOk9jZ_v7RCwdRF5qb8ItnADfBzjJJ9rPttXV8JW2Cfo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP3H4qMaSYbOk9gDwaLX_MpsyPqdGqiJ8406FJwGI38MsHGTuf_J_dc6gnsZ4iOua0ifjuqGtG74hLLloq2O6XxXoaczD64D_kzsf1DvmrXMp-dXj4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMHlmNFvOToao1dwA7avNFbwx2svTjc-D8NkuIHwGVyDCgMMYgRNsrijs9uawbujQ3xjp8vF-vYH_Pf-sqQJ5MkgJepoRI7CG5oOPFshyJISYN9mfQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOgyKZtq1duD6d7k-fqGs2TowdzfsbCc7CUUS2_SX8qGou1amV_uh0VD892i5TwH_9zyDYlIKlKWGUbGL-PauwVwcAtH4u4_2FzWjPCeRHs1oy01t4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNp7hmelkD_NJSzIBDudx--oDMauJpxW1aqYUrMKJ7QNZs6eTlM31LgBFvJENVNnxGeg8z2eEegKTh77DlxDdZDF9JgDT3BLhcnHVCKLDfpH6s14vs=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNRn5qbSRpRxx03pvjpht93TdlMvkvWq9kPQeXwF0blNSijHGhULxXdmHt6-_q2CJuiYcWoIzNzj1whnbRBO8sUOCtqo2oRFLGLyHgV03p1bKipTPg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPPhU6YXh9fJDSUE9zvfuLHOwhC9dGuJHuSubL951TghOWscf--emB6GONerYQJKCP6iT0yIx-vAfNyCcUUR_VdYKlTeEHSH0-y88HnccfJmnlnFsQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMmz9xEpaaNN0UsQ8CMfXnPEFeU4Q9EdFmM18fUesHehml8_RJ0bCkWImcLHdDSwrs9QugL6KOc_TgMCdlb8kenzCt49X9VZm46DhqTPMYs_sFqA0E=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN_2GEi9k5Prd53ql9E_uooLkpYmqSfngG8DRZXgJk7a1N6A1eNA-XouwkabP_lOrfDeJCc889rWtkXCgPG1dn2pI8p2x4zO8zGrqYWtAgATxMSnDo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNEbFprqrH_E5HWVH5qOBJj-cUACTG3lx7I1Fv881vo1Ro97TlFQBkgvZln63vRbicPy-Xr07laAeb6X3kL-fVPcAbIg_zv3re2__PmaInDVO5n7ko=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMHVx582tZxafkXx5PG0PXYGJeIDRbROO90iupKsRibat7RIED3rP1-mtdAs3LklpBYbI9SkCvJiQA3oTHlQy3yPlOmpwPiuzbibunG6e6KcaboRZA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMLnpKBeGG--TBX_wATzWas4KWg105hBvoKvQ3c2A9ndG1Cp3sU-DVrY25UZaJydKMZ0GYW9B7QxIWKMDuND2qom3EIBBEQsTNQtnFn_ETaszGpHno=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNHvRfxv1utkuyReAiDfzqbHHNQ_QC6cfaeqWjK-o7J7NCRzkt_DNVRZ_UvqKeVTlM4rVcTs8VwyPAyy5Trr2aJENp7RrEoCBj9EVTxrbf5s6-Ub34=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMP95XSDKeX_4T6s2PTcJ74zHm53MmRDJPTkgCbV-Inl6SXXUdd1UQBqKeujwpRt0HVdd_uGYamExsDDCocpDPnqLTTRZapPsw2VTDDycJzjASI0O0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO705N7zI_ZdUISfqTqgktOl1D-GF1JJTkCoOBJ6pEAIU6AtJW8KODOlCmp9rB2E3nJK0BBi6ROJW-R2h-yY-VMbZLlPzuotPT0bNQCkRzyyUCYt5g=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPwkzTZZx_7aPNpe-F9yFjob_pDMd3VxEtZ9WyvwTGwMZJ_paWDjqxSbff57kACU7bR5TEuK8q9U_oIU5aTV9WBTnSUKMmKCV1sichxxmMmrylkvjM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNpJq8ynw5vytigePDid6TrPB6E5fsNUOpj_TuZVVLOTAHN5o0HRnuiTQ9b2ibCOdRGSMOacvlejj_OcMBudLRLQJOtFudKUpvhgn732JRhXWEsjRQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMNtZZPsr27lR7wdXabkrPUmi7PHk2Zs9jwcapQpRmXRreWqx1lAtKwk40R3berbjBv1-6hAh9Fxr96MMxEpQjVuqLZSRms9dnqFBHaLcgMgAzG4TA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPJqkVedgHIwblh2TQo4kpaFV5FidU8ByH2hgkIdntwJWKbEnsrA2PNCTjNxVWhFaVe4EKvOhW5lGNbGcHZYiZQnHKra_EA1uom_DXgbwZ9qo6PM_I=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczORfNl5YhoieZDimM3DHdrfpgHj9IdWC_XLZdHrleSN0yrIvcC_2It7lCOkEnvNcLBSTRgctCOI2LvkM4uG1HDEb8MKojt2AdxtHY06VcEPDR-5MF4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOFgGJUqdDx8-XmeDsPDrvrJx0xhy14ZHS1HW77BnYvxGMqs69QAmwUGhzzokq5obpwJPAipCYWXmczfF00PgaES1-2M8iLnwnNTBL0kdCkTdUCLyM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMFbwXwfm7NVxD_NtBuWlY7EWmhqqOM7q9uKAUHg2t0tfbCzKziMO9A9hDwfeX3cr2_9QR5lZ3MhXafL-xxPdBmK5X3HVrTjYZmdwz_UPC5vjsk6i0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNK0vIQRoQbhBqnqxrjrPoqv-F9VqoDZdjc6pbg7ltTJWkB9ALMbAsqSowAaWgDbBgqv8mvqVdV99JnlyCeifnvjs7_FVzKtDfUc2iRJGTU4DyRdVI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOTmAgqKCzmMXgjFS9qNHDegtaqs1ISlR2QIqwhN9kFKbZgDPBMjncoxPbZui1rNkRJ0C8uAL55N8ak57g8Sv9gJetQYlErFjYcxqn0Io9qtmNKv_8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMSUH_cVx3fINOzY_nzjLLrk4pgVmDsGOe4JgqVJyWLqSZGIL4MlbZAuxpo3P9RZm2ftQMisqcInl1ugxJsEVSYrovVSq_GLp6vtsErI_fmlw894RY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM1EVwbuK4joaR3oE6icX4zx37p1lFeVhfRTl22LPr5Hk0ofpB4YRDn78Gm4PK12fAiWG1SNTepfU4or1ZhTC7xfYa2NzbRSbqTnPSc5myp1zhKiBc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNRnNacHQqBEbbTzznJO50YHn92x1tc16MdisSn_UjjU44MMxYFSVoIUI0miOnhM3ewB6IbY3mJaGaco_ZcX4lMKFhAG3xXWQQWcnMijrtx-8Zgygo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP6_CpSjBcCSHl2_lPl0Y-FkTmhuzzGGLkfMfnzOm9w7HY2JYK-ByS2HeSAJEP93kU1c1cCy9hkFF37SXXvfupSnvH_EGzrkVvHy9DlCWaFuOfNcXM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOZOINiHYDtQweq2NRgFiNblW58gU32P9qppGzmiwx9MnhyLyBHFOyYqWiirkt72edxmzFXi7QGxZjPTRNtf_4nIF3IHvEpUMnjzUvmnxUrtsh358E=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNCMplbp_5f6Akzuhl7Ay9uVRGPBnES7skLVm9A_TuHwYpNijRn0kRjMf7bsoXX5BHZurt2202TvJrM8VwmY_OGI762FoKqKHSY0mmSluWm-4gLSP8=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMTN_FnQR6snC65pGZl4t9Pa_oNI4fNT6qbLuu7JyJxsEK1SOculGU2gDfsueTsPB0hMz7KTqDYoLwAGVb0MQ99kywBlctFl4-fdzC4_zyv3WTQo0w=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMVw_0CkGx7ivgQGJ-uR1dMAmABvaFE2ann2wheDvBWd8sFGNetP_iZvcw6niUynKNVFk1wtQHPpdiXx-KyCf7FFvHLNAkjNGvIpJR5upTo05pJG7E=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMAG7NOrN8o0IxbBoLohT61f2bVwqa3IsvxTq-gKcOl84J_Ofh2I9GWSpjTALqZz4Cb1ItMHiRiJhU98PMy0GHk9Rh3C1qbFHOQyr-CjVY2Od1sD7M=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNZeW6hZTihqd0hmvxyxHp8b32kblyIHag03PQgPe8wezM_GWdy7g68fLBTEpKXk_1e5YhYY37dK5993I193hHDrMMjc5lg-9n8qPb2RoeU_Z8V-Gw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOVPQxorDfhUdnehe7vIoTsqJbqSsdByvIGXMpE-YUHK8onYfnLiWzeHz838WEQNiCdugytWrWnXkoD2ARQewMCLE8J0KZ6junFlwZAMH6BI2ooJkY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMAhSuQPoBNa2yh16NWzOA0VfWXvWU_fYf6twjrEIjDfy-WVjULBQfN5E_wRqL8GzvhrFy-BEyNo3bwDo1dLWMTEG9TNNCmoxI09MoEubsH-KYKJ1E=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP4OXKbjqkIZKeNLTDUcjACzvr6fEPqNUgCNIskemhw0HAkXysNczwZXYXqYL3Bc8mhUf9M02naQLpcMbyP9LlbKWa_9z-vvSEY3uE4sVxSDPrKyyo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOEyiEXRrZH1ztiG_1RDGvDprhGaf1YOlRko60He6KoXhmO3aHk01qw1ezHEX-F4PUd_-qbOe77LHA9JSY2j2Mx2wLG3fCUIPBQvc0p6KrrB1FezuM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM4EfEVVypXGG4UU0JW9akXYoYkdUu_1OwFcFfBAeSbXWJ9ibojCxs8GdT-i_ZcNNIZQ2sLBcgUNKsQOkz35R_1dIhqvPaVSwPxqeb2renBJ_bDKlo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOAPbao0F9bo3szTB1QojAUzMOH6zeppDuRdXPiM4bbZcO8N6ccD00XircsiizkAjGE3ST_QYVYwAni5dfdXDO3t3bX1tpveOYp6GuF6RYH5dmcNuI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMKk2yaiOWC4RAlkbbOFVGib-R2jGQfW6JWEvV2mDN8fowH8yvN-APF1m7gvBPtOGf2Ray3zuXBTuVf_JlAvNRqPheYS9t2SLPHlXodKGOaya9YZeA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNbDvtSL5hCKMelSKXib1u9J3B3OEOhnX4kfkn-rj-TCQSOCbtOnu3hyTNEsAOow_olPZpWUk1K_9izQQ8mYc518uYehv57LxzNUXW-6yzbzdXke2E=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP7B9jDhzMcLW4w3roALT2SHkkab_IYjK7hZ7TUaVe4TJFVaURIzLQcClDGuybNlTy6vR4Zm5h4Ql6NxWSUL-o4_JoVOGj-Cz1_V8fp0cPSVa7Rsvw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOG77JYq0Xi0RRmdE_zItgWZFHyk2KqBSA1c39RhyaGmJqIQhFPWWa3Umy1HDkSuERBaCfDWSp4g93fZZAGxDOQh4siQrCIikrpDnh-yAa-OAyokUo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMFZDxBuQphsHMtCSycKYvudUydFMtBtn4DQd-vM_-6xsu83ByONd85Ot8yJ4o-nzAkiPFrPLqqecyakBdE0OHH5GScf3QJFbmDjhZN-hfBfFV9Zgs=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOoVUoBI98bJPQEAiSFxtO7Pa20rYCovGx00tgQuG_AiSN1RD_Nm4V-y_abPPl5aEyGjwI3oR4j7CuSWf9IziYtkKsc3H6_oyKuKEf3lIy_9T89y60=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPCc_wxoiqGr_tL1qqW4YF2gy82nx7YnWBkjmJr45CgE_A8lLeLcFlUis1F2eG8EnQjiVJVRTM8f4E0SguMYRgMAm_eMKIjKVf4y1WVWbFgzBRSsBE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOvKclIyoteqvg6eicLIs7qhosn2Axzrpk7DE4VJsCrhkD48RnmxwBTP4iMN9f3ZWZ8hgBLHYyGp8bajmZTspXflipgjGBH4ePQg2M-kWWASqdtbPI=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOwWZOJpjk1t_8F7cVvoBlWw2IQjcqOXRifb84LVOTUogC234URMvWvcJ2abBI4wclzlDP2VJ9go7Y3HPlmRd-wzIQE0iWZg73ooZonfZLCChV08L0=w1920-h1080"></object>
+[/fotoalbum] </div>
+    <div class="tur-sayfasi" id="bolum-3"><h2>Güzergah</h2><iframe width="720" height="480" src="https://www.polarsteps.com/ferdimen/5961124-2022-az-anadolu/embed"></iframe> </div> <!-- 
+    <div class="tur-sayfasi" id="bolum-4"><h2>4. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-5"><h2>5. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-6"><h2>6. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-7"><h2>7. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-8"><h2>8. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-9"><h2>9. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-10"><h2>10. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-11"><h2>11. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-12"><h2>2. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-13"><h2>3. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-14"><h2>4. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-15"><h2>5. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-16"><h2>6. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-17"><h2>7. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-18"><h2>8. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-19"><h2>9. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-20"><h2>20. Gün</h2>xxx </div>	YAZININ GERÇEK İÇERİK ALANI -->
+    <ul class="pagination">
+        <li class="aktif"><button onclick="sayfaDegistir(1)">Videolar</button></li>
+        <li><button onclick="sayfaDegistir(2)">Fotoğraflar</button></li>
+		<li><button onclick="sayfaDegistir(3)">Güzergah</button></li> <!-- 
+        <li><button onclick="sayfaDegistir(4)">4</button></li>
+        <li><button onclick="sayfaDegistir(5)">5</button></li>
+        <li><button onclick="sayfaDegistir(6)">6</button></li>
+        <li><button onclick="sayfaDegistir(7)">7</button></li>
+        <li><button onclick="sayfaDegistir(8)">8</button></li>
+        <li><button onclick="sayfaDegistir(9)">9</button></li>
+        <li><button onclick="sayfaDegistir(10)">10</button></li>
+        <li><button onclick="sayfaDegistir(11)">11</button></li>
+        <li><button onclick="sayfaDegistir(12)">12</button></li>
+        <li><button onclick="sayfaDegistir(13)">13</button></li>
+        <li><button onclick="sayfaDegistir(14)">14</button></li>
+        <li><button onclick="sayfaDegistir(15)">15</button></li>
+        <li><button onclick="sayfaDegistir(16)">16</button></li>
+        <li><button onclick="sayfaDegistir(17)">17</button></li>
+        <li><button onclick="sayfaDegistir(18)">18</button></li>
+        <li><button onclick="sayfaDegistir(19)">19</button></li>
+        <li><button onclick="sayfaDegistir(20)">20</button></li>		YAZININ GERÇEK İÇERİK ALANI -->	
+    </ul>
+    </div>
+<div class="post-navigation" id="yazi-navigasyon"></div>
+
+
+    <script>
+        function sayfaDegistir(sayfaNo) {
+            // Tüm bölümleri gizle
+            const sayfalar = document.querySelectorAll('.tur-sayfasi');
+            sayfalar.forEach(sayfa => sayfa.classList.remove('aktif'));
+
+            // Tüm butonların aktiflik tarzını kaldır
+            const butonlar = document.querySelectorAll('.pagination li');
+            butonlar.forEach(btn => btn.classList.remove('aktif'));
+
+            // Seçilen bölümü göster
+            document.getElementById(`bolum-${sayfaNo}`).classList.add('aktif');
+
+            // Seçilen butonun tarzını aktif yap
+            butonlar[sayfaNo - 1].classList.add('aktif');
+
+            // Sayfa başına otomatik kaydır (sabit menünün hemen altına hizalar)
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+
+
+    <!-- İLETİŞİM VE SOSYAL MEDYA -->
+    <section class="contact-section" id="iletisim">
+        <div class="container">
+            <div class="contact-grid">
+                
+                <div class="contact-info-side">
+                    <h3>Bağlantıda Kalın</h3>
+                    <p>Yol hikayelerini, bağımsız yayınları ve anlık telemetri paylaşımlarını resmi ağ istasyonları üzerinden takip edebilirsiniz.</p>
+                    
+<div class="social-links-container" id="social-container">
+    </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const socialContainer = document.getElementById("social-container");
+        if (!socialContainer) return;
+
+        fetch('https://ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
+            .then(res => {
+                if (!res.ok) throw new Error("Sosyal medya JSON dosyası yüklenemedi!");
+                return res.json();
+            })
+            .then(data => {
+                let htmlContent = '';
+
+                data.forEach(hesap => {
+                    htmlContent += `
+                        <a href="${hesap.url}" target="_blank" class="social-icon-btn">
+                            ${hesap.svg}
+                            <span>${hesap.ad}</span>
+                        </a>
+                    `;
+                });
+
+                socialContainer.innerHTML = htmlContent;
+            })
+            .catch(err => {
+                console.error("Sosyal medya butonları yüklenirken hata:", err);
+                // Hata durumunda boş kalmaması için manuel bir yedek bırakabilirsiniz:
+                socialContainer.innerHTML = `
+                    <a href="https://www.youtube.com/@ferdimen" target="_blank" class="social-icon-btn">
+                        <span>YouTube</span>
+                    </a>
+                `;
+            });
+    });
+</script>
+                </div>
+                
+                <div class="contact-form-side">
+                    <form action="https://formspree.io/f/xnjyjwnk" method="POST">
+                        <div class="form-group">
+                            <label for="name">İsim / Mahlas</label>
+                            <input type="text" id="name" name="name" required placeholder="Adınızı giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Posta Adresi</label>
+                            <input type="email" id="email" name="_replyto" required placeholder="E-posta adresinizi giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mesajınız</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Yol notunuzu buraya bırakın..."></textarea>
+                        </div>
+                        <input type="hidden" name="_language" value="tr" />
+                        <button type="submit" class="submit-btn">Gönder</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <p class="footer-text">© 2026 Ferdimen. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+    <script>
+        // HER YAZI HTML DOSYASINDA BU ID ALANINI O YAZIYA ÖZEL DEĞİŞTİRİN
+        const MEVCUT_YAZI_ID = "2022-az-anadolu"; 
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const navContainer = document.getElementById("yazi-navigasyon");
+            if (!navContainer) return;
+
+            // JSON ARTIK YAZILAR KLASÖRÜNÜN İÇİNDEN ÇEKİLİYOR
+            fetch('yazilar.json?v=' + new Date().getTime())
+                .then(res => {
+                    if (!res.ok) throw new Error("Yazı listesi yüklenemedi!");
+                    return res.json();
+                })
+                .then(yazilar => {
+                    const currentIndex = yazilar.findIndex(yazi => yazi.id === MEVCUT_YAZI_ID);
+                    
+                    if (currentIndex === -1) return;
+
+                    let navHtml = '';
+
+                    // Eğer JSON'daki URL'ler 'yazilar/xx.html' şeklindeyse ve post.html de 'yazilar' içindeyse 
+                    // tarayıcının 'yazilar/yazilar/xx.html' aramasını engellemek için url temizleme fonksiyonu:
+                    function urlDuzenle(url) {
+                        if(url.startsWith('yazilar/')) {
+                            return url.replace('yazilar/', '');
+                        }
+                        return url;
+                    }
+
+ // Sonraki Yazı Kontrolü
+                    if (currentIndex > 0) {
+                        const prevPost = yazilar[currentIndex - 1];
+                        navHtml += `
+                            <a href="${urlDuzenle(prevPost.url)}" class="nav-box prev">
+                                <span class="nav-label">← Sonraki Yazı</span>
+                                <span class="nav-title">${prevPost.baslik}</span>
+                            </a>
+                        `;
+                    } else {
+                        navHtml += `<div style="flex:1;"></div>`;
+                    }
+
+                    // Önceki Yazı Kontrolü
+                    if (currentIndex < yazilar.length - 1) {
+                        const nextPost = yazilar[currentIndex + 1];
+                        navHtml += `
+                            <a href="${urlDuzenle(nextPost.url)}" class="nav-box next">
+                                <span class="nav-label">Önceki Yazı →</span>
+                                <span class="nav-title">${nextPost.baslik}</span>
+                            </a>
+                        `;
+                    } else {
+                        navHtml += `<div style="flex:1;"></div>`;
+                    }
+
+                    navContainer.innerHTML = navHtml;
+                })
+                .catch(err => console.error("Navigasyon hatası:", err));
+        });
+ </script>
+</body>
+</html>
