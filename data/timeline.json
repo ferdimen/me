@@ -2,26 +2,30 @@
 			{
                 "tarih": "2026 Haziran",
                 "baslik": "Küçük Bir Sadeleşme Hikayesi",
-               "aciklama": "Uzun süredir rotalarımı kendime saklıyordum; şimdi bu dijital gizliliği bir adım daha öteye taşıyorum. Maliyetli ve yavaş işleyen WordPress sitemi tamamen kapatarak, yoluma çok daha hafif, hızlı ve minimalist bir dijital alanla devam etme kararı aldım.",
+               "aciklama": "Uzun süredir rotalarımı kendime saklıyordum; şimdi bu dijital gizliliği bir adım daha öteye taşıyorum. Maliyetli ve yavaş işleyen WordPress sitemi tamamen kapatarak, yoluma çok daha hafif, hızlı ve minimalist bir dijital alanla devam etme kararı aldım. <br>Bu sadece bir başlangıç. Yıl sonuna doğru, 10 yılı aşkın süredir yayında olan diğer sitelerimi de kapatıp Şubat 2027 itibariyla <b>YouTube kanalıma belirsiz bir süre ara vereceğim.</b> İçerik üretme, yükleme ve takip edilme döngüsünden sıyrılıp, zamanı sadece kendime ayıracağım.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaqj93PCT2UnBtriYPx8D2XqdVQ5VZNguPu804RtHO_wWV5FKN2xFOOX1MKstCW_Deo_QJcCrd072gJirfc17m4YCo7RUAAcSvaaE5MCSZFOq1-_nzOPxj3k7v0M5elhivxT1GcL4XBGPsRpqer31nV_JwF9pXiJ2mGGo6zo2cnY6EWnvJU9lsyb3ymTR7/s320/404.jpg",
                 "linkblogUrl": "",				
-				"linkblogMetni": "Blog Yazısını Oku",		
+				"linkblogMetni": "Blog Sayfası",		
 			   "linkUrl": "",
-               "linkMetni": ""
+               "linkMetni": "Tur Videolarını İzle"
             },	
             {
                 "tarih": "2026 Mart",
                 "baslik": "Bu Biçim (Yeni Nesil) Logo değişikliği",
                "aciklama": "Bugüne kadar o 'çakma Superman' logosuyla bir yol yürüdüm, eğlendim, nostalji yaptım. Ama şimdi bir durup sorgulama vakti geldi. Ferdimen kendi hikayesini kimseye benzemeden yazmalı.",
                 "resim": "img/logo.png",
+                "linkblogUrl": "",				
+				"linkblogMetni": "Blog Sayfası",					
                "linkUrl": "",
-                "linkMetni": ""
+                "linkMetni": "Tur Videolarını İzle"
             },
             {
                 "tarih": "2025",
                 "baslik": "Anadolu İrfanı Bisiklet Turu",
                "aciklama": "Kırıkkale'den Yozgat'a uzanan topraklarda 17 bölümlük kültürel mini-belgesel sürüşleri. Coğrafyanın kadim ruhunu dijital arşive işleme hattı.",
                 "resim": "img/maps/2025-anadolu-irfani.jpg",
+                "linkblogUrl": "yazilar/2025-anadolu-irfani.html",				
+				"linkblogMetni": "Blog Sayfası",					
                "linkUrl": "https://www.youtube.com/watch?v=9je7oBF7aYI&list=PLwJbwS5nZYYB-4uKTd_VN10o9PpVA0mS1",
                "linkMetni": "Tur Videolarını İzle"
             },
@@ -30,7 +34,9 @@
                 "baslik": "Toros Canavarı Bisiklet Turu",
                "aciklama": "Akdeniz'in dik geçitlerini, sert coğrafyasını ve sarp patikalarını iki teker üzerinde test ettiğimiz zorlu bir dağ bisikleti tırmanış hattı.",
                 "resim": "img/maps/2025-toros-canavari.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=eRKU_7z8mE4&list=PLwJbwS5nZYYDYRm35LPQinRjPR-okvYk8&pp=sAgC",
+                "linkblogUrl": "yazilar/2025-toros.html",				
+				"linkblogMetni": "Blog Sayfası",	
+				"linkUrl": "https://www.youtube.com/watch?v=eRKU_7z8mE4&list=PLwJbwS5nZYYDYRm35LPQinRjPR-okvYk8&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -38,7 +44,9 @@
                 "baslik": "İçten Anadolu Bisiklet Turu",
                "aciklama": "Kırşehir'den başlayıp Niğde'de son bulan, Anadolu'nun samimi yüzünü, bozkırın derin sessizliğini ve yerel kültürünü soluduğumuz mini rota serisi.",
                 "resim": "img/maps/2025-icten-anadolu.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=EEk5ZH8EO18&list=PLwJbwS5nZYYA0y7VoHu1rCV-_dyBH8lXF&pp=sAgC",
+                "linkblogUrl": "yazilar/2025-icten-anadolu.html",				
+				"linkblogMetni": "Blog Sayfası",	
+				"linkUrl": "https://www.youtube.com/watch?v=EEk5ZH8EO18&list=PLwJbwS5nZYYA0y7VoHu1rCV-_dyBH8lXF&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -46,7 +54,9 @@
                 "baslik": "Kuzeyden...Galiba Bisiklet Turu",
                "aciklama": "Çorlu'dan yola çıkıp Zonguldak ve Sakarya üzerinden Karadeniz hattını taradığım kış seferi.",
                 "resim": "img/maps/2024-12-kuzeyden.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=u2zK1P2759k&list=PLwJbwS5nZYYAc3po9bVqF6LTyAlpsKvAN&pp=sAgC",
+                "linkblogUrl": "yazilar/2024-kuzeyden-galiba.html",				
+				"linkblogMetni": "Blog Sayfası",	
+				"linkUrl": "https://www.youtube.com/watch?v=u2zK1P2759k&list=PLwJbwS5nZYYAc3po9bVqF6LTyAlpsKvAN&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -54,7 +64,9 @@
                 "baslik": "Güz Güneyi Bisiklet Turu",
                "aciklama": "Sonbaharın renklerinde Afrodisias antik kentinin geometrisinden Salda Gölü'nün derin maviliğine uzanan, Ege, Göller Yöreesini ve Akdaniz Bölgesini kapsayan solo sürüş hattı.",
                 "resim": "img/maps/2024-guz.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=jULxYyUyHh4&list=PLwJbwS5nZYYCfksBmzoYD3tNF4aC-k7a-&pp=sAgC",
+                 "linkblogUrl": "yazilar/2024-guz-guneyi.html",				
+				"linkblogMetni": "Blog Sayfası",	
+				"linkUrl": "https://www.youtube.com/watch?v=jULxYyUyHh4&list=PLwJbwS5nZYYCfksBmzoYD3tNF4aC-k7a-&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -62,7 +74,9 @@
                 "baslik": "Şubat Bisiklet Turu",
                "aciklama": "Kışın en sert döneminde, konfor alanını tamamen yıkarak soğuk iklim şartlarında pedalladığımız kısa ama yoğun dayanıklılık sürüşü.",
                 "resim": "img/maps/2024-subat.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=M40wA_VmbJA&list=PLwJbwS5nZYYBiYwROMSek0VcOq-6K9IYv&pp=sAgC",
+                "linkblogUrl": "yazilar/2024-subat.html",				
+				"linkblogMetni": "Blog Sayfası",	
+				"linkUrl": "https://www.youtube.com/watch?v=M40wA_VmbJA&list=PLwJbwS5nZYYBiYwROMSek0VcOq-6K9IYv&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -70,7 +84,9 @@
                 "baslik": "Aklım Kalmasın Bisiklet Turu",
                "aciklama": "Geride hiç keşfedilmemiş patika bırakmama amacıyla çıkılan, haritaların ötesindeki dağ köylerini bir bir birbirine bağlayan hat.",
                 "resim": "img/maps/2023-aklim-kalmasin.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=m4GatBst6YQ&list=PLwJbwS5nZYYA8gg9_Gr-EiLm8IRMcvyIM&pp=sAgC",
+                 "linkblogUrl": "yazilar/2023-aklim-kalmasin.html",				
+				"linkblogMetni": "Blog Sayfası",	
+				"linkUrl": "https://www.youtube.com/watch?v=m4GatBst6YQ&list=PLwJbwS5nZYYA8gg9_Gr-EiLm8IRMcvyIM&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -78,7 +94,9 @@
                 "baslik": "Yoklukta Gider Bisiklet Turu",
                "aciklama": "Minimum harcama ve minimalist donanımla, endüstrinin dayattığı lüks ekipmanlara inat yolların her türlü yoklukta da akıp gideceğini gösteren protest seyahat.",
                 "resim": "img/maps/2023-yoklukta-gider.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=Xhzg2OWm2-c&list=PLwJbwS5nZYYBSkd6hfWUdR0__XeaHrkIG&pp=sAgC",
+                 "linkblogUrl": "yazilar/2023-yoklukta-gider.html",				
+				"linkblogMetni": "Blog Sayfası",	
+				"linkUrl": "https://www.youtube.com/watch?v=Xhzg2OWm2-c&list=PLwJbwS5nZYYBSkd6hfWUdR0__XeaHrkIG&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -86,7 +104,9 @@
                 "baslik": "Kış Kış Bisiklet Turu",
                "aciklama": "Mevsimsel zorlukları ve doğanın en çıplak halini yansıtan, kar ve fırtına hatlarında yön bulma becerisini sınayan kış rotası.",
                 "resim": "img/maps/2022-kis.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=eumzbypehL4&list=PLwJbwS5nZYYAh1qeNJbBVXodbPF2Sagj7&pp=sAgC",
+                "linkblogUrl": "yazilar/2022-kis-kis.html",		
+				"linkblogMetni": "Blog Sayfası",	
+				"linkUrl": "https://www.youtube.com/watch?v=eumzbypehL4&list=PLwJbwS5nZYYAh1qeNJbBVXodbPF2Sagj7&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -94,6 +114,8 @@
                 "baslik": "Meriç & Gelibolu Bisiklet Turu",
                "aciklama": "Trakya'nın sınır hatlarından başlayıp tarihi Gelibolu Yarımadası'nın şehitliklerine ve siperlerine uzanan saygı ve hafıza sürüşü.",
                 "resim": "img/maps/2022-meric-gelibolu.jpg",
+                "linkblogUrl": "yazilar/2022-trakya-ve-gelibolu.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "https://www.youtube.com/watch?v=0h2IbyEaCtQ&list=PLwJbwS5nZYYDQQZgZNAlVF5IkxQYsa6Ga&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
@@ -102,7 +124,9 @@
                 "baslik": "Anadolum Benim Bisiklet Turu",
                "aciklama": "Kültürel katmanları, unuttuğumuz misafirperverliği ve bozkır coğrafyasının saklı güzelliklerini ham haliyle belgeleyen geniş çaplı belgesel turu.",
                 "resim": "img/maps/2022-anadolumbenim.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=PplHLEhJYXQ&list=PLwJbwS5nZYYAHKNylnsARW1bgDUE3pCMO&pp=0gcJCWUDOCosWNinsAgC",
+                "linkblogUrl": "yazilar/2022-anadolum-benim.html",
+				"linkblogMetni": "Blog Sayfası",	
+				"linkUrl": "https://www.youtube.com/watch?v=PplHLEhJYXQ&list=PLwJbwS5nZYYAHKNylnsARW1bgDUE3pCMO&pp=0gcJCWUDOCosWNinsAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -110,6 +134,8 @@
                 "baslik": "Aykırı Yollar (Dağdan Taştan İzmir) Bisiklet Turu",
                "aciklama": "Asfalt yollardan tamamen uzaklaşarak İzmir'in arka dağ geçitlerini, stabilizesi yüksek dik patikalarını aşan ham dağ sürüşü.",
                 "resim": "img/maps/2022-aykiriyollar-harita.jpg",
+                "linkblogUrl": "yazilar/2022-aykiri-yollardan-izmir.html",
+				"linkblogMetni": "Blog Sayfası",					
                "linkUrl": "https://www.youtube.com/watch?v=3wMTBUutUEY&list=PLwJbwS5nZYYCs-Wplw00WVvSKYh2rCG-9&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
@@ -118,7 +144,9 @@
                 "baslik": "Sevkiyat (İstiklal Yolu) Bisiklet Turu",
                "aciklama": "Milli Mücadele'nin lojistik kalbi olan İnebolu - Kastamonu - Ankara hattını (İstiklal Yolu) o dönemin ruhunu hissederek pedalladığımız tarih'i rota.",
                 "resim": "img/maps/2022-sevkiyat-istiklal-yolu-harita.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=9zBZslb_SbU&list=PLwJbwS5nZYYAFOLHD6RDWcLPAyaXQU5OB&pp=0gcJCWUDOCosWNinsAgC",
+                 "linkblogUrl": "yazilar/2022-istiklalyolu-sevkiyat.html",
+				"linkblogMetni": "Blog Sayfası",	
+				"linkUrl": "https://www.youtube.com/watch?v=9zBZslb_SbU&list=PLwJbwS5nZYYAFOLHD6RDWcLPAyaXQU5OB&pp=0gcJCWUDOCosWNinsAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -126,7 +154,9 @@
                 "baslik": "Az Anadolu Bisiklet Turu",
                "aciklama": "Kısıtlı zamanda, yoğunlaştırılmış bir hat üzerinde Anadolu kasabalarını ve eski yerleşim yerlerini tarayan minimalist sürüş seyahati.",
                 "resim": "img/maps/2022-az-anadolu-harita.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=z-C_10ZhZi4&list=PLwJbwS5nZYYBhfvbSKIJgvJs2RfNVVVfp&pp=sAgC",
+                 "linkblogUrl": "yazilar/2022-az-anadolu.html",
+				"linkblogMetni": "Blog Sayfası",	
+				 "linkUrl": "https://www.youtube.com/watch?v=z-C_10ZhZi4&list=PLwJbwS5nZYYBhfvbSKIJgvJs2RfNVVVfp&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -134,7 +164,9 @@
                 "baslik": "Alaşehir’den Kuşadası’na Doğru Bisiklet Turu",
                "aciklama": "Ege'nin iç kısımlarından kıyıya doğru, zeytinliklerin ve antik vadilerin arasından geçerek akıp giden solo sürüş rotası.",
                 "resim": "img/maps/2021-alasehir-kusadasi-harita.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=_zK05ECyrn8&list=PLwJbwS5nZYYAaCs5_r8R8ucnCFZwyT1RQ&pp=sAgC",
+                "linkblogUrl": "2021-alasehir-kusadasi.html",
+				"linkblogMetni": "Blog Sayfası",	
+				 "linkUrl": "https://www.youtube.com/watch?v=_zK05ECyrn8&list=PLwJbwS5nZYYAaCs5_r8R8ucnCFZwyT1RQ&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -142,7 +174,9 @@
                 "baslik": "Karaburun Bisiklet Turu",
                "aciklama": "İzmir'in Karaburun Yarımadası'ndaki dik tırmanışları, sert rüzgarları ve masmavi kıyı kıvrımlarını keşfettiğimiz zorlu coğrafya sürüşü.",
                 "resim": "img/maps/2021-karaburun-harita.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=s2Q-LU-HOxM&list=PLwJbwS5nZYYB3f-YmDeJenH3EFUj4tV5i&pp=sAgC",
+                 "linkblogUrl": "2021-karaburun.html",
+				"linkblogMetni": "Blog Sayfası",	
+				 "linkUrl": "https://www.youtube.com/watch?v=s2Q-LU-HOxM&list=PLwJbwS5nZYYB3f-YmDeJenH3EFUj4tV5i&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -150,6 +184,8 @@
                 "baslik": "Bafa Gölü Civarı Bisiklet Turu",
                "aciklama": "Herakleia antik kenti kalıntıları ve Latmos Dağları'nın mistik kaya kütleleri gölgesinde tarihin içine pedalladığımız büyüleyici bir hat.",
                 "resim": "img/maps/2021-bafa-harita.jpg",
+                 "linkblogUrl": "2021-bafa-golu.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "https://www.youtube.com/watch?v=g0HVbZFw74I&list=PLwJbwS5nZYYACEqm4vvX-3ie9gMaOjdyE&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
@@ -158,6 +194,8 @@
                 "baslik": "Deli Divane Bisiklet Turu",
                "aciklama": "Plansız, sadece yolun götürdüğü yere gitme dürtüsüyle çıkılan ve yollardaki ham gerçekliğin izini süren kuralsız macera.",
                 "resim": "img/maps/2021-deli-divane-harita.jpg",
+                 "linkblogUrl":  "2021-deli-divane.html",
+				"linkblogMetni": "Blog Sayfası",					
                "linkUrl": "https://www.youtube.com/watch?v=aqFdgdfOAuY&list=PLwJbwS5nZYYCSMyrqfM-YYMe0TvEsoZMA&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
@@ -165,15 +203,19 @@
                 "tarih": "2021",
                 "baslik": "Kumpasa Geldim Bisiklet Turu",
                "aciklama": "Görme engelli İsmail Odabaşıoğlu ile tandem bisikletle kumpasa gelerek yapmak zorunda kaldığım bisiklet turu. İsmail'e eşlik edecek arkadaşın bacağı ağrımaya başladığı için ihale bana kaldı.  ",
-                "resim": "img/maps/2021-kumpas.jpg",
+                "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZp48ydz57h5q0VFgl7gAMEInkzmJiJZD5nnvVAu8rjUCguv9eu2vKZufcFgzui1Syp7GcfUIc7-jkNZCn3iwFrI9Z6d0YW_KEOn2vcQTPV3lvro2m-o-9fMm5Q3SI8GnwX1mllqOdm59zFB_DSXwik2LivKFK6UA2XZG_HhAB9mxO78jq5aJPk89Bfl8J/w640-h400/2021-kumpas-7154.jpg",
+				"linkblogUrl": "yazilar/2021-kumpas.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
-               "linkMetni": "Tur Yazılarını Oku"
+               "linkMetni": "Tur Yazılarını Oku" 
             },
             {
                 "tarih": "2021",
                 "baslik": "Gelibolu 1915 Bisiklet Turu",
                "aciklama": "tarihin en büyük siper savaşlarının yaşandığı topraklarda, geçmişin izlerini sessizlik içinde iki tekerle ziyaret ettiğimiz rota.",
                 "resim": "img/maps/2021-gelibolu-1951.jpg",
+                 "linkblogUrl": "yazilar/2021-gelibolu-1915.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "https://www.youtube.com/watch?v=G8kfrYKHR6M&list=PLwJbwS5nZYYDLiyvUtvWYBthptH_UNUBX&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },
@@ -182,6 +224,8 @@
                 "baslik": "Youtube Kanalı Aktif",
                "aciklama": "2013-2017 yılları arasında GGYİSS adıyla video yükleyip ara verdğim kanalı Ferdimen ismi ile tekrar aktif ettim. Bu arada blog yazılarıma ara verip 2021 Yılının başından itibaren her hafta düzenli olarak videolar yüklemeye başladım",
                 "resim": "img/youtube-ferdimen.jpg",
+                 "linkblogUrl": "",				
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "https://www.youtube.com/@Ferdimen/featured",
                "linkMetni": "Youtube Kanalı"
             },				
@@ -189,8 +233,10 @@
                 "tarih": "2020",
                 "baslik": "Zafere Giden Yol Bisiklet Turu",
                "aciklama": "Büyük Taarruz'un izinde, Kocatepe'den Dumlupınar'a uzanan bağımsızlık hatlarını pedallayarak dijital hafızaya aktardığımız anlamlı sefer.",
-                "resim": "img/maps/2020-zafere-giden-yol-harita.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=BB0ig5gnrpQ&list=PLwJbwS5nZYYC8pqjtgC2CywTe8Qw8xDFx&pp=sAgC",
+                "resim": "https://1.bp.blogspot.com/-EMoL5G9RRKQ/Xx6SRJ0S6RI/AAAAAAAA3Jw/0JdfRUmljH852rI8viJ3WD7tZtQeH-FiQCLcBGAsYHQ/w640-h362/kocatepe-1.jpg",
+				"linkblogUrl": "yazilar/2020-zgy.html",
+				"linkblogMetni": "Blog Sayfası",	
+			   "linkUrl": "https://www.youtube.com/watch?v=BB0ig5gnrpQ&list=PLwJbwS5nZYYC8pqjtgC2CywTe8Qw8xDFx&pp=sAgC",
                "linkMetni": "Tur Videolarını İzle"
             },		
             {
@@ -198,6 +244,8 @@
                 "baslik": "Of...Alanya Bisiklet Turu",
                "aciklama": "Karadeniz kıyılarından başlayıp dik dağ geçitlerini aşarak Akdeniz'e inen, Türkiye coğrafyasının iklim ve bitki örtüsü geçişlerini en net gösteren uzun hat.",
                 "resim": "img/maps/2019-of-alanya.jpg",
+                 "linkblogUrl": "yazilar/2019-of-alanya.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -205,15 +253,19 @@
                 "tarih": "2019",
                 "baslik": "Kurtuluş (Ata) Yolu Bisiklet Turu",
                "aciklama": "Samsun'dan Amasya'ya, oradan kurtuluş mücadelesinin ilk adımlarının atıldığı tarihi güzergahlara uzanan kültürel sürüş hattı.",
-                "resim": "img/maps/2019-ata-yolu.jpg",
-               "linkUrl": "https://www.youtube.com/watch?v=1XKxd12Y-5w&list=PLwJbwS5nZYYC7zC7vAFTNRcsGw1oAKDnd&pp=sAgC",
+                "resim": "https://1.bp.blogspot.com/-oiUudtp9Gr8/XSxuXzghUYI/AAAAAAAAoaY/2hp-ugwnq9EhjeCZ-74jdz7c2OrdBDCUQCLcBGAs/s640/ata%2Byolu%2B%252811%2529.JPG",				
+                  "linkblogUrl": "yazilar/2019-ata-yolu.html",				
+				"linkblogMetni": "Blog Sayfası",	
+              "linkUrl": "yazilar/2019-ata-yolu.html",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
                 "tarih": "2019",
                 "baslik": "Sandras Dağı & Arapapıştı Kanyonu Bisiklet Turu",
                "aciklama": "Muğla'nın zirvesi Sandras'ın karaçam ormanlarından Arapapıştı'nın devasa kanyon duvarlarına uzanan yüksek irtifa ve doğa kampı turu.",
-                "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOyNI0tq-MIucULVhFNZQDnwbPPoPJKSkltcbXdVJqbAD6YgloKNBiMjVkOlSmfCwT4Xqvd5UmErxv8TOX0jtlOGqRm78aM4EGhzF1NUl9y8kcoXAL0AKeZltmXrc8pIj5WaavdHmXbcYe/s640/bozdag360.jpg",
+                "resim": "https://1.bp.blogspot.com/-1QilUl5nJGE/XMQgyqNP2pI/AAAAAAAAoBM/KU1VaFGnRDU_PO147_vfx9PDcOFtWh7mQCLcBGAs/s640/IMG_1160.JPG",
+				"linkblogUrl": "yazilar/2019-sandras.html",				
+				"linkblogMetni": "Blog Sayfası",					
                "linkUrl": "",
                "linkMetni": "Tur Yazılarını Oku"
             },
@@ -222,6 +274,8 @@
                 "baslik": "Sardos 6. Şehitlere Saygı Turu",
                "aciklama": "Üyesi olduğum Keşan Saros Doğa ve Spor Derneği'nin düzelediği Şehitlere Saygı Turu.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDsctk6uENj5BBtGFYDp-4p_ajqTjTsJ02ee7bM1pFg6KXdC8RI4XKEtdMM86giK273dQFflnSP2lTBgNz34oxJaJPdezp93Ktm5LF99QqEfcQUCXHmFan1aXkL62AmhMPV8CT_fjxPauc/s1600/20180324B.jpg",
+                 "linkblogUrl":  "yazilar/2019-sardos-6-sehitlere-saygi-turu.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -230,7 +284,9 @@
                 "baslik": "Kıbrıs Bisiklet Turu",
                "aciklama": "Yavru vatanın bilinmeyen dağ yollarını, Beşparmak Dağları'nın dik yamaçlarını ve sakin kıyı kasabalarını pedalladığımız sınır ötesi seyahat.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0ueyMwtCt5OkdGtULCs7baY6iKdOHR0ckv6ViqVKKYFFBWUCs_Xgn3fstUa-1s9_YeHbWtI0fLkd_baLt3QAss85_nCzd2_05KZ0fZ9r_NZXCiJ6eZhAS3xgqKTlV8_kpU-v1L7iMPL75/s1600/2018kktc.jpg",
-               "linkUrl": "",
+                  "linkblogUrl": "yazilar/2018-kibris.html",
+				"linkblogMetni": "Blog Sayfası",	
+              "linkUrl": "",
                "linkMetni": "Tur Yazılarını Oku"
             },
             {
@@ -238,6 +294,8 @@
                 "baslik": "Batı Karadeniz Bisiklet Turu",
                "aciklama": "Yeşilin her tonunu barındıran, dik tırmanış yüzdeleriyle ve bol yağmuruyla bilinen sahil ve dağ şeridinin zorlu keşfi.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjf3nwKbcMDlMY4JH6C-4dtXJhTbH7nXBmqnZf6KUS19vLEICp0CObV_GihbkZP-1CxhfIdvG2ZaxHF5GMDReFehw_sUydbBUYVWNH-RcHBWXYozqA7CHSQy5cg7p5MWic9leoPNLvKeL_b/s1600/2018MDKB.jpg",
+                 "linkblogUrl": "yazilar/2018-abant-safranbolu.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -246,6 +304,8 @@
                 "baslik": "Bisikletle Yüz Yıllık macera Bisiklet Turu",
                "aciklama": "Görme engelli arkadaşım ile beraber tandem bisiklet sürdük.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjP3VdJ-8F7Bp2MiuWyXbuVT2olFYB6bSycU6RfYEn-66cC_yRqK3aalZF4Fu5qb5_dLzYYCb1nQLpFHQNnjxenVanRWMZ6PZnrvDFfloMyi7xLABQ3uaYwXJVb7wC5OKNiZm4vzhmWyLm_/s1600/2018yym.jpg",
+                 "linkblogUrl": "yazilar/2018-09-06-yym.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -254,7 +314,9 @@
                 "baslik": "Kaz dağları (Yersen) Bisiklet Turu",
                "aciklama": "Mitolojinin ve bol oksijenin merkezi Kazdağları'nın dik eğimlerine karşı meydan okuyan, ciğerleri ve bacakları sınayan dağ turu.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglDwr-lfeELoxogZOJ4QvZNUxpqO28SnqvBREkcLQtuWropRy9OTJ4pCr44ic5GNqZPnM3oTSztky26otCmfh_ZT3Pw1eFlX1Oz1jD6cyFP0KI3BPqfuWI3lJO_5QTq6fd2sf0nYdoCCla/s1600/2018kazdaglari.jpg",
-               "linkUrl": "",
+                  "linkblogUrl": "yazilar/2018-kaz-daglari.html",
+				"linkblogMetni": "Blog Sayfası",	
+              "linkUrl": "",
                "linkMetni": "Tur Yazılarını Oku"
             },
             {
@@ -262,6 +324,8 @@
                 "baslik": "İstiklal Yolundan…Zafer Yoluna Bisiklet Turu",
                "aciklama": "Karadeniz'den İç Anadolu'ya, oradan Ege'ye uzanan ve kurtuluşun iki büyük lojistik hattını birbirine bağlayan devasa epik sürüş serisi.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-7zPSznVcZn2I6rSHpOyb28BvKy_nv3E8eaoWe7MqkrwmUk1n5TXB46ZjMjZMsK1I-mgNllXXTDeQnkN1k5pQ2veJrVQLt2Dfpp9E_XpXYuN4MArxYYQA5Lo0cZrHxRgyJHREKezYPnjA/s1600/2018-istiklal-yolundan-zafer-yoluna.jpg",
+                 "linkblogUrl": "yazilar/2018-istiklal-yolundan-zafer-yoluna.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": "Tur Yazılarını Oku"
             },
@@ -270,6 +334,8 @@
                 "baslik": "Suyun Kaynağına Yolculuk (B.Menderes) Bisiklet Turu",
                "aciklama": "Büyük Menderes havzası boyunca uzanan antik Likya ve Karya topraklarının tarihsel izlerini takip eden nehir rotası sürüşü.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBmHT5_c9_0suMlDnRkTV97Sc6ybIAjX6QIkNaMu_Lodbn7qWJPFZuLY58gWpIr8ofFaAkwy_20-zL-lB79F_iYlIxN-UFMJbll6IUZaojJ-PpH8iNs9c-n2yiAvdQ-oJTWOfmeqr4DIf_/s1600/2018-SKY.jpg",
+                 "linkblogUrl": "yazilar/2018-sky.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -278,6 +344,8 @@
                 "baslik": "Az Bilinen Antik Kentler Turu",
                "aciklama": "...",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJx3nJMgJ9o9nasSEHGwHn0nmvbeiS6ArNeDpnhiwJnypaGWSlGG41m7yNyNuszcTS_1-5kKYXlmz-r04RbCdmcMJDxYc5jSuNcjNJ-gHKh0heJUsxzv5tHDbdKUzlzif2rn7BV-pCU9tW/s1600/2018-abak.jpg",
+                 "linkblogUrl": "yazilar/2018-abak.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -286,6 +354,8 @@
                 "baslik": "Marmara Adası Bisiklet Turu",
                "aciklama": "...",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJwTLiOW9PRKwNnbukoR993fTHYOHce42pEPBlzyjf6D3XQyHX9Mg71A_Dnv40shfmXKynH3fU2fyH7bduEOdmg_FpahSRdVURVcKYL1Ywx-Ur9N8-LVfG6S_cKGh5hvzOqu0lh94wWlNx/s1600/2017-marmara-adasi.jpg",
+                 "linkblogUrl": "yazilar/2017-marmara.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -294,6 +364,8 @@
                 "baslik": "Trakya Bisiklet Turu",
                "aciklama": "Kendi evimizde, Istranca ormanlarının derinliklerinden sarı kanola tarlalarına uzanan yerel coğrafyayı tarama seyahati.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit2ixx6VFZ9BI__PAr7yabmwl2SM2oNOM5YIjrj8-366EGjY0GXFT66a_9OYuIUBYdEEd1tvHK8iFBbyoqy9iCho1tCdNtOXr6dcZYZQyhPb2rxQ3cqynyX29pws7VfM0fGE69Hn4cN-Ov/s1600/2017-trakya.jpg",
+                 "linkblogUrl": "yazilar/2017-trakya.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "https://www.youtube.com/watch?v=edgibutU5R4",
                "linkMetni": "Tur Videosunu İzle"
             },
@@ -302,6 +374,8 @@
                 "baslik": "Gökova Bisiklet Turu",
                "aciklama": "Mavi ile yeşilin birleştiği Gökova Körfezi'nin az bilinen zorlu dik rampalarını ve sakin koylarını çadırımızla adımladığımız hat.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFwTliwm4FWChu3lQ1RZvvoCTxFZzIke0KaMxhMhf2aj6z4KyC7KBoIessCAq2uH77UQZXmFvLzkuu4Lb3OHgY_ovpB7ZHs-UtDarKzPpAqPun7U2KpYJFixOqxhIUmub8Owx5FydiOlb2/s1600/2017G.jpg",
+                 "linkblogUrl": "yazilar/2017-gokova.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "https://www.youtube.com/watch?v=q31a7A0rKoA&list=PLwJbwS5nZYYBcZcBe5TIO-5dVifdJaD3K",
                "linkMetni": "Tur Videolarını İzle"
             },
@@ -310,6 +384,8 @@
                 "baslik": "Suyun Kaynağına Yolculuk (Bakırçay) Bisiklet Turu",
                "aciklama": "Bakırçay havzasının bereketli toprakları, Pergamon antik kenti ve çevresindeki köylerin kültürel dokusunu arşivleyen sürüş.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgx3EqEj7K6MSybd0ulfiE6rb2O-womdevV1EllLaweWsH0QyOYWpYp5ki1z6NtLVHkhOSYxtRRHt86ZPMOH7dH4ugR8VKph8j5lkR-Q66Xh6WIaNS-gnEK49g9aP_aKmY9yC36PYxTXtnT/s1600/2017S.jpg",
+                 "linkblogUrl": "yazilar/2017-sky.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "https://www.youtube.com/watch?v=jQg9RC5F3xs&list=PLwJbwS5nZYYDQd08oFxXxYvn8NGvuJpzK",
                "linkMetni": "Tur Videolarını İzle"				
             },
@@ -318,6 +394,8 @@
                 "baslik": "Az Bilinen Antik Kentler Turu",
                "aciklama": "...",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh37M3z-uU0O2TbO_daUcd6ylu93Pgr6TJ7VrgRB_SOLFHneFCnuzY63RptnZZBijhvPeFbduNkwnS2o047LKRJTg5hBILXr01ZQa5lS9gconJdn69G5NNQ3XmbOSGX4G-CD1ahpeYwICDu/s1600/2017A.jpg",
+                 "linkblogUrl": "yazilar/2017-abak.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "https://www.youtube.com/watch?v=XJ0JzQFA_W8&list=PLwJbwS5nZYYAcbCTzy-ukedoC9Xfjz8Nq",
                "linkMetni": "Tur Videolarını İzle"
             },
@@ -326,6 +404,8 @@
                 "baslik": "İzmir…Çorlu Bisiklet Turu",
                "aciklama": "Ege'den başlayıp Marmara'nın kalbine, Çorlu'ya doğru uzanan, şehirler arası yolların bağımsız felsefeyle aşıldığı uzun etap.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgALad0jBJFVAMlfpGWaFnhPMQfaOQd9cl_pOV1ERYwTjyOZ-jzLNrglXN8lhqnqM1_sEAHU8bjGk6rOHR-5g1MIYZ_ZFpBTqXa2eXG_0DZtznedGGvZ7hTY4I8OxV-oeR2U2IvlClhnN-4U_WSvgG0ahv5IWDhtwaDA-zLenKvJFKQQ7iFaxKjH1ZnBwz4/s1920/2016-izmir-corlu.jpg",
+                 "linkblogUrl": "yazilar/2016-izmir-corlu.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -334,6 +414,8 @@
                 "baslik": "Suyun Kaynağına Yolculuk (K.Menderes) Bisiklet Turu",
                "aciklama": "Küçük Menderes havzasındaki tarihi Efes, Şirince og dağ köylerini kapsayan, bölgenin tarımsal ve tarihi geçmişine ayna tutan seyahat.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzF9KTRELH8StRyNGlwp3-etD0Fa2KjpY2vDg_FFWaPEJAzyhVfXsNuyvqbAVU7SEdGeB9ZiONglEju5an6z4j2BhD2EJ6gJUSxBAIKy0MTsHJC6TvlI6KDuLTvm3aMCubia7KwxaayhmD/s1600/2016S.jpg",
+                 "linkblogUrl": "yazilar/2016-sky.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -342,6 +424,8 @@
                 "baslik": "Az Bilinen Antik Kentler Turu",
                "aciklama": "...",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEghrl0XyxEsvcpMq_vF2mqA_qjn6_Bz-HZeC0bcg5cdGDBga3Ix4gBaIdySqo7bGVIyx4BafpVg1OdDwSaM29tWSUcrR_NSTX68ZAPdT2UYtr_baCmzaIKQszV1XQN1LBwHJY9u5J91SjDG/s1600/2016A.jpg",
+                 "linkblogUrl": "yazilar/2016-abak.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -350,6 +434,8 @@
                 "baslik": "Kendime Yolculuk Bisiklet Turu",
                "aciklama": "Yalnızlığın, içsel sorgulamaların ve yolun arındırıcı gücünün en üst seviyeye ulaştığı, ismimin hakkını tam olarak verdiğim kırılma dönemi.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvUDKx9DJ4_STbtoFXyjfgy24CnjgfHqqiZMaADyvMEBJaa4a0bx5yUSqTVKvAhwX7dt1_WO0SGcxb7n61qUwca7az6zFof3zikFBKnQr8t1E9xTzXLM6qpTzsGmk1cneFjtKIcEBHrNtX/s1600/2015-b.jpg",
+                 "linkblogUrl": "yazilar/2015-kendime-yolculuk.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -358,6 +444,8 @@
                 "baslik": "Buralarde Geziyorum (Mersin) Bisiklet Turu",
                "aciklama": "Akdeniz kıyı şeridinin dik rampa karakteristiklerini, narenciye kokulu köylerini ve Toroslar'ın eteklerini pedalladığımız sürüş.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdC89FLo-UYm4xPd8hW7n0PRfwsbGdYrSU0P5JhtC3QMMC8YBb6XKdEUeHkJ_td3lqlmxpmJp4pxdYcAbElU3CxAE-axDXDfgWkprwsDNzV6N3t5CEfo_A30-_WNKBquMbPBuv6-AOKCH6/s1600/2015-a.jpg",
+                 "linkblogUrl": "yazilar/2015-buralarda-geziyorum.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": "Tur Yazılarını Oku"
             },
@@ -366,6 +454,8 @@
                 "baslik": "Çanakkale 100. Yıl Bisiklet Turu",
                "aciklama": "...",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1jR9qdj3D34sOZVCtjoiVp-cTejc8dA6jONOANknKvtifUPGh11KwNqTlVNxfaRXDh91itjObwbNxkI81cNhKh_huDrLXiDHxOUFKIzP0keA5bPfw5Cak7YP1zKwJeWn1QYZEUBLdjUoO/s1600/2015.jpg",
+                 "linkblogUrl": "yazilar/2015-gelibolu-100-yil.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -374,6 +464,8 @@
                 "baslik": "Frig-Lidya Bisiklet Turu",
                "aciklama": "tarihi kaya mezarları, antik Frig Vadisi patikaları ve Lidya medeniyetinin altın yollarında kültürel ve arkeolojik derinliği olan solo hat.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwXf1KbYkyAB1yy54b-cxw6HyRdQX4EO3pDZVoom6ge78JprLGANVPQL8a63pea6_plHBLF2m5kN1F200PF8qxw8lOCFsaiF8f82tUHyI5rkh-SRS5zltpAexei8f-12x3HJJvQN528Bd_/s1600/2014.jpg",
+                 "linkblogUrl": "yazilar/2014-frig-lidya.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": "Tur Yazılarını Oku"
             },
@@ -382,6 +474,8 @@
                 "baslik": "Kuşadası...Çorlu Bisiklet Turu",
                "aciklama": "Ege kıyılarından Marmara'ya uzanan, rüzgara karşı verilen mücadeleyle ve çadır kamplarıyla şekillenen kurucu dönem turlarından biri.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqfsA5ljLhyMnp8Av8wGpMFK0vHuoyVuhtBc0evcDTV_u6xkOMRHwQzINOzmyFDFpYTKQVp-bKHPdKfXDM6wnxjlrx5c2A9cMDErdUo4yVFVNZzIQOIrmZIfxWvPBRMrrZ27slUVuoQRNdjJeaNd6oUoExEZRa1tyHELDzhJ4P4HECOsf31AhPFBX5lhRW/s1920/2013-kusadasi-corlu.jpg",
+                 "linkblogUrl": "yazilar/2013-kusadasi-corlu.html",
+				"linkblogMetni": "Blog Sayfası",					
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -390,6 +484,8 @@
                 "baslik": "Türkiye Bisiklet Turu",
                "aciklama": "Farklı coğrafi bölgeleri, binlerce kilometreyi ve sayısız insan hikayesini heybelerimizde topladığımız geniş ölçekli büyük sürüş deneyimi.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAMoWI3apN2lKOU0XS-U9WOZcpsxyUchNe5MMAYLA4f4SCG2NJqTrCHmKUkdGBfYNlXbE7F0NnHXRqYzl7CQkVmhhyZmb5mZHR5VXdCJ4F2AyRzY7KT2G_yHY-OJ9-p03zTXLfwS9x9S1I/s1600/2013.jpg",
+                 "linkblogUrl": "yazilar/2013-turkiye.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": "Tur Yazılarını Oku"
             },
@@ -398,6 +494,8 @@
                 "baslik": "Trakya Bisiklet Turu",
                "aciklama": "Bölgenin yerel yollarında, Istranca eteklerinde heybelerin ağırlığını ilk kez gerçek anlamda hissettiğimiz gelişim turu.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdM-Hg9UA6QfDuFNtsAAHlYUh_YhAlVH3DhscMH5jnWJIlzzT9jq7fiCFMdW3MZNwQ17BL-57hHsn6z2JLcG1yj6OrzDPW3pD3LCYx4-wovM3lD1AcaEC0P5E8PbhCS97kTSdz1zi90nBSRysYXEUZxGDFYHwnTxnT2mF6DuN291NYaVf9DMbKQa3dBXAZ/s1920/2012-trakya.jpg",
+                 "linkblogUrl": "yazilar/2012-trakya.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -406,6 +504,8 @@
                 "baslik": "Ankara...Antalya...İzmir Bisiklet Turu",
                "aciklama": "İlk Uzun Mesafe Deneyimi. Yolculuk kültürünün başladığı, heybelerin ilk kez dolduğu ve iki teker üzerindeki özgürlüğün keşfedildiği kurucu yıl.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhg6oe-cCbO6hR1x5cN7LHc_GLslBLDthxiO7JfnDsqpY110VmoqeXmx6U48kmPYef9kvJuhzx7izrUhiLPkOQZZC_UGJToHrWsr3QujPLaxxYSptjijg2iJJpBB2VtUMqEqdSMsu17XwPE/s1600/2012.jpg",
+                 "linkblogUrl": "yazilar/2012-antalya.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": "Tur Yazılarını Oku"
             },
@@ -414,6 +514,8 @@
                 "baslik": "Enez Bisiklet Turu",
                "aciklama": "tarihi Enez kalesine ve Saros Körfezi'nin hırçın sularına doğru pedalladığımız, bağımsız turların ilk kıvılcımını çakan hat.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7OmitX-5CuKDe2BKVao6t4rBzvj4qaCaL9x_BJoSzqalgVm1xt1oPz8rzudPU1ohf7RVDr2puAZV8uaAM2g_Fda5P63JnUn95OQo_y09-pKls-0mmQ_r1E1bImYI09lKxSfsB1QkCE2fe/s1600/2011-enez.jpg",
+                 "linkblogUrl": "yazilar/2011-enez.html",
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "https://www.youtube.com/watch?v=00xVscZLVjs&list=PLwJbwS5nZYYDSBGtwNHYFLPH5jVaRwuDk",
                "linkMetni": "Tur Videolarını İzle"
             },
@@ -422,6 +524,8 @@
                 "baslik": "Bisiklet Sporuna Başladım",
                "aciklama": "Çorlu Pedal Bisiklet Grubu ile beraber yolculuk kültürünün başladığı ve iki teker üzerindeki özgürlüğün keşfedildiği yıl.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEir-oGSQDljt9wKTG89UtE4XCjYMwPE5_R_a2XyWY6FcLst-JJWupe-DuHuLKCaFVerYNaOHYWHmq9XQNoxdTLE-CeWMZp-2k1SKzPZcvWvN3C9kmyiH580TuYj1iIeZ0A8UEKYe7JnUrSd/s1600/2011golbasi.jpg",
+                 "linkblogUrl": "",				
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -430,6 +534,8 @@
                 "baslik": "Sigarayı Bıraktım",
                "aciklama": "Kurtuldum meyhanelerin mey kovasından... hor gördüğün herşeyi çıkardım hayatımdan.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibiUqT9pvxXsdCnWX1zfFMAQw59Osdju2FUe6PJHs4dkZTGJhcwmsQFx-oVJF-f20Xd_sYdOOzV5W5L1DeVAwKalkeR7_uEj6rYRYJFM8XcOixAjV7hDK7YG1OoJCXJf2JtKfahd_bDcaw/s1600/2009-sigaray%25C4%25B1-biraktim.jpg",
+                 "linkblogUrl": "",				
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -438,6 +544,8 @@
                 "baslik": "Ferdimen İsmi Ortaya Çıktı",
                "aciklama": "Enez'de sıcak bir temmuz günü...",
                 "resim": "img/logo-old.png",
+                 "linkblogUrl": "",				
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -446,6 +554,8 @@
                 "baslik": "Askerlik Meselesi",
                "aciklama": "Safranbolu 125. Jandarma Er Eğitim Alay komutanlığında Bando er olarak askerlik gibi bir şey yaptım.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1v0VzL2Lv4cZSixU5R9XbFRbUcgDywXyVmB3d0UEmapdF14Orxh79VMliOMEVT5O2x2jIyj84kayGADrJH07ZTRhUCinwQkWbEdji4FZR93dNl8R3C3nEqZ8ZcEg5srH4yACbHNn6dAxg/s1600/2003-askerlik.jpg",
+                 "linkblogUrl": "",				
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -454,6 +564,8 @@
                 "baslik": "Öldüm, Öldüm, Dirildim",
                "aciklama": "O güne kadar elim, ayağım, gözüm, kulağım birazda dilim var zannederdim, meğer birde kalbim varmış. Onun atışını gerçekten hissettiğim günlerde hayati bir tehlike atlattım.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2rFcKgOMwsygYmAbMAFro7XwGX6jEPWRUXxXCtIGaPb4Jq_parkgBepsuzFG_-reEkKm4WvWxf6xznf70HJ-9QZQEjCWAD-3U62e0f2L8iBUPHKejbAWzG8dgw16IJmBCOZMZglL0EfSW/s1600/1999-bicak.jpg",
+                 "linkblogUrl": "",				
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             },
@@ -462,6 +574,8 @@
                 "baslik": "İyiki Doğdum",
                "aciklama": "Soğuk bir kış gecesiydi...",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiudZuoh3gGzHVboTOiJ78Bhf3XFbFdBGhYtH4CtlL8RO0pZKKHBUUs0qMCKVoAVaoHKAY3QdrfUBnh__qpzt5HaCpUEvctj_6y3jvon2DknP7rQpzD03B6tN4-LdOwg4GrBweQ95G-CBtz/s1600/1980-dugumgunu.jpg",
+                 "linkblogUrl": "",				
+				"linkblogMetni": "Blog Sayfası",	
                "linkUrl": "",
                "linkMetni": ""
             }
