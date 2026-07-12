@@ -259,7 +259,7 @@
                         <li><a href="https://www.ferdimen.com/#faq">S.S.S.</a></li>
                         <li><a href="https://www.ferdimen.com/#sablon">Vasiyet</a></li>
                         <li><a href="https://www.ferdimen.com/#destek">Destek Ol</a></li>
-                        <li><a href="https://www.ferdimen.com/#iletisim">İletişim</a></li>
+                        <li><a href="#iletisim">İletişim</a></li>
                     </ul>
                 </nav>
                 <div class="header-socials">
@@ -1339,7 +1339,7 @@ Cumaalanı-Kelekçi Yolundan.</b></div>
     <!-- FOOTER -->
     <footer class="main-footer">
         <div class="container">
-            <p class="footer-text">© 2026 Ferdimen. Tüm Hakları Saklıdır.</p>
+            <p class="footer-text"><script src="/data/footer.js?v=1"></script>© <span id="footer-year"></span> <span id="footer-dynamic-text"></p>
         </div>
     </footer>
     <script>
@@ -1372,7 +1372,7 @@ Cumaalanı-Kelekçi Yolundan.</b></div>
                         return url;
                     }
 
-// Sonraki Yazı Kontrolü
+                    // Sonraki Yazı Kontrolü
                     if (currentIndex > 0) {
                         const prevPost = yazilar[currentIndex - 1];
                         navHtml += `
