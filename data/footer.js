@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const ay = bugun.getMonth() + 1; // 1 = Ocak, 7 = Temmuz
 
         // Sabit, her gün görünecek varsayılan metniniz
-        const varsayilanMesaj = "<b>Ferdimen.</b> Adı yalnızlığından gelen kahraman | Tüm Hakları Saklıdır.";
+        const varsayilanMesaj = "<b>Ferdimen.</b> Vazgeçtiklerim, sizin bir ömür aradıklarınızdır. | Tüm Hakları Saklıdır.";
         
         let ozelMesaj = "";
 
