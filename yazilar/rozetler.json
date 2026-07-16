@@ -1,0 +1,212 @@
+[
+  {
+    "sinif": "rozet-tarih",
+    "renk": "#cca43b",
+    "kelime": "antik, müze, ören yeri",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z'/></svg>"
+  },
+  {
+    "sinif": "rozet-milli-mucadele",
+    "renk": "#d63031",
+    "kelime": "milli mücadele, tarih, şehitlik, anıt, zafer, kurtuluş",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M12.24 2c-3.1 0-5.87 1.86-7.05 4.67a1 1 0 0 0 .52 1.3c.48.2 1.04-.02 1.24-.5A6.002 6.002 0 0 1 12.24 4c2.81 0 5.17 1.94 5.79 4.54l-1.57-.42a1.002 1.002 0 0 0-1.12.56l-1.5 3a1 1 0 0 0 1.79.89l.86-1.72c.4 1.48-.03 3.09-1.22 4.19a4 4 0 0 1-5.1-.38 1 1 0 0 0-1.42 1.41 6 6 0 0 0 8.01.3c1.78-1.54 2.5-3.86 1.95-6.09l.81.22a1 1 0 0 0 1.15-1.5l-2.4-3.5a1 1 0 0 0-.66-.41L12.24 2zM5 13a1 1 0 0 0-1 1v6a1 1 0 1 0 2 0v-6a1 1 0 0 0-1-1z'/></svg>"
+  },
+  {
+    "sinif": "rozet-doga",
+    "renk": "#2ecc71",
+    "kelime": "doğa, orman, yayla, kanyon, dağ, manzara",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M14 6l-3.75 5 2.85 3.8c.2.27.2.63-.01.89s-.55.36-.84.23l-3.66-1.63L5 18h14l-5-12zm-3.5 4c.83 0 1.5-.67 1.5-1.5S11.33 7 10.5 7 9 7.67 9 8.5s.67 1.5 1.5 1.5z'/></svg>"
+  },
+{
+    "sinif": "rozet-deniz",
+    "renk": "#0984e3",
+    "kelime": "deniz, sahil, kıyı, koy, plaj, deniz kenarı",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.4z'/></svg>"
+  },
+  {
+    "sinif": "rozet-gastronomi",
+    "renk": "#e17055",
+    "kelime": "lezzet, gastronomi, yemek, mutfak, yerel tatlar",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z'/></svg>"
+  },
+  {
+    "sinif": "rozet-zorlu",
+    "renk": "#6c5ce7",
+    "kelime": "tırmanış, rampa, geçit, meydan okuma, mücadele",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z'/></svg>"
+  },
+  {
+    "sinif": "rozet-kulturel",
+    "renk": "#fdcb6e",
+    "kelime": "kültür, gelenek, köy, yerel yaşam, zanaat",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5.89 12.55L12 15.88l6.11-3.33c.6-.33 1-.96 1-1.66V9.43L12 13.31 4.89 9.43v1.46c0 .7.4 1.33 1 1.66z'/></svg>"
+  },
+  {
+    "sinif": "rozet-gece",
+    "renk": "#2c3e50",
+    "kelime": "gece, sürüş, kamp ateşi, yıldızlar, karanlık",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M12.3 22h-.1c-5.4 0-9.8-4.3-9.8-9.7 0-4.7 3.4-8.7 8-9.5.6-.1 1.1.4 1 1-.8 3.5.3 7.3 2.9 9.9 2.6 2.6 6.4 3.7 9.9 2.9.6-.1 1.1.4 1 1-.8 4.6-4.8 8-9.5 8-.1 0-.3.1-.4.4z'/></svg>"
+  },
+  {
+    "sinif": "rozet-su",
+    "renk": "#00cec9",
+    "kelime": "su, şelale, göl, baraj, nehir, akarsu",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z'/></svg>"
+  },
+  {
+    "sinif": "rozet-konser",
+    "renk": "#fd79a8",
+    "kelime": "konser, müzik, canlı performans, sahne, dinleti",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6zm-2 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z'/></svg>"
+  },
+  {
+    "sinif": "rozet-festival",
+    "renk": "#e84393",
+    "kelime": "festival, şenlik, karnaval, büyük etkinlik, organizasyon",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M2 17h20v2H2zm11.84-9.21c.1-.24.16-.51.16-.79 0-1.1-.9-2-2-2s-2 .9-2 2c0 .28.06.55.16.79C6.25 8.6 3.27 11.93 3 16h18c-.27-4.07-3.25-7.4-7.16-8.21z'/></svg>"
+  },
+  {
+  "sinif": "rozet-bisiklet-turu",
+  "renk": "#05c46b",
+  "kelime": "bisiklet turu, bisiklet, uzun yol, pedal, iki teker, heybeli, yolculuk",
+  "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M19 15c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM5 15c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm10.5-8H19v2h-1.56l-1.8-3H13.5v3H12v-3.56l-2-3.33V6h2V4H8v2h2v1.11l2 3.33V12H8.44l-1.8-3H5v2h1.5l1.8 3H11v3h2v-3h2.5l1.8-3zM4 12h3v2H4z'/></svg>"
+},
+  {
+    "sinif": "rozet-yuruyus",
+    "renk": "#27ae60",
+    "kelime": "doğa yürüyüşü, trekking, hiking, yürüyüş, patika",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 21h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 10.4 17 12 17 12v-2c0 0-1.7-1.4-2.8-2.3l.6-3C14.3 3.8 11.9 3 9 3v2c2.2 0 3.7.6 4.3 1.2L11 9.3 8.4 6.7 7 8.1l2.8 2.8-.2 1-1.3-.9-1.9-1.3z'/></svg>"
+  },
+  {
+    "sinif": "rozet-gunluk",
+    "renk": "#ffeaa7",
+    "kelime": "günlük, iç ses, hayata dair, deneme, düşünce, kişisel",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z'/></svg>"
+  },
+  {
+    "sinif": "rozet-kamp",
+    "renk": "#d35400",
+    "kelime": "kamp, çadır, konaklama, ormanda kamp, outdoor",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M4 18l6-10 6 10H4zM2 20h20v2H2v-2zm10-14.86L17.78 14H6.22L12 5.14z'/></svg>"
+  },
+  {
+    "sinif": "rozet-fotograf",
+    "renk": "#0097e6",
+    "kelime": "fotoğraf, galeri, manzara fotoğrafı, vizör, anı yakala",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z'/></svg>"
+  },
+  {
+    "sinif": "rozet-kitap-film",
+    "renk": "#9b59b6",
+    "kelime": "kitap, film, inceleme, öneri, kütüphane, sinema, okuma",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M12 11.55C11.2 9.4 9.07 8 6.5 8c-1.92 0-3.63.79-4.88 2.05-.39.4-.62.95-.62 1.55v7.22c0 .94.67 1.76 1.6 1.91C3.81 20.93 5.13 21 6.5 21c2.4 0 4.58-.8 6.25-2.15 1.67 1.35 3.85 2.15 6.25 2.15 1.37 0 2.69-.07 3.9-.27.93-.15 1.6-.97 1.6-1.91v-7.22c0-.6-.23-1.15-.62-1.55C22.63 8.79 20.92 8 19.5 8c-2.57 0-4.7 1.4-5.5 3.55zM12 17V9.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5V17c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5z'/></svg>"
+  },
+  {
+    "sinif": "rozet-kahve-mekan",
+    "renk": "#8d6e63",
+    "kelime": "kahve, mola, mekan, kafe, sohbet, dinlenme",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M4 19h16v2H4zm14-9c0-2.21-1.79-4-4-4H4v8c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-4zm-2 4c0 1.1-.9 2-2 2h-2V8h2c1.1 0 2 .9 2 2v4z'/></svg>"
+  },
+  {
+    "sinif": "rozet-rota-kesif",
+    "renk": "#1abc9c",
+    "kelime": "yeni yer, harita, rota önerisi, gizli kalmış",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z'/></svg>"
+  },
+  {
+    "sinif": "rozet-video-blog",
+    "renk": "#ff7675",
+    "kelime": "video, youtube, vlog, izle, kamera arkası, kurgu",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z'/></svg>"
+  },
+    {
+        "sinif": "rozet-efsane",
+        "renk": "#ffd700",
+        "kelime": "efsane, başyapıt, zirve nokta",
+        "svg": "<svg viewBox='0 0 24 24'><path d='M2 4l3 7.2L12 3l7 8.2L22 4v14H2V4zm2 12h16v-2H4v2z'/></svg>"
+    },
+    {
+        "sinif": "rozet-zor",
+        "renk": "#ff4d4d",
+        "kelime": "zor, zorlu, geçit, rampa, tırmanış",
+        "svg": "<svg viewBox='0 0 24 24'><path d='M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z'/></svg>"
+    },
+    {
+        "sinif": "rozet-normal",
+        "renk": "#38bec9",
+        "kelime": "normal, orta, orta zorluk, dengeli",
+        "svg": "<svg viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>"
+    },
+    {
+        "sinif": "rozet-kolay",
+        "renk": "#2ecc71",
+        "kelime": "kolay, rahat, düz, akıcı",
+        "svg": "<svg viewBox='0 0 24 24'><path d='M17 8C14.24 8 12.01 10.23 12.01 13c0 2.22 1.45 4.1 3.47 4.75L12 21.23l-3.48-3.48C10.55 17.1 12 15.22 12 13c0-2.77-2.23-5-5-5-2.76 0-5 2.24-5 5 0 3.44 2.4 6.31 5.6 6.91L12 23l4.4-4.09C19.6 18.31 22 15.44 22 13c0-2.76-2.24-5-5-5z'/></svg>"
+    },
+    {
+        "sinif": "rozet-planlanan",
+        "renk": "#a3cb38",
+        "kelime": "planlanan, rota, yakında, gelecek",
+        "svg": "<svg viewBox='0 0 24 24'><path d='M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z'/></svg>"
+    },
+    {
+        "sinif": "rozet-kesif",
+        "renk": "#3498db",
+        "kelime": "keşif, macera, bilinmeyen, keşif turu",
+        "svg": "<svg viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.47 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-8l-2 4 4-2 2-4-4 2z'/></svg>"
+    },
+    {
+        "sinif": "rozet-yaz",
+        "renk": "#ff9f43",
+        "kelime": "sıcak, yaz, çöl, yaz turu, kavurucu",
+        "svg": "<svg viewBox='0 0 24 24'><path d='M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9h-2v3h2v-3zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.75l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm-1 7h2v3h-2v-3zm-5.79-1.38l-1.79 1.79 1.41 1.41 1.8-1.79-1.42-1.41z'/></svg>"
+    },
+    {
+        "sinif": "rozet-kıs",
+        "renk": "#00d2d3",
+        "kelime": "soğuk, kış, kar, kış turu, don",
+        "svg": "<svg viewBox='0 0 24 24'><path d='M22 11h-4.17l3.24-3.24-1.41-1.42L15 11h-2V9l4.66-4.66-1.42-1.41L13 6.17V2h-2v4.17L7.76 2.93 6.34 4.34 11 9v2H9L4.34 6.34 2.93 7.76 6.17 11H2v2h4.17l-3.24 3.24 1.41 1.42L9 13h2v2l-4.66 4.66 1.42 1.41L11 17.83V22h2v-4.17l3.24 3.24 1.41-1.41L13 15v-2h2l4.66 4.66 1.42-1.42L17.83 13H22v-2z'/></svg>"
+    }, 
+	{
+    "sinif": "rozet-ilkbahar",
+    "renk": "#2ecc71",
+    "kelime": "ilkbahar, bahar, çiçek, doğa",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M12 2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4zm0 12a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4zm-6-2a4 4 0 0 0-4-4 4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4zm12 0a4 4 0 0 0-4-4 4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4zm-6-2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z'/></svg>"
+    },		
+	{
+    "sinif": "rozet-sonbahar",
+    "renk": "#e67e22",
+    "kelime": "sonbahar, güz, yaprak, kuru yaprak, hazan",
+    "svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M17 8C15.34 8 14 9.34 14 11V13H12V7C12 5.34 10.66 4 9 4S6 5.34 6 7V13H4C2.34 13 1 14.34 1 16S2.34 19 4 19H12.5C14.43 19 16 17.43 16 15.5V13.83C18.41 13.41 20 11.41 20 9C20 8.45 19.55 8 19 8H17ZM4 17C3.45 17 3 16.55 3 16S3.45 15 4 15H8V17H4ZM9 6C9.55 6 10 6.45 10 7V13H8V7C8 6.45 8.45 6 9 6ZM14 15.5C14 16.33 13.33 17 12.5 17H12V15H14V15.5ZM14 13V11C14 10.45 14.45 10 15 10H17C17.55 10 18 10.45 18 11C18 12.1 17.1 13 16 13H14ZM10 20H12V22H10V20Z'/></svg>"
+   },	
+	{ 
+        "sinif": "rozet-yildiz",
+        "renk": "#ffd700",
+        "kelime": "ilk tur, unutulmaz, favori",
+        "svg": "<svg viewBox='0 0 24 24'><path d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/></svg>"
+    },
+	{
+		"sinif": "rozet-kalp",
+		"renk": "#e74c3c",
+		"kelime": "proje, özel, kalp, sevgi, can",
+		"svg": "<svg viewBox='0 0 24 24'><path fill='currentColor' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>"
+    },	
+    {
+        "sinif": "rozet-solo",
+        "renk": "#dcdde1",
+        "kelime": "1, tek, solo, yalnız, tek başına,",
+        "svg": "<svg viewBox='0 0 24 24'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>"
+    },
+    {
+        "sinif": "rozet-kucukgrup",
+        "renk": "#a5b4fc",
+        "kelime": "küçük grup, mini, ekip, ikili,2,3",
+        "svg": "<svg viewBox='0 0 24 24'><path d='M16.5 12c1.38 0 2.49-1.12 2.49-2.5S17.88 7 16.5 7C15.12 7 14 8.12 14 9.5s1.12 2.5 2.5 2.5zM9 11c1.66 0 2.99-1.34 2.99-3S10.66 5 9 5C7.34 5 6 6.34 6 8s1.34 3 3 3zm7.5 3c-1.84 0-5.5.92-5.5 2.75V19h11v-2.25c0-1.83-3.66-2.75-5.5-2.75zM9 13c-2.33 0-7 1.17-7 3.5V19h7v-2.25c0-.85.34-2.29 2.29-3.37-.89-.25-1.73-.38-2.29-.38z'/></svg>"
+    },
+    {
+        "sinif": "rozet-buyukgrup",
+        "renk": "#81ecec",
+        "kelime": "büyük grup, kalabalık, 4, 5, 5+, 10+, 50+, 100+, 200+ ",
+        "svg": "<svg viewBox='0 0 24 24'><path d='M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z'/></svg>"
+    }
+]
