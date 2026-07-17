@@ -39,6 +39,48 @@
             color: #7f8c8d;
         }
 
+        /* Arama Kutusu Tasarımı */
+        .arama-kapsayici {
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+            position: relative;
+        }
+
+        .arama-input {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            font-size: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 30px;
+            outline: none;
+            color: #2c3e50;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            box-sizing: border-box;
+        }
+
+        .arama-input:focus {
+            border-color: #3498db;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+        }
+
+        .arama-ikonu {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            fill: #7f8c8d;
+            pointer-events: none;
+            transition: fill 0.3s ease;
+        }
+
+        .arama-input:focus + .arama-ikonu {
+            fill: #3498db;
+        }
+
         /* Kategori, Alt Kategori ve Etiket Filtreleme Alanı Tasarımları */
         .kategori-filtresi-alani,
         .alt-kategori-filtresi-alani,
@@ -444,7 +486,15 @@
     <main class="blog-container">
         <div class="blog-header">
             <h1>Yol Notları & Hikayeler & Fotoğraflar & Videolar</h1>
-            <p>Yayın tarihine göre sıralanmış tüm blog yazıları ve tur günlükleri</p>
+            <p>Yayın tarihine göre tüm blog yazıları ve tur günlükleri</p>
+        </div>
+
+        <!-- YENİ NESİL ANLIK ARAMA ALANI -->
+        <div class="arama-kapsayici">
+            <input type="text" id="arama-girdisi" class="arama-input" placeholder="Yazılarda ara (başlık, etiket, tarih...)" autocomplete="off">
+            <svg class="arama-ikonu" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
         </div>
 
         <div class="kategori-filtresi-alani" id="kategori-filtreleri" style="display: none;"></div>
@@ -541,19 +591,22 @@
             const kategoriKapsayici = document.getElementById("kategori-filtreleri");
             const altKategoriKapsayici = document.getElementById("alt-kategori-filtreleri");
             const zamanTuneli = document.getElementById("zaman-tuneli");
+            const aramaGirdisi = document.getElementById("arama-girdisi");
+
              // ==========================================
             // KULLANICI AYARLARI (KONFİGÜRASYON)
             // ==========================================           
-            const CONFIG_MAX_ETIKET = 20;         // 0 yapıldığı için üstteki dinamik filtre alanı tamamen gizlenir.
+            const CONFIG_MAX_ETIKET = 30;         // 0 yapıldığı için üstteki dinamik filtre alanı tamamen gizlenir.
             const CONFIG_SIRALAMA_TIPI = "guzergah"; // "populer", "alfabetik" veya "guzergah" (rotaya göre orijinal sıra)
             const CONFIG_MAX_CARD_TAGS = 4;      // Kart altında varsayılan olarak gösterilecek maks etiket sayısı (Sadece filtre aktif değilken geçerlidir).
-            const KATEGORILER = "acik";           
+            const KATEGORILER = "acik";           // acik / kapali yapıldığı için üstteki dinamik filtre alanı tamamen gizlenir.
             // ==========================================  
             let tumYazilar = [];
             let rozetListesi = []; 
             let aktifFiltre = "hepsi";
             let aktifKategori = "hepsi"; 
             let aktifAltKategori = "hepsi";
+            let aramaKelimesi = "";
             
             let anaKategoriFrekanslari = {};
             let altKategoriFrekanslari = {}; 
@@ -801,6 +854,14 @@
                     listeKapsayici.innerHTML = '<div class="loading-status" style="color: #e74c3c;">Yazı listesi yüklenirken bir hata oluştu.</div>';
                 });
 
+            // ARAMA INPUTU OLAY DINLEYICISI
+            if (aramaGirdisi) {
+                aramaGirdisi.addEventListener("input", function(e) {
+                    aramaKelimesi = e.target.value.toLocaleLowerCase('tr-TR').trim();
+                    yazilariEkranaBas();
+                });
+            }
+
             function anaKategorileriOlustur() {
                 if (KATEGORILER !== "acik") {
                     kategoriKapsayici.style.display = 'none';
@@ -922,7 +983,7 @@
                     aktifFiltre = "hepsi";
                 }
 
-                let filtreHtml = `<button class="filtre-btn ${aktifFiltre === "hepsi" ? "aktif" : ""}" data-filtre="hepsi">Hepsi</button>`;
+                let filtreHtml = `<button class="filtre-btn ${aktifFiltre === "hepsi" ? "aktif" : ""}" data-filtre="hepsi">Tüm Etiketler</button>`;
 
                 filtrelenmisEtiketler.forEach(item => {
                     const gosterilecekMetin = turkceCapitalize(item.isim);
@@ -1141,13 +1202,24 @@
                     const etiketUyumlu = aktifFiltre === "hepsi" || 
                         etiketleriAyristir(yazi.etiketler).map(e => e.toLowerCase()).includes(aktifFiltre);
 
-                    return anaUyumlu && altUyumlu && etiketUyumlu;
+                    // ARAMA SÜZGECİ (AJAX/CLIENT-SIDE INTEGRATION)
+                    let aramaUyumlu = true;
+                    if (aramaKelimesi !== "") {
+                        const baslikUyum = yazi.baslik ? yazi.baslik.toLocaleLowerCase('tr-TR').includes(aramaKelimesi) : false;
+                        const etiketUyum = yazi.etiketler ? yazi.etiketler.some(e => e.toLocaleLowerCase('tr-TR').includes(aramaKelimesi)) : false;
+                        const tarihUyum = yazi.tarih ? yazi.tarih.includes(aramaKelimesi) : false;
+                        const ozelUyum = yazi.ozel ? yazi.ozel.toLocaleLowerCase('tr-TR').includes(aramaKelimesi) : false;
+                        
+                        aramaUyumlu = baslikUyum || etiketUyum || tarihUyum || ozelUyum;
+                    }
+
+                    return anaUyumlu && altUyumlu && etiketUyumlu && aramaUyumlu;
                 });
 
                 zamanTuneliOlustur(filtrelenmisYazilar);
 
                 if (filtrelenmisYazilar.length === 0) {
-                    listeKapsayici.innerHTML = '<div class="loading-status">Yazı bulunamadı.</div>';
+                    listeKapsayici.innerHTML = '<div class="loading-status">Aradığınız kriterlere uygun yazı bulunamadı.</div>';
                     return;
                 }
 
