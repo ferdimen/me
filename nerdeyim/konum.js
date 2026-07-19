@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const liveMap = L.map('live-map', { scrollWheelZoom: false }).setView([sonLat, sonLng], window.zoomSeviyesi);
 
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; OpenStreetMap'
+                    attribution: '&copy; OpenStreetMap | &copy;  <a href="https://ferdimen.com/" target="_blank">Neredeyim? Canlı Rota Takip Sistemi</a>'
                 }).addTo(liveMap);
 
                 // Tam Ekran Kontrolü
