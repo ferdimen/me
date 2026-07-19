@@ -1,5 +1,13 @@
 [
 	    {
+        "meta": "20 Temmuz 2026 / Altyapı",
+        "baslik": "Canlı takip eklendi.",
+        "aciklama": "Aktif olarak paylaşılan canlı bir seyahat veya bisiklet turu olduğunda güncel bilgileri ve konumumu takip edebileceğiniz <a href=\"#takip\">Canlı takip</a> özelliği eklendi",
+		"resim": "",		
+        "linkUrl": "/#takip",
+        "linkMetni": "Takip et"
+    },	    
+	{
         "meta": "19 Temmuz 2026 / Altyapı",
         "baslik": "Video Sistemi Güncellendi",
         "aciklama": "<a href=\"#videolar\">Son Videolar ve Video Haritası </a> üzerinde tıklayarak başlangıç noktasında açılan popup pencere üzerinden ilgili videoya ulaşabileceğiniz sistem geliştirildi. Ayrıca <a href=\"/izle.html\">videoları izlemek için</a> dahili sistem kuruldu ",
