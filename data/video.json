@@ -1,225 +1,312 @@
 [
  {
+    "title": "Uzun Yolun Kısası (Anadolu İrfanı Bisiklet Turu)",
+    "description": "2025 yılının Eylül ve Ekim aylarında gerçekleştirdiğim, rotası itibarıyla tarih ve kültürle yoğrulmuş 17 bölümlük Anadolu İrfanı bisiklet turumun özet videosu sizlerle.",
+    "url": "https://youtu.be/hulyelVdCEc",
+	"playlist": "uzun yolun kısası",
+    "duration": "17:59",
+	"date": "2027-02-24"
+ },
+ {
     "title": "Anadolu İrfanı Bisiklet Turu 17 (Sorgun - Yozgat)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/GwQecBPnVTI",
+	"playlist": "Anadolu İrfanı",
     "duration": "15:59",
+	"date": "2027-02-19",
 	"konum": "39.811686774600474, 35.15345667587075"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 16 (Bebekköy - Saraykent - Sorgun)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/9_SkmGK3XL4",
+	"playlist": "Anadolu İrfanı",
     "duration": "17:59",
+	"date": "2027-02-12", 
 	"konum": "39.601589198643254, 35.387088189632955"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 15 (Çayıralan - Sarıkaya - Bebekköy)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/ufOMHLfGFAE",
+	"playlist": "Anadolu İrfanı",
     "duration": "16:59",
+	"date": "2027-02-05", 
 	"konum": "39.303026582454756, 35.623189184642115"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 14 (Akçakışla - Doğansaray - Çayıralan)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/Z94xn6Eh24Y",
+	"playlist": "Anadolu İrfanı",
     "duration": "19:59",
+	"date": "2027-01-29", 
 	"konum": "39.53249058393562, 35.652667476907155"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 13 (Muşalikalesi - Akdağmadeni - Akçakışla)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/o4Nz8_xca8g",
+	"playlist": "Anadolu İrfanı",
     "duration": "17:59",
+	"date": "2027-01-22", 
 	"konum": "39.73196984296632, 35.848619038556265"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 12 (Özükavak - Kadışehri - Muşalikalesi)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/lpVtGg4y-38",
+	"playlist": "Anadolu İrfanı",
     "duration": "17:59",
+	"date": "2027-01-15", 
 	"konum": "40.02631576895214, 35.71802463419376"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 11 (Aydıncık - Çekerek - Özükavak)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/wfUYa_NcoIE",
+	"playlist": "Anadolu İrfanı",
     "duration": "14:59",
+	"date": "2027-01-08", 
 	"konum": "40.13728975047853, 35.293429892486955"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 10 (Ortaköy - Şapinuva - Aydıncık)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/xDjYbx7SAuY",
+	"playlist": "Anadolu İrfanı",
     "duration": "23:59",
+	"date": "2027-01-01", 
 	"konum": "40.31239481497494, 35.33573569124914"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 9 (Mecitözü - Göynücek - Ortaköy)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/Yi9zj44TqYs",
+	"playlist": "Anadolu İrfanı",
     "duration": "17:59",
+	"date": "2026-12-25", 
 	"konum": "40.52527532287573, 35.296628801660184"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 8 (Kırkdilim - Çorum - Mecitözü)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/xKniNIsphw4",
+	"playlist": "Anadolu İrfanı",
     "duration": "14:59",
+	"date": "2026-12-18", 
 	"konum": "40.72295032098455, 34.899685359333056"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 7 (Hamamözü - Laçin - Kırkdilim Geçidi)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/ZW1eHtS4GVc",
+	"playlist": "Anadolu İrfanı",
     "duration": "20:59",
+	"date": "2026-12-11", 
 	"konum": "40.87217607138509, 34.86553486035874"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 6 (Oğuzlar - Dodurga - Osmancık)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/PxGnJhpG2EY",
+	"playlist": "Anadolu İrfanı",
     "duration": "20:59",
+	"date": "2026-12-04", 
 	"konum": "40.7390581570249, 34.72919570040666"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 5 (İskilip - Kayıbeli Geçidi - Oğuzlar)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/1DJ0Jdr7UME",
+	"playlist": "Anadolu İrfanı",
     "duration": "24:59",
+	"date": "2026-11-27", 
 	"konum": "40.70749532528831, 34.48707140276408"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 4 (Eskiçeltek - Uğurludağ - İskilip)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/sz9pib-ErsA",
+	"playlist": "Anadolu İrfanı",
     "duration": "15:59",
+	"date": "2026-11-20", 
 	"konum": "40.552733585826054, 34.4411591502213"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 3 (Eskialibey - Bayat - Eskiçeltek)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/rTLP-pJPjmM",
+	"playlist": "Anadolu İrfanı",
     "duration": "14:59",
+	"date": "2026-11-13", 
 	"konum": "40.49535319079409, 34.16301050818065"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 2 (Sulakyurt - Kızılırmak - Eskialibey)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/8uC6f0SWIWw",
+	"playlist": "Anadolu İrfanı",
     "duration": "15:59",
+	"date": "2026-11-06", 
 	"konum": "40.15950769115082, 33.72085204556254"	
  },
   {
     "title": "Anadolu İrfanı Bisiklet Turu 1 (Yahşihan - Kırıkkale - Balışeyh - Sulakyurt)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/9je7oBF7aYI",
+	"playlist": "Anadolu İrfanı",
     "duration": "14:59",
+	"date": "2026-10-30", 
 	"konum": "39.86403246080162, 33.46258588919356"	
  },
+  {
+    "title": "Uzun Yolun Kısası (İçten Anadolu ve Toros Canavarı Bisiklet Turu)",
+    "description": "İçten Anadolu ve Toros Canavarı turumun özet videosu sizlerle.",
+    "url": "https://youtu.be/hulyelVdCEc",
+	"playlist": "uzun yolun kısası",
+    "duration": "17:59",
+	"date": "2027-10-27"
+ },
+
    {
     "title": "Toros Canavarı Bisiklet Turu 4 (Karaisalı - Adana)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/YpKzBMj62cA",
+	"playlist": "Toros Canavarı",
     "duration": "16:59",
+	"date": "2026-10-23", 
 	"konum": "37.25770776580217, 35.05861984678238"	
  },
   {
     "title": "Toros Canavarı Bisiklet Turu 3 (Belemedik - Taşdurmaz - Hacıkırı - Karaisalı)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/oinLtW71Kmg",
+	"playlist": "Toros Canavarı",
     "duration": "34:59",
+	"date": "2026-10-16", 
 	"konum": "37.3460906165835, 34.912026951911045"	
  },
   {
     "title": "Toros Canavarı Bisiklet Turu 2 (Pozantı - Belemedik)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/uJogS_tQdLc",
+	"playlist": "Toros Canavarı",
     "duration": "18:59",
+	"date": "2026-10-09", 
 	"konum": "37.4196840408277, 34.87238084291761"	
  },
   {
     "title": "Toros Canavarı Bisiklet Turu 1 (Niğde - Ereğli - Halkapınar - Pozantı)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/eRKU_7z8mE4",
+	"playlist": "Toros Canavarı",
     "duration": "16:59",
+	"date": "2026-10-02", 
 	"konum": "37.95687121120117, 34.70216566123361"	
  },
   {
     "title": "İçten Anadolu Bisiklet Turu 7 (Güzelyurt - Çiftlik - Altunhisar - Bor - Niğde)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/K8p1Bp6kXsM",
+	"playlist": "içten anadolu",
     "duration": "22:59",
+	"date": "2026-09-25", 
 	"konum": "38.2889921298411, 34.31858557214054"	
  },
   {
     "title": "İçten Anadolu Bisiklet Turu 6 (Güvercinlik - Derinkuyu - Güzelyurt)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/X1JpghNESQc",
+	"playlist": "içten anadolu",
     "duration": "15:59",
-	"konum": "38.55568304055548, 34.740473300983346"	
+	"date": "2026-09-18", "konum": "38.55568304055548, 34.740473300983346"	
  },
   {
     "title": "İçten Anadolu Bisiklet Turu 5 (Gülşehir - Avanos - Göreme - Uçhisar - Güvercinlik)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/u8V7eE6KL-U",
+	"playlist": "içten anadolu",
     "duration": "17:59",
+	"date": "2026-09-11", 
 	"konum": "38.751213101380756, 34.623088169901884"	
  },
  {
     "title": "İçten Anadolu Bisiklet Turu 4 (Ortaköy - Abuuşağı - Gülşehir)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/J02_8g4nvaU",
+	"playlist": "içten anadolu",	
     "duration": "17:59",
+	"date": "2026-09-04", 
 	"konum": "38.763887096549205, 34.08867613537422"	
  },
  {
     "title": "İçten Anadolu Bisiklet Turu 3 (Yeşilyurt - Ağaçören - Ortaköy)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/1thNZ4ANNxs",
+	"playlist": "içten anadolu",	
     "duration": "19:59",
+	"date": "2026-08-28", 
 	"konum": "38.875389364705846, 33.68452009072173"	
  },
  {
     "title": "İçten Anadolu Bisiklet Turu 2 (Sarıyahşi - Evren - Şereflikoçhisar)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/uRE0CAZCe6E",
+	"playlist": "içten anadolu",	
     "duration": "19:59",
+	"date": "2026-08-21", 
 	"konum": "38.99211156864783, 33.84808507259812"	
   },
   {
     "title": "İçten Anadolu Bisiklet Turu 1 (Boztepe - Kırşehir - Sarıyahşi)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/EEk5ZH8EO18",
+	"playlist": "içten anadolu",	
     "duration": "13:59",
+	"date": "2026-08-14", 
 	"konum": "39.27397308436715, 34.11690655517085"	
   },
+   {
+    "title": "Uzun Yolun Kısası (Kuzeyden...Galiba Bisiklet Turu)",
+    "description": "Kuzeyden...Galiba bisiklet turumun özet videosu sizlerle.",
+    "url": "https://youtu.be/hulyelVdCEc",
+	"playlist": "uzun yolun kısası",
+    "duration": "17:59",
+	"date": "2027-08-11"
+ },
   {
     "title": "Kuzeyden...Galiba Bisiklet Turu 12 (Kaynarca - Kandıra - İzmit)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/ZQ_2GGKJcg4",
+	"playlist": "kuzeyden galiba",	
     "duration": "17:59",
+	"date": "2026-08-07", 
 	"konum": "41.06412402914801, 30.354673888930304"	
   },
   {
     "title": "Kuzeyden...Galiba Bisiklet Turu 11 (Karaburun - Kocaaali - Karasu - Denizköy - Kayacık)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/9oR6CXLd-qs",
+	"playlist": "kuzeyden galiba",	
     "duration": "15:59",
+	"date": "2026-07-31", 
 	"konum": "41.072841841765985, 31.015767038958625"	
   },
   {
     "title": "Kuzeyden...Galiba Bisiklet Turu 10 (Alaplı - Akçakoca - Karaburun)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/BUbT2FwMFAY",
+	"playlist": "kuzeyden galiba",	
     "duration": "15:59",
+	"date": "2026-07-24", 
 	"konum": "41.209436702824156, 31.407479527261934"	
   },
   {
     "title": "Kuzeyden...Galiba Bisiklet Turu 9 (Ereğli)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/uI3cd1M0Dzw",
+	"playlist": "kuzeyden galiba",	
     "duration": "17:59",
 	"konum": "41.339988021815266, 31.628647187092273"	
   },
@@ -227,6 +314,7 @@
     "title": "Kuzeyden...Galiba Bisiklet Turu 8 (Kozlu - Ereğli yolu - Seyfetler - Sücüllü)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/RXzUp_dH6uA",
+	"playlist": "kuzeyden galiba",	
     "duration": "17:59",
 	"konum": "41.44454261218705, 31.75372296057531"	
   },
@@ -234,6 +322,7 @@
     "title": "Kuzeyden...Galiba Bisiklet Turu 7 (Alaplı - Zonguldak - Kilimli -  Kozlu)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/5nmWEBOohkw",
+	"playlist": "kuzeyden galiba",	
     "duration": "19:59",
 	"konum": "41.074509303347035, 31.439185666950394"	
   },
@@ -241,6 +330,7 @@
     "title": "Kuzeyden...Galiba Bisiklet Turu 6 (Hasanlar - Dutlar - Yığılca - Yeniköy)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/1HL-Q9tZkkU",
+	"playlist": "kuzeyden galiba",	
     "duration": "23:59",
 	"konum": "40.9011943609064, 31.222790403361273"	
   },
@@ -248,6 +338,7 @@
     "title": "Kuzeyden...Galiba Bisiklet Turu 5 (Hendek - Gümüşova - Cumayeri - Çilimli - Düzce)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://youtu.be/YmMe7iuwkxo",
+	"playlist": "kuzeyden galiba",	
     "duration": "16:59",
 	"konum": "40.86353225077768, 30.632833162073258"	
   },
@@ -255,6 +346,7 @@
     "title": "Kuzeyden...Galiba Bisiklet Turu 4 (İkizce Osmaniye - Söğütlü - Ferizli - Hacıkışla)",
     "description": "Bu videoda, 2024 Şubat’ının serin ama keyifli bir gününde İkizce Osmaniye’den başlayıp Ferizli’ye kadar uzanan bisiklet turuma konuk oluyorsunuz.  ",
     "url": "https://www.youtube.com/watch?v=u2zK1P2759k",
+	"playlist": "kuzeyden galiba",	
     "duration": "22:59",
 	"konum": "40.86954031973802, 30.355272809379702"	
   },
@@ -262,6 +354,7 @@
     "title": "Kuzeyden...Galiba Bisiklet Turu 3 (İzmit - Kartepe - Sapakpınar - İkizce Osmaniye)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=OAkXuPkBXuQ",
+	"playlist": "kuzeyden galiba",	
     "duration": "19:59",
 	"konum": "40.75795424160741, 29.87528451066344"	
   },
@@ -269,6 +362,7 @@
     "title": "Kuzeyden...Galiba Bisiklet Turu 2 (Gebze - Dilovası - Körfez - Derince - İzmit)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=0ys_xcv8OXQ",
+	"playlist": "kuzeyden galiba",	
     "duration": "16:59",
 	"konum": "40.783828806245474, 29.410893493304016"	
   },
@@ -276,6 +370,7 @@
     "title": "Kuzeyden...Galiba Bisiklet Turu 1 (Çorlu - Silivri - Bakırköy - Kadıköy - Pendik)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=CTeIG9EoaiY",
+	"playlist": "kuzeyden galiba",	
     "duration": "13:59",
 	"konum": "41.194912389416544, 27.775907319005526"	
   },
@@ -283,33 +378,34 @@
     "title": "Böylesini Türkiye'de Görmediniz! - Yozgat'ta Örnek Bisiklet Yolu!",
     "description": "Anadolu İrfanı Bisiklet Turu kapsamında pedal çevirirken Yozgat'ın Çekerek ilçesinde, Türkiye'nin hiçbir yerinde daha önce rastlamadığım, gerçekten...",
     "url": "https://www.youtube.com/watch?v=MWKc8NPVwsI",
-    "duration": "2:59",
+    "playlist": "bisiklet yolları",    "duration": "2:59",
 	"konum": "40.07834751388067, 35.488952021700335"	
   },
 {
     "title": "Aykırı Yollar: İskilip - Kayıbeli Geçidi - Oğuzlar",
     "description": "Aykırı Yollar: Kayıbeli Geçidi | İskilip - Oğuzlar Bisiklet Turu (Uzun Versiyon)",
     "url": "https://www.youtube.com/watch?v=TlP-FnPiAUk",
-    "duration": "44:59",
+	"playlist": "aykırı yollar",    "duration": "44:59",
 	"konum": "40.7059106033012, 34.530913656458864"	
   },
   {
     "title": "Ergene Yolları: İki Teker Üstünde Trakya Karşılama ve Uğurlaması",
     "description": "Selamlar! Bu videoda, Trakya bisiklet turu yapan Şafak @SafakYollarda  Ağabeyimi karşılayıp, ona eşlik ettiğim keyifli bir rotayı paylaşıyorum. ",
     "url": "https://www.youtube.com/watch?v=z0HYXJDOsIQ",
-    "duration": "24:59",
+    "playlist": "",    "duration": "24:59",
 	"konum": "41.20236706298381, 27.77936252274049"	
   },
   {
     "title": "Uzun Yolun Kısası (Güz Güneyi Bisiklet Turu)",
     "description": "40 gün, binlerce pedal darbesi, onlarca antik kent ve sayısız anı... Güz Güneyi adını verdiğim bu serüvende Kuşadası'ndan yola çıkıp Dikili'ye kada...",
     "url": "https://www.youtube.com/watch?v=bverfFc3Y1s",
-    "duration": "26:59"
+    "playlist": "uzun yolun kısası",    "duration": "26:59"
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 26 (Urla - İzmir - Aliağa - Dikili)",
     "description": "🏁 Güz Güneyi Final: Fırtınayla Yarış, Dikili Yolculuğu ve Büyük Veda ",
     "url": "https://www.youtube.com/watch?v=63NEdj1PEMM",
+	"playlist": "guz-guneyi",
     "duration": "18:59",
 	"konum": "38.347699140630354, 26.830131886170104"	
   },
@@ -317,6 +413,7 @@
     "title": "Güz Güneyi Bisiklet Turu 25 (Selçuk - Menderes - Seferihisar - Urla)",
     "description": "Selçuk’tan Urla’ya: Zamana Karşı Yarış ve Sisli Yollar | Güz Güneyi #25",
     "url": "https://www.youtube.com/watch?v=7IXY2VEi-wQ",
+	"playlist": "guz-guneyi",	
     "duration": "19:59",
 	"konum": "37.947608458262145, 27.365254045340706"	
   },
@@ -324,1923 +421,1923 @@
     "title": "Güz Güneyi Bisiklet Turu 24 (Söke - Kuşadası - Selçuk)",
     "description": "Söke’den Selçuk’a: Yağmur, Yollar ve Tarihin Kalbi | Güz Güneyi",
     "url": "https://www.youtube.com/watch?v=GJtgZC9Sy4k",
-    "duration": "17:59",
+    "playlist": "guz-guneyi",    "duration": "17:59",
 	"konum": "37.75075802604756, 27.360147120506856"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 23 (Akyeniköy - Milet Antik Kenti - Söke)",
     "description": "Milet Antik Kenti’nin Gizemli Koridorları ve Söke Ovası’nda Pedal Sesleri | Güz Güneyi #23",
     "url": "https://www.youtube.com/watch?v=Yrb_qodRIys",
-    "duration": "20:59",
+    "playlist": "guz-guneyi",    "duration": "20:59",
 	"konum": "37.49493844119733, 27.297694565726523"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 22 (Euromos Antik Kenti - Bafa - Akyeniköy)",
     "description": "Muğla’ya Veda, Aydın’a Merhaba: Euromos Antik Kenti ve Bafa Gölü | Güz Güneyi #22",
     "url": "https://www.youtube.com/watch?v=mCDZ3njbtco",
-    "duration": "15:59",
+    "playlist": "guz-guneyi",    "duration": "15:59",
 	"konum": "37.35752963752765, 27.696222546159696"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 21 (Akyaka - Ören - Milas)",
     "description": "Akyaka’dan Milas’a: Kaos, Kamp ve \"Ölmeme Challenge\" | Güz Güneyi Bisiklet Turu #21",
     "url": "https://www.youtube.com/watch?v=EDERTsUdjUI",
-    "duration": "18:59",
+    "playlist": "guz-guneyi",    "duration": "18:59",
 	"konum": "37.04816566041834, 28.294398069137312"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 20 (Ortaca - Köyceğiz - Akyaka)",
     "description": "Antik Kaunos’un Tuz Havzalarından Gökova Körfezi’ne: Güz Güneyi Bisiklet Turu #20",
     "url": "https://www.youtube.com/watch?v=DCvCwpuNcoY",
-    "duration": "17:59",
+    "playlist": "guz-guneyi",    "duration": "17:59",
 	"konum": "36.83722379269235, 28.763934852852376"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 19 (Göcek - Dalaman - Sarıgerme - Ortaca)",
     "description": "Göcek’in Eşsiz Manzarasından Ortaca’nın Sıcaklığına: Güz Güneyi Bisiklet Turu #18",
     "url": "https://www.youtube.com/watch?v=FMahDyhUeWg",
-    "duration": "14:59",
+    "playlist": "guz-guneyi",    "duration": "14:59",
 	"konum": "36.7675373423524, 28.94454379054768"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 18 (Kabaağaç  - Bozyer - Fethiye - İnlice - Göcek)",
     "description": "2024 Sonbaharında çıktığım Güz Güneyi Bisiklet Turu’nda Kabaağaç köyünden Fethiye ve Göcek’e uzanan yolları pedalladım. Bu bölümde köy kahvelerinde...",
     "url": "https://www.youtube.com/watch?v=fYFd7cfpcNc",
-    "duration": "17:59",
+    "playlist": "guz-guneyi",    "duration": "17:59",
 	"konum": "36.54734442542898, 29.291642936045115"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 17 (Kumluova - Eşen - Pınara Antik Kenti - Kabaağaç)",
     "description": "2024 Sonbaharında çıktığım “Güz Güneyi Bisiklet Turu” rotasında bu kez Likya topraklarında pedallıyorum. Leton Antik Kenti’nden başlayan yolculukta...",
     "url": "https://www.youtube.com/watch?v=Ybw9XS_xHwU",
-    "duration": "17:59",
+    "playlist": "guz-guneyi",    "duration": "17:59",
 	"konum": "36.33628645858611, 29.301214467800428"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 16 (Gelemiş - Patara - Kınık - Xanthos - Letoon - Kumluova)",
     "description": "2024 Sonbaharında çıktığım “Güz Güneyi Bisiklet Turu”nun bu bölümünde, Gelemiş Köyü’nden başlayıp Patara, Xanthos ve Letoon antik kentlerini geziyo...",
     "url": "https://www.youtube.com/watch?v=akKGg0EHsBs",
-    "duration": "24:59",
+    "playlist": "guz-guneyi",    "duration": "24:59",
 	"konum": "36.27489954976543, 29.31792479110916"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 15 (Dirgenler – Kasaba – Ağullu – Kaş – Kalkan – Gelemiş)",
     "description": "2024 Sonbaharında çıktığım “Güz Güneyi Bisiklet Turu” yolculuğunda bu kez Dirgenler Köyü’nden başlayıp Kaş ve Kalkan’a doğru pedalladım. 🚴‍♂️",
     "url": "https://www.youtube.com/watch?v=VEY_f6cPseM",
-    "duration": "24:59",
+    "playlist": "guz-guneyi",    "duration": "24:59",
 	"konum": "36.349813743452295, 29.806748256218764"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 14 (Finike - Demre - Myra Antik Kenti - Dirgenler)",
     "description": "2024 Sonbaharında çıktığım “Güz Güneyi Bisiklet Turu” yolculuğumda bu kez Finike’den Demre’ye doğru pedalladım.",
     "url": "https://www.youtube.com/watch?v=P1P54UcIe_E",
-    "duration": "25:59",
+    "playlist": "guz-guneyi",    "duration": "25:59",
 	"konum": "36.30239950360419, 30.151119842982204"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 13 (Adrasan - Kumluca - Limyra Antik Kenti - Finike)",
     "description": "2024 Sonbaharında çıktığım “Güz Güneyi Bisiklet Turu” yolculuğunda bu kez Adrasan’dan başlayıp Karaöz, Mavikent ve Kumluca üzerinden Finike’ye kada...",
     "url": "https://www.youtube.com/watch?v=X3N9sjH795Y",
-    "duration": "18:59",
+    "playlist": "guz-guneyi",    "duration": "18:59",
 	"konum": "36.31130479375431, 30.462985648172484"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 12 (Tekirova - Ulupınar - Adrasan)",
     "description": "🚴‍♂️ 2024 Sonbaharında “Güz Güneyi” bisiklet turunda, Antalya’dan ayrıldıktan sonra Olympos ve Adrasan üzerinden Kumluca’ya doğru yol alıyorum! Sab...",
     "url": "https://www.youtube.com/watch?v=jqLq6YvKQ30",
-    "duration": "15:59",
+    "playlist": "guz-guneyi",    "duration": "15:59",
 	"konum": "36.495605998359395, 30.481023982350607"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 11 (Antalya - Beldibi - Kemer - Tekirova)",
     "description": "🚴‍♂️ 2024 Sonbaharında “Güz Güneyi” bisiklet turunun yeni bölümünde Antalya’dan ayrılıp Kemer ve Tekirova rotasında ilerliyorum! 29 Ekim Cumhuriyet...",
     "url": "https://www.youtube.com/watch?v=qqbF2TpSPQw",
-    "duration": "19:59",
+    "playlist": "guz-guneyi",    "duration": "19:59",
 	"konum": "36.88554362538412, 30.696015465885708"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 10 (Çomaklı - Tahtalı Beli - Döşemealtı - Antalya)",
     "description": "🚴‍♂️ 2024 Sonbaharında Güz Güneyi Bisiklet Turu'nun 10. Bölümünde Antalya'nın eşsiz güzelliklerinde pedal çeviriyoruz! Bu videoda, dostum Gökhan il...",
     "url": "https://www.youtube.com/watch?v=vgwLEzvbyHY",
-    "duration": "20:59",
+    "playlist": "guz-guneyi",    "duration": "20:59",
 	"konum": "37.28631207444014, 30.250924619393363"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 9 (İncirhan - Üzümlübel - Kestel - Keçili - Ürkütlü - Çomaklı)",
     "description": "2024 Sonbaharında “Güz Güneyi” bisiklet turunda Burdur’dan Antalya’ya uzanan rotayı keşfe çıkıyoruz! 🚴‍♂️🍂 Bu bölümde İnciran, Kestel Dağı, Yeşilke...",
     "url": "https://www.youtube.com/watch?v=ZFWS7RJGOIM",
-    "duration": "14:59",
+    "playlist": "guz-guneyi",    "duration": "14:59",
 	"konum": "37.47833245669817, 30.533865482318955"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 8 (Isparta - Köroğlu Beli - Ağlasun - Peçenek Beli - Bucak)",
     "description": "2024 Sonbaharında “Güz Güneyi” bisiklet turunda Burdur ve Isparta yollarını keşfe çıkıyoruz! 🚴‍♂️🍂 Bu bölümde Burdur’un meşhur tahinli çöreğiyle ka...",
     "url": "https://www.youtube.com/watch?v=oxFKiUsObqA",
-    "duration": "17:59",
+    "playlist": "guz-guneyi",    "duration": "17:59",
 	"konum": "37.7616571704701, 30.634072811626123"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 7 (Burdur - Askeriye - Isparta - Sav)",
     "description": "2024 Sonbaharında “Güz Güneyi” rotasında Burdur ve Isparta yollarını keşfe çıkıyoruz! 🚴‍♂️🍂 Bu bölümde Burdur Gölü manzaralı mescitte konaklayarak ...",
     "url": "https://www.youtube.com/watch?v=EtoeIwAPf2s",
-    "duration": "15:59",
+    "playlist": "guz-guneyi",    "duration": "15:59",
 	"konum": "37.69441118589943, 30.19611723254381"	
   },
   {
     "title": "Burdur Bisiklet Turu: Yarışlı Gölü ve Gizli Kamp Yeri Keşfi (Güz Güneyi Bisiklet Turu 6 )",
     "description": "2024 Sonbaharında “Güz Güneyi” rotasında pedal çevirmeye devam ediyorum! 🍂🚴‍♂️ Bu bölümde Harmanlı, Yarışlı ve çevresindeki köyleri keşfettim. Gül ...",
     "url": "https://www.youtube.com/watch?v=h6caRsiB_Fc",
-    "duration": "15:59",
+    "playlist": "guz-guneyi",    "duration": "15:59",
 	"konum": "37.57369362464028, 29.867385689693293"	
   },
   {
     "title": "Salda Gölü Bisiklet Turu | Türkiye'nin Maldivleri'nde Kamp! Güz Güneyi Bisiklet Turu 5",
     "description": "2024 Sonbaharında “Güz Güneyi” rotasında pedallıyorum! 🍂🚴‍♂️ Bu yolculukta Denizli-Burdur karayolu üzerinden Güney ve Salda Gölü civarındaki köyler...",
     "url": "https://www.youtube.com/watch?v=Nw5erZpSCeI",
-    "duration": "17:59",
+    "playlist": "guz-guneyi",    "duration": "17:59",
 	"konum": "37.47566205214141, 29.47859369805358"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 4 (Kelekçi - Akalan - Acıpayam - Corum)",
     "description": "2024 Sonbaharında gerçekleştirdiğim Güz Güneyi Bisiklet Turu yolculuğunun bu bölümünde, Kelekçi’den başlayarak Dalaman Çayı, Akalan ve Acıpayam rot...",
     "url": "https://www.youtube.com/watch?v=BatQcnXj-ao",
-    "duration": "14:59",
+    "playlist": "guz-guneyi",    "duration": "14:59",
 	"konum": "37.259712138551045, 29.31686722312868"	
   },
   {
     "title": "Zorlu Ege Rotası: Alpa'dan Kelekçi'ye Bisiklet Turu | Güz Güneyi 3",
     "description": "Bu videoda, 2024 Sonbaharında çıktığım Güz Güneyi Bisiklet Turunun Alpa Köyü’nden başlayıp Gireniz Vadisi, Kara İsmailler Köyü, Dalaman Çayı ve Kel...",
     "url": "https://www.youtube.com/watch?v=sJxX_k94XFM",
-    "duration": "19:59",
+    "playlist": "guz-guneyi",    "duration": "19:59",
 	"konum": "37.215820562564694, 29.052173828617782"	
   },
   {
     "title": "Güz Güneyi 2: Afrodisias - Tavas - Alpa | 1200m Yüksekliğe Bisikletle Tırmanış",
     "description": "Bu videoda, 2024 Sonbaharında başladığım Güz Güneyi adını verdiğim 2024 Sonbahar bisiklet turumun Afrodisias’tan başlayıp Tavas ve çevresine uzanan...",
     "url": "https://www.youtube.com/watch?v=DvY504Xyr_I",
-    "duration": "17:59",
+    "playlist": "guz-guneyi",    "duration": "17:59",
 	"konum": "37.70891680499196, 28.726749860996282"	
   },
   {
     "title": "Güz Güneyi Bisiklet Turu 1 (Kuşadası - Selçuk - Aydın - Nazilli - Kuyucak - Karacasu - Geyre)",
     "description": "Merhaba dostlar, ben Ferdimen. Yepyeni bir bisiklet macerasına, Güz Güneyi turuna hoş geldiniz! Bu turda hem fiziksel hem de zihinsel olarak yolcul...",
     "url": "https://www.youtube.com/watch?v=jULxYyUyHh4",
-    "duration": "9:59",
+    "playlist": "guz-guneyi",    "duration": "9:59",
 	"konum": "37.88723420502987, 27.271454892573257"	
   },
   {
     "title": "Aykırı Yollar: Antalya Kaş İnişi | Bisiklet Turu @aykiriyollar",
     "description": "2024 sonbaharında gerçekleştirdiğim bisiklet turunun en etkileyici anlarından biri olan Antalya Kaş inişini, Güz Güneyi Bisiklet Turu 15. bölüme sı...",
     "url": "https://www.youtube.com/watch?v=nSEflDHhCXY",
-    "duration": "22:59",
+    "playlist": "aykırı yollar",    "duration": "22:59",
 	"konum": "36.23326304029715, 29.700728955592623"	
   },
   {
     "title": "Şubat Bisiklet Turu 18 (Kırkağaç - Soma - Kınık - Bergama - Dikili)",
     "description": "2024 Şubat Bisiklet Turu yolculuğunun son bölümünde, Kırkağaç Çam Mesire Alanı’ndan yola çıkarak Soma – Kınık – Bergama rotasında pedallıyorum ve a...",
     "url": "https://www.youtube.com/watch?v=iATi7tWjQYg",
-    "duration": "15:59",
+    "playlist": "şubat",    "duration": "15:59",
 	"konum": "39.13964949338924, 27.669152516906127"	
   },
   {
     "title": "Şubat Bisiklet Turu 17 (Salihli - Gölmarmara - Akhisar - Kırkağaç)",
     "description": "2024 Şubat Bisiklet Turu serisinin bu bölümünde, Salihli’den yola çıkıp Gölmarmara – Akhisar – Kırkağaç rotasında pedal çeviriyorum. Gün boyu karşı...",
     "url": "https://www.youtube.com/watch?v=SuDggVuxneY",
-    "duration": "18:59",
+    "playlist": "şubat",    "duration": "18:59",
 	"konum": "38.49245257557717, 28.23281918629076"	
   },
   {
     "title": "Şubat Bisiklet Turu 16 (Buldan - Sarıgöl - Alaşehir - Salihli)",
     "description": "2024 Şubat Bisiklet Turu serisinin bu bölümünde, Buldan’dan yola çıkarak Manisa sınırlarına geçiyor, inişli çıkışlı yollar, uzun düzlükler ve karşı...",
     "url": "https://www.youtube.com/watch?v=dg2uTYn7i5U",
-    "duration": "16:59",
+    "playlist": "şubat",    "duration": "16:59",
 	"konum": "38.04155442478968, 28.866719826163646"	
   },
   {
     "title": "Şubat Bisiklet Turu 15 (Pamukkale - Tepeköy - Tripolis Antik Kenti - Buldan)",
     "description": "Denizli’den yola çıkarak Akköy, Kavakbaşı, Tepeköy ve Çeşmebaşı gibi köylerden geçerek Tripolis Antik Kenti’ne ulaştığım bu bölümde hem bisiklet tu...",
     "url": "https://www.youtube.com/watch?v=BSEK9YMezfI",
-    "duration": "30:59",
+    "playlist": "şubat",    "duration": "30:59",
 	"konum": "37.93288738410767, 29.092565339183707"	
   },
   {
     "title": "Şubat Bisiklet Turu 14 (Sapaca - Kaklık - Denizli - Pamukkale)",
     "description": "2024 Şubat Bisiklet Turu’nun bu bölümünde Sapaca Köyü’nden Pamukkale’ye uzanan yolculuğuma tanıklık edeceksiniz. Sabahı köyün sosyal tesislerinde g...",
     "url": "https://www.youtube.com/watch?v=8VLTiBmrGGQ",
-    "duration": "27:59",
+    "playlist": "şubat",    "duration": "27:59",
 	"konum": "37.78759057098277, 29.46266236577619"	
   },
   {
     "title": "Şubat Bisiklet Turu 13 (Yeşilyuva - Karakısık Kanyonu - İnceler - Çambaşı - Sapaca)",
     "description": "2024 Şubat Bisiklet Turu’nun bu bölümünde, Yeşilyuva’dan başlayıp Kara Kısık Kanyonu’na ve oradan da Sapaca köyüne kadar uzanan macera dolu bir rot...",
     "url": "https://www.youtube.com/watch?v=GiLT7hy5ocA",
-    "duration": "21:59",
+    "playlist": "şubat",    "duration": "21:59",
 	"konum": "37.51703984810038, 29.40733320933885"	
   },
   {
     "title": "Şubat Bisiklet Turu 12 (Ataeymir - Yahşiler - Tavas - Serinhisar - Yatağan - Yeşilyuva)",
     "description": "2024 Şubat Bisiklet Turu yolculuğumun bu bölümünde Ateamir’den başlayıp Denizli’nin Tavas, Serinhisar ve Yeşilyuva’ya kadar uzanan zorlu ama keyifl...",
     "url": "https://www.youtube.com/watch?v=CEx4_PmOCpA",
-    "duration": "19:59",
+    "playlist": "şubat",    "duration": "19:59",
 	"konum": "37.70825015545261, 28.771628008695604"	
   },
   {
     "title": "Şubat Bisiklet Turu 11 (Akyaka - Yaykın - Geyre - Afrodisias Antik Kenti - Ataeymir)",
     "description": "Şubat 2024’te çıktığım “Şubat Bisiklet Turu” yolculuğunda, Akyaka köyünden başlayarak Kemer Baraj Gölü manzaraları eşliğinde Afrodisias Antik Kenti...",
     "url": "https://www.youtube.com/watch?v=Hj968SbLS48",
-    "duration": "21:59",
+    "playlist": "şubat",    "duration": "21:59",
 	"konum": "37.5653446409785, 28.559188219826197"	
   },
   {
     "title": "Şubat Bisiklet Turu 10 (Bozdoğan - Sırma - Amasya - Akyaka)",
     "description": "Şubat 2024’te çıktığım “Şubat Bisiklet Turu” yolculuğunda, Bozdağ eteklerinden başlayıp Kemer Baraj Gölü’ne uzanan keyifli bir rota izledim.",
     "url": "https://www.youtube.com/watch?v=zN3Bi_mUzrY",
-    "duration": "15:59",
+    "playlist": "şubat",    "duration": "15:59",
 	"konum": "37.748672471665834, 28.328300827314283"	
   },
   {
     "title": "Şubat Bisiklet Turu 9 (Çamlık - Aydın - Bozdoğan)",
     "description": "🚴 Çamlık'tan Bozdoğan'a Uzanan Zorlu Bir Gün – Bisikletle Kış Turu 🌧️🌬️",
     "url": "https://www.youtube.com/watch?v=FHOr3B3pMN8",
-    "duration": "19:59",
+    "playlist": "şubat",    "duration": "19:59",
 	"konum": "37.88658105782974, 27.378704757606172"	
   },
   {
     "title": "Şubat Bisiklet Turu 8 (Dikili - Aliağa - İzmir - Selçuk - Efes Antik Kenti - Çamlık)",
     "description": "İzmir yolculuğumun zorlu ama bir o kadar da keyifli bir gününden merhaba! Geceyi terk edilmiş bir inşaatta geçirerek başladığım bu bölümde, Dikili’...",
     "url": "https://www.youtube.com/watch?v=Cr33nEyqIqQ",
-    "duration": "19:59",
+    "playlist": "şubat",    "duration": "19:59",
 	"konum": "39.05530734462028, 26.891371116170916"	
   },
   {
     "title": "Şubat Bisiklet Turu 7 (Ören - Gömeç - Ayvalık - Dikili)",
     "description": "Burhaniye'den Dikili'ye Zorlu ama Keyifli Bir Bisiklet Yolculuğu! 🚴‍♂️ 🌬️🌦️",
     "url": "https://www.youtube.com/watch?v=paWH4eTFzSI",
-    "duration": "15:59",
+    "playlist": "şubat",    "duration": "15:59",
 	"konum": "39.510087428466136, 26.934713593661925"	
   },
   {
     "title": "Şubat Bisiklet Turu 6 (Ayvacık - Küçükkuyu - Altınoluk -Akçay - Ören)",
     "description": "Çanakkale'den Balıkesir'e doğru uzanan bu bisiklet yolculuğunda, Ayvacık'tan Küçükkuyu'ya, oradan da Altınoluk'a ve Akçay'a uzanan harika bir macer...",
     "url": "https://www.youtube.com/watch?v=kNmlfr0HwQk",
-    "duration": "18:59",
+    "playlist": "şubat",    "duration": "18:59",
 	"konum": "39.71391173447192, 26.37010877037238"	
   },
   {
     "title": "Şubat Bisiklet Turu 5 (Karanlık Liman - Halileli - Taştepe - Ezine - Çarıksız)",
     "description": "Şubat Ayında Rüzgarla, Yağmurla Mücadele: Karanlık Liman'dan Ezine'ye Zorlu Bisiklet Etabı 🚴‍♂️🌧️💨",
     "url": "https://www.youtube.com/watch?v=9D4PgAk6rhg",
-    "duration": "19:59",
+    "playlist": "şubat",    "duration": "19:59",
 	"konum": "40.016714246957235, 26.31161187921033"	
   },
   {
     "title": "Şubat Bisiklet Turu 4 (Lapseki - Çanakkale - Kepez - Güzelyalı)",
     "description": "Bu video, Şubat 2024’te yaptığım uzun bisiklet turunun 4. bölümünü anlatıyor. Suluca’dan Çanakkale’ye, oradan da Kepez, Güzelyalı ve Karanlık Liman...",
     "url": "https://www.youtube.com/watch?v=MDOAd8YSjds",
-    "duration": "16:59",
+    "playlist": "şubat",    "duration": "16:59",
 	"konum": "40.30357648318216, 26.632007289237176"	
   },
   {
     "title": "Şubat Bisiklet Turu 3 (Kızılcaterzi - Kavakköy - Gelibolu - Lapseki)",
     "description": "Ferdimen ile Bisiklet Turu: Kocaali'den Lapseki'ye Uzanan Yolculuk",
     "url": "https://www.youtube.com/watch?v=SzO4iO73Nn0",
-    "duration": "16:59",
+    "playlist": "şubat",    "duration": "16:59",
 	"konum": "40.59684392556467, 26.989288331506263"	
   },
   {
     "title": "Şubat Bisiklet Turu 2 (Uçmakdere - Mürefte - Şarköy - Kocaali)",
     "description": "6 Şubat depreminden yıl dönümünde, 2024 Şubat’ında gerçekleştirdiğim bu özel kış bisiklet turunun ikinci gününde Uçmakdere’den yola çıkıyor, Şarköy...",
     "url": "https://www.youtube.com/watch?v=AWyNL_-IacI",
-    "duration": "13:59",
+    "playlist": "şubat",    "duration": "13:59",
 	"konum": "40.7836970704361, 27.366629628334966"	
   },
   {
     "title": "Şubat Bisiklet Turu 1 (Çorlu - Tekirdağ - Uçmakdere)",
     "description": "Bu videoda, Şubat 2024'te Tekirdağ’dan başlayıp Uçmakdere’ye uzanan zorlu ama bir o kadar da anlamlı bir kış bisiklet turuna tanıklık edeceksiniz. ...",
     "url": "https://www.youtube.com/watch?v=M40wA_VmbJA",
-    "duration": "12:59",
+    "playlist": "şubat",    "duration": "12:59",
 	"konum": "41.01083838492859, 27.716739274561625"	
   },
   {
     "title": "Uzun Yolun Kısası: 24 Gün, 1000+ km Şubat Bisiklet Turu | Türkiye’nin Ege ve Marmara Rotaları",
     "description": "Bu 6-29 Şubat 2024 tarihleri arasında gerçekleştirdiğim epik bisiklet turunun en özel anlarını birer dakikalık kesitlerle  fragman niteliğinde hazı...",
     "url": "https://www.youtube.com/watch?v=iUQBIOhrclo",
-    "duration": "18:59"
+    "playlist": "uzun yolun kısası",    "duration": "18:59"
   },
   {
     "title": "Çorlu Bisiklet Yolları (Millet Bahçesi, Cumhuriyet ve Gölbaşı parkı)",
     "description": "Çorlu'da Sözde Bisiklet Yolları Turu: Pedal Çevirirken Gerçeklerle Yüzleşiyoruz!",
     "url": "https://www.youtube.com/watch?v=-w5_riJX2EI",
-    "duration": "15:59",
+    "playlist": "bisiklet yolları",    "duration": "15:59",
 	"konum": "41.144173877719865, 27.804108714360652"	
   },
   {
     "title": "Bisiklet Yolu: Çorlu - Şehir içi (Bisiklet Yolları Gerçekten Yol mu?)",
     "description": "Bu videoda, Çorlu’nun bisiklet yollarına içeriden, yani gidondan bakıyoruz! Başlangıç noktamız Çorlu Park. Pedallar dönüyor, ama yolun nereye varac...",
     "url": "https://www.youtube.com/watch?v=HZ4kAOkZx1I",
-    "duration": "24:59",
+    "playlist": "bisiklet yolları",    "duration": "24:59",
 	"konum": "41.14751867152346, 27.787865256709967"	
   },
   {
     "title": "Bisiklet yolu: Seka park - İzmit",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=ELEyqKaerfU",
-    "duration": "20:59",
+    "playlist": "bisiklet yolları",    "duration": "20:59",
 	"konum": "40.75951569394627, 29.904280237003228"	
   },
   {
     "title": "Bisiklet yolu: Bakırköy - Zeytinburnu - Yenikapı",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=5OM-hiW-9CY",
-    "duration": "25:59",
+    "playlist": "bisiklet yolları",    "duration": "25:59",
 	"konum": "40.974927609307876, 28.878903812449902"	
   },
   {
     "title": "Aykırı Yollar: Kızıl Dağ (Şuhut'a gece operasyonu)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=ZiQIxiClaw8",
-    "duration": "24:59",
+    "playlist": "aykırı yollar",    "duration": "24:59",
 	"konum": "38.522086741904225, 30.792476596480874"	
   },
   {
     "title": "Aykırı Yollar: Tepekent - Söğütözü (Konya ovasına hızlı bir iniş)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=Mlqv6GyU1pM",
-    "duration": "20:59",
+    "playlist": "aykırı yollar",    "duration": "20:59",
 	"konum": "38.0800464924735, 32.16144208052012"	
   },
   {
     "title": "Aykırı Yollar: Karadeniz’in Heyelanlı ve Çökmüş yollarında Zorlu Bisiklet Macerası",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=2GeJOvOIUxE",
-    "duration": "43:59",
-	"konum": "40.97755944428007, 31.43802325997015"	
+    "playlist": "aykırı yollar",    "duration": "43:59",
+	"konum": "40.97755944428007, 31.4380232599is7015"	
   },
   {
     "title": "Aykırı Yollar: Karadeniz Ereğli’ye Çamurlu Bir Yolculuk",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=55UQ4hGSOJA",
-    "duration": "43:59",
+    "playlist": "aykırı yollar",    "duration": "43:59",
 	"konum": "41.313316216073005, 31.52009885756883"	
   },
   {
     "title": "Aykırı Yollar: Bozdağ ve Sandras Dağı arasından Gireniz Vadisine İniş (Alpa - Karaismailler)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=FOdEf1VBasw",
-    "duration": "39:59",
+    "playlist": "aykırı yollar",    "duration": "39:59",
 	"konum": "37.200910219913254, 29.047293328348633"	
   },
   {
     "title": "Aykırı Yollar: Taşdurmaz - 3 (Sonuç)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=CpobyXL-tZY",
-    "duration": "44:59",
+    "playlist": "aykırı yollar",    "duration": "44:59",
 	"konum": "37.31891357293479, 34.90581495617001"	
   },
   {
     "title": "Aykırı Yollar: Taşdurmaz - 2 (Gelişme)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=AwtEZgA9ckw",
-    "duration": "44:59",
+    "playlist": "aykırı yollar",    "duration": "44:59",
 	"konum": "37.332564105705025, 34.91577131595447"	
   },
   {
     "title": "Aykırı Yollar: Taşdurmaz - 1 (Giriş)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=D9etW6rGtsM",
-    "duration": "44:59",
+    "playlist": "aykırı yollar",    "duration": "44:59",
 	"konum": "37.3459392218065, 34.91298181831147"	
   },
   {
     "title": "Uzun yolun Kısası (Aklım Kalmasın Bisiklet Turu)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=bAv43F7qShg",
-    "duration": "13:59"
+    "playlist": "uzun yolun kısası",    "duration": "13:59"
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 24 (Yalova - Gebze - Küçükçekmece - Silivri - Çorlu)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=HxGAIxtD1lo",
-    "duration": "18:59",
+    "playlist": "aklım kalmasın",    "duration": "18:59",	
 	"konum": "40.66345628393694, 29.290959761052594"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 23 (Armutlu - Çınarcık - Termal - Yalova)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=09STWBAW1wk",
-    "duration": "16:59",
+    "playlist": "aklım kalmasın",    "duration": "16:59",
 	"konum": "40.467067170352145, 28.93252555949673"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 22 (İnegöl - Gölyaka - Gemlik - Narlı - Kapaklı)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=9ENqLPiusV0",
-    "duration": "24:59",
+    "playlist": "aklım kalmasın",    "duration": "24:59",
 	"konum": "40.11508491996936, 29.547885738699595"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 21 (Kümbet - Erenköy - Dodurga - Muratdere - İnegöl)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=ve7epC6dXNY",
-    "duration": "21:59",
+    "playlist": "aklım kalmasın",    "duration": "21:59",
 	"konum": "39.70402874760034, 30.143377649047352"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 20 (İhsaniye - Döğer - Kütahya - Kümbet)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=97yK1wgWQEE",
-    "duration": "18:59",
+    "playlist": "aklım kalmasın",    "duration": "18:59",
 	"konum": "39.01344016284896, 30.40414771385402"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 19 (Yıldırım Kemal - Başkimse - Afyonkarahisar - İhsaniye)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=WVDyWT0J_3c",
-    "duration": "16:59",
+    "playlist": "aklım kalmasın",    "duration": "16:59",
 	"konum": "38.87778659638779, 30.124370437164192"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 18 (Sinanpaşa - Dumlupınar - Zafertepe - Yıldırım Kemal)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=JLJCJbtf7Jc",
-    "duration": "19:59",
+    "playlist": "aklım kalmasın",    "duration": "19:59",
 	"konum": "38.698503975656564, 30.230215729474352"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 17 (Şuhut - Kocatepe - Tınaztepe - Çiğiltepe - Kırka)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=3TpYfsvaGi4",
-    "duration": "29:59",
+    "playlist": "aklım kalmasın",    "duration": "29:59",
 	"konum": "38.53721694821798, 30.547334945169734"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 16 (Sultandağı - Çay - Şuhut)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=o9vMHZz4WNg",
-    "duration": "21:59",
+    "playlist": "aklım kalmasın",    "duration": "21:59",
 	"konum": "38.423687539398614, 31.34754534761645"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 15 (Doğanhisar - Tuzlukcu - Akşehir)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=CF3xLZjZNHg",
-    "duration": "19:59",
+    "playlist": "aklım kalmasın",    "duration": "19:59",
 	"konum": "38.131198413978474, 31.67336212917913"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 14 (Kadınhanı - Sarayönü - Kadınhanı - Ilgın - Doğanhisar)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=SDDZrwlNnbE",
-    "duration": "24:59",
+    "playlist": "aklım kalmasın",    "duration": "24:59",
 	"konum": "38.23233857238572, 32.21512686018722"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 13 (Yunuslar - Derbent - Tepekent - Söğütözü - Kadınhanı)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=_NpENOrZoPg",
-    "duration": "22:59",
+    "playlist": "aklım kalmasın",    "duration": "22:59",
 	"konum": "37.897041573144236, 31.906113466068685"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 12 (Şarkikaraağaç - Hüyük - Selki - Yenidoğan - Çukurağıl)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=sb7La3Es7kU",
-    "duration": "16:59",
+    "playlist": "aklım kalmasın",    "duration": "16:59",
 	"konum": "38.04739931389479, 31.435965314045383"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 11 (Taşevi - Kumdamlı - Yalvaç - Şarkikaraağaç)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=ZZ4jwwZmFGE",
-    "duration": "19:59",
+    "playlist": "aklım kalmasın",    "duration": "19:59",
 	"konum": "38.26742800269423, 30.82398695885847"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 10 (Çapalı - İleydağı - Uluborlu - Senirkent - Gençali - Taşevi)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=uNCMibzt2Go",
-    "duration": "18:59",
+    "playlist": "aklım kalmasın",    "duration": "18:59",
 	"konum": "38.0557470960941, 30.306130918775615"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 9 (Işıklı - Beydilli - Dinar - Çapalı)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=iTCTqrVHSw4",
-    "duration": "15:59",
+    "playlist": "aklım kalmasın",    "duration": "15:59",
 	"konum": "38.337687683791366, 29.84080100803182"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 8 (Yeşilhisar - Hocalar - Çevrepınar - Işıklı)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=ux1xvdHrAbM",
-    "duration": "21:59",
+    "playlist": "aklım kalmasın",    "duration": "21:59",
 	"konum": "38.657660874870594, 29.797233628466955"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 7 (Mesudiye - Göğem - Kırka - Susuz - Ahat)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=pNrvi6rVhtk",
-    "duration": "17:59",
+    "playlist": "aklım kalmasın",    "duration": "17:59",
 	"konum": "38.7125481557517, 29.51973361567094"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 6 (Eskigediz - Gediz - Abide - Uşak)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=b0eKXEMhg4I",
-    "duration": "17:59",
+    "playlist": "aklım kalmasın",    "duration": "17:59",
 	"konum": "39.125100180987474, 29.348070552539617"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 5 (Dereli - İkitaş Kanyonu - Eğrigöz - Emet - Hisarcık - Soğuksu)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=1q9f33SGvJY",
-    "duration": "24:59",
+    "playlist": "aklım kalmasın",    "duration": "24:59",
 	"konum": "39.45185586402485, 29.262988181629712"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 4 (Uluçam - Balıköy - Dereli)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=5dZf97JgjWA",
-    "duration": "20:59",
+    "playlist": "aklım kalmasın",    "duration": "20:59",
 	"konum": "39.612213070955505, 28.97988251744122"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 3 (Çiviliçam - Gazioluk - Büyükorhan - Kınık - Alutça)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=umlsXh199Bg",
-    "duration": "22:59",
+    "playlist": "aklım kalmasın",    "duration": "22:59",
 	"konum": "39.88548322750069, 28.712134251203434"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu 2 (Karaorman - Kestelek - Yeni Kızılelma - Çiviliçam)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=E5e54AsWIWc",
-    "duration": "16:59",
+    "playlist": "aklım kalmasın",    "duration": "16:59",
 	"konum": "39.97510431532778, 28.454491722146035"	
   },
   {
     "title": "Aklım Kalmasın Bisiklet Turu  1 (Çorlu - Tekirdağ - Erdek - Bandırma - Mustafakemalpaşa)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=m4GatBst6YQ",
-    "duration": "15:59",
+    "playlist": "aklım kalmasın",    "duration": "15:59",
 	"konum": "40.39501061633747, 27.791876085756105"	
   },
   {
     "title": "Uzun Yolun Kısası (Yoklukta Gider Bisiklet Turu)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=pcyyIPLdzsk",
-    "duration": "9:59"
+    "playlist": "uzun yolun kısası",    "duration": "9:59"
   },
   {
     "title": "Yoklukta Gider Bisiklet Turu 13 (Akyazı - Karapürçek - Sakarya - Sapanca - Kartepe - İzmit)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=c0QHg9syQqU",
-    "duration": "17:59",
+    "playlist": "yoklukta gider",    "duration": "17:59",
 	"konum": "40.72858970434518, 30.602339709470932"	
   },
   {
     "title": "Yoklukta Gider Bisiklet Turu 12 (Çilimli - Gölyaka - Cumayeri - Gümüşova - Hendek - Akyazı)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=fkn8R-6TJWk",
-    "duration": "20:59",
+    "playlist": "yoklukta gider",    "duration": "20:59",
 	"konum": "40.86713228012708, 31.05303517558471"	
   },
   {
     "title": "Yoklukta Gider Bisiklet Turu 11 (Dörtdivan - Yeniçağa - Bolu - Kaynaşlı - Düzce - Çilimli)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=k9fclcpyZJQ",
-    "duration": "14:59",
+    "playlist": "yoklukta gider",    "duration": "14:59",
 	"konum": "40.71612915148336, 32.0606917336098"	
   },
   {
     "title": "Yoklukta Gider Bisiklet Turu 10 (Çamlıdere - Gerede - Dörtdivan)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=vEqYRzMnq6Y",
-    "duration": "21:59",
+    "playlist": "yoklukta gider",    "duration": "21:59",
 	"konum": "40.403322133357996, 32.460207140971555"	
   },
   {
     "title": "Yoklukta Gider Bisiklet Turu 9 (Güdül - Yeşilöz - Çeltikçi - Kuşçuören - Çorman)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=xRfL8MCXk4A",
-    "duration": "18:59",
+    "playlist": "yoklukta gider",    "duration": "18:59",
 	"konum": "40.208361443232306, 32.24583865167295"	
   },
   {
     "title": "Yoklukta Gider Bisiklet Turu 8 (Kıbrıscık - Beypazarı - Güdül)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=RexP_JBV-Xg",
-    "duration": "24:59",
+    "playlist": "yoklukta gider",    "duration": "24:59",
 	"konum": "40.395148652705245, 31.933302868306658"	
   },
   {
     "title": "Yoklukta Gider Bisiklet Turu 7 (Çeltikderesi - Geriş - Kıbrıscık - Yazıca)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=ZCZL8meSMhc",
-    "duration": "24:59",
+    "playlist": "yoklukta gider",    "duration": "24:59",
 	"konum": "40.32133657394176, 31.693341511293205"	
   },
   {
     "title": "Yoklukta Gider Bisiklet Turu 6  (Nallıhan - Seben - Çeltikderesi)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=tpUD7_NFFzg",
-    "duration": "17:59",
+    "playlist": "yoklukta gider",    "duration": "17:59",
 	"konum": "40.19299340560522, 31.349422542766188"	
   },
   {
     "title": "Zafere Giden Yol 7 #zaferbayramı  #30ağustoszaferbayramı #büyüktaarruz @SafakYollarda",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=MEA9qJ4B3aU",
-    "duration": "24:59",
+    "playlist": "Zafere Giden Yol",    "duration": "24:59",
 	"konum": "38.91055799730598, 30.062979779913384"	
   },
   {
     "title": "Yoklukta Gider Bisiklet Turu 5 (Mudurnu - Nallıhan)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=UQoDsMpPkos",
-    "duration": "22:59",
+    "playlist": "yoklukta gider",    "duration": "22:59",
 	"konum": "40.508329925659325, 31.054572657096713"	
   },
   {
     "title": "Yoklukta Gider Bisiklet Turu 4 (Taraklı - Göynük - Hacıayaz Geçidi - Çavuşderesi)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=fasC5ee9zsw",
-    "duration": "20:59",
+    "playlist": "yoklukta gider",    "duration": "20:59",
 	"konum": "40.319832051062285, 30.45644594495515"	
   },
   {
     "title": "Yoklukta Gider Bisiklet Turu 3 (Bilecik - Gölpazarı)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=QmD6Edj7JM8",
-    "duration": "17:59",
+    "playlist": "yoklukta gider",    "duration": "17:59",
 	"konum": "40.1943003346574, 29.969407318040457"	
   },
   {
     "title": "Yoklukta Gider Bisiklet Turu 2 (Bozüyük - Pazaryeri - Bilecik)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=j869jiASmzc",
-    "duration": "28:59",
+    "playlist": "yoklukta gider",    "duration": "28:59",
 	"konum": "39.90170674697178, 30.041997636311674"	
   },
   {
     "title": "Yoklukta Gider Bisiklet Turu 1 (Çorlu - İnecik - Evreşe - Gelibolu - Lapseki)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=Xhzg2OWm2-c",
-    "duration": "26:59",
+    "playlist": "yoklukta gider",    "duration": "26:59",
 	"konum": "41.153341262222675, 27.72461398695787"	
   },
   {
     "title": "Aykırı Yollar: Bolu dağı geçişi @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=LLC01HwRdjE",
-    "duration": "24:59",
+    "playlist": "aykırı yollar",    "duration": "24:59",
 	"konum": "40.728538213517105, 31.4343477512326"	
   },
   {
     "title": "Aykırı Yollar: Ham yol ileri! Hedef Aphrodisias -  @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=T3DcoBHgpsg",
-    "duration": "29:59",
+    "playlist": "aykırı yollar",    "duration": "29:59",
 	"konum": "37.63100641221134, 28.643483131356955"	
   },
   {
     "title": "Aykırı Yollar: Çambaşı - Sapaca @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=ku2VdzpjiqE",
-    "duration": "23:59",
+    "playlist": "aykırı yollar",    "duration": "23:59",
 	"konum": "37.77475635824139, 29.51368861353802"	
   },
   {
     "title": "Aykırı Yollar: Doğa ve Macera - Aykırı yolun Hası Karakısık Kanyonu  @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=1fdaRBCCT9s",
-    "duration": "40:59",
+    "playlist": "aykırı yollar",    "duration": "40:59",
 	"konum": "37.65170370880935, 29.500673692840607"	
   },
   {
     "title": "Aykırı Yollar: Karakısık Kanyonuna doğru yolculuk  @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=ZcmRqrzEuXU",
-    "duration": "16:59",
+    "playlist": "aykırı yollar",    "duration": "16:59",
 	"konum": "37.58120044745747, 29.432438295778038"	
   },
   {
     "title": "Aykırı Yollar: İstiklal Yolu - @Ferdimen @SafakYollarda@aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=C5JD9gDHBkA",
-    "duration": "14:59",
+    "playlist": "aykırı yollar",    "duration": "14:59",
 	"konum": "41.94996342858083, 33.75687577184159"	
   },
   {
     "title": "Uzun Yolun Kısası (Kış Kış Bisiklet Turu)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz.",
     "url": "https://www.youtube.com/watch?v=WUozb3l7gUk",
-    "duration": "20:00"
+    "playlist": "uzun yolun kısası",    "duration": "20:00"
   },
   {
     "title": "Kürkçü Dükkanına Dönüş: Gelibolu'dan Çorlu'ya Yolculuk - Kış Bisiklet Turu 16",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=BjCsr-MKUjM",
-    "duration": "17:59",
+    "playlist": "Kış Kış",    "duration": "17:59",
 	"konum": "40.42919435574272, 26.684416076179236"	
   },
   {
     "title": "AFAD Uyarısıyla Çanakkale'den Kaçarcasına Gelibolu: Rüzgar Arkadaşım Oldu! - Kış Bisiklet Turu 15",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=Kwn3CbpfMns",
-    "duration": "15:59",
+    "playlist": "Kış Kış",    "duration": "15:59",
 	"konum": "39.83121257332323, 26.326553338132552"	
   },
   {
     "title": "Soğuk Kuzey Rüzgarları ile Mücadele: Ayvalık'tan Ezine'ye Yolculuk - Kış Bisiklet Turu #14",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=-3qKYKaWEI8",
-    "duration": "19:59",
+    "playlist": "Kış Kış",    "duration": "19:59",
 	"konum": "39.29896786674004, 26.716045574994084"	
   },
   {
     "title": "Arkadaş Ziyareti ve Macera: Çandarlı'dan  Ayvalık'a Serüven Dolu Bir Gün - Kış Bisiklet Turu #13",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=zK7fv53o_rw",
-    "duration": "14:59",
+    "playlist": "Kış Kış",    "duration": "14:59",
 	"konum": "38.939567222368034, 27.051163503401987"	
   },
   {
     "title": "Bisiklet Turunun En Sefil Bölümü: Yağmur ve Zorlu Hava Koşullarıyla Mücadele - Kış Bisiklet Turu #12",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=pmWm5RZAxr0",
-    "duration": "14:59",
+    "playlist": "Kış Kış",    "duration": "14:59",
 	"konum": "37.416117909487376, 27.412813499568706"	
   },
   {
     "title": "İasos Antik Kenti ve Eşsiz Manzaralar: Kıyıkışlacık'tan Akbük'e - Kış Kış Bisiklet Turu #11",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=y3TF7ev_yS0",
-    "duration": "18:59",
+    "playlist": "Kış Kış",    "duration": "18:59",
 	"konum": "37.28210170031662, 27.585397515265115"	
   },
   {
     "title": "Gizli Hazineyi Buldum: Ortaçağ Şehri Keşfi ve Kıyıkışlacık'a Yolculuk - Kış Kış Bisiklet Turu #10",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=w-lTQqUUEnE",
-    "duration": "29:59",
+    "playlist": "Kış Kış",    "duration": "29:59",
 	"konum": "37.27484616776693, 27.796018941188166"	
   },
   {
     "title": "Doğa ve Tarihle Buluşma: Zorlu Yollarda Labraunda Antik Kentine Yolculuk - Kış Kış Bisiklet Turu #9",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=whL_NINz_VI",
-    "duration": "23:59",
+    "playlist": "Kış Kış",    "duration": "23:59",
 	"konum": "37.38241168014298, 28.027243434444955"	
   },
   {
     "title": "Sakar Geçidinden Lagina Antik Kentine Uzanan Bisiklet Yolculuğu - Kış Kış Bisiklet Turu #8",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=0IqpbLTmPJo",
-    "duration": "15:59",
+    "playlist": "Kış Kış",    "duration": "15:59",
 	"konum": "37.05395800283951, 28.32450442880312"	
   },
   {
     "title": "Bisiklet Turunun İki Günü: Dalaman ve Akyaka'da Keyifli Sohbetler) - Kış Kış Bisiklet Turu #7",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=aTJSlj0m6O4",
-    "duration": "15:59",
+    "playlist": "Kış Kış",    "duration": "15:59",
 	"konum": "36.722290357810344, 29.029910515594104"	
   },
   {
     "title": "Zirveden Sahile: Antik Tlos'dan Fethiye'nin Güzelliğine Doğru Yolculuk - Kış Kış Bisiklet Turu #6",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=uO_d3Ci-kK0",
-    "duration": "19:59",
+    "playlist": "Kış Kış",    "duration": "19:59",
 	"konum": "36.51670270634192, 29.43860441647818"	
   },
   {
     "title": "Karanlık ve Soğuk Dağ-Orman Yollarında Zorlu Bisiklet Macerası - Kış Kış Bisiklet Turu #5",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=3lNXvWShY4w",
-    "duration": "16:59",
+    "playlist": "Kış Kış",    "duration": "16:59",
 	"konum": "36.67826261210129, 29.911601000196583"	
   },
   {
     "title": "Yeni Gün, Söğüt'ten Elmalı'ya Keşif Dolu Yeni Bisiklet Yolculuğu - Kış Kış Bisiklet Turu #4",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=slhwB0uEJ-U",
-    "duration": "14:59",
+    "playlist": "Kış Kış",    "duration": "14:59",
 	"konum": "37.03500615261829, 29.821877611578053"	
   },
   {
     "title": "Soğuktan Korunma Savaşı: Honaz'dan Söğüt'e Zorlu Bisiklet Yolculuğu - Kış Kış Bisiklet Turu #3",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=ZaXmpTPzKWA",
-    "duration": "14:59",
+    "playlist": "Kış Kış",    "duration": "14:59",
 	"konum": "37.75730624810253, 29.269450073167896"	
   },
   {
     "title": "Soğuktan Koruyan Bağ Evi: Baklan'dan Honaz'a Doğru Bisiklet Turu - Kış Kış Bisiklet Turu #2",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=9Cbfmis7hCQ",
-    "duration": "13:59",
+    "playlist": "Kış Kış",    "duration": "13:59",
 	"konum": "38.05387804314801, 29.747122570153046"	
   },
   {
     "title": "Bozkırın Ortasında: Dazkırı, Başmakçı, Evciler Bisiklet Turu - Kış Kış Bisiklet Turu #1",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=eumzbypehL4",
-    "duration": "15:59",
+    "playlist": "Kış Kış",    "duration": "15:59",
 	"konum": "37.92094749840448, 29.866760401328335"	
   },
   {
     "title": "Gelibolu Bisiklet Turu - 2 (Ece Limanı'ndan Anafartalar'a Tarih ve Doğa İle İç İçe Keşifler!)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=cd8V5yQ4Bx4",
-    "duration": "19:59",
+    "playlist": "Trakya ve Gelibolu",    "duration": "19:59",
 	"konum": "40.33307626443545, 26.346819468291173"	
   },
   {
     "title": "Gelibolu Bisiklet Turu - 1 (Geceyi Tarihi Çimpe Kalesinde Geçirdim.)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=dQLPQqz_na0",
-    "duration": "26:59",
+    "playlist": "Trakya ve Gelibolu",    "duration": "26:59",
 	"konum": "40.496345921247816, 26.733974234180202"	
   },
   {
     "title": "Çorlu'dan Keşan'a Efsane Bir Bisiklet Macerası - Başarısız Bir Tur Girişimi #3 (3in1 - Trakya Turu)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=0h2IbyEaCtQ",
-    "duration": "21:59",
+    "playlist": "Trakya ve Gelibolu",    "duration": "21:59",
 	"konum": "41.32931270996551, 27.270773089409552"	
   },
   {
     "title": "Aykırı Yollar: Dağdan indim şehire (Eskişehir/Sarıcakaya - Bilecik/Yenipazar)  @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=WOlow49J9As",
-    "duration": "18:59",
+    "playlist": "aykırı yollar",    "duration": "18:59",
 	"konum": "40.100627932398396, 30.621484035264114"	
   },
   {
     "title": "Uzun Yolun Kısası (Anadolum Benim Bisiklet Turu)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz.",
     "url": "https://www.youtube.com/watch?v=UE0wPxjWE7s",
-    "duration": "11:29"
+    "playlist": "uzun yolun kısası",    "duration": "11:29"
   },
   {
     "title": "Anadolum Benim #19  (Kartepe - Başiskele - Gölcük - Karamürsel - Darıca) Ölümden döndüm!",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=X7h7l9mfw2U",
-    "duration": "29:59",
+    "playlist": "Anadolum Benim",    "duration": "29:59",
 	"konum": "40.52808917567588, 30.068036080387103"	
   },
   {
     "title": "Anadolum Benim #18 (Taraklı - Geyve - Pamukova - Bakacak) Kamyon Solluyorum, Kamyon!",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=VFyRD6nG-9g",
-    "duration": "29:59",
+    "playlist": "Anadolum Benim",    "duration": "29:59",
 	"konum": "40.393056200379704, 30.448299731949056"	
   },
   {
     "title": "Anadolum Benim #17 (Yenipazar - Gölpazarı - Taraklı) Bisiklet Turunun Son Günleri",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=cxmPqkhAdjI",
-    "duration": "19:59",
+    "playlist": "Anadolum Benim",    "duration": "19:59",
 	"konum": "40.17716316523416, 30.516044544184552"	
   },
   {
     "title": "Anadolum Benim #16 (Mihalgazi - Sarıcakaya - Yenipazar) O Tatlı inişlerin, acı çıkışları olur!",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=4pZsEoPUzxE",
-    "duration": "24:59",
+    "playlist": "Anadolum Benim",    "duration": "24:59",
 	"konum": "40.027540822000994, 30.574285307759247"	
   },
   {
     "title": "Anadolum Benim #15 (Eskişehir - İnhisar - Mihalgazi) Çılgın Dağ Bisikleti İnişi!",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=ikZcQaHwoKo",
-    "duration": "21:59",
+    "playlist": "Anadolum Benim",    "duration": "21:59",
 	"konum": "39.77113439409548, 30.42395621270415"	
   },
   {
     "title": "Anadolum Benim #14 (Alpu - Çavlum - Gökdere - Eskişehir) Lastik Patladı, Bisiklet Evine Sığındım!",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=gRORcdL6cgI",
-    "duration": "20:59",
+    "playlist": "Anadolum Benim",    "duration": "20:59",
 	"konum": "39.76995917103543, 30.960159232536586"	
   },
   {
     "title": "Anadolum Benim #13 (Han - Yazılıkaya - Seyitgazi - Alpu) Frig vadisinde yolculuk",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=EYNmbtrGVbA",
-    "duration": "29:59",
+    "playlist": "Anadolum Benim",    "duration": "29:59",
 	"konum": "39.159246683998134, 30.863632765423567"	
   },
   {
     "title": "Anadolum Benim #12 (Yarımca - Bağlıca - Kadıkuyusu - Han)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=4IsQkppheOc",
-    "duration": "14:59",
+    "playlist": "Anadolum Benim",    "duration": "14:59",
 	"konum": "39.08233973128397, 31.143519840944908"	
   },
   {
     "title": "Anadolum Benim #11 (Çobanlar - İscehisar - Bayat - Emirdağ)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=3QtFEO-Iy3Q",
-    "duration": "16:59",
+    "playlist": "Anadolum Benim",    "duration": "16:59",
 	"konum": "38.70508296346264, 30.859537562225256"	
   },
   {
     "title": "Anadolum Benim #10 (Çayıryazı - Çay - Bolvadin - Kocaöz)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=cp7fpIS7_xI",
-    "duration": "14:29",
+    "playlist": "Anadolum Benim",    "duration": "14:29",
 	"konum": "38.369704285075464, 30.741844996316058"	
   },
   {
     "title": "Zafere Giden Yol 6. Bölüm (Büyük Taarruz)",
     "description": "Büyük Taarruz: Türkiye Cumhuriyeti'nin 100. Yılında Bir Yolculuk",
     "url": "https://www.youtube.com/watch?v=_HQMtQ2SgwY",
-    "duration": "14:59"
+    "playlist": "Zafere Giden Yol",    "duration": "14:59"
   },
   {
     "title": "Anadolum Benim #09 (Uluborlu - Senirkent - Karacaören - Çayıryazı)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=_3Sd8b6p1XE",
-    "duration": "15:29",
+    "playlist": "Anadolum Benim",    "duration": "15:29",
 	"konum": "38.07756751711363, 30.456000542432047"	
   },
   {
     "title": "Anadolum Benim #08 (Baladız - Atabey - Gönen - Uluborlu)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=V_TDdcB3VR4",
-    "duration": "16:59",
+    "playlist": "Anadolum Benim",    "duration": "16:59",
 	"konum": "37.89455724826836, 30.409324401370036"	
   },
   {
     "title": "Anadolum Benim #07 (Kızılören - Dinar - Keçirborlu - Baladız)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=mYgUJVjVBI0",
-    "duration": "12:59",
+    "playlist": "Anadolum Benim",    "duration": "12:59",
 	"konum": "38.24053281333407, 30.12130205536483"	
   },
   {
     "title": "Anadolum Benim #06 (Yazıtepe - Hocalar - Sandıklı - Kızılören)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=qBBdKitIO8w",
-    "duration": "17:29",
+    "playlist": "Anadolum Benim",    "duration": "17:29",
 	"konum": "38.642857294952236, 29.900424960108285"	
   },
   {
     "title": "Anadolum Benim #05 (Çivril - Sivaslı - Susuz - Yazıtepe)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=8wjxBtD-Y-8",
-    "duration": "12:59",
+    "playlist": "Anadolum Benim",    "duration": "12:59",
 	"konum": "38.329943746361316, 29.740254489851875"	
   },
   {
     "title": "Anadolum Benim #04 (Güney - Bekilli - Karahallı - Çivril)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=p-OGWu-t1t8",
-    "duration": "16:39",
+    "playlist": "Anadolum Benim",    "duration": "16:39",
 	"konum": "38.157098206998356, 28.89742142920659"	
   },
   {
     "title": "Anadolum Benim #03 (Ketenova - Uluderbent - Alaşehir - Türlübey)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=J9BmWsiz-dk",
-    "duration": "14:59",
+    "playlist": "Anadolum Benim",    "duration": "14:59",
 	"konum": "38.03808731988242, 28.451505921994134"	
   },
   {
     "title": "Anadolum Benim #02 - Köşk - Sultanhisar - Nysa Antik Kenti - Nazilli - Ketenova",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=-EmBLfKfOFA",
-    "duration": "24:29",
+    "playlist": "Anadolum Benim",    "duration": "24:29",
 	"konum": "37.85652882551688, 28.079042564072456"	
   },
   {
     "title": "Anadolum Benim #01 (Kuşadası - İncirliova - Aydın - Köşk)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=PplHLEhJYXQ",
-    "duration": "14:39",
+    "playlist": "Anadolum Benim",    "duration": "14:39",
 	"konum": "37.78133097269296, 27.265033005109945"	
   },
   {
     "title": "Kınık köyünden Balıkesir-Kütahya yoluna iniş (Bursa / Büyükorhan - Harmancık) @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=CZraajaDwy8",
-    "duration": "47:33",
+    "playlist": "aykırı yollar",    "duration": "47:33",
 	"konum": "39.701442617521536, 28.94151995632716"	
   },
   {
     "title": "Dağ yolundan Gönen - Uluborlu (Isparta / Gönen - Uluborlu)​@aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=gTqOW6xmDxc",
-    "duration": "32:29",
+    "playlist": "aykırı yollar",    "duration": "32:29",
 	"konum": "38.02237862247897, 30.50855129778868"	
   },
   {
     "title": "Süvarilerin İzinde Dumlu yaylasından Sincanlı ovasına (Afyonkarahisar / Sinanpaşa) @aykiriyollar",
     "description": "25-26 Ağustos 1922: Huruç Harekatı ve Büyük Taarruz",
     "url": "https://www.youtube.com/watch?v=tipxyZ0jZbw",
-    "duration": "47:59",
+    "playlist": "aykırı yollar",    "duration": "47:59",
 	"konum": "38.689164785935354, 30.262346574859468"	
   },
   {
     "title": "Dağ yolundan Tımaraktaş - Taşçılar'a doğa İçinde Bir Bisiklet Turu (Bolu / Mudurnu)@aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=zOwJPsitAcM",
-    "duration": "23:41",
+    "playlist": "aykırı yollar",    "duration": "23:41",
 	"konum": "40.395864466604635, 31.222959127891215"	
   },
   {
     "title": "İkitaş Kanyonu Bisiklet Turu (Kütahya / Emet) @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=B1MQ6RtBarI",
-    "duration": "24:59",
+    "playlist": "aykırı yollar",    "duration": "24:59",
 	"konum": "39.44709808071634, 29.252479163579963"	
   },
   {
     "title": "Yaz Gecesinde Kuşadası Bisiklet Yolu",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz.",
     "url": "https://www.youtube.com/watch?v=ml4c5N41c7o",
-    "duration": "30:59",
+    "playlist": "bisiklet yolları",    "duration": "30:59",
 	"konum": "37.75849975399671, 27.257713704466962"	
   },
   {
     "title": "Uzun Yolun Kısası (Aykırı Yollar - Dağdan taştan İzmir)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz.",
     "url": "https://www.youtube.com/watch?v=X5UaOVJf_ow",
-    "duration": "7:59"
+    "playlist": "uzun yolun kısası",    "duration": "7:59"
   },
   {
     "title": "Aykırı Yollar (Dağdan Taştan İzmir) #08 - Demirtaş - Çandarlı - Aliağa - Kyme - Sasalı",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=_WV-ftuEcK0",
-    "duration": "43:59",
+    "playlist": "Dağdan Taştan İzmir",    "duration": "43:59",
 	"konum": "39.00287060628971, 26.95017466534866"	
   },
   {
     "title": "Aykırı Yollar (Dağdan Taştan İzmir) #07 - Kozak Yaylası - Dikili - Demirtaş",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=_dYkjqfin3o",
-    "duration": "22:49",
+    "playlist": "Dağdan Taştan İzmir",    "duration": "22:49",
 	"konum": "39.2614254068402, 27.016048655873096"	
   },
   {
     "title": "Aykırı Yollar (Dağdan Taştan İzmir) #06 - Çobanlar - Kıranlı - Aşağıbey - Aşağı cuma @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=-Yo9FM-JiBM",
-    "duration": "20:49",
+    "playlist": "Dağdan Taştan İzmir",    "duration": "20:49",
 	"konum": "39.305289585371746, 27.241076554151864"	
   },
   {
     "title": "Aykırı Yollar (Dağdan Taştan İzmir) #05 - Korucu - Duğla - Kırcalar - Akçenger @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=s1MrCufr0G4",
-    "duration": "23:49",
+    "playlist": "Dağdan Taştan İzmir",    "duration": "23:49",
 	"konum": "39.47599779886698, 27.371667947226452"	
   },
   {
     "title": "Aykırı Yollar (Dağdan Taştan İzmir) #04 - Bayatlar - Gökçeler - İvrindi - Korucu @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=z5Ll6jo8-n0",
-    "duration": "20:59",
+    "playlist": "Dağdan Taştan İzmir",    "duration": "20:59",
 	"konum": "39.83352719185746, 27.33221497416378"	
   },
   {
     "title": "Aykırı Yollar (Dağdan Taştan İzmir) #03 - Biga - Yenice @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=7eCNv81_olY",
-    "duration": "19:49",
+    "playlist": "Dağdan Taştan İzmir",    "duration": "19:49",
 	"konum": "40.23076472102293, 27.254495287519422"	
   },
   {
     "title": "Aykırı Yollar (Dağdan Taştan İzmir) #02 - Lapseki - Dumanlıdağı - Biga @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=w6wY48DN10Q",
-    "duration": "14:19",
+    "playlist": "Dağdan Taştan İzmir",    "duration": "14:19",
 	"konum": "40.33083289306725, 26.715328358676718"	
   },
   {
     "title": "Aykırı Yollar (Dağdan Taştan İzmir) #01 - Keşan - Gelibolu - Lapseki @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=3wMTBUutUEY",
-    "duration": "9:59",
+    "playlist": "Dağdan Taştan İzmir",    "duration": "9:59",
 	"konum": "40.83698618599924, 26.62799563251651"	
   },
   {
     "title": "Enez 1. Ulusal Bisiklet Festivali (2022)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz.",
     "url": "https://www.youtube.com/watch?v=kW2HFYO9-h8",
-    "duration": "6:59",
+    "playlist": "",    "duration": "6:59",
 	"konum": "40.6621833671745, 26.071711193862804"	
   },
   {
     "title": "Sevkiyat (İstiklal Yolu) #05 Doğanyurt - İnebolu",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=pyznn01Sft4",
-    "duration": "10:49",
+    "playlist": "Sevkiyat (İstiklal Yolu)",    "duration": "10:49",
 	"konum": "42.007287958827185, 33.459284609923245"	
   },
   {
     "title": "Sevkiyat (İstiklal Yolu) #04 Köseli - Denizkonak - İlyasbey - Doğanyurt",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=MLc9g4WTS74",
-    "duration": "10:09",
+    "playlist": "Sevkiyat (İstiklal Yolu)",    "duration": "10:09",
 	"konum": "41.910885122570896, 33.01048478881648"	
   },
   {
     "title": "Sevkiyat (İstiklal Yolu) #03 Karaman - Kurucaşile - Cide - Köseli",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=dJp97Oej-SY",
-    "duration": "12:39",
+    "playlist": "Sevkiyat (İstiklal Yolu)",    "duration": "12:39",
 	"konum": "41.828071536744886, 32.619662218246866"	
   },
   {
     "title": "Sevkiyat (İstiklal Yolu) #02 Mugada - Bartın - Amasra - Çakraz- Karaman",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=g82At5X3Kjw",
-    "duration": "17:27",
+    "playlist": "Sevkiyat (İstiklal Yolu)",    "duration": "17:27",
 	"konum": "41.60813681408703, 32.15992993544091"	
   },
   {
     "title": "Sevkiyat (İstiklal Yolu) #01 Çaycuma - Saltukova - Kızılelma - Mugada",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=9zBZslb_SbU",
-    "duration": "12:19",
+    "playlist": "Sevkiyat (İstiklal Yolu)",    "duration": "12:19",
 	"konum": "41.43999324102853, 32.08120270584177"	
   },
   {
     "title": "Vida Deliği Olmayan Bisiklet Maşasına Bagaj Montajı Nasıl Yapılır?",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz.",
     "url": "https://www.youtube.com/watch?v=jSGf1OgKryQ",
-    "duration": "5:00"
+    "playlist": "yol yordam",    "duration": "5:00"
   },
   {
     "title": "@Ferdimen - Adı yalnızlığından gelen kahraman!",
     "description": "Merhaba Ben Ferdimen,",
     "url": "https://www.youtube.com/watch?v=XEr6EwOievk",
-    "duration": "1:48"
+    "playlist": "",    "duration": "1:48"
   },
   {
     "title": "Uzun Yolun Kısası (Az Anadolu Bisiklet Turu)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=IQUVP5vKy0s",
-    "duration": "21:29"
+    "playlist": "uzun yolun kısası",    "duration": "21:29"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #43 Devrek - Gökçebey - Çaycuma",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=xKa5qgkuj1w",
-    "duration": "20:29",
+    "playlist": "Az anadolu",    "duration": "20:29",
 	"konum": "41.23594727759035, 31.970208889265955"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #42 Dörtdivan - Yeniçağa - Mengen - Devrek",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=zs8V1Rm_fdQ",
-    "duration": "18:20",
+    "playlist": "Az anadolu",    "duration": "18:20",
 	"konum": "40.716624312520075, 32.06260170795445"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #41 Bulak - Akyarma Geçidi - Dörtdivan",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=6A7iQJa4IpM",
-    "duration": "19:39",
+    "playlist": "Az anadolu",    "duration": "19:39",
 	"konum": "40.567543321912645, 32.59338550774332"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #40 Sancar - Kazan - Kızılcahamam - Bulak",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=MgVlqlJ4P0s",
-    "duration": "15:45",
+    "playlist": "Az anadolu",    "duration": "15:45",
 	"konum": "40.21859597728292, 32.78217913726303"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #39 Baykuşboğazı - Akyurt - Esenboğa - Sancar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=8nP5p0sOiHA",
-    "duration": "21:52",
+    "playlist": "Az anadolu",    "duration": "21:52",
 	"konum": "40.14672368776415, 33.346905213025806"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #38 Bahşılı - Yahşihan - Kalecik",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=dh9Gh1hsr2s",
-    "duration": "18:30",
+    "playlist": "Az anadolu",    "duration": "18:30",
 	"konum": "39.819436128301746, 33.46781268785221"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #37 Çelebi - Keskin - Kırıkkale - Bahşılı",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=6uhEwrBwyuw",
-    "duration": "14:00",
+    "playlist": "Az anadolu",    "duration": "14:00",
 	"konum": "39.46160647323188, 33.522882624327785"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #36 Akpınar - Kaman - Çelebi",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=OZCv4dAdPaA",
-    "duration": "11:43",
+    "playlist": "Az anadolu",    "duration": "11:43",
 	"konum": "39.479959244540844, 33.97765024662671"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #35 Çiçekdağı - Akçakent - Akpınar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=Y01KdoTcGl0",
-    "duration": "17:56",
+    "playlist": "Az anadolu",    "duration": "17:56",
 	"konum": "39.603029214810846, 34.4178753350604"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #34 Kozaklı - Şefaatli - Yerköy - Çiçekdağı",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=QM8_I94zSg8",
-    "duration": "17:21",
+    "playlist": "Az anadolu",    "duration": "17:21",
 	"konum": "39.20751798502955, 34.860706437267964"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #33 Boğazlıyan - Yenifakılı - Kozaklı",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=NZRFV1kZivw",
-    "duration": "13:05",
+    "playlist": "Az anadolu",    "duration": "13:05",
 	"konum": "39.206926969337204, 35.239136288074285"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #32 Özvatan - Felahiye - Çandır - Boğazlıyan",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=zuDw5Ca-96A",
-    "duration": "18:22",
+    "playlist": "Az anadolu",    "duration": "18:22",
 	"konum": "39.112374220914106, 35.70310542615816"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #31 Sarımsaklı - Bünyan - Büyük Tuzhisarı - Özvatan",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=YIt8i3M3jRo",
-    "duration": "18:58",
+    "playlist": "Az anadolu",    "duration": "18:58",
 	"konum": "38.89259030203113, 35.73404591633515"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #30 Kayseri - Kültepe Kaniş-Karum - Sarımsaklı",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=hNaCrcOdQTQ",
-    "duration": "19:03",
+    "playlist": "Az anadolu",    "duration": "19:03",
 	"konum": "38.778264764605076, 35.57631785624891"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #29 İncesu - Hacılar - Talas - Melikgazi - Kayseri",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=Y6YtuycAiWQ",
-    "duration": "11:39",
+    "playlist": "Az anadolu",    "duration": "11:39",
 	"konum": "38.618509119722866, 35.18373757030868"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #28 Yahyalı - Develi - Yeşilhisar - İncesu",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=fOXvr1aLnug",
-    "duration": "11:52",
+    "playlist": "Az anadolu",    "duration": "11:52",
 	"konum": "38.12452301112786, 35.36393893774334"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #27 Çamardı - İçmeli - Dündarlı - Yahyalı",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=Iajj_gpNmWc",
-    "duration": "17:24",
+    "playlist": "Az anadolu",    "duration": "17:24",
 	"konum": "37.83857544542089, 35.02388112679144"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #26 Yazıcak - Dağdibi - Yelatan - Çamardı",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=VRhdWfdFja8",
-    "duration": "14:22",
+    "playlist": "Az anadolu",    "duration": "14:22",
 	"konum": "37.582511030802436, 34.96212704728998"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #25 Ulukışla - Çiftehan - Pozantı - Kamışlı - Yazıcak",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=1TG5mdAhPog",
-    "duration": "18:30",
+    "playlist": "Az anadolu",    "duration": "18:30",
 	"konum": "37.54707165927489, 34.48161281257637"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #24 Ayrancı - Ereğli - Ulukuşla",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=d7uJfCTICX0",
-    "duration": "13:45",
+    "playlist": "Az anadolu",    "duration": "13:45",
 	"konum": "37.358174744202564, 33.68105683029737"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #23 Güneysınır - Kazımkarabekir - Karaman - Ayrancı",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=j0EIChvgBGg",
-    "duration": "16:12",
+    "playlist": "Az anadolu",    "duration": "16:12",
 	"konum": "37.27189794907021, 32.726545316299365"
   },
   {
     "title": "#Az Anadolu Bisiklet Turu #22 Çatalhöyük",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz.",
     "url": "https://www.youtube.com/watch?v=s0xykf7aHu4",
-    "duration": "15:08",
+    "playlist": "Az anadolu",    "duration": "15:08",
 	"konum": "37.667511838492736, 32.82663476840405"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #21 Akören - Çumra - Çatalhöyük - Güneysınır",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=vTitI-pWQMo",
-    "duration": "15:39",
+    "playlist": "Az anadolu",    "duration": "15:39",
 	"konum": "37.443599532758604, 32.358300550176075"
   },
   {
     "title": "#Az Anadolu Bisiklet Turu #20 Pınarcık - Mavi Geçit Kanyonu - Sopran Yaylası - Akören",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=rM_kjQ-GFek",
-    "duration": "17:35",
+    "playlist": "Az anadolu",    "duration": "17:35",
 	"konum": "37.2620596580575, 32.28142320091438"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #19 Seydişehir - Yalıhüyük - Ahırlı - Bozkır - Pınarcık",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=6V2iLy1iGiI",
-    "duration": "15:09",
+    "playlist": "Az anadolu",    "duration": "15:09",
 	"konum": "37.39125484996223, 31.840391187037575"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #18 Seydişehir Günleri",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=ZIo1HFtQan4",
-    "duration": "17:26",
+    "playlist": "Az anadolu",    "duration": "17:26",
 	"konum": "37.434395880443475, 31.76069202727515"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #17 Kurucaova - Beyşehir - Seydişehir",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=AFOQNhuyyRc",
-    "duration": "17:59",
+    "playlist": "Az anadolu",    "duration": "17:59",
 	"konum": "37.687553527474606, 31.41937781518766"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #16 Aksu - Yakaköy - Yenişarbademli",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=y7CXgqVBE2c",
-    "duration": "18:39",
+    "playlist": "Az anadolu",    "duration": "18:39",
 	"konum": "37.80084230561972, 31.0721637455354"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #15 Sütçüler - Ayvalıpınar - Aksu (Roma Köprüsü, Zindan Mağarası)",
     "description": "Merhaba Sevgili dostlar, ben @Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=q7O-MyeOuVA",
-    "duration": "16:37",
+    "playlist": "Az anadolu",    "duration": "16:37",
 	"konum": "37.49522793908059, 30.978906781876418"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #14 Elsazı - Melikler - Çandır - Sütçüler",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=WwBF52rd7sg",
-    "duration": "13:43",
+    "playlist": "Az anadolu",    "duration": "13:43",
 	"konum": "37.449933224382356, 30.812902402779887"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #13 Bağsaray - Çeltikçi - Bucak - Kremna Antik Kenti - Elsazı",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=617A5MvV4Sc",
-    "duration": "18:46",
+    "playlist": "Az anadolu",    "duration": "18:46",
 	"konum": "37.50962493386354, 30.4221637975767"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #12 Kılavuzlar - Kemer - Akçaören - Aksu - Bağsaray @Ferdimen",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=HubhebDiH4g",
-    "duration": "16:47",
+    "playlist": "Az anadolu",    "duration": "16:47",
 	"konum": "37.32833005904543, 29.976696127613536"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #11 Gölhisar - Çavdır - Başpınar - Hasanpaşa - Kılavuzlar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=JE-bFmOffog",
-    "duration": "15:14",
+    "playlist": "Az anadolu",    "duration": "15:14",
 	"konum": "37.15475598824, 29.502005766824766"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #10 Kibyra Antik Kenti",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=SVEugNEDYDY",
-    "duration": "16:10",
+    "playlist": "Az anadolu",    "duration": "16:10",
 	"konum": "37.15909119987809, 29.496319483719024"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #09 Dont - Altınyayla - Gölhisar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=7iBRJWAdpJ4",
-    "duration": "17:46",
+    "playlist": "Az anadolu",    "duration": "17:46",
 	"konum": "36.86942882400136, 29.62363717092191"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #08 Seydikemer - Karabel Geçidi - Kınık - Dont",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=9tH_DbtjshM",
-    "duration": "21:11",
+    "playlist": "Az anadolu",    "duration": "21:11",
 	"konum": "36.63749939184, 29.390473441961653"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #07 Nif - Yeşilüzüm - Ortaköy - Seydikemer",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=Qc45bJJRFpQ",
-    "duration": "21:11",
+    "playlist": "Az anadolu",    "duration": "21:11",
 	"konum": "36.82782234505587, 29.16659359534264"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #06 Elcik - Çöğmen - Darıyeri - Nif",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=9Sg_hw6WJEg",
-    "duration": "18:34",
+    "playlist": "Az anadolu",    "duration": "18:34",
 	"konum": "36.86818176101542, 28.96127933770878"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #05 Zeytinalanı - Pınar - Akköprü Barajı - Elcik",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=2mqnFfOkZec",
-    "duration": "17:10",
+    "playlist": "Az anadolu",    "duration": "17:10",
 	"konum": "36.95612789373729, 28.74531473333613"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #04 Muğla - Ula - Çiçekli - Köyceğiz - Zeytinalanı",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=zCJRNjHrVIw",
-    "duration": "18:54",
+    "playlist": "Az anadolu",    "duration": "18:54",
 	"konum": "37.21352534612961, 28.373175916021133"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #03 Eskiçine - Yatağan - Muğla",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=jP8PRuOHDe4",
-    "duration": "17:58",
+    "playlist": "Az anadolu",    "duration": "17:58",
 	"konum": "37.52672465954491, 28.07038193097098"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #02 Çiftlikköy - Gökyaka - Doğanyurt Alabandan Antik Kenti - Eskiçine",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=tbTCjobA_ho",
-    "duration": "24:29",
+    "playlist": "Az anadolu",    "duration": "24:29",
 	"konum": "37.770699917382046, 27.83676681848246"
   },
   {
     "title": "Az Anadolu Bisiklet Turu #01 Kuşadası - Söke - Koçarlı - Çiftlikköy",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=z-C_10ZhZi4",
-    "duration": "14:55",
+    "playlist": "Az anadolu",    "duration": "14:55",
 	"konum": "37.86388754013504, 27.26143765862403"	
   },
   {
     "title": "Deli Divane Bisiklet Turu #13 (Savaştepe, Soma, Kınık, Bergama, Çandarlı, Aliağa, İzmir)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=weKX8SBb6Dc",
-    "duration": "20:09",
+    "playlist": "deli divane",    "duration": "20:09",
 	"konum": "39.38680782815493, 27.72329863704034"	
   },
   {
     "title": "Deli Divane Bisiklet Turu #12 (Sındırgı, Savaştepe)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=Od6jssNJ80Y",
-    "duration": "19:24",
+    "playlist": "deli divane",    "duration": "19:24",
 	"konum": "39.23117320526812, 28.114370741655133"	
   },
   {
     "title": "Deli Divane Bisiklet Turu #11 (Demirci, Mahmutlar, Türkmen Dağı, Bardakçı, Sındırdı)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=-gNZ3Uw-D1Q",
-    "duration": "21:30",
+    "playlist": "deli divane",    "duration": "21:30",
 	"konum": "38.974365033043036, 28.335249169199606"	
   },
   {
     "title": "Deli Divane Bisiklet Turu #10 (Köprübaşı, Gördes)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=kV4Z5vLe2bA",
-    "duration": "17:30",
+    "playlist": "deli divane",    "duration": "17:30",
 	"konum": "38.78933301985299, 28.7309551435947"	
   },
   {
     "title": "Deli Divane Bisiklet Turu #9 (Uşak, Selendi)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=iFziGECIjs8",
-    "duration": "20:40",
+    "playlist": "deli divane",    "duration": "20:40",
 	"konum": "38.711594170860245, 29.519364774700083"	
   },
   {
     "title": "Deli Divane Bisiklet Turu #8 (Murat Dağı 2)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=2R42IdS7TLc",
-    "duration": "17:17",
+    "playlist": "deli divane",    "duration": "17:17",
 	"konum": "38.943771927665736, 29.61009631963025"	
   },
   {
     "title": "Deli Divane Bisiklet Turu #7 (Pınarcık, Saraycık, Çukurören, Murat Dağı)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=Rim3afvhO10",
-    "duration": "23:09",
+    "playlist": "deli divane",    "duration": "23:09",
 	"konum": "39.02311294439295, 29.982401440931117"	
   },
   {
     "title": "Deli Divane Bisiklet Turu #6 (Gediz, Çavdarhisar, Aslanapa, Altıntaş)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=S0r2O3c7ahg",
-    "duration": "27:30",
+    "playlist": "deli divane",    "duration": "27:30",
 	"konum": "38.9306691986794, 29.302226284655003"	
   },
   {
     "title": "Deli Divane Bisiklet Turu #5 (Hisarcık, Simav, Pazarlar, Şaphane)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=njnGDL-C-zY",
-    "duration": "17:50",
+    "playlist": "deli divane",    "duration": "17:50",
 	"konum": "39.24911695471182, 29.20841180373452"	
   },
   {
     "title": "Deli Divane Bisiklet Turu #4 (Hamitabat, Tunçbilek, Tavşanlı, Emet, Hisarcık)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=Fs-fknTavzU",
-    "duration": "21:05",
+    "playlist": "deli divane",    "duration": "21:05",
 	"konum": "39.655224473468, 29.490719178242625"	
   },
   {
     "title": "Deli Divane Bisiklet Turu #3 (Harmancık, Domaniç, Hamitabat)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=JChD0DnLH6o",
-    "duration": "24:20",
+    "playlist": "deli divane",    "duration": "24:20",
 	"konum": "39.791446506360906, 29.18188301272398"	
   },
   {
     "title": "Deli Divane Bisiklet Turu #2 (Büyükorhan, Orhaneli, Keles)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=4nhDFYWwLF8",
-    "duration": "22:10",
+    "playlist": "deli divane",    "duration": "22:10",
 	"konum": "39.66046500967765, 28.879380953907464"	
   },
   {
     "title": "Deli Divane Bisiklet Turu #1 (Tekirdağ, Bandırma, Mustafakemalpaşa, Susurluk, Dursunbey)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=aqFdgdfOAuY",
-    "duration": "17:00",
+    "playlist": "deli divane",    "duration": "17:00",
 	"konum": "41.14402105578821, 27.75630686354293"	
   },
   {
     "title": "Alaşehir'den Kuşadası'na Doğru Bisiklet Turu #6 (Akmescit - Çavdar - Bağarası - Söke - Kuşadası)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=jc5wQHV50s0",
-    "duration": "26:50",
+    "playlist": "Alaşehir'den Kuşadası",    "duration": "26:50",
 	"konum": "37.591515724836945, 27.69890930073213"	
   },
   {
     "title": "Alaşehir'den Kuşadası'na Doğru Bisiklet Turu #5 (Karpuzlu - Umcular - Akmescit)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=BVVfLOAGnmY",
-    "duration": "37:29",
+    "playlist": "Alaşehir'den Kuşadası",    "duration": "37:29",
 	"konum": "37.62921579601083, 27.983634264949465"	
   },
   {
     "title": "Alaşehir'den Kuşadası'na Doğru Bisiklet Turu #4 (Kurucaova - Alabayır - Gerga - Ovacık - Çine)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=yzA16AmvyME",
-    "duration": "33:50",
+    "playlist": "Alaşehir'den Kuşadası",    "duration": "33:50",
 	"konum": "37.491439990170974, 28.33843734870605"
   },
   {
     "title": "Alaşehir'den Kuşadası'na Doğru Bisiklet Turu #3 (Buharkent - Nazilli - Bozdoğan - Kavaklıdere)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=lFXXWg1cXWE",
-    "duration": "41:00",
+    "playlist": "Alaşehir'den Kuşadası",    "duration": "41:00",
 	"konum": "37.96110642360717, 28.766111561165882"	
   },
   {
     "title": "Alaşehir'den Kuşadası'na Doğru Bisiklet Turu #2 (Boğazçiftlik - Buldan - Savcılı)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=jCxp8o3_Eig",
-    "duration": "38:30",
+    "playlist": "Alaşehir'den Kuşadası",    "duration": "38:30",
 	"konum": "38.187997325424185, 28.83314842481796"	
   },
   {
     "title": "Alaşehir'den Kuşadası'na Doğru Bisiklet Turu #1 (Alaşehir - Yeşilyurt - Sarıgöl - Boğazçiftlik)",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=_zK05ECyrn8",
-    "duration": "34:36",
+    "playlist": "Alaşehir'den Kuşadası",    "duration": "34:36",
 	"konum": "37.864741298054035, 27.27025326232166"	
   },
   {
     "title": "Gelibolu 1915 - 3.Bölüm #Alçıtepe #Çanakkalegeçilmez",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz.",
     "url": "https://www.youtube.com/watch?v=1Ao47CRkJig",
-    "duration": "16:25",
+    "playlist": "Gelibolu 1915",    "duration": "16:25",
 	"konum": "40.056051156207054, 26.196944452258716"	
   },
   {
     "title": "Gelibolu 1915 - 2.Bölüm #Conkbayırı #Çanakkalegeçilmez",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz.",
     "url": "https://www.youtube.com/watch?v=a3LBbs5OaMw",
-    "duration": "21:30",
+    "playlist": "Gelibolu 1915",    "duration": "21:30",
 	"konum": "40.23599808720042, 26.359749437597216"	
   },
   {
     "title": "Gelibolu 1915 - 1.Bölüm #Çanakkalegeçilmez",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz.",
     "url": "https://www.youtube.com/watch?v=G8kfrYKHR6M",
-    "duration": "18:58",
+    "playlist": "Gelibolu 1915",    "duration": "18:58",
 	"konum": "39.99364831863341, 26.186072520029725"	
   },
   {
     "title": "Gelibolu'ya İntikal Bisiklet Turu",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoşgeldiniz.",
     "url": "https://www.youtube.com/watch?v=lSdYycko_5s",
-    "duration": "17:46",
+    "playlist": "Gelibolu 1915",    "duration": "17:46",
 	"konum": "38.93397251955529, 26.93392601450597"	
   },
   {
     "title": "Wikiloc Hakkında Faydalı Bilgiler - Rota Yükleme Yöntemleri (2022)",
     "description": "Bu videoda sizlere wikiloc'a  rota yükleme konusunda güncel bilgiler paylaştım. ",
     "url": "https://www.youtube.com/watch?v=kF5YXUl6hIM",
-    "duration": "29:00"
+    "playlist": "yol yordam",    "duration": "29:00"
   },
   {
     "title": "Karaburun Bisiklet Turu – Tur Sonu (Selçuk - Kuşadası)",
     "description": "9 Kasım 2021 – 14 Kasım 2021 tarihleri arasında İzmir ve Karaburun Yarımadalarında yaptığım bisiklet turunun sonuncu bölümünde; Selçuk'tan Kuşadası...",
     "url": "https://www.youtube.com/watch?v=s2Q-LU-HOxM",
-    "duration": "26:30",
+    "playlist": "Karaburun",    "duration": "26:30",
 	"konum": "37.99970901615175, 27.326449191118733"
   },
   {
     "title": "Karaburun Bisiklet Turu – 4. Bölüm (Karaburun - Mordoğan - Urla - Alsancak)",
     "description": "9 Kasım 2021 – 14 Kasım 2021 tarihleri arasında İzmir ve Karaburun Yarımadalarında yaptığım bisiklet turunun dördüncü bölümünde Karaburun kamp alan...",
     "url": "https://www.youtube.com/watch?v=YMsvkfJXdOM",
-    "duration": "31:00",
+    "playlist": "Karaburun",    "duration": "31:00",
 	"konum": "38.59096957578004, 26.548572439815505"
   },
   {
     "title": "Karaburun Bisiklet Turu – 3. Bölüm (Karareis - Sazak - Yeniliman - Karaburun)",
     "description": "9 Kasım 2021 – 14 Kasım 2021 tarihleri arasında İzmir ve Karaburun Yarımadalarında yaptığım bisiklet turunun üçüncü bölümünde Karareis kamp alanınd...",
     "url": "https://www.youtube.com/watch?v=kGUkfPeD3oE",
-    "duration": "38:05",
+    "playlist": "Karaburun",    "duration": "38:05",
 	"konum": "38.49694191038191, 26.420585330493154"
   },
   {
     "title": "Karaburun Bisiklet Turu – 2. Bölüm (Tatar Köprüsü - Ildır - Karareis)",
     "description": "9 Kasım 2021 – 14 Kasım 2021 tarihleri arasında İzmir ve Karaburun Yarımadalarında yaptığım bisiklet turunun ikinci bölümünde Tatar Köprüsü kamp al...",
     "url": "https://www.youtube.com/watch?v=RnjqpKDdvNk",
-    "duration": "40:21",
+    "playlist": "Karaburun",    "duration": "40:21",
 	"konum": "38.277753277357455, 26.591490932555004"
   },
   {
     "title": "Karaburun Bisiklet Turu – 1. Bölüm (Ahmetbeyli - Gümüldür - Seferihisar - İçmeler - Tatar Köprüsü)",
     "description": "9 Kasım 2021 – 14 Kasım 2021 tarihleri arasında İzmir ve Karaburun Yarımadalarında yaptığım bisiklet turunun birinci bölümünde Ahmetbeyli kamp alan...",
     "url": "https://www.youtube.com/watch?v=bs5Y_UQyeAA",
-    "duration": "26:03",
+    "playlist": "Karaburun",    "duration": "26:03",
 	"konum": "37.98978016028545, 27.18478728089483"
   },
   {
     "title": "Karaburun Bisiklet Turu - Başlangıç (Kuşadası - Ahmetbeyli)",
     "description": "9 Kasım 2021 - 14 Kasım 2021 tarihleri arasında İzmir  ve Karaburun Yarımadalarında yaptığım bisiklet turunun başlangıç bölümünde Kuşadası'ndan Ahm...",
     "url": "https://www.youtube.com/watch?v=FAX2OmVl7Yc",
-    "duration": "15:10",
+    "playlist": "Karaburun",    "duration": "15:10",
 	"konum": "37.89877932720258, 27.273121413411687"
   },
   {
     "title": "3 Göl Bisiklet Turu (Kazan,Gebekirse,Çatal)",
     "description": "7 Kasım 2021 tarihinde kuşadası ve selçuk arasında kazan, gebekirse ve çatal göllerini ziyaret ettiğim bisiklet turunun dijital kayıtları.",
     "url": "https://www.youtube.com/watch?v=1VZLqzjqPu0",
-    "duration": "42:42",
+    "playlist": "Günlük Turlar",    "duration": "42:42",
 	"konum": "37.98805932473984, 27.275009688851984"
   },
   {
     "title": "Kırılan Bagaj Vidası Kadrodan Nasıl Çıkartılır?",
     "description": "\"Alet işler, el övünür.\" dedirten bir video ile tekrar karşınızdayım. Kırılan bagaj vidası kadrodan çıkartılması öyle sanıldığı kadar büyük bir pro...",
     "url": "https://www.youtube.com/watch?v=l0m3eP3fFko",
-    "duration": "6:13"
+    "playlist": "yol yordam",    "duration": "6:13"
   },
   {
     "title": "Bafa Gölü Civarı Bisiklet Turu – 4.Bölüm (Priene Antik Kenti - Söke - Davutlar - Kuşadası",
     "description": "27 Ekim 2021 - 1 Kasım 2021 tarihleri arasında Şafak Omaç ağabeyim ile birlikte Söke Ovası ve Bafa gölü civarında yaptığımız bisiklet turunun üçünü...",
     "url": "https://www.youtube.com/watch?v=Xq-0IpiD-rE",
-    "duration": "33:09",
+    "playlist": "Bafa Gölü Civarı",    "duration": "33:09",
 	"konum": "37.62106840930711, 27.197142132833246"
   },
   {
     "title": "Bafa Gölü Civarı Bisiklet Turu – 3.Bölüm (Kapıkırı - Bafa - Miletos - Doğanbey - Güllübahçe)",
     "description": "27 Ekim 2021 - 1 Kasım 2021 tarihleri arasında Şafak Omaç ağabeyim ile birlikte Söke Ovası ve Bafa gölü civarında yaptığımız bisiklet turunun üçünü...",
     "url": "https://www.youtube.com/watch?v=XfnJqEWSl5g",
-    "duration": "38:00",
+    "playlist": "Bafa Gölü Civarı",    "duration": "38:00",
 	"konum": "37.50105735907769, 27.522564802328638"
   },
   {
     "title": "Bafa Gölü Civarı Bisiklet Turu – 2.Bölüm (Akbük - Ovakışlacık - Selimiye - Bafa - Kapıkırı)",
     "description": "27 Ekim 2021 - 1 Kasım 2021 tarihleri arasında Şafak Omaç ağabeyim ile birlikte Söke Ovası ve Bafa gölü civarında yaptığımız bisiklet turunun ikinc...",
     "url": "https://www.youtube.com/watch?v=dhf6CZmrVEk",
-    "duration": "37:09",
+    "playlist": "Bafa Gölü Civarı",    "duration": "37:09",
 	"konum": "37.41552606621529, 27.410797153530925"
   },
   {
     "title": "Bafa Gölü Civarı Bisiklet Turu - 1.Bölüm (Kuşadası - Azap Gölü - Didim - Akbük)",
     "description": "27 Ekim 2021 - 1 Kasım 2021 tarihleri arasında Şafak Omaç ağabeyim ile birlikte Söke Ovası ve Bafa gölü civarında yaptığımız bisiklet turunun birin...",
     "url": "https://www.youtube.com/watch?v=g0HVbZFw74I",
-    "duration": "51:04",
+    "playlist": "Bafa Gölü Civarı",    "duration": "51:04",
 	"konum": "37.86393039099638, 27.2613507803662"
   },
   {
     "title": "Başarısız Bir Tur Girişimi #2 - Karaburun Mağlubu",
     "description": "23 Ekim 2021 tarihinde Karaburun yarımadasına doğru çıktığım fakat bisikletimin arka göbeğinde oluşan sorun sebebiyle Urla civarında yarım bırakmak...",
     "url": "https://www.youtube.com/watch?v=cCFDwWO3194",
-    "duration": "41:22",
+    "playlist": "Karaburun",    "duration": "41:22",
 	"konum": "37.865844609007134, 27.27325978829114"
   },
   {
     "title": "Kuşadası Bisiklet Yolu",
     "description": "Aydın Büyükşehir Belediyesi tarafından düzenlenen Kuşadası Davutlar'daki Sevgi Yolu, sevilen yürüyüş ve bisiklet rotalarından. Temizliğin ve kalite...",
     "url": "https://www.youtube.com/watch?v=V4mKadrlkf4",
-    "duration": "16:15",
+    "playlist": "bisiklet yolları",    "duration": "16:15",
 	"konum": "37.762342092963635, 27.259789734106956"
   },
   {
     "title": "Zafere Giden Yol 5. Bölüm (İnönü - İntikamtepe Şehitliği - Kütahya - Afyon - Şuhut)",
     "description": "Zafere giden yol Ankara’dan başlayarak 1500 KM sonunda İzmir’de son buluyor.",
     "url": "https://www.youtube.com/watch?v=ECDx-XcMD2g",
-    "duration": "14:50",
+    "playlist": "Zafere Giden Yol",    "duration": "14:50",
 	"konum": "39.87156576298817, 30.103446883466887"
   },
   {
     "title": "Zafere Giden Yol 4. Bölüm (Eskişehir - Metristepe Zafer Anıtı - Söğüt - Bozüyük - İnönü Şehitliği)",
     "description": "Zafere giden yol Ankara’dan başlayarak 1500 KM sonunda İzmir’de son buluyor.",
     "url": "https://www.youtube.com/watch?v=JrTf_uQKGTk",
-    "duration": "9:00",
+    "playlist": "Zafere Giden Yol",    "duration": "9:00",
 	"konum": "39.77122763482234, 30.423367154878676"
   },
   {
     "title": "Zafere Giden Yol 3. Bölüm (Mihalıçcık - Beylikova - Mahmudiye - Çifteler - Seyitgazi - Eskişehir)",
     "description": "Zafere giden yol Ankara’dan başlayarak 1500 KM sonunda İzmir’de son buluyor.",
     "url": "https://www.youtube.com/watch?v=69Gu1fLdJlQ",
-    "duration": "17:25",
+    "playlist": "Zafere Giden Yol",    "duration": "17:25",
 	"konum": "39.83914357875275, 31.480744468203046"
   },
   {
     "title": "Zafere Giden Yol 2. Bölüm (12. Grup Şehitliği - Sakarya Şehitleri - Basrikale Mevzileri - Duatepe)",
     "description": "Zafere giden yol Ankara’dan başlayarak 1500 KM sonunda İzmir’de son buluyor.",
     "url": "https://www.youtube.com/watch?v=jdLUHbdD23Y",
-    "duration": "7:50",
+    "playlist": "Zafere Giden Yol",    "duration": "7:50",
 	"konum": "39.505452439531176, 32.075250728125134"
   },
   {
     "title": "Zafere Giden Yol 1. Bölüm (Alagöz Karargahı - Türbetepe - Mangaldağı - Gazitepe - Toydemir)",
     "description": "Zafere giden yol Ankara’dan başlayarak 1500 KM sonunda İzmir’de son buluyor.",
     "url": "https://www.youtube.com/watch?v=BB0ig5gnrpQ",
-    "duration": "9:32",
+    "playlist": "Zafere Giden Yol",    "duration": "9:32",
 	"konum": "39.74617955483405, 32.47804844802657"
   },
   {
     "title": "Benzin Ocağı: Gaz ile Ön ıstma işlemini",
     "description": "Merhaba, bu videoda  benzin ocaklarında oldukça meşakatli ve pis bir işlem olan ön ısıtma işlemini daha kolaylaştıran bir yöntem gösteriyorum.",
     "url": "https://www.youtube.com/watch?v=M_kLu1e3Hvw",
-    "duration": "9:22"
+    "playlist": "yol yordam",    "duration": "9:22"
   },
   {
     "title": "Kemaliye Karanlık kanyonu (Kemaliyeliler Taşyolu) @aykiriyollar",
     "description": "Merhaba Sevgili dostlar, ben Ferdimen. Sefil ve acınası hayatıma hoş geldiniz. ",
     "url": "https://www.youtube.com/watch?v=3i4y8GNqlog",
-    "duration": "16:51",
+    "playlist": "aykırı yollar",    "duration": "16:51",
 	"konum": "39.287482804352955, 38.48790977261733"	
   },
   {
     "title": "Trakya Bisiklet Turu",
     "description": "Edirne'den başlayıp Dereköy, Dupnisa Mağarası, Demirköy' İğneada ve Kıyıköy'ü kapsayan bisiklet turundan dijital hatıralar.",
     "url": "https://www.youtube.com/watch?v=edgibutU5R4",
-    "duration": "44:57",
+    "playlist": "",    "duration": "44:57",
 	"konum": "41.65529056074843, 26.579939719170607"
   },
   {
     "title": "Wikiloc Hakkında Altın Değerinde Tavsiyeler - wikiloc ücretsiz rota takibi - rota indirme",
     "description": "Rota ve yön bulmak için kullanılan wikiloc uygulaması hakkında altın değerinde tavsiyelerde bulunuyorum.",
     "url": "https://www.youtube.com/watch?v=ZSNWzcAWQlI",
-    "duration": "9:48"
+    "playlist": "yol yordam",    "duration": "9:48"
   },
   {
     "title": "Sıcak Lastik Yaması (Kaynağı) Nasıl yapılır? Artıları Eksileri nelerdir?",
     "description": "Sıcak Lastik Kaynağı Nasıl yapılır? Artıları Eksileri nelerdir?",
     "url": "https://www.youtube.com/watch?v=WGS3_2gMCoA",
-    "duration": "10:14"
+    "playlist": "yol yordam",    "duration": "10:14"
   },
   {
     "title": "Gökova Bisiklet Turu 4. Bölüm (Aydın - Kuşadası)",
     "description": "Bu video 13-16 Mayıs 2017 tarihleri arasında gerçekleştirdiğimiz Gökova Bisiklet Turundan sonra geri dönüş yolundan Aydın Kuşadası arasındaki hatır...",
     "url": "https://www.youtube.com/watch?v=oPrOszVTL6Q",
-    "duration": "8:09",
+    "playlist": "gökova",    "duration": "8:09",
 	"konum": "37.79788052505615, 27.8393191041856"	
   },
   {
     "title": "Gökova Bisiklet Turu 3. Bölüm (Marmaris - Datça)",
     "description": "izleyeceğiniz bu video 13-16 Mayıs 2017 tarihleri arasında gerçekleştirdiğimiz Gökova Bisiklet Turunun Marmaris ile Datça arasındaki hatıralarımızı...",
     "url": "https://www.youtube.com/watch?v=sQKbAu4UnKY",
-    "duration": "10:32",
+    "playlist": "gökova",    "duration": "10:32",
 	"konum": "36.803288690125406, 28.098574888038243"	
   },
   {
     "title": "Gökova Bisiklet Turu 2. Bölüm (Akyaka - Marmaris)",
     "description": "İzleyeceğiniz bu video 13-16 Mayıs 2017 tarihleri arasında gerçekleştirdiğimiz Gökova Bisiklet Turunun Akyaka ve Marmaris arasındaki hatıralarımızı...",
     "url": "https://www.youtube.com/watch?v=4UtB_2HgjeA",
-    "duration": "11:34",
+    "playlist": "gökova",    "duration": "11:34",
 	"konum": "37.0554050253241, 28.323753410295975"	
   },
   {
     "title": "Gökova Bisiklet Turu 1. Bölüm (Bodrum - Ören - Akyaka)",
     "description": "13-16 Mayıs 2017 tarihleri arasında gerçekleştirdiğimiz Gökova Bisiklet Turunun Bodrum, Ören ve Akyaka arasındaki iki güne ait hatıralarımızın bir ...",
     "url": "https://www.youtube.com/watch?v=q31a7A0rKoA",
-    "duration": "11:07",
+    "playlist": "gökova",    "duration": "11:07",
 	"konum": "37.03702475821655, 27.433627185206966"	
   },
   {
     "title": "(Slime) Sıvı dolgulu iç lastik ne kadar işe yarıyor?",
     "description": "(Slime) Sıvı dolgulu iç lastik ne kadar işe yarıyor? sorusunun cevabını bire bir tecrübelerimi aktardığım bu videoda bulabilirsiniz.",
     "url": "https://www.youtube.com/watch?v=vdDSe73QDEc",
-    "duration": "5:32"
+    "playlist": "yol yordam",    "duration": "5:32"
   },
   {
     "title": "Bisiklet Yıkamanın Püf Noktaları (Bisiklet Nasıl Yıkanır)",
     "description": "Basınçlı su ile bisiklet yıkamanın püf noktalarını bir bilene sorduk, sağ olsun o da uygulamalı olarak gösterdi.",
     "url": "https://www.youtube.com/watch?v=9hrjRKGLBTo",
-    "duration": "4:24"
+    "playlist": "yol yordam",    "duration": "4:24"
   },
   {
     "title": "KONU: OTOBÜSLE BİSİKLET TAŞIMA",
     "description": "Bu videoda yaptığım bisiklet turlarında bisikletimi otobüste nasıl taşındığına dair kendi bildiklerimi göstermeye çalıştım.",
     "url": "https://www.youtube.com/watch?v=slvf1UPZK2w",
-    "duration": "12:24"
+    "playlist": "yol yordam",    "duration": "12:24"
   },
   {
     "title": "Çorlu'nun Modern Yüzü - 3 Kore ve Sinop Mahallesi",
     "description": "\"Söylesem tesiri yok, Sussam gönül razı değil.\"",
     "url": "https://www.youtube.com/watch?v=-pNBeKOawjE",
-    "duration": "4:54",
+    "playlist": "",    "duration": "4:54",
 	"konum": "41.16827476894349, 27.794588075770463"	
   },
   {
     "title": "Tekirdağ Heraion Teichos Antik Kenti",
     "description": "Bugün Az Bilinen Antik Kent Heraion Teichos (Hera'nın Surlarına) uğradım. Sahilde Antik Limanın izini sürdüm, İnsan kemikleri, amfora ve pek çok il...",
     "url": "https://www.youtube.com/watch?v=guuaJCVvNLQ",
-    "duration": "24:40",
+    "playlist": "Günlük Turlar",    "duration": "24:40",
 	"konum": "41.0050408136168, 27.691140636758657"	
   },
   {
     "title": "Çorlu - Marmara Ereğlisi (Perinthos) Bisiklet Turu",
     "description": "Bisikletimi yıkamak için yola çıktığım bir günde hiç hesapta yokken tamamen anlık gelişmeler neticesinde Çorlu'dan Marmara Ereğlisine kadar devam e...",
     "url": "https://www.youtube.com/watch?v=kpiLKca3d5E",
-    "duration": "15:01",
+    "playlist": "Günlük Turlar",    "duration": "15:01",
 	"konum": "40.9689203704304, 27.951164707706628"	
   },
   {
     "title": "Çorlu - Yeniçiftlik - Nato Limanı Bisiklet Turu",
     "description": "Deniz hasreti ile yandığımız şu günlerde \"-Deniz, deniz, deniz...\" diye diye Nato limanına kadar geldiğimiz bisiklet turunun kısa videosu. ",
     "url": "https://www.youtube.com/watch?v=t3yvRJlqsC4",
-    "duration": "4:25",
+    "playlist": "Günlük Turlar",    "duration": "4:25",
 	"konum": "41.0134930555757, 27.76628540551812"	
   },
   {
     "title": "Coolchange 12 Fonksiyonlu Kilometre Saati",
     "description": "Çin'den uygun fiyata aldığım Coolchange 12 Fonksiyonlu Kilometre Saatinin Kutu açılımı, ayarları, Kurulum ve testini yaptığım videonun km saati alm...",
     "url": "https://www.youtube.com/watch?v=GTYjQ1gMRhY",
-    "duration": "14:48"
+    "playlist": "yol yordam",    "duration": "14:48"
   },
   {
     "title": "Çorlu - Velimeşe Boza Turu",
     "description": "Arkadaşım Gözde ile yaptığımız bisiklet turunda biz çok eğlendik sizi de bu eğlencemizden mahrum bırakmak istemedim.",
     "url": "https://www.youtube.com/watch?v=X8I0yTBifLo",
-    "duration": "14:17",
+    "playlist": "Günlük Turlar",    "duration": "14:17",
 	"konum": "41.248244582128486, 27.874485144612407"	
   },
   {
     "title": "Çorlu'nun Modern Yüzü - 2 Gölbaşı Gençlik Parkı",
     "description": "Çorlu-İstanbul kara yolu üzerinde bulunan Gölbaşı Gençlik Parkına kendi aracınız yada 2 numaralı hatta hizmet veren toplu taşıma araçları ile kolay...",
     "url": "https://www.youtube.com/watch?v=mW8UAtBJqMQ",
-    "duration": "2:54",
+    "playlist": "",    "duration": "2:54",
 	"konum": "41.13677436494853, 27.883572469144266"	
   },
   {
     "title": "Çorlu'nun Modern Yüzü - 1 Cumhuriyet Parkı",
     "description": "Bisiklet kullanımının yaygınlaşması için kısa süreli bisiklet geçişi ile bilinçaltınıza mesaj verdiğim bir video.",
     "url": "https://www.youtube.com/watch?v=hRYbq35r4no",
-    "duration": "0:46",
+    "playlist": "",    "duration": "0:46",
 	"konum": "41.146265095444754, 27.80294265380166"	
   },
   {
     "title": "Google Earth ile Rota Analizi ve Oluşturma (Uçmakdere)",
     "description": "Tekirdağ'dan Çanakkale'ye doğru giderken faydalı rota tavsiyeleri ve daha neler neler...",
     "url": "https://www.youtube.com/watch?v=78y_XI42gIs",
-    "duration": "7:50"
+    "playlist": "yol yordam",    "duration": "7:50"
   },
   {
     "title": "Wikiloc: Elle Rota Çizme",
     "description": "Bilmeyenler için wikiloc.com adresinde el ile nasıl rota çizildiğini gösteriyorum. ",
     "url": "https://www.youtube.com/watch?v=M0BSpuM-9kM",
-    "duration": "5:41"
+    "playlist": "yol yordam",    "duration": "5:41"
   },
   {
     "title": "Kamp Ocak Kartuşu Çakmak gazı ile nasıl doldurulur?",
     "description": "Açıklama bulunmuyor.",
     "url": "https://www.youtube.com/watch?v=dVTWSFZGE9w",
-    "duration": "4:10"
+    "playlist": "yol yordam",    "duration": "4:10"
   },
   {
     "title": "Patlak Lastik Nasıl Tamir Edilir?",
     "description": "Kahramanınız Ferdimen bu sefer sizlere patlak bir lastik nasıl tamir edilir onu gösteriyor.",
     "url": "https://www.youtube.com/watch?v=YZBj3Ejq4bo",
-    "duration": "8:09"	
+    "playlist": "yol yordam",    "duration": "8:09"	
   }
 ]
