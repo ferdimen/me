@@ -2,7 +2,7 @@
 			{
                 "tarih": "2026 Haziran",
                 "baslik": "Küçük Bir Sadeleşme Hikayesi",
-               "aciklama": "Uzun süredir rotalarımı kendime saklıyordum; şimdi bu dijital gizliliği bir adım daha öteye taşıyorum. Maliyetli ve yavaş işleyen WordPress sitemi tamamen kapatarak, yoluma çok daha hafif, hızlı ve minimalist bir dijital alanla devam etme kararı aldım.",
+               "aciklama": "Uzun süredir rotalarımı kendime saklıyordum; şimdi bu dijital gizliliği bir adım daha öteye taşıyorum. Maliyetli ve yavaş işleyen WordPress sitemi tamamen kapatarak, yoluma çok daha hafif, hızlı ve minimalist bir dijital alanla devam etme kararı aldım. <br>Bu sadece bir başlangıç. Yıl sonuna doğru, 10 yılı aşkın süredir yayında olan diğer sitelerimi de kapatıp Şubat 2027 itibariyla <b>YouTube kanalıma belirsiz bir süre ara vereceğim.</b> İçerik üretme, yükleme ve takip edilme döngüsünden sıyrılıp, zamanı sadece kendime ayıracağım.",
                 "resim": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaqj93PCT2UnBtriYPx8D2XqdVQ5VZNguPu804RtHO_wWV5FKN2xFOOX1MKstCW_Deo_QJcCrd072gJirfc17m4YCo7RUAAcSvaaE5MCSZFOq1-_nzOPxj3k7v0M5elhivxT1GcL4XBGPsRpqer31nV_JwF9pXiJ2mGGo6zo2cnY6EWnvJU9lsyb3ymTR7/s320/404.jpg",
                 "linkblogUrl": "",				
 				"linkblogMetni": "Blog Sayfası",		
@@ -26,7 +26,7 @@
                 "resim": "img/maps/2025-anadolu-irfani.jpg",
                 "linkblogUrl": "yazilar/2025-anadolu-irfani.html",				
 				"linkblogMetni": "Blog Sayfası",					
-               "linkUrl": "https://www.youtube.com/watch?v=9je7oBF7aYI&list=PLwJbwS5nZYYB-4uKTd_VN10o9PpVA0mS1",
+               "linkUrl": "https://ferdimen.com/izle.html?playlist=Anadolu%20İrfanı",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -36,7 +36,7 @@
                 "resim": "img/maps/2025-toros-canavari.jpg",
                 "linkblogUrl": "yazilar/2025-toros.html",				
 				"linkblogMetni": "Blog Sayfası",	
-				"linkUrl": "https://www.youtube.com/watch?v=eRKU_7z8mE4&list=PLwJbwS5nZYYDYRm35LPQinRjPR-okvYk8&pp=sAgC",
+				"linkUrl": "https://ferdimen.com/izle.html?playlist=Toros%20Canavarı",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -46,7 +46,7 @@
                 "resim": "img/maps/2025-icten-anadolu.jpg",
                 "linkblogUrl": "yazilar/2025-icten-anadolu.html",				
 				"linkblogMetni": "Blog Sayfası",	
-				"linkUrl": "https://www.youtube.com/watch?v=EEk5ZH8EO18&list=PLwJbwS5nZYYA0y7VoHu1rCV-_dyBH8lXF&pp=sAgC",
+				"linkUrl": "https://ferdimen.com/izle.html?playlist=içten%20anadolu",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -56,7 +56,7 @@
                 "resim": "img/maps/2024-12-kuzeyden.jpg",
                 "linkblogUrl": "yazilar/2024-kuzeyden-galiba.html",				
 				"linkblogMetni": "Blog Sayfası",	
-				"linkUrl": "https://www.youtube.com/watch?v=u2zK1P2759k&list=PLwJbwS5nZYYAc3po9bVqF6LTyAlpsKvAN&pp=sAgC",
+				"linkUrl": "https://ferdimen.com/izle.html?playlist=kuzeyden%20galiba",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -66,7 +66,7 @@
                 "resim": "img/maps/2024-guz.jpg",
                  "linkblogUrl": "yazilar/2024-guz-guneyi.html",				
 				"linkblogMetni": "Blog Sayfası",	
-				"linkUrl": "https://www.youtube.com/watch?v=jULxYyUyHh4&list=PLwJbwS5nZYYCfksBmzoYD3tNF4aC-k7a-&pp=sAgC",
+				"linkUrl": "https://ferdimen.com/izle.html?playlist=guz-guneyi",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -76,7 +76,7 @@
                 "resim": "img/maps/2024-subat.jpg",
                 "linkblogUrl": "yazilar/2024-subat.html",				
 				"linkblogMetni": "Blog Sayfası",	
-				"linkUrl": "https://www.youtube.com/watch?v=M40wA_VmbJA&list=PLwJbwS5nZYYBiYwROMSek0VcOq-6K9IYv&pp=sAgC",
+				"linkUrl": "https://ferdimen.com/izle.html?playlist=%C5%9Fubat",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -86,7 +86,7 @@
                 "resim": "img/maps/2023-aklim-kalmasin.jpg",
                  "linkblogUrl": "yazilar/2023-aklim-kalmasin.html",				
 				"linkblogMetni": "Blog Sayfası",	
-				"linkUrl": "https://www.youtube.com/watch?v=m4GatBst6YQ&list=PLwJbwS5nZYYA8gg9_Gr-EiLm8IRMcvyIM&pp=sAgC",
+				"linkUrl": "https://ferdimen.com/izle.html?playlist=akl%C4%B1m%20kalmas%C4%B1n",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -96,7 +96,7 @@
                 "resim": "img/maps/2023-yoklukta-gider.jpg",
                  "linkblogUrl": "yazilar/2023-yoklukta-gider.html",				
 				"linkblogMetni": "Blog Sayfası",	
-				"linkUrl": "https://www.youtube.com/watch?v=Xhzg2OWm2-c&list=PLwJbwS5nZYYBSkd6hfWUdR0__XeaHrkIG&pp=sAgC",
+				"linkUrl": "https://ferdimen.com/izle.html?playlist=yoklukta%20gider",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -106,7 +106,7 @@
                 "resim": "img/maps/2022-kis.jpg",
                 "linkblogUrl": "yazilar/2022-kis-kis.html",		
 				"linkblogMetni": "Blog Sayfası",	
-				"linkUrl": "https://www.youtube.com/watch?v=eumzbypehL4&list=PLwJbwS5nZYYAh1qeNJbBVXodbPF2Sagj7&pp=sAgC",
+				"linkUrl": "https://ferdimen.com/izle.html?playlist=K%C4%B1%C5%9F%20K%C4%B1%C5%9F",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -116,7 +116,7 @@
                 "resim": "img/maps/2022-meric-gelibolu.jpg",
                 "linkblogUrl": "yazilar/2022-trakya-ve-gelibolu.html",
 				"linkblogMetni": "Blog Sayfası",	
-               "linkUrl": "https://www.youtube.com/watch?v=0h2IbyEaCtQ&list=PLwJbwS5nZYYDQQZgZNAlVF5IkxQYsa6Ga&pp=sAgC",
+               "linkUrl": "https://ferdimen.com/izle.html?playlist=Trakya%20ve%20Gelibolu",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -126,7 +126,7 @@
                 "resim": "img/maps/2022-anadolumbenim.jpg",
                 "linkblogUrl": "yazilar/2022-anadolum-benim.html",
 				"linkblogMetni": "Blog Sayfası",	
-				"linkUrl": "https://www.youtube.com/watch?v=PplHLEhJYXQ&list=PLwJbwS5nZYYAHKNylnsARW1bgDUE3pCMO&pp=0gcJCWUDOCosWNinsAgC",
+				"linkUrl": "https://ferdimen.com/izle.html?playlist=Anadolum%20Benim",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -136,7 +136,7 @@
                 "resim": "img/maps/2022-aykiriyollar-harita.jpg",
                 "linkblogUrl": "yazilar/2022-aykiri-yollardan-izmir.html",
 				"linkblogMetni": "Blog Sayfası",					
-               "linkUrl": "https://www.youtube.com/watch?v=3wMTBUutUEY&list=PLwJbwS5nZYYCs-Wplw00WVvSKYh2rCG-9&pp=sAgC",
+               "linkUrl": "https://ferdimen.com/izle.html?playlist=Da%C4%9Fdan%20Ta%C5%9Ftan%20%C4%B0zmir",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -146,7 +146,7 @@
                 "resim": "img/maps/2022-sevkiyat-istiklal-yolu-harita.jpg",
                  "linkblogUrl": "yazilar/2022-istiklalyolu-sevkiyat.html",
 				"linkblogMetni": "Blog Sayfası",	
-				"linkUrl": "https://www.youtube.com/watch?v=9zBZslb_SbU&list=PLwJbwS5nZYYAFOLHD6RDWcLPAyaXQU5OB&pp=0gcJCWUDOCosWNinsAgC",
+				"linkUrl": "https://ferdimen.com/izle.html?playlist=Sevkiyat%20(%C4%B0stiklal%20Yolu)",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -156,7 +156,7 @@
                 "resim": "img/maps/2022-az-anadolu-harita.jpg",
                  "linkblogUrl": "yazilar/2022-az-anadolu.html",
 				"linkblogMetni": "Blog Sayfası",	
-				 "linkUrl": "https://www.youtube.com/watch?v=z-C_10ZhZi4&list=PLwJbwS5nZYYBhfvbSKIJgvJs2RfNVVVfp&pp=sAgC",
+				 "linkUrl": "https://ferdimen.com/izle.html?playlist=Az%20anadolu",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -166,7 +166,7 @@
                 "resim": "img/maps/2021-alasehir-kusadasi-harita.jpg",
                 "linkblogUrl": "2021-alasehir-kusadasi.html",
 				"linkblogMetni": "Blog Sayfası",	
-				 "linkUrl": "https://www.youtube.com/watch?v=_zK05ECyrn8&list=PLwJbwS5nZYYAaCs5_r8R8ucnCFZwyT1RQ&pp=sAgC",
+				 "linkUrl": "https://ferdimen.com/izle.html?playlist=Ala%C5%9Fehir%27den%20Ku%C5%9Fadas%C4%B1",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -176,7 +176,7 @@
                 "resim": "img/maps/2021-karaburun-harita.jpg",
                  "linkblogUrl": "2021-karaburun.html",
 				"linkblogMetni": "Blog Sayfası",	
-				 "linkUrl": "https://www.youtube.com/watch?v=s2Q-LU-HOxM&list=PLwJbwS5nZYYB3f-YmDeJenH3EFUj4tV5i&pp=sAgC",
+				 "linkUrl": "https://ferdimen.com/izle.html?playlist=Karaburun",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -186,7 +186,7 @@
                 "resim": "img/maps/2021-bafa-harita.jpg",
                  "linkblogUrl": "2021-bafa-golu.html",
 				"linkblogMetni": "Blog Sayfası",	
-               "linkUrl": "https://www.youtube.com/watch?v=g0HVbZFw74I&list=PLwJbwS5nZYYACEqm4vvX-3ie9gMaOjdyE&pp=sAgC",
+               "linkUrl": "https://ferdimen.com/izle.html?playlist=Bafa%20G%C3%B6l%C3%BC%20Civar%C4%B1",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -196,7 +196,7 @@
                 "resim": "img/maps/2021-deli-divane-harita.jpg",
                  "linkblogUrl":  "2021-deli-divane.html",
 				"linkblogMetni": "Blog Sayfası",					
-               "linkUrl": "https://www.youtube.com/watch?v=aqFdgdfOAuY&list=PLwJbwS5nZYYCSMyrqfM-YYMe0TvEsoZMA&pp=sAgC",
+               "linkUrl": "https://ferdimen.com/izle.html?playlist=deli%20divane",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -216,7 +216,7 @@
                 "resim": "img/maps/2021-gelibolu-1951.jpg",
                  "linkblogUrl": "yazilar/2021-gelibolu-1915.html",
 				"linkblogMetni": "Blog Sayfası",	
-               "linkUrl": "https://www.youtube.com/watch?v=G8kfrYKHR6M&list=PLwJbwS5nZYYDLiyvUtvWYBthptH_UNUBX&pp=sAgC",
+               "linkUrl": "https://ferdimen.com/izle.html?playlist=Gelibolu%201915",
                "linkMetni": "Tur Videolarını İzle"
             },
             {
@@ -236,7 +236,7 @@
                 "resim": "https://1.bp.blogspot.com/-EMoL5G9RRKQ/Xx6SRJ0S6RI/AAAAAAAA3Jw/0JdfRUmljH852rI8viJ3WD7tZtQeH-FiQCLcBGAsYHQ/w640-h362/kocatepe-1.jpg",
 				"linkblogUrl": "yazilar/2020-zgy.html",
 				"linkblogMetni": "Blog Sayfası",	
-			   "linkUrl": "https://www.youtube.com/watch?v=BB0ig5gnrpQ&list=PLwJbwS5nZYYC8pqjtgC2CywTe8Qw8xDFx&pp=sAgC",
+			   "linkUrl": "https://ferdimen.com/izle.html?playlist=Zafere%20Giden%20Yol",
                "linkMetni": "Tur Videolarını İzle"
             },		
             {
