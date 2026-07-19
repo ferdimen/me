@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.css" />
     
     <link rel="stylesheet" href="data/css.css">
-
+    <link rel="stylesheet" href="nerdeyim/konum.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.js"></script>   
 </head>
 <body>
@@ -61,7 +61,7 @@
             <p class="hero-bio">
                 15 yılı aşkın süredir coğrafyanın kılcal damarlarını iki teker üzerinde pedallayan bağımsız bir "avare" ve dijital yol anlatıcısıyım. Hazır şablonları reddederek, modern dünyanın dayattığı tüketim çılgınlığına karşı az donanımlarla "Aykırı Yollarda" ham gerçekliğin izini sürüyorum.
             </p>
-            <a href="#iletisim" class="hero-btn">İletişim</a>
+            <a href="#iletisim" class="hero-btn">İletişim</a> 
         </div>
     </section>
 
@@ -163,9 +163,20 @@ Seyahat felsefesimde "görünmezlik" ve "hamlık" ön plandadır. Popüler rotal
         </div>
     </div>
 </section>
+	<section class="routes-section" id="takip">
+    <div class="container">
+		    <!-- Ana Konteyner -->
+    <div id="polarsteps-tracker-root">
+        <div id="tracker-global-loader">
+            Tur bilgileri kontrol ediliyor...
+        </div>
+    </div>		
+    </div>
+</section>
+
 	<section class="routes-section" id="haberler">
     <div class="container">
-        <h2 class="section-main-title">Haberler</h2>
+        <h2 class="section-main-title">Haberler</h2>	
         <div class="slider-wrapper">
             
             <div class="slider-arrow left-arrow disabled" onclick="scrollSlider('haber-slider', 'left')">
@@ -912,6 +923,7 @@ const aktifVideolar = data
         .catch(err => console.error("Veriler yüklenirken hata oluştu:", err));
 });
     </script>
+<script src="nerdeyim/konum.js"></script>	
 </body>
 </html>
 </body>
