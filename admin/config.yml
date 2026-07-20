@@ -48,26 +48,3 @@ collections:
           
           # Renk seçimi için panelde harika bir renk paleti açar
           - { label: "Genel Çizgi Rengi", name: "cizgi-rengi", widget: "color" }
-
-          # İç içe geçmiş 'araclar' nesnesi (object)
-          - label: "Ulaşım Araçları Renk Ayarları"
-            name: "araclar"
-            widget: "object"
-            fields:
-              - label: "Bisiklet (Bike)"
-                name: "bike"
-                widget: "object"
-                fields:
-                  - { label: "Çizgi Rengi", name: "renk", widget: "color" }
-                  
-              - label: "Yürüyüş (Foot)"
-                name: "foot"
-                widget: "object"
-                fields:
-                  - { label: "Çizgi Rengi", name: "renk", widget: "color" }
-                  
-              - label: "Diğer (Other)"
-                name: "other"
-                widget: "object"
-                fields:
-                  - { label: "Çizgi Rengi", name: "renk", widget: "color" }
