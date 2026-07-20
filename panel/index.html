@@ -361,7 +361,7 @@
     </fieldset>
 </div>
 
-<!-- 6. SEKME: ROZETLER (data/rozetler.json) -->
+<!-- 6. SEKME: ROZETLER (yazilar/rozetler.json) -->
 <div id="rozetler-tab" class="tab-content">
     <h3>Rozet ve Filtre Yönetimi</h3>
     
@@ -1157,7 +1157,7 @@ async function sssGithubaGonder() {
 }
 // 1. ROZET VERİSİNİ GİTHUB'DAN ÇEKME
 async function rozetlerYukle(token) {
-    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/data/rozetler.json`;
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/yazilar/rozetler.json`;
     try {
         const response = await fetch(url, { 
             headers: { "Authorization": `token ${token}` } 
@@ -1326,7 +1326,7 @@ async function rozetleriGithubaGonder() {
     const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
 
     const payload = {
-        message: "Panel: data/rozetler.json listesinde düzenleme/silme yapıldı",
+        message: "Panel: yazilar/rozetler.json listesinde düzenleme/silme yapıldı",
         content: base64Content,
         sha: shaRozetler
     };
