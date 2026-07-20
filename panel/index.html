@@ -85,6 +85,7 @@
 				<button class="tab-btn" onclick="sekmeDegistir('kronoloji-tab')">⏳ Kronoloji</button>
 				<button class="tab-btn" onclick="sekmeDegistir('sss-tab')">🙋 SSS Yönetimi</button>				
 				<button class="tab-btn" onclick="sekmeDegistir('rozetler-tab')">🛡️ Rozet Yönetimi</button>
+				<button class="tab-btn" onclick="sekmeDegistir('yazilar-tab')">📝 Yazı Yönetimi</button>
                 <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
                 <!-- Gelecekte buraya yeni butonlar gelebilir -->
             </div>
@@ -417,6 +418,93 @@
         </div>
     </fieldset>
 </div>
+<!-- 7. SEKME: YAZILAR (yazilar/yazilar.json) -->
+<div id="yazilar-tab" class="tab-content">
+    <h3>Yazı İndeksi ve Katalog Yönetimi</h3>
+    
+    <!-- Yazı Ekleme ve Düzenleme Formu -->
+    <fieldset style="margin-bottom: 25px; border-color: #3b82f6;">
+        <legend id="yazi-form-baslik" style="color: #3b82f6; font-weight: bold;">➕ Yeni Yazı İndeksi Ekle</legend>
+        <form id="form-yeni-yazi" onsubmit="yaziFormuGonder(event)">
+            <!-- Gizli input: Düzenlenen yazının dizideki sırasını (index) tutar -->
+            <input type="hidden" id="yazi-index" value="-1">
+            
+            <div style="display: flex; gap: 15px;">
+                <div class="form-group" style="flex: 1;">
+                    <label for="yazi-id">Yazı ID (Benzersiz):</label>
+                    <input type="text" id="yazi-id" placeholder="Örn: 2023-08-10-golbasi" required oninput="document.getElementById('yazi-url').value = 'yazilar/' + this.value + '.html'">
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label for="yazi-baslik">Yazı Başlığı:</label>
+                    <input type="text" id="yazi-baslik" placeholder="Örn: 2023-08-10-golbasi" required>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 15px;">
+                <div class="form-group" style="flex: 2;">
+                    <label for="yazi-url">Yazı URL Yolu:</label>
+                    <input type="text" id="yazi-url" placeholder="yazilar/dosya-adi.html" required>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label for="yazi-tarih">Yazı Tarihi (Takvim):</label>
+                    <input type="date" id="yazi-tarih" required>
+                </div>
+            </div>
+
+            <!-- Kategori Yapısı -->
+            <div style="display: flex; gap: 15px; background: #f8fafc; padding: 10px; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 15px;">
+                <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                    <label for="yazi-ana-kategori">Ana Kategori:</label>
+                    <input type="text" id="yazi-ana-kategori" placeholder="Örn: Günlük Geziler" required>
+                </div>
+                <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                    <label for="yazi-alt-kategoriler">Alt Kategoriler (Virgülle ayırın):</label>
+                    <input type="text" id="yazi-alt-kategoriler" placeholder="Örn: bisiklet, Gözde">
+                </div>
+            </div>
+
+            <!-- Özel / Rozet Alanı -->
+            <div class="form-group">
+                <label>Özel / Rozet Seçimi (`rozetler.json` Uyumlu):</label>
+                <div id="yazi-rozet-secim-alani" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; max-height: 120px; overflow-y: auto; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff;">
+                    <!-- JavaScript dinamik olarak dolduracak -->
+                    <span style="color: #64748b; font-size: 12px;">Önce rozetler yüklenmeli...</span>
+                </div>
+                <input type="text" id="yazi-ozel" placeholder="Seçilen rozet değerleri otomatik buraya gelir veya elle yazabilirsiniz" style="margin-top: 5px;">
+            </div>
+
+            <!-- Kapak Resmi -->
+            <div class="form-group">
+                <label for="yazi-kapakresmi">Kapak Resmi URL'si:</label>
+                <input type="url" id="yazi-kapakresmi" placeholder="https://lh3.googleusercontent.com/..." required>
+            </div>
+
+            <!-- Gelişmiş Etiket Yönetim Alanı (Tag Input) -->
+            <div class="form-group">
+                <label>Etiketler (Yazıp Enter'a veya virgüle basın / Önerilenlerden seçin):</label>
+                <div id="etiket-kutusu-kapsayici" style="display: flex; flex-wrap: wrap; gap: 5px; padding: 6px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; min-height: 38px; align-items: center;">
+                    <!-- Eklenen tag'ler buraya gelecek -->
+                    <input type="text" id="etiket-tag-input" placeholder="Etiket ekle..." style="border: none; outline: none; padding: 2px; min-width: 120px; flex: 1; margin: 0; height: auto;" onkeydown="etiketTagKlavyeKontrol(event)">
+                </div>
+                <!-- Ajax/Öneri Etiket Listesi -->
+                <div id="etiket-oneri-listesi" style="display: none; position: absolute; background: white; border: 1px solid #cbd5e1; max-height: 150px; overflow-y: auto; z-index: 999; width: calc(100% - 40px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"></div>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <button type="submit" id="btn-yazi-kaydet" class="btn" style="background: #3b82f6; flex: 2; color: white;">Yazıyı Listenin Üstüne Ekle</button>
+                <button type="button" id="btn-yazi-iptal" onclick="yaziFormuSifirla()" class="btn" style="background: #64748b; flex: 1; display: none;">İptal Et</button>
+            </div>
+        </form>
+    </fieldset>
+
+    <!-- Tek Tek Yazıların Listeleneceği Alan -->
+    <fieldset>
+        <legend>📝 Mevcut Yazı Listesi</legend>
+        <div id="yazi-listesi-kapsayici" style="display: flex; flex-direction: column; gap: 12px; max-height: 500px; overflow-y: auto; padding-right: 5px;">
+            <p style="color: #64748b; font-size: 14px; text-align: center;">Yazılar yükleniyor...</p>
+        </div>
+    </fieldset>
+</div>
                 <!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
                 <div id="yeni-sekme-tab" class="tab-content">
                     <h3>Yeni Dosya / Değişken Ayarları</h3>
@@ -464,6 +552,12 @@ let mevcutSssDizisi = []; // Hafızada tutulacak SSS dizisi
 const PATH_ROZETLER = "data/rozetler.json";
 let shaRozetler = "";
 let mevcutRozetlerDizisi = []; // Hafızada tutulacak rozet dizisi
+
+const PATH_YAZILAR = "yazilar/yazilar.json";
+let shaYazilar = "";
+let mevcutYazilarDizisi = []; // Hafızada tutulacak yazılar listesi
+let secilenEtiketlerSeti = new Set(); // Dinamik etiket takibi için
+
 
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -516,7 +610,8 @@ if (token) {
     haberleriYukle(token);
     sssYukle(token); // YENİ EKLENEN SSS YÜKLEYİCİLERİ
 	rozetlerYukle(token);	// YENİ EKLENEN ROZETLER YÜKLEYİCİLERİ
-    
+    yazilariYukle(token);
+	
     // YENİ EKLENEN KRONOLOJİ YÜKLEYİCİLERİ
     yazilariYukle(token).then(() => {
         timelineYukle(token);
@@ -1327,7 +1422,316 @@ async function rozetleriGithubaGonder() {
         bildirimGoster(error.message, "error");
     }
 }
+// 1. YAZI VERİSİNİ GİTHUB'DAN ÇEKME
+async function yazilariYukle(token) {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_YAZILAR}`;
+    try {
+        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if(!response.ok) throw new Error("Yazılar dosyası yüklenemedi.");
 
+        const data = await response.json();
+        shaYazilar = data.sha;
+
+        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        mevcutYazilarDizisi = JSON.parse(decodedContent);
+
+        // Arayüzleri hazırla
+        yaziRozet SecimleriniDoldur();
+        yazilariListele();
+        etiketOneriArayuzunuHazirla();
+    } catch (error) {
+        console.log("Yazı listesi yükleme hatası: " + error.message);
+    }
+}
+
+// 2. ROZETLER DOSYASINDAN GELEN VERİLERLE SEÇİM ALANINI OLUŞTURMA
+function yaziRozetSecimleriniDoldur() {
+    const alan = document.getElementById('yazi-rozet-secim-alani');
+    if (!mevcutRozetlerDizisi || mevcutRozetlerDizisi.length === 0) {
+        alan.innerHTML = `<span style="color:#64748b; font-size:12px;">Mevcut rozet bulunamadı.</span>`;
+        return;
+    }
+    
+    alan.innerHTML = "";
+    mevcutRozetlerDizisi.forEach(rozet => {
+        const div = document.createElement('label');
+        div.style.cssText = "display:flex; align-items:center; gap:5px; font-size:11px; cursor:pointer; background:#f1f5f9; padding:4px; border-radius:4px; border:1px solid #cbd5e1;";
+        div.innerHTML = `
+            <input type="checkbox" value="${rozet.sinif}" onchange="yaziRozetSecimGuncelle()" class="rozet-checkbox-item">
+            <span style="width:16px; height:16px; display:inline-flex; align-items:center; color:${rozet.renk};">${rozet.svg}</span>
+            <span>${rozet.sinif}</span>
+        `;
+        alan.appendChild(div);
+    });
+}
+
+function yaziRozetSecimGuncelle() {
+    const checkboxlar = document.querySelectorAll('.rozet-checkbox-item');
+    let secilenler = [];
+    checkboxlar.forEach(cb => { if(cb.checked) secilenler.push(cb.value); });
+    
+    // İstediğin düzene göre örnek formatı (2, doğa, bisiklet gibi başlangıç sayılarını korumak istersen başa ekleme yapabilirsin)
+    // Burası şimdilik seçilen sınıfları virgülle yazar
+    document.getElementById('yazi-ozel').value = secilenler.join(', ');
+}
+
+// 3. GELİŞMİŞ ETİKET (TAG INPUT) YÖNETİMİ
+function etiketTagKlavyeKontrol(e) {
+    const input = document.getElementById('etiket-tag-input');
+    const deger = input.value.trim().replace(/,/g, '');
+
+    if ((e.key === 'Enter' || e.key === ',') && deger !== "") {
+        e.preventDefault();
+        etiketTagEkle(deger);
+        input.value = "";
+        document.getElementById('etiket-oneri-listesi').style.display = "none";
+    }
+}
+
+function etiketTagEkle(tag) {
+    // Büyük/küçük harf duyarlılığı veya standart TR karakter uyumu için temizleme yapılabilir
+    if(secilenEtiketlerSeti.has(tag)) return;
+    
+    secilenEtiketlerSeti.add(tag);
+    
+    const kutu = document.getElementById('etiket-kutusu-kapsayici');
+    const input = document.getElementById('etiket-tag-input');
+    
+    const tagHtml = document.createElement('span');
+    tagHtml.className = 'tag-item-token';
+    tagHtml.style.cssText = "background:#3b82f6; color:white; padding:2px 8px; border-radius:4px; font-size:12px; display:inline-flex; align-items:center; gap:5px;";
+    tagHtml.setAttribute('data-tagname', tag);
+    tagHtml.innerHTML = `${tag} <b style="cursor:pointer; font-size:10px; color:#bfdbfe;" onclick="etiketTagSil('${tag}')">×</b>`;
+    
+    kutu.insertBefore(tagHtml, input);
+}
+
+function etiketTagSil(tag) {
+    secilenEtiketlerSeti.delete(tag);
+    const element = document.querySelector(`.tag-item-token[data-tagname="${tag}"]`);
+    if(element) element.remove();
+}
+
+function etiketOneriArayuzunuHazirla() {
+    const input = document.getElementById('etiket-tag-input');
+    const oneriListesi = document.getElementById('etiket-oneri-listesi');
+
+    // Havuzdaki mevcut tüm benzersiz etiketleri çıkar
+    let tumEtiketler = new Set();
+    mevcutYazilarDizisi.forEach(y => {
+        if(y.etiketler && y.etiketler[0]) {
+            y.etiketler[0].split(',').forEach(e => {
+                let temiz = e.trim();
+                if(temiz) tumEtiketler.add(temiz);
+            });
+        }
+    });
+
+    input.addEventListener('input', function() {
+        const v = this.value.toLowerCase().trim();
+        if(!v) { oneriListesi.style.display = "none"; return; }
+
+        const filtreli = Array.from(tumEtiketler).filter(t => t.toLowerCase().includes(v));
+        if(filtreli.length === 0) { oneriListesi.style.display = "none"; return; }
+
+        oneriListesi.innerHTML = "";
+        filtreli.forEach(t => {
+            const div = document.createElement('div');
+            div.style.cssText = "padding:8px; cursor:pointer; border-bottom:1px solid #f1f5f9;";
+            div.innerText = t;
+            div.onmousedown = function() { // click yerine mousedown input odağını kaybettirmez
+                etiketTagEkle(t);
+                input.value = "";
+                oneriListesi.style.display = "none";
+            };
+            oneriListesi.appendChild(div);
+        });
+        oneriListesi.style.display = "block";
+    });
+
+    input.addEventListener('blur', () => setTimeout(() => oneriListesi.style.display = "none", 200));
+}
+
+// 4. YAZILARI PANELDE LİSTELEME
+function yazilariListele() {
+    const kapsayici = document.getElementById('yazi-listesi-kapsayici');
+    kapsayici.innerHTML = "";
+
+    if (mevcutYazilarDizisi.length === 0) {
+        kapsayici.innerHTML = `<p style="color: #64748b; font-size: 14px; text-align: center;">Kayıtlı yazı indeksi bulunmuyor.</p>`;
+        return;
+    }
+
+    mevcutYazilarDizisi.forEach((item, index) => {
+        const kart = document.createElement('div');
+        kart.className = 'haber-kart';
+        kart.style.background = "#fff";
+        
+        kart.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 15px; flex: 1;">
+                <img src="${item.kapakresmi}" style="width: 70px; height: 45px; object-fit: cover; border-radius: 4px; border: 1px solid #e2e8f0;">
+                <div class="haber-kart-detay">
+                    <h4 class="haber-kart-baslik" style="color: #1e293b; margin: 0; font-size: 14px;">${item.baslik}</h4>
+                    <p style="margin: 3px 0 0 0; font-size: 11px; color: #64748b;">
+                        📅 ${item.tarih} | 📂 ${item.kategori} | 🏷️ ${(item.etiketler && item.etiketler[0]) ? item.etiketler[0] : ''}
+                    </p>
+                </div>
+            </div>
+            <div style="display:flex; align-items:center;">
+                <button type="button" class="haber-kart-butonu btn-duzenle" onclick="yaziDuzenleTetikle(${index})">Düzenle</button>
+                <button type="button" class="haber-kart-butonu btn-sil" onclick="yaziSil(${index})">Sil</button>
+            </div>
+        `;
+        kapsayici.appendChild(kart);
+    });
+}
+
+// 5. DÜZENLEME MODUNU BAŞLATMA
+function yaziDuzenleTetikle(index) {
+    yaziFormuSifirla();
+    const item = mevcutYazilarDizisi[index];
+
+    document.getElementById('yazi-form-baslik').innerText = "📝 Yazı İndeksini Düzenle";
+    document.getElementById('btn-yazi-kaydet').innerText = "Değişikliği Listede Güncelle";
+    document.getElementById('btn-yazi-kaydet').style.background = "#eab308";
+    document.getElementById('btn-yazi-iptal').style.display = "inline-block";
+    
+    document.getElementById('yazi-index').value = index;
+    document.getElementById('yazi-id').value = item.id || "";
+    document.getElementById('yazi-baslik').value = item.baslik || "";
+    document.getElementById('yazi-url').value = item.url || "";
+    document.getElementById('yazi-tarih').value = item.tarih || "";
+    document.getElementById('yazi-ozel').value = item.ozel || "";
+    document.getElementById('yazi-kapakresmi').value = item.kapakresmi || "";
+
+    // Kategori Parçalama ("Günlük Geziler > [bisiklet,Gözde]")
+    let katRaw = item.kategori || "";
+    if (katRaw.includes('>')) {
+        let parcalar = katRaw.split('>');
+        document.getElementById('yazi-ana-kategori').value = parcalar[0].trim();
+        document.getElementById('yazi-alt-kategoriler').value = parcalar[1].replace(/[\[\]]/g, '').trim();
+    } else {
+        document.getElementById('yazi-ana-kategori').value = katRaw.trim();
+        document.getElementById('yazi-alt-kategoriler').value = "";
+    }
+
+    // Rozet Checkbox'larını Eşitleme
+    const ozelMetin = item.ozel || "";
+    const checkboxlar = document.querySelectorAll('.rozet-checkbox-item');
+    checkboxlar.forEach(cb => {
+        if(ozelMetin.includes(cb.value)) cb.checked = true;
+    });
+
+    // Etiketleri Ekleme
+    if(item.etiketler && item.etiketler[0]) {
+        item.etiketler[0].split(',').forEach(e => {
+            let temiz = e.trim();
+            if(temiz) etiketTagEkle(temiz);
+        });
+    }
+
+    document.getElementById('yazi-form-baslik').scrollIntoView({ behavior: 'smooth' });
+}
+
+// 6. FORM SUBMIT (YENİ EKLEME VEYA GÜNCELLEME)
+function yaziFormuGonder(event) {
+    event.preventDefault();
+
+    // Kategori string'ini birleştir
+    const anaKat = document.getElementById('yazi-ana-kategori').value.trim();
+    const altKat = document.getElementById('yazi-alt-kategoriler').value.trim();
+    let tamKategori = anaKat;
+    if(altKat !== "") {
+        tamKategori = `${anaKat} > [${altKat}]`;
+    }
+
+    // Seçilen etiketleri dizi içine virgüllü tek bir string eleman olarak veriyoruz (orijinal şablona tam sadık kalmak için)
+    const etiketDizisiString = Array.from(secilenEtiketlerSeti).join(',') + (secilenEtiketlerSeti.size > 0 ? ',' : '');
+
+    const yaziObjesi = {
+        "id": document.getElementById('yazi-id').value.trim(),
+        "baslik": document.getElementById('yazi-baslik').value.trim(),
+        "url": document.getElementById('yazi-url').value.trim(),
+        "tarih": document.getElementById('yazi-tarih').value,
+        "kategori": tamKategori,
+        "ozel": document.getElementById('yazi-ozel').value.trim(),
+        "kapakresmi": document.getElementById('yazi-kapakresmi').value.trim(),
+        "etiketler": [etiketDizisiString]
+    };
+
+    const formIndex = parseInt(document.getElementById('yazi-index').value);
+
+    if (formIndex === -1) {
+        // YENİ KAYIT: Dosyanın EN ÜSTÜNE yerleşmesi için unshift kullanıyoruz
+        mevcutYazilarDizisi.unshift(yaziObjesi);
+    } else {
+        // DÜZENLEME: İlgili indeksteki elemanı güncelle
+        mevcutYazilarDizisi[formIndex] = yaziObjesi;
+    }
+
+    yazilariListele();
+    yaziFormuSifirla();
+    yazilariGithubaGonder();
+}
+
+// 7. SİLME İŞLEMİ
+function yaziSil(index) {
+    const onay = confirm(`"${mevcutYazilarDizisi[index].baslik}" yazısını silmek istediğinize emin misiniz?`);
+    if (!onay) return;
+
+    mevcutYazilarDizisi.splice(index, 1);
+
+    yazilariListele();
+    yaziFormuSifirla();
+    yazilariGithubaGonder();
+}
+
+// FORM SIFIRLAMA
+function yaziFormuSifirla() {
+    document.getElementById('form-yeni-yazi').reset();
+    document.getElementById('yazi-index').value = "-1";
+    document.getElementById('yazi-form-baslik').innerText = "➕ Yeni Yazı İndeksi Ekle";
+    document.getElementById('btn-yazi-kaydet').innerText = "Yazıyı Listenin Üstüne Ekle";
+    document.getElementById('btn-yazi-kaydet').style.background = "#3b82f6";
+    document.getElementById('btn-yazi-iptal').style.display = "none";
+    
+    // Rozet ve etiket seçim alanlarını temizle
+    const checkboxlar = document.querySelectorAll('.rozet-checkbox-item');
+    checkboxlar.forEach(cb => cb.checked = false);
+    
+    document.querySelectorAll('.tag-item-token').forEach(el => el.remove());
+    secilenEtiketlerSeti.clear();
+}
+
+// 8. GİTHUB COMMIT İŞLEMİ
+async function yazilariGithubaGonder() {
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_YAZILAR}`;
+
+    const jsonString = JSON.stringify(mevcutYazilarDizisi, null, 2);
+    const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+    const payload = {
+        message: "Panel: yazilar/yazilar.json listesinde düzenleme/silme yapıldı",
+        content: base64Content,
+        sha: shaYazilar
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if(!response.ok) throw new Error("GitHub veriyi kaydedemedi.");
+        const resData = await response.json();
+        shaYazilar = resData.content.sha; // SHA yenile
+        bildirimGoster("Yazı kataloğu güncellendi ve GitHub'a başarıyla gönderildi!", "success");
+    } catch (error) {
+        bildirimGoster(error.message, "error");
+    }
+}
         function cikisYap() {
             localStorage.removeItem('gh_oauth_token');
             window.location.reload();
