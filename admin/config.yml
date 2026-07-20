@@ -2,8 +2,7 @@ backend:
   name: github
   repo: ferdimen/me
   branch: main
-  auth_type: implicit
-  base_url: https://github.com # Eklenen satır: Kimlik doğrulama için Netlify yerine direkt buraya git der.
+  # auth_type veya base_url satırları varsa tamamen silin
 
 media_folder: "img" # Yüklenen görsellerin gideceği klasör
 public_folder: "img"
