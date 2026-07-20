@@ -1,186 +1,104 @@
-<h3>📰 Haber Yönetimi</h3>
-<fieldset style="margin-bottom: 25px; border-color: #10b981;">
-    <legend id="haber-form-baslik" style="color: #10b981; font-weight: bold;">➕ Yeni Haber Ekle</legend>
-    <form id="form-yeni-haber" onsubmit="haberFormuGonder(event)">
-        <input type="hidden" id="h-index" value="-1">
-        <div class="form-row">
-            <div class="form-group">
-                <label for="h-tarih">Haber Tarihi:</label>
-                <input type="date" id="h-tarih" required>
-            </div>
-            <div class="form-group">
-                <label for="h-etiket">Kategori / Etiket:</label>
-                <input type="text" id="h-etiket" placeholder="Örn: Altyapı, Duyuru" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="h-baslik">Haber Başlığı:</label>
-            <input type="text" id="h-baslik" required>
-        </div>
-        <div class="form-group">
-            <label for="h-aciklama">Haber Açıklaması (HTML içerebilir):</label>
-            <textarea id="h-aciklama" rows="3" required></textarea>
-        </div>
-        <div class="form-row">
-            <div class="form-group">
-                <label for="h-resim">Resim Yolu (Opsiyonel):</label>
-                <input type="text" id="h-resim" placeholder="/images/haber1.jpg">
-            </div>
-            <div class="form-group">
-                <label for="h-linkUrl">Link URL (Opsiyonel):</label>
-                <input type="text" id="h-linkUrl" placeholder="/#takip">
-            </div>
-            <div class="form-group">
-                <label for="h-linkMetni">Link Buton Metni:</label>
-                <input type="text" id="h-linkMetni" placeholder="Takip et">
-            </div>
-        </div>
-        <div style="display: flex; gap: 10px;">
-            <button type="submit" id="btn-haber-kaydet" class="btn" style="background: #10b981; flex: 2;">Haber Listesine Ekle</button>
-            <button type="button" id="btn-haber-iptal" onclick="haberFormuSifirla()" class="btn" style="background: #64748b; flex: 1; display: none;">İptal Et</button>
-        </div>
-    </form>
-</fieldset>
-
-<fieldset>
-    <legend>🗂️ Mevcut Haber Listesi</legend>
-    <div id="haberler-listesi-kapsayici" style="display: flex; flex-direction: column; max-height: 400px; overflow-y: auto;">
-        <p style="color: #64748b; font-size: 14px; text-align: center;">Haberler yükleniyor...</p>
+<h3 id="haber-form-baslik">➕ Yeni Haber Ekle</h3>
+<form id="form-yeni-haber" onsubmit="haberModul.formGonder(event)">
+    <input type="hidden" id="h-index" value="-1">
+    <div class="form-group">
+        <label>Haber Başlığı</label>
+        <input type="text" id="h-baslik" required>
     </div>
-</fieldset>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Tarih</label>
+            <input type="date" id="h-tarih" required>
+        </div>
+        <div class="form-group">
+            <label>Etiket</label>
+            <input type="text" id="h-etiket" placeholder="Örn: YOL DURUMU">
+        </div>
+    </div>
+    <button type="submit" id="btn-haber-kaydet" class="btn" style="background:#10b981;">Haber Listesine Ekle</button>
+</form>
+
+<div id="haberler-listesi-kapsayici" style="margin-top:20px; display:flex; flex-direction:column; gap:10px;"></div>
 
 <script>
-(function() {
-    const PATH_HABER = "data/haber.json";
-    let shaHaber = "";
-    let mevcutHaberlerDizisi = [];
-    const token = localStorage.getItem('gh_oauth_token');
-    const AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+const haberModul = {
+    path: "data/haber.json",
+    sha: "",
+    liste: [],
 
-    async function haberleriYukle() {
-        const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_HABER}`;
+    init: async function() {
+        const url = `https://api.github.com/repos/${FerdiAPI.owner}/${FerdiAPI.repo}/contents/${this.path}`;
         try {
-            const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
-            if(!response.ok) return;
-            const data = await response.json();
-            shaHaber = data.sha;
-            const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-            mevcutHaberlerDizisi = JSON.parse(decodedContent);
-            haberleriListele();
-        } catch (error) { console.log(error); }
-    }
+            const res = await fetch(url, { headers: { "Authorization": `token ${FerdiAPI.token}` } });
+            if(!res.ok) return;
+            const data = await res.json();
+            this.sha = data.sha;
+            this.liste = JSON.parse(FerdiAPI.b64_to_utf8(data.content));
+            this.listele();
+        } catch(e) { console.error(e); }
+    },
 
-    function haberleriListele() {
+    listele: function() {
         const kapsayici = document.getElementById('haberler-listesi-kapsayici');
         kapsayici.innerHTML = "";
-        if(mevcutHaberlerDizisi.length === 0) {
-            kapsayici.innerHTML = '<p style="text-align:center; color:#64748b;">Haber bulunamadı.</p>';
-            return;
-        }
-        mevcutHaberlerDizisi.forEach((haber, index) => {
+        this.liste.forEach((h, i) => {
             const div = document.createElement('div');
-            div.className = 'liste-kart';
+            div.className = 'haber-kart';
             div.innerHTML = `
-                <div class="liste-kart-detay">
-                    <div class="liste-kart-meta">${haber.meta}</div>
-                    <h4 class="liste-kart-baslik">${haber.baslik}</h4>
+                <div class="haber-kart-detay">
+                    <div class="haber-kart-meta">${h.meta}</div>
+                    <h4 class="haber-kart-baslik">${h.baslik}</h4>
                 </div>
                 <div>
-                    <button type="button" class="liste-kart-butonu btn-duzenle" onclick="haberDuzenleTetikle(${index})">Düzenle</button>
-                    <button type="button" class="liste-kart-butonu btn-sil" onclick="haberSil(${index})">Sil</button>
+                    <button type="button" class="haber-kart-butonu btn-sil" onclick="haberModul.sil(${i})">Sil</button>
                 </div>
             `;
             kapsayici.appendChild(div);
         });
-    }
+    },
 
-    window.haberDuzenleTetikle = function(index) {
-        const haber = mevcutHaberlerDizisi[index];
-        document.getElementById('haber-form-baslik').innerText = "📝 Haberi Düzenle";
-        document.getElementById('btn-haber-kaydet').innerText = "Değişikliği Listede Güncelle";
-        document.getElementById('btn-haber-kaydet').style.background = "#eab308";
-        document.getElementById('btn-haber-iptal').style.display = "inline-block";
-        document.getElementById('h-index').value = index;
-
-        document.getElementById('h-baslik').value = haber.baslik || "";
-        document.getElementById('h-aciklama').value = haber.aciklama || "";
-        document.getElementById('h-resim').value = haber.resim || "";
-        document.getElementById('h-linkUrl').value = haber.linkUrl || "";
-        document.getElementById('h-linkMetni').value = haber.linkMetni || "";
-
-        if (haber.meta) {
-            const parcalar = haber.meta.split(' / ');
-            if(parcalar.length > 0) {
-                document.getElementById('h-etiket').value = parcalar[1] || "";
-                const tKelimeler = parcalar[0].split(' ');
-                if(tKelimeler.length === 3) {
-                    const ayIdx = AYLAR.indexOf(tKelimeler[1]);
-                    if(ayIdx !== -1) {
-                        document.getElementById('h-tarih').value = `${tKelimeler[2]}-${String(ayIdx+1).padStart(2,'0')}-${tKelimeler[0].padStart(2,'0')}`;
-                    }
-                }
-            }
-        }
-        document.getElementById('haber-form-baslik').scrollIntoView({ behavior: 'smooth' });
-    };
-
-    window.haberFormuGonder = function(event) {
-        event.preventDefault();
-        const secilenTarih = document.getElementById('h-tarih').value;
-        const p = secilenTarih.split('-');
-        const formatliTarih = `${parseInt(p[2])} ${AYLAR[parseInt(p[1])-1]} ${p[0]}`;
-        const tamMeta = `${formatliTarih} / ${document.getElementById('h-etiket').value}`;
-
-        const haberObj = {
-            meta: tamMeta,
-            baslik: document.getElementById('h-baslik').value,
-            aciklama: document.getElementById('h-aciklama').value,
-            resim: document.getElementById('h-resim').value,
-            linkUrl: document.getElementById('h-linkUrl').value,
-            linkMetni: document.getElementById('h-linkMetni').value
+    formGonder: function(e) {
+        e.preventDefault();
+        const secilenTarih = document.getElementById('h-tarih').value.split('-');
+        const formatliTarih = `${parseInt(secilenTarih[2])} ${FerdiAPI.aylar[parseInt(secilenTarih[1])-1]} ${secilenTarih[0]}`;
+        
+        const yeniHaber = {
+            meta: `${formatliTarih} / ${document.getElementById('h-etiket').value}`,
+            baslik: document.getElementById('h-baslik').value
         };
 
-        const idx = parseInt(document.getElementById('h-index').value);
-        if(idx === -1) mevcutHaberlerDizisi.unshift(haberObj);
-        else mevcutHaberlerDizisi[idx] = haberObj;
-
-        haberleriListele();
-        haberFormuSifirla();
-        haberleriGithubaGonder();
-    };
-
-    window.haberSil = function(index) {
-        if(!confirm("Bu haberi silmek istediğinize emin misiniz?")) return;
-        mevcutHaberlerDizisi.splice(index, 1);
-        haberleriListele();
-        haberFormuSifirla();
-        haberleriGithubaGonder();
-    };
-
-    window.haberFormuSifirla = function() {
+        this.liste.unshift(yeniHaber);
+        this.listele();
+        this.githubaGonder();
         document.getElementById('form-yeni-haber').reset();
-        document.getElementById('h-index').value = "-1";
-        document.getElementById('haber-form-baslik').innerText = "➕ Yeni Haber Ekle";
-        document.getElementById('btn-haber-kaydet').innerText = "Haber Listesine Ekle";
-        document.getElementById('btn-haber-kaydet').style.background = "#10b981";
-        document.getElementById('btn-haber-iptal').style.display = "none";
-    };
+    },
 
-    async function haberleriGithubaGonder() {
-        const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_HABER}`;
-        const jsonString = JSON.stringify(mevcutHaberlerDizisi, null, 2);
-        const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+    sil: function(i) {
+        if(!confirm("Silinsin mi?")) return;
+        this.liste.splice(i, 1);
+        this.listele();
+        this.githubaGonder();
+    },
 
-        const payload = { message: "Panel: data/haber.json güncellendi", content: base64Content, sha: shaHaber };
+    githubaGonder: async function() {
+        const url = `https://api.github.com/repos/${FerdiAPI.owner}/${FerdiAPI.repo}/contents/${this.path}`;
+        const payload = {
+            message: "Panel: Haber listesi güncellendi",
+            content: FerdiAPI.utf8_to_b64(JSON.stringify(this.liste, null, 2)),
+            sha: this.sha
+        };
         try {
-            const res = await fetch(url, { method: "PUT", headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" }, body: JSON.stringify(payload) });
-            if(!res.ok) throw new Error("Hata oluştu.");
-            const rData = await res.json();
-            shaHaber = rData.content.sha;
-            bildirimGoster("Haberler GitHub'a başarıyla kaydedildi!", "success");
-        } catch(e) { bildirimGoster("Kaydedilemedi", "error"); }
+            const res = await fetch(url, {
+                method: "PUT",
+                headers: { "Authorization": `token ${FerdiAPI.token}`, "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+            const resData = await res.json();
+            this.sha = resData.content.sha;
+            FerdiAPI.bildirim("Haberler GitHub'a güncellendi!", "success");
+        } catch(e) { FerdiAPI.bildirim("Kayıt başarısız", "error"); }
     }
+};
 
-    if(token) haberleriYukle();
-})();
+haberModul.init();
 </script>

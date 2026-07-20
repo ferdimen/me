@@ -3,153 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferdimen Kontrol Paneli</title>
+    <title>Ferdimen // Jenerik İçerik Yönetim Paneli</title>
+    <link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
-        body { display: flex; background: #f1f5f9; height: 100vh; overflow: hidden; }
-        
-        /* Auth Ekranı */
-        #auth-panel { position: fixed; inset: 0; background: #1e293b; display: flex; justify-content: center; align-items: center; z-index: 999; }
-        .auth-box { background: white; padding: 30px; border-radius: 8px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-        
-        /* Ana Panel Yapısı */
-        #main-panel { display: flex; width: 100%; height: 100%; }
-        .sidebar { width: 250px; background: #1e293b; padding: 20px 10px; display: flex; flex-direction: column; gap: 8px; }
-        .main-content { flex: 1; padding: 30px; overflow-y: auto; background: #f8fafc; }
-        
-        /* Sekme Butonları */
-        .tab-btn { width: 100%; padding: 12px 15px; text-align: left; background: transparent; border: none; color: #94a3b8; font-size: 14px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
-        .tab-btn:hover { background: #334155; color: white; }
-        .tab-btn.active { background: #2563eb; color: white; }
-        
-        /* Ortak Modül Bileşenleri */
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f4f6f9; color: #333; }
+        h2 { color: #1e293b; margin-bottom: 20px; }
+        .panel-container { display: flex; gap: 20px; margin-top: 20px; }
+        .sidebar { flex: 1; max-width: 200px; display: flex; flex-direction: column; gap: 8px; }
+        .tab-btn { background: #fff; color: #475569; border: 1px solid #e2e8f0; padding: 12px 15px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: bold; text-align: left; transition: all 0.2s; }
+        .tab-btn:hover { background: #f8fafc; color: #1e293b; }
+        .tab-btn.active { background: #2563eb; color: white; border-color: #2563eb; }
+        .main-content { flex: 3; background: #fff; padding: 25px; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
-        fieldset { border: 1px solid #cbd5e1; padding: 20px; border-radius: 8px; background: white; margin-bottom: 20px; }
-        legend { font-weight: bold; padding: 0 10px; color: #334155; }
-        .form-group { margin-bottom: 15px; display: flex; flex-direction: column; gap: 5px; }
-        .form-row { display: flex; gap: 15px; }
-        .form-row .form-group { flex: 1; }
-        label { font-size: 13px; font-weight: bold; color: #475569; }
-        input, textarea, select { padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; width: 100%; }
-        .btn { padding: 10px 20px; border: none; border-radius: 6px; color: white; cursor: pointer; font-weight: bold; }
-        
-        /* Ortak Dinamik Liste Kart Stilleri */
-        .liste-kart { display: flex; justify-content: space-between; align-items: center; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f8fafc; margin-bottom: 10px; }
-        .liste-kart-detay { flex: 1; padding-right: 15px; }
-        .liste-kart-meta { font-size: 11px; font-weight: bold; color: #2563eb; text-transform: uppercase; margin-bottom: 3px; }
-        .liste-kart-baslik { font-size: 14px; font-weight: bold; color: #1e293b; margin: 0; }
-        .liste-kart-butonu { padding: 6px 10px; font-size: 12px; font-weight: bold; border-radius: 4px; border: none; cursor: pointer; color: white; margin-left: 5px; }
-        .btn-duzenle { background: #eab308; }
-        .btn-duzenle:hover { background: #ca8a04; }
-        .btn-sil { background: #ef4444; }
-        .btn-sil:hover { background: #dc2626; }
-        
-        /* Bildirim Kutusu */
-        #toast { position: fixed; bottom: 20px; right: 20px; padding: 12px 24px; border-radius: 6px; color: white; font-weight: bold; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 1000; }
-        #toast.show { transform: translateY(0); opacity: 1; }
+        .status { margin-top: 15px; padding: 12px; border-radius: 6px; display: none; font-size: 14px; font-weight: 500; }
+        .success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+        .error { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+        #auth-panel { background: #fff; padding: 30px; border: 1px solid #e2e8f0; border-radius: 8px; text-align: center; max-width: 400px; margin: 40px auto; }
+        .btn { background: #2563eb; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-size: 15px; font-weight: bold; width: 100%; text-align: center; text-decoration: none; box-sizing: border-box; display: inline-block; }
+        .btn:hover { background: #1d4ed8; }
+        .btn-github { background: #24292e; }
     </style>
 </head>
 <body>
 
-    <!-- GİRİŞ PANELİ -->
     <div id="auth-panel">
-        <div class="auth-box">
-            <h2 style="margin-bottom: 15px;">Yol Yönetim Paneli</h2>
-            <button class="btn" style="background:#24292e;" onclick="githubGiris()">GitHub ile Giriş Yap</button>
-        </div>
+        <h2>Yönetim Paneli Girişi</h2>
+        <p style="margin-bottom: 20px; color: #64748b;">GitHub hesabınızla kimlik doğrulaması yapın.</p>
+        <button onclick="githubGirisYap()" class="btn btn-github">GitHub ile Giriş Yap</button>
     </div>
 
-    <!-- ANA PANEL ARAYÜZÜ -->
     <div id="main-panel" style="display: none;">
-        <!-- Sol Menü (Dinamik Dolacak) -->
-        <div class="sidebar" id="sidebar-menu">
-            <div style="color: white; font-weight: bold; font-size: 18px; margin-bottom: 20px; padding-left: 10px;">Ferdimen</div>
-            <!-- Modül Butonları JavaScript ile buraya basılacak -->
-            <button class="tab-btn" style="margin-top: auto; background: #ef4444; color: white;" onclick="cikisYap()">🔒 Çıkış Yap</button>
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
+            <h2>İçerik Yönetim Merkezi</h2>
+            <button onclick="cikisYap()" style="background:#ef4444; padding:6px 12px; font-size:12px; width:auto;" class="btn">Çıkış Yap</button>
         </div>
 
-        <!-- Sağ İçerik Alanı (Dinamik Dolacak) -->
-        <div class="main-content" id="modul-kapsayici">
-            <!-- HTML modülleri bu alana yüklenecek -->
+        <div class="panel-container">
+            <div class="sidebar" id="sidebar-menu"></div>
+            <div class="main-content">
+                <div id="status-box" class="status"></div>
+                <div id="modul-kapsayici"></div>
+            </div>
         </div>
     </div>
-
-    <!-- Global Bildirim Kutusu -->
-    <div id="toast"></div>
 
     <script>
-        // --- CONFIG UYGULAMA AYARLARI ---
         const CLIENT_ID = "Ov23liB76WxL18rB8cmu"; 
         const WORKER_URL = "https://github-oauth.kizilferdi.workers.dev/"; 
         const REPO_OWNER = "ferdimen"; 
         const REPO_NAME = "me"; 
-        
-        // HANGİ MODÜLLERİ YÜKLEMEK İSTİYORSANIZ SADECE BU DİZİYE EKLEMENİZ YETERLİ!
+
+        // Sadece buraya yeni modül eklemen yeterli, index.html koduna dokunmana gerek yok!
         const MODULLER = [
-            { id: "nerdeyim", yazi: "📍 Nerdeyim?", dosya: "modul/nerdeyim.html" },
-            { id: "haberler", yazi: "📰 Haberler", dosya: "modul/haberler.html" },
-            { id: "kronoloji", yazi: "⏳ Kronoloji", dosya: "modul/kronoloji.html" }
+            { id: "nerdeyim-tab", yazi: "📍 Nerdeyim?", dosya: "modul/nerdeyim.html" },
+            { id: "haberler-tab", yazi: "📰 Haberler", dosya: "modul/haberler.html" },
+            { id: "kronoloji-tab", yazi: "⏳ Kronoloji", dosya: "modul/kronoloji.html" }
         ];
 
-        // --- AUTH & TOKEN YÖNETİMİ ---
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const code = urlParams.get('code');
+        window.FerdiAPI = {
+            token: "",
+            owner: REPO_OWNER,
+            repo: REPO_NAME,
+            aylar: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+            
+            bildirim: function(mesaj, tip) {
+                const box = document.getElementById('status-box');
+                box.innerText = mesaj;
+                box.className = `status ${tip}`;
+                box.style.display = 'block';
+                setTimeout(() => { box.style.display = 'none'; }, 5000);
+            },
 
-            if (code) {
-                // Cloudflare Worker URL'ini kullanarak kodu token ile takas et
-                fetch(`${WORKER_URL}?code=${code}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        if(data.token) {
-                            localStorage.setItem('gh_oauth_token', data.token);
-                            window.history.replaceState({}, document.title, window.location.pathname);
-                            panelBaslat(data.token);
-                        }
-                    })
-                    .catch(err => console.error("Worker bağlantı hatası:", err));
-            } else {
-                const token = localStorage.getItem('gh_oauth_token');
-                if (token) panelBaslat(token);
+            // Ortak Base64 Dönüştürücüler (Türkçe karakter uyumlu)
+            utf8_to_b64: function(str) {
+                return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+            },
+            b64_to_utf8: function(str) {
+                return decodeURIComponent(atob(str).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
             }
         };
 
-        function githubGiris() {
-            // Tanımlanan CLIENT_ID ile GitHub yetkilendirme sayfasına yönlendir
+        function githubGirisYap() {
             window.location.href = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo`;
         }
 
-        function cikisYap() {
-            localStorage.removeItem('gh_oauth_token');
-            window.location.reload();
+        function sekmeDegistir(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            const hedefTab = document.getElementById(tabId);
+            if(hedefTab) hedefTab.classList.add('active');
+            
+            const hedefBtn = document.querySelector(`button[data-target="${tabId}"]`);
+            if(hedefBtn) hedefBtn.classList.add('active');
         }
 
-        // --- DİNAMİK MODÜL YÜKLEME MOTORU ---
-        async function panelBaslat(token) {
-            document.getElementById('auth-panel').style.display = 'none';
-            document.getElementById('main-panel').style.display = 'block';
+        async function tokenKontrolEt() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            let token = localStorage.getItem('gh_oauth_token');
 
+            if (code) {
+                window.history.replaceState({}, document.title, window.location.pathname);
+                try {
+                    const res = await fetch(`${WORKER_URL}?code=${code}`);
+                    const data = await res.json();
+                    if(data.access_token) {
+                        localStorage.setItem('gh_oauth_token', data.access_token);
+                        token = data.access_token;
+                    }
+                } catch (err) { alert("Giriş Hatası: " + err.message); }
+            }
+
+            if (token) {
+                window.FerdiAPI.token = token;
+                document.getElementById('auth-panel').style.display = 'none';
+                document.getElementById('main-panel').style.display = 'block';
+                await modulleriYukle();
+            }
+        }
+
+        async function modulleriYukle() {
             const menuKapsayici = document.getElementById('sidebar-menu');
             const modulKapsayici = document.getElementById('modul-kapsayici');
-
-            for (let i = 0; i < MODULLER.length; i++) {
-                const mod = MODULLER[i];
-
-                // 1. Sol Menü Butonunu Oluştur (Çıkış butonunun hemen üstüne ekler)
+            
+            for (const mod of MODULLER) {
                 const btn = document.createElement('button');
-                btn.className = `tab-btn tab-tetikleyici-${mod.id}`;
+                btn.className = "tab-btn";
+                btn.setAttribute("data-target", mod.id);
                 btn.innerText = mod.yazi;
                 btn.onclick = () => sekmeDegistir(mod.id);
-                menuKapsayici.insertBefore(btn, menuKapsayici.lastElementChild);
+                menuKapsayici.appendChild(btn);
 
-                // 2. Sağ İçerik Kapsayıcı Div'ini Oluştur
                 const div = document.createElement('div');
-                div.id = `${mod.id}-tab`;
+                div.id = mod.id;
                 div.className = "tab-content";
                 modulKapsayici.appendChild(div);
 
-                // 3. Modülün HTML dosyasını arka planda fetch edip div içine enjekte et
                 try {
                     const response = await fetch(mod.dosya);
                     if (!response.ok) throw new Error();
@@ -157,39 +148,26 @@
                     
                     div.innerHTML = htmlKodu;
 
-                    // Enjekte edilen HTML içindeki <script> etiketlerinin çalışabilmesi için yeniden üretiyoruz
-                    const scriptler = div.querySelectorAll("script");
-                    scriptler.forEach(eskiScript => {
-                        const yeniScript = document.createElement("script");
-                        yeniScript.text = eskiScript.text;
-                        document.body.appendChild(yeniScript);
-                    });
-
+                    // Modül içindeki script etiketlerini ayıklayıp DOM üzerinde yeniden çalıştırıyoruz
+                    const scripts = div.getElementsByTagName('script');
+                    for (let script of scripts) {
+                        const yeniScript = document.createElement('script');
+                        yeniScript.text = script.text;
+                        document.body.appendChild(yeniScript).parentNode.removeChild(yeniScript);
+                    }
                 } catch (e) {
-                    div.innerHTML = `<p style="color:red; padding:20px;">${mod.yazi} modülü yüklenirken hata oluştu. Lütfen panel/modul/ klasöründe dosyanın varlığını kontrol edin.</p>`;
+                    div.innerHTML = `<p style="color:red; padding:20px;">${mod.yazi} yüklenemedi.</p>`;
                 }
             }
-
-            // Sayfa ilk açıldığında ilk modülü varsayılan olarak aktif et
             if(MODULLER.length > 0) sekmeDegistir(MODULLER[0].id);
         }
 
-        function sekmeDegistir(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-
-            document.getElementById(`${tabId}-tab`).classList.add('active');
-            document.querySelector(`.tab-tetikleyici-${tabId}`).classList.add('active');
+        function cikisYap() {
+            localStorage.removeItem('gh_oauth_token');
+            window.location.reload();
         }
 
-        // Ortak Bildirim Fonksiyonu (Modüller kendi içerisinden direkt çağırabilir)
-        function bildirimGoster(mesaj, tip = "success") {
-            const toast = document.getElementById('toast');
-            toast.innerText = mesaj;
-            toast.style.background = tip === "success" ? "#10b981" : "#ef4444";
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
-        }
+        tokenKontrolEt();
     </script>
 </body>
 </html>

@@ -1,81 +1,81 @@
-<h3>📍 Nerdeyim (Konum Yönetimi)</h3>
-<fieldset style="margin-bottom: 25px; border-color: #2563eb;">
-    <legend style="color: #2563eb; font-weight: bold;">Güncel Konumu Ayarla</legend>
-    <form id="form-konum" onsubmit="konumuKaydet(event)">
+<!-- Form Tasarımı -->
+<form id="form-nerdeyim" onsubmit="nerdeyimModul.kaydet(event)">
+    <fieldset>
+        <legend>📍 Canlı Konum & Aktif Tur Ayarları</legend>
         <div class="form-row">
             <div class="form-group">
-                <label for="k-sehir">Şehir / Bölge:</label>
-                <input type="text" id="k-sehir" required>
+                <label>Aktif Tur Var mı?</label>
+                <select id="aktifTur">
+                    <option value="evet">Evet, Yoldayım</option>
+                    <option value="hayir">Hayır, Evdeyim</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="k-ilce">İlçe / Mevki:</label>
-                <input type="text" id="k-ilce" required>
+                <label>Tur Adı</label>
+                <input type="text" id="tur-adi" placeholder="Örn: Anadolu Engereği">
             </div>
         </div>
         <div class="form-group">
-            <label for="k-durum">Durum Açıklaması:</label>
-            <input type="text" id="k-durum" placeholder="Örn: Çadır kuruldu, dinleniyorum.">
+            <label>Canlı Takip iframe/Harita URL</label>
+            <input type="text" id="canliTakipUrl">
         </div>
-        <button type="submit" class="btn" style="background: #2563eb;">Konumu Güncelle ve Gönder</button>
-    </form>
-</fieldset>
+        <button type="submit" class="btn">Konumu Güncelle</button>
+    </fieldset>
+</form>
 
+<!-- Modülün Kendi İzole Mantığı -->
 <script>
-(function() {
-    const PATH_KONUM = "nerdeyim/konum.json";
-    let shaKonum = "";
-    const token = localStorage.getItem('gh_oauth_token');
+const nerdeyimModul = {
+    path: "nerdeyim/konum.json",
+    sha: "",
 
-    async function konumuYukle() {
-        if (!token) return;
-        const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KONUM}`;
+    init: async function() {
+        const url = `https://api.github.com/repos/${FerdiAPI.owner}/${FerdiAPI.repo}/contents/${this.path}`;
         try {
-            const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
-            if(!response.ok) return;
-            const data = await response.json();
-            shaKonum = data.sha;
+            const res = await fetch(url, { headers: { "Authorization": `token ${FerdiAPI.token}` } });
+            if(!res.ok) return;
+            const data = await res.json();
+            this.sha = data.sha;
             
-            const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-            const konumObj = JSON.parse(decodedContent);
+            const json = JSON.parse(FerdiAPI.b64_to_utf8(data.content));
+            
+            // Elemanları Doldur
+            document.getElementById('aktifTur').value = json["aktifTur"] || "hayir";
+            document.getElementById('tur-adi').value = json["tur-adi"] || "";
+            document.getElementById('canliTakipUrl').value = json["canliTakipUrl"] || "";
+        } catch(e) { console.error("Konum yüklenemedi", e); }
+    },
 
-            document.getElementById('k-sehir').value = konumObj.sehir || "";
-            document.getElementById('k-ilce').value = konumObj.ilce || "";
-            document.getElementById('k-durum').value = konumObj.durum || "";
-        } catch (error) { console.log("Konum yüklenemedi", error); }
-    }
-
-    window.konumuKaydet = async function(event) {
-        event.preventDefault();
-        const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KONUM}`;
+    kaydet: async function(e) {
+        e.preventDefault();
+        const url = `https://api.github.com/repos/${FerdiAPI.owner}/${FerdiAPI.repo}/contents/${this.path}`;
         
-        const konumObj = {
-            sehir: document.getElementById('k-sehir').value,
-            ilce: document.getElementById('k-ilce').value,
-            durum: document.getElementById('k-durum').value
+        const guncelJson = {
+            "aktifTur": document.getElementById('aktifTur').value,
+            "tur-adi": document.getElementById('tur-adi').value,
+            "canliTakipUrl": document.getElementById('canliTakipUrl').value
         };
-
-        const jsonString = JSON.stringify(konumObj, null, 2);
-        const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
 
         const payload = {
             message: "Panel: Konum güncellendi",
-            content: base64Content,
-            sha: shaKonum
+            content: FerdiAPI.utf8_to_b64(JSON.stringify(guncelJson, null, 2)),
+            sha: this.sha
         };
 
         try {
-            const response = await fetch(url, {
+            const res = await fetch(url, {
                 method: "PUT",
-                headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+                headers: { "Authorization": `token ${FerdiAPI.token}`, "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
             });
-            if(!response.ok) throw new Error("Konum güncellenemedi.");
-            const resData = await response.json();
-            shaKonum = resData.content.sha;
-            bildirimGoster("Konum başarıyla güncellendi!", "success");
-        } catch (error) { bildirimGoster(error.message, "error"); }
-    };
+            if(!res.ok) throw new Error();
+            const resData = await res.json();
+            this.sha = resData.content.sha;
+            FerdiAPI.bildirim("Konum başarıyla kaydedildi!", "success");
+        } catch(err) { FerdiAPI.bildirim("Hata oluştu", "error"); }
+    }
+};
 
-    konumuYukle();
-})();
+// Modül yüklenir yüklenmez verileri çekmesi için tetikliyoruz
+nerdeyimModul.init();
 </script>
