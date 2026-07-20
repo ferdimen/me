@@ -33,12 +33,6 @@ collections:
               - { label: "Evet", value: "evet" }
               - { label: "Hayır", value: "hayir" }
 
-          - label: "Günleri Göster", name: "gunleri-goster", widget: "string"
-            name: "gunleri-goster"
-            widget: "select"
-            options:
-              - { label: "hepsi", value: "hepsi" }
-              - { label: "Kaç gün", name: "kac gun", widget: "number", value_type: "int" }
           # Sayısal değerler için number widget'ı
           - { label: "Karakter Sınırı", name: "karakter-siniri", widget: "number", value_type: "int" }
 
