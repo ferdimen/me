@@ -90,6 +90,7 @@
 				<button class="tab-btn" onclick="sekmeDegistir('sss-tab')">🙋 SSS Yönetimi</button>				
 				<button class="tab-btn" onclick="sekmeDegistir('rozetler-tab')">🛡️ Rozet Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('sosyal-tab')">🌐 Sosyal Medya</button>
+				<button class="tab-btn" onclick="sekmeDegistir('dosyalar-tab')">📁 Dosya Yönetimi</button>
                 <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
                 <!-- Gelecekte buraya yeni butonlar gelebilir -->
             </div>
@@ -655,7 +656,61 @@
         </div>
     </fieldset>
 </div>
+<!-- 10. SEKME: DOSYALAR YÖNETİMİ (data/dosyalar.json) -->
+<div id="dosyalar-tab" class="tab-content">
+    <h3>📁 Dosya ve Rota Yönetimi</h3>
+    
+    <!-- Dosya Ekleme ve Düzenleme Formu -->
+    <fieldset style="margin-bottom: 25px; border-color: #0284c7;">
+        <legend id="dosya-form-baslik" style="color: #0284c7; font-weight: bold;">➕ En Üste Yeni Dosya Ekle</legend>
+        <form id="form-yeni-dosya" onsubmit="dosyaFormuGonder(event)">
+            <!-- Gizli input: Düzenlenen dosyanın dizideki sırasını (index) tutar -->
+            <input type="hidden" id="dosya-index" value="-1">
 
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="dosya-meta">Meta Bilgisi (Örn: 6 Bölüm // Göller Bölgesi):</label>
+                    <input type="text" id="dosya-meta" placeholder="6 Bölüm // Göller Bölgesi" required>
+                </div>
+                <div class="form-group">
+                    <label for="dosya-baslik">Başlık (Örn: Güz Güneyi Rotası):</label>
+                    <input type="text" id="dosya-baslik" placeholder="Güz Güneyi Rotası" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dosya-aciklama">Açıklama:</label>
+                <textarea id="dosya-aciklama" rows="3" placeholder="Rota açıklaması..." required></textarea>
+            </div>
+
+            <!-- DİNAMİK LİNKLER ALANI -->
+            <fieldset style="border: 1px dashed #0284c7; background: #f0f9ff; padding: 12px; margin-bottom: 15px;">
+                <legend style="color: #0284c7; font-weight: bold; font-size: 13px;">🔗 Bağlantı ve Linkler</legend>
+                
+                <div id="dosya-linkler-kapsayici" style="display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Dinamik Link Satırları Buraya Eklenir -->
+                </div>
+
+                <button type="button" onclick="dosyaLinkSatiriEkle()" class="btn" style="background: #0284c7; font-size: 13px; padding: 8px; margin-top: 10px; width: auto;">
+                    ➕ Yeni Link Alanı Ekle
+                </button>
+            </fieldset>
+
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" id="btn-dosya-kaydet" class="btn" style="background: #0284c7; flex: 2;">Dosyayı En Üste Ekle</button>
+                <button type="button" id="btn-dosya-iptal" onclick="dosyaFormuSifirla()" class="btn" style="background: #64748b; flex: 1; display: none;">İptal Et</button>
+            </div>
+        </form>
+    </fieldset>
+
+    <!-- Tek Tek Dosyaların Listeleneceği Alan -->
+    <fieldset>
+        <legend>📁 Mevcut Dosyalar Listesi</legend>
+        <div id="dosyalar-listesi-kapsayici" style="display: flex; flex-direction: column; gap: 12px; max-height: 500px; overflow-y: auto; padding-right: 5px;">
+            <p style="color: #64748b; font-size: 14px; text-align: center;">Dosyalar yükleniyor...</p>
+        </div>
+    </fieldset>
+</div>
 		
 				<!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
                 <div id="yeni-sekme-tab" class="tab-content">
@@ -735,6 +790,9 @@ let secilenBlogKelimeleri = [];  // Özel Alan'a aktarılmış nihai nesneler {m
 let blogSecimHaritasi = null;
 let blogSecimMarker = null;
 
+const PATH_DOSYALAR = "data/dosyalar.json";
+let shaDosyalar = "";
+let mevcutDosyalarDizisi = [];
 
 
         function bildirimGoster(mesaj, tip) {
@@ -806,6 +864,7 @@ if (token) {
 	sosyalYukle(token); // <--- Yeni eklenen sosyal medya yükleyici fonksiyonumuz	
 	videoYukle(token); // <--- Yeni eklenen video yükleyici fonksiyonumuz
 	blogYukle(token);
+	dosyalariYukle(token);
     // YENİ EKLENEN KRONOLOJİ YÜKLEYİCİLERİ
     yazilariYukle(token).then(() => {
         timelineYukle(token);
@@ -2600,6 +2659,197 @@ document.addEventListener('input', function(e) {
         }
     }
 });
+// 1. DOSYALARI GİTHUB'DAN ÇEKME
+async function dosyalariYukle(token) {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_DOSYALAR}`;
+    try {
+        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if(!response.ok) throw new Error("Dosyalar listesi yüklenemedi.");
+
+        const data = await response.json();
+        shaDosyalar = data.sha;
+
+        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        mevcutDosyalarDizisi = JSON.parse(decodedContent);
+
+        dosyalariListele();
+    } catch (error) {
+        console.log("Dosya yükleme hatası: " + error.message);
+    }
+}
+
+// 2. DOSYALARI LİSTELEME
+function dosyalariListele() {
+    const kapsayici = document.getElementById('dosyalar-listesi-kapsayici');
+    kapsayici.innerHTML = "";
+
+    if (mevcutDosyalarDizisi.length === 0) {
+        kapsayici.innerHTML = `<p style="color: #64748b; font-size: 14px; text-align: center;">Henüz dosya/rota kaydı bulunmuyor.</p>`;
+        return;
+    }
+
+    mevcutDosyalarDizisi.forEach((item, index) => {
+        const kart = document.createElement('div');
+        kart.className = 'haber-kart';
+        kart.style.background = "#f0f9ff";
+        kart.style.borderColor = "#bae6fd";
+
+        let linklerHtml = "";
+        if(item.linkler && item.linkler.length > 0) {
+            linklerHtml = item.linkler.map(l => `<a href="${l.url}" target="_blank" style="color:#0284c7; font-size:12px; margin-right:8px; font-weight:bold;">[${l.metin}]</a>`).join(' ');
+        }
+
+        kart.innerHTML = `
+            <div class="haber-kart-detay">
+                <div class="haber-kart-meta" style="color:#0284c7;">${item.meta || ""}</div>
+                <h4 class="haber-kart-baslik">${item.baslik || ""}</h4>
+                <p style="margin: 4px 0; font-size: 13px; color: #475569;">${item.aciklama || ""}</p>
+                <div>${linklerHtml}</div>
+            </div>
+            <div style="display:flex; align-items:center;">
+                <button type="button" class="haber-kart-butonu btn-duzenle" onclick="dosyaDuzenleTetikle(${index})">Düzenle</button>
+                <button type="button" class="haber-kart-butonu btn-sil" onclick="dosyaSil(${index})">Sil</button>
+            </div>
+        `;
+        kapsayici.appendChild(kart);
+    });
+}
+
+// 3. DİNAMİK LİNK SATIRI EKLEME FONKSİYONU
+function dosyaLinkSatiriEkle(url = "", metin = "") {
+    const kapsayici = document.getElementById('dosya-linkler-kapsayici');
+    const satir = document.createElement('div');
+    satir.className = "dosya-link-satiri";
+    satir.style.display = "flex";
+    satir.style.gap = "10px";
+    satir.style.alignItems = "center";
+
+    satir.innerHTML = `
+        <input type="text" class="d-link-url" placeholder="https://..." value="${url}" style="flex:2;" required>
+        <input type="text" class="d-link-metin" placeholder="youtube, polarsteps vb." value="${metin}" style="flex:1;" required>
+        <button type="button" onclick="this.parentElement.remove()" style="background:#ef4444; color:white; border:none; padding:8px 12px; border-radius:4px; cursor:pointer; font-weight:bold;">✕</button>
+    `;
+    kapsayici.appendChild(satir);
+}
+
+// 4. DÜZENLEME MODUNU BAŞLATMA
+function dosyaDuzenleTetikle(index) {
+    const item = mevcutDosyalarDizisi[index];
+    
+    document.getElementById('dosya-form-baslik').innerText = "📝 Dosyayı Düzenle";
+    document.getElementById('btn-dosya-kaydet').innerText = "Değişikliği Listede Güncelle";
+    document.getElementById('btn-dosya-kaydet').style.background = "#eab308";
+    document.getElementById('btn-dosya-iptal').style.display = "inline-block";
+    
+    document.getElementById('dosya-index').value = index;
+    document.getElementById('dosya-meta').value = item.meta || "";
+    document.getElementById('dosya-baslik').value = item.baslik || "";
+    document.getElementById('dosya-aciklama').value = item.aciklama || "";
+
+    // Link alanlarını temizle ve doldur
+    document.getElementById('dosya-linkler-kapsayici').innerHTML = "";
+    if (item.linkler && item.linkler.length > 0) {
+        item.linkler.forEach(l => dosyaLinkSatiriEkle(l.url, l.metin));
+    } else {
+        dosyaLinkSatiriEkle(); // Boşsa 1 tane varsayılan aç
+    }
+
+    document.getElementById('dosya-form-baslik').scrollIntoView({ behavior: 'smooth' });
+}
+
+// 5. FORM SUBMIT (DOSYAYI EN ÜSTE EKLE VEYA GÜNCELLE)
+function dosyaFormuGonder(event) {
+    event.preventDefault();
+
+    // Dinamik eklenen link satırlarını okuma
+    const linkSatirlari = document.querySelectorAll('.dosya-link-satiri');
+    const linklerDizisi = [];
+
+    linkSatirlari.forEach(satir => {
+        const urlVal = satir.querySelector('.d-link-url').value.trim();
+        const metinVal = satir.querySelector('.d-link-metin').value.trim();
+        if(urlVal && metinVal) {
+            linklerDizisi.push({ "url": urlVal, "metin": metinVal });
+        }
+    });
+
+    const dosyaObjesi = {
+        "meta": document.getElementById('dosya-meta').value,
+        "baslik": document.getElementById('dosya-baslik').value,
+        "aciklama": document.getElementById('dosya-aciklama').value,
+        "linkler": linklerDizisi
+    };
+
+    const formIndex = parseInt(document.getElementById('dosya-index').value);
+
+    if (formIndex === -1) {
+        // EN ÜSTE EKLEME: unshift() ile ilk sıraya yerleşir
+        mevcutDosyalarDizisi.unshift(dosyaObjesi);
+    } else {
+        // GÜNCELLEME: İlgili index güncellenir
+        mevcutDosyalarDizisi[formIndex] = dosyaObjesi;
+    }
+
+    dosyalariListele();
+    dosyaFormuSifirla();
+    dosyalariGithubaGonder();
+}
+
+// 6. DOSYA SİLME İŞLEMİ
+function dosyaSil(index) {
+    const onay = confirm(`"${mevcutDosyalarDizisi[index].baslik}" dosyasını silmek istediğinize emin misiniz?`);
+    if (!onay) return;
+
+    mevcutDosyalarDizisi.splice(index, 1);
+
+    dosyalariListele();
+    dosyaFormuSifirla();
+    dosyalariGithubaGonder();
+}
+
+// FORM SIFIRLAMA
+function dosyaFormuSifirla() {
+    document.getElementById('form-yeni-dosya').reset();
+    document.getElementById('dosya-index').value = "-1";
+    document.getElementById('dosya-form-baslik').innerText = "➕ En Üste Yeni Dosya Ekle";
+    document.getElementById('btn-dosya-kaydet').innerText = "Dosyayı En Üste Ekle";
+    document.getElementById('btn-dosya-kaydet').style.background = "#0284c7";
+    document.getElementById('btn-dosya-iptal').style.display = "none";
+    
+    // Link kutusunu sıfırla ve varsayılan 1 adet aç
+    document.getElementById('dosya-linkler-kapsayici').innerHTML = "";
+    dosyaLinkSatiriEkle();
+}
+
+// 7. GİTHUB COMMIT İŞLEMİ
+async function dosyalariGithubaGonder() {
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_DOSYALAR}`;
+
+    const jsonString = JSON.stringify(mevcutDosyalarDizisi, null, 2);
+    const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+    const payload = {
+        message: "Panel: data/dosyalar.json güncellendi",
+        content: base64Content,
+        sha: shaDosyalar
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if(!response.ok) throw new Error("GitHub veriyi kaydedemedi.");
+        const resData = await response.json();
+        shaDosyalar = resData.content.sha;
+        bildirimGoster("Dosyalar listesi başarıyla güncellendi ve GitHub'a kaydedildi!", "success");
+    } catch (error) {
+        bildirimGoster(error.message, "error");
+    }
+}
 
 
 
