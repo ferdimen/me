@@ -554,12 +554,11 @@
                 <div class="form-group">
                     <label for="b-id">Yazı ID (Benzersiz):</label>
                     <input type="text" id="b-id" placeholder="Örn: 2023-08-10-golbasi" required>
-<!-- HEMEN ALTINA BU SATIRI EKLE -->
-<span id="blog-id-uyari" style="display: none; color: #ef4444; font-size: 12px; font-weight: bold; margin-top: 3px;"></span>
+                    <span id="blog-id-uyari" style="display: none; color: #ef4444; font-size: 12px; font-weight: bold; margin-top: 3px;"></span>
                 </div>
                 <div class="form-group">
                     <label for="b-baslik">Yazı Başlığı:</label>
-                    <input type="text" id="b-baslik" placeholder="Örn: 2023-08-10-golbasi" required>
+                    <input type="text" id="b-baslik" placeholder="Örn: Gölyazı Turu" required>
                 </div>
             </div>
 
@@ -575,16 +574,16 @@
             </div>
 
             <div class="form-row">
-                <!-- ANA KATEGORİ (AJAX Destekli) -->
+                <!-- ANA KATEGORİ -->
                 <div class="form-group" style="flex: 1; position: relative;">
                     <label for="b-ana-kategori">Ana Kategori:</label>
                     <input type="text" id="b-ana-kategori" placeholder="Örn: Günlük Geziler" required oninput="blogAnaKategoriOner(this.value)" autocomplete="off">
                     <div id="blog-ana-kat-onerileri" style="display: none; position: absolute; left: 0; right: 0; background: white; border: 1px solid #cbd5e1; z-index: 110; max-height: 120px; overflow-y: auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"></div>
                 </div>
-                <!-- ALT KATEGORİ (AJAX Destekli) -->
+                <!-- ALT KATEGORİ -->
                 <div class="form-group" style="flex: 1; position: relative;">
                     <label for="b-alt-kategoriler">Alt Kategoriler (Virgülle ayırın):</label>
-                    <input type="text" id="b-alt-kategoriler" placeholder="Örn: bisiklet, Gözde" oninput="blogAltKategoriOner(this.value)" autocomplete="off">
+                    <input type="text" id="b-alt-kategoriler" placeholder="Örn: bisiklet, doğa" oninput="blogAltKategoriOner(this.value)" autocomplete="off">
                     <div id="blog-alt-kat-onerileri" style="display: none; position: absolute; left: 0; right: 0; background: white; border: 1px solid #cbd5e1; z-index: 110; max-height: 120px; overflow-y: auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"></div>
                 </div>
             </div>
@@ -594,7 +593,6 @@
                     <label for="b-kapakresmi">Kapak Resmi URL'i:</label>
                     <input type="text" id="b-kapakresmi" placeholder="https://lh3.googleusercontent.com/...">
                 </div>
-                <!-- KOORDİNAT HÜCRESİ -->
                 <div class="form-group" style="flex: 1;">
                     <label for="b-konum">Harita Koordinatı:</label>
                     <input type="text" id="b-konum" placeholder="Haritadan seçin veya girin">
@@ -607,20 +605,28 @@
                 <div id="blog-form-harita" style="width: 100%; height: 260px; min-height: 260px; margin-top: 5px; border: 1px solid #cbd5e1; border-radius: 6px; z-index: 10;"></div>
             </div>
 
-            <!-- ROZET PANELİ -->
+            <!-- 1. ADIM: ROZET SEÇİM PANELİ -->
             <div class="form-group">
                 <label>🎖️ Rozet Seçimi:</label>
-                <div style="margin-bottom: 5px; font-size: 12px; color: #64748b;">Rozete tıkladığınızda ona ait kelimeler aşağıdaki Özel Alan'a eklenir:</div>
+                <div style="margin-bottom: 5px; font-size: 12px; color: #64748b;">Rozete tıkladığınızda kelimeleri aşağıdaki geçici havuza aktarılır:</div>
                 <div id="blog-rozet-secim-alani" style="display: flex; flex-wrap: wrap; gap: 10px; padding: 10px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; max-height: 120px; overflow-y: auto;">
                     <span style="color:#94a3b8; font-size:13px;">Rozetler yükleniyor...</span>
                 </div>
             </div>
 
-            <!-- ÖZEL ALAN (KELİME SEÇİM KUTUSU) -->
+            <!-- 2. ADIM: YENİ GEÇİCİ KELİME HAVUZU -->
             <div class="form-group">
-                <label for="b-ozel">Özel Alan (Rozetlerden Gelen Kelimeler):</label>
+                <label>📥 Geçici Kelime Havuzu (Seçmek için kelimenin üzerine tıklayın):</label>
+                <div id="blog-gecici-kelime-havuzu" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 8px; background: #fff7ed; border: 1px dashed #fdba74; border-radius: 6px; min-height: 42px; align-items: center;">
+                    <span style="color:#94a3b8; font-size:12px; font-style: italic;">Yukarıdan bir rozet seçtiğinizde kelimeler burada belirecektir...</span>
+                </div>
+            </div>
+
+            <!-- 3. ADIM: ÖZEL ALAN (NİHAİ KELİME SEÇİM KUTUSU) -->
+            <div class="form-group">
+                <label for="b-ozel">Özel Alan (Yazıya Eklenecek Nihai Rozet Kelimeleri):</label>
                 <div id="blog-rozet-kelime-kutusu" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; min-height: 38px; align-items: center;">
-                    <!-- Rozet kelimeleri buraya çarpılı butonlar halinde dinamik dizilecek -->
+                    <!-- Havuzdan tıklanan kelimeler buraya çarpılı butonlar halinde dizilecek -->
                 </div>
                 <input type="hidden" id="b-ozel" required>
             </div>
@@ -722,7 +728,8 @@ let setBlogAltKategoriler = new Set();
 
 // Form Seçim Takipçileri
 let secilenBlogEtiketleri = [];
-let secilenBlogKelimeleri = []; // Rozetlerden gelen kelimeleri takip eder (b-ozel için)
+let geciciHavuzKelimeleri = []; // Rozetlerden gelen ve havuzda onay bekleyen kelimeler
+let secilenBlogKelimeleri = [];  // Havuzdan seçilerek Özel Alan'a geçen nihai kelimeler
 
 // Harita Nesneleri
 let blogSecimHaritasi = null;
@@ -2014,15 +2021,14 @@ async function videoMediaGithubaGonder() {
     }
 }
 // ========================================================
-// 9. SEKME: ENTEGRE BLOG YAZILARI YÖNETİM SİSTEMİ
+// 9. SEKME: GELİŞMİŞ BLOG YAZILARI YÖNETİM SİSTEMİ
 // ========================================================
 
-// 1. VERİLERİ GİTHUB'DAN ÇEKME
+// 1. GİTHUB'DAN VERİ ÇEKME
 async function blogYukle(token) {
     const urlBlog = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_BLOG}`;
     const urlRozet = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_BLOG_ROZET}`;
 
-    // Rozetleri Çekelim
     try {
         const resRozet = await fetch(urlRozet, { headers: { "Authorization": `token ${token}` } });
         if(resRozet.ok) {
@@ -2032,7 +2038,6 @@ async function blogYukle(token) {
         }
     } catch (e) { console.log("Rozet yükleme hatası: " + e.message); }
 
-    // Yazıları Çekelim
     try {
         const response = await fetch(urlBlog, { headers: { "Authorization": `token ${token}` } });
         if(!response.ok) throw new Error("Blog yazıları dosyası bulunamadı.");
@@ -2043,7 +2048,6 @@ async function blogYukle(token) {
         const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
         mevcutBlogDizisi = JSON.parse(decodedContent);
 
-        // AJAX Öneri havuzlarını doldur
         setBlogEtiketler.clear();
         setBlogAnaKategoriler.clear();
         setBlogAltKategoriler.clear();
@@ -2074,7 +2078,7 @@ async function blogYukle(token) {
     }
 }
 
-// 2. HARİTA BAŞLATMA VE KOORDİNAT YAKALAMA FONKSİYONU
+// 2. HARİTA BAŞLATMA
 function blogHaritasiniBaslat() {
     const haritaDiv = document.getElementById('blog-form-harita');
     if (!haritaDiv) return;
@@ -2085,26 +2089,18 @@ function blogHaritasiniBaslat() {
     }
 
     blogSecimHaritasi = L.map('blog-form-harita').setView([39.9207, 32.8541], 6);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap'
-    }).addTo(blogSecimHaritasi);
-
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(blogSecimHaritasi);
     setTimeout(() => { blogSecimHaritasi.invalidateSize(); }, 100);
 
     blogSecimHaritasi.on('click', function(e) {
         const koordinatFormat = `${e.latlng.lat}, ${e.latlng.lng}`;
         document.getElementById('b-konum').value = koordinatFormat;
-        
-        if (blogSecimMarker) {
-            blogSecimMarker.setLatLng(e.latlng);
-        } else {
-            blogSecimMarker = L.marker(e.latlng).addTo(blogSecimHaritasi);
-        }
+        if (blogSecimMarker) { blogSecimMarker.setLatLng(e.latlng); } 
+        else { blogSecimMarker = L.marker(e.latlng).addTo(blogSecimHaritasi); }
     });
 }
 
-// 3. ROZET ARAYÜZÜ OLUŞTURMA VE KELİME YÖNETİMİ
+// 3. ROZET SEÇİMİ VE GEÇİCİ HAVUZ YÖNETİMİ
 function blogRozetArayuzunuDoldur() {
     const alan = document.getElementById('blog-rozet-secim-alani');
     if(panelBlogRozetListesi && panelBlogRozetListesi.length > 0) {
@@ -2112,15 +2108,13 @@ function blogRozetArayuzunuDoldur() {
         panelBlogRozetListesi.forEach((rozet, index) => {
             const kStr = rozet.kelime || "";
             const butonGosterimAdi = kStr.split(',')[0].trim() || `Rozet ${index+1}`;
-            const rozetRengi = rozet.renk || "#0d9488"; // Renk yoksa varsayılan teal rengi
+            const rozetRengi = rozet.renk || "#0d9488";
 
             const itemDiv = document.createElement('div');
-            // Renk kodunu border ve metne yedirdik
             itemDiv.style.cssText = `display: flex; align-items: center; gap: 6px; padding: 4px 8px; background: #fff; border: 1px solid ${rozetRengi}; border-left: 4px solid ${rozetRengi}; color: ${rozetRengi}; border-radius: 4px; cursor: pointer; user-select: none; font-size: 12px; font-weight: 500;`;
             
-            // title ekleyerek tıklamadan kelimelerin görünmesini sağladık
-            itemDiv.title = `Tanımlı Kelimeler: ${kStr}`;
-            
+            // Tıklamadan kelimeleri görme özelliği
+            itemDiv.title = `İçerdiği Kelimeler: ${kStr}`;
             itemDiv.innerHTML = `<div style="width:16px; height:16px; display:flex; align-items:center;">${rozet.svg || ''}</div><span>${butonGosterimAdi}</span>`;
             
             itemDiv.onclick = function() {
@@ -2128,14 +2122,15 @@ function blogRozetArayuzunuDoldur() {
                     kStr.split(',').forEach(k => {
                         const temizK = k.trim();
                         if(temizK) {
-                            // Kelimenin hangi renge ait olduğunu obje yapısıyla saklıyoruz
-                            const zatenVarMi = secilenBlogKelimeleri.some(x => x.metin === temizK);
-                            if(!zatenVarMi) {
-                                secilenBlogKelimeleri.push({ metin: temizK, renk: rozetRengi });
+                            const havuzdaVarMi = geciciHavuzKelimeleri.some(x => x.metin === temizK);
+                            const nihaiVarMi = secilenBlogKelimeleri.some(x => x.metin === temizK);
+                            // Kelime daha önce havuzda veya nihai alanda yoksa havuz dizisine ekle
+                            if(!havuzdaVarMi && !nihaiVarMi) {
+                                geciciHavuzKelimeleri.push({ metin: temizK, renk: rozetRengi });
                             }
                         }
                     });
-                    blogKelimeKutusunuYenile();
+                    blogGeciciHavuzuYenile();
                 }
             };
             alan.appendChild(itemDiv);
@@ -2145,7 +2140,37 @@ function blogRozetArayuzunuDoldur() {
     }
 }
 
-// KELİME KUTUSU GÖRSELLEŞTİRME VE DEĞER AKTARMA (b-ozel için)
+// GEÇİCİ HAVUZ GÖRSELLEŞTİRME VE NİHAİ ALANA AKTARIM TETİKLEYİCİSİ
+function blogGeciciHavuzuYenile() {
+    const havuzDiv = document.getElementById('blog-gecici-kelime-havuzu');
+    if(geciciHavuzKelimeleri.length === 0) {
+        havuzDiv.innerHTML = `<span style="color:#94a3b8; font-size:12px; font-style: italic;">Yukarıdan bir rozet seçtiğinizde kelimeler burada belirecektir...</span>`;
+        return;
+    }
+    havuzDiv.innerHTML = "";
+    
+    geciciHavuzKelimeleri.forEach((item, idx) => {
+        const span = document.createElement('span');
+        // Soluna küçük bir + ikonu ve pointer ekledik
+        span.style.cssText = `background: #fff; color: ${item.renk}; border: 1px solid ${item.renk}; padding: 3px 8px; font-size: 12px; border-radius: 4px; display: flex; align-items: center; gap: 5px; cursor: pointer; font-weight: 500; transition: all 0.2s;`;
+        span.innerHTML = `➕ ${item.metin}`;
+        
+        span.onmouseover = () => { span.style.background = item.renk; span.style.color = "#fff"; };
+        span.onmouseout = () => { span.style.background = "#fff"; span.style.color = item.renk; };
+        
+        // Üzerine tıklandığında nihai alana (Özel Alan) uçur
+        span.onclick = function() {
+            secilenBlogKelimeleri.push(item);
+            geciciHavuzKelimeleri.splice(idx, 1);
+            blogGeciciHavuzuYenile();
+            blogKelimeKutusunuYenile();
+        };
+        
+        havuzDiv.appendChild(span);
+    });
+}
+
+// NİHAİ ÖZEL ALAN KUTUSUNU YENİLEME
 function blogKelimeKutusunuYenile() {
     const kutu = document.getElementById('blog-rozet-kelime-kutusu');
     kutu.innerHTML = "";
@@ -2153,22 +2178,26 @@ function blogKelimeKutusunuYenile() {
     secilenBlogKelimeleri.forEach(item => {
         const span = document.createElement('span');
         span.className = 'tag-badge';
-        // Sabit mavi yerine rozetten gelen item.renk kodunu arka plana bastık
         span.style.cssText = `background: ${item.renk}; color: white; padding: 2px 8px; font-size: 12px; border-radius: 4px; display: flex; align-items: center; gap: 5px; font-weight: 500;`;
         span.innerHTML = `${item.metin} <b style="cursor:pointer; font-size:10px; opacity:0.8;" onclick="blogKelimeSil('${item.metin}')">✕</b>`;
         kutu.appendChild(span);
     });
 
-    // Hidden input alanına sadece metinleri virgülle birleştirip aktarıyoruz
     document.getElementById('b-ozel').value = secilenBlogKelimeleri.map(x => x.metin).join(', ');
 }
 
 function blogKelimeSil(kelimeText) {
+    // Özel alandan silinen kelimeyi (istersek) tekrar geçici havuza geri gönderelim
+    const silinen = secilenBlogKelimeleri.find(x => x.metin === kelimeText);
+    if(silinen) {
+        geciciHavuzKelimeleri.push(silinen);
+    }
     secilenBlogKelimeleri = secilenBlogKelimeleri.filter(x => x.metin !== kelimeText);
+    blogGeciciHavuzuYenile();
     blogKelimeKutusunuYenile();
 }
 
-// 4. KATEGORİLER İÇİN AJAX ÖNERİ FONKSİYONLARI
+// 4. AJAX ÖNERİ FONKSİYONLARI (KATEGORİLER)
 function blogAnaKategoriOner(val) {
     const liste = document.getElementById('blog-ana-kat-onerileri');
     if(!val.trim()) { liste.style.display = "none"; return; }
@@ -2189,7 +2218,6 @@ function blogAnaKategoriOner(val) {
 function blogAltKategoriOner(val) {
     const liste = document.getElementById('blog-alt-kat-onerileri');
     if(!val.trim()) { liste.style.display = "none"; return; }
-    
     const parcalar = val.split(',');
     const sonKelime = parcalar[parcalar.length - 1].trim();
     if(!sonKelime) { liste.style.display = "none"; return; }
@@ -2212,7 +2240,7 @@ function blogAltKategoriOner(val) {
     liste.style.display = "block";
 }
 
-// 5. ETİKET YÖNETİMİ VE ÖNERİSİ
+// 5. ETİKET YÖNETİMİ
 function blogEtiketKutusunuYenile() {
     const input = document.getElementById('b-etiket-input');
     const kutu = document.getElementById('blog-etiket-kutusu');
@@ -2260,7 +2288,7 @@ function blogEtiketOnerisiniGoster(val) {
     liste.style.display = "block";
 }
 
-// Enter Basıldığında Etiket Kabul Etme Dinleyicisi
+// Dinamik Klavye ve Tıklama Dinleyicileri
 document.addEventListener('keydown', function(e) {
     if(e.target && e.target.id === 'b-etiket-input' && e.key === 'Enter') {
         e.preventDefault();
@@ -2268,13 +2296,49 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Sayfa dışına tıklayınca AJAX listelerini kapatma
+// YAZARKEN BENZERSİZ ID KONTROLÜ
+document.addEventListener('input', function(e) {
+    if (e.target && e.target.id === 'b-id') {
+        const girilenId = e.target.value.trim();
+        const formIndex = parseInt(document.getElementById('b-index').value);
+        const uyariEl = document.getElementById('blog-id-uyari');
+        const kaydetButon = document.getElementById('btn-blog-kaydet');
+
+        if (formIndex !== -1 || !girilenId) {
+            uyariEl.style.display = "none";
+            if(kaydetButon) kaydetButon.disabled = false;
+            return;
+        }
+
+        const idMevcut = mevcutBlogDizisi.some(yazi => yazi.id === girilenId);
+
+        if (idMevcut) {
+            uyariEl.innerText = `⚠️ Bu Yazı ID (${girilenId}) zaten kullanımda! Lütfen farklı bir ID girin.`;
+            uyariEl.style.display = "block";
+            e.target.style.borderColor = "#ef4444";
+            if(kaydetButon) {
+                kaydetButon.disabled = true;
+                kaydetButon.style.opacity = "0.5";
+                kaydetButon.style.cursor = "not-allowed";
+            }
+        } else {
+            uyariEl.style.display = "none";
+            e.target.style.borderColor = "#cbd5e1";
+            if(kaydetButon) {
+                kaydetButon.disabled = false;
+                kaydetButon.style.opacity = "1";
+                kaydetButon.style.cursor = "pointer";
+            }
+        }
+    }
+});
+
 document.addEventListener('click', function(e) {
     if(e.target.id !== 'b-ana-kategori') document.getElementById('blog-ana-kat-onerileri').style.display = "none";
     if(e.target.id !== 'b-alt-kategoriler') document.getElementById('blog-alt-kat-onerileri').style.display = "none";
 });
 
-// 6. BLOG LİSTELEME (KART TASARIMI)
+// 6. MEVCUT YAZILARI LİSTELEME
 function blogListele() {
     const kapsayici = document.getElementById('blog-listesi-kapsayici');
     kapsayici.innerHTML = ""; 
@@ -2327,7 +2391,6 @@ function blogDuzenleTetikle(index) {
     
     document.getElementById('b-index').value = index;
     
-    // ID alanını düzenlemede değiştirilemez yapıyoruz (Benzersizlik kuralı)
     const idInput = document.getElementById('b-id');
     idInput.value = item.id || "";
     idInput.disabled = true;
@@ -2358,16 +2421,14 @@ function blogDuzenleTetikle(index) {
         }
     }
 
-    // Kelimeleri Ayrıştırıp Kutuya Doldur
-if (item.ozel) {
-    const kelimeListesi = item.ozel.split(',').map(k => k.trim()).filter(Boolean);
-    secilenBlogKelimeleri = kelimeListesi.map(k => {
-        // Dosyadaki rozetlerden rengini bulmaya çalış, bulamazsa varsayılan ver
-        const bulunanRozet = panelBlogRozetListesi.find(r => (r.kelime || "").includes(k));
-        return { metin: k, renk: bulunanRozet ? bulunanRozet.renk : "#2c3e50" };
-    });
-    blogKelimeKutusunuYenile();
-}
+    if (item.ozel) {
+        const kelimeListesi = item.ozel.split(',').map(k => k.trim()).filter(Boolean);
+        secilenBlogKelimeleri = kelimeListesi.map(k => {
+            const bulunanRozet = panelBlogRozetListesi.find(r => (r.kelime || "").includes(k));
+            return { metin: k, renk: bulunanRozet ? bulunanRozet.renk : "#2c3e50" };
+        });
+        blogKelimeKutusunuYenile();
+    }
 
     if(item.etiketler && item.etiketler[0]) {
         secilenBlogEtiketleri = item.etiketler[0].split(',').map(t => t.trim()).filter(Boolean);
@@ -2377,18 +2438,17 @@ if (item.ozel) {
     document.getElementById('blog-form-baslik').scrollIntoView({ behavior: 'smooth' });
 }
 
-// 8. FORM SUBMIT (KAYDETME MANTIĞI + BENZERSİZ ID KONTROLÜ)
+// 8. FORM GÖNDERME
 function blogFormuGonder(event) {
     event.preventDefault();
 
     const inputId = document.getElementById('b-id').value.trim();
     const formIndex = parseInt(document.getElementById('b-index').value);
 
-    // BENZERSİZ ID KONTROLÜ: Sadece yeni kayıtlarda (-1) kontrol edilir
     if (formIndex === -1) {
         const idVarMi = mevcutBlogDizisi.some(yazi => yazi.id === inputId);
         if (idVarMi) {
-            alert(`Hata: "${inputId}" ID'sine sahip bir yazı zaten mevcut! Lütfen benzersiz bir ID belirleyin.`);
+            alert(`Hata: "${inputId}" ID'sine sahip bir yazı zaten mevcut!`);
             return;
         }
     }
@@ -2437,19 +2497,26 @@ function blogFormuSifirla() {
     document.getElementById('form-yeni-blog').reset();
     document.getElementById('b-index').value = "-1";
     
-    // ID alanını tekrar aktif ve normal rengine getiriyoruz
     const idInput = document.getElementById('b-id');
     idInput.disabled = false;
     idInput.style.background = "#fff";
+    idInput.style.borderColor = "#cbd5e1";
+    
+    document.getElementById('blog-id-uyari').style.display = "none";
 
     document.getElementById('blog-form-baslik').innerText = "➕ Yeni Blog Yazısı Ekle";
     document.getElementById('btn-blog-kaydet').innerText = "Yazıyı En Üste Ekle";
     document.getElementById('btn-blog-kaydet').style.background = "#0d9488";
+    document.getElementById('btn-blog-kaydet').style.opacity = "1";
+    document.getElementById('btn-blog-kaydet').style.cursor = "pointer";
     document.getElementById('btn-blog-iptal').style.display = "none";
     
     secilenBlogEtiketleri = [];
+    geciciHavuzKelimeleri = [];
     secilenBlogKelimeleri = [];
+    
     blogEtiketKutusunuYenile();
+    blogGeciciHavuzuYenile();
     blogKelimeKutusunuYenile();
     
     if(blogSecimMarker) {
@@ -2458,7 +2525,7 @@ function blogFormuSifirla() {
     }
 }
 
-// 10. GİTHUB COMMIT İŞLEMİ
+// 10. GİTHUB COMMIT İŞLEMLERİ
 async function blogMediaGithubaGonder() {
     const token = localStorage.getItem('gh_oauth_token');
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_BLOG}`;
@@ -2467,7 +2534,7 @@ async function blogMediaGithubaGonder() {
     const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
 
     const payload = {
-        message: "Panel: yazilar/yazilar.json güncellendi (Benzersiz ID ve Rozet Kelimeleri entegrasyonu)",
+        message: "Panel: yazilar/yazilar.json güncellendi (Havuz Entegrasyonu ve Dinamik ID Kontrolü)",
         content: base64Content,
         sha: shaBlog
     };
