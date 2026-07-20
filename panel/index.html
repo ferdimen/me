@@ -3,36 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferdimen // Jenerik İçerik Yönetim Paneli</title>
+    <title>Ferdimen // İçerik Yönetim Paneli</title>
     <link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f4f6f9; color: #333; }
         h2 { color: #1e293b; margin-bottom: 20px; }
+        
+        /* Layout Yapısı */
         .panel-container { display: flex; gap: 20px; margin-top: 20px; }
+        
+        /* Sol Menü / Sekme Butonları */
         .sidebar { flex: 1; max-width: 200px; display: flex; flex-direction: column; gap: 8px; }
         .tab-btn { background: #fff; color: #475569; border: 1px solid #e2e8f0; padding: 12px 15px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: bold; text-align: left; transition: all 0.2s; }
         .tab-btn:hover { background: #f8fafc; color: #1e293b; }
         .tab-btn.active { background: #2563eb; color: white; border-color: #2563eb; }
+        
+        /* İçerik Alanı */
         .main-content { flex: 3; background: #fff; padding: 25px; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
+
+        /* Form Elemanları */
+        .form-group { margin-bottom: 20px; }
+        .form-row { display: flex; gap: 15px; }
+        .form-row .form-group { flex: 1; }
+        label { display: block; font-weight: 600; margin-bottom: 6px; color: #475569; font-size: 14px; }
+        input[type="text"], input[type="number"], textarea, select { width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; background: #fff; }
+        input[type="color"] { width: 100%; height: 40px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 2px; cursor: pointer; }
+        fieldset { border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-bottom: 20px; background: #fff; }
+        legend { font-weight: bold; color: #1e293b; padding: 0 10px; font-size: 14px; }
+        
+        /* Butonlar */
+        .btn { background: #2563eb; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-size: 15px; font-weight: bold; width: 100%; text-align: center; text-decoration: none; box-sizing: border-box; display: inline-block; }
+        .btn:hover { background: #1d4ed8; }
+        .btn-github { background: #24292e; }
+        .btn-github:hover { background: #1a1e22; }
+        
         .status { margin-top: 15px; padding: 12px; border-radius: 6px; display: none; font-size: 14px; font-weight: 500; }
         .success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
         .error { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
         #auth-panel { background: #fff; padding: 30px; border: 1px solid #e2e8f0; border-radius: 8px; text-align: center; max-width: 400px; margin: 40px auto; }
-        .btn { background: #2563eb; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-size: 15px; font-weight: bold; width: 100%; text-align: center; text-decoration: none; box-sizing: border-box; display: inline-block; }
-        .btn:hover { background: #1d4ed8; }
-        .btn-github { background: #24292e; }
+		
+.haber-kart { display: flex; justify-content: space-between; align-items: center; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f8fafc; }
+.haber-kart-detay { flex: 1; padding-right: 15px; }
+.haber-kart-meta { font-size: 11px; font-weight: bold; color: #2563eb; text-transform: uppercase; margin-bottom: 3px; }
+.haber-kart-baslik { font-size: 14px; font-weight: bold; color: #1e293b; margin: 0; }
+.haber-kart-butonu { padding: 6px 10px; font-size: 12px; font-weight: bold; border-radius: 4px; border: none; cursor: pointer; color: white; margin-left: 5px; }
+.btn-duzenle { background: #eab308; }
+.btn-duzenle:hover { background: #ca8a04; }
+.btn-sil { background: #ef4444; }
+.btn-sil:hover { background: #dc2626; }
+.tl-kart { display: flex; justify-content: space-between; align-items: center; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; background: #faf5ff; }
+.tl-kart-detay { flex: 1; padding-right: 15px; }
+.tl-kart-meta { font-size: 12px; font-weight: bold; color: #8b5cf6; margin-bottom: 3px; }
+.tl-kart-baslik { font-size: 14px; font-weight: bold; color: #1e293b; margin: 0; }
+.btn-tl-duzenle { background: #eab308; }
+.btn-tl-sil { background: #ef4444; }
     </style>
 </head>
 <body>
 
+    <!-- GİRİŞ PANELİ (Oturum açılmadıysa görünür) -->
     <div id="auth-panel">
         <h2>Yönetim Paneli Girişi</h2>
         <p style="margin-bottom: 20px; color: #64748b;">GitHub hesabınızla kimlik doğrulaması yapın.</p>
         <button onclick="githubGirisYap()" class="btn btn-github">GitHub ile Giriş Yap</button>
     </div>
 
+    <!-- ANA YÖNETİMCİ ARAYÜZÜ (Giriş yapıldıysa görünür) -->
     <div id="main-panel" style="display: none;">
         <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
             <h2>İçerik Yönetim Merkezi</h2>
@@ -40,63 +78,312 @@
         </div>
 
         <div class="panel-container">
-            <div class="sidebar" id="sidebar-menu"></div>
+            <!-- SOL MENÜ (Yeni sekmeleri buraya ekleyeceksin) -->
+            <div class="sidebar">
+                <button class="tab-btn active" onclick="sekmeDegistir('nerdeyim-tab')">📍 Nerdeyim?</button>
+				<button class="tab-btn" onclick="sekmeDegistir('haberler-tab')">📰 Haberler</button>
+				<button class="tab-btn" onclick="sekmeDegistir('kronoloji-tab')">⏳ Kronoloji</button>
+                <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
+                <!-- Gelecekte buraya yeni butonlar gelebilir -->
+            </div>
+
+            <!-- SAĞ İÇERİK ALANI -->
             <div class="main-content">
                 <div id="status-box" class="status"></div>
-                <div id="modul-kapsayici"></div>
+
+                <!-- 1. SEKME: NERDEYİM (konum.json) -->
+                <div id="nerdeyim-tab" class="tab-content active">
+                    <h3>Konum ve Rota Ayarları</h3>
+                    <form id="form-konum" onsubmit="konumuKaydet(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="aktifTur">Aktif Tur Durumu:</label>
+                                <select id="aktifTur">
+                                    <option value="evet">Evet</option>
+                                    <option value="hayir">Hayır</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="rota">Rota Gösterimi:</label>
+                                <select id="rota">
+                                    <option value="evet">Evet</option>
+                                    <option value="hayir">Hayır</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="yazi">Yazı Gösterimi:</label>
+                                <select id="yazi">
+                                    <option value="evet">Evet</option>
+                                    <option value="hayir">Hayır</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tur-adi">Tur Adı:</label>
+                            <input type="text" id="tur-adi" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="canliTakipUrl">Canlı Takip Linki:</label>
+                            <input type="text" id="canliTakipUrl">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="aciklama">Tur Açıklaması:</label>
+                            <textarea id="aciklama" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="gunleri-goster">Gösterilecek Günler:</label>
+                                <input type="text" id="gunleri-goster">
+                            </div>
+                            <div class="form-group">
+                                <label for="karakter-siniri">Karakter Sınırı:</label>
+                                <input type="number" id="karakter-siniri" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="zoom-seviyesi">Harita Zoom Seviyesi:</label>
+                                <input type="number" id="zoom-seviyesi" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cizgi-rengi">Genel Rota Çizgi Rengi:</label>
+                            <input type="color" id="cizgi-rengi">
+                        </div>
+
+                        <fieldset>
+                            <legend>Araç Bazlı Rota Renkleri</legend>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="renk-bike">Bisiklet (Bike):</label>
+                                    <input type="color" id="renk-bike">
+                                </div>
+                                <div class="form-group">
+                                    <label for="renk-foot">Yürüyüş (Foot):</label>
+                                    <input type="color" id="renk-foot">
+                                </div>
+                                <div class="form-group">
+                                    <label for="renk-other">Diğer (Other):</label>
+                                    <input type="color" id="renk-other">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <button type="submit" class="btn">Konumu Güncelle</button>
+                    </form>
+                </div>
+<!-- 3. SEKME: HABERLER (haber.json) -->
+<div id="haberler-tab" class="tab-content">
+    <h3>Haber Yönetimi</h3>
+    
+    <!-- Haber Ekleme ve Düzenleme Formu -->
+    <fieldset style="margin-bottom: 25px; border-color: #2563eb;">
+        <legend id="haber-form-baslik" style="color: #2563eb; font-weight: bold;">➕ Yeni Haber Ekle</legend>
+        <form id="form-yeni-haber" onsubmit="haberFormuGonder(event)">
+            <!-- Gizli input: Düzenlenen haberin dizideki sırasını (index) tutar -->
+            <input type="hidden" id="h-index" value="-1">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="h-tarih">Haber Tarihi:</label>
+                    <input type="date" id="h-tarih" required>
+                </div>
+                <div class="form-group">
+                    <label for="h-etiket">Kategori / Etiket:</label>
+                    <input type="text" id="h-etiket" placeholder="Örn: Altyapı, Tur, Duyuru" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="h-baslik">Haber Başlığı:</label>
+                <input type="text" id="h-baslik" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="h-aciklama">Haber Açıklaması (HTML içerebilir):</label>
+                <textarea id="h-aciklama" rows="3" required></textarea>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="h-resim">Resim Yolu (Opsiyonel):</label>
+                    <input type="text" id="h-resim" placeholder="/images/haber1.jpg">
+                </div>
+                <div class="form-group">
+                    <label for="h-linkUrl">Link URL (Opsiyonel):</label>
+                    <input type="text" id="h-linkUrl" placeholder="/#takip">
+                </div>
+                <div class="form-group">
+                    <label for="h-linkMetni">Link Buton Metni:</label>
+                    <input type="text" id="h-linkMetni" placeholder="Takip et">
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" id="btn-haber-kaydet" class="btn" style="background: #10b981; flex: 2;">Haber Listesine Ekle</button>
+                <button type="button" id="btn-haber-iptal" onclick="haberFormuSifirla()" class="btn" style="background: #64748b; flex: 1; display: none;">İptal Et</button>
+            </div>
+        </form>
+    </fieldset>
+
+    <!-- Tek Tek Haberlerin Listeleneceği Alan -->
+    <fieldset>
+        <legend>📰 Mevcut Haber Listesi</legend>
+        <div id="haberler-listesi-kapsayici" style="display: flex; flex-direction: column; gap: 12px; max-height: 500px; overflow-y: auto; padding-right: 5px;">
+            <p style="color: #64748b; font-size: 14px; text-align: center;">Haberler yükleniyor...</p>
+        </div>
+    </fieldset>
+</div>
+<!-- 4. SEKME: KRONOLOJİ (timeline.json) -->
+<div id="kronoloji-tab" class="tab-content">
+    <h3>Kronoloji (Timeline) Yönetimi</h3>
+    
+    <!-- Kronoloji Ekleme ve Düzenleme Formu -->
+    <fieldset style="margin-bottom: 25px; border-color: #8b5cf6;">
+        <legend id="tl-form-baslik" style="color: #8b5cf6; font-weight: bold;">➕ Yeni Kronoloji Olayı Ekle</legend>
+        <form id="form-yeni-timeline" onsubmit="timelineFormuGonder(event)">
+            <!-- Gizli input: Düzenlenen olayın dizideki sırasını tutar -->
+            <input type="hidden" id="tl-index" value="-1">
+
+            <div class="form-row" style="background: #f3f4f6; padding: 10px; border-radius: 6px; margin-bottom: 15px;">
+                <div class="form-group" style="flex: 2;">
+                    <label for="tl-blog-sec">📝 Mevcut Bir Blog Yazısı Bağla (Opsiyonel):</label>
+                    <select id="tl-blog-sec" onchange="blogYazisiSecildi(this)">
+                        <option value="">-- Bir Blog Yazısı Seçin (Otomatik Tarih ve URL Dolar) --</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="tl-tarih-manuel">Takvim Tarihi (Yıl/Ay İçin):</label>
+                    <input type="date" id="tl-tarih-manuel" onchange="manuelTarihDegisti(this)">
+                </div>
+                <div class="form-group">
+                    <label for="tl-tarih-gosterim">Formatlanmış Tarih (JSON'a Yazılacak):</label>
+                    <input type="text" id="tl-tarih-gosterim" placeholder="Örn: 2026 Mart" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="tl-baslik">Olay Başlığı:</label>
+                <input type="text" id="tl-baslik" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="tl-aciklama">Olay Açıklaması:</label>
+                <textarea id="tl-aciklama" rows="3" required></textarea>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="tl-resim">Resim Yolu:</label>
+                    <input type="text" id="tl-resim" placeholder="img/logo.png">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="tl-linkblogUrl">Blog URL:</label>
+                    <input type="text" id="tl-linkblogUrl" placeholder="yazilar/yazi-adresi.html">
+                </div>
+                <div class="form-group">
+                    <label for="tl-linkblogMetni">Blog Link Metni:</label>
+                    <input type="text" id="tl-linkblogMetni" value="Blog Sayfası">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="tl-linkUrl">Dış Bağlantı URL (Örn: Youtube):</label>
+                    <input type="text" id="tl-linkUrl" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label for="tl-linkMetni">Dış Bağlantı Metni:</label>
+                    <input type="text" id="tl-linkMetni" value="Tur Videolarını İzle">
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" id="btn-tl-kaydet" class="btn" style="background: #8b5cf6; flex: 2;">Kronolojiye Ekle</button>
+                <button type="button" id="btn-tl-iptal" onclick="timelineFormuSifirla()" class="btn" style="background: #64748b; flex: 1; display: none;">İptal Et</button>
+            </div>
+        </form>
+    </fieldset>
+
+    <!-- Tek Tek Olayların Listeleneceği Alan -->
+    <fieldset>
+        <legend>⏳ Mevcut Kronoloji Akışı</legend>
+        <div id="timeline-listesi-kapsayici" style="display: flex; flex-direction: column; gap: 12px; max-height: 500px; overflow-y: auto; padding-right: 5px;">
+            <p style="color: #64748b; font-size: 14px; text-align: center;">Kronoloji yükleniyor...</p>
+        </div>
+    </fieldset>
+</div>
+                <!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
+                <div id="yeni-sekme-tab" class="tab-content">
+                    <h3>Yeni Dosya / Değişken Ayarları</h3>
+                    <p style="color:#64748b; font-size:14px;">Buraya ileride düzenlemek istediğin başka bir JSON dosyasının form elemanlarını ekleyebilirsin.</p>
+                    <form id="form-yeni" onsubmit="alert('Örnek form tetiklendi!')">
+                        <div class="form-group">
+                            <label>Örnek Seçenek:</label>
+                            <input type="text" placeholder="Gelecekteki verileriniz...">
+                        </div>
+                        <button type="submit" class="btn">Kaydet (Örnek)</button>
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>
 
     <script>
+        // --- CONFIG UYGULAMA AYARLARI ---
         const CLIENT_ID = "Ov23liB76WxL18rB8cmu"; 
         const WORKER_URL = "https://github-oauth.kizilferdi.workers.dev/"; 
         const REPO_OWNER = "ferdimen"; 
         const REPO_NAME = "me"; 
+		      
+        // Her dosyanın yolunu ve SHA değerini ayrı ayrı takip ediyoruz
+const PATH_KONUM = "nerdeyim/konum.json"; 
+let shaKonum = "";
 
-        // Sadece buraya yeni modül eklemen yeterli, index.html koduna dokunmana gerek yok!
-        const MODULLER = [
-            { id: "nerdeyim-tab", yazi: "📍 Nerdeyim?", dosya: "modul/nerdeyim.html" },
-            { id: "haberler-tab", yazi: "📰 Haberler", dosya: "modul/haberler.html" },
-            { id: "kronoloji-tab", yazi: "⏳ Kronoloji", dosya: "modul/kronoloji.html" }
-        ];
+// YENİ EKLENEN DOSYA YOLLARI
+const PATH_HABER = "data/haber.json";
+let shaHaber = "";
+let mevcutHaberlerDizisi = []; // Haberleri hafızada dizi olarak tutacağız
 
-        window.FerdiAPI = {
-            token: "",
-            owner: REPO_OWNER,
-            repo: REPO_NAME,
-            aylar: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+const PATH_TIMELINE = "data/timeline.json";
+const PATH_YAZILAR = "yazilar/yazilar.json";
+
+let shaTimeline = "";
+let mevcutTimelineDizisi = [];
+let mevcutYazilarDizisi = []; // Blog yazıları verisini buraya çekeceğiz
+
+        function bildirimGoster(mesaj, tip) {
+            const box = document.getElementById('status-box');
+            box.innerText = mesaj;
+            box.className = `status ${tip}`;
+            box.style.display = 'block';
+            setTimeout(() => { box.style.display = 'none'; }, 5000); // 5 saniye sonra gizle
+        }
+
+        // Sekme Değiştirme Fonksiyonu
+        function sekmeDegistir(tabId) {
+            // Tüm içerikleri gizle
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            // Tüm butonların aktifliğini kaldır
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
             
-            bildirim: function(mesaj, tip) {
-                const box = document.getElementById('status-box');
-                box.innerText = mesaj;
-                box.className = `status ${tip}`;
-                box.style.display = 'block';
-                setTimeout(() => { box.style.display = 'none'; }, 5000);
-            },
-
-            // Ortak Base64 Dönüştürücüler (Türkçe karakter uyumlu)
-            utf8_to_b64: function(str) {
-                return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
-            },
-            b64_to_utf8: function(str) {
-                return decodeURIComponent(atob(str).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-            }
-        };
+            // Seçileni göster ve butonu aktif yap
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
 
         function githubGirisYap() {
             window.location.href = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo`;
-        }
-
-        function sekmeDegistir(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            
-            const hedefTab = document.getElementById(tabId);
-            if(hedefTab) hedefTab.classList.add('active');
-            
-            const hedefBtn = document.querySelector(`button[data-target="${tabId}"]`);
-            if(hedefBtn) hedefBtn.classList.add('active');
         }
 
         async function tokenKontrolEt() {
@@ -113,55 +400,516 @@
                         localStorage.setItem('gh_oauth_token', data.access_token);
                         token = data.access_token;
                     }
-                } catch (err) { alert("Giriş Hatası: " + err.message); }
-            }
-
-            if (token) {
-                window.FerdiAPI.token = token;
-                document.getElementById('auth-panel').style.display = 'none';
-                document.getElementById('main-panel').style.display = 'block';
-                await modulleriYukle();
-            }
-        }
-
-        async function modulleriYukle() {
-            const menuKapsayici = document.getElementById('sidebar-menu');
-            const modulKapsayici = document.getElementById('modul-kapsayici');
-            
-            for (const mod of MODULLER) {
-                const btn = document.createElement('button');
-                btn.className = "tab-btn";
-                btn.setAttribute("data-target", mod.id);
-                btn.innerText = mod.yazi;
-                btn.onclick = () => sekmeDegistir(mod.id);
-                menuKapsayici.appendChild(btn);
-
-                const div = document.createElement('div');
-                div.id = mod.id;
-                div.className = "tab-content";
-                modulKapsayici.appendChild(div);
-
-                try {
-                    const response = await fetch(mod.dosya);
-                    if (!response.ok) throw new Error();
-                    const htmlKodu = await response.text();
-                    
-                    div.innerHTML = htmlKodu;
-
-                    // Modül içindeki script etiketlerini ayıklayıp DOM üzerinde yeniden çalıştırıyoruz
-                    const scripts = div.getElementsByTagName('script');
-                    for (let script of scripts) {
-                        const yeniScript = document.createElement('script');
-                        yeniScript.text = script.text;
-                        document.body.appendChild(yeniScript).parentNode.removeChild(yeniScript);
-                    }
-                } catch (e) {
-                    div.innerHTML = `<p style="color:red; padding:20px;">${mod.yazi} yüklenemedi.</p>`;
+                } catch (err) {
+                    alert("Giriş Hatası: " + err.message);
                 }
             }
-            if(MODULLER.length > 0) sekmeDegistir(MODULLER[0].id);
+
+if (token) {
+    document.getElementById('auth-panel').style.display = 'none';
+    document.getElementById('main-panel').style.display = 'block';
+    
+    konumuYukle(token);
+    haberleriYukle(token);
+    
+    // YENİ EKLENEN KRONOLOJİ YÜKLEYİCİLERİ
+    yazilariYukle(token).then(() => {
+        timelineYukle(token);
+    });
+}
         }
 
+        // NERDEYİM VERİSİNİ GETİR
+        async function konumuYukle(token) {
+            const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KONUM}`;
+            try {
+                const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+                if(!response.ok) throw new Error("Konum dosyası yüklenemedi.");
+
+                const data = await response.json();
+                shaKonum = data.sha;
+
+                const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+                const json = JSON.parse(decodedContent);
+
+                document.getElementById('aktifTur').value = json["aktifTur"] || "hayir";
+                document.getElementById('rota').value = json["rota"] || "hayir";
+                document.getElementById('yazi').value = json["yazi"] || "hayir";
+                document.getElementById('tur-adi').value = json["tur-adi"] || "";
+                document.getElementById('canliTakipUrl').value = json["canliTakipUrl"] || "";
+                document.getElementById('aciklama').value = json["aciklama"] || "";
+                document.getElementById('gunleri-goster').value = json["gunleri-goster"] || "hepsi";
+                document.getElementById('karakter-siniri').value = json["karakter-siniri"] || 120;
+                document.getElementById('zoom-seviyesi').value = json["zoom-seviyesi"] || 11;
+                document.getElementById('cizgi-rengi').value = json["cizgi-rengi"] || "#dc2626";
+
+                if(json["araclar"]) {
+                    if(json["araclar"]["bike"]) document.getElementById('renk-bike').value = json["araclar"]["bike"]["renk"] || "#dc2626";
+                    if(json["araclar"]["foot"]) document.getElementById('renk-foot').value = json["araclar"]["foot"]["renk"] || "#dc2626";
+                    if(json["araclar"]["other"]) document.getElementById('renk-other').value = json["araclar"]["other"]["renk"] || "#dc2626";
+                }
+            } catch (error) {
+                bildirimGoster(error.message, "error");
+            }
+        }
+
+        // NERDEYİM VERİSİNİ KAYDET
+        async function konumuKaydet(event) {
+            event.preventDefault();
+            const token = localStorage.getItem('gh_oauth_token');
+            const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KONUM}`;
+
+            const guncelJson = {
+                "aktifTur": document.getElementById('aktifTur').value,
+                "canliTakipUrl": document.getElementById('canliTakipUrl').value,
+                "tur-adi": document.getElementById('tur-adi').value,
+                "aciklama": document.getElementById('aciklama').value,
+                "rota": document.getElementById('rota').value,
+                "gunleri-goster": document.getElementById('gunleri-goster').value,
+                "karakter-siniri": Number(document.getElementById('karakter-siniri').value),
+                "yazi": document.getElementById('yazi').value,
+                "zoom-seviyesi": Number(document.getElementById('zoom-seviyesi').value),
+                "cizgi-rengi": document.getElementById('cizgi-rengi').value,
+                "araclar": {
+                    "bike": { "renk": document.getElementById('renk-bike').value },
+                    "foot": { "renk": document.getElementById('renk-foot').value },
+                    "other": { "renk": document.getElementById('renk-other').value }
+                }
+            };
+
+            const jsonString = JSON.stringify(guncelJson, null, 2);
+            const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+            const payload = {
+                message: "Panel: nerdeyim/konum.json güncellendi",
+                content: base64Content,
+                sha: shaKonum
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: "PUT",
+                    headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                if(!response.ok) throw new Error("Güncelleme başarısız.");
+                const resData = await response.json();
+                shaKonum = resData.content.sha;
+                bildirimGoster("Konum bilgileri başarıyla kaydedildi!", "success");
+            } catch (error) {
+                bildirimGoster(error.message, "error");
+            }
+        }
+// Aylar dizisi (Tarihi formatlamak için global alanda dursun)
+const AYLAR_TR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+
+// 1. HABERLERİ GİTHUB'DAN ÇEKME VE EKRANDA LİSTELEME
+async function haberleriYukle(token) {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_HABER}`;
+    try {
+        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if(!response.ok) throw new Error("Haber dosyası yüklenemedi.");
+
+        const data = await response.json();
+        shaHaber = data.sha;
+
+        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        mevcutHaberlerDizisi = JSON.parse(decodedContent);
+
+        // Görsel listeyi oluştur
+        haberleriListele();
+    } catch (error) {
+        console.log("Haber yükleme hatası: " + error.message);
+    }
+}
+
+// 2. ARABİRİMDE HABERLERİ KART OLARAK LİSTELEME FONKSİYONU
+function haberleriListele() {
+    const kapsayici = document.getElementById('haberler-listesi-kapsayici');
+    kapsayici.innerHTML = ""; // İçeriği temizle
+
+    if (mevcutHaberlerDizisi.length === 0) {
+        kapsayici.innerHTML = `<p style="color: #64748b; font-size: 14px; text-align: center;">Henüz eklenmiş bir haber bulunmuyor.</p>`;
+        return;
+    }
+
+    // Her haberi bir kart olarak döngüyle ekrana basıyoruz
+    mevcutHaberlerDizisi.forEach((haber, index) => {
+        const kart = document.createElement('div');
+        kart.className = 'haber-kart';
+        kart.innerHTML = `
+            <div class="haber-kart-detay">
+                <div class="haber-kart-meta">${haber.meta}</div>
+                <h4 class="haber-kart-baslik">${haber.baslik}</h4>
+            </div>
+            <div>
+                <button type="button" class="haber-kart-butonu btn-duzenle" onclick="haberDuzenleTetikle(${index})">Düzenle</button>
+                <button type="button" class="haber-kart-butonu btn-sil" onclick="haberSil(${index})">Sil</button>
+            </div>
+        `;
+        kapsayici.appendChild(kart);
+    });
+}
+
+// 3. BİR HABERİN DÜZENLE BUTONUNA BASILDIĞINDA FORMA DOLDURULMASI
+function haberDuzenleTetikle(index) {
+    const haber = mevcutHaberlerDizisi[index];
+    
+    // Form başlığını ve buton metnini "Güncelleme" moduna geçir
+    document.getElementById('haber-form-baslik').innerText = "📝 Haberi Düzenle";
+    document.getElementById('btn-haber-kaydet').innerText = "Değişikliği Listede Güncelle";
+    document.getElementById('btn-haber-kaydet').style.background = "#eab308";
+    document.getElementById('btn-haber-iptal').style.display = "inline-block";
+    
+    // Hangi indeksi düzenlediğimizi gizli inputa kaydediyoruz
+    document.getElementById('h-index').value = index;
+
+    // Form alanlarını doldur
+    document.getElementById('h-baslik').value = haber.baslik || "";
+    document.getElementById('h-aciklama').value = haber.aciklama || "";
+    document.getElementById('h-resim').value = haber.resim || "";
+    document.getElementById('h-linkUrl').value = haber.linkUrl || "";
+    document.getElementById('h-linkMetni').value = haber.linkMetni || "";
+
+    // Meta alanından tarihi ayıklayıp takvime geri doldurma (Örn: "20 Temmuz 2026 / Altyapı")
+    if (haber.meta) {
+        const metaParcaları = haber.meta.split(' / ');
+        if (metaParcaları.length > 0) {
+            document.getElementById('h-etiket').value = metaParcaları[1] || "";
+            
+            // "20 Temmuz 2026" stringini YYYY-MM-DD formatına geri çevirme simülasyonu
+            const tarihKelimeleri = metaParcaları[0].split(' ');
+            if (tarihKelimeleri.length === 3) {
+                const gun = tarihKelimeleri[0].padStart(2, '0');
+                const ayIsmi = tarihKelimeleri[1];
+                const yil = tarihKelimeleri[2];
+                const ayIndex = AYLAR_TR.indexOf(ayIsmi);
+                if (ayIndex !== -1) {
+                    const ay = String(ayIndex + 1).padStart(2, '0');
+                    document.getElementById('h-tarih').value = `${yil}-${ay}-${gun}`;
+                }
+            }
+        }
+    }
+    
+    // Sayfayı yukarı formun olduğu yere hafifçe kaydır
+    document.getElementById('haber-form-baslik').scrollIntoView({ behavior: 'smooth' });
+}
+
+// 4. HABER EKLEME VEYA GÜNCELLEME İŞLEMİ (FORM GÖNDERİLDİĞİNDE)
+function haberFormuGonder(event) {
+    event.preventDefault();
+
+    // Tarih formatlama
+    const secilenTarih = document.getElementById('h-tarih').value;
+    const parcalar = secilenTarih.split('-');
+    const formatliTarih = `${parseInt(parcalar[2])} ${AYLAR_TR[parseInt(parcalar[1])-1]} ${parcalar[0]}`;
+    const etiket = document.getElementById('h-etiket').value;
+    const tamMeta = `${formatliTarih} / ${etiket}`;
+
+    const haberObjesi = {
+        "meta": tamMeta,
+        "baslik": document.getElementById('h-baslik').value,
+        "aciklama": document.getElementById('h-aciklama').value,
+        "resim": document.getElementById('h-resim').value,
+        "linkUrl": document.getElementById('h-linkUrl').value,
+        "linkMetni": document.getElementById('h-linkMetni').value
+    };
+
+    const formIndex = parseInt(document.getElementById('h-index').value);
+
+    if (formIndex === -1) {
+        // YENİ HABER EKLEME MODU: Listenin en başına ekle
+        mevcutHaberlerDizisi.unshift(haberObjesi);
+    } else {
+        // DÜZENLEME/GÜNCELLEME MODU: Mevcut indeksteki veriyi güncelle
+        mevcutHaberlerDizisi[formIndex] = haberObjesi;
+    }
+
+    // Arayüz listesini yenile
+    haberleriListele();
+    // Formu temizle ve normal moda dön
+    haberFormuSifirla();
+    // GitHub repona eşitlemeyi başlat
+    haberleriGithubaGonder();
+}
+
+// 5. HABER SİLME FONKSİYONU
+function haberSil(index) {
+    const onay = confirm(`"${mevcutHaberlerDizisi[index].baslik}" başlıklı haberi silmek istediğinize emin misiniz?`);
+    if (!onay) return;
+
+    // Seçilen indeksteki haberi diziden tamamen çıkartıyoruz
+    mevcutHaberlerDizisi.splice(index, 1);
+
+    // Listeyi yenile ve GitHub'a gönder
+    haberleriListele();
+    haberFormuSifirla(); // Eğer o sırada düzenleme yapılıyorsa formu temizle
+    haberleriGithubaGonder();
+}
+
+// FORM SIFIRLAMA (İPTAL VEYA KAYIT SONRASI NORMAL MODA DÖNÜŞ)
+function haberFormuSifirla() {
+    document.getElementById('form-yeni-haber').reset();
+    document.getElementById('h-index').value = "-1";
+    document.getElementById('haber-form-baslik').innerText = "➕ Yeni Haber Ekle";
+    document.getElementById('btn-haber-kaydet').innerText = "Haber Listesine Ekle";
+    document.getElementById('btn-haber-kaydet').style.background = "#10b981";
+    document.getElementById('btn-haber-iptal').style.display = "none";
+}
+
+// 6. HAFIZADAKİ SON DURUMU GİTHUB'A KESİN OLARAK COMMIT ETME
+async function haberleriGithubaGonder() {
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_HABER}`;
+
+    const jsonString = JSON.stringify(mevcutHaberlerDizisi, null, 2);
+    const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+    const payload = {
+        message: "Panel: data/haber.json listesinde düzenleme/silme yapıldı",
+        content: base64Content,
+        sha: shaHaber
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if(!response.ok) throw new Error("GitHub veriyi kaydedemedi.");
+        const resData = await response.json();
+        shaHaber = resData.content.sha; // Bir sonraki işlem için SHA kodunu tazele
+        bildirimGoster("Haber listesi güncellendi ve GitHub'a başarıyla kaydedildi!", "success");
+    } catch (error) {
+        bildirimGoster(error.message, "error");
+    }
+}
+// 1. YAZILAR.JSON DOSYASINI AÇILIR LİSTE İÇİN ÇEKME
+async function yazilariYukle(token) {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_YAZILAR}`;
+    try {
+        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if(!response.ok) throw new Error("Yazılar listesi yüklenemedi.");
+        const data = await response.json();
+        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        mevcutYazilarDizisi = JSON.parse(decodedContent);
+        
+        // Select elementini doldur
+        const selectEl = document.getElementById('tl-blog-sec');
+        mevcutYazilarDizisi.forEach(yazi => {
+            const option = document.createElement('option');
+            option.value = yazi.url;
+            option.innerText = `${yazi.tarih} - ${yazi.baslik}`;
+            // Yazi objesinin tamamını data attribute olarak saklayalım
+            option.dataset.yaziObj = JSON.stringify(yazi);
+            selectEl.appendChild(option);
+        });
+    } catch (error) {
+        console.log("Yazılar yüklenemedi: " + error.message);
+    }
+}
+
+// 2. TIMELINE.JSON DOSYASINI ÇEKME VE EKRANA YANSITMA
+async function timelineYukle(token) {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_TIMELINE}`;
+    try {
+        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if(!response.ok) throw new Error("Timeline dosyası yüklenemedi.");
+        const data = await response.json();
+        shaTimeline = data.sha;
+
+        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        mevcutTimelineDizisi = JSON.parse(decodedContent);
+
+        timelineListele();
+    } catch (error) {
+        console.log("Timeline yükleme hatası: " + error.message);
+    }
+}
+
+// 3. ARABİRİMDE KRONOLOJİ LİSTELEME
+function timelineListele() {
+    const kapsayici = document.getElementById('timeline-listesi-kapsayici');
+    kapsayici.innerHTML = "";
+
+    if (mevcutTimelineDizisi.length === 0) {
+        kapsayici.innerHTML = `<p style="color: #64748b; font-size: 14px; text-align: center;">Henüz kronoloji kaydı bulunmuyor.</p>`;
+        return;
+    }
+
+    mevcutTimelineDizisi.forEach((olay, index) => {
+        const kart = document.createElement('div');
+        kart.className = 'tl-kart';
+        kart.innerHTML = `
+            <div class="tl-kart-detay">
+                <div class="tl-kart-meta">${olay.tarih}</div>
+                <h4 class="tl-kart-baslik">${olay.baslik}</h4>
+            </div>
+            <div>
+                <button type="button" class="haber-kart-butonu btn-tl-duzenle" onclick="timelineDuzenleTetikle(${index})">Düzenle</button>
+                <button type="button" class="haber-kart-butonu btn-tl-sil" onclick="timelineSil(${index})">Sil</button>
+            </div>
+        `;
+        kapsayici.appendChild(kart);
+    });
+}
+
+// 4. BLOG SEÇİLDİĞİNDE TARİH VE URL OTOMATİK HESAPLAMA MANTIĞI
+function blogYazisiSecildi(selectEl) {
+    if (!selectEl.value) return;
+    
+    const secilenOption = selectEl.options[selectEl.selectedIndex];
+    const yaziData = JSON.parse(secilenOption.dataset.yaziObj);
+    
+    // URL bilgisini form alanına aktar
+    document.getElementById('tl-linkblogUrl').value = yaziData.url;
+    document.getElementById('tl-baslik').value = yaziData.baslik;
+
+    // Tarih dönüşüm mantığı: Virgülle ayrılmış çoklu tarih varsa ilkini al
+    let hamTarih = yaziData.tarih;
+    if (hamTarih.includes(',')) {
+        hamTarih = hamTarih.split(',')[0].trim();
+    }
+    
+    // YYYY-MM-DD veya YYYY-M-D formatlarını parse et
+    const parcalar = hamTarih.split('-');
+    if (parcalar.length === 3) {
+        const yil = parcalar[0];
+        const ayIndex = parseInt(parcalar[1]) - 1;
+        const gun = parcalar[2].padStart(2, '0');
+        
+        // "2026 Mart" formatına çeviriyoruz
+        if(ayIndex >= 0 && ayIndex < 12) {
+            document.getElementById('tl-tarih-gosterim').value = `${yil} ${AYLAR_TR[ayIndex]}`;
+        }
+        
+        // Takvim arayüzünü (input type="date") de eşitleyelim
+        const formatliAy = String(ayIndex + 1).padStart(2, '0');
+        document.getElementById('tl-tarih-manuel').value = `${yil}-${formatliAy}-${gun}`;
+    }
+}
+
+// 5. MANUEL TAKVİMDEN TARİH SEÇİLİRSE FORMATLA
+function manuelTarihDegisti(inputEl) {
+    if (!inputEl.value) return;
+    const parcalar = inputEl.value.split('-');
+    const yil = parcalar[0];
+    const ayIndex = parseInt(parcalar[1]) - 1;
+    document.getElementById('tl-tarih-gosterim').value = `${yil} ${AYLAR_TR[ayIndex]}`;
+}
+
+// 6. DÜZENLEME MODUNU TETİKLEME
+function timelineDuzenleTetikle(index) {
+    const olay = mevcutTimelineDizisi[index];
+    
+    document.getElementById('tl-form-baslik').innerText = "📝 Olayı Düzenle";
+    document.getElementById('btn-tl-kaydet').innerText = "Değişikliği Kronolojide Güncelle";
+    document.getElementById('btn-tl-kaydet').style.background = "#eab308";
+    document.getElementById('btn-tl-iptal').style.display = "inline-block";
+    
+    document.getElementById('tl-index').value = index;
+
+    // Verileri doldur
+    document.getElementById('tl-tarih-gosterim').value = olay.tarih || "";
+    document.getElementById('tl-baslik').value = olay.baslik || "";
+    document.getElementById('tl-aciklama').value = olay.aciklama || "";
+    document.getElementById('tl-resim').value = olay.resim || "";
+    document.getElementById('tl-linkblogUrl').value = olay.linkblogUrl || "";
+    document.getElementById('tl-linkblogMetni').value = olay.linkblogMetni || "Blog Sayfası";
+    document.getElementById('tl-linkUrl').value = olay.linkUrl || "";
+    document.getElementById('tl-linkMetni').value = olay.linkMetni || "Tur Videolarını İzle";
+
+    // Eğer bu URL bir blog yazısı ile eşleşiyorsa select box'ı da seçili konuma getir
+    const selectEl = document.getElementById('tl-blog-sec');
+    selectEl.value = olay.linkblogUrl || "";
+    
+    document.getElementById('tl-form-baslik').scrollIntoView({ behavior: 'smooth' });
+}
+
+// 7. FORM SUBMIT İŞLEMİ (EKLEME VEYA GÜNCELLEME)
+function timelineFormuGonder(event) {
+    event.preventDefault();
+
+    const olayObjesi = {
+        "tarih": document.getElementById('tl-tarih-gosterim').value,
+        "baslik": document.getElementById('tl-baslik').value,
+        "aciklama": document.getElementById('tl-aciklama').value,
+        "resim": document.getElementById('tl-resim').value,
+        "linkblogUrl": document.getElementById('tl-linkblogUrl').value,
+        "linkblogMetni": document.getElementById('tl-linkblogMetni').value,
+        "linkUrl": document.getElementById('tl-linkUrl').value,
+        "linkMetni": document.getElementById('tl-linkMetni').value
+    };
+
+    const formIndex = parseInt(document.getElementById('tl-index').value);
+
+    if (formIndex === -1) {
+        // En üst sıraya yeni kronoloji ekle
+        mevcutTimelineDizisi.unshift(olayObjesi);
+    } else {
+        // Mevcut olanı güncelle
+        mevcutTimelineDizisi[formIndex] = olayObjesi;
+    }
+
+    timelineListele();
+    timelineFormuSifirla();
+    timelineGithubaGonder();
+}
+
+// 8. SİLME İŞLEMİ
+function timelineSil(index) {
+    const onay = confirm(`"${mevcutTimelineDizisi[index].baslik}" olayını kronolojiden silmek istiyor musunuz?`);
+    if (!onay) return;
+
+    mevcutTimelineDizisi.splice(index, 1);
+    timelineListele();
+    timelineFormuSifirla();
+    timelineGithubaGonder();
+}
+
+// FORM SIFIRLAMA
+function timelineFormuSifirla() {
+    document.getElementById('form-yeni-timeline').reset();
+    document.getElementById('tl-index').value = "-1";
+    document.getElementById('tl-form-baslik').innerText = "➕ Yeni Kronoloji Olayı Ekle";
+    document.getElementById('btn-tl-kaydet').innerText = "Kronolojiye Ekle";
+    document.getElementById('btn-tl-kaydet').style.background = "#8b5cf6";
+    document.getElementById('btn-tl-iptal').style.display = "none";
+}
+
+// 9. GİTHUB COMMIT İŞLEMİ
+async function timelineGithubaGonder() {
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_TIMELINE}`;
+
+    const jsonString = JSON.stringify(mevcutTimelineDizisi, null, 2);
+    const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+    const payload = {
+        message: "Panel: data/timeline.json güncellendi",
+        content: base64Content,
+        sha: shaTimeline
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if(!response.ok) throw new Error("GitHub veriyi kaydedemedi.");
+        const resData = await response.json();
+        shaTimeline = resData.content.sha;
+        bildirimGoster("Kronoloji başarıyla güncellendi ve GitHub'a kaydedildi!", "success");
+    } catch (error) {
+        bildirimGoster(error.message, "error");
+    }
+}
         function cikisYap() {
             localStorage.removeItem('gh_oauth_token');
             window.location.reload();
