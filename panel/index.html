@@ -85,6 +85,7 @@
 				<button class="tab-btn" onclick="sekmeDegistir('kronoloji-tab')">⏳ Kronoloji</button>
 				<button class="tab-btn" onclick="sekmeDegistir('sss-tab')">🙋 SSS Yönetimi</button>				
 				<button class="tab-btn" onclick="sekmeDegistir('rozetler-tab')">🛡️ Rozet Yönetimi</button>
+				<button class="tab-btn" onclick="sekmeDegistir('sosyal-tab')">🌐 Sosyal Medya</button>
                 <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
                 <!-- Gelecekte buraya yeni butonlar gelebilir -->
             </div>
@@ -417,7 +418,56 @@
         </div>
     </fieldset>
 </div>
-                <!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
+<!-- 7. SEKME: SOSYAL MEDYA YÖNETİMİ (data/sosyal.json) -->
+<div id="sosyal-tab" class="tab-content">
+    <h3>Sosyal Medya Hesap Yönetimi</h3>
+    
+    <!-- Sosyal Medya Ekleme ve Düzenleme Formu -->
+    <fieldset style="margin-bottom: 25px; border-color: #2563eb;">
+        <legend id="sosyal-form-baslik" style="color: #2563eb; font-weight: bold;">➕ Yeni Sosyal Medya Ekle</legend>
+        <form id="form-yeni-sosyal" onsubmit="sosyalFormuGonder(event)">
+            <!-- Gizli input: Düzenlenen sosyal medyanın dizideki sırasını (index) tutar -->
+            <input type="hidden" id="s-index" value="-1">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="s-ad">Platform / Hesap Adı:</label>
+                    <input type="text" id="s-ad" placeholder="Örn: YouTube, GitHub, Strava" required>
+                </div>
+                <div class="form-group">
+                    <label for="s-url">Profil / Bağlantı URL'i:</label>
+                    <input type="text" id="s-url" placeholder="https://..." required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="s-svg">SVG İkon Kodu (Canlı Önizlemeli):</label>
+                <textarea id="s-svg" rows="3" placeholder="<svg viewBox='0 0 24 24'>...</svg>" required oninput="sosyalAnlikOnizleme(this.value)"></textarea>
+            </div>
+
+            <!-- Canlı İkon Önizleme Alanı -->
+            <div style="margin-bottom: 15px; padding: 10px; background: #f8fafc; border: 1px dashed #cbd5e1; display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 13px; color: #64748b;">Canlı İkon Önizlemesi:</span>
+                <div id="sosyal-canli-onizleme" style="width: 24px; height: 24px; color: #2563eb; display: flex; align-items: center; justify-content: center;"></div>
+            </div>
+            
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" id="btn-sosyal-kaydet" class="btn" style="background: #2563eb; flex: 2;">Hesabı Listeye Ekle</button>
+                <button type="button" id="btn-sosyal-iptal" onclick="sosyalFormuSifirla()" class="btn" style="background: #64748b; flex: 1; display: none;">İptal Et</button>
+            </div>
+        </form>
+    </fieldset>
+
+    <!-- Tek Tek Sosyal Medya Kartlarının Listeleneceği Alan -->
+    <fieldset>
+        <legend>🌐 Mevcut Sosyal Medya Hesapları</legend>
+        <div id="sosyal-listesi-kapsayici" style="display: flex; flex-direction: column; gap: 12px; max-height: 500px; overflow-y: auto; padding-right: 5px;">
+            <p style="color: #64748b; font-size: 14px; text-align: center;">Sosyal medya hesapları yükleniyor...</p>
+        </div>
+    </fieldset>
+</div>               
+				
+				<!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
                 <div id="yeni-sekme-tab" class="tab-content">
                     <h3>Yeni Dosya / Değişken Ayarları</h3>
                     <p style="color:#64748b; font-size:14px;">Buraya ileride düzenlemek istediğin başka bir JSON dosyasının form elemanlarını ekleyebilirsin.</p>
@@ -464,6 +514,10 @@ let mevcutSssDizisi = []; // Hafızada tutulacak SSS dizisi
 const PATH_ROZETLER = "yazilar/rozetler.json";
 let shaRozetler = "";
 let mevcutRozetlerDizisi = []; // Hafızada tutulacak rozet dizisi
+
+const PATH_SOSYAL = "data/sosyal.json";
+let shaSosyal = "";
+let mevcutSosyalDizisi = []; // Hafızada tutulacak sosyal medya listesi
 
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -516,7 +570,7 @@ if (token) {
     haberleriYukle(token);
     sssYukle(token); // YENİ EKLENEN SSS YÜKLEYİCİLERİ
 	rozetlerYukle(token);	// YENİ EKLENEN ROZETLER YÜKLEYİCİLERİ
-    
+	sosyalYukle(token); // <--- Yeni eklenen sosyal medya yükleyici fonksiyonumuz	
     // YENİ EKLENEN KRONOLOJİ YÜKLEYİCİLERİ
     yazilariYukle(token).then(() => {
         timelineYukle(token);
@@ -1342,6 +1396,169 @@ async function rozetleriGithubaGonder() {
         const resData = await response.json();
         shaRozetler = resData.content.sha; // SHA yenile
         bildirimGoster("Rozet listesi güncellendi ve GitHub'a başarıyla gönderildi!", "success");
+    } catch (error) {
+        bildirimGoster(error.message, "error");
+    }
+}
+// ==========================================
+// 7. SEKME: SOSYAL MEDYA YÖNETİM FONKSİYONLARI
+// ==========================================
+
+// 1. SOSYAL MEDYA VERİSİNİ GİTHUB'DAN ÇEKME
+async function sosyalYukle(token) {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_SOSYAL}`;
+    try {
+        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if(!response.ok) throw new Error("Sosyal medya dosyası yüklenemedi.");
+
+        const data = await response.json();
+        shaSosyal = data.sha;
+
+        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        mevcutSosyalDizisi = JSON.parse(decodedContent);
+
+        // Arayüz listesini oluştur
+        sosyalListele();
+    } catch (error) {
+        console.log("Sosyal medya yükleme hatası: " + error.message);
+        document.getElementById('sosyal-listesi-kapsayici').innerHTML = `<p style="color: #ef4444; font-size: 14px; text-align: center;">Yükleme Hatası: ${error.message}</p>`;
+    }
+}
+
+// FORM İÇİNDEKİ CANLI SVG ÖNİZLEME
+function sosyalAnlikOnizleme(svgKod) {
+    document.getElementById('sosyal-canli-onizleme').innerHTML = svgKod;
+}
+
+// 2. SOSYAL MEDYA HESAPLARINI KART OLARAK ARABİRİMDE LİSTELEME
+function sosyalListele() {
+    const kapsayici = document.getElementById('sosyal-listesi-kapsayici');
+    kapsayici.innerHTML = ""; 
+
+    if (mevcutSosyalDizisi.length === 0) {
+        kapsayici.innerHTML = `<p style="color: #64748b; font-size: 14px; text-align: center;">Henüz sosyal medya hesabı eklenmemiş.</p>`;
+        return;
+    }
+
+    mevcutSosyalDizisi.forEach((item, index) => {
+        const kart = document.createElement('div');
+        kart.className = 'haber-kart'; 
+        kart.style.background = "#f8fafc";
+        kart.style.borderColor = "#e2e8f0";
+        
+        kart.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 15px; flex: 1;">
+                <!-- SVG İkonunu Panelde Gösteren Bölüm -->
+                <div style="width: 36px; height: 36px; min-width: 36px; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #2563eb;">
+                    ${item.svg || ""}
+                </div>
+                <div class="haber-kart-detay">
+                    <h4 class="haber-kart-baslik" style="color: #1e293b; margin: 0; font-size: 14px;">${item.ad}</h4>
+                    <p style="margin: 4px 0 0 0; font-size: 12px; color: #64748b; word-break: break-all;">
+                        <a href="${item.url}" target="_blank" style="color: #2563eb; text-decoration: none;">${item.url}</a>
+                    </p>
+                </div>
+            </div>
+            <div style="display:flex; align-items:center;">
+                <button type="button" class="haber-kart-butonu btn-duzenle" onclick="sosyalDuzenleTetikle(${index})">Düzenle</button>
+                <button type="button" class="haber-kart-butonu btn-sil" onclick="sosyalSil(${index})">Sil</button>
+            </div>
+        `;
+        kapsayici.appendChild(kart);
+    });
+}
+
+// 3. DÜZENLEME MODUNU BAŞLATMA VE FORMA VERİLERİ DOLDURMA
+function sosyalDuzenleTetikle(index) {
+    const item = mevcutSosyalDizisi[index];
+    
+    document.getElementById('sosyal-form-baslik').innerText = "📝 Hesabı Düzenle";
+    document.getElementById('btn-sosyal-kaydet').innerText = "Değişikliği Listede Güncelle";
+    document.getElementById('btn-sosyal-kaydet').style.background = "#eab308";
+    document.getElementById('btn-sosyal-iptal').style.display = "inline-block";
+    
+    document.getElementById('s-index').value = index;
+    document.getElementById('s-ad').value = item.ad || "";
+    document.getElementById('s-url').value = item.url || "";
+    document.getElementById('s-svg').value = item.svg || "";
+
+    sosyalAnlikOnizleme(item.svg || "");
+    document.getElementById('sosyal-form-baslik').scrollIntoView({ behavior: 'smooth' });
+}
+
+// 4. FORM GÖNDERİLDİĞİNDE (EKLEME VEYA GÜNCELLEME MANTIĞI)
+function sosyalFormuGonder(event) {
+    event.preventDefault();
+
+    const sosyalObjesi = {
+        "ad": document.getElementById('s-ad').value.trim(),
+        "url": document.getElementById('s-url').value.trim(),
+        "svg": document.getElementById('s-svg').value.trim()
+    };
+
+    const formIndex = parseInt(document.getElementById('s-index').value);
+
+    if (formIndex === -1) {
+        // YENİ ELEMAN: İstediğin gibi listenin EN ÜSTÜNE ekle
+        mevcutSosyalDizisi.unshift(sosyalObjesi);
+    } else {
+        // DÜZENLEME MODU: Mevcut indeksi güncelle
+        mevcutSosyalDizisi[formIndex] = sosyalObjesi;
+    }
+
+    sosyalListele();
+    sosyalFormuSifirla();
+    sosyalMediaGithubaGonder();
+}
+
+// 5. HESAP SİLME İŞLEMİ
+function sosyalSil(index) {
+    const onay = confirm(`"${mevcutSosyalDizisi[index].ad}" hesabını listeden silmek istediğinize emin misiniz?`);
+    if (!onay) return;
+
+    mevcutSosyalDizisi.splice(index, 1);
+
+    sosyalListele();
+    sosyalFormuSifirla();
+    sosyalMediaGithubaGonder();
+}
+
+// FORM SIFIRLAMA MANTIĞI
+function sosyalFormuSifirla() {
+    document.getElementById('form-yeni-sosyal').reset();
+    document.getElementById('s-index').value = "-1";
+    document.getElementById('sosyal-form-baslik').innerText = "➕ Yeni Sosyal Medya Ekle";
+    document.getElementById('btn-sosyal-kaydet').innerText = "Hesabı Listeye Ekle";
+    document.getElementById('btn-sosyal-kaydet').style.background = "#2563eb";
+    document.getElementById('btn-sosyal-iptal').style.display = "none";
+    document.getElementById('sosyal-canli-onizleme').innerHTML = "";
+}
+
+// 6. DEĞİŞİKLİKLERİ GİTHUB'A COMMIT ETME
+async function sosyalMediaGithubaGonder() {
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_SOSYAL}`;
+
+    const jsonString = JSON.stringify(mevcutSosyalDizisi, null, 2);
+    const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+    const payload = {
+        message: "Panel: data/sosyal.json listesinde düzenleme/silme yapıldı",
+        content: base64Content,
+        sha: shaSosyal
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if(!response.ok) throw new Error("GitHub veriyi kaydedemedi.");
+        const resData = await response.json();
+        shaSosyal = resData.content.sha; // SHA değerini güncelle
+        bildirimGoster("Sosyal medya listesi güncellendi ve GitHub'a başarıyla kaydedildi!", "success");
     } catch (error) {
         bildirimGoster(error.message, "error");
     }
