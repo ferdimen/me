@@ -803,13 +803,12 @@ async function yazilariYukle(token) {
         const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
         mevcutYazilarDizisi = JSON.parse(decodedContent);
         
-        // Select elementini doldur
         const selectEl = document.getElementById('tl-blog-sec');
+        selectEl.innerHTML = '<option value="">-- Bir Blog Yazısı Seçin (Otomatik Tarih ve URL Dolar) --</option>';
         mevcutYazilarDizisi.forEach(yazi => {
             const option = document.createElement('option');
             option.value = yazi.url;
             option.innerText = `${yazi.tarih} - ${yazi.baslik}`;
-            // Yazi objesinin tamamını data attribute olarak saklayalım
             option.dataset.yaziObj = JSON.stringify(yazi);
             selectEl.appendChild(option);
         });
