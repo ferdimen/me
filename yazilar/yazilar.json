@@ -1,5 +1,18 @@
 [
   {
+    "id": "2011-enezz",
+    "baslik": "2011-enez",
+    "url": "https://ferdimen.com/panel/index.html",
+    "tarih": "2026-07-20",
+    "kategori": "Bisiklet Turları",
+    "ozel": "doğa, manzara, müze",
+    "kapakresmi": "",
+    "etiketler": [
+      "edirne,enez,çorlu,"
+    ],
+    "konum": "38.45090005662967, 31.761474609375004"
+  },
+  {
     "id": "2026-anadolu-engeregi",
     "baslik": "Anadolu Engereği Bisiklet Turu",
     "url": "yazilar/2026-anadolu-engeregi.html",
