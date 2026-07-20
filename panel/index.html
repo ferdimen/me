@@ -81,6 +81,7 @@
             <!-- SOL MENÜ (Yeni sekmeleri buraya ekleyeceksin) -->
             <div class="sidebar">
                 <button class="tab-btn active" onclick="sekmeDegistir('nerdeyim-tab')">📍 Nerdeyim?</button>
+				<button class="tab-btn" onclick="sekmeDegistir('video-tab')">🎬 Video Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('haberler-tab')">📰 Haberler</button>
 				<button class="tab-btn" onclick="sekmeDegistir('kronoloji-tab')">⏳ Kronoloji</button>
 				<button class="tab-btn" onclick="sekmeDegistir('sss-tab')">🙋 SSS Yönetimi</button>				
@@ -466,7 +467,76 @@
         </div>
     </fieldset>
 </div>               
-				
+<!-- 8. SEKME: VİDEO YÖNETİMİ (data/video.json) -->
+<div id="video-tab" class="tab-content">
+    <h3>🎬 Video İçerik Yönetimi</h3>
+    
+    <!-- Video Ekleme ve Düzenleme Formu -->
+    <fieldset style="margin-bottom: 25px; border-color: #ef4444;">
+        <legend id="video-form-baslik" style="color: #ef4444; font-weight: bold;">➕ Yeni Video Ekle</legend>
+        <form id="form-yeni-video" onsubmit="videoFormuGonder(event)">
+            <!-- Gizli input: Düzenlenen videonun dizideki sırasını tutar -->
+            <input type="hidden" id="v-index" value="-1">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="v-title">Video Başlığı:</label>
+                    <input type="text" id="v-title" placeholder="Örn: Anadolu İrfanı Bisiklet Turu 3..." required>
+                </div>
+                <div class="form-group">
+                    <label for="v-playlist">Oynatma Listesi (Tur Adı):</label>
+                    <input type="text" id="v-playlist" placeholder="Örn: Anadolu İrfanı, Güz Güneyi" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="v-url">YouTube URL'i:</label>
+                    <input type="text" id="v-url" placeholder="https://youtu.be/..." required>
+                </div>
+                <div class="form-group">
+                    <label for="v-duration">Video Süresi (DK:SN):</label>
+                    <input type="text" id="v-duration" placeholder="Örn: 14:59" required>
+                </div>
+                <div class="form-group">
+                    <label for="v-date">Yayın Tarihi:</label>
+                    <!-- Takvim açılması için type="date" yapıyoruz -->
+                    <input type="date" id="v-date" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="v-description">Video Açıklaması:</label>
+                <textarea id="v-description" rows="3" placeholder="Merhaba Sevgili dostlar..." required></textarea>
+            </div>
+
+            <!-- LEAFLET HARİTALI KONUM SEÇİM ALANI -->
+            <div class="form-group">
+                <label for="v-konum">Video Başlangıç Konumu (Koordinat):</label>
+                <input type="text" id="v-konum" placeholder="Haritadan seçin veya yapıştırın (Enlem, Boylam)" required>
+                
+                <div style="margin-top: 8px; font-size: 12px; color: #64748b; font-style: italic;">
+                    💡 Aşağıdaki harita üzerinde bir noktaya tıkladığınızda koordinat otomatik olarak yukarıdaki alana dolacaktır.
+                </div>
+                <!-- Form içi Leaflet Harita Kapsayıcısı -->
+                <div id="video-form-harita" style="width: 100%; height: 260px; margin-top: 8px; border: 1px solid #cbd5e1; border-radius: 6px; z-index: 1;"></div>
+            </div>
+            
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <button type="submit" id="btn-video-kaydet" class="btn" style="background: #ef4444; flex: 2;">Videoyu En Üste Ekle</button>
+                <button type="button" id="btn-video-iptal" onclick="videoFormuSifirla()" class="btn" style="background: #64748b; flex: 1; display: none;">İptal Et</button>
+            </div>
+        </form>
+    </fieldset>
+
+    <!-- Tek Tek Video Kartlarının Listeleneceği Alan -->
+    <fieldset>
+        <legend>🎬 Yayındaki Mevcut Videolar</legend>
+        <div id="video-listesi-kapsayici" style="display: flex; flex-direction: column; gap: 12px; max-height: 600px; overflow-y: auto; padding-right: 5px;">
+            <p style="color: #64748b; font-size: 14px; text-align: center;">Videolar yükleniyor...</p>
+        </div>
+    </fieldset>
+</div>				
 				<!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
                 <div id="yeni-sekme-tab" class="tab-content">
                     <h3>Yeni Dosya / Değişken Ayarları</h3>
@@ -519,6 +589,12 @@ const PATH_SOSYAL = "data/sosyal.json";
 let shaSosyal = "";
 let mevcutSosyalDizisi = []; // Hafızada tutulacak sosyal medya listesi
 
+const PATH_VIDEO = "data/video.json";
+let shaVideo = "";
+let mevcutVideoDizisi = []; // Hafızada tutulacak videolar listesi
+let videoSecimHaritasi = null; // Leaflet harita nesnesi
+let videoSecimMarker = null; // Harita üzerindeki kırmızı pin/işaretçi
+
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
             box.innerText = mesaj;
@@ -528,16 +604,25 @@ let mevcutSosyalDizisi = []; // Hafızada tutulacak sosyal medya listesi
         }
 
         // Sekme Değiştirme Fonksiyonu
-        function sekmeDegistir(tabId) {
-            // Tüm içerikleri gizle
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            // Tüm butonların aktifliğini kaldır
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            
-            // Seçileni göster ve butonu aktif yap
-            document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
-        }
+function sekmeDegistir(tabId) {
+    // Tüm içerikleri gizle
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    // Tüm butonların aktifliğini kaldır
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    
+    // Seçileni göster ve butonu aktif yap
+    document.getElementById(tabId).classList.add('active');
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    }
+
+    // EĞER VİDEO SEKMESİ AÇILDIYSA HARİTAYI BAŞLAT/YENİLE
+    if (tabId === 'video-tab') {
+        setTimeout(() => {
+            videoHaritasiniBaslat();
+        }, 100);
+    }
+}
 
         function githubGirisYap() {
             window.location.href = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo`;
@@ -571,6 +656,7 @@ if (token) {
     sssYukle(token); // YENİ EKLENEN SSS YÜKLEYİCİLERİ
 	rozetlerYukle(token);	// YENİ EKLENEN ROZETLER YÜKLEYİCİLERİ
 	sosyalYukle(token); // <--- Yeni eklenen sosyal medya yükleyici fonksiyonumuz	
+	videoYukle(token); // <--- Yeni eklenen video yükleyici fonksiyonumuz
     // YENİ EKLENEN KRONOLOJİ YÜKLEYİCİLERİ
     yazilariYukle(token).then(() => {
         timelineYukle(token);
@@ -1559,6 +1645,229 @@ async function sosyalMediaGithubaGonder() {
         const resData = await response.json();
         shaSosyal = resData.content.sha; // SHA değerini güncelle
         bildirimGoster("Sosyal medya listesi güncellendi ve GitHub'a başarıyla kaydedildi!", "success");
+    } catch (error) {
+        bildirimGoster(error.message, "error");
+    }
+}
+// ==========================================
+// 8. SEKME: VİDEO YÖNETİM FONKSİYONLARI
+// ==========================================
+
+// 1. VİDEO VERİSİNİ GİTHUB'DAN ÇEKME
+async function videoYukle(token) {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_VIDEO}`;
+    try {
+        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if(!response.ok) throw new Error("Video dosyası yüklenemedi.");
+
+        const data = await response.json();
+        shaVideo = data.sha;
+
+        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        mevcutVideoDizisi = JSON.parse(decodedContent);
+
+        videoListele();
+    } catch (error) {
+        console.log("Video yükleme hatası: " + error.message);
+        document.getElementById('video-listesi-kapsayici').innerHTML = `<p style="color: #ef4444; font-size: 14px; text-align: center;">Yükleme Hatası: ${error.message}</p>`;
+    }
+}
+
+// FORM İÇİNDEKİ LEAFLET HARİTASINI KURMA
+function videoHaritasiniBaslat() {
+    // Eğer harita zaten kuruluysa sadece boyutları tazele, yeniden oluşturma
+    if (videoSecimHaritasi) {
+        videoSecimHaritasi.invalidateSize();
+        return;
+    }
+
+    // Haritayı Türkiye merkezli (Çorlu/Yozgat civarı) odaklayarak başlatıyoruz
+    videoSecimHaritasi = L.map('video-form-harita').setView([39.9207, 32.8541], 6);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(videoSecimHaritasi);
+
+    // HARİTAYA TIKLANDIĞINDA KOORDİNATI ALAN OLAY (EVENT)
+    videoSecimHaritasi.on('click', function(e) {
+        const lat = e.latlng.lat;
+        const lng = e.latlng.lng;
+        const koordinatFormat = `${lat}, ${lng}`;
+        
+        // Input alanına yazdır
+        document.getElementById('v-konum').value = koordinatFormat;
+        
+        // Pini haritada güncelle
+        if (videoSecimMarker) {
+            videoSecimMarker.setLatLng(e.latlng);
+        } else {
+            videoSecimMarker = L.marker(e.latlng, { draggable: false }).addTo(videoSecimHaritasi);
+        }
+    });
+}
+
+// 2. VİDEOLARI KART OLARAK PANELDE LİSTELEME
+function videoListele() {
+    const kapsayici = document.getElementById('video-listesi-kapsayici');
+    kapsayici.innerHTML = ""; 
+
+    if (mevcutVideoDizisi.length === 0) {
+        kapsayici.innerHTML = `<p style="color: #64748b; font-size: 14px; text-align: center;">Henüz video eklenmemiş.</p>`;
+        return;
+    }
+
+    mevcutVideoDizisi.forEach((item, index) => {
+        const kart = document.createElement('div');
+        kart.className = 'haber-kart'; 
+        kart.style.background = "#fff5f5";
+        kart.style.borderColor = "#fee2e2";
+        
+        kart.innerHTML = `
+            <div style="display: flex; align-items: flex-start; gap: 15px; flex: 1;">
+                <!-- Video İkonu ve Süresi -->
+                <div style="width: 45px; height: 45px; min-width: 45px; background: #ef4444; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; font-size: 10px; font-weight: bold; padding: 2px;">
+                    <svg style="width:20px; height:20px;" viewBox="0 0 24 24" fill="currentColor"><path d="M21.543 6.498C22 8.21 22 12 22 12s0 3.79-.457 5.502A2.752 2.752 0 0 1 19.617 19.43C17.904 20 12 20 12 20s-5.904 0-7.617-.57a2.752 2.752 0 0 1-1.926-1.928C2 15.79 2 12 2 12s0-3.79.457-5.502A2.752 2.752 0 0 1 4.383 4.57C6.096 4 12 4 12 4s5.904 0 7.617.57a2.752 2.752 0 0 1 1.926 1.928zM10 15.5l5.5-3.5L10 8.5v7z"/></svg>
+                    <span>${item.duration}</span>
+                </div>
+                <div class="haber-kart-detay" style="width: 100%;">
+                    <h4 class="haber-kart-baslik" style="color: #991b1b; margin: 0; font-size: 14px;">${item.title}</h4>
+                    <p style="margin: 3px 0; font-size: 12px; color: #4b5563;">
+                        📂 <strong>Liste:</strong> ${item.playlist} | 📅 <strong>Tarih:</strong> ${item.date} | 📍 <strong>Konum:</strong> ${item.konum}
+                    </p>
+                    <p style="margin: 0; font-size: 11px; color: #6b7280; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                        ${item.description}
+                    </p>
+                </div>
+            </div>
+            <div style="display:flex; align-items:center;">
+                <button type="button" class="haber-kart-butonu btn-duzenle" style="background:#eab308;" onclick="videoDuzenleTetikle(${index})">Düzenle</button>
+                <button type="button" class="haber-kart-butonu btn-sil" onclick="videoSil(${index})">Sil</button>
+            </div>
+        `;
+        kapsayici.appendChild(kart);
+    });
+}
+
+// 3. DÜZENLEME MODUNU AÇMA VE VERİLERİ YERLEŞTİRME
+function videoDuzenleTetikle(index) {
+    const item = mevcutVideoDizisi[index];
+    
+    document.getElementById('video-form-baslik').innerText = "📝 Videoyu Düzenle";
+    document.getElementById('btn-video-kaydet').innerText = "Değişikliği Listede Güncelle";
+    document.getElementById('btn-video-kaydet').style.background = "#eab308";
+    document.getElementById('btn-video-iptal').style.display = "inline-block";
+    
+    document.getElementById('v-index').value = index;
+    document.getElementById('v-title').value = item.title || "";
+    document.getElementById('v-playlist').value = item.playlist || "";
+    document.getElementById('v-url').value = item.url || "";
+    document.getElementById('v-duration').value = item.duration || "";
+    document.getElementById('v-date').value = item.date || "";
+    document.getElementById('v-description').value = item.description || "";
+    document.getElementById('v-konum').value = item.konum || "";
+
+    // Harita üstündeki pini mevcut konuma taşıma mantığı
+    if (item.konum && item.konum.includes(',')) {
+        const parts = item.konum.split(',');
+        const lat = parseFloat(parts[0].trim());
+        const lng = parseFloat(parts[1].trim());
+        
+        if (!isNaN(lat) && !isNaN(lng)) {
+            const yeniLatLng = new L.LatLng(lat, lng);
+            videoSecimHaritasi.setView(yeniLatLng, 9);
+            
+            if (videoSecimMarker) {
+                videoSecimMarker.setLatLng(yeniLatLng);
+            } else {
+                videoSecimMarker = L.marker(yeniLatLng).addTo(videoSecimHaritasi);
+            }
+        }
+    }
+
+    document.getElementById('video-form-baslik').scrollIntoView({ behavior: 'smooth' });
+}
+
+// 4. FORM GÖNDERİLDİĞİNDE (EKLEME / GÜNCELLEME İŞLEMLERİ)
+function videoFormuGonder(event) {
+    event.preventDefault();
+
+    const videoObjesi = {
+        "title": document.getElementById('v-title').value.trim(),
+        "description": document.getElementById('v-description').value.trim(),
+        "url": document.getElementById('v-url').value.trim(),
+        "playlist": document.getElementById('v-playlist').value.trim(),
+        "duration": document.getElementById('v-duration').value.trim(),
+        "date": document.getElementById('v-date').value,
+        "konum": document.getElementById('v-konum').value.trim()
+    };
+
+    const formIndex = parseInt(document.getElementById('v-index').value);
+
+    if (formIndex === -1) {
+        // YENİ VİDEO: Listenin tam olarak EN ÜSTÜNE yerleştirilir
+        mevcutVideoDizisi.unshift(videoObjesi);
+    } else {
+        // DÜZENLEME: İlgili index güncellenir
+        mevcutVideoDizisi[formIndex] = videoObjesi;
+    }
+
+    videoListele();
+    videoFormuSifirla();
+    videoMediaGithubaGonder();
+}
+
+// 5. VİDEO SİLME İŞLEMİ
+function videoSil(index) {
+    const onay = confirm(`"${mevcutVideoDizisi[index].title}" başlıklı videoyu listeden silmek istediğinize emin misiniz?`);
+    if (!onay) return;
+
+    mevcutVideoDizisi.splice(index, 1);
+
+    videoListele();
+    videoFormuSifirla();
+    videoMediaGithubaGonder();
+}
+
+// FORM ALANLARINI TEMİZLEME
+function videoFormuSifirla() {
+    document.getElementById('form-yeni-video').reset();
+    document.getElementById('v-index').value = "-1";
+    document.getElementById('video-form-baslik').innerText = "➕ Yeni Video Ekle";
+    document.getElementById('btn-video-kaydet').innerText = "Videoyu En Üste Ekle";
+    document.getElementById('btn-video-kaydet').style.background = "#ef4444";
+    document.getElementById('btn-video-iptal').style.display = "none";
+    
+    if (videoSecimMarker) {
+        videoSecimHaritasi.removeLayer(videoSecimMarker);
+        videoSecimMarker = null;
+    }
+}
+
+// 6. DEĞİŞİKLİKLERİ YENİDEN GİTHUB'A KAYDETME
+async function videoMediaGithubaGonder() {
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_VIDEO}`;
+
+    const jsonString = JSON.stringify(mevcutVideoDizisi, null, 2);
+    const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+    const payload = {
+        message: "Panel: data/video.json listesinde düzenleme/güncelleme/silme yapıldı",
+        content: base64Content,
+        sha: shaVideo
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if(!response.ok) throw new Error("GitHub video verisini kaydedemedi.");
+        const resData = await response.json();
+        shaVideo = resData.content.sha; // SHA yenile
+        bildirimGoster("Video verisi başarıyla güncellendi ve GitHub deposuna gönderildi!", "success");
     } catch (error) {
         bildirimGoster(error.message, "error");
     }
