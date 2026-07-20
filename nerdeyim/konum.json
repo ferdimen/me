@@ -1,5 +1,23 @@
 {
   "aktifTur": "hayir",
+  "canliTakipUrl": "https://www.polarsteps.com/SafakYollarda/26970859-karadeniz-2026",
   "tur-adi": "Anadolu 2026 Bisiklet Turu",
-  "canliTakipUrl": "https://www.polarsteps.com/SafakYollarda/26970859-karadeniz-2026"
+  "aciklama": "veriler sistemi deneme amaçlı Şafak ağabeyin turuna aittir.",
+  "rota": "hayir",
+  "gunleri-goster": "hepsi",
+  "karakter-siniri": 120,
+  "yazi": "hayir",
+  "zoom-seviyesi": 11,
+  "cizgi-rengi": "#dc2626",
+  "araclar": {
+    "bike": {
+      "renk": "#000000"
+    },
+    "foot": {
+      "renk": "#000000"
+    },
+    "other": {
+      "renk": "#000000"
+    }
+  }
 }
