@@ -84,6 +84,7 @@
 				<button class="tab-btn" onclick="sekmeDegistir('haberler-tab')">📰 Haberler</button>
 				<button class="tab-btn" onclick="sekmeDegistir('kronoloji-tab')">⏳ Kronoloji</button>
 				<button class="tab-btn" onclick="sekmeDegistir('sss-tab')">🙋 SSS Yönetimi</button>				
+				<button class="tab-btn" onclick="sekmeDegistir('rozetler-tab')">🛡️ Rozet Yönetimi</button>
                 <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
                 <!-- Gelecekte buraya yeni butonlar gelebilir -->
             </div>
@@ -359,6 +360,63 @@
         </div>
     </fieldset>
 </div>
+
+<!-- 6. SEKME: ROZETLER (data/rozetler.json) -->
+<div id="rozetler-tab" class="tab-content">
+    <h3>Rozet ve Filtre Yönetimi</h3>
+    
+    <!-- Rozet Ekleme ve Düzenleme Formu -->
+    <fieldset style="margin-bottom: 25px; border-color: #cca43b;">
+        <legend id="rozet-form-baslik" style="color: #cca43b; font-weight: bold;">➕ Yeni Rozet Ekle</legend>
+        <form id="form-yeni-rozet" onsubmit="rozetFormuGonder(event)">
+            <!-- Gizli input: Düzenlenen rozetin dizideki sırasını (index) tutar -->
+            <input type="hidden" id="rozet-index" value="-1">
+            
+            <div style="display: flex; gap: 15px;">
+                <div class="form-group" style="flex: 2;">
+                    <label for="rozet-sinif">Sınıf Adı (CSS Class):</label>
+                    <input type="text" id="rozet-sinif" placeholder="Örn: rozet-tarih" required>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label for="rozet-renk">Rozet Rengi:</label>
+                    <div style="display: flex; gap: 5px;">
+                        <input type="color" id="rozet-renk-picker" oninput="document.getElementById('rozet-renk').value = this.value" style="width: 40px; height: 38px; padding: 0; cursor: pointer;">
+                        <input type="text" id="rozet-renk" placeholder="#cca43b" value="#cca43b" oninput="document.getElementById('rozet-renk-picker').value = this.value" required style="flex: 1;">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="rozet-kelime">Taranacak Kelimeler (Virgülle ayırın):</label>
+                <input type="text" id="rozet-kelime" placeholder="Örn: antik, müze, ören yeri" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="rozet-svg">SVG Kodu (Önizleme canlı güncellenir):</label>
+                <textarea id="rozet-svg" rows="3" placeholder="<svg viewBox='0 0 24 24'>...</svg>" required oninput="rozetAnlikÖnizleme(this.value)"></textarea>
+            </div>
+
+            <!-- Canlı İkon Önizleme Alanı -->
+            <div style="margin-bottom: 15px; padding: 10px; background: #f8fafc; border: 1px dashed #cbd5e1; display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 13px; color: #64748b;">Canlı İkon Önizlemesi:</span>
+                <div id="rozet-canli-onizleme" style="width: 24px; height: 24px; color: #cca43b; display: flex; align-items: center; justify-content: center;"></div>
+            </div>
+            
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" id="btn-rozet-kaydet" class="btn" style="background: #cca43b; flex: 2; color: white;">Rozeti Listeye Ekle</button>
+                <button type="button" id="btn-rozet-iptal" onclick="rozetFormuSifirla()" class="btn" style="background: #64748b; flex: 1; display: none;">İptal Et</button>
+            </div>
+        </form>
+    </fieldset>
+
+    <!-- Tek Tek Rozetlerin Listeleneceği Alan -->
+    <fieldset>
+        <legend>🛡️ Mevcut Rozet Listesi</legend>
+        <div id="rozet-listesi-kapsayici" style="display: flex; flex-direction: column; gap: 12px; max-height: 500px; overflow-y: auto; padding-right: 5px;">
+            <p style="color: #64748b; font-size: 14px; text-align: center;">Rozetler yükleniyor...</p>
+        </div>
+    </fieldset>
+</div>
                 <!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
                 <div id="yeni-sekme-tab" class="tab-content">
                     <h3>Yeni Dosya / Değişken Ayarları</h3>
@@ -402,6 +460,10 @@ let mevcutYazilarDizisi = []; // Blog yazıları verisini buraya çekeceğiz
 const PATH_SSS = "data/sss.json";
 let shaSss = "";
 let mevcutSssDizisi = []; // Hafızada tutulacak SSS dizisi
+
+const PATH_ROZETLER = "data/rozetler.json";
+let shaRozetler = "";
+let mevcutRozetlerDizisi = []; // Hafızada tutulacak rozet dizisi
 
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -453,6 +515,7 @@ if (token) {
     konumuYukle(token);
     haberleriYukle(token);
     sssYukle(token); // YENİ EKLENEN SSS YÜKLEYİCİLERİ
+	rozetlerYukle(token);	// YENİ EKLENEN ROZETLER YÜKLEYİCİLERİ
     
     // YENİ EKLENEN KRONOLOJİ YÜKLEYİCİLERİ
     yazilariYukle(token).then(() => {
@@ -1093,6 +1156,178 @@ async function sssGithubaGonder() {
         bildirimGoster(error.message, "error");
     }
 }
+// 1. ROZET VERİSİNİ GİTHUB'DAN ÇEKME
+async function rozetlerYukle(token) {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_ROZETLER}`;
+    try {
+        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if(!response.ok) throw new Error("Rozet dosyası yüklenemedi.");
+
+        const data = await response.json();
+        shaRozetler = data.sha;
+
+        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        mevcutRozetlerDizisi = JSON.parse(decodedContent);
+
+        // Listeyi ekrana bas
+        rozetleriListele();
+    } catch (error) {
+        console.log("Rozet yükleme hatası: " + error.message);
+    }
+}
+
+// FORM İÇİNDEKİ CANLI SVG ÖNİZLEME
+function rozetAnlikÖnizleme(svgKod) {
+    const renk = document.getElementById('rozet-renk').value || '#cca43b';
+    const onizlemeAlani = document.getElementById('rozet-canli-onizleme');
+    onizlemeAlani.style.color = renk;
+    onizlemeAlani.innerHTML = svgKod;
+}
+
+// 2. ROZETLERİ LİSTELEME FONKSİYONU
+function rozetleriListele() {
+    const kapsayici = document.getElementById('rozet-listesi-kapsayici');
+    kapsayici.innerHTML = ""; 
+
+    if (mevcutRozetlerDizisi.length === 0) {
+        kapsayici.innerHTML = `<p style="color: #64748b; font-size: 14px; text-align: center;">Henüz eklenmiş bir rozet bulunmuyor.</p>`;
+        return;
+    }
+
+    mevcutRozetlerDizisi.forEach((item, index) => {
+        const kart = document.createElement('div');
+        kart.className = 'haber-kart'; 
+        kart.style.background = "#fafafa";
+        kart.style.borderColor = "#e2e8f0";
+        
+        // Güvenli SVG renderlama: SVG string'inin içine renk manipülasyonu uyguluyoruz
+        let svgGosterim = item.svg || "";
+        
+        kart.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 15px; flex: 1;">
+                <!-- Panelde SVG İkonunu Gösteren Alan -->
+                <div style="width: 36px; height: 36px; min-width: 36px; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: ${item.renk || '#000'};">
+                    ${svgGosterim}
+                </div>
+                <div class="haber-kart-detay">
+                    <h4 class="haber-kart-baslik" style="color: #1e293b; margin: 0; font-size: 14px;">
+                        <span style="display:inline-block; width:12px; height:12px; background:${item.renk}; border-radius:50%; margin-right:5px;"></span>
+                        ${item.sinif}
+                    </h4>
+                    <p style="margin: 4px 0 0 0; font-size: 12px; color: #64748b;">
+                        <strong>Kelimeler:</strong> ${item.kelime}
+                    </p>
+                </div>
+            </div>
+            <div style="display:flex; align-items:center;">
+                <button type="button" class="haber-kart-butonu btn-duzenle" onclick="rozetDuzenleTetikle(${index})">Düzenle</button>
+                <button type="button" class="haber-kart-butonu btn-sil" onclick="rozetSil(${index})">Sil</button>
+            </div>
+        `;
+        kapsayici.appendChild(kart);
+    });
+}
+
+// 3. DÜZENLEME MODUNU BAŞLATMA
+function rozetDuzenleTetikle(index) {
+    const item = mevcutRozetlerDizisi[index];
+    
+    document.getElementById('rozet-form-baslik').innerText = "📝 Rozeti Düzenle";
+    document.getElementById('btn-rozet-kaydet').innerText = "Değişikliği Listede Güncelle";
+    document.getElementById('btn-rozet-kaydet').style.background = "#eab308";
+    document.getElementById('btn-rozet-iptal').style.display = "inline-block";
+    
+    document.getElementById('rozet-index').value = index;
+    document.getElementById('rozet-sinif').value = item.sinif || "";
+    document.getElementById('rozet-renk').value = item.renk || "#cca43b";
+    document.getElementById('rozet-renk-picker').value = item.renk || "#cca43b";
+    document.getElementById('rozet-kelime').value = item.kelime || "";
+    document.getElementById('rozet-svg').value = item.svg || "";
+
+    rozetAnlikÖnizleme(item.svg || "");
+    document.getElementById('rozet-form-baslik').scrollIntoView({ behavior: 'smooth' });
+}
+
+// 4. FORM SUBMIT (EKLEME VEYA GÜNCELLEME)
+function rozetFormuGonder(event) {
+    event.preventDefault();
+
+    const rozetObjesi = {
+        "sinif": document.getElementById('rozet-sinif').value.trim(),
+        "renk": document.getElementById('rozet-renk').value.trim(),
+        "kelime": document.getElementById('rozet-kelime').value.trim(),
+        "svg": document.getElementById('rozet-svg').value.trim()
+    };
+
+    const formIndex = parseInt(document.getElementById('rozet-index').value);
+
+    if (formIndex === -1) {
+        // YENİ ROZET: Listenin sonuna ekle
+        mevcutRozetlerDizisi.push(rozetObjesi);
+    } else {
+        // DÜZENLEME: İlgili indeksi güncelle
+        mevcutRozetlerDizisi[formIndex] = rozetObjesi;
+    }
+
+    rozetleriListele();
+    rozetFormuSifirla();
+    rozetleriGithubaGonder();
+}
+
+// 5. SİLME İŞLEMİ
+function rozetSil(index) {
+    const onay = confirm(`"${mevcutRozetlerDizisi[index].sinif}" rozetini silmek istediğinize emin misiniz?`);
+    if (!onay) return;
+
+    mevcutRozetlerDizisi.splice(index, 1);
+
+    rozetleriListele();
+    rozetFormuSifirla();
+    rozetleriGithubaGonder();
+}
+
+// FORM SIFIRLAMA
+function rozetFormuSifirla() {
+    document.getElementById('form-yeni-rozet').reset();
+    document.getElementById('rozet-index').value = "-1";
+    document.getElementById('rozet-form-baslik').innerText = "➕ Yeni Rozet Ekle";
+    document.getElementById('btn-rozet-kaydet').innerText = "Rozeti Listeye Ekle";
+    document.getElementById('btn-rozet-kaydet').style.background = "#cca43b";
+    document.getElementById('btn-rozet-iptal').style.display = "none";
+    document.getElementById('rozet-canli-onizleme').innerHTML = "";
+    document.getElementById('rozet-renk-picker').value = "#cca43b";
+}
+
+// 6. GİTHUB COMMIT İŞLEMİ
+async function rozetleriGithubaGonder() {
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_ROZETLER}`;
+
+    const jsonString = JSON.stringify(mevcutRozetlerDizisi, null, 2);
+    const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+    const payload = {
+        message: "Panel: data/rozetler.json listesinde düzenleme/silme yapıldı",
+        content: base64Content,
+        sha: shaRozetler
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if(!response.ok) throw new Error("GitHub veriyi kaydedemedi.");
+        const resData = await response.json();
+        shaRozetler = resData.content.sha; // SHA yenile
+        bildirimGoster("Rozet listesi güncellendi ve GitHub'a başarıyla gönderildi!", "success");
+    } catch (error) {
+        bildirimGoster(error.message, "error");
+    }
+}
+
         function cikisYap() {
             localStorage.removeItem('gh_oauth_token');
             window.location.reload();
