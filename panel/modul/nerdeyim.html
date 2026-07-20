@@ -1,0 +1,81 @@
+<h3>📍 Nerdeyim (Konum Yönetimi)</h3>
+<fieldset style="margin-bottom: 25px; border-color: #2563eb;">
+    <legend style="color: #2563eb; font-weight: bold;">Güncel Konumu Ayarla</legend>
+    <form id="form-konum" onsubmit="konumuKaydet(event)">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="k-sehir">Şehir / Bölge:</label>
+                <input type="text" id="k-sehir" required>
+            </div>
+            <div class="form-group">
+                <label for="k-ilce">İlçe / Mevki:</label>
+                <input type="text" id="k-ilce" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="k-durum">Durum Açıklaması:</label>
+            <input type="text" id="k-durum" placeholder="Örn: Çadır kuruldu, dinleniyorum.">
+        </div>
+        <button type="submit" class="btn" style="background: #2563eb;">Konumu Güncelle ve Gönder</button>
+    </form>
+</fieldset>
+
+<script>
+(function() {
+    const PATH_KONUM = "nerdeyim/konum.json";
+    let shaKonum = "";
+    const token = localStorage.getItem('gh_oauth_token');
+
+    async function konumuYukle() {
+        if (!token) return;
+        const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KONUM}`;
+        try {
+            const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+            if(!response.ok) return;
+            const data = await response.json();
+            shaKonum = data.sha;
+            
+            const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+            const konumObj = JSON.parse(decodedContent);
+
+            document.getElementById('k-sehir').value = konumObj.sehir || "";
+            document.getElementById('k-ilce').value = konumObj.ilce || "";
+            document.getElementById('k-durum').value = konumObj.durum || "";
+        } catch (error) { console.log("Konum yüklenemedi", error); }
+    }
+
+    window.konumuKaydet = async function(event) {
+        event.preventDefault();
+        const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KONUM}`;
+        
+        const konumObj = {
+            sehir: document.getElementById('k-sehir').value,
+            ilce: document.getElementById('k-ilce').value,
+            durum: document.getElementById('k-durum').value
+        };
+
+        const jsonString = JSON.stringify(konumObj, null, 2);
+        const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+        const payload = {
+            message: "Panel: Konum güncellendi",
+            content: base64Content,
+            sha: shaKonum
+        };
+
+        try {
+            const response = await fetch(url, {
+                method: "PUT",
+                headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+            if(!response.ok) throw new Error("Konum güncellenemedi.");
+            const resData = await response.json();
+            shaKonum = resData.content.sha;
+            bildirimGoster("Konum başarıyla güncellendi!", "success");
+        } catch (error) { bildirimGoster(error.message, "error"); }
+    };
+
+    konumuYukle();
+})();
+</script>

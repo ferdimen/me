@@ -1,0 +1,239 @@
+<h3>⏳ Kronoloji (Timeline) Yönetimi</h3>
+<fieldset style="margin-bottom: 25px; border-color: #8b5cf6;">
+    <legend id="tl-form-baslik" style="color: #8b5cf6; font-weight: bold;">➕ Yeni Olay Ekle</legend>
+    <form id="form-yeni-timeline" onsubmit="timelineFormuGonder(event)">
+        <input type="hidden" id="tl-index" value="-1">
+
+        <div class="form-row" style="background: #f3f4f6; padding: 10px; border-radius: 6px; margin-bottom: 15px;">
+            <div class="form-group">
+                <label for="tl-blog-sec">📝 Mevcut Bir Blog Yazısı Bağla (Opsiyonel):</label>
+                <select id="tl-blog-sec" onchange="blogYazisiSecildi(this)">
+                    <option value="">-- Bir Blog Yazısı Seçin (Otomatik Tarih ve URL Dolar) --</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="tl-tarih-manuel">Takvim Tarihi:</label>
+                <input type="date" id="tl-tarih-manuel" onchange="manuelTarihDegisti(this)">
+            </div>
+            <div class="form-group">
+                <label for="tl-tarih-gosterim">Formatlanmış Tarih (JSON Çıktısı):</label>
+                <input type="text" id="tl-tarih-gosterim" placeholder="Örn: 2026 Mart" required>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="tl-baslik">Olay Başlığı:</label>
+            <input type="text" id="tl-baslik" required>
+        </div>
+        <div class="form-group">
+            <label for="tl-aciklama">Olay Açıklaması:</label>
+            <textarea id="tl-aciklama" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="tl-resim">Resim Yolu:</label>
+            <input type="text" id="tl-resim" placeholder="img/logo.png">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="tl-linkblogUrl">Blog URL:</label>
+                <input type="text" id="tl-linkblogUrl" placeholder="yazilar/yazi.html">
+            </div>
+            <div class="form-group">
+                <label for="tl-linkblogMetni">Blog Link Metni:</label>
+                <input type="text" id="tl-linkblogMetni" value="Blog Sayfası">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="tl-linkUrl">Dış Bağlantı URL:</label>
+                <input type="text" id="tl-linkUrl" placeholder="https://...">
+            </div>
+            <div class="form-group">
+                <label for="tl-linkMetni">Dış Bağlantı Metni:</label>
+                <input type="text" id="tl-linkMetni" value="Tur Videolarını İzle">
+            </div>
+        </div>
+        
+        <div style="display: flex; gap: 10px;">
+            <button type="submit" id="btn-tl-kaydet" class="btn" style="background: #8b5cf6; flex: 2;">Kronolojiye Ekle</button>
+            <button type="button" id="btn-tl-iptal" onclick="timelineFormuSifirla()" class="btn" style="background: #64748b; flex: 1; display: none;">İptal Et</button>
+        </div>
+    </form>
+</fieldset>
+
+<fieldset>
+    <legend>⏳ Mevcut Kronoloji Akışı</legend>
+    <div id="timeline-listesi-kapsayici" style="display: flex; flex-direction: column; max-height: 400px; overflow-y: auto;">
+        <p style="color: #64748b; font-size: 14px; text-align: center;">Yükleniyor...</p>
+    </div>
+</fieldset>
+
+<script>
+(function() {
+    const PATH_TIMELINE = "data/timeline.json";
+    const PATH_YAZILAR = "yazilar/yazilar.json";
+    let shaTimeline = "";
+    let mevcutTimelineDizisi = [];
+    const token = localStorage.getItem('gh_oauth_token');
+    const AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+
+    async function verileriYukle() {
+        try {
+            // 1. Yazıları Çekip Select Box'ı Doldur
+            const resYazilar = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_YAZILAR}`, { headers: { "Authorization": `token ${token}` } });
+            if(resYazilar.ok) {
+                const dYazilar = await resYazilar.json();
+                const decYazilar = decodeURIComponent(atob(dYazilar.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+                const yazilarDizisi = JSON.parse(decYazilar);
+                const selectEl = document.getElementById('tl-blog-sec');
+                yazilarDizisi.forEach(y => {
+                    const opt = document.createElement('option');
+                    opt.value = y.url;
+                    opt.innerText = `${y.tarih} - ${y.baslik}`;
+                    opt.dataset.raw = JSON.stringify(y);
+                    selectEl.appendChild(opt);
+                });
+            }
+
+            // 2. Timeline Dosyasını Çek
+            const resTL = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_TIMELINE}`, { headers: { "Authorization": `token ${token}` } });
+            if(resTL.ok) {
+                const dTL = await resTL.json();
+                shaTimeline = dTL.sha;
+                const decTL = decodeURIComponent(atob(dTL.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+                mevcutTimelineDizisi = JSON.parse(decTL);
+                timelineListele();
+            }
+        } catch(e) { console.log(e); }
+    }
+
+    function timelineListele() {
+        const kapsayici = document.getElementById('timeline-listesi-kapsayici');
+        kapsayici.innerHTML = "";
+        if(mevcutTimelineDizisi.length === 0) {
+            kapsayici.innerHTML = '<p style="text-align:center; color:#64748b;">Kayıt bulunamadı.</p>';
+            return;
+        }
+        mevcutTimelineDizisi.forEach((olay, index) => {
+            const div = document.createElement('div');
+            div.className = 'liste-kart';
+            div.innerHTML = `
+                <div class="liste-kart-detay">
+                    <div class="liste-kart-meta" style="color:#8b5cf6;">${olay.tarih}</div>
+                    <h4 class="liste-kart-baslik">${olay.baslik}</h4>
+                </div>
+                <div>
+                    <button type="button" class="liste-kart-butonu btn-duzenle" onclick="timelineDuzenleTetikle(${index})">Düzenle</button>
+                    <button type="button" class="liste-kart-butonu btn-sil" onclick="timelineSil(${index})">Sil</button>
+                </div>
+            `;
+            kapsayici.appendChild(div);
+        });
+    }
+
+    window.blogYazisiSecildi = function(selectEl) {
+        if(!selectEl.value) return;
+        const opt = selectEl.options[selectEl.selectedIndex];
+        const yazi = JSON.parse(opt.dataset.raw);
+
+        document.getElementById('tl-linkblogUrl').value = yazi.url;
+        document.getElementById('tl-baslik').value = yazi.baslik;
+
+        let hamTarih = yazi.tarih.includes(',') ? yazi.tarih.split(',')[0].trim() : yazi.tarih;
+        const p = hamTarih.split('-');
+        if(p.length === 3) {
+            const y = p[0], mIdx = parseInt(p[1]) - 1, d = p[2].padStart(2,'0');
+            document.getElementById('tl-tarih-gosterim').value = `${y} ${AYLAR[mIdx]}`;
+            document.getElementById('tl-tarih-manuel').value = `${y}-${String(mIdx+1).padStart(2,'0')}-${d}`;
+        }
+    };
+
+    window.manuelTarihDegisti = function(inputEl) {
+        if(!inputEl.value) return;
+        const p = inputEl.value.split('-');
+        document.getElementById('tl-tarih-gosterim').value = `${p[0]} ${AYLAR[parseInt(p[1])-1]}`;
+    };
+
+    window.timelineDuzenleTetikle = function(index) {
+        const olay = mevcutTimelineDizisi[index];
+        document.getElementById('tl-form-baslik').innerText = "📝 Olayı Düzenle";
+        document.getElementById('btn-tl-kaydet').innerText = "Değişikliği Güncelle";
+        document.getElementById('btn-tl-kaydet').style.background = "#eab308";
+        document.getElementById('btn-tl-iptal').style.display = "inline-block";
+        document.getElementById('tl-index').value = index;
+
+        document.getElementById('tl-tarih-gosterim').value = olay.tarih || "";
+        document.getElementById('tl-baslik').value = olay.baslik || "";
+        document.getElementById('tl-aciklama').value = olay.aciklama || "";
+        document.getElementById('tl-resim').value = olay.resim || "";
+        document.getElementById('tl-linkblogUrl').value = olay.linkblogUrl || "";
+        document.getElementById('tl-linkblogMetni').value = olay.linkblogMetni || "Blog Sayfası";
+        document.getElementById('tl-linkUrl').value = olay.linkUrl || "";
+        document.getElementById('tl-linkMetni').value = olay.linkMetni || "Tur Videolarını İzle";
+
+        document.getElementById('tl-blog-sec').value = olay.linkblogUrl || "";
+        document.getElementById('tl-form-baslik').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    window.timelineFormuGonder = function(event) {
+        event.preventDefault();
+        const olayObj = {
+            tarih: document.getElementById('tl-tarih-gosterim').value,
+            baslik: document.getElementById('tl-baslik').value,
+            aciklama: document.getElementById('tl-aciklama').value,
+            resim: document.getElementById('tl-resim').value,
+            linkblogUrl: document.getElementById('tl-linkblogUrl').value,
+            linkblogMetni: document.getElementById('tl-linkblogMetni').value,
+            linkUrl: document.getElementById('tl-linkUrl').value,
+            linkMetni: document.getElementById('tl-linkMetni').value
+        };
+
+        const idx = parseInt(document.getElementById('tl-index').value);
+        if(idx === -1) mevcutTimelineDizisi.unshift(olayObj);
+        else mevcutTimelineDizisi[idx] = olayObj;
+
+        timelineListele();
+        timelineFormuSifirla();
+        timelineGithubaGonder();
+    };
+
+    window.timelineSil = function(index) {
+        if(!confirm("Bu kronoloji olayını silmek istediğinize emin misiniz?")) return;
+        mevcutTimelineDizisi.splice(index, 1);
+        timelineListele();
+        timelineFormuSifirla();
+        timelineGithubaGonder();
+    };
+
+    window.timelineFormuSifirla = function() {
+        document.getElementById('form-yeni-timeline').reset();
+        document.getElementById('tl-index').value = "-1";
+        document.getElementById('tl-form-baslik').innerText = "➕ Yeni Olay Ekle";
+        document.getElementById('btn-tl-kaydet').innerText = "Kronolojiye Ekle";
+        document.getElementById('btn-tl-kaydet').style.background = "#8b5cf6";
+        document.getElementById('btn-tl-iptal').style.display = "none";
+    };
+
+    async function timelineGithubaGonder() {
+        const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_TIMELINE}`;
+        const jsonString = JSON.stringify(mevcutTimelineDizisi, null, 2);
+        const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+        const payload = { message: "Panel: data/timeline.json güncellendi", content: base64Content, sha: shaTimeline };
+        try {
+            const res = await fetch(url, { method: "PUT", headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+            if(!res.ok) throw new Error("Hata");
+            const rData = await res.json();
+            shaTimeline = rData.content.sha;
+            bildirimGoster("Kronoloji başarıyla GitHub'a kaydedildi!", "success");
+        } catch(e) { bildirimGoster("Kaydedilemedi", "error"); }
+    }
+
+    if(token) verileriYukle();
+})();
+</script>
