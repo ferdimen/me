@@ -1200,12 +1200,10 @@ function rozetleriListele() {
         kart.style.background = "#fafafa";
         kart.style.borderColor = "#e2e8f0";
         
-        // Güvenli SVG renderlama: SVG string'inin içine renk manipülasyonu uyguluyoruz
         let svgGosterim = item.svg || "";
         
         kart.innerHTML = `
             <div style="display: flex; align-items: center; gap: 15px; flex: 1;">
-                <!-- Panelde SVG İkonunu Gösteren Alan -->
                 <div style="width: 36px; height: 36px; min-width: 36px; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: ${item.renk || '#000'};">
                     ${svgGosterim}
                 </div>
@@ -1224,7 +1222,8 @@ function rozetleriListele() {
                 <button type="button" class="haber-kart-butonu btn-sil" onclick="rozetSil(${index})">Sil</button>
             </div>
         `;
-        kapsayici.appendChild(kart);
+        // Hata buradaydı; "kapsayıcı" değil, değişken adıyla birebir aynı yani "kapsayici" olmalı
+        kapsayici.appendChild(kart); 
     });
 }
 
