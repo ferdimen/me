@@ -1445,7 +1445,7 @@ async function yazilariYukle(token) {
 }
 
 // 2. ROZETLER DOSYASINDAN GELEN VERİLERLE SEÇİM ALANINI OLUŞTURMA
-function yaziRozetSecimleriniDoldur() {
+function yaziRozetSecimeleriniDoldur() {
     const alan = document.getElementById('yazi-rozet-secim-alani');
     if (!mevcutRozetlerDizisi || mevcutRozetlerDizisi.length === 0) {
         alan.innerHTML = `<span style="color:#64748b; font-size:12px;">Mevcut rozet bulunamadı.</span>`;
