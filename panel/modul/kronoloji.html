@@ -4,97 +4,120 @@
     <!-- Düzenleme modu için gizli index alanı -->
     <input type="hidden" id="kro-index" value="-1">
     
-    <div class="form-row">
-        <div class="form-group">
-            <label>Yıl</label>
-            <input type="number" id="kro-yil" placeholder="Örn: 2026" required min="1900" max="2100">
+    <div class="form-row" style="display: flex; gap: 15px; margin-bottom: 15px;">
+        <div class="form-group" style="flex: 1; display: flex; flex-direction: column;">
+            <label style="font-weight: 600; font-size: 14px; margin-bottom: 6px; color: #475569;">Yıl</label>
+            <input type="number" id="kro-yil" placeholder="Örn: 2026" required min="1900" max="2100" style="padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px;">
         </div>
-        <div class="form-group">
-            <label>İkon / Emoji</label>
-            <input type="text" id="kro-ikon" placeholder="Örn: 🚲, 🗺️, 🛠️" required>
+        <div class="form-group" style="flex: 1; display: flex; flex-direction: column;">
+            <label style="font-weight: 600; font-size: 14px; margin-bottom: 6px; color: #475569;">İkon / Emoji</label>
+            <input type="text" id="kro-ikon" placeholder="Örn: 🚲, 🗺️" required style="padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px;">
         </div>
     </div>
     
-    <div class="form-group">
-        <label>Açıklama / Olay</label>
-        <textarea id="kro-tanim" rows="3" placeholder="O sene ne oldu? Kısa bir özet yazın..." required style="width: 100%; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
+    <div class="form-group" style="display: flex; flex-direction: column; margin-bottom: 15px;">
+        <label style="font-weight: 600; font-size: 14px; margin-bottom: 6px; color: #475569;">Açıklama / Olay</label>
+        <textarea id="kro-tanim" rows="3" placeholder="O sene gerçekleşen olayı kısaca özetleyin..." required style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; font-family: inherit; font-size: 14px; resize: vertical; box-sizing: border-box;"></textarea>
     </div>
     
     <div style="display: flex; gap: 10px;">
-        <button type="submit" id="btn-kro-kaydet" class="btn" style="background:#10b981;">Listeye Ekle</button>
-        <button type="button" id="btn-kro-iptal" class="btn" style="background:#64748b; display:none;" onclick="kronolojiModul.duzenlemeyiIptalEt()">İptal Et</button>
+        <button type="submit" id="btn-kro-kaydet" class="btn" style="background:#10b981; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-size: 15px; font-weight: bold; flex: 2;">Listeye Ekle</button>
+        <button type="button" id="btn-kro-iptal" class="btn" style="background:#64748b; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-size: 15px; font-weight: bold; flex: 1; display:none;" onclick="kronolojiModul.duzenlemeyiIptalEt()">İptal Et</button>
     </div>
 </form>
 
-<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 25px 0;">
+<hr style="border: 0; border-top: 2px solid #e2e8f0; margin: 30px 0;">
 
 <h3>📋 Mevcut Kronoloji</h3>
-<!-- Kronoloji listesinin basılacağı kapsayıcı -->
-<div id="kronoloji-listesi-kapsayici" style="margin-top:15px; display:flex; flex-direction:column; gap:10px;"></div>
+<div id="kronoloji-listesi-kapsayici"></div>
 
-<!-- Modül Stilleri (Ana sayfayı etkilemez, sadece bu modüle özeldir) -->
+<!-- Modüle Özel CSS Stilleri -->
 <style>
+    #kronoloji-listesi-kapsayici {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
     .kro-kart {
         background: #f8fafc;
         border: 1px solid #e2e8f0;
-        border-radius: 6px;
-        padding: 15px;
+        border-radius: 8px;
+        padding: 16px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        transition: all 0.2s;
+        transition: all 0.2s ease;
     }
     .kro-kart:hover {
         border-color: #cbd5e1;
         background: #f1f5f9;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
     .kro-detay {
         display: flex;
         gap: 15px;
         align-items: center;
+        flex: 1;
     }
     .kro-yil-badge {
         background: #2563eb;
         color: white;
-        padding: 4px 8px;
-        border-radius: 4px;
+        padding: 5px 10px;
+        border-radius: 6px;
         font-weight: bold;
         font-size: 13px;
+        white-space: nowrap;
     }
     .kro-ikon-alan {
-        font-size: 20px;
+        font-size: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .kro-metin {
         font-size: 14px;
         color: #334155;
-        line-height: 1.4;
+        line-height: 1.5;
     }
     .kro-aksiyonlar {
         display: flex;
-        gap: 5px;
+        gap: 8px;
+        margin-left: 15px;
     }
     .kro-btn {
-        padding: 6px 10px;
+        padding: 8px 12px;
         font-size: 12px;
-        border-radius: 4px;
+        border-radius: 6px;
         cursor: pointer;
         border: none;
         font-weight: bold;
+        transition: background 0.2s;
     }
-    .kro-btn-duzenle { background: #e2e8f0; color: #334155; }
-    .kro-btn-duzenle:hover { background: #cbd5e1; }
-    .kro-btn-sil { background: #fee2e2; color: #b91c1c; }
-    .kro-btn-sil:hover { background: #fca5a5; }
+    .kro-btn-duzenle { 
+        background: #e2e8f0; 
+        color: #334155; 
+    }
+    .kro-btn-duzenle:hover { 
+        background: #cbd5e1; 
+    }
+    .kro-btn-sil { 
+        background: #fee2e2; 
+        color: #b91c1c; 
+    }
+    .kro-btn-sil:hover { 
+        background: #fca5a5; 
+    }
 </style>
 
-<!-- Modülün Kendi İzole Mantığı -->
+<!-- Modülün Çalışma Mantığı -->
 <script>
 const kronolojiModul = {
-    path: "data/kronoloji.json", // GitHub'daki JSON dosyasının yolu
+    path: "data/kronoloji.json",
     sha: "",
     liste: [],
 
-    // 1. Modül ilk yüklendiğinde çalışacak fonksiyon
+    // GitHub'dan verileri çekip yükleyen fonksiyon
     init: async function() {
         const url = `https://api.github.com/repos/${FerdiAPI.owner}/${FerdiAPI.repo}/contents/${this.path}`;
         try {
@@ -103,29 +126,26 @@ const kronolojiModul = {
             const data = await res.json();
             this.sha = data.sha;
             
-            // Base64'ten çözüp yerel listeye aktar
             this.liste = JSON.parse(FerdiAPI.b64_to_utf8(data.content));
-            
-            // Yıla göre büyükten küçüğe sırala (en güncel en üstte olsun istersen)
             this.sirala();
             this.listele();
         } catch(e) { 
-            console.error("Kronoloji verisi yüklenirken hata oluştu:", e); 
+            console.error("Kronoloji yüklenemedi:", e); 
         }
     },
 
-    // 2. Listeyi yıla göre sıralar
+    // Maddeleri yıllara göre büyükten küçüğe sıralar
     sirala: function() {
         this.liste.sort((a, b) => parseInt(b.yil) - parseInt(a.yil));
     },
 
-    // 3. Verileri DOM'a basan fonksiyon
+    // Verileri ekrana kartlar halinde basar
     listele: function() {
         const kapsayici = document.getElementById('kronoloji-listesi-kapsayici');
         kapsayici.innerHTML = "";
         
         if(this.liste.length === 0) {
-            kapsayici.innerHTML = `<p style="color:#64748b; font-style:italic; font-size:14px;">Henüz kronoloji maddesi bulunmuyor.</p>`;
+            kapsayici.innerHTML = `<p style="color:#64748b; font-style:italic; font-size:14px; padding: 10px 0;">Henüz eklenmiş bir kronoloji maddesi yok.</p>`;
             return;
         }
 
@@ -140,14 +160,14 @@ const kronolojiModul = {
                 </div>
                 <div class="kro-aksiyonlar">
                     <button type="button" class="kro-btn kro-btn-duzenle" onclick="kronolojiModul.duzenle(${index})">Düzenle</button>
-                    <button type="button" class="kro-btn kro-btn-sil" onclick="kronolojiModul.sil(${index})">Sil</button>
+                    <button type="button" class="kro-btn kro-btn-sil" onclick="kronocalypse = kronolojiModul.sil(${index})">Sil</button>
                 </div>
             `;
             kapsayici.appendChild(div);
         });
     },
 
-    // 4. Form gönderildiğinde (Ekleme veya Güncelleme)
+    // Form tetiklendiğinde ekleme veya düzenleme yapar
     formGonder: function(e) {
         e.preventDefault();
         
@@ -159,20 +179,18 @@ const kronolojiModul = {
         };
 
         if(index === -1) {
-            // Yeni ekleme modu
             this.liste.push(yeniMadde);
         } else {
-            // Düzenleme modu
             this.liste[index] = yeniMadde;
         }
 
         this.sirala();
         this.listele();
         this.githubaGonder();
-        this.duzenlemeyiIptalEt(); // Formu sıfırla ve eski haline getir
+        this.duzenlemeyiIptalEt();
     },
 
-    // 5. Düzenleme modunu açar
+    // Seçilen maddeyi düzenleme moduna alır ve formu doldurur
     duzenle: function(index) {
         const item = this.liste[index];
         document.getElementById('kro-index').value = index;
@@ -180,17 +198,15 @@ const kronolojiModul = {
         document.getElementById('kro-ikon').value = item.ikon;
         document.getElementById('kro-tanim').value = item.tanim;
 
-        // Form başlığını ve buton metnini güncelle
         document.getElementById('kro-form-baslik').innerText = "📝 Kronoloji Maddesini Düzenle";
         document.getElementById('btn-kro-kaydet').innerText = "Değişiklikleri Kaydet";
         document.getElementById('btn-kro-kaydet').style.background = "#2563eb";
         document.getElementById('btn-kro-iptal').style.display = "inline-block";
         
-        // Sayfayı forma doğru hafifçe kaydır
         document.getElementById('form-kronoloji').scrollIntoView({ behavior: 'smooth' });
     },
 
-    // 6. Düzenleme modundan çıkış / Form sıfırlama
+    // Düzenleme modunu kapatıp formu sıfırlar
     duzenlemeyiIptalEt: function() {
         document.getElementById('form-kronoloji').reset();
         document.getElementById('kro-index').value = "-1";
@@ -200,7 +216,7 @@ const kronolojiModul = {
         document.getElementById('btn-kro-iptal').style.display = "none";
     },
 
-    // 7. Listeden madde siler
+    // Maddeyi yerel diziden siler ve günceller
     sil: function(index) {
         if(!confirm("Bu kronoloji maddesini silmek istediğinize emin misiniz?")) return;
         
@@ -208,18 +224,17 @@ const kronolojiModul = {
         this.listele();
         this.githubaGonder();
         
-        // Eğer silinen eleman o sırada düzenleniyorsa formu sıfırla
         if(parseInt(document.getElementById('kro-index').value) === index) {
             this.duzenlemeyiIptalEt();
         }
     },
 
-    // 8. Değişiklikleri GitHub'a yazar
+    // Son güncel listeyi GitHub API'ye push eder
     githubaGonder: async function() {
         const url = `https://api.github.com/repos/${FerdiAPI.owner}/${FerdiAPI.repo}/contents/${this.path}`;
         
         const payload = {
-            message: "Panel: Kronoloji güncellendi",
+            message: "Panel: Kronoloji verisi güncellendi",
             content: FerdiAPI.utf8_to_b64(JSON.stringify(this.liste, null, 2)),
             sha: this.sha
         };
@@ -237,14 +252,14 @@ const kronolojiModul = {
             if(!res.ok) throw new Error();
             
             const resData = await res.json();
-            this.sha = resData.content.sha; // Güncel SHA değerini hafızaya al
-            FerdiAPI.bildirim("Kronoloji başarıyla GitHub'a kaydedildi!", "success");
+            this.sha = resData.content.sha;
+            FerdiAPI.bildirim("Kronoloji başarıyla güncellendi!", "success");
         } catch(e) { 
-            FerdiAPI.bildirim("Kronoloji kaydedilirken hata oluştu!", "error"); 
+            FerdiAPI.bildirim("GitHub kaydı sırasında bir hata oluştu", "error"); 
         }
     }
 };
 
-// Modül yüklenir yüklenmez init mekanizmasını tetikle
+// Modül DOM'a enjekte edildiği an çalışmaya başlasın
 kronolojiModul.init();
 </script>
