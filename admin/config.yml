@@ -1,7 +1,8 @@
 backend:
   name: github
-  repo: ferdimen/me # GitHub kullanıcı adınız ve repository adınız
-  branch: main # Sitenizin yayınlandığı branch (main veya gh-pages)
+  repo: ferdimen/me
+  branch: main
+  auth_type: implicit # Netlify olmadan doğrudan GitHub API'sini kullanır
 
 media_folder: "img" # Yüklenen görsellerin gideceği klasör
 public_folder: "img"
