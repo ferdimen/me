@@ -1,17 +1,5 @@
 [
   {
-    "id": "panel",
-    "baslik": "deneme yazısı",
-    "url": "https://ferdimen.com/panel/index.html",
-    "tarih": "2026-07-20",
-    "kategori": "Altyapı > [panel]",
-    "ozel": "",
-    "kapakresmi": "https://ferdimen.com/img/logo.png",
-    "etiketler": [
-      "seferihisar,edirne,EDİRNE,"
-    ]
-  },
-  {
     "id": "2026-anadolu-engeregi",
     "baslik": "Anadolu Engereği Bisiklet Turu",
     "url": "yazilar/2026-anadolu-engeregi.html",
