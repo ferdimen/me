@@ -91,6 +91,7 @@
 				<button class="tab-btn" onclick="sekmeDegistir('rozetler-tab')">🛡️ Rozet Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('sosyal-tab')">🌐 Sosyal Medya</button>
 				<button class="tab-btn" onclick="sekmeDegistir('dosyalar-tab')">📁 Dosya Yönetimi</button>
+				<button class="tab-btn" onclick="sekmeDegistir('footer-tab')">📢 Footer Mesajları</button>
                 <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
                 <!-- Gelecekte buraya yeni butonlar gelebilir -->
             </div>
@@ -711,6 +712,63 @@
         </div>
     </fieldset>
 </div>
+<!-- 11. SEKME: FOOTER MESAJLARI YÖNETİMİ (data/footer.json) -->
+<div id="footer-tab" class="tab-content">
+    <h3>📢 Dinamik Footer Metinleri Yönetimi</h3>
+    
+    <!-- Varsayılan Sabit Metin Ayarı -->
+    <fieldset style="margin-bottom: 25px; border-color: #0d9488;">
+        <legend style="color: #0d9488; font-weight: bold;">🔒 Genel Varsayılan Metin</legend>
+        <div class="form-group">
+            <label for="footer-varsayilan-input">Her Gün Görünen İmza Metni (HTML Etiketleri Kullanılabilir):</label>
+            <input type="text" id="footer-varsayilan-input" placeholder="<b>Ferdimen.</b> Tüm Hakları Saklıdır." style="width: 100%;">
+        </div>
+        <button type="button" onclick="footerGenelMetniGuncelle()" class="btn" style="background: #0d9488; margin-top: 5px;">Genel Metni Hafızaya Al</button>
+    </fieldset>
+
+    <!-- Özel Gün Ekleme / Düzenleme Formu -->
+    <fieldset style="margin-bottom: 25px; border-color: #0d9488;">
+        <legend id="footer-form-baslik" style="color: #0d9488; font-weight: bold;">➕ Özel Gün Kutlama Mesajı Ekle</legend>
+        <form id="form-footer-ozel" onsubmit="footerOzelGunGonder(event)">
+            <input type="hidden" id="footer-ozel-index" value="-1">
+
+            <div class="form-row">
+                <div class="form-group" style="flex: 1;">
+                    <label for="footer-ozel-gun">Gün (1-31):</label>
+                    <input type="number" id="footer-ozel-gun" min="1" max="31" placeholder="29" required>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label for="footer-ozel-ay">Ay (1-12):</label>
+                    <input type="number" id="footer-ozel-ay" min="1" max="12" placeholder="10" required>
+                </div>
+                <div class="form-group" style="flex: 4;">
+                    <label for="footer-ozel-mesaj">Kutlama Mesajı:</label>
+                    <input type="text" id="footer-ozel-mesaj" placeholder=" - 29 Ekim Cumhuriyet Bayramımız Kutlu Olsun! 🇹🇷" required>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <button type="submit" id="btn-footer-kaydet" class="btn" style="background: #0d9488; flex: 2;">Özel Günü Listeye Ekle</button>
+                <button type="button" id="btn-footer-iptal" onclick="footerFormSifirla()" class="btn" style="background: #64748b; flex: 1; display: none;">İptal</button>
+            </div>
+        </form>
+    </fieldset>
+
+    <!-- Kayıtlı Özel Günler Listesi -->
+    <fieldset>
+        <legend>🗓️ Kayıtlı Özel Günler ve Kutlamalar</legend>
+        <div id="footer-listesi-kapsayici" style="display: flex; flex-direction: column; gap: 10px; max-height: 400px; overflow-y: auto;">
+            <p style="color: #64748b; font-size: 14px; text-align: center;">Yükleniyor...</p>
+        </div>
+    </fieldset>
+
+    <!-- Büyük Kaydet Butonu -->
+    <div style="margin-top: 20px;">
+        <button type="button" onclick="footerVerileriniGithubaKaydet()" class="btn" style="background: #0f766e; font-size: 16px; padding: 15px; font-weight: bold; width: 100%;">
+            💾 TÜM FOOTER DEĞİŞİKLİKLERİNİ GİTHUB'A KAYDET
+        </button>
+    </div>
+</div>
 		
 				<!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
                 <div id="yeni-sekme-tab" class="tab-content">
@@ -794,6 +852,9 @@ const PATH_DOSYALAR = "data/dosyalar.json";
 let shaDosyalar = "";
 let mevcutDosyalarDizisi = [];
 
+const PATH_FOOTER = "data/footer.json";
+let shaFooter = "";
+let footerAnaVeri = { "varsayilanMesaj": "", "ozelGunler": [] };
 
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -865,6 +926,7 @@ if (token) {
 	videoYukle(token); // <--- Yeni eklenen video yükleyici fonksiyonumuz
 	blogYukle(token);
 	dosyalariYukle(token);
+	footerVerileriniYukle(token);
     // YENİ EKLENEN KRONOLOJİ YÜKLEYİCİLERİ
     yazilariYukle(token).then(() => {
         timelineYukle(token);
@@ -2846,6 +2908,154 @@ async function dosyalariGithubaGonder() {
         const resData = await response.json();
         shaDosyalar = resData.content.sha;
         bildirimGoster("Dosyalar listesi başarıyla güncellendi ve GitHub'a kaydedildi!", "success");
+    } catch (error) {
+        bildirimGoster(error.message, "error");
+    }
+}
+
+
+async function footerVerileriniYukle(token) {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_FOOTER}`;
+    try {
+        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if(!response.ok) throw new Error("Footer verileri yüklenemedi.");
+
+        const data = await response.json();
+        shaFooter = data.sha;
+
+        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        footerAnaVeri = JSON.parse(decodedContent);
+
+        // Form alanını ve listeyi doldur
+        document.getElementById('footer-varsayilan-input').value = footerAnaVeri.varsayilanMesaj || "";
+        footerOzelGunleriListele();
+    } catch (error) {
+        console.log("Footer verisi yükleme hatası: " + error.message);
+    }
+}
+
+function footerOzelGunleriListele() {
+    const kapsayici = document.getElementById('footer-listesi-kapsayici');
+    kapsayici.innerHTML = "";
+
+    if (!footerAnaVeri.ozelGunler || footerAnaVeri.ozelGunler.length === 0) {
+        kapsayici.innerHTML = `<p style="color: #64748b; font-size: 14px; text-align: center;">Kayıtlı özel gün bulunmuyor.</p>`;
+        return;
+    }
+
+    // Aylara ve günlere göre sıralı gösterelim
+    footerAnaVeri.ozelGunler.sort((a,b) => (a.ay - b.ay) || (a.gun - b.gun));
+
+    footerAnaVeri.ozelGunler.forEach((item, index) => {
+        const kart = document.createElement('div');
+        kart.className = 'haber-kart';
+        kart.style.background = "#f0fdf4";
+        kart.style.borderColor = "#bbf7d0";
+        kart.style.padding = "10px";
+
+        kart.innerHTML = `
+            <div class="haber-kart-detay">
+                <span style="background: #bbf7d0; color: #166534; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 12px; margin-right: 10px;">
+                    📅 ${String(item.gun).padStart(2,'0')}/${String(item.ay).padStart(2,'0')}
+                </span>
+                <span style="font-size: 14px; color: #1e293b;">${item.mesaj}</span>
+            </div>
+            <div style="display:flex; gap:5px;">
+                <button type="button" class="haber-kart-butonu btn-duzenle" style="padding: 4px 8px;" onclick="footerOzelGunDuzenleTetikle(${index})">Düzenle</button>
+                <button type="button" class="haber-kart-butonu btn-sil" style="padding: 4px 8px;" onclick="footerOzelGunSil(${index})">Sil</button>
+            </div>
+        `;
+        kapsayici.appendChild(kart);
+    });
+}
+
+function footerGenelMetniGuncelle() {
+    footerAnaVeri.varsayilanMesaj = document.getElementById('footer-varsayilan-input').value;
+    bildirimGoster("Genel imza metni listeye alındı. Kaydetmeyi unutmayın.", "success");
+}
+
+function footerOzelGunGonder(event) {
+    event.preventDefault();
+
+    const yeniGun = {
+        "gun": parseInt(document.getElementById('footer-ozel-gun').value),
+        "ay": parseInt(document.getElementById('footer-ozel-ay').value),
+        "mesaj": document.getElementById('footer-ozel-mesaj').value
+    };
+
+    const index = parseInt(document.getElementById('footer-ozel-index').value);
+
+    if (index === -1) {
+        // Yeni ekleme
+        footerAnaVeri.ozelGunler.push(yeniGun);
+    } else {
+        // Güncelleme
+        footerAnaVeri.ozelGunler[index] = yeniGun;
+    }
+
+    footerOzelGunleriListele();
+    footerFormSifirla();
+}
+
+function footerOzelGunDuzenleTetikle(index) {
+    const item = footerAnaVeri.ozelGunler[index];
+    
+    document.getElementById('footer-form-baslik').innerText = "📝 Özel Günü Düzenle";
+    document.getElementById('btn-footer-kaydet').innerText = "Listede Güncelle";
+    document.getElementById('btn-footer-kaydet').style.background = "#eab308";
+    document.getElementById('btn-footer-iptal').style.display = "inline-block";
+
+    document.getElementById('footer-ozel-index').value = index;
+    document.getElementById('footer-ozel-gun').value = item.gun;
+    document.getElementById('footer-ozel-ay').value = item.ay;
+    document.getElementById('footer-ozel-mesaj').value = item.mesaj;
+}
+
+function footerOzelGunSil(index) {
+    if(confirm("Bu özel gün tebriğini silmek istediğinizden emin misiniz?")) {
+        footerAnaVeri.ozelGunler.splice(index, 1);
+        footerOzelGunleriListele();
+        footerFormSifirla();
+    }
+}
+
+function footerFormSifirla() {
+    document.getElementById('form-footer-ozel').reset();
+    document.getElementById('footer-ozel-index').value = "-1";
+    document.getElementById('footer-form-baslik').innerText = "➕ Özel Gün Kutlama Mesajı Ekle";
+    document.getElementById('btn-footer-kaydet').innerText = "Özel Günü Listeye Ekle";
+    document.getElementById('btn-footer-kaydet').style.background = "#0d9488";
+    document.getElementById('btn-footer-iptal').style.display = "none";
+}
+
+// Tüm verileri GitHub'a yazma işlemi
+async function footerVerileriniGithubaKaydet() {
+    // Input alanında unutulan bir değişiklik varsa diye son veriyi de eşitleyeliv
+    footerAnaVeri.varsayilanMesaj = document.getElementById('footer-varsayilan-input').value;
+
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_FOOTER}`;
+
+    const jsonString = JSON.stringify(footerAnaVeri, null, 2);
+    const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+    const payload = {
+        message: "Panel: data/footer.json dinamik hale getirildi/güncellendi",
+        content: base64Content,
+        sha: shaFooter
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if(!response.ok) throw new Error("GitHub footer verilerini kaydedemedi.");
+        const resData = await response.json();
+        shaFooter = resData.content.sha;
+        bildirimGoster("Footer şablonu ve özel günleri başarıyla GitHub'a kaydedildi!", "success");
     } catch (error) {
         bildirimGoster(error.message, "error");
     }
