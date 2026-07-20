@@ -1,6 +1,6 @@
 <!-- Form Tasarımı -->
 <h3 id="kro-form-baslik">⏳ Yeni Kronoloji Maddesi Ekle</h3>
-<form id="form-kronoloji" onsubmit="kronolojiModul.formGonder(event)">
+<form id="form-kronoloji">
     <!-- Düzenleme modu için gizli index alanı -->
     <input type="hidden" id="kro-index" value="-1">
     
@@ -22,7 +22,7 @@
     
     <div style="display: flex; gap: 10px;">
         <button type="submit" id="btn-kro-kaydet" class="btn" style="background:#10b981; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-size: 15px; font-weight: bold; flex: 2;">Listeye Ekle</button>
-        <button type="button" id="btn-kro-iptal" class="btn" style="background:#64748b; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-size: 15px; font-weight: bold; flex: 1; display:none;" onclick="kronolojiModul.duzenlemeyiIptalEt()">İptal Et</button>
+        <button type="button" id="btn-kro-iptal" class="btn" style="background:#64748b; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-size: 15px; font-weight: bold; flex: 1; display:none;">İptal Et</button>
     </div>
 </form>
 
@@ -112,154 +112,176 @@
 
 <!-- Modülün Çalışma Mantığı -->
 <script>
-const kronolojiModul = {
-    path: "data/kronoloji.json",
-    sha: "",
-    liste: [],
+(() => {
+    const kronolojiModul = {
+        path: "data/kronoloji.json",
+        sha: "",
+        liste: [],
 
-    // GitHub'dan verileri çekip yükleyen fonksiyon
-    init: async function() {
-        const url = `https://api.github.com/repos/${FerdiAPI.owner}/${FerdiAPI.repo}/contents/${this.path}`;
-        try {
-            const res = await fetch(url, { headers: { "Authorization": `token ${FerdiAPI.token}` } });
-            if(!res.ok) return;
-            const data = await res.json();
-            this.sha = data.sha;
+        init: async function() {
+            // Form event listener'larını bağlıyoruz (Satır içi onclick kullanmıyoruz)
+            const form = document.getElementById('form-kronoloji');
+            if (form) {
+                form.addEventListener('submit', (e) => this.formGonder(e));
+            }
             
-            this.liste = JSON.parse(FerdiAPI.b64_to_utf8(data.content));
+            const btnIptal = document.getElementById('btn-kro-iptal');
+            if (btnIptal) {
+                btnIptal.addEventListener('click', () => this.duzenlemeyiIptalEt());
+            }
+
+            const url = `https://api.github.com/repos/${FerdiAPI.owner}/${FerdiAPI.repo}/contents/${this.path}`;
+            try {
+                const res = await fetch(url, { headers: { "Authorization": `token ${FerdiAPI.token}` } });
+                if(!res.ok) return;
+                const data = await res.json();
+                this.sha = data.sha;
+                
+                this.liste = JSON.parse(FerdiAPI.b64_to_utf8(data.content));
+                this.sirala();
+                this.listele();
+            } catch(e) { 
+                console.error("Kronoloji yüklenemedi:", e); 
+            }
+        },
+
+        sirala: function() {
+            this.liste.sort((a, b) => parseInt(b.yil) - parseInt(a.yil));
+        },
+
+        listele: function() {
+            const kapsayici = document.getElementById('kronoloji-listesi-kapsayici');
+            kapsayici.innerHTML = "";
+            
+            if(this.liste.length === 0) {
+                kapsayici.innerHTML = `<p style="color:#64748b; font-style:italic; font-size:14px; padding: 10px 0;">Henüz eklenmiş bir kronoloji maddesi yok.</p>`;
+                return;
+            }
+
+            this.liste.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'kro-kart';
+                
+                // HTML Yapısı
+                div.innerHTML = `
+                    <div class="kro-detay">
+                        <span class="kro-yil-badge">${item.yil}</span>
+                        <span class="kro-ikon-alan">${item.ikon}</span>
+                        <span class="kro-metin">${item.tanim}</span>
+                    </div>
+                    <div class="kro-aksiyonlar"></div>
+                `;
+
+                // Butonları JavaScript ile oluşturup olayları doğrudan bağlıyoruz (Hata riskini sıfırlar)
+                const aksiyonAlani = div.querySelector('.kro-aksiyonlar');
+
+                const btnDuzenle = document.createElement('button');
+                btnDuzenle.type = 'button';
+                btnDuzenle.className = 'kro-btn kro-btn-duzenle';
+                btnDuzenle.innerText = 'Düzenle';
+                btnDuzenle.addEventListener('click', () => this.duzenle(index));
+
+                const btnSil = document.createElement('button');
+                btnSil.type = 'button';
+                btnSil.className = 'kro-btn kro-btn-sil';
+                btnSil.innerText = 'Sil';
+                btnSil.addEventListener('click', () => this.sil(index));
+
+                aksiyonAlani.appendChild(btnDuzenle);
+                aksiyonAlani.appendChild(btnSil);
+                kapsayici.appendChild(div);
+            });
+        },
+
+        formGonder: function(e) {
+            e.preventDefault();
+            
+            const index = parseInt(document.getElementById('kro-index').value);
+            const yeniMadde = {
+                yil: document.getElementById('kro-yil').value,
+                ikon: document.getElementById('kro-ikon').value,
+                tanim: document.getElementById('kro-tanim').value
+            };
+
+            if(index === -1) {
+                this.liste.push(yeniMadde);
+            } else {
+                this.liste[index] = yeniMadde;
+            }
+
             this.sirala();
             this.listele();
-        } catch(e) { 
-            console.error("Kronoloji yüklenemedi:", e); 
-        }
-    },
-
-    // Maddeleri yıllara göre büyükten küçüğe sıralar
-    sirala: function() {
-        this.liste.sort((a, b) => parseInt(b.yil) - parseInt(a.yil));
-    },
-
-    // Verileri ekrana kartlar halinde basar
-    listele: function() {
-        const kapsayici = document.getElementById('kronoloji-listesi-kapsayici');
-        kapsayici.innerHTML = "";
-        
-        if(this.liste.length === 0) {
-            kapsayici.innerHTML = `<p style="color:#64748b; font-style:italic; font-size:14px; padding: 10px 0;">Henüz eklenmiş bir kronoloji maddesi yok.</p>`;
-            return;
-        }
-
-        this.liste.forEach((item, index) => {
-            const div = document.createElement('div');
-            div.className = 'kro-kart';
-            div.innerHTML = `
-                <div class="kro-detay">
-                    <span class="kro-yil-badge">${item.yil}</span>
-                    <span class="kro-ikon-alan">${item.ikon}</span>
-                    <span class="kro-metin">${item.tanim}</span>
-                </div>
-                <div class="kro-aksiyonlar">
-                    <button type="button" class="kro-btn kro-btn-duzenle" onclick="kronolojiModul.duzenle(${index})">Düzenle</button>
-                    <button type="button" class="kro-btn kro-btn-sil" onclick="kronocalypse = kronolojiModul.sil(${index})">Sil</button>
-                </div>
-            `;
-            kapsayici.appendChild(div);
-        });
-    },
-
-    // Form tetiklendiğinde ekleme veya düzenleme yapar
-    formGonder: function(e) {
-        e.preventDefault();
-        
-        const index = parseInt(document.getElementById('kro-index').value);
-        const yeniMadde = {
-            yil: document.getElementById('kro-yil').value,
-            ikon: document.getElementById('kro-ikon').value,
-            tanim: document.getElementById('kro-tanim').value
-        };
-
-        if(index === -1) {
-            this.liste.push(yeniMadde);
-        } else {
-            this.liste[index] = yeniMadde;
-        }
-
-        this.sirala();
-        this.listele();
-        this.githubaGonder();
-        this.duzenlemeyiIptalEt();
-    },
-
-    // Seçilen maddeyi düzenleme moduna alır ve formu doldurur
-    duzenle: function(index) {
-        const item = this.liste[index];
-        document.getElementById('kro-index').value = index;
-        document.getElementById('kro-yil').value = item.yil;
-        document.getElementById('kro-ikon').value = item.ikon;
-        document.getElementById('kro-tanim').value = item.tanim;
-
-        document.getElementById('kro-form-baslik').innerText = "📝 Kronoloji Maddesini Düzenle";
-        document.getElementById('btn-kro-kaydet').innerText = "Değişiklikleri Kaydet";
-        document.getElementById('btn-kro-kaydet').style.background = "#2563eb";
-        document.getElementById('btn-kro-iptal').style.display = "inline-block";
-        
-        document.getElementById('form-kronoloji').scrollIntoView({ behavior: 'smooth' });
-    },
-
-    // Düzenleme modunu kapatıp formu sıfırlar
-    duzenlemeyiIptalEt: function() {
-        document.getElementById('form-kronoloji').reset();
-        document.getElementById('kro-index').value = "-1";
-        document.getElementById('kro-form-baslik').innerText = "⏳ Yeni Kronoloji Maddesi Ekle";
-        document.getElementById('btn-kro-kaydet').innerText = "Listeye Ekle";
-        document.getElementById('btn-kro-kaydet').style.background = "#10b981";
-        document.getElementById('btn-kro-iptal').style.display = "none";
-    },
-
-    // Maddeyi yerel diziden siler ve günceller
-    sil: function(index) {
-        if(!confirm("Bu kronoloji maddesini silmek istediğinize emin misiniz?")) return;
-        
-        this.liste.splice(index, 1);
-        this.listele();
-        this.githubaGonder();
-        
-        if(parseInt(document.getElementById('kro-index').value) === index) {
+            this.githubaGonder();
             this.duzenlemeyiIptalEt();
-        }
-    },
+        },
 
-    // Son güncel listeyi GitHub API'ye push eder
-    githubaGonder: async function() {
-        const url = `https://api.github.com/repos/${FerdiAPI.owner}/${FerdiAPI.repo}/contents/${this.path}`;
-        
-        const payload = {
-            message: "Panel: Kronoloji verisi güncellendi",
-            content: FerdiAPI.utf8_to_b64(JSON.stringify(this.liste, null, 2)),
-            sha: this.sha
-        };
+        duzenle: function(index) {
+            const item = this.liste[index];
+            document.getElementById('kro-index').value = index;
+            document.getElementById('kro-yil').value = item.yil;
+            document.getElementById('kro-ikon').value = item.ikon;
+            document.getElementById('kro-tanim').value = item.tanim;
 
-        try {
-            const res = await fetch(url, {
-                method: "PUT",
-                headers: { 
-                    "Authorization": `token ${FerdiAPI.token}`, 
-                    "Content-Type": "application/json" 
-                },
-                body: JSON.stringify(payload)
-            });
+            document.getElementById('kro-form-baslik').innerText = "📝 Kronoloji Maddesini Düzenle";
+            document.getElementById('btn-kro-kaydet').innerText = "Değişiklikleri Kaydet";
+            document.getElementById('btn-kro-kaydet').style.background = "#2563eb";
+            document.getElementById('btn-kro-iptal').style.display = "inline-block";
             
-            if(!res.ok) throw new Error();
-            
-            const resData = await res.json();
-            this.sha = resData.content.sha;
-            FerdiAPI.bildirim("Kronoloji başarıyla güncellendi!", "success");
-        } catch(e) { 
-            FerdiAPI.bildirim("GitHub kaydı sırasında bir hata oluştu", "error"); 
-        }
-    }
-};
+            document.getElementById('form-kronoloji').scrollIntoView({ behavior: 'smooth' });
+        },
 
-// Modül DOM'a enjekte edildiği an çalışmaya başlasın
-kronolojiModul.init();
+        duzenlemeyiIptalEt: function() {
+            document.getElementById('form-kronoloji').reset();
+            document.getElementById('kro-index').value = "-1";
+            document.getElementById('kro-form-baslik').innerText = "⏳ Yeni Kronoloji Maddesi Ekle";
+            document.getElementById('btn-kro-kaydet').innerText = "Listeye Ekle";
+            document.getElementById('btn-kro-kaydet').style.background = "#10b981";
+            document.getElementById('btn-kro-iptal').style.display = "none";
+        },
+
+        sil: function(index) {
+            if(!confirm("Bu kronoloji maddesini silmek istediğinize emin misiniz?")) return;
+            
+            this.liste.splice(index, 1);
+            this.listele();
+            this.githubaGonder();
+            
+            if(parseInt(document.getElementById('kro-index').value) === index) {
+                this.duzenlemeyiIptalEt();
+            }
+        },
+
+        githubaGonder: async function() {
+            const url = `https://api.github.com/repos/${FerdiAPI.owner}/${FerdiAPI.repo}/contents/${this.path}`;
+            
+            const payload = {
+                message: "Panel: Kronoloji verisi güncellendi",
+                content: FerdiAPI.utf8_to_b64(JSON.stringify(this.liste, null, 2)),
+                sha: this.sha
+            };
+
+            try {
+                const res = await fetch(url, {
+                    method: "PUT",
+                    headers: { 
+                        "Authorization": `token ${FerdiAPI.token}`, 
+                        "Content-Type": "application/json" 
+                    },
+                    body: JSON.stringify(payload)
+                });
+                
+                if(!res.ok) throw new Error();
+                
+                const resData = await res.json();
+                this.sha = resData.content.sha;
+                FerdiAPI.bildirim("Kronoloji başarıyla güncellendi!", "success");
+            } catch(e) { 
+                FerdiAPI.bildirim("GitHub kaydı sırasında bir hata oluştu", "error"); 
+            }
+        }
+    };
+
+    // Modülü izole bir IIFE fonksiyonu içinde başlatıyoruz
+    kronolojiModul.init();
+})();
 </script>
