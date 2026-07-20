@@ -1,4 +1,10 @@
 {
   "varsayilanMesaj": "<b>Ferdimen.</b> Vazgeçtiklerim, sizin bir ömür aradıklarınızdır.",
-  "ozelGunler": []
+  "ozelGunler": [
+    {
+      "gun": 1,
+      "ay": 1,
+      "mesaj": " - Mutlu Yıllar! Yeni yılınız kutlu olsun. 🎄✨"
+    }
+  ]
 }
