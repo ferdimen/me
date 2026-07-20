@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelişmiş İçerik Yönetim Paneli</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f4f6f9; color: #333; }
+        h2 { color: #1e293b; margin-bottom: 20px; }
+        
+        /* Layout Yapısı */
+        .panel-container { display: flex; gap: 20px; margin-top: 20px; }
+        
+        /* Sol Menü / Sekme Butonları */
+        .sidebar { flex: 1; max-width: 200px; display: flex; flex-direction: column; gap: 8px; }
+        .tab-btn { background: #fff; color: #475569; border: 1px solid #e2e8f0; padding: 12px 15px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: bold; text-align: left; transition: all 0.2s; }
+        .tab-btn:hover { background: #f8fafc; color: #1e293b; }
+        .tab-btn.active { background: #2563eb; color: white; border-color: #2563eb; }
+        
+        /* İçerik Alanı */
+        .main-content { flex: 3; background: #fff; padding: 25px; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Form Elemanları */
+        .form-group { margin-bottom: 20px; }
+        .form-row { display: flex; gap: 15px; }
+        .form-row .form-group { flex: 1; }
+        label { display: block; font-weight: 600; margin-bottom: 6px; color: #475569; font-size: 14px; }
+        input[type="text"], input[type="number"], textarea, select { width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; background: #fff; }
+        input[type="color"] { width: 100%; height: 40px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 2px; cursor: pointer; }
+        fieldset { border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-bottom: 20px; background: #fff; }
+        legend { font-weight: bold; color: #1e293b; padding: 0 10px; font-size: 14px; }
+        
+        /* Butonlar */
+        .btn { background: #2563eb; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-size: 15px; font-weight: bold; width: 100%; text-align: center; text-decoration: none; box-sizing: border-box; display: inline-block; }
+        .btn:hover { background: #1d4ed8; }
+        .btn-github { background: #24292e; }
+        .btn-github:hover { background: #1a1e22; }
+        
+        .status { margin-top: 15px; padding: 12px; border-radius: 6px; display: none; font-size: 14px; font-weight: 500; }
+        .success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+        .error { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+        #auth-panel { background: #fff; padding: 30px; border: 1px solid #e2e8f0; border-radius: 8px; text-align: center; max-width: 400px; margin: 40px auto; }
+    </style>
+</head>
+<body>
+
+    <!-- GİRİŞ PANELİ (Oturum açılmadıysa görünür) -->
+    <div id="auth-panel">
+        <h2>Yönetim Paneli Girişi</h2>
+        <p style="margin-bottom: 20px; color: #64748b;">GitHub hesabınızla kimlik doğrulaması yapın.</p>
+        <button onclick="githubGirisYap()" class="btn btn-github">GitHub ile Giriş Yap</button>
+    </div>
+
+    <!-- ANA YÖNETİMCİ ARAYÜZÜ (Giriş yapıldıysa görünür) -->
+    <div id="main-panel" style="display: none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
+            <h2>İçerik Yönetim Merkezi</h2>
+            <button onclick="cikisYap()" style="background:#ef4444; padding:6px 12px; font-size:12px; width:auto;" class="btn">Çıkış Yap</button>
+        </div>
+
+        <div class="panel-container">
+            <!-- SOL MENÜ (Yeni sekmeleri buraya ekleyeceksin) -->
+            <div class="sidebar">
+                <button class="tab-btn active" onclick="sekmeDegistir('nerdeyim-tab')">📍 Nerdeyim?</button>
+                <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
+                <!-- Gelecekte buraya yeni butonlar gelebilir -->
+            </div>
+
+            <!-- SAĞ İÇERİK ALANI -->
+            <div class="main-content">
+                <div id="status-box" class="status"></div>
+
+                <!-- 1. SEKME: NERDEYİM (konum.json) -->
+                <div id="nerdeyim-tab" class="tab-content active">
+                    <h3>Konum ve Rota Ayarları</h3>
+                    <form id="form-konum" onsubmit="konumuKaydet(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="aktifTur">Aktif Tur Durumu:</label>
+                                <select id="aktifTur">
+                                    <option value="evet">Evet</option>
+                                    <option value="hayir">Hayır</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="rota">Rota Gösterimi:</label>
+                                <select id="rota">
+                                    <option value="evet">Evet</option>
+                                    <option value="hayir">Hayır</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="yazi">Yazı Gösterimi:</label>
+                                <select id="yazi">
+                                    <option value="evet">Evet</option>
+                                    <option value="hayir">Hayır</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tur-adi">Tur Adı:</label>
+                            <input type="text" id="tur-adi" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="canliTakipUrl">Canlı Takip Linki:</label>
+                            <input type="text" id="canliTakipUrl">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="aciklama">Tur Açıklaması:</label>
+                            <textarea id="aciklama" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="gunleri-goster">Gösterilecek Günler:</label>
+                                <input type="text" id="gunleri-goster">
+                            </div>
+                            <div class="form-group">
+                                <label for="karakter-siniri">Karakter Sınırı:</label>
+                                <input type="number" id="karakter-siniri" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="zoom-seviyesi">Harita Zoom Seviyesi:</label>
+                                <input type="number" id="zoom-seviyesi" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cizgi-rengi">Genel Rota Çizgi Rengi:</label>
+                            <input type="color" id="cizgi-rengi">
+                        </div>
+
+                        <fieldset>
+                            <legend>Araç Bazlı Rota Renkleri</legend>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="renk-bike">Bisiklet (Bike):</label>
+                                    <input type="color" id="renk-bike">
+                                </div>
+                                <div class="form-group">
+                                    <label for="renk-foot">Yürüyüş (Foot):</label>
+                                    <input type="color" id="renk-foot">
+                                </div>
+                                <div class="form-group">
+                                    <label for="renk-other">Diğer (Other):</label>
+                                    <input type="color" id="renk-other">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <button type="submit" class="btn">Konumu Güncelle</button>
+                    </form>
+                </div>
+
+                <!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
+                <div id="yeni-sekme-tab" class="tab-content">
+                    <h3>Yeni Dosya / Değişken Ayarları</h3>
+                    <p style="color:#64748b; font-size:14px;">Buraya ileride düzenlemek istediğin başka bir JSON dosyasının form elemanlarını ekleyebilirsin.</p>
+                    <form id="form-yeni" onsubmit="alert('Örnek form tetiklendi!')">
+                        <div class="form-group">
+                            <label>Örnek Seçenek:</label>
+                            <input type="text" placeholder="Gelecekteki verileriniz...">
+                        </div>
+                        <button type="submit" class="btn">Kaydet (Örnek)</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- CONFIG UYGULAMA AYARLARI ---
+        const CLIENT_ID = "Ov23liB76WxL18rB8cmu"; 
+        const WORKER_URL = "https://github-oauth.kizilferdi.workers.dev/"; 
+        const REPO_OWNER = "ferdimen"; 
+        const REPO_NAME = "me"; 
+		      
+        // Her dosyanın yolunu ve SHA değerini ayrı ayrı takip ediyoruz
+        const PATH_KONUM = "nerdeyim/konum.json"; 
+        let shaKonum = "";
+
+        function bildirimGoster(mesaj, tip) {
+            const box = document.getElementById('status-box');
+            box.innerText = mesaj;
+            box.className = `status ${tip}`;
+            box.style.display = 'block';
+            setTimeout(() => { box.style.display = 'none'; }, 5000); // 5 saniye sonra gizle
+        }
+
+        // Sekme Değiştirme Fonksiyonu
+        function sekmeDegistir(tabId) {
+            // Tüm içerikleri gizle
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            // Tüm butonların aktifliğini kaldır
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            // Seçileni göster ve butonu aktif yap
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function githubGirisYap() {
+            window.location.href = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo`;
+        }
+
+        async function tokenKontrolEt() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            let token = localStorage.getItem('gh_oauth_token');
+
+            if (code) {
+                window.history.replaceState({}, document.title, window.location.pathname);
+                try {
+                    const res = await fetch(`${WORKER_URL}?code=${code}`);
+                    const data = await res.json();
+                    if(data.access_token) {
+                        localStorage.setItem('gh_oauth_token', data.access_token);
+                        token = data.access_token;
+                    }
+                } catch (err) {
+                    alert("Giriş Hatası: " + err.message);
+                }
+            }
+
+            if (token) {
+                document.getElementById('auth-panel').style.display = 'none';
+                document.getElementById('main-panel').style.display = 'block';
+                // Giriş yapıldığı an ilk sekmenin verisini (Konum) çekiyoruz
+                konumuYukle(token);
+            }
+        }
+
+        // NERDEYİM VERİSİNİ GETİR
+        async function konumuYukle(token) {
+            const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KONUM}`;
+            try {
+                const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+                if(!response.ok) throw new Error("Konum dosyası yüklenemedi.");
+
+                const data = await response.json();
+                shaKonum = data.sha;
+
+                const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+                const json = JSON.parse(decodedContent);
+
+                document.getElementById('aktifTur').value = json["aktifTur"] || "hayir";
+                document.getElementById('rota').value = json["rota"] || "hayir";
+                document.getElementById('yazi').value = json["yazi"] || "hayir";
+                document.getElementById('tur-adi').value = json["tur-adi"] || "";
+                document.getElementById('canliTakipUrl').value = json["canliTakipUrl"] || "";
+                document.getElementById('aciklama').value = json["aciklama"] || "";
+                document.getElementById('gunleri-goster').value = json["gunleri-goster"] || "hepsi";
+                document.getElementById('karakter-siniri').value = json["karakter-siniri"] || 120;
+                document.getElementById('zoom-seviyesi').value = json["zoom-seviyesi"] || 11;
+                document.getElementById('cizgi-rengi').value = json["cizgi-rengi"] || "#dc2626";
+
+                if(json["araclar"]) {
+                    if(json["araclar"]["bike"]) document.getElementById('renk-bike').value = json["araclar"]["bike"]["renk"] || "#dc2626";
+                    if(json["araclar"]["foot"]) document.getElementById('renk-foot').value = json["araclar"]["foot"]["renk"] || "#dc2626";
+                    if(json["araclar"]["other"]) document.getElementById('renk-other').value = json["araclar"]["other"]["renk"] || "#dc2626";
+                }
+            } catch (error) {
+                bildirimGoster(error.message, "error");
+            }
+        }
+
+        // NERDEYİM VERİSİNİ KAYDET
+        async function konumuKaydet(event) {
+            event.preventDefault();
+            const token = localStorage.getItem('gh_oauth_token');
+            const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KONUM}`;
+
+            const guncelJson = {
+                "aktifTur": document.getElementById('aktifTur').value,
+                "canliTakipUrl": document.getElementById('canliTakipUrl').value,
+                "tur-adi": document.getElementById('tur-adi').value,
+                "aciklama": document.getElementById('aciklama').value,
+                "rota": document.getElementById('rota').value,
+                "gunleri-goster": document.getElementById('gunleri-goster').value,
+                "karakter-siniri": Number(document.getElementById('karakter-siniri').value),
+                "yazi": document.getElementById('yazi').value,
+                "zoom-seviyesi": Number(document.getElementById('zoom-seviyesi').value),
+                "cizgi-rengi": document.getElementById('cizgi-rengi').value,
+                "araclar": {
+                    "bike": { "renk": document.getElementById('renk-bike').value },
+                    "foot": { "renk": document.getElementById('renk-foot').value },
+                    "other": { "renk": document.getElementById('renk-other').value }
+                }
+            };
+
+            const jsonString = JSON.stringify(guncelJson, null, 2);
+            const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+            const payload = {
+                message: "Panel: nerdeyim/konum.json güncellendi",
+                content: base64Content,
+                sha: shaKonum
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: "PUT",
+                    headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                if(!response.ok) throw new Error("Güncelleme başarısız.");
+                const resData = await response.json();
+                shaKonum = resData.content.sha;
+                bildirimGoster("Konum bilgileri başarıyla kaydedildi!", "success");
+            } catch (error) {
+                bildirimGoster(error.message, "error");
+            }
+        }
+
+        function cikisYap() {
+            localStorage.removeItem('gh_oauth_token');
+            window.location.reload();
+        }
+
+        tokenKontrolEt();
+    </script>
+</body>
+</html>
