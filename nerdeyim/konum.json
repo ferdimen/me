@@ -1,23 +1,5 @@
 {
-  "aktifTur": "evet",
-  "canliTakipUrl": "https://www.polarsteps.com/SafakYollarda/26970859-karadeniz-2026",
+  "aktifTur": "hayir",
   "tur-adi": "Anadolu 2026 Bisiklet Turu",
-  "aciklama": "Turla ilgili veriler sistemi deneme amaçlı Şafak ağabeyin Anadolu 2016 Turu bisiklet turuna aittir.",
-  "rota": "evet",
-  "gunleri-goster": "hepsi",
-  "karakter-siniri": 120,
-  "yazi": "evet",
-  "zoom-seviyesi": 11,
-  "cizgi-rengi": "#dc2626",
-  "araclar": {
-    "bike": {
-      "renk": "#dc2626"
-    },
-    "foot": {
-      "renk": "#dc2626"
-    },
-    "other": {
-      "renk": "#dc2626"
-    }
-  }
+  "canliTakipUrl": "https://www.polarsteps.com/SafakYollarda/26970859-karadeniz-2026"
 }
