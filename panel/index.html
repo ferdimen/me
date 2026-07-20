@@ -1157,21 +1157,42 @@ async function sssGithubaGonder() {
 }
 // 1. ROZET VERİSİNİ GİTHUB'DAN ÇEKME
 async function rozetlerYukle(token) {
-    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_ROZETLER}`;
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/data/rozetler.json`;
     try {
-        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
-        if(!response.ok) throw new Error("Rozet dosyası yüklenemedi.");
-
+        const response = await fetch(url, { 
+            headers: { "Authorization": `token ${token}` } 
+        });
+        
+        if (!response.ok) {
+            throw new Error(`GitHub bağlantı hatası! Durum kodu: ${response.status}`);
+        }
+        
         const data = await response.json();
-        shaRozetler = data.sha;
-
-        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        
+        // Base64 çözümleme işlemini güvenli hale getiriyoruz
+        let decodedContent;
+        try {
+            decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        } catch (e) {
+            throw new Error("Rozet verisi çözülemedi (Base64 Hatası). Dosya formatı hatalı olabilir.");
+        }
+        
+        // JSON ayrıştırma
         mevcutRozetlerDizisi = JSON.parse(decodedContent);
+        rozetSha = data.sha;
 
-        // Listeyi ekrana bas
+        // Ekrana basma fonksiyonunu tetikle
         rozetleriListele();
+
     } catch (error) {
-        console.log("Rozet yükleme hatası: " + error.message);
+        console.error("Rozet Yükleme Hatası:", error);
+        // Kullanıcıya hatayı arayüzde gösterelim ki donup kalmasın
+        document.getElementById('rozet-listesi-kapsayici').innerHTML = `
+            <p style="color: #ef4444; font-size: 14px; text-align: center; font-weight: bold;">
+                Rozetler yüklenirken hata oluştu!<br>
+                <span style="font-weight: normal; font-size: 12px; color: #64748b;">${error.message}</span>
+            </p>
+        `;
     }
 }
 
