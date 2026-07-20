@@ -83,6 +83,7 @@
                 <button class="tab-btn active" onclick="sekmeDegistir('nerdeyim-tab')">📍 Nerdeyim?</button>
 				<button class="tab-btn" onclick="sekmeDegistir('haberler-tab')">📰 Haberler</button>
 				<button class="tab-btn" onclick="sekmeDegistir('kronoloji-tab')">⏳ Kronoloji</button>
+				<button class="tab-btn" onclick="sekmeDegistir('sss-tab')">🙋 SSS Yönetimi</button>				
                 <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
                 <!-- Gelecekte buraya yeni butonlar gelebilir -->
             </div>
@@ -322,6 +323,42 @@
         </div>
     </fieldset>
 </div>
+<!-- 5. SEKME: SSS (data/sss.json) -->
+<div id="sss-tab" class="tab-content">
+    <h3>Sıkça Sorulan Sorular (SSS) Yönetimi</h3>
+    
+    <!-- SSS Ekleme ve Düzenleme Formu -->
+    <fieldset style="margin-bottom: 25px; border-color: #f59e0b;">
+        <legend id="sss-form-baslik" style="color: #f59e0b; font-weight: bold;">➕ Yeni Soru & Cevap Ekle</legend>
+        <form id="form-yeni-sss" onsubmit="sssFormuGonder(event)">
+            <!-- Gizli input: Düzenlenen sorunun dizideki sırasını (index) tutar -->
+            <input type="hidden" id="sss-index" value="-1">
+            
+            <div class="form-group">
+                <label for="sss-soru">Soru:</label>
+                <input type="text" id="sss-soru" placeholder="Örn: Turlarda ne tür ekipmanlar kullanıyorsun?" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="sss-cevap">Cevap (HTML içerebilir):</label>
+                <textarea id="sss-cevap" rows="4" placeholder="Örn: Turlarımda lüks ve en son model..." required></textarea>
+            </div>
+            
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" id="btn-sss-kaydet" class="btn" style="background: #f59e0b; flex: 2;">Soru Listesinin Üstüne Ekle</button>
+                <button type="button" id="btn-sss-iptal" onclick="sssFormuSifirla()" class="btn" style="background: #64748b; flex: 1; display: none;">İptal Et</button>
+            </div>
+        </form>
+    </fieldset>
+
+    <!-- Tek Tek SSS'lerin Listeleneceği Alan -->
+    <fieldset>
+        <legend>🙋 Mevcut SSS Listesi</legend>
+        <div id="sss-listesi-kapsayici" style="display: flex; flex-direction: column; gap: 12px; max-height: 500px; overflow-y: auto; padding-right: 5px;">
+            <p style="color: #64748b; font-size: 14px; text-align: center;">Sorular yükleniyor...</p>
+        </div>
+    </fieldset>
+</div>
                 <!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
                 <div id="yeni-sekme-tab" class="tab-content">
                     <h3>Yeni Dosya / Değişken Ayarları</h3>
@@ -361,6 +398,10 @@ const PATH_YAZILAR = "yazilar/yazilar.json";
 let shaTimeline = "";
 let mevcutTimelineDizisi = [];
 let mevcutYazilarDizisi = []; // Blog yazıları verisini buraya çekeceğiz
+
+const PATH_SSS = "data/sss.json";
+let shaSss = "";
+let mevcutSssDizisi = []; // Hafızada tutulacak SSS dizisi
 
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -408,9 +449,10 @@ let mevcutYazilarDizisi = []; // Blog yazıları verisini buraya çekeceğiz
 if (token) {
     document.getElementById('auth-panel').style.display = 'none';
     document.getElementById('main-panel').style.display = 'block';
-    
+	
     konumuYukle(token);
     haberleriYukle(token);
+    sssYukle(token); // YENİ EKLENEN SSS YÜKLEYİCİLERİ
     
     // YENİ EKLENEN KRONOLOJİ YÜKLEYİCİLERİ
     yazilariYukle(token).then(() => {
@@ -906,6 +948,147 @@ async function timelineGithubaGonder() {
         const resData = await response.json();
         shaTimeline = resData.content.sha;
         bildirimGoster("Kronoloji başarıyla güncellendi ve GitHub'a kaydedildi!", "success");
+    } catch (error) {
+        bildirimGoster(error.message, "error");
+    }
+}
+// 1. SSS VERİSİNİ GİTHUB'DAN ÇEKME
+async function sssYukle(token) {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_SSS}`;
+    try {
+        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if(!response.ok) throw new Error("SSS dosyası yüklenemedi.");
+
+        const data = await response.json();
+        shaSss = data.sha;
+
+        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        mevcutSssDizisi = JSON.parse(decodedContent);
+
+        // Listeyi ekrana bas
+        sssListele();
+    } catch (error) {
+        console.log("SSS yükleme hatası: " + error.message);
+    }
+}
+
+// 2. SSS LİSTELEME FONKSİYONU
+function sssListele() {
+    const kapsayici = document.getElementById('sss-listesi-kapsayici');
+    kapsayici.innerHTML = ""; 
+
+    if (mevcutSssDizisi.length === 0) {
+        kapsayici.innerHTML = `<p style="color: #64748b; font-size: 14px; text-align: center;">Henüz eklenmiş bir soru bulunmuyor.</p>`;
+        return;
+    }
+
+    mevcutSssDizisi.forEach((item, index) => {
+        const kart = document.createElement('div');
+        // Haber kartı stillerini birebir miras alıyoruz temiz görünmesi için
+        kart.className = 'haber-kart'; 
+        kart.style.background = "#fffbeb"; // SSS'e özel hafif sarı ton arka plan
+        kart.style.borderColor = "#fef3c7";
+        kart.innerHTML = `
+            <div class="haber-kart-detay">
+                <h4 class="haber-kart-baslik" style="color:#d97706;">${item.soru}</h4>
+                <p style="margin: 5px 0 0 0; font-size: 13px; color: #475569;">${item.cevap.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 100)}...</p>
+            </div>
+            <div style="display:flex; align-items:center;">
+                <button type="button" class="haber-kart-butonu btn-duzenle" onclick="sssDuzenleTetikle(${index})">Düzenle</button>
+                <button type="button" class="haber-kart-butonu btn-sil" onclick="sssSil(${index})">Sil</button>
+            </div>
+        `;
+        kapsayici.appendChild(kart);
+    });
+}
+
+// 3. DÜZENLEME MODUNU BAŞLATMA
+function sssDuzenleTetikle(index) {
+    const item = mevcutSssDizisi[index];
+    
+    document.getElementById('sss-form-baslik').innerText = "📝 Soruyu Düzenle";
+    document.getElementById('btn-sss-kaydet').innerText = "Değişikliği Listede Güncelle";
+    document.getElementById('btn-sss-kaydet').style.background = "#eab308";
+    document.getElementById('btn-sss-iptal').style.display = "inline-block";
+    
+    document.getElementById('sss-index').value = index;
+    document.getElementById('sss-soru').value = item.soru || "";
+    document.getElementById('sss-cevap').value = item.cevap || "";
+
+    document.getElementById('sss-form-baslik').scrollIntoView({ behavior: 'smooth' });
+}
+
+// 4. FORM SUBMIT (EKLEME VEYA GÜNCELLEME)
+function sssFormuGonder(event) {
+    event.preventDefault();
+
+    const sssObjesi = {
+        "soru": document.getElementById('sss-soru').value,
+        "cevap": document.getElementById('sss-cevap').value
+    };
+
+    const formIndex = parseInt(document.getElementById('sss-index').value);
+
+    if (formIndex === -1) {
+        // YENİ SORU: İstediğin gibi dosyanın EN ÜSTÜNE yerleşmesi için unshift kullanıyoruz
+        mevcutSssDizisi.unshift(sssObjesi);
+    } else {
+        // DÜZENLEME: İlgili indeksteki elemanı güncelle
+        mevcutSssDizisi[formIndex] = sssObjesi;
+    }
+
+    sssListele();
+    sssFormuSifirla();
+    sssGithubaGonder();
+}
+
+// 5. SİLME İŞLEMİ
+function sssSil(index) {
+    const onay = confirm(`"${mevcutSssDizisi[index].soru}" sorusunu silmek istediğinize emin misiniz?`);
+    if (!onay) return;
+
+    mevcutSssDizisi.splice(index, 1);
+
+    sssListele();
+    sssFormuSifirla();
+    sssGithubaGonder();
+}
+
+// FORM SIFIRLAMA
+function sssFormuSifirla() {
+    document.getElementById('form-yeni-sss').reset();
+    document.getElementById('sss-index').value = "-1";
+    document.getElementById('sss-form-baslik').innerText = "➕ Yeni Soru & Cevap Ekle";
+    document.getElementById('btn-sss-kaydet').innerText = "Soru Listesinin Üstüne Ekle";
+    document.getElementById('btn-sss-kaydet').style.background = "#f59e0b";
+    document.getElementById('btn-sss-iptal').style.display = "none";
+}
+
+// 6. GİTHUB COMMIT İŞLEMİ
+async function sssGithubaGonder() {
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_SSS}`;
+
+    const jsonString = JSON.stringify(mevcutSssDizisi, null, 2);
+    const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+    const payload = {
+        message: "Panel: data/sss.json listesinde düzenleme/silme yapıldı",
+        content: base64Content,
+        sha: shaSss
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if(!response.ok) throw new Error("GitHub veriyi kaydedemedi.");
+        const resData = await response.json();
+        shaSss = resData.content.sha; // SHA yenile
+        bildirimGoster("SSS listesi güncellendi ve GitHub'a başarıyla gönderildi!", "success");
     } catch (error) {
         bildirimGoster(error.message, "error");
     }
