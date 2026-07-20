@@ -43,6 +43,16 @@
         .success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
         .error { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
         #auth-panel { background: #fff; padding: 30px; border: 1px solid #e2e8f0; border-radius: 8px; text-align: center; max-width: 400px; margin: 40px auto; }
+		
+.haber-kart { display: flex; justify-content: space-between; align-items: center; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f8fafc; }
+.haber-kart-detay { flex: 1; padding-right: 15px; }
+.haber-kart-meta { font-size: 11px; font-weight: bold; color: #2563eb; text-transform: uppercase; margin-bottom: 3px; }
+.haber-kart-baslik { font-size: 14px; font-weight: bold; color: #1e293b; margin: 0; }
+.haber-kart-butonu { padding: 6px 10px; font-size: 12px; font-weight: bold; border-radius: 4px; border: none; cursor: pointer; color: white; margin-left: 5px; }
+.btn-duzenle { background: #eab308; }
+.btn-duzenle:hover { background: #ca8a04; }
+.btn-sil { background: #ef4444; }
+.btn-sil:hover { background: #dc2626; }
     </style>
 </head>
 <body>
@@ -160,12 +170,15 @@
                 </div>
 <!-- 3. SEKME: HABERLER (haber.json) -->
 <div id="haberler-tab" class="tab-content">
-    <h3>Haber Düzenleme ve Ekleme</h3>
+    <h3>Haber Yönetimi</h3>
     
-    <!-- Yeni Haber Ekleme Bloğu -->
+    <!-- Haber Ekleme ve Düzenleme Formu -->
     <fieldset style="margin-bottom: 25px; border-color: #2563eb;">
-        <legend style="color: #2563eb; font-weight: bold;">➕ Yeni Haber Ekle</legend>
-        <form id="form-yeni-haber" onsubmit="yeniHaberEkle(event)">
+        <legend id="haber-form-baslik" style="color: #2563eb; font-weight: bold;">➕ Yeni Haber Ekle</legend>
+        <form id="form-yeni-haber" onsubmit="haberFormuGonder(event)">
+            <!-- Gizli input: Düzenlenen haberin dizideki sırasını (index) tutar -->
+            <input type="hidden" id="h-index" value="-1">
+
             <div class="form-row">
                 <div class="form-group">
                     <label for="h-tarih">Haber Tarihi:</label>
@@ -202,20 +215,19 @@
                 </div>
             </div>
             
-            <button type="submit" class="btn" style="background: #10b981;">En Üste Yeni Haber Olarak Ekle</button>
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" id="btn-haber-kaydet" class="btn" style="background: #10b981; flex: 2;">Haber Listesine Ekle</button>
+                <button type="button" id="btn-haber-iptal" onclick="haberFormuSifirla()" class="btn" style="background: #64748b; flex: 1; display: none;">İptal Et</button>
+            </div>
         </form>
     </fieldset>
 
-    <!-- Mevcut Haberleri Listeleme ve Toplu Kaydetme Bloğu -->
+    <!-- Tek Tek Haberlerin Listeleneceği Alan -->
     <fieldset>
-        <legend>🗂️ Mevcut Haber Listesi (JSON Çıktısı)</legend>
-        <form id="form-haberler-liste" onsubmit="tumHaberleriKaydet(event)">
-            <p style="font-size: 13px; color:#64748b; margin-bottom:10px;">Aşağıdaki alandan mevcut haberlerin ham JSON halini görebilir veya silebilirsiniz.</p>
-            <div class="form-group">
-                <textarea id="h-tum-json" rows="10" style="font-family: monospace; font-size: 13px;"></textarea>
-            </div>
-            <button type="submit" class="btn">Değişiklikleri Kaydet</button>
-        </form>
+        <legend>📰 Mevcut Haber Listesi</legend>
+        <div id="haberler-listesi-kapsayici" style="display: flex; flex-direction: column; gap: 12px; max-height: 500px; overflow-y: auto; padding-right: 5px;">
+            <p style="color: #64748b; font-size: 14px; text-align: center;">Haberler yükleniyor...</p>
+        </div>
     </fieldset>
 </div>
                 <!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
@@ -385,7 +397,10 @@ let mevcutHaberlerDizisi = []; // Haberleri hafızada dizi olarak tutacağız
                 bildirimGoster(error.message, "error");
             }
         }
-// HABERLERİ GİTHUB'DAN ÇEKME FONKSİYONU
+// Aylar dizisi (Tarihi formatlamak için global alanda dursun)
+const AYLAR_TR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+
+// 1. HABERLERİ GİTHUB'DAN ÇEKME VE EKRANDA LİSTELEME
 async function haberleriYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_HABER}`;
     try {
@@ -393,35 +408,103 @@ async function haberleriYukle(token) {
         if(!response.ok) throw new Error("Haber dosyası yüklenemedi.");
 
         const data = await response.json();
-        shaHaber = data.sha; // Dosyanın güncel benzersiz kodunu alıyoruz
+        shaHaber = data.sha;
 
         const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
         mevcutHaberlerDizisi = JSON.parse(decodedContent);
 
-        // Ham JSON'ı düzenleme alanına estetik biçimde dolduruyoruz
-        document.getElementById('h-tum-json').value = JSON.stringify(mevcutHaberlerDizisi, null, 2);
+        // Görsel listeyi oluştur
+        haberleriListele();
     } catch (error) {
         console.log("Haber yükleme hatası: " + error.message);
     }
 }
 
-// YENİ HABERİ EN ÜSTE EKLEME FONKSİYONU
-function yeniHaberEkle(event) {
+// 2. ARABİRİMDE HABERLERİ KART OLARAK LİSTELEME FONKSİYONU
+function haberleriListele() {
+    const kapsayici = document.getElementById('haberler-listesi-kapsayici');
+    kapsayici.innerHTML = ""; // İçeriği temizle
+
+    if (mevcutHaberlerDizisi.length === 0) {
+        kapsayici.innerHTML = `<p style="color: #64748b; font-size: 14px; text-align: center;">Henüz eklenmiş bir haber bulunmuyor.</p>`;
+        return;
+    }
+
+    // Her haberi bir kart olarak döngüyle ekrana basıyoruz
+    mevcutHaberlerDizisi.forEach((haber, index) => {
+        const kart = document.createElement('div');
+        kart.className = 'haber-kart';
+        kart.innerHTML = `
+            <div class="haber-kart-detay">
+                <div class="haber-kart-meta">${haber.meta}</div>
+                <h4 class="haber-kart-baslik">${haber.baslik}</h4>
+            </div>
+            <div>
+                <button type="button" class="haber-kart-butonu btn-duzenle" onclick="haberDuzenleTetikle(${index})">Düzenle</button>
+                <button type="button" class="haber-kart-butonu btn-sil" onclick="haberSil(${index})">Sil</button>
+            </div>
+        `;
+        kapsayici.appendChild(kart);
+    });
+}
+
+// 3. BİR HABERİN DÜZENLE BUTONUNA BASILDIĞINDA FORMA DOLDURULMASI
+function haberDuzenleTetikle(index) {
+    const haber = mevcutHaberlerDizisi[index];
+    
+    // Form başlığını ve buton metnini "Güncelleme" moduna geçir
+    document.getElementById('haber-form-baslik').innerText = "📝 Haberi Düzenle";
+    document.getElementById('btn-haber-kaydet').innerText = "Değişikliği Listede Güncelle";
+    document.getElementById('btn-haber-kaydet').style.background = "#eab308";
+    document.getElementById('btn-haber-iptal').style.display = "inline-block";
+    
+    // Hangi indeksi düzenlediğimizi gizli inputa kaydediyoruz
+    document.getElementById('h-index').value = index;
+
+    // Form alanlarını doldur
+    document.getElementById('h-baslik').value = haber.baslik || "";
+    document.getElementById('h-aciklama').value = haber.aciklama || "";
+    document.getElementById('h-resim').value = haber.resim || "";
+    document.getElementById('h-linkUrl').value = haber.linkUrl || "";
+    document.getElementById('h-linkMetni').value = haber.linkMetni || "";
+
+    // Meta alanından tarihi ayıklayıp takvime geri doldurma (Örn: "20 Temmuz 2026 / Altyapı")
+    if (haber.meta) {
+        const metaParcaları = haber.meta.split(' / ');
+        if (metaParcaları.length > 0) {
+            document.getElementById('h-etiket').value = metaParcaları[1] || "";
+            
+            // "20 Temmuz 2026" stringini YYYY-MM-DD formatına geri çevirme simülasyonu
+            const tarihKelimeleri = metaParcaları[0].split(' ');
+            if (tarihKelimeleri.length === 3) {
+                const gun = tarihKelimeleri[0].padStart(2, '0');
+                const ayIsmi = tarihKelimeleri[1];
+                const yil = tarihKelimeleri[2];
+                const ayIndex = AYLAR_TR.indexOf(ayIsmi);
+                if (ayIndex !== -1) {
+                    const ay = String(ayIndex + 1).padStart(2, '0');
+                    document.getElementById('h-tarih').value = `${yil}-${ay}-${gun}`;
+                }
+            }
+        }
+    }
+    
+    // Sayfayı yukarı formun olduğu yere hafifçe kaydır
+    document.getElementById('haber-form-baslik').scrollIntoView({ behavior: 'smooth' });
+}
+
+// 4. HABER EKLEME VEYA GÜNCELLEME İŞLEMİ (FORM GÖNDERİLDİĞİNDE)
+function haberFormuGonder(event) {
     event.preventDefault();
-    
-    // Tarih alanından gelen YYYY-MM-DD formatını DD Ay YYYY formatına çekelim veya doğrudan yazalım
-    const secilenTarih = document.getElementById('h-tarih').value; // Örn: 2026-07-20
+
+    // Tarih formatlama
+    const secilenTarih = document.getElementById('h-tarih').value;
     const parcalar = secilenTarih.split('-');
-    // Aylar dizisiyle Türkçe aya çevirebiliriz veya direkt "20 Temmuz 2026" düzeninde string birleştirebiliriz
-    const aylar = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
-    const formatliTarih = `${parseInt(parcalar[2])} ${aylar[parseInt(parcalar[1])-1]} ${parcalar[0]}`;
-    
+    const formatliTarih = `${parseInt(parcalar[2])} ${AYLAR_TR[parseInt(parcalar[1])-1]} ${parcalar[0]}`;
     const etiket = document.getElementById('h-etiket').value;
-    
-    // İstediğin meta formatını birleştiriyoruz: "20 Temmuz 2026 / Altyapı"
     const tamMeta = `${formatliTarih} / ${etiket}`;
 
-    const yeniHaberNesnesi = {
+    const haberObjesi = {
         "meta": tamMeta,
         "baslik": document.getElementById('h-baslik').value,
         "aciklama": document.getElementById('h-aciklama').value,
@@ -430,37 +513,58 @@ function yeniHaberEkle(event) {
         "linkMetni": document.getElementById('h-linkMetni').value
     };
 
-    // Dizinin EN ÜSTÜNE eklemek için unshift kullanıyoruz (Dizin altına eklemek için push kullanılır)
-    mevcutHaberlerDizisi.unshift(yeniHaberNesnesi);
+    const formIndex = parseInt(document.getElementById('h-index').value);
 
-    // Listeleme alanını güncelle ve kaydetme tetikleyicisini çalıştır
-    document.getElementById('h-tum-json').value = JSON.stringify(mevcutHaberlerDizisi, null, 2);
-    
-    // Formu temizle
-    document.getElementById('form-yeni-haber').reset();
-    
-    // GitHub'a gönderimi başlatmak için tetikle
-    tumHaberleriKaydet(new Event('submit'));
+    if (formIndex === -1) {
+        // YENİ HABER EKLEME MODU: Listenin en başına ekle
+        mevcutHaberlerDizisi.unshift(haberObjesi);
+    } else {
+        // DÜZENLEME/GÜNCELLEME MODU: Mevcut indeksteki veriyi güncelle
+        mevcutHaberlerDizisi[formIndex] = haberObjesi;
+    }
+
+    // Arayüz listesini yenile
+    haberleriListele();
+    // Formu temizle ve normal moda dön
+    haberFormuSifirla();
+    // GitHub repona eşitlemeyi başlat
+    haberleriGithubaGonder();
 }
 
-// TÜM HABER LİSTESİNİ GİTHUB'A GÖNDERME FONKSİYONU
-async function tumHaberleriKaydet(event) {
-    if(event) event.preventDefault();
+// 5. HABER SİLME FONKSİYONU
+function haberSil(index) {
+    const onay = confirm(`"${mevcutHaberlerDizisi[index].baslik}" başlıklı haberi silmek istediğinize emin misiniz?`);
+    if (!onay) return;
+
+    // Seçilen indeksteki haberi diziden tamamen çıkartıyoruz
+    mevcutHaberlerDizisi.splice(index, 1);
+
+    // Listeyi yenile ve GitHub'a gönder
+    haberleriListele();
+    haberFormuSifirla(); // Eğer o sırada düzenleme yapılıyorsa formu temizle
+    haberleriGithubaGonder();
+}
+
+// FORM SIFIRLAMA (İPTAL VEYA KAYIT SONRASI NORMAL MODA DÖNÜŞ)
+function haberFormuSifirla() {
+    document.getElementById('form-yeni-haber').reset();
+    document.getElementById('h-index').value = "-1";
+    document.getElementById('haber-form-baslik').innerText = "➕ Yeni Haber Ekle";
+    document.getElementById('btn-haber-kaydet').innerText = "Haber Listesine Ekle";
+    document.getElementById('btn-haber-kaydet').style.background = "#10b981";
+    document.getElementById('btn-haber-iptal').style.display = "none";
+}
+
+// 6. HAFIZADAKİ SON DURUMU GİTHUB'A KESİN OLARAK COMMIT ETME
+async function haberleriGithubaGonder() {
     const token = localStorage.getItem('gh_oauth_token');
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_HABER}`;
-
-    // Textarea içindeki son güncel JSON verisini doğrula ve al
-    try {
-        mevcutHaberlerDizisi = JSON.parse(document.getElementById('h-tum-json').value);
-    } catch(e) {
-        return bildirimGoster("JSON formatı hatalı! Lütfen elle düzenleme yaptıysanız kontrol edin.", "error");
-    }
 
     const jsonString = JSON.stringify(mevcutHaberlerDizisi, null, 2);
     const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
 
     const payload = {
-        message: "Panel: data/haber.json listesi güncellendi",
+        message: "Panel: data/haber.json listesinde düzenleme/silme yapıldı",
         content: base64Content,
         sha: shaHaber
     };
@@ -472,10 +576,10 @@ async function tumHaberleriKaydet(event) {
             body: JSON.stringify(payload)
         });
 
-        if(!response.ok) throw new Error("Haberler güncellenemedi.");
+        if(!response.ok) throw new Error("GitHub veriyi kaydedemedi.");
         const resData = await response.json();
-        shaHaber = resData.content.sha; // Yeni SHA'yı kaydet
-        bildirimGoster("Haber listesi başarıyla GitHub'a gönderildi!", "success");
+        shaHaber = resData.content.sha; // Bir sonraki işlem için SHA kodunu tazele
+        bildirimGoster("Haber listesi güncellendi ve GitHub'a başarıyla kaydedildi!", "success");
     } catch (error) {
         bildirimGoster(error.message, "error");
     }
