@@ -554,6 +554,8 @@
                 <div class="form-group">
                     <label for="b-id">Yazı ID (Benzersiz):</label>
                     <input type="text" id="b-id" placeholder="Örn: 2023-08-10-golbasi" required>
+<!-- HEMEN ALTINA BU SATIRI EKLE -->
+<span id="blog-id-uyari" style="display: none; color: #ef4444; font-size: 12px; font-weight: bold; margin-top: 3px;"></span>
                 </div>
                 <div class="form-group">
                     <label for="b-baslik">Yazı Başlığı:</label>
@@ -2109,21 +2111,28 @@ function blogRozetArayuzunuDoldur() {
         alan.innerHTML = "";
         panelBlogRozetListesi.forEach((rozet, index) => {
             const kStr = rozet.kelime || "";
-            // İlk kelimeyi veya varsa kısa bir başlığı buton üstünde gösteriyoruz
             const butonGosterimAdi = kStr.split(',')[0].trim() || `Rozet ${index+1}`;
+            const rozetRengi = rozet.renk || "#0d9488"; // Renk yoksa varsayılan teal rengi
 
             const itemDiv = document.createElement('div');
-            itemDiv.style.cssText = "display: flex; align-items: center; gap: 6px; padding: 4px 8px; background: #fff; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; user-select: none; font-size: 12px;";
+            // Renk kodunu border ve metne yedirdik
+            itemDiv.style.cssText = `display: flex; align-items: center; gap: 6px; padding: 4px 8px; background: #fff; border: 1px solid ${rozetRengi}; border-left: 4px solid ${rozetRengi}; color: ${rozetRengi}; border-radius: 4px; cursor: pointer; user-select: none; font-size: 12px; font-weight: 500;`;
             
-            itemDiv.innerHTML = `<div style="width:16px; height:16px; display:flex; align-items:center; color:#0d9488;">${rozet.svg || ''}</div><span>${butonGosterimAdi}</span>`;
+            // title ekleyerek tıklamadan kelimelerin görünmesini sağladık
+            itemDiv.title = `Tanımlı Kelimeler: ${kStr}`;
+            
+            itemDiv.innerHTML = `<div style="width:16px; height:16px; display:flex; align-items:center;">${rozet.svg || ''}</div><span>${butonGosterimAdi}</span>`;
             
             itemDiv.onclick = function() {
-                // Tıklanan rozetteki tüm kelimeleri parçalayıp Özel Alan kelime listesine enjekte et
                 if(kStr) {
                     kStr.split(',').forEach(k => {
                         const temizK = k.trim();
-                        if(temizK && !secilenBlogKelimeleri.includes(temizK)) {
-                            secilenBlogKelimeleri.push(temizK);
+                        if(temizK) {
+                            // Kelimenin hangi renge ait olduğunu obje yapısıyla saklıyoruz
+                            const zatenVarMi = secilenBlogKelimeleri.some(x => x.metin === temizK);
+                            if(!zatenVarMi) {
+                                secilenBlogKelimeleri.push({ metin: temizK, renk: rozetRengi });
+                            }
                         }
                     });
                     blogKelimeKutusunuYenile();
@@ -2141,20 +2150,21 @@ function blogKelimeKutusunuYenile() {
     const kutu = document.getElementById('blog-rozet-kelime-kutusu');
     kutu.innerHTML = "";
     
-    secilenBlogKelimeleri.forEach(kelime => {
+    secilenBlogKelimeleri.forEach(item => {
         const span = document.createElement('span');
         span.className = 'tag-badge';
-        span.style.cssText = "background: #0284c7; color: white; padding: 2px 8px; font-size: 12px; border-radius: 4px; display: flex; align-items: center; gap: 5px;";
-        span.innerHTML = `${kelime} <b style="cursor:pointer; font-size:10px;" onclick="blogKelimeSil('${kelime}')">✕</b>`;
+        // Sabit mavi yerine rozetten gelen item.renk kodunu arka plana bastık
+        span.style.cssText = `background: ${item.renk}; color: white; padding: 2px 8px; font-size: 12px; border-radius: 4px; display: flex; align-items: center; gap: 5px; font-weight: 500;`;
+        span.innerHTML = `${item.metin} <b style="cursor:pointer; font-size:10px; opacity:0.8;" onclick="blogKelimeSil('${item.metin}')">✕</b>`;
         kutu.appendChild(span);
     });
 
-    // Ana input alanına veriyi yedekle (Gönderim formatı için)
-    document.getElementById('b-ozel').value = secilenBlogKelimeleri.join(', ');
+    // Hidden input alanına sadece metinleri virgülle birleştirip aktarıyoruz
+    document.getElementById('b-ozel').value = secilenBlogKelimeleri.map(x => x.metin).join(', ');
 }
 
 function blogKelimeSil(kelimeText) {
-    secilenBlogKelimeleri = secilenBlogKelimeleri.filter(k => k !== kelimeText);
+    secilenBlogKelimeleri = secilenBlogKelimeleri.filter(x => x.metin !== kelimeText);
     blogKelimeKutusunuYenile();
 }
 
@@ -2349,10 +2359,15 @@ function blogDuzenleTetikle(index) {
     }
 
     // Kelimeleri Ayrıştırıp Kutuya Doldur
-    if (item.ozel) {
-        secilenBlogKelimeleri = item.ozel.split(',').map(k => k.trim()).filter(Boolean);
-        blogKelimeKutusunuYenile();
-    }
+if (item.ozel) {
+    const kelimeListesi = item.ozel.split(',').map(k => k.trim()).filter(Boolean);
+    secilenBlogKelimeleri = kelimeListesi.map(k => {
+        // Dosyadaki rozetlerden rengini bulmaya çalış, bulamazsa varsayılan ver
+        const bulunanRozet = panelBlogRozetListesi.find(r => (r.kelime || "").includes(k));
+        return { metin: k, renk: bulunanRozet ? bulunanRozet.renk : "#2c3e50" };
+    });
+    blogKelimeKutusunuYenile();
+}
 
     if(item.etiketler && item.etiketler[0]) {
         secilenBlogEtiketleri = item.etiketler[0].split(',').map(t => t.trim()).filter(Boolean);
@@ -2471,6 +2486,44 @@ async function blogMediaGithubaGonder() {
         bildirimGoster(error.message, "error");
     }
 }
+// Yazı ID kutusuna yazarken dinamik benzersizlik kontrolü
+document.addEventListener('input', function(e) {
+    if (e.target && e.target.id === 'b-id') {
+        const girilenId = e.target.value.trim();
+        const formIndex = parseInt(document.getElementById('b-index').value);
+        const uyariEl = document.getElementById('blog-id-uyari');
+        const kaydetButon = document.getElementById('btn-blog-kaydet');
+
+        // Eğer düzenleme modundaysak kontrol etmeye gerek yok (zaten disabled)
+        if (formIndex !== -1 || !girilenId) {
+            uyariEl.style.display = "none";
+            if(kaydetButon) kaydetButon.disabled = false;
+            return;
+        }
+
+        // Mevcut dizide aynı ID var mı kontrolü
+        const idMevcut = mevcutBlogDizisi.some(yazi => yazi.id === girilenId);
+
+        if (idMevcut) {
+            uyariEl.innerText = `⚠️ Bu Yazı ID (${girilenId}) zaten kullanımda! Lütfen farklı bir ID girin.`;
+            uyariEl.style.display = "block";
+            e.target.style.borderColor = "#ef4444";
+            if(kaydetButon) {
+                kaydetButon.disabled = true;
+                kaydetButon.style.opacity = "0.5";
+                kaydetButon.style.cursor = "not-allowed";
+            }
+        } else {
+            uyariEl.style.display = "none";
+            e.target.style.borderColor = "#cbd5e1";
+            if(kaydetButon) {
+                kaydetButon.disabled = false;
+                kaydetButon.style.opacity = "1";
+                kaydetButon.style.cursor = "pointer";
+            }
+        }
+    }
+});
 
 
 
