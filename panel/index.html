@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gelişmiş İçerik Yönetim Paneli</title>
+    <title>Ferdimen // İçerik Yönetim Paneli</title>
+    <link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f4f6f9; color: #333; }
         h2 { color: #1e293b; margin-bottom: 20px; }
@@ -64,6 +65,7 @@
             <!-- SOL MENÜ (Yeni sekmeleri buraya ekleyeceksin) -->
             <div class="sidebar">
                 <button class="tab-btn active" onclick="sekmeDegistir('nerdeyim-tab')">📍 Nerdeyim?</button>
+				<button class="tab-btn" onclick="sekmeDegistir('haberler-tab')">📰 Haberler</button>
                 <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
                 <!-- Gelecekte buraya yeni butonlar gelebilir -->
             </div>
@@ -156,7 +158,66 @@
                         <button type="submit" class="btn">Konumu Güncelle</button>
                     </form>
                 </div>
+<!-- 3. SEKME: HABERLER (haber.json) -->
+<div id="haberler-tab" class="tab-content">
+    <h3>Haber Düzenleme ve Ekleme</h3>
+    
+    <!-- Yeni Haber Ekleme Bloğu -->
+    <fieldset style="margin-bottom: 25px; border-color: #2563eb;">
+        <legend style="color: #2563eb; font-weight: bold;">➕ Yeni Haber Ekle</legend>
+        <form id="form-yeni-haber" onsubmit="yeniHaberEkle(event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="h-tarih">Haber Tarihi:</label>
+                    <input type="date" id="h-tarih" required>
+                </div>
+                <div class="form-group">
+                    <label for="h-etiket">Kategori / Etiket:</label>
+                    <input type="text" id="h-etiket" placeholder="Örn: Altyapı, Tur, Duyuru" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="h-baslik">Haber Başlığı:</label>
+                <input type="text" id="h-baslik" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="h-aciklama">Haber Açıklaması (HTML içerebilir):</label>
+                <textarea id="h-aciklama" rows="3" required></textarea>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="h-resim">Resim Yolu (Opsiyonel):</label>
+                    <input type="text" id="h-resim" placeholder="/images/haber1.jpg">
+                </div>
+                <div class="form-group">
+                    <label for="h-linkUrl">Link URL (Opsiyonel):</label>
+                    <input type="text" id="h-linkUrl" placeholder="/#takip">
+                </div>
+                <div class="form-group">
+                    <label for="h-linkMetni">Link Buton Metni:</label>
+                    <input type="text" id="h-linkMetni" placeholder="Takip et">
+                </div>
+            </div>
+            
+            <button type="submit" class="btn" style="background: #10b981;">En Üste Yeni Haber Olarak Ekle</button>
+        </form>
+    </fieldset>
 
+    <!-- Mevcut Haberleri Listeleme ve Toplu Kaydetme Bloğu -->
+    <fieldset>
+        <legend>🗂️ Mevcut Haber Listesi (JSON Çıktısı)</legend>
+        <form id="form-haberler-liste" onsubmit="tumHaberleriKaydet(event)">
+            <p style="font-size: 13px; color:#64748b; margin-bottom:10px;">Aşağıdaki alandan mevcut haberlerin ham JSON halini görebilir veya silebilirsiniz.</p>
+            <div class="form-group">
+                <textarea id="h-tum-json" rows="10" style="font-family: monospace; font-size: 13px;"></textarea>
+            </div>
+            <button type="submit" class="btn">Değişiklikleri Kaydet</button>
+        </form>
+    </fieldset>
+</div>
                 <!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
                 <div id="yeni-sekme-tab" class="tab-content">
                     <h3>Yeni Dosya / Değişken Ayarları</h3>
@@ -182,8 +243,13 @@
         const REPO_NAME = "me"; 
 		      
         // Her dosyanın yolunu ve SHA değerini ayrı ayrı takip ediyoruz
-        const PATH_KONUM = "nerdeyim/konum.json"; 
-        let shaKonum = "";
+const PATH_KONUM = "nerdeyim/konum.json"; 
+let shaKonum = "";
+
+// YENİ EKLENEN DOSYA YOLLARI
+const PATH_HABER = "data/haber.json";
+let shaHaber = "";
+let mevcutHaberlerDizisi = []; // Haberleri hafızada dizi olarak tutacağız
 
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -233,6 +299,7 @@
                 document.getElementById('main-panel').style.display = 'block';
                 // Giriş yapıldığı an ilk sekmenin verisini (Konum) çekiyoruz
                 konumuYukle(token);
+				haberleriYukle(token); // YENİ EKLENDİ
             }
         }
 
@@ -318,7 +385,101 @@
                 bildirimGoster(error.message, "error");
             }
         }
+// HABERLERİ GİTHUB'DAN ÇEKME FONKSİYONU
+async function haberleriYukle(token) {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_HABER}`;
+    try {
+        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if(!response.ok) throw new Error("Haber dosyası yüklenemedi.");
 
+        const data = await response.json();
+        shaHaber = data.sha; // Dosyanın güncel benzersiz kodunu alıyoruz
+
+        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        mevcutHaberlerDizisi = JSON.parse(decodedContent);
+
+        // Ham JSON'ı düzenleme alanına estetik biçimde dolduruyoruz
+        document.getElementById('h-tum-json').value = JSON.stringify(mevcutHaberlerDizisi, null, 2);
+    } catch (error) {
+        console.log("Haber yükleme hatası: " + error.message);
+    }
+}
+
+// YENİ HABERİ EN ÜSTE EKLEME FONKSİYONU
+function yeniHaberEkle(event) {
+    event.preventDefault();
+    
+    // Tarih alanından gelen YYYY-MM-DD formatını DD Ay YYYY formatına çekelim veya doğrudan yazalım
+    const secilenTarih = document.getElementById('h-tarih').value; // Örn: 2026-07-20
+    const parcalar = secilenTarih.split('-');
+    // Aylar dizisiyle Türkçe aya çevirebiliriz veya direkt "20 Temmuz 2026" düzeninde string birleştirebiliriz
+    const aylar = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+    const formatliTarih = `${parseInt(parcalar[2])} ${aylar[parseInt(parcalar[1])-1]} ${parcalar[0]}`;
+    
+    const etiket = document.getElementById('h-etiket').value;
+    
+    // İstediğin meta formatını birleştiriyoruz: "20 Temmuz 2026 / Altyapı"
+    const tamMeta = `${formatliTarih} / ${etiket}`;
+
+    const yeniHaber Nesnesi = {
+        "meta": tamMeta,
+        "baslik": document.getElementById('h-baslik').value,
+        "aciklama": document.getElementById('h-aciklama').value,
+        "resim": document.getElementById('h-resim').value,
+        "linkUrl": document.getElementById('h-linkUrl').value,
+        "linkMetni": document.getElementById('h-linkMetni').value
+    };
+
+    // Dizinin EN ÜSTÜNE eklemek için unshift kullanıyoruz (Dizin altına eklemek için push kullanılır)
+    mevcutHaberlerDizisi.unshift(yeniHaberNesnesi);
+
+    // Listeleme alanını güncelle ve kaydetme tetikleyicisini çalıştır
+    document.getElementById('h-tum-json').value = JSON.stringify(mevcutHaberlerDizisi, null, 2);
+    
+    // Formu temizle
+    document.getElementById('form-yeni-haber').reset();
+    
+    // GitHub'a gönderimi başlatmak için tetikle
+    tumHaberleriKaydet(new Event('submit'));
+}
+
+// TÜM HABER LİSTESİNİ GİTHUB'A GÖNDERME FONKSİYONU
+async function tumHaberleriKaydet(event) {
+    if(event) event.preventDefault();
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_HABER}`;
+
+    // Textarea içindeki son güncel JSON verisini doğrula ve al
+    try {
+        mevcutHaberlerDizisi = JSON.parse(document.getElementById('h-tum-json').value);
+    } catch(e) {
+        return bildirimGoster("JSON formatı hatalı! Lütfen elle düzenleme yaptıysanız kontrol edin.", "error");
+    }
+
+    const jsonString = JSON.stringify(mevcutHaberlerDizisi, null, 2);
+    const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+    const payload = {
+        message: "Panel: data/haber.json listesi güncellendi",
+        content: base64Content,
+        sha: shaHaber
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if(!response.ok) throw new Error("Haberler güncellenemedi.");
+        const resData = await response.json();
+        shaHaber = resData.content.sha; // Yeni SHA'yı kaydet
+        bildirimGoster("Haber listesi başarıyla GitHub'a gönderildi!", "success");
+    } catch (error) {
+        bildirimGoster(error.message, "error");
+    }
+}
         function cikisYap() {
             localStorage.removeItem('gh_oauth_token');
             window.location.reload();
