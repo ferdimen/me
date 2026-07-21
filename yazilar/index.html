@@ -1190,14 +1190,24 @@
             function yazilariEkranaBas() {
                 let gridHtml = '';
 
-                const filtrelenmisYazilar = tumYazilar.filter(yazi => {
-                    const ayrismisKatlar = yaziKategorileriniAyristir(yazi.kategori);
+const filtrelenmisYazilar = tumYazilar.filter(yazi => {
+    const ayrismisKatlar = yaziKategorileriniAyristir(yazi.kategori);
 
-                    const anaUyumlu = aktifKategori === "hepsi" || ayrismisKatlar.some(k => k.ana === aktifKategori);
+    // Anlık kategorisi kontrolü: 
+    // Yazının ana kategorilerinden biri "anlık" mı?
+    const isAnlik = ayrismisKatlar.some(k => k.ana === "anlık");
 
-                    const altUyumlu = aktifAltKategori === "hepsi" || ayrismisKatlar.some(k => {
-                        return (aktifKategori === "hepsi" || k.ana === aktifKategori) && k.alt === aktifAltKategori;
-                    });
+    // Tüm Kategoriler (hepsi) seçiliyken "anlık" kategorisindeki yazıları gizle.
+    // Yalnızca aktifKategori özel olarak "anlık" seçilmişse göster.
+    if (aktifKategori === "hepsi" && isAnlik) {
+        return false;
+    }
+
+    const anaUyumlu = aktifKategori === "hepsi" || ayrismisKatlar.some(k => k.ana === aktifKategori);
+
+    const altUyumlu = aktifAltKategori === "hepsi" || ayrismisKatlar.some(k => {
+        return (aktifKategori === "hepsi" || k.ana === aktifKategori) && k.alt === aktifAltKategori;
+    });
 
                     const etiketUyumlu = aktifFiltre === "hepsi" || 
                         etiketleriAyristir(yazi.etiketler).map(e => e.toLowerCase()).includes(aktifFiltre);
@@ -1371,6 +1381,6 @@
                 });
             }
         });
-    </script>
+    </script>	
 </body>
 </html>
