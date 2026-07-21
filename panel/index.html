@@ -961,6 +961,10 @@ let mevcutDosyalarDizisi = [];
 const PATH_FOOTER = "data/footer.json";
 let shaFooter = "";
 let footerAnaVeri = { "varsayilanMesaj": "", "ozelGunler": [] };
+
+const SOSYAL_MEDYA_PATH = "data/sosyal.json";
+let sm_HesapDizisi = [];
+let sm_SuruklenenIndex = null;
 // ========================================== PATH_XXX BİLGİLERİ ÜSTE EKLENİYOR
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -972,6 +976,21 @@ let footerAnaVeri = { "varsayilanMesaj": "", "ozelGunler": [] };
 
         // Sekme Değiştirme Fonksiyonu
 function sekmeDegistir(tabId) {
+// 1. Tüm sekme içeriklerini gizle
+    const tumTablar = document.querySelectorAll('.tab-content');
+    tumTablar.forEach(tab => tab.style.display = 'none');
+
+    // 2. Seçilen sekme içeriğini göster
+    const secilenTab = document.getElementById(tabId);
+    if (secilenTab) {
+        secilenTab.style.display = 'block';
+    }
+
+    // 3. SOSYAL MEDYA TABI SEÇİLDİYSE VERİLERİ YÜKLE
+    if (tabId === 'sosyalmedya-tab') {
+        const aktifToken = typeof token !== 'undefined' ? token : null;
+        sm_VeriYukle(aktifToken);
+    }
     // Tüm içerikleri gizle
     document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
     // Tüm butonların aktifliğini kaldır
@@ -994,10 +1013,6 @@ function sekmeDegistir(tabId) {
         setTimeout(() => {
             blogHaritasiniBaslat();
         }, 100);
-    }
-	// Eğer Sosyal Medya tabı seçildiyse:
-	if (tabId === 'sosyalmedya-tab') {
-        sm_VeriYukle(token); // token değişkeniniz
     }
 }
 
@@ -1037,7 +1052,6 @@ if (token) {
 	blogYukle(token);
 	dosyalariYukle(token);
 	footerVerileriniYukle(token);
-	sm_VeriYukle(token);
 // ========================================== XXX(token) BİLGİLERİ ÜSTE EKLENİYOR 
     yazilariYukle(token).then(() => {
         timelineYukle(token);
@@ -3199,11 +3213,10 @@ async function footerVerileriniGithubaKaydet() {
     }
 }
 
+
 // ==========================================
-// 🌐 SOSYAL MEDYA TABİ DEĞİŞKENLERİ & MANTIĞI
+// 🌐 SOSYAL MEDYA TABİ MANTIĞI & DEĞİŞKENLERİ
 // ==========================================
-let sm_HesapDizisi = [];
-let sm_SuruklenenIndex = null;
 
 // 1. DATA YÜKLEME FONKSİYONU
 async function sm_VeriYukle(token) {
@@ -3216,7 +3229,7 @@ async function sm_VeriYukle(token) {
             const veri = await response.json();
             sm_HesapDizisi = Array.isArray(veri) ? veri : (veri.accounts || []);
         } else {
-            console.warn("sm_VeriYukle: Veri dosyası bulunamadı veya boş.");
+            console.warn("data/sosyalmedya.json yüklenemedi, boş liste açılıyor.");
             sm_HesapDizisi = [];
         }
     } catch (error) {
@@ -3224,7 +3237,7 @@ async function sm_VeriYukle(token) {
         sm_HesapDizisi = [];
     }
 
-    // Ekranı güncelle
+    // Her durumda listeleme fonksiyonunu çağır (Form ve boş mesaj ekrana basılsın)
     sm_Listele();
 }
 
@@ -3264,7 +3277,7 @@ function sm_Listele() {
             </div>
         `;
 
-        // Drag & Drop Olayları
+        // Sürükle-Bırak Event'leri
         div.addEventListener('dragstart', sm_DragStart);
         div.addEventListener('dragover', sm_DragOver);
         div.addEventListener('drop', sm_Drop);
@@ -3352,7 +3365,6 @@ function sm_Sil(index) {
 function sm_GuncelVeriyiGetir() {
     return sm_HesapDizisi;
 }
-
 
         function cikisYap() {
             localStorage.removeItem('gh_oauth_token');
