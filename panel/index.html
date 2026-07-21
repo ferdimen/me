@@ -3214,22 +3214,29 @@ async function footerVerileriniGithubaKaydet() {
 }
 
 
-// ==========================================
+// ========================================== FOOTER SEKMESİ SOSYAL MEDYA v2
 // 🌐 SOSYAL MEDYA TABİ MANTIĞI & DEĞİŞKENLERİ
 // ==========================================
 
-// 1. DATA YÜKLEME FONKSİYONU
+// 1. DATA YÜKLEME (JSON Nesne de gelse Dizi de gelse yakalar)
 async function sm_VeriYukle(token) {
     try {
-        const response = await fetch('data/sosyalmedya.json', {
+        const response = await fetch(SOSYAL_MEDYA_PATH, {
             headers: token ? { 'Authorization': `token ${token}` } : {}
         });
 
         if (response.ok) {
             const veri = await response.json();
-            sm_HesapDizisi = Array.isArray(veri) ? veri : (veri.accounts || []);
+            // Veri dizi değilse (tek nesneyse) bile onu diziye çevirir
+            if (Array.isArray(veri)) {
+                sm_HesapDizisi = veri;
+            } else if (typeof veri === 'object' && veri !== null) {
+                sm_HesapDizisi = [veri];
+            } else {
+                sm_HesapDizisi = [];
+            }
         } else {
-            console.warn("data/sosyalmedya.json yüklenemedi, boş liste açılıyor.");
+            console.warn(`${SOSYAL_MEDYA_PATH} dosyası bulunamadı, boş liste açılıyor.`);
             sm_HesapDizisi = [];
         }
     } catch (error) {
@@ -3237,7 +3244,6 @@ async function sm_VeriYukle(token) {
         sm_HesapDizisi = [];
     }
 
-    // Her durumda listeleme fonksiyonunu çağır (Form ve boş mesaj ekrana basılsın)
     sm_Listele();
 }
 
@@ -3287,7 +3293,7 @@ function sm_Listele() {
     });
 }
 
-// 3. YENİ HESAP EKLEME
+// 3. YENİ HESAP EKLEME (ad, url ve varsayılan svg desteğiyle)
 function sm_HesapEkle() {
     const inputPlatform = document.getElementById('sm-input-platform');
     const inputUrl = document.getElementById('sm-input-url');
@@ -3302,14 +3308,16 @@ function sm_HesapEkle() {
         return;
     }
 
-    // Diziye ekle
-    sm_HesapDizisi.push({ platform: platform, url: url });
+    // JSON yapına uygun şekilde ekliyoruz ("ad", "url", "svg")
+    sm_HesapDizisi.push({ 
+        ad: platform, 
+        url: url,
+        svg: "" // Yeni eklenenlere boş svg atıyoruz, dilersen panelden veya manuel eklenebilir
+    });
 
-    // İnputları temizle
     inputPlatform.value = '';
     inputUrl.value = '';
 
-    // Ekrana bas
     sm_Listele();
 }
 
