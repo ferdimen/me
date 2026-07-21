@@ -838,3 +838,197 @@ body {
     .video-card { flex-direction: column; }
     .video-img-wrapper { width: 100%; height: 180px; }
 }
+/* --- ANLIK SOSYAL MEDYA KARTLARI --- */
+.anlik-card {
+    flex: 0 0 220px;
+    width: 220px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.anlik-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.anlik-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: #fff;
+}
+
+.anlik-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.anlik-author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.anlik-author-name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #0f0f0f;
+    line-height: 1.1;
+}
+
+.anlik-date {
+    font-size: 0.68rem;
+    color: #8e8e8e;
+}
+
+/* Sabit Boyutlu Resim Çerçevesi */
+.anlik-img-wrapper {
+    width: 100%;
+    height: 240px;
+    background-color: #f4f4f4;
+    overflow: hidden;
+    position: relative;
+}
+
+.anlik-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.anlik-card:hover .anlik-img {
+    transform: scale(1.05);
+}
+
+/* --- MODAL / POP-UP BÜYÜTME EKRANI --- */
+.anlik-modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.anlik-modal-content {
+    background: #fff;
+    border-radius: 12px;
+    max-width: 850px;
+    width: 90%;
+    max-height: 90vh;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.anlik-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    z-index: 101;
+    line-height: 1;
+}
+
+.anlik-modal-body {
+    display: flex;
+    flex-direction: row;
+    max-height: 80vh;
+}
+
+.anlik-modal-img-wrapper {
+    flex: 1.5;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 80vh;
+}
+
+.anlik-modal-img-wrapper img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.anlik-modal-details {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Modal Ok Navigasyonları */
+.anlik-modal-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+}
+
+.anlik-modal-arrow:hover {
+    background: #0f0f0f;
+    border-color: #0f0f0f;
+}
+
+.anlik-modal-arrow:hover svg {
+    fill: #ffffff;
+}
+
+.anlik-modal-arrow svg {
+    width: 24px;
+    height: 24px;
+    fill: #0f0f0f;
+    transition: fill 0.2s ease;
+}
+
+.anlik-modal-arrow.prev-arrow { left: 12px; }
+.anlik-modal-arrow.next-arrow { right: 12px; }
+.anlik-modal-arrow.disabled { display: none !important; }
+
+/* Mobil Responsive Düzen */
+@media (max-width: 768px) {
+    .anlik-modal-body {
+        flex-direction: column;
+    }
+    .anlik-modal-img-wrapper {
+        max-height: 40vh;
+    }
+    .anlik-modal-arrow {
+        top: 25%;
+        width: 36px;
+        height: 36px;
+    }
+    .anlik-modal-arrow.prev-arrow { left: 6px; }
+    .anlik-modal-arrow.next-arrow { right: 6px; }
+}
