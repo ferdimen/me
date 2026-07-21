@@ -61,6 +61,54 @@
 .tl-kart-baslik { font-size: 14px; font-weight: bold; color: #1e293b; margin: 0; }
 .btn-tl-duzenle { background: #eab308; }
 .btn-tl-sil { background: #ef4444; }
+.sm-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    cursor: grab;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.sm-item:active {
+    cursor: grabbing;
+}
+
+.sm-item.dragging {
+    opacity: 0.5;
+    background: #e0e0e0;
+    border: 1px dashed #999;
+}
+
+.sm-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.sm-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-move {
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-move:hover {
+    background: #ddd;
+}
     </style>
 </head>
 <body>
@@ -466,6 +514,14 @@
     </fieldset>
 
     <!-- Tek Tek Sosyal Medya Kartlarının Listeleneceği Alan -->
+	<div class="form-group">
+    <h3>🌐 Mevcut Sosyal Medya Hesapları</h3>
+    <p style="font-size:12px; color:#666;">Sıralamayı değiştirmek için kartları sürükleyebilir veya ok butonlarını kullanabilirsiniz.</p>
+    <p style="color: #64748b; font-size: 14px; text-align: center;">Sosyal medya hesapları yükleniyor...</p>
+    <!-- Hesapların Dinamik Listeleneceği Konteyner -->
+    <div id="sosyal-medya-listesi" class="drag-container"></div>
+	</div>
+	
     <fieldset>
         <legend>🌐 Mevcut Sosyal Medya Hesapları</legend>
         <div id="sosyal-listesi-kapsayici" style="display: flex; flex-direction: column; gap: 12px; max-height: 500px; overflow-y: auto; padding-right: 5px;">
@@ -1918,6 +1974,104 @@ async function sosyalMediaGithubaGonder() {
         bildirimGoster("Sosyal medya listesi güncellendi ve GitHub'a başarıyla kaydedildi!", "success");
     } catch (error) {
         bildirimGoster(error.message, "error");
+    }
+}
+
+// ========================================== SOSYAL MEDYA SURUKLME 
+// Örnek Global Dizi (Senin verin nereden geliyorsa onu temsil eder)
+let mevcutSosyalMedyaDizisi = [
+    { id: 1, platform: "YouTube", url: "https://..." },
+    { id: 2, platform: "Instagram", url: "https://..." },
+    { id: 3, platform: "GitHub", url: "https://..." }
+];
+
+// 1. SOSYAL MEDYA LİSTESİNİ EKRANA BASAN FONKSİYON
+function sosyalMedyaListele() {
+    const container = document.getElementById('sosyal-medya-listesi');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    mevcutSosyalMedyaDizisi.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'sm-item';
+        div.draggable = true; // Sürüklenebilir yaptık
+        div.dataset.index = index;
+
+        div.innerHTML = `
+            <div class="sm-info">
+                <span style="cursor:grab;">☰</span>
+                <span>${item.platform || 'Hesap'}</span>
+                <small style="color:#777; font-weight:normal;">(${item.url || ''})</small>
+            </div>
+            <div class="sm-actions">
+                <button type="button" class="btn-move" onclick="siraDegistir(${index}, -1)" ${index === 0 ? 'disabled' : ''}>▲</button>
+                <button type="button" class="btn-move" onclick="siraDegistir(${index}, 1)" ${index === mevcutSosyalMedyaDizisi.length - 1 ? 'disabled' : ''}>▼</button>
+                <button type="button" class="btn-move" style="color:red;" onclick="sosyalMedyaSil(${index})">✕</button>
+            </div>
+        `;
+
+        // Drag & Drop Olay Dinleyicileri
+        div.addEventListener('dragstart', handleDragStart);
+        div.addEventListener('dragover', handleDragOver);
+        div.addEventListener('drop', handleDrop);
+        div.addEventListener('dragend', handleDragEnd);
+
+        container.appendChild(div);
+    });
+}
+
+// 2. AŞAĞI / YUKARI OK BUTONLARI İLE SIRA DEĞİŞTİRME
+function siraDegistir(index, yon) {
+    const yeniIndex = index + yon;
+    if (yeniIndex < 0 || yeniIndex >= mevcutSosyalMedyaDizisi.length) return;
+
+    // Dizideki elemanların yerini takas et (Swap)
+    const temp = mevcutSosyalMedyaDizisi[index];
+    mevcutSosyalMedyaDizisi[index] = mevcutSosyalMedyaDizisi[yeniIndex];
+    mevcutSosyalMedyaDizisi[yeniIndex] = temp;
+
+    // Ekrana tekrar bas
+    sosyalMedyaListele();
+}
+
+// 3. SÜRÜKLE - BIRAK (DRAG & DROP) OLAYLARI
+let draggedIndex = null;
+
+function handleDragStart(e) {
+    draggedIndex = parseInt(this.dataset.index);
+    this.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+}
+
+function handleDragOver(e) {
+    e.preventDefault(); // Drop olayının çalışması için gerekli
+    e.dataTransfer.dropEffect = 'move';
+}
+
+function handleDrop(e) {
+    e.preventDefault();
+    const targetIndex = parseInt(this.dataset.index);
+
+    if (draggedIndex !== null && draggedIndex !== targetIndex) {
+        // Elemanı eski yerinden çıkarıp yeni yerine ekle
+        const suruklenenEleman = mevcutSosyalMedyaDizisi.splice(draggedIndex, 1)[0];
+        mevcutSosyalMedyaDizisi.splice(targetIndex, 0, suruklenenEleman);
+
+        sosyalMedyaListele();
+    }
+}
+
+function handleDragEnd() {
+    this.classList.remove('dragging');
+    draggedIndex = null;
+}
+
+// Silme işlemi
+function sosyalMedyaSil(index) {
+    if (confirm("Bu sosyal medya hesabını listeden kaldırmak istediğinize emin misiniz?")) {
+        mevcutSosyalMedyaDizisi.splice(index, 1);
+        sosyalMedyaListele();
     }
 }
 // ========================================== VİDEO SEKMESİ
