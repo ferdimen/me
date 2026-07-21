@@ -798,7 +798,7 @@
             <!-- Metin Editörü / Açıklama -->
             <div class="form-group">
                 <label for="anlik-aciklama">Açıklama / Metin:</label>
-                <textarea id="anlik-aciklama" rows="4" placeholder="Anlık duygu, düşünce veya gezi notu..." required></textarea>
+                <textarea id="anlik-aciklama" rows="4" placeholder="Anlık duygu, düşünce veya gezi notu... (İsteğe bağlı)"></textarea>
             </div>
 
             <!-- Konum Bilgisi ve Leaflet Harita -->
@@ -3229,7 +3229,7 @@ function anlikFotoOnizle(input) {
         const zamanDamgasi = `${yil}${ay}${gun}-${saat}-${dak}`;
         anlikYuklenenFotoAdi = `${zamanDamgasi}.jpg`;
 
-        const hedefYol = `img/posts/${yil}/${anlikYuklenenFotoAdi}`;
+        const hedefYol = `/img/posts/${yil}/${anlikYuklenenFotoAdi}`;
 
         reader.onload = function (e) {
             document.getElementById('anlik-foto-img').src = e.target.result;
@@ -3313,6 +3313,12 @@ function anlikRozetleriYukle() {
 }
 async function anlikPaylasimGonder(event) {
     event.preventDefault();
+
+    if (!anlikYuklenenFotoBase64) {
+        bildirimGoster("Lütfen paylaşım için bir fotoğraf seçin!", "error");
+        return;
+    }
+
     const token = localStorage.getItem('gh_oauth_token');
     if (!token) return alert("Lütfen önce giriş yapın.");
 
@@ -3325,10 +3331,15 @@ async function anlikPaylasimGonder(event) {
 
     const zamanFormatli = `${yil}${ay}${gun}-${saat}-${dak}`;
     const idFormatli = `${yil}/${zamanFormatli}`;
-    const kapakResmiYolu = `img/posts/${yil}/${zamanFormatli}.jpg`;
 
-    // 1. ADIM: Fotoğrafı 'img/posts/YYYY/YYYYMMDD-HH-MM.jpg' Yoluna Upload Et
-    const fotoUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${kapakResmiYolu}`;
+    // GitHub Repo içindeki fiziksel yükleme yolu (başında '/' olmadan)
+    const githubFotoYolu = `img/posts/${yil}/${zamanFormatli}.jpg`;
+
+    // JSON içerisine yazılacak yol (başında '/' ile)
+    const jsonKapakResmiYolu = `/img/posts/${yil}/${zamanFormatli}.jpg`;
+
+    // 1. ADIM: Fotoğrafı GitHub'a Upload Et
+    const fotoUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${githubFotoYolu}`;
     
     try {
         bildirimGoster("Fotoğraf GitHub'a yükleniyor...", "success");
@@ -3358,19 +3369,16 @@ async function anlikPaylasimGonder(event) {
             "kategori": "Anlık",
             "ozel": document.getElementById('anlik-ozel').value,
             "konum": document.getElementById('anlik-konum').value,
-            "kapakresmi": kapakResmiYolu,
+            "kapakresmi": jsonKapakResmiYolu, // Artık "/img/posts/YYYY/YYYYMMDD-HH-MM.jpg" formatında
             "etiketler": [anlikSecilenEtiketler.join(',')]
         };
 
-        // Mevcut blog/yazılar dizisinin en başına ekle
         mevcutYazilarDizisi.unshift(yeniAnlikObje);
 
-        // yazilar.json için Commit İşlemi
         const jsonUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_YAZILAR}`;
         const jsonString = JSON.stringify(mevcutYazilarDizisi, null, 2);
         const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
 
-        // SHA değerini güncel alalım
         const getSha = await fetch(jsonUrl, { headers: { "Authorization": `token ${token}` } });
         const getShaData = await getSha.json();
 
@@ -3391,6 +3399,7 @@ async function anlikPaylasimGonder(event) {
         bildirimGoster("🚀 Anlık paylaşım ve fotoğraf başarıyla yayınlandı!", "success");
         document.getElementById('form-yeni-anlik').reset();
         document.getElementById('anlik-foto-onizleme-kapsayici').style.display = 'none';
+        anlikYuklenenFotoBase64 = null;
 
     } catch (error) {
         bildirimGoster("Hata: " + error.message, "error");
