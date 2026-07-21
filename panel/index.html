@@ -1567,42 +1567,21 @@ async function sssGithubaGonder() {
 }
 // 1. ROZET VERİSİNİ GİTHUB'DAN ÇEKME
 async function rozetlerYukle(token) {
-    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/yazilar/rozetler.json`;
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_ROZETLER}`;
     try {
-        const response = await fetch(url, { 
-            headers: { "Authorization": `token ${token}` } 
-        });
-        
-        if (!response.ok) {
-            throw new Error(`GitHub bağlantı hatası! Durum kodu: ${response.status}`);
-        }
-        
+        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if (!response.ok) throw new Error("Rozetler yüklenemedi.");
+
         const data = await response.json();
-        
-        // Base64 çözümleme işlemini güvenli hale getiriyoruz
-        let decodedContent;
-        try {
-            decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-        } catch (e) {
-            throw new Error("Rozet verisi çözülemedi (Base64 Hatası). Dosya formatı hatalı olabilir.");
-        }
-        
-        // JSON ayrıştırma
+        shaRozetler = data.sha; // SHA değerini saklıyoruz
+
+        // UTF-8 destekli Base64 çözme
+        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
         mevcutRozetlerDizisi = JSON.parse(decodedContent);
-        rozetSha = data.sha;
 
-        // Ekrana basma fonksiyonunu tetikle
         rozetleriListele();
-
     } catch (error) {
-        console.error("Rozet Yükleme Hatası:", error);
-        // Kullanıcıya hatayı arayüzde gösterelim ki donup kalmasın
-        document.getElementById('rozet-listesi-kapsayici').innerHTML = `
-            <p style="color: #ef4444; font-size: 14px; text-align: center; font-weight: bold;">
-                Rozetler yüklenirken hata oluştu!<br>
-                <span style="font-weight: normal; font-size: 12px; color: #64748b;">${error.message}</span>
-            </p>
-        `;
+        console.log("Rozet yükleme hatası: " + error.message);
     }
 }
 
@@ -1732,28 +1711,46 @@ async function rozetleriGithubaGonder() {
     const token = localStorage.getItem('gh_oauth_token');
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_ROZETLER}`;
 
-    const jsonString = JSON.stringify(mevcutRozetlerDizisi, null, 2);
-    const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
-
-    const payload = {
-        message: "Panel: yazilar/rozetler.json listesinde düzenleme/silme yapıldı",
-        content: base64Content,
-        sha: shaRozetler
-    };
-
     try {
+        // Güncel SHA değerini emin olmak için kayıt öncesi tekrar çekiyoruz (Çakışmayı önler)
+        const getRes = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if (getRes.ok) {
+            const getData = await getRes.json();
+            shaRozetler = getData.sha;
+        }
+
+        // Türkçe karakterleri sorunsuz Base64'e çevirme
+        const jsonString = JSON.stringify(mevcutRozetlerDizisi, null, 2);
+        const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+        const payload = {
+            message: "Panel: Rozetler güncellendi",
+            content: base64Content,
+            sha: shaRozetler
+        };
+
         const response = await fetch(url, {
             method: "PUT",
-            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            headers: { 
+                "Authorization": `token ${token}`, 
+                "Content-Type": "application/json" 
+            },
             body: JSON.stringify(payload)
         });
 
-        if(!response.ok) throw new Error("GitHub veriyi kaydedemedi.");
+        if (!response.ok) {
+            const errData = await response.json();
+            console.error("GitHub Hata Detayı:", errData);
+            throw new Error(errData.message || "GitHub veriyi kaydedemedi.");
+        }
+
         const resData = await response.json();
-        shaRozetler = resData.content.sha; // SHA yenile
-        bildirimGoster("Rozet listesi güncellendi ve GitHub'a başarıyla gönderildi!", "success");
+        shaRozetler = resData.content.sha; // Yeni SHA'yı güncelle
+        bildirimGoster("Rozetler başarıyla güncellendi ve GitHub'a kaydedildi!", "success");
+
     } catch (error) {
-        bildirimGoster(error.message, "error");
+        console.error("Rozet Kayıt Hatası:", error);
+        bildirimGoster("GitHub veriyi kaydedemedi: " + error.message, "error");
     }
 }
 // ==========================================
