@@ -83,6 +83,7 @@
             <!-- SOL MENÜ (Yeni sekmeleri buraya ekleyeceksin) -->
             <div class="sidebar">
                 <button class="tab-btn active" onclick="sekmeDegistir('nerdeyim-tab')">📍 Nerdeyim?</button>
+				<button class="tab-btn" onclick="sekmeDegistir('anlik-tab')">📸 Anlık Paylaşım</button>
 				<button class="tab-btn" onclick="sekmeDegistir('video-tab')">🎬 Video Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('blog-tab')">📝 Blog Yazıları</button>
 				<button class="tab-btn" onclick="sekmeDegistir('haberler-tab')">📰 Haberler</button>
@@ -770,6 +771,68 @@
         </button>
     </div>
 </div>
+<!-- 12. SEKME: ANLIK FOTOĞRAF VE YAZI PAYLAŞIMI (yazilar/yazilar.json + img/posts/) -->
+<div id="anlik-tab" class="tab-content">
+    <h3>📸 Anlık Paylaşım (Sosyal Medya)</h3>
+    
+    <fieldset style="margin-bottom: 25px; border-color: #ec4899;">
+        <legend style="color: #ec4899; font-weight: bold;">📸 Yeni Anlık Fotoğraf & Yazı Paylaş</legend>
+        <form id="form-yeni-anlik" onsubmit="anlikPaylasimGonder(event)">
+            
+            <!-- Fotoğraf Yükleme Alanı -->
+            <div class="form-group">
+                <label for="anlik-foto-input">📷 Fotoğraf Seçin:</label>
+                <input type="file" id="anlik-foto-input" accept="image/*" required onchange="anlikFotoOnizle(this)">
+                <div id="anlik-foto-onizleme-kapsayici" style="margin-top: 10px; display: none;">
+                    <img id="anlik-foto-img" src="" style="max-width: 100%; max-height: 250px; border-radius: 8px; border: 1px solid #cbd5e1;">
+                    <div id="anlik-foto-yolu-bilgi" style="font-size: 12px; color: #64748b; margin-top: 4px; font-weight: bold;"></div>
+                </div>
+            </div>
+
+            <!-- Opsiyonel Başlık -->
+            <div class="form-group">
+                <label for="anlik-baslik">Başlık (Opsiyonel):</label>
+                <input type="text" id="anlik-baslik" placeholder="Boş bırakılabilir">
+            </div>
+
+            <!-- Metin Editörü / Açıklama -->
+            <div class="form-group">
+                <label for="anlik-aciklama">Açıklama / Metin:</label>
+                <textarea id="anlik-aciklama" rows="4" placeholder="Anlık duygu, düşünce veya gezi notu..." required></textarea>
+            </div>
+
+            <!-- Konum Bilgisi ve Leaflet Harita -->
+            <div class="form-group">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <label style="margin:0;">📍 Konum Bilgisi:</label>
+                    <button type="button" onclick="anlikKonumAl()" class="btn" style="width: auto; padding: 4px 10px; font-size: 12px; background: #0284c7;">📡 Konumumu Bul</button>
+                </div>
+                <input type="text" id="anlik-konum" placeholder="40.49535319079409, 34.16301050818065" value="40.49535319079409, 34.16301050818065">
+                <div id="anlik-harita" style="width: 100%; height: 220px; margin-top: 8px; border: 1px solid #cbd5e1; border-radius: 6px;"></div>
+            </div>
+
+            <!-- Etiket Sistemi (AJAX / Dinamik) -->
+            <div class="form-group" style="position: relative;">
+                <label>🏷️ Etiketler (Virgül veya Enter ile Ekleyin):</label>
+                <div id="anlik-etiket-kutusu" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; min-height: 38px; align-items: center;">
+                    <input type="text" id="anlik-etiket-input" placeholder="Etiket yazın..." style="border: none; outline: none; padding: 4px; flex: 1; min-width: 120px;" oninput="anlikEtiketOnerisi(this.value)" autocomplete="off">
+                </div>
+                <div id="anlik-etiket-onerileri" style="display: none; position: absolute; left: 0; right: 0; top: 100%; background: white; border: 1px solid #cbd5e1; border-top: none; z-index: 120; max-height: 120px; overflow-y: auto;"></div>
+            </div>
+
+            <!-- Rozet Seçim Alanı -->
+            <div class="form-group">
+                <label>🎖️ Rozet Seçimi (Varsayılan: "fotoğraf, anlık"):</label>
+                <div id="anlik-rozet-secim-alani" style="display: flex; flex-wrap: wrap; gap: 8px; padding: 10px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;">
+                    <!-- JavaScript ile dinamik dolacak -->
+                </div>
+                <input type="hidden" id="anlik-ozel" value="fotoğraf, anlık">
+            </div>
+
+            <button type="submit" id="btn-anlik-paylas" class="btn" style="background: #ec4899; font-size: 16px; padding: 12px;">🚀 Anlık Paylaşımı Yayınla</button>
+        </form>
+    </fieldset>
+</div>
 <!-- // ==========================================	SAYFA İÇERİKLERİ ÜSTE EKLENİYOR	-->
 				<!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
                 <div id="yeni-sekme-tab" class="tab-content">
@@ -856,6 +919,13 @@ let mevcutDosyalarDizisi = [];
 const PATH_FOOTER = "data/footer.json";
 let shaFooter = "";
 let footerAnaVeri = { "varsayilanMesaj": "", "ozelGunler": [] };
+
+let anlikHarita = null;
+let anlikMarker = null;
+let anlikSecilenEtiketler = ["fotoğraf", "anlık", "ferdimen"];
+let anlikSecilenRozetler = ["fotoğraf", "anlık"];
+let anlikYuklenenFotoBase64 = null;
+let anlikYuklenenFotoAdi = "";
 // ========================================== PATH_XXX BİLGİLERİ ÜSTE EKLENİYOR
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -890,6 +960,13 @@ function sekmeDegistir(tabId) {
             blogHaritasiniBaslat();
         }, 100);
     }
+	if (tabId === 'anlik-tab') {
+    setTimeout(() => {
+        anlikHaritasiniBaslat();
+        anlikRozetleriYukle();
+        anlikEtiketArayuzunuCiz();
+    }, 100);
+}
 }
 
         function githubGirisYap() {
@@ -3088,10 +3165,239 @@ async function footerVerileriniGithubaKaydet() {
         bildirimGoster(error.message, "error");
     }
 }
+// Haritayı ilklendirme (Anlık Sekmesi Açıldığında Tetiklenir)
+function anlikHaritasiniBaslat() {
+    if (anlikHarita) {
+        anlikHarita.invalidateSize();
+        return;
+    }
 
+    const varsayilanLat = 40.49535319079409;
+    const varsayilanLng = 34.16301050818065;
 
+    anlikHarita = L.map('anlik-harita').setView([varsayilanLat, varsayilanLng], 12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(anlikHarita);
 
+    anlikMarker = L.marker([varsayilanLat, varsayilanLng], { draggable: true }).addTo(anlikHarita);
 
+    anlikMarker.on('dragend', function (e) {
+        const coord = e.target.getLatLng();
+        document.getElementById('anlik-konum').value = `${coord.lat.toFixed(6)}, ${coord.lng.toFixed(6)}`;
+    });
+
+    anlikHarita.on('click', function (e) {
+        anlikMarker.setLatLng(e.latlng);
+        document.getElementById('anlik-konum').value = `${e.latlng.lat.toFixed(6)}, ${e.latlng.lng.toFixed(6)}`;
+    });
+}
+
+// Cihazın GPS Konumunu İzin İsteyerek Alma
+function anlikKonumAl() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            document.getElementById('anlik-konum').value = `${lat}, ${lng}`;
+            if (anlikHarita && anlikMarker) {
+                anlikHarita.setView([lat, lng], 14);
+                anlikMarker.setLatLng([lat, lng]);
+            }
+            bildirimGoster("GPS konumu alındı!", "success");
+        }, () => {
+            bildirimGoster("Konum erişimi reddedildi veya bulunamadı.", "error");
+        });
+    } else {
+        bildirimGoster("Tarayıcınız konum servisini desteklemiyor.", "error");
+    }
+}
+function anlikFotoOnizle(input) {
+    if (input.files && input.files[0]) {
+        const file = input.files[0];
+        const reader = new FileReader();
+
+        // Tarih formatını oluştur: YYYYMMDD-HH-MM
+        const simdi = new Date();
+        const yil = simdi.getFullYear();
+        const ay = String(simdi.getMonth() + 1).padStart(2, '0');
+        const gun = String(simdi.getDate()).padStart(2, '0');
+        const saat = String(simdi.getHours()).padStart(2, '0');
+        const dak = String(simdi.getMinutes()).padStart(2, '0');
+
+        const zamanDamgasi = `${yil}${ay}${gun}-${saat}-${dak}`;
+        anlikYuklenenFotoAdi = `${zamanDamgasi}.jpg`;
+
+        const hedefYol = `img/posts/${yil}/${anlikYuklenenFotoAdi}`;
+
+        reader.onload = function (e) {
+            document.getElementById('anlik-foto-img').src = e.target.result;
+            document.getElementById('anlik-foto-onizleme-kapsayici').style.display = 'block';
+            document.getElementById('anlik-foto-yolu-bilgi').innerText = `Kayıt Yolu: ${hedefYol}`;
+            
+            // Base64 içeriğini hazırlama (GitHub API upload için)
+            anlikYuklenenFotoBase64 = e.target.result.split(',')[1];
+        };
+
+        reader.readAsDataURL(file);
+    }
+}
+// Dinamik Etiket Kutusunu Çizme
+function anlikEtiketArayuzunuCiz() {
+    const kutu = document.getElementById('anlik-etiket-kutusu');
+    const input = document.getElementById('anlik-etiket-input');
+    
+    // Eski rozetleri/rozet çiplerini temizle (input hariç)
+    kutu.querySelectorAll('.etiket-cip').forEach(el => el.remove());
+
+    anlikSecilenEtiketler.forEach((tag, idx) => {
+        const cip = document.createElement('span');
+        cip.className = 'etiket-cip';
+        cip.style.cssText = 'background:#e2e8f0; color:#1e293b; padding:2px 8px; border-radius:12px; font-size:12px; display:inline-flex; align-items:center; gap:5px;';
+        cip.innerHTML = `${tag} <b onclick="anlikEtiketSil(${idx})" style="cursor:pointer; color:#ef4444;">&times;</b>`;
+        kutu.insertBefore(cip, input);
+    });
+}
+
+function anlikEtiketSil(idx) {
+    anlikSecilenEtiketler.splice(idx, 1);
+    anlikEtiketArayuzunuCiz();
+}
+
+// Input içinde Enter/Virgül Yakalama
+document.addEventListener('DOMContentLoaded', () => {
+    const etiketInput = document.getElementById('anlik-etiket-input');
+    if (etiketInput) {
+        etiketInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ',') {
+                e.preventDefault();
+                const val = etiketInput.value.replace(',', '').trim();
+                if (val && !anlikSecilenEtiketler.includes(val)) {
+                    anlikSecilenEtiketler.push(val);
+                    anlikEtiketArayuzunuCiz();
+                }
+                etiketInput.value = '';
+            }
+        });
+    }
+});
+
+// Rozetleri Yükleme ve Tikle/Çıkar İşlemi
+function anlikRozetleriYukle() {
+    const alan = document.getElementById('anlik-rozet-secim-alani');
+    alan.innerHTML = '';
+
+    // `mevcutRozetlerDizisi` panelinizde halihazırda yüklü gelen rozet listesidir
+    if (typeof mevcutRozetlerDizisi !== 'undefined' && mevcutRozetlerDizisi.length > 0) {
+        mevcutRozetlerDizisi.forEach(r => {
+            const secili = anlikSecilenRozetler.includes(r.sinif);
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.style.cssText = `padding: 4px 10px; border-radius: 15px; font-size: 12px; border: 1px solid ${r.renk}; cursor: pointer; background: ${secili ? r.renk : '#fff'}; color: ${secili ? '#fff' : r.renk}`;
+            btn.innerText = `🎖️ ${r.sinif}`;
+            btn.onclick = () => {
+                if (anlikSecilenRozetler.includes(r.sinif)) {
+                    anlikSecilenRozetler = anlikSecilenRozetler.filter(x => x !== r.sinif);
+                } else {
+                    anlikSecilenRozetler.push(r.sinif);
+                }
+                document.getElementById('anlik-ozel').value = anlikSecilenRozetler.join(', ');
+                anlikRozetleriYukle();
+            };
+            alan.appendChild(btn);
+        });
+    } else {
+        alan.innerHTML = '<span style="font-size:12px; color:#64748b;">Rozetler varsayılan olarak "fotoğraf, anlık" seçilidir.</span>';
+    }
+}
+async function anlikPaylasimGonder(event) {
+    event.preventDefault();
+    const token = localStorage.getItem('gh_oauth_token');
+    if (!token) return alert("Lütfen önce giriş yapın.");
+
+    const simdi = new Date();
+    const yil = simdi.getFullYear();
+    const ay = String(simdi.getMonth() + 1).padStart(2, '0');
+    const gun = String(simdi.getDate()).padStart(2, '0');
+    const saat = String(simdi.getHours()).padStart(2, '0');
+    const dak = String(simdi.getMinutes()).padStart(2, '0');
+
+    const zamanFormatli = `${yil}${ay}${gun}-${saat}-${dak}`;
+    const idFormatli = `${yil}/${zamanFormatli}`;
+    const kapakResmiYolu = `img/posts/${yil}/${zamanFormatli}.jpg`;
+
+    // 1. ADIM: Fotoğrafı 'img/posts/YYYY/YYYYMMDD-HH-MM.jpg' Yoluna Upload Et
+    const fotoUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${kapakResmiYolu}`;
+    
+    try {
+        bildirimGoster("Fotoğraf GitHub'a yükleniyor...", "success");
+
+        const fotoPayload = {
+            message: `Panel: Anlık paylaşım görseli eklendi (${zamanFormatli})`,
+            content: anlikYuklenenFotoBase64
+        };
+
+        const fotoRes = await fetch(fotoUrl, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(fotoPayload)
+        });
+
+        if (!fotoRes.ok) throw new Error("Fotoğraf GitHub'a yüklenirken hata oluştu.");
+
+        // 2. ADIM: yazilar/yazilar.json Dosyasını Güncelle
+        bildirimGoster("Yazı JSON verisi güncelleniyor...", "success");
+
+        const yeniAnlikObje = {
+            "id": idFormatli,
+            "baslik": document.getElementById('anlik-baslik').value.trim(),
+            "aciklama": document.getElementById('anlik-aciklama').value.trim(),
+            "url": "",
+            "tarih": zamanFormatli,
+            "kategori": "Anlık",
+            "ozel": document.getElementById('anlik-ozel').value,
+            "konum": document.getElementById('anlik-konum').value,
+            "kapakresmi": kapakResmiYolu,
+            "etiketler": [anlikSecilenEtiketler.join(',')]
+        };
+
+        // Mevcut blog/yazılar dizisinin en başına ekle
+        mevcutYazilarDizisi.unshift(yeniAnlikObje);
+
+        // yazilar.json için Commit İşlemi
+        const jsonUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_YAZILAR}`;
+        const jsonString = JSON.stringify(mevcutYazilarDizisi, null, 2);
+        const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+        // SHA değerini güncel alalım
+        const getSha = await fetch(jsonUrl, { headers: { "Authorization": `token ${token}` } });
+        const getShaData = await getSha.json();
+
+        const jsonPayload = {
+            message: `Panel: Anlık sosyal medya gönderisi eklendi (${zamanFormatli})`,
+            content: base64Content,
+            sha: getShaData.sha
+        };
+
+        const jsonRes = await fetch(jsonUrl, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(jsonPayload)
+        });
+
+        if (!jsonRes.ok) throw new Error("yazilar.json güncellenirken hata oluştu.");
+
+        bildirimGoster("🚀 Anlık paylaşım ve fotoğraf başarıyla yayınlandı!", "success");
+        document.getElementById('form-yeni-anlik').reset();
+        document.getElementById('anlik-foto-onizleme-kapsayici').style.display = 'none';
+
+    } catch (error) {
+        bildirimGoster("Hata: " + error.message, "error");
+    }
+}
+
+// ==========================================	YENİ KODLAR ÜSTE EKLENİYOR	-->		
         function cikisYap() {
             localStorage.removeItem('gh_oauth_token');
             window.location.reload();
