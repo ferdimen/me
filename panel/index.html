@@ -306,25 +306,31 @@
                 </div>
             </div>
 
-<!-- Kronoloji Sekmesi İçindeki Dış Bağlantı Alanı -->
+
 <div class="form-row">
+    <div class="form-group" style="position: relative;">
+        <label for="tl-linkUrl">Dış Bağlantı URL veya Oynatma Listesi Ara:</label>
+        
+        <!-- Etiket Seçilince Gösterilecek Konteyner -->
+        <div id="tl-selected-tag-container" style="display: none; align-items: center; gap: 8px; margin-bottom: 5px;">
+            <span id="tl-selected-tag" style="background: #e0e0e0; padding: 5px 10px; border-radius: 15px; font-weight: bold; font-size: 14px; display: inline-flex; align-items: center; gap: 6px;">
+                <span id="tl-tag-text"></span>
+                <span onclick="playlistEtiketiKaldir()" style="cursor: pointer; font-weight: bold; color: #ff4d4d; margin-left: 4px;">&times;</span>
+            </span>
+        </div>
+
+        <!-- Manuel URL veya Arama İnput'u -->
+        <input type="text" id="tl-linkUrl" placeholder="Playlist ara veya manuel URL girin..." oninput="playlistAra(this.value)" autocomplete="off">
+
+        <!-- Autocomplete Öneri Listesi -->
+        <div id="tl-autocomplete-list" style="position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #ccc; z-index: 1000; max-height: 150px; overflow-y: auto; display: none; box-shadow: 0px 4px 6px rgba(0,0,0,0.1);"></div>
+    </div>
+    
     <div class="form-group">
-        <label for="tl-playlist-sec">🎬 Oynatma Listesi Seç (Örn: Anadolu İrfanı):</label>
-        <select id="tl-playlist-sec" onchange="playlistSecildi(this)">
-            <option value="">-- Manuel Bağlantı Gir veya Playlist Seç --</option>
-        </select>
+        <label for="tl-linkMetni">Dış Bağlantı Metni:</label>
+        <input type="text" id="tl-linkMetni" value="Tur Videolarını İzle">
     </div>
 </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="tl-linkUrl">Dış Bağlantı URL (Örn: Youtube):</label>
-                    <input type="text" id="tl-linkUrl" placeholder="https://...">
-                </div>
-                <div class="form-group">
-                    <label for="tl-linkMetni">Dış Bağlantı Metni:</label>
-                    <input type="text" id="tl-linkMetni" value="Tur Videolarını İzle">
-                </div>
-            </div>
             
             <div style="display: flex; gap: 10px;">
                 <button type="submit" id="btn-tl-kaydet" class="btn" style="background: #8b5cf6; flex: 2;">Kronolojiye Ekle</button>
@@ -1944,53 +1950,111 @@ async function videoYukle(token) {
 
         const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
         mevcutVideoDizisi = JSON.parse(decodedContent);
-// PLAYLIST LISTESINI KRONOLOJI DROPDOWN'INA DOLDURAN GÜNCELLENMİŞ FONKSIYON
-function kronolojiPlaylistListesiniGuncelle() {
-    const selectEl = document.getElementById('tl-playlist-sec');
-    if (!selectEl) {
-        console.warn("kronolojiPlaylistListesiniGuncelle: 'tl-playlist-sec' ID'li select elemanı bulunamadı.");
+// Seçilen playlist adını hafızada tutmak için global değişken
+let secilenPlaylistAdi = "";
+
+// 1. INPUT'A YAZILDIĞINDA PLAYLIST'LERİ SÜZEN FONKSİYON
+function playlistAra(metin) {
+    const listEl = document.getElementById('tl-autocomplete-list');
+    if (!listEl) return;
+
+    // Arama metni boşsa veya playlist etiket olarak zaten seçildiyse kapat
+    if (!metin || metin.trim() === "" || secilenPlaylistAdi !== "") {
+        listEl.style.display = 'none';
         return;
     }
 
-    // Tekrarlayan playlist isimlerini önlemek için Set kullanıyoruz
+    const aramaMetni = metin.toLowerCase().trim();
     const playlistler = new Set();
 
-    // Verinin dizi olup olmadığını garantiye alıyoruz
+    // mevcutVideoDizisi içinden playlist isimlerini tara
     if (Array.isArray(mevcutVideoDizisi)) {
         mevcutVideoDizisi.forEach(video => {
-            // "playlist", "Playlist" veya "PLAYLIST" gibi olası büyük/küçük harf durumlarını kontrol et
             const plAd = video.playlist || video.Playlist || video.playlistName;
-            if (plAd && typeof plAd === 'string' && plAd.trim() !== "") {
+            if (plAd && typeof plAd === 'string' && plAd.toLowerCase().includes(aramaMetni)) {
                 playlistler.add(plAd.trim());
             }
         });
-    } else {
-        console.error("kronolojiPlaylistListesiniGuncelle: mevcutVideoDizisi bir dizi değil!", mevcutVideoDizisi);
+    }
+
+    // Eşleşen sonuç yoksa listeyi gizle
+    if (playlistler.size === 0) {
+        listEl.style.display = 'none';
         return;
     }
 
-    // Seçim kutusunu sıfırla
-    selectEl.innerHTML = '<option value="">-- Manuel Bağlantı Gir veya Playlist Seç --</option>';
-    
-    // Bulunan playlist'leri ekle
+    // Önerileri listele
+    listEl.innerHTML = '';
     playlistler.forEach(pl => {
-        const option = document.createElement('option');
-        // Value kısmında doğrudan temiz metni taşıyoruz
-        option.value = `izle.html?playlist=${pl}`;
-        option.innerText = `🎬 Oynatma Listesi: ${pl}`;
-        selectEl.appendChild(option);
+        const item = document.createElement('div');
+        item.style.padding = '8px 12px';
+        item.style.cursor = 'pointer';
+        item.style.borderBottom = '1px solid #eee';
+        item.innerHTML = `🎬 <strong>${pl}</strong>`;
+        
+        // Öneri öğesine tıklandığında
+        item.onclick = function() {
+            playlistEtiketiSec(pl);
+        };
+        listEl.appendChild(item);
     });
 
-    console.log(`Playlist listesi güncellendi. Toplam ${playlistler.size} adet playlist bulundu:`, Array.from(playlistler));
+    listEl.style.display = 'block';
 }
 
-// DROPDOWN'DAN SEÇİM YAPILDILIĞINDA ÇALIŞACAK FONKSİYON
-function playlistSecildi(selectEl) {
-    const urlInput = document.getElementById('tl-linkUrl');
-    if (selectEl.value && urlInput) {
-        urlInput.value = selectEl.value;
+// 2. ÖNERİLERDEN BİR PLAYLIST SEÇİLDİĞİNDE
+function playlistEtiketiSec(plAdi) {
+    secilenPlaylistAdi = plAdi;
+    
+    const inputEl = document.getElementById('tl-linkUrl');
+    const tagContainer = document.getElementById('tl-selected-tag-container');
+    const tagText = document.getElementById('tl-tag-text');
+    const listEl = document.getElementById('tl-autocomplete-list');
+
+    // İnput'u gizle, etiketi göster
+    if (inputEl) inputEl.style.display = 'none';
+    if (tagText) tagText.innerText = `🎬 Oynatma Listesi: ${plAdi}`;
+    if (tagContainer) tagContainer.style.display = 'flex';
+    if (listEl) listEl.style.display = 'none';
+}
+
+// 3. ETIKETTEKİ 'X' BUTONUNA TIKLANDIĞINDA
+function playlistEtiketiKaldir() {
+    secilenPlaylistAdi = "";
+    
+    const inputEl = document.getElementById('tl-linkUrl');
+    const tagContainer = document.getElementById('tl-selected-tag-container');
+
+    // Etiketi gizle, input'u temizleyip tekrar göster
+    if (tagContainer) tagContainer.style.display = 'none';
+    if (inputEl) {
+        inputEl.value = '';
+        inputEl.style.display = 'block';
+        inputEl.focus();
     }
 }
+
+// 4. VERİYİ KAYDEDERKEN / JSON'A DÖNÜŞTÜRÜRKEN ÇAĞIRACAĞIN URL ALMA FONKSİYONU
+function kronolojiLinkUrlGetir() {
+    const inputEl = document.getElementById('tl-linkUrl');
+    
+    // Eğer bir playlist etiket olarak seçilmişse
+    if (secilenPlaylistAdi !== "") {
+        return `izle.html?playlist=${secilenPlaylistAdi}`;
+    }
+    
+    // Eğer etiket seçilmemişse, direkt input'a ne yazıldıysa (Youtube URL vs.) onu döndür
+    return inputEl ? inputEl.value.trim() : "";
+}
+
+// Sayfa üzerinde başka bir yere tıklanınca öneri listesini kapat
+document.addEventListener('click', function(e) {
+    const listEl = document.getElementById('tl-autocomplete-list');
+    const inputEl = document.getElementById('tl-linkUrl');
+    if (listEl && e.target !== inputEl) {
+        listEl.style.display = 'none';
+    }
+});
         videoListele();
     } catch (error) {
         console.log("Video yükleme hatası: " + error.message);
