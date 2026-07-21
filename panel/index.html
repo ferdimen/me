@@ -93,7 +93,8 @@
 				<button class="tab-btn" onclick="sekmeDegistir('dosyalar-tab')">📁 Dosya Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('footer-tab')">📢 Footer Mesajları</button>
                 <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
-                <!-- Gelecekte buraya yeni butonlar gelebilir -->
+<!-- // ==========================================	YENİ TABLARIN BAŞLIKLARI ÜSTE EKLENİYOR	-->				
+                <!-- Gelecekte buraya yeni butonlar gelebilir --> 
             </div>
 
             <!-- SAĞ İÇERİK ALANI -->
@@ -305,6 +306,15 @@
                 </div>
             </div>
 
+<!-- Kronoloji Sekmesi İçindeki Dış Bağlantı Alanı -->
+<div class="form-row">
+    <div class="form-group">
+        <label for="tl-playlist-sec">🎬 Oynatma Listesi Seç (Örn: Anadolu İrfanı):</label>
+        <select id="tl-playlist-sec" onchange="playlistSecildi(this)">
+            <option value="">-- Manuel Bağlantı Gir veya Playlist Seç --</option>
+        </select>
+    </div>
+</div>
             <div class="form-row">
                 <div class="form-group">
                     <label for="tl-linkUrl">Dış Bağlantı URL (Örn: Youtube):</label>
@@ -769,7 +779,7 @@
         </button>
     </div>
 </div>
-		
+<!-- // ==========================================	SAYFA İÇERİKLERİ ÜSTE EKLENİYOR	-->
 				<!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
                 <div id="yeni-sekme-tab" class="tab-content">
                     <h3>Yeni Dosya / Değişken Ayarları</h3>
@@ -855,7 +865,7 @@ let mevcutDosyalarDizisi = [];
 const PATH_FOOTER = "data/footer.json";
 let shaFooter = "";
 let footerAnaVeri = { "varsayilanMesaj": "", "ozelGunler": [] };
-
+// ========================================== PATH_XXX BİLGİLERİ ÜSTE EKLENİYOR
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
             box.innerText = mesaj;
@@ -927,13 +937,13 @@ if (token) {
 	blogYukle(token);
 	dosyalariYukle(token);
 	footerVerileriniYukle(token);
-    // YENİ EKLENEN KRONOLOJİ YÜKLEYİCİLERİ
+// ========================================== XXX(token) BİLGİLERİ ÜSTE EKLENİYOR 
     yazilariYukle(token).then(() => {
         timelineYukle(token);
     });
 }
         }
-
+// ========================================== NERDEYİM SEKMESİ 
         // NERDEYİM VERİSİNİ GETİR
         async function konumuYukle(token) {
             const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KONUM}`;
@@ -1019,6 +1029,7 @@ if (token) {
 // Aylar dizisi (Tarihi formatlamak için global alanda dursun)
 const AYLAR_TR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
 
+// ========================================== HABERLER SEKMESİ
 // 1. HABERLERİ GİTHUB'DAN ÇEKME VE EKRANDA LİSTELEME
 async function haberleriYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_HABER}`;
@@ -1203,6 +1214,7 @@ async function haberleriGithubaGonder() {
         bildirimGoster(error.message, "error");
     }
 }
+// ========================================== YAZILAR SEKMESİ TİMELİNE İÇİN
 // 1. YAZILAR.JSON DOSYASINI AÇILIR LİSTE İÇİN ÇEKME
 async function yazilariYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_YAZILAR}`;
@@ -1424,6 +1436,7 @@ async function timelineGithubaGonder() {
         bildirimGoster(error.message, "error");
     }
 }
+// ========================================== SIK SORULAN SORULAR SEKMESİ
 // 1. SSS VERİSİNİ GİTHUB'DAN ÇEKME
 async function sssYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_SSS}`;
@@ -1565,6 +1578,7 @@ async function sssGithubaGonder() {
         bildirimGoster(error.message, "error");
     }
 }
+// ========================================== ROZETLER SEKMESİ
 // 1. ROZET VERİSİNİ GİTHUB'DAN ÇEKME
 async function rozetlerYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_ROZETLER}`;
@@ -1753,9 +1767,8 @@ async function rozetleriGithubaGonder() {
         bildirimGoster("GitHub veriyi kaydedemedi: " + error.message, "error");
     }
 }
-// ==========================================
+// ========================================== SOSYAL MEDYA SEKMESİ
 // 7. SEKME: SOSYAL MEDYA YÖNETİM FONKSİYONLARI
-// ==========================================
 
 // 1. SOSYAL MEDYA VERİSİNİ GİTHUB'DAN ÇEKME
 async function sosyalYukle(token) {
@@ -1916,9 +1929,8 @@ async function sosyalMediaGithubaGonder() {
         bildirimGoster(error.message, "error");
     }
 }
-// ==========================================
+// ========================================== VİDEO SEKMESİ
 // 8. SEKME: VİDEO YÖNETİM FONKSİYONLARI
-// ==========================================
 
 // 1. VİDEO VERİSİNİ GİTHUB'DAN ÇEKME
 async function videoYukle(token) {
@@ -1932,6 +1944,41 @@ async function videoYukle(token) {
 
         const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
         mevcutVideoDizisi = JSON.parse(decodedContent);
+
+// 1. VIDEO.JSON YÜKLENDİĞİNDE PLAYLIST LISTESINI KRONOLOJI DROPDOWN'INA DOLDURAN FONKSIYON
+function kronolojiPlaylistListesiniGuncelle() {
+    const selectEl = document.getElementById('tl-playlist-sec');
+    if (!selectEl) return;
+
+    // Tekrarlayan playlist isimlerini önlemek için Set kullanıyoruz
+    const playlistler = new Set();
+    mevcutVideoDizisi.forEach(video => {
+        if (video.playlist && video.playlist.trim() !== "") {
+            playlistler.add(video.playlist.trim());
+        }
+    });
+
+    selectEl.innerHTML = '<option value="">-- Manuel Bağlantı Gir veya Playlist Seç --</option>';
+    
+    playlistler.forEach(pl => {
+        const option = document.createElement('option');
+        option.value = `izle.html?playlist=${encodeURIComponent(pl)}`;
+        option.innerText = `🎬 Oynatma Listesi: ${pl}`;
+        selectEl.appendChild(option);
+    });
+}
+
+// 2. DROPDOWN'DAN PLAYLIST SEÇİLDİĞİNDE URL ALANINA OTOMATİK YAZMA
+function playlistSecildi(selectEl) {
+    if (selectEl.value) {
+        // izle.html?playlist=Anadolu İrfanı formatında yazdırılır
+        document.getElementById('tl-linkUrl').value = decodeURIComponent(selectEl.value);
+    }
+}
+
+// 3. videoYukle FONKSIYONUNUN SONUNA EKLENECEK TETİKLEYİCİ
+// (Mevcut videoYukle fonksiyonunun içinde veriler çekildikten sonra en alta şu satırı eklemelisin):
+// kronolojiPlaylistListesiniGuncelle();
 
         videoListele();
     } catch (error) {
@@ -2139,9 +2186,8 @@ async function videoMediaGithubaGonder() {
         bildirimGoster(error.message, "error");
     }
 }
-// ========================================================
+// ========================================== BLOG YAZILARI
 // 9. SEKME: ENTEGRE BLOG YAZILARI YÖNETİM SİSTEMİ
-// ========================================================
 
 // 1. GİTHUB'DAN VERİLERİN ÇEKİLMESİ
 async function blogYukle(token) {
@@ -2718,6 +2764,7 @@ document.addEventListener('input', function(e) {
         }
     }
 });
+// ========================================== DOSYALAR SEKMESİ
 // 1. DOSYALARI GİTHUB'DAN ÇEKME
 async function dosyalariYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_DOSYALAR}`;
@@ -2910,7 +2957,7 @@ async function dosyalariGithubaGonder() {
     }
 }
 
-
+// ========================================== FOOTER SEKMESİ
 async function footerVerileriniYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_FOOTER}`;
     try {
