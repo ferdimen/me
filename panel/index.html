@@ -3218,7 +3218,6 @@ function anlikFotoOnizle(input) {
         const file = input.files[0];
         const reader = new FileReader();
 
-        // Tarih formatını oluştur: YYYYMMDD-HH-MM
         const simdi = new Date();
         const yil = simdi.getFullYear();
         const ay = String(simdi.getMonth() + 1).padStart(2, '0');
@@ -3236,12 +3235,52 @@ function anlikFotoOnizle(input) {
             document.getElementById('anlik-foto-onizleme-kapsayici').style.display = 'block';
             document.getElementById('anlik-foto-yolu-bilgi').innerText = `Kayıt Yolu: ${hedefYol}`;
             
-            // Base64 içeriğini hazırlama (GitHub API upload için)
             anlikYuklenenFotoBase64 = e.target.result.split(',')[1];
         };
 
         reader.readAsDataURL(file);
+
+        // 📸 FOTOĞRAFTAN EXIF (GPS) BİLGİSİ OKUMA
+        EXIF.getData(file, function() {
+            const lat = EXIF.getTag(this, "GPSLatitude");
+            const lon = EXIF.getTag(this, "GPSLongitude");
+            const latRef = EXIF.getTag(this, "GPSLatitudeRef") || "N";
+            const lonRef = EXIF.getTag(this, "GPSLongitudeRef") || "E";
+
+            if (lat && lon) {
+                // EXIF derece, dakika, saniye (DMS) formatını Ondalık (Decimal) formata çeviriyoruz
+                const latitude = dmsToDecimal(lat, latRef);
+                const longitude = dmsToDecimal(lon, lonRef);
+
+                const konumMetni = `${latitude.toFixed(6)}, ${longitude.toFixed(6)}`;
+                document.getElementById('anlik-konum').value = konumMetni;
+
+                // Harita ve Marker'ı güncelliyoruz
+                if (anlikHarita && anlikMarker) {
+                    const yeniKonum = [latitude, longitude];
+                    anlikHarita.setView(yeniKonum, 14);
+                    anlikMarker.setLatLng(yeniKonum);
+                }
+
+                bildirimGoster("📍 Konum fotoğrafın EXIF bilgisinden otomatik alındı!", "success");
+            } else {
+                bildirimGoster("Fotoğrafta GPS verisi bulunamadı. Cihaz konumu veya harita kullanılabilir.", "warning");
+            }
+        });
     }
+}
+
+// DMS (Degrees, Minutes, Seconds) -> Decimal Derece Dönüştürücü Yardımcı Fonksiyon
+function dmsToDecimal(dms, ref) {
+    let degrees = dms[0].numerator / dms[0].denominator;
+    let minutes = dms[1].numerator / dms[1].denominator;
+    let seconds = dms[2].numerator / dms[2].denominator;
+
+    let decimal = degrees + (minutes / 60) + (seconds / 3600);
+    if (ref === "S" || ref === "W") {
+        decimal = decimal * -1;
+    }
+    return decimal;
 }
 // Dinamik Etiket Kutusunu Çizme
 function anlikEtiketArayuzunuCiz() {
