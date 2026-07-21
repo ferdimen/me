@@ -9,24 +9,5 @@
         "metin": "Garmin Haritalar indir"
       }
     ]
-  },
-  {
-    "meta": "Balkan Sınırları",
-    "baslik": "Trakya ve Istranca Hattı",
-    "aciklama": "Yoğun bitki örtüsü, eski göç yolları ve dik tırmanış yüzdeleriyle Trakya coğrafyasının bilinmeyen kıvrımları.",
-    "linkler": [
-      {
-        "url": "https://www.youtube.com/@ferdimen",
-        "metin": "Link1"
-      },
-      {
-        "url": "https://polarsteps.com/ferdimen",
-        "metin": "Link2"
-      },
-      {
-        "url": "https://polarsteps.com/ferdimen",
-        "metin": "Link3"
-      }
-    ]
   }
 ]
