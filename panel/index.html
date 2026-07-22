@@ -3325,7 +3325,7 @@ async function anlikPaylasimGonder(event) {
     let resimYolu = document.getElementById('anlik-mevcut-kapakresmi') ? document.getElementById('anlik-mevcut-kapakresmi').value : "";
     const secilenTarih = document.getElementById('anlik-tarih').value; // YYYY-MM-DD formatında gelir
     const yil = secilenTarih.split('-')[0];
-
+	anlikPaylasimlariListele(); // JSON yüklenince listeyi oluşturur ve "Paylaşımlar yükleniyor..." yazısını kaldırır.
     // 1. Yeni Fotoğraf Yüklendiyse GitHub Reposuna Yükle
     if (anlikYuklenenFotoBase64) {
         bildirimGoster("Fotoğraf GitHub'a yükleniyor...", "success");
@@ -3377,6 +3377,49 @@ async function anlikPaylasimGonder(event) {
     // Ekranda liste varsa güncelle ve formu temizle
     if (typeof anlikPaylasimlariListele === 'function') anlikPaylasimlariListele();
     if (typeof anlikFormuSifirla === 'function') anlikFormuSifirla();
+}
+function anlikPaylasimlariListele() {
+    const kapsayici = document.getElementById('anlik-listesi-kapsayici');
+    if (!kapsayici) return;
+
+    kapsayici.innerHTML = "";
+
+    // SADECE kategorisinde "Anlık" geçen paylaşımları filtrele
+    const anlikYazilar = mevcutYazilarDizisi.filter(yazi => 
+        yazi.kategori && yazi.kategori.toLowerCase().includes("anlık")
+    );
+
+    if (anlikYazilar.length === 0) {
+        kapsayici.innerHTML = `<p style="color: #64748b; font-size: 14px; text-align: center;">Henüz "Anlık" kategorisinde paylaşım bulunmuyor.</p>`;
+        return;
+    }
+
+    anlikYazilar.forEach((yazi) => {
+        // Orijinal dizideki gerçek indeksini bul (Düzenleme ve silme işlemlerinin doğru kayda gitmesi için)
+        const gercekIndex = mevcutYazilarDizisi.findIndex(item => item.id === yazi.id);
+
+        const kart = document.createElement('div');
+        kart.className = 'haber-kart';
+        kart.style.background = "#fff";
+        
+        const kapak = yazi.kapakresmi || "";
+        const imgTag = kapak ? `<img src="${kapak.startsWith('/') ? 'https://www.ferdimen.com' + kapak : kapak}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; margin-right: 10px;">` : '';
+
+        kart.innerHTML = `
+            <div style="display: flex; align-items: center; flex: 1;">
+                ${imgTag}
+                <div class="haber-kart-detay">
+                    <div class="haber-kart-meta">${yazi.tarih} ${yazi.aciklama ? ' - ' + yazi.aciklama : ''}</div>
+                    <h4 class="haber-kart-baslik">${yazi.baslik || yazi.id}</h4>
+                </div>
+            </div>
+            <div>
+                <button type="button" class="haber-kart-butonu btn-duzenle" onclick="anlikDuzenleTetikle(${gercekIndex})">Düzenle</button>
+                <button type="button" class="haber-kart-butonu btn-sil" onclick="anlikSil(${gercekIndex})">Sil</button>
+            </div>
+        `;
+        kapsayici.appendChild(kart);
+    });
 }
 async function anlikSil(index) {
     const yazi = mevcutYazilarDizisi[index];
