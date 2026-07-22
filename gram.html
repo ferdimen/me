@@ -741,24 +741,26 @@
         // CSS'e sütun sayısını ilet
         gridContainer.style.setProperty('--grid-cols', herSiradaFotoSayisi);
 
-        fetch('yazilar/yazilar.json?v=' + new Date().getTime())
-            .then(res => {
-                if (!res.ok) throw new Error("Yazılar JSON dosyası okunamadı!");
-                return res.json();
-            })
-            .then(data => {
-                const anlikYazilar = data.filter(yazi => yazi.kategori === "Anlık");
+fetch('yazilar/yazilar.json?v=' + new Date().getTime())
+    .then(res => res.json())
+    .then(data => {
+        // 1. Sadece "Anlık" kategorisini filtrele
+        let anlikYazilar = data.filter(yazi => yazi.kategori === "Anlık");
 
-                if (anlikYazilar.length === 0) {
-                    gridContainer.innerHTML = "<p style='padding:20px;'>Henüz anlık paylaşım bulunmuyor.</p>";
-                    return;
-                }
+        // 2. TARİHE GÖRE SIRALAMA (Yeniden Eskiye / Son yüklenen ilk görünür)
+        anlikYazilar.sort((a, b) => new Date(b.tarih) - new Date(a.tarih));
 
-                window.anlikVerileri = anlikYazilar;
-                
-                // İlk grup fotoğrafları yükle
-                renderAnlikPhotos();
-            })
+        // Note: Eğer Eskiden Yeniye doğru sıralamak istersen a ile b'nin yerini değiştir:
+        // anlikYazilar.sort((a, b) => new Date(a.tarih) - new Date(b.tarih));
+
+        if (anlikYazilar.length === 0) {
+            gridContainer.innerHTML = "<p style='padding:20px;'>Henüz anlık paylaşım bulunmuyor.</p>";
+            return;
+        }
+
+        window.anlikVerileri = anlikYazilar;
+        renderAnlikPhotos();
+    })
             .catch(err => {
                 console.error("Anlık gönderiler yüklenirken hata oluştu:", err);
                 gridContainer.innerHTML = "<p style='padding:20px;'>Anlık paylaşımlar yüklenemedi.</p>";
