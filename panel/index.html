@@ -3227,9 +3227,8 @@ function anlikFotoOnizle(input) {
         const saat = String(simdi.getHours()).padStart(2, '0');
         const dak = String(simdi.getMinutes()).padStart(2, '0');
 
-        const zamanDamgasi = `${yil}-${ay}-${gun}`;
-        const fotozamanDamgasi = `${yil}${ay}${gun}-${saat}-${dak}`;
-        anlikYuklenenFotoAdi = `${fotozamanDamgasi}.jpg`;
+        const zamanDamgasi = `${yil}${ay}${gun}-${saat}-${dak}`;
+        anlikYuklenenFotoAdi = `${zamanDamgasi}.jpg`;
 
         const hedefYol = `/img/posts/${yil}/${anlikYuklenenFotoAdi}`;
 
@@ -3331,7 +3330,7 @@ async function anlikPaylasimGonder(event) {
     const saat = String(simdi.getHours()).padStart(2, '0');
     const dak = String(simdi.getMinutes()).padStart(2, '0');
 
-    const zamanFormatli = `${yil}${ay}${gun}-${saat}-${dak}`;
+    const zamanFormatli = `${yil}-${ay}-${gun}-(${saat}-${dak})`;
     const idFormatli = `${yil}/${zamanFormatli}`;
 
     // GitHub Repo içindeki fiziksel yükleme yolu (başında '/' olmadan)
