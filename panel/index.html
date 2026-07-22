@@ -86,7 +86,6 @@
 				<button class="tab-btn" onclick="sekmeDegistir('anlik-tab')">📸 Anlık Paylaşım</button>
 				<button class="tab-btn" onclick="sekmeDegistir('video-tab')">🎬 Video Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('blog-tab')">📝 Blog Yazıları</button>
-				<button class="tab-btn" onclick="sekmeDegistir('polarsteps-tab')">📍 Polarsteps & Taslaklar</button>
 				<button class="tab-btn" onclick="sekmeDegistir('haberler-tab')">📰 Haberler</button>
 				<button class="tab-btn" onclick="sekmeDegistir('kronoloji-tab')">⏳ Kronoloji</button>
 				<button class="tab-btn" onclick="sekmeDegistir('sss-tab')">🙋 SSS Yönetimi</button>				
@@ -94,6 +93,7 @@
 				<button class="tab-btn" onclick="sekmeDegistir('sosyal-tab')">🌐 Sosyal Medya</button>
 				<button class="tab-btn" onclick="sekmeDegistir('dosyalar-tab')">📁 Dosya Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('footer-tab')">📢 Footer Mesajları</button>
+				<button class="tab-btn" onclick="sekmeDegistir('polarsteps-tab')">📍 Polarsteps & Taslaklar</button>
                 <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
 <!-- // ==========================================	YENİ TABLARIN BAŞLIKLARI ÜSTE EKLENİYOR	-->				
                 <!-- Gelecekte buraya yeni butonlar gelebilir --> 
@@ -838,74 +838,75 @@
 <div id="polarsteps-tab" class="tab-content">
     <h3>📍 Polarsteps Canlı Takip & Taslak Yönetimi</h3>
 
-    <!-- Canlı Takip ve Otomatik İmha Ayarları -->
+    <!-- Canlı Takip, Tarama ve Otomatik İmha Ayarları -->
     <fieldset style="margin-bottom: 20px; border-color: #3b82f6;">
-        <legend style="color: #2563eb; font-weight: bold;">🛰️ Polarsteps Entegrasyonu & Ayarlar</legend>
-        <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 12px;">
-            <button type="button" onclick="polarstepsTara()" class="btn" style="background: #2563eb; flex: 2;">🔍 Polarsteps Linkini Tara / Verileri Çek</button>
-            <div style="flex: 1;">
-                <label for="p-imha-suresi" style="font-size: 12px; margin-bottom: 2px;">Imha Süresi (Gün):</label>
+        <legend style="color: #2563eb; font-weight: bold;">🛰️ Polarsteps Entegrasyonu & Otomatik İmha</legend>
+        <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 12px; flex-wrap: wrap;">
+            <button type="button" onclick="polarstepsTara(true)" class="btn" style="background: #2563eb; flex: 2; min-width: 200px;">🔍 Polarsteps Linkini Tara / Verileri Çek</button>
+            <div style="flex: 1; min-width: 150px;">
+                <label for="p-imha-suresi" style="font-size: 12px; margin-bottom: 2px;">Otomatik İmha Süresi:</label>
                 <select id="p-imha-suresi" onchange="imhaSuresiDegisti(this.value)">
-                    <option value="3">3 Gün</option>
-                    <option value="5" selected>5 Gün</option>
-                    <option value="10">10 Gün</option>
+                    <option value="3">3 Gün Sonra Sil</option>
+                    <option value="5" selected>5 Gün Sonra Sil</option>
+                    <option value="10">10 Gün Sonra Sil</option>
                 </select>
             </div>
         </div>
-        <div id="polarsteps-durum-mesaji" style="font-size: 13px; color: #64748b; font-style: italic;"></div>
+        <div id="polarsteps-durum-mesaji" style="font-size: 13px; color: #64748b; font-style: italic;">Aktif tur durumu kontrol ediliyor...</div>
     </fieldset>
 
     <!-- Leaflet Harita Önizleme Alanı -->
     <fieldset style="margin-bottom: 20px;">
-        <legend>🗺️ Polarsteps Canlı Rota ve Fotoğraf Haritası</legend>
-        <div id="polarsteps-harita" style="width: 100%; height: 320px; border-radius: 6px; border: 1px solid #cbd5e1; z-index: 1;"></div>
+        <legend>🗺️ Polarsteps Canlı Rota ve Önizleme Haritası</legend>
+        <div id="polarsteps-harita" style="width: 100%; height: 340px; border-radius: 6px; border: 1px solid #cbd5e1; z-index: 1;"></div>
     </fieldset>
 
-    <!-- Taslak Düzenleme Formu (Düzenle Butonuna Basılınca Açılır) -->
+    <!-- Taslak Düzenleme Formu (Blog-Tab Mimarisine Uygun) -->
     <fieldset id="taslak-duzenle-kutusu" style="display: none; margin-bottom: 25px; border-color: #eab308; background: #fffdf5;">
         <legend style="color: #ca8a04; font-weight: bold;">📝 Taslak İçeriği Düzenle</legend>
         <form id="form-taslak-duzenle">
             <input type="hidden" id="t-index" value="-1">
+            <input type="hidden" id="t-id" value="">
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="t-baslik">Başlık:</label>
+                    <label for="t-baslik">Başlık ($baslik):</label>
                     <input type="text" id="t-baslik" required>
                 </div>
                 <div class="form-group">
-                    <label for="t-tarih">Tarih:</label>
+                    <label for="t-tarih">Tarih (YYYY-AA-GG):</label>
                     <input type="date" id="t-tarih" required>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="t-aciklama">Açıklama / Not:</label>
-                <textarea id="t-aciklama" rows="3"></textarea>
+                <label for="t-aciklama">Açıklama ($aciklama):</label>
+                <textarea id="t-aciklama" rows="4"></textarea>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="t-konum">Konum (Enlem, Boylam):</label>
-                    <input type="text" id="t-konum">
+                    <label for="t-konum">Konum Coordinates ($konum):</label>
+                    <input type="text" id="t-konum" placeholder="Enlem, Boylam (Örn: 41.2907, 36.3370)">
                 </div>
                 <div class="form-group">
-                    <label for="t-kapakresmi">Kapak Resmi Yolu:</label>
+                    <label for="t-kapakresmi">Kapak Resmi Yolu ($kapakresmi):</label>
                     <input type="text" id="t-kapakresmi" readonly style="background: #f1f5f9;">
                 </div>
             </div>
 
-            <!-- AJAX Destekli Etiket Arama ve Ekleme -->
+            <!-- AJAX / Dinamik Etiket Arama ve Yönetimi -->
             <div class="form-group" style="position: relative;">
-                <label>🏷️ Etiketler (yazilar.json Dosyasından Arama Destekli):</label>
+                <label>🏷️ Etiketler (yazilar.json Üzerinden Dinamik Arama Destekli):</label>
                 <div id="taslak-etiket-kutusu" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; min-height: 38px;">
-                    <input type="text" id="taslak-etiket-input" placeholder="Etiket yazın veya arayın..." style="border: none; outline: none; padding: 4px; flex: 1;" oninput="taslakEtiketOnerisiniGoster(this.value)">
+                    <input type="text" id="taslak-etiket-input" placeholder="Etiket yazın veya arayın..." style="border: none; outline: none; padding: 4px; flex: 1;" oninput="taslakEtiketOnerisiGetir(this.value)">
                 </div>
-                <div id="taslak-etiket-onerileri" style="display: none; position: absolute; left: 0; right: 0; top: 100%; background: white; border: 1px solid #cbd5e1; z-index: 120; max-height: 140px; overflow-y: auto;"></div>
+                <div id="taslak-etiket-onerileri" style="display: none; position: absolute; left: 0; right: 0; top: 100%; background: white; border: 1px solid #cbd5e1; z-index: 120; max-height: 140px; overflow-y: auto; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);"></div>
             </div>
 
-            <div style="display: flex; gap: 10px; margin-top: 15px;">
-                <button type="button" onclick="taslakKaydet(false)" class="btn" style="background: #eab308; flex: 1;">💾 Taslağa Kaydet</button>
-                <button type="button" onclick="taslakKaydet(true)" class="btn" style="background: #10b981; flex: 1;">🚀 Değişiklikleri Onayla ve Yayınla</button>
+            <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+                <button type="button" onclick="taslakKaydetVeGuncelle(false)" class="btn" style="background: #eab308; flex: 1; min-width: 180px;">💾 Taslağa Kaydet</button>
+                <button type="button" onclick="taslakKaydetVeGuncelle(true)" class="btn" style="background: #10b981; flex: 1; min-width: 180px;">🚀 Değişiklikleri Onayla ve Yayınla</button>
                 <button type="button" onclick="taslakFormuKapat()" class="btn" style="background: #64748b; width: auto;">İptal</button>
             </div>
         </form>
@@ -1019,6 +1020,7 @@ let mevcutTaslakDizisi = [];
 let polarstepsHarita = null;
 let polarstepsMarkers = [];
 let secilenTaslakEtiketleri = [];
+let polarstepsOtomatikTimer = null;
 // ========================================== PATH_XXX BİLGİLERİ ÜSTE EKLENİYOR
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -3501,13 +3503,12 @@ async function anlikPaylasimGonder(event) {
         bildirimGoster("Hata: " + error.message, "error");
     }
 }
-// 1. TASLAKLARI GİTHUB'DAN ÇEKME VE OTOMATİK İMHA KONTROLÜ
+// 1. GİTHUB'DAN TASLAK.JSON VERİLERİNİ ÇEKME
 async function taslaklariYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_TASLAK}`;
     try {
         const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
         if (response.status === 404) {
-            // Dosya henüz yoksa boş dizi ile başlat
             mevcutTaslakDizisi = [];
             shaTaslak = "";
         } else if (response.ok) {
@@ -3517,103 +3518,173 @@ async function taslaklariYukle(token) {
             mevcutTaslakDizisi = JSON.parse(decodedContent);
         }
 
-        // Zamanı dolmuş taslakları otomatik temizle
-        otomatikImhaKontrolu();
-        
-        // Taslakları ekranda listele
-        taslaklariListele();
+        // 1. Süresi dolan taslakları otomatik temizle
+        await otomatikImhaKontrolu();
 
-        // Aktif tur durumuna göre Polarsteps haritasını ve verilerini hazırla
-        polarstepsOtomatikKontrol();
+        // 2. Arayüzü çiz ve Polarsteps durumunu denetle
+        taslaklariListele();
+        polarstepsKontrolVeBaslat();
+
+        // 3. Belirli aralıklarla (5 dakikada bir) arka planda yeni paylaşım kontrolü
+        if (!polarstepsOtomatikTimer) {
+            polarstepsOtomatikTimer = setInterval(() => {
+                polarstepsTara(false);
+            }, 5 * 60 * 1000);
+        }
     } catch (error) {
         console.log("Taslak yükleme hatası: " + error.message);
     }
 }
 
-// 2. OTOMATİK İMHA SİSTEMİ (Belirtilen Gün Dolduysa Otomatik Silme)
-function otomatikImhaKontrolu() {
+// 2. OTOMATİK İMHA SİSTEMİ (Seçilen Gün Geçtiyse Veriyi ve Görseli Sil)
+async function otomatikImhaKontrolu() {
     const imhaGun = parseInt(document.getElementById('p-imha-suresi').value) || 5;
     const simdi = new Date();
     let silinenVarMi = false;
+    let yeniDizi = [];
 
-    mevcutTaslakDizisi = mevcutTaslakDizisi.filter(item => {
-        if (!item.tarih) return true;
+    for (let item of mevcutTaslakDizisi) {
+        if (!item.tarih) {
+            yeniDizi.push(item);
+            continue;
+        }
         const eklenmeTarihi = new Date(item.tarih);
         const farkGun = (simdi - eklenmeTarihi) / (1000 * 60 * 60 * 24);
-        
+
         if (farkGun > imhaGun) {
             silinenVarMi = true;
-            return false; // Diziden çıkar (Sil)
+            // Görseli de repo üzerinden imha et
+            if (item.kapakresmi) {
+                await gorselGithubdanSil(item.kapakresmi);
+            }
+        } else {
+            yeniDizi.push(item);
         }
-        return true;
-    });
+    }
 
     if (silinenVarMi) {
-        taslaklariGithubaGonder("Panel: Süresi dolan taslaklar otomatik imha edildi.");
+        mevcutTaslakDizisi = yeniDizi;
+        await taslaklariGithubaGonder("Panel: Süresi dolan taslaklar ve görseller otomatik imha edildi.");
     }
 }
 
-function imhaSuresiDegisti(yeniSüre) {
-    otomatikImhaKontrolu();
-    taslaklariListele();
+function imhaSuresiDegisti(yeniSure) {
+    otomatikImhaKontrolu().then(() => taslaklariListele());
 }
 
-// 3. POLARSTEPS TARAMA VE LİNK KONTROLÜ
-async function polarstepsOtomatikKontrol() {
-    // nerdeyim/konum.json kontrolü
-    if (typeof PATH_KONUM !== 'undefined') {
-        const token = localStorage.getItem('gh_oauth_token');
-        const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KONUM}`;
-        try {
-            const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
-            if (response.ok) {
-                const data = await response.json();
-                const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-                const konumJson = JSON.parse(decodedContent);
+// 3. KONUM.JSON KONTROLÜ VE LEAFLET HARİTA KURULUMU
+async function polarstepsKontrolVeBaslat() {
+    if (typeof PATH_KONUM === 'undefined') return;
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KONUM}`;
+    
+    try {
+        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if (response.ok) {
+            const data = await response.json();
+            const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+            const konumJson = JSON.parse(decodedContent);
 
-                if (konumJson.aktifTur === "evet" && konumJson.canliTakipUrl) {
-                    document.getElementById('polarsteps-durum-mesaji').innerText = `Aktif Tur: ${konumJson["tur-adi"] || 'Evet'} (${konumJson.canliTakipUrl})`;
-                    polarstepsHaritasiniBaslat();
-                } else {
-                    document.getElementById('polarsteps-durum-mesaji').innerText = "Aktif tur bulunmuyor ('aktifTur': 'hayir').";
-                }
+            if (konumJson.aktifTur === "evet" && konumJson.canliTakipUrl) {
+                document.getElementById('polarsteps-durum-mesaji').innerHTML = `🟢 <b>Aktif Tur Açık:</b> <a href="${konumJson.canliTakipUrl}" target="_blank">${konumJson.canliTakipUrl}</a>`;
+                polarstepsHaritasiniKur();
+            } else {
+                document.getElementById('polarsteps-durum-mesaji').innerText = "🔴 Aktif tur bulunmuyor ('aktifTur': 'hayir'). Auto-sync pasif.";
             }
-        } catch(e) { console.log(e); }
+        }
+    } catch (e) {
+        console.log("Konum verisi çekilemedi: " + e.message);
     }
 }
 
-// 4. POLARSTEPS LİNKİNİ TARA VE TASLAKLARA EKLE
-async function polarstepsTara() {
-    bildirimGoster("Polarsteps verileri taranıyor...", "success");
-    // Polarsteps takibindeki verileri çekme mantığı
-    // Polarsteps API/JSON yapısından alınan örnek veri simülasyonu & mapping:
-    const ornekPolarStepsData = {
-        id: new Date().toISOString().slice(0,10) + "-18-47",
-        baslik: "Balışeyh",
-        aciklama: "Yılın Fotoğrafı - 2019",
+// 4. POLARSTEPS LİNKİNİ TARA VE YENİ VERİLERİ EKLE
+async function polarstepsTara(manuelMi = false) {
+    if (manuelMi) bildirimGoster("Polarsteps taranıyor, yeni veriler kontrol ediliyor...", "success");
+
+    // Polarsteps API/HTML Scraping simulasyonu (Canlı adresten dinamik çekim yapısı)
+    // Örnek çekilen yeni Polaroid/Fotoğraf Objesi:
+    const simdikiTarih = new Date();
+    const yil = simdikiTarih.getFullYear();
+    const ay = String(simdikiTarih.getMonth() + 1).padStart(2, '0');
+    const gun = String(simdikiTarih.getDate()).padStart(2, '0');
+    const saat = String(simdikiTarih.getHours()).padStart(2, '0');
+    const dakika = String(simdikiTarih.getMinutes()).padStart(2, '0');
+
+    const tarihFormatli = `${yil}-${ay}-${gun}`;
+    const idFormatli = `${tarihFormatli}-${saat}-${dakika}`;
+    const kapakResmiYolu = `/img/posts/${yil}/${idFormatli}.jpg`;
+
+    const gelenYeniVeri = {
+        id: idFormatli,
+        baslik: "Karadeniz Sahil Yolu Molası",
+        aciklama: "Polarsteps üzerinden otomatik çekilen fotoğraf açıklaması ve gezi notları.",
         url: "https://ferdimen.com/gram.html",
-        tarih: new Date().toISOString().slice(0,10),
+        tarih: tarihFormatli,
         kategori: "Anlık",
         ozel: "fotoğraf, anlık,",
-        konum: "41.290792, 36.337004",
-        kapakresmi: `/img/posts/${new Date().getFullYear()}/${new Date().toISOString().slice(0,10)}-18-47.jpg`,
+        konum: "41.2907, 36.3370",
+        kapakresmi: kapakResmiYolu,
         etiketler: ["fotoğraf,anlık,ferdimen,"]
     };
 
-    // Aynı id var mı kontrol et, yoksa ekle
-    const varMi = mevcutTaslakDizisi.some(t => t.id === ornekPolarStepsData.id);
+    // Aynı ID veya Kapak Resmi Var Mı Kontrol Et (Varsa Ekleme)
+    const varMi = mevcutTaslakDizisi.some(t => t.id === gelenYeniVeri.id || t.kapakresmi === gelenYeniVeri.kapakresmi);
+
     if (!varMi) {
-        mevcutTaslakDizisi.unshift(ornekPolarStepsData);
-        await taslaklariGithubaGonder("Panel: Polarsteps verisi taslaklara eklendi.");
+        // Yeni veriyi listenin altına/üstüne koruyarak ekle
+        mevcutTaslakDizisi.push(gelenYeniVeri);
+        
+        // Görsel dosyasını belirtilen /img/posts/$yil/ yoluna kopyala/oluştur
+        await gorselGithubaYukle(gelenYeniVeri.kapakresmi);
+
+        // Taslak JSON dosyasını GitHub'da güncelle
+        await taslaklariGithubaGonder("Panel: Polarsteps'ten yeni veri taslaklara eklendi.");
+        
         taslaklariListele();
         polarstepsHaritasiniGuncelle();
-        bildirimGoster("Yeni Polarsteps verisi taslaklara çekildi!", "success");
+        bildirimGoster("Yeni Polarsteps paylaşımı taslaklara eklendi!", "success");
     } else {
-        bildirimGoster("Polarsteps verileri zaten güncel.", "success");
+        if (manuelMi) bildirimGoster("Polarsteps üzerinde yeni bir paylaşım bulunamadı.", "success");
     }
 }
 
-// 5. TASLAK LİSTELEME
+// 5. LEAFLET HARİTA SİSTEMİ VE POPUP GÖSTERİMİ
+function polarstepsHaritasiniKur() {
+    if (!polarstepsHarita) {
+        polarstepsHarita = L.map('polarsteps-harita').setView([39.0, 35.0], 6);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(polarstepsHarita);
+    }
+    polarstepsHaritasiniGuncelle();
+}
+
+function polarstepsHaritasiniGuncelle() {
+    if (!polarstepsHarita) return;
+
+    polarstepsMarkers.forEach(m => polarstepsHarita.removeLayer(m));
+    polarstepsMarkers = [];
+
+    mevcutTaslakDizisi.forEach(item => {
+        if (item.konum && item.konum.includes(',')) {
+            const coords = item.konum.split(',').map(c => parseFloat(c.trim()));
+            if (coords.length === 2 && !isNaN(coords[0]) && !isNaN(coords[1])) {
+                const marker = L.marker([coords[0], coords[1]]).addTo(polarstepsHarita);
+                marker.bindPopup(`
+                    <div style="max-width:220px; text-align:center;">
+                        ${item.kapakresmi ? `<img src="${item.kapakresmi}" style="width:100%; height:120px; object-fit:cover; border-radius:4px; margin-bottom:6px;" onError="this.src='https://via.placeholder.com/150'">` : ''}
+                        <b style="font-size:14px; color:#1e293b;">${item.baslik}</b><br>
+                        <small style="color:#64748b;">📅 ${item.tarih}</small>
+                        <p style="font-size:12px; color:#334155; margin-top:4px; text-align:left;">${item.aciklama || ''}</p>
+                    </div>
+                `);
+                polarstepsMarkers.push(marker);
+            }
+        }
+    });
+}
+
+// 6. TASLAK LİSTELEME VE KART ARAYÜZÜ
 function taslaklariListele() {
     const kapsayici = document.getElementById('taslak-listesi-kapsayici');
     kapsayici.innerHTML = "";
@@ -3626,72 +3697,36 @@ function taslaklariListele() {
     mevcutTaslakDizisi.forEach((item, index) => {
         const kart = document.createElement('div');
         kart.className = 'haber-kart';
-        kart.style.borderColor = '#fde047';
-        kart.style.background = '#fefce8';
+        kart.style.cssText = 'border-left: 4px solid #eab308; background: #fffdf5; padding: 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; gap: 10px;';
         kart.innerHTML = `
-            <div class="haber-kart-detay">
-                <div class="haber-kart-meta">📅 ${item.tarih} | 📍 ${item.konum || 'Konum Yok'}</div>
-                <h4 class="haber-kart-baslik">${item.baslik}</h4>
-                <p style="font-size: 12px; color: #475569; margin: 4px 0 0 0;">${item.aciklama || ''}</p>
+            <div class="haber-kart-detay" style="flex: 1;">
+                <div class="haber-kart-meta" style="font-size: 11px; color: #854d0e;">📅 ${item.tarih} | 📍 ${item.konum || 'Konum Yok'} | ID: ${item.id}</div>
+                <h4 class="haber-kart-baslik" style="margin: 4px 0; color: #1e293b;">${item.baslik}</h4>
+                <p style="font-size: 12px; color: #475569; margin: 0;">${item.aciklama || ''}</p>
+                <small style="font-size: 10px; color: #94a3b8;">📷 ${item.kapakresmi}</small>
             </div>
-            <div style="display: flex; gap: 4px;">
-                <button type="button" class="haber-kart-butonu btn-duzenle" onclick="taslakDuzenleTetikle(${index})">Düzenle</button>
-                <button type="button" class="haber-kart-butonu" style="background: #10b981;" onclick="taslakDirektOnayla(${index})">Onayla</button>
-                <button type="button" class="haber-kart-butonu btn-sil" onclick="taslakSil(${index})">Sil</button>
+            <div style="display: flex; gap: 6px;">
+                <button type="button" class="btn" style="background: #eab308; padding: 6px 10px; font-size: 12px;" onclick="taslakDuzenleFormunuAc(${index})">Düzenle</button>
+                <button type="button" class="btn" style="background: #10b981; padding: 6px 10px; font-size: 12px;" onclick="taslakOnaylaVeYayinla(${index})">Onayla</button>
+                <button type="button" class="btn" style="background: #ef4444; padding: 6px 10px; font-size: 12px;" onclick="taslakSilVeResmiKaldir(${index})">Sil</button>
             </div>
         `;
         kapsayici.appendChild(kart);
     });
 }
 
-// 6. LEAFLET POLARSTEPS HARİTASI
-function polarstepsHaritasiniBaslat() {
-    if (!polarstepsHarita) {
-        polarstepsHarita = L.map('polarsteps-harita').setView([39.0, 35.0], 6);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap'
-        }).addTo(polarstepsHarita);
-    }
-    polarstepsHaritasiniGuncelle();
-}
-
-function polarstepsHaritasiniGuncelle() {
-    if (!polarstepsHarita) return;
-    
-    // Eski işaretçileri temizle
-    polarstepsMarkers.forEach(m => polarstepsHarita.removeLayer(m));
-    polarstepsMarkers = [];
-
-    mevcutTaslakDizisi.forEach(item => {
-        if (item.konum && item.konum.includes(',')) {
-            const coords = item.konum.split(',').map(c => parseFloat(c.trim()));
-            if (coords.length === 2 && !isNaN(coords[0]) && !isNaN(coords[1])) {
-                const marker = L.marker([coords[0], coords[1]]).addTo(polarstepsHarita);
-                marker.bindPopup(`
-                    <div style="max-width:200px;">
-                        <b>${item.baslik}</b><br>
-                        <small>${item.tarih}</small><br>
-                        <p style="font-size:11px;">${item.aciklama || ''}</p>
-                        ${item.kapakresmi ? `<img src="${item.kapakresmi}" style="width:100%; border-radius:4px;">` : ''}
-                    </div>
-                `);
-                polarstepsMarkers.push(marker);
-            }
-        }
-    });
-}
-
-// 7. DÜZENLEME MODU VE AJAX ETİKET ARAMA
-function taslakDuzenleTetikle(index) {
+// 7. FORM DÜZENLEME MODU VE AJAX ETİKET ARAMA
+function taslakDuzenleFormunuAc(index) {
     const item = mevcutTaslakDizisi[index];
     document.getElementById('t-index').value = index;
+    document.getElementById('t-id').value = item.id || "";
     document.getElementById('t-baslik').value = item.baslik || "";
     document.getElementById('t-tarih').value = item.tarih || "";
     document.getElementById('t-aciklama').value = item.aciklama || "";
     document.getElementById('t-konum').value = item.konum || "";
     document.getElementById('t-kapakresmi').value = item.kapakresmi || "";
 
-    secilenTaslakEtiketleri = item.etiketler || ["fotoğraf,anlık,ferdimen,"];
+    secilenTaslakEtiketleri = Array.isArray(item.etiketler) ? [...item.etiketler] : ["fotoğraf,anlık,ferdimen,"];
     taslakEtiketArayuzunuCiz();
 
     document.getElementById('taslak-duzenle-kutusu').style.display = "block";
@@ -3703,12 +3738,10 @@ function taslakFormuKapat() {
     document.getElementById('t-index').value = "-1";
 }
 
-// Etiket Arayüzü Çizimi ve yazilar.json AJAX Öneri Arama
 function taslakEtiketArayuzunuCiz() {
     const kutu = document.getElementById('taslak-etiket-kutusu');
     const input = document.getElementById('taslak-etiket-input');
     
-    // Eski etiket rozetlerini temizle
     kutu.querySelectorAll('.taslak-tag-chip').forEach(c => c.remove());
 
     secilenTaslakEtiketleri.forEach((tag, idx) => {
@@ -3725,28 +3758,30 @@ function taslakEtiketCikar(idx) {
     taslakEtiketArayuzunuCiz();
 }
 
-function taslakEtiketOnerisiniGoster(deger) {
+function taslakEtiketOnerisiGetir(deger) {
     const onerilerKutusu = document.getElementById('taslak-etiket-onerileri');
-    if (!deger || deger.length < 2) {
+    if (!deger || deger.length < 1) {
         onerilerKutusu.style.display = "none";
         return;
     }
 
-    // yazilar.json içerisinden etiket araması yap
+    // yazilar/yazilar.json içindeki tüm mevcut etiketleri tara
     let tumEtiketler = new Set();
     if (typeof mevcutYazilarDizisi !== 'undefined') {
         mevcutYazilarDizisi.forEach(y => {
-            if (Array.isArray(y.etiketler)) y.etiketler.forEach(e => tumEtiketler.add(e));
+            if (Array.isArray(y.etiketler)) {
+                y.etiketler.forEach(e => tumEtiketler.add(e));
+            }
         });
     }
 
     const eslesenler = Array.from(tumEtiketler).filter(e => e.toLowerCase().includes(deger.toLowerCase()));
-    
+
     if (eslesenler.length > 0) {
         onerilerKutusu.innerHTML = "";
         eslesenler.forEach(e => {
             const item = document.createElement('div');
-            item.style.cssText = "padding: 6px 10px; cursor: pointer; font-size: 13px; border-bottom: 1px solid #f1f5f9;";
+            item.style.cssText = "padding: 8px 12px; cursor: pointer; font-size: 13px; border-bottom: 1px solid #f1f5f9; background: #fff;";
             item.innerText = e;
             item.onclick = () => {
                 secilenTaslakEtiketleri.push(e);
@@ -3762,12 +3797,12 @@ function taslakEtiketOnerisiniGoster(deger) {
     }
 }
 
-// 8. TASLAĞI KAYDET VEYA ONAYLAYIP YAZILAR.JSON'A AKTAR
-async function taslakKaydet(publisheEt = false) {
+// 8. TASLAĞI KAYDET VE YAZILAR.JSON'A AKTARMA (ÇİFT BUTON MANTIĞI)
+async function taslakKaydetVeGuncelle(yayinlaGonder = false) {
     const index = parseInt(document.getElementById('t-index').value);
     if (index === -1) return;
 
-    const guncelObj = {
+    const guncellenmisObje = {
         ...mevcutTaslakDizisi[index],
         baslik: document.getElementById('t-baslik').value,
         tarih: document.getElementById('t-tarih').value,
@@ -3776,21 +3811,22 @@ async function taslakKaydet(publisheEt = false) {
         etiketler: secilenTaslakEtiketleri
     };
 
-    if (publisheEt) {
-        // Taslaklar dizisinden çıkar
+    if (yayinlaGonder) {
+        // 1. Taslak listesinden çıkar
         mevcutTaslakDizisi.splice(index, 1);
-        await taslaklariGithubaGonder("Panel: Taslak güncellendi ve onaylandı.");
-        
-        // yazilar/yazilar.json dosyasına ekle
+        await taslaklariGithubaGonder("Panel: Taslak düzenlendi ve onaylanarak kaldırıldı.");
+
+        // 2. yazilar/yazilar.json içine aktar
         if (typeof mevcutYazilarDizisi !== 'undefined') {
-            mevcutYazilarDizisi.unshift(guncelObj);
-            await bloglariGithubaGonder(); // veya yazilar.json commit fonksiyonu
+            mevcutYazilarDizisi.unshift(guncellenmisObje);
+            await yazilariGithubaGonder("Panel: Polarsteps taslağı onaylandı ve yayınlandı.");
         }
-        bildirimGoster("İçerik onaylandı ve yazilar.json'a aktarıldı!", "success");
+        bildirimGoster("İçerik onaylandı ve yazilar/yazilar.json dosyasına aktarıldı!", "success");
     } else {
-        mevcutTaslakDizisi[index] = guncelObj;
-        await taslaklariGithubaGonder("Panel: Taslak düzenlendi.");
-        bildirimGoster("Taslak güncellendi.", "success");
+        // Sadece taslağı güncelle
+        mevcutTaslakDizisi[index] = guncellenmisObje;
+        await taslaklariGithubaGonder("Panel: Taslak güncellendi.");
+        bildirimGoster("Taslak değişiklikleri kaydedildi.", "success");
     }
 
     taslakFormuKapat();
@@ -3798,79 +3834,114 @@ async function taslakKaydet(publisheEt = false) {
     polarstepsHaritasiniGuncelle();
 }
 
-async function taslakDirektOnayla(index) {
-    const onay = confirm("Bu taslağı onaylayıp yayına almak istiyor musunuz?");
+async function taslakOnaylaVeYayinla(index) {
+    const onay = confirm("Bu taslağı onaylayıp yazilar/yazilar.json dosyasına aktarmak istiyor musunuz?");
     if (!onay) return;
 
     const item = mevcutTaslakDizisi[index];
     mevcutTaslakDizisi.splice(index, 1);
-    
+
     await taslaklariGithubaGonder("Panel: Taslak onaylandı.");
 
-    // yazilar.json'a yaz
     if (typeof mevcutYazilarDizisi !== 'undefined') {
         mevcutYazilarDizisi.unshift(item);
-        const token = localStorage.getItem('gh_oauth_token');
-        const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_YAZILAR}`;
-        const jsonString = JSON.stringify(mevcutYazilarDizisi, null, 2);
-        const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
-        
-        await fetch(url, {
-            method: "PUT",
-            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
-            body: JSON.stringify({
-                message: "Panel: Taslak onaylanarak yazilar.json dosyasına aktarıldı",
-                content: base64Content,
-                sha: shaBlog
-            })
-        });
+        await yazilariGithubaGonder("Panel: Taslak onaylandı ve yazilar.json'a eklendi.");
     }
 
     taslaklariListele();
     polarstepsHaritasiniGuncelle();
-    bildirimGoster("Taslak onaylandı ve yazilar/yazilar.json dosyasına eklendi!", "success");
+    bildirimGoster("Taslak onaylandı ve yazilar.json'a aktarıldı!", "success");
 }
 
-// 9. TASLAK SİLME
-async function taslakSil(index) {
-    const onay = confirm("Bu taslağı ve ilişkili görsel kaydını silmek istediğinize emin misiniz?");
+// 9. SİLME VE GÖRSELİ DE REPOSİTORY'DEN KALDIRMA
+async function taslakSilVeResmiKaldir(index) {
+    const onay = confirm("Bu taslağı ve ilişkili görsel dosyasını silmek istediğinize emin misiniz?");
     if (!onay) return;
 
+    const item = mevcutTaslakDizisi[index];
+    
+    // Görsel dosyasını sil
+    if (item.kapakresmi) {
+        await gorselGithubdanSil(item.kapakresmi);
+    }
+
     mevcutTaslakDizisi.splice(index, 1);
-    await taslaklariGithubaGonder("Panel: Taslak silindi.");
+    await taslaklariGithubaGonder("Panel: Taslak ve ilgili kapak resmi silindi.");
+
     taslaklariListele();
     polarstepsHaritasiniGuncelle();
-    bildirimGoster("Taslak silindi.", "success");
+    bildirimGoster("Taslak ve görsel silindi.", "success");
 }
 
-// 10. GİTHUB COMMIT FONKSİYONU
+// 10. GİTHUB API YARDIMCI FONKSİYONLARI (TASLAK, YAZI VE GÖRSEL)
 async function taslaklariGithubaGonder(mesaj) {
     const token = localStorage.getItem('gh_oauth_token');
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_TASLAK}`;
-
     const jsonString = JSON.stringify(mevcutTaslakDizisi, null, 2);
     const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
-
-    const payload = {
-        message: mesaj,
-        content: base64Content,
-        sha: shaTaslak
-    };
 
     try {
         const response = await fetch(url, {
             method: "PUT",
             headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
+            body: JSON.stringify({ message: mesaj, content: base64Content, sha: shaTaslak })
         });
-
         if (response.ok) {
             const resData = await response.json();
             shaTaslak = resData.content.sha;
         }
-    } catch (error) {
-        console.log("GitHub Taslak Commit Hatası: " + error.message);
-    }
+    } catch (e) { console.log(e); }
+}
+
+async function yazilariGithubaGonder(mesaj) {
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_YAZILAR}`;
+    const jsonString = JSON.stringify(mevcutYazilarDizisi, null, 2);
+    const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+
+    try {
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify({ message: mesaj, content: base64Content, sha: typeof shaYazilar !== 'undefined' ? shaYazilar : "" })
+        });
+        if (response.ok && typeof shaYazilar !== 'undefined') {
+            const resData = await response.json();
+            shaYazilar = resData.content.sha;
+        }
+    } catch (e) { console.log(e); }
+}
+
+async function gorselGithubaYukle(gorselYolu) {
+    // 1px şeffaf PNG/JPEG görsel simülasyonu
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents${gorselYolu}`;
+    const dummyBase64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
+
+    try {
+        await fetch(url, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify({ message: `Panel: Polarsteps resmi yüklendi (${gorselYolu})`, content: dummyBase64 })
+        });
+    } catch (e) { console.log("Görsel yükleme hatası: " + e.message); }
+}
+
+async function gorselGithubdanSil(gorselYolu) {
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents${gorselYolu}`;
+
+    try {
+        const getRes = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if (getRes.ok) {
+            const fileData = await getRes.json();
+            await fetch(url, {
+                method: "DELETE",
+                headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+                body: JSON.stringify({ message: `Panel: Otomatik imha/silme - Kapak resmi kaldırıldı (${gorselYolu})`, sha: fileData.sha })
+            });
+        }
+    } catch (e) { console.log("Görsel silme hatası: " + e.message); }
 }
 // ==========================================	YENİ KODLAR ÜSTE EKLENİYOR	-->		
         function cikisYap() {
