@@ -83,7 +83,6 @@
             <!-- SOL MENÜ (Yeni sekmeleri buraya ekleyeceksin) -->
             <div class="sidebar">
                 <button class="tab-btn active" onclick="sekmeDegistir('nerdeyim-tab')">📍 Nerdeyim?</button>
-				<button class="tab-btn" onclick="sekmeDegistir('polarsteps-tab')">📍 Polarsteps & Taslaklar</button>
 				<button class="tab-btn" onclick="sekmeDegistir('anlik-tab')">📸 Anlık Paylaşım</button>
 				<button class="tab-btn" onclick="sekmeDegistir('video-tab')">🎬 Video Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('blog-tab')">📝 Blog Yazıları</button>
@@ -95,6 +94,7 @@
 				<button class="tab-btn" onclick="sekmeDegistir('dosyalar-tab')">📁 Dosya Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('footer-tab')">📢 Footer Mesajları</button>
                 <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
+				<button class="tab-btn" onclick="sekmeDegistir('polarsteps-tab')">📍 Polarsteps & Taslaklar</button>
 <!-- // ==========================================	YENİ TABLARIN BAŞLIKLARI ÜSTE EKLENİYOR	-->				
                 <!-- Gelecekte buraya yeni butonlar gelebilir --> 
             </div>
@@ -834,25 +834,25 @@
         </form>
     </fieldset>
 </div>
-<!-- POLARSTEPS VE TASLAK YÖNETİM SEKME İÇERİĞİ -->
+<!-- POLARSTEPS PUBLIC API VE TASLAK YÖNETİM SEKME İÇERİĞİ -->
 <div id="polarsteps-tab" class="tab-content">
     <h3>📍 Polarsteps Canlı Takip & Taslak Yönetimi</h3>
 
-    <!-- Canlı Takip, Tarama ve Otomatik İmha Ayarları -->
+    <!-- Durum, Tarama ve Otomatik İmha Ayarları -->
     <fieldset style="margin-bottom: 20px; border-color: #3b82f6;">
-        <legend style="color: #2563eb; font-weight: bold;">🛰️ Polarsteps Entegrasyonu & Otomatik İmha</legend>
+        <legend style="color: #2563eb; font-weight: bold;">🛰️ Polarsteps API Entegrasyonu & Otomatik İmha</legend>
         <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 12px; flex-wrap: wrap;">
-            <button type="button" onclick="polarstepsLinkiniTara(true)" class="btn" style="background: #2563eb; flex: 2; min-width: 220px;">🔍 Polarsteps Linkini Tara / Verileri Çek</button>
+            <button type="button" onclick="polarstepsApiDenVeriCek(true)" class="btn" style="background: #2563eb; flex: 2; min-width: 220px;">🔍 Polarsteps Linkini Tara / Verileri Çek</button>
             <div style="flex: 1; min-width: 160px;">
                 <label for="p-imha-suresi" style="font-size: 12px; margin-bottom: 2px;">Otomatik İmha Süresi:</label>
-                <select id="p-imha-suresi" id="p-imha-suresi" onchange="imhaSuresiKontrolEt(this.value)" style="width: 100%; padding: 6px;">
+                <select id="p-imha-suresi" onchange="imhaSuresiKontrolEt(this.value)" style="width: 100%; padding: 6px;">
                     <option value="3">3 Gün Sonra Sil</option>
                     <option value="5" selected>5 Gün Sonra Sil</option>
                     <option value="10">10 Gün Sonra Sil</option>
                 </select>
             </div>
         </div>
-        <div id="polarsteps-durum-mesaji" style="font-size: 13px; color: #64748b; font-style: italic;">Aktif tur durumu kontrol ediliyor...</div>
+        <div id="polarsteps-durum-mesaji" style="font-size: 13px; color: #64748b; font-style: italic;">Aktif tur durumu ve URL kontrol ediliyor...</div>
     </fieldset>
 
     <!-- Leaflet Harita Önizleme Alanı -->
@@ -886,8 +886,8 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="t-konum">Konum Coordinates ($konum):</label>
-                    <input type="text" id="t-konum" placeholder="Enlem, Boylam (Örn: 41.2907, 36.3370)">
+                    <label for="t-konum">Konum (Enlem, Boylam):</label>
+                    <input type="text" id="t-konum" placeholder="41.2907, 36.3370">
                 </div>
                 <div class="form-group">
                     <label for="t-kapakresmi">Kapak Resmi Yolu ($kapakresmi):</label>
@@ -895,11 +895,11 @@
                 </div>
             </div>
 
-            <!-- AJAX / Dinamik Etiket Arama ve Yönetimi (Virgülle Ayrılmış) -->
+            <!-- AJAX / Dinamik Etiket Arama (Tek Tek / Virgülle Ayrılmış) -->
             <div class="form-group" style="position: relative;">
                 <label>🏷️ Etiketler (yazilar.json Dosyasından Arama Destekli):</label>
                 <div id="taslak-etiket-kutusu" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; min-height: 38px;">
-                    <input type="text" id="taslak-etiket-input" placeholder="Etiket yazın veya arayın..." style="border: none; outline: none; padding: 4px; flex: 1;" oninput="taslakEtiketOnerisiArama(this.value)">
+                    <input type="text" id="taslak-etiket-input" placeholder="Etiket yazın..." style="border: none; outline: none; padding: 4px; flex: 1;" oninput="taslakEtiketOnerisiArama(this.value)">
                 </div>
                 <div id="taslak-etiket-onerileri" style="display: none; position: absolute; left: 0; right: 0; top: 100%; background: white; border: 1px solid #cbd5e1; z-index: 120; max-height: 140px; overflow-y: auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"></div>
             </div>
@@ -1013,6 +1013,7 @@ let anlikSecilenEtiketler = ["fotoğraf", "anlık", "ferdimen"];
 let anlikSecilenRozetler = ["fotoğraf", "anlık"];
 let anlikYuklenenFotoBase64 = null;
 let anlikYuklenenFotoAdi = "";
+
 const PATH_TASLAK = "yazilar/taslak.json";
 let shaTaslak = "";
 let mevcutTaslakDizisi = [];
@@ -1020,7 +1021,7 @@ let polarstepsHarita = null;
 let polarstepsMarkers = [];
 let secilenTaslakEtiketleri = [];
 let polarstepsOtomatikTimer = null;
-let polarstepsIslenenIndex = 0; // Çoklu verileri sırayla çekmek için index takibi
+let polarstepsSonIslenenStepId = null; // Farklı/yeni veri çekme takibi için
 // ========================================== PATH_XXX BİLGİLERİ ÜSTE EKLENİYOR
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -3503,9 +3504,7 @@ async function anlikPaylasimGonder(event) {
         bildirimGoster("Hata: " + error.message, "error");
     }
 }
-
-// ==========================================	POLARSTEPS VERİ ÇEKME
-// 1. TASLAK.JSON VERİLERİNİ GİTHUB'DAN YÜKLE
+// 1. TASLAK.JSON DOSYASINI YÜKLEME VE İNİT
 async function taslaklariYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_TASLAK}`;
     try {
@@ -3520,17 +3519,17 @@ async function taslaklariYukle(token) {
             mevcutTaslakDizisi = JSON.parse(decodedContent);
         }
 
-        // Zamanı dolan içerik ve resimleri temizle
+        // Zamanı dolan taslakları ve görselleri otomatik imha et
         await otomatikImhaKontrolu();
 
-        // Arayüzü ve Haritayı güncelle
+        // Arayüz listesi ve Haritayı yükle
         taslaklariListele();
         polarstepsKontrolVeHaritaBaslat();
 
-        // Arka planda 5 dakikada bir Polarsteps yeni paylaşım kontrolü
+        // 5 Dakikada bir arkaplanda otomatik yeni adım kontrolü
         if (!polarstepsOtomatikTimer) {
             polarstepsOtomatikTimer = setInterval(() => {
-                polarstepsLinkiniTara(false);
+                polarstepsApiDenVeriCek(false);
             }, 5 * 60 * 1000);
         }
     } catch (error) {
@@ -3538,7 +3537,7 @@ async function taslaklariYukle(token) {
     }
 }
 
-// 2. OTOMATİK İMHA SİSTEMİ (3, 5, 10 Günlük Süre Dolduysa Resim ve Veriyi Sil)
+// 2. OTOMATİK İMHA SİSTEMİ (3, 5, 10 Gün Süresi Dolan Veri ve Resimleri Sil)
 async function otomatikImhaKontrolu() {
     const imhaGun = parseInt(document.getElementById('p-imha-suresi').value) || 5;
     const simdi = new Date();
@@ -3555,7 +3554,6 @@ async function otomatikImhaKontrolu() {
 
         if (farkGun > imhaGun) {
             silinenVarMi = true;
-            // İlgili kapak resmini repo'dan fiziki olarak sil
             if (item.kapakresmi) {
                 await gorselGithubdanSil(item.kapakresmi);
             }
@@ -3574,7 +3572,7 @@ function imhaSuresiKontrolEt(süre) {
     otomatikImhaKontrolu().then(() => taslaklariListele());
 }
 
-// 3. KONUM.JSON KONTROLÜ VE POLARSTEPS LİNKİNİ AÇMA
+// 3. KONUM.JSON KONTROLÜ VE POLARSTEPS LİNK BİLGİSİ
 async function polarstepsKontrolVeHaritaBaslat() {
     if (typeof PATH_KONUM === 'undefined') return;
     const token = localStorage.getItem('gh_oauth_token');
@@ -3599,100 +3597,121 @@ async function polarstepsKontrolVeHaritaBaslat() {
     }
 }
 
-// 4. POLARSTEPS TARAMA & VERİ ÇEKME (VERİLEN HTML ELEMENT SEÇİCİLERİ İLE)
-async function polarstepsLinkiniTara(manuelTetikleme = false) {
-    if (manuelTetikleme) bildirimGoster("Polarsteps taranıyor, yeni veriler sorgulanıyor...", "success");
+// 4. POLARSTEPS PUBLIC API İLE DOĞRUDAN VERİ ÇEKME
+async function polarstepsApiDenVeriCek(manuelTetikleme = false) {
+    if (manuelTetikleme) bildirimGoster("Polarsteps Public API sorgulanıyor...", "success");
 
     try {
-        // canliTakipUrl üzerinden veri alma simulasyonu & HTML Parsing Mantığı
-        // HTML Element Seçicileri:
-        // Başlık: h2.Step-module_title... VEYA .photoviewer-step-name
-        // Tarih: [title] veya div/span metni (Örn: "September 23, 2025")
-        // Açıklama: div.StepDescription-module_text...
-        // Resim: img.StepMedia-module_mediaItem... VEYA .photoviewer-image-container img
+        // nerdeyim/konum.json 'dan canlı takip URL'sini alıp API endpoint'ine çeviriyoruz
+        // Örn: https://www.polarsteps.com/SafakYollarda/26970859-karadeniz-2026 -> https://api.polarsteps.com/api/trip/byurl/SafakYollarda/26970859-karadeniz-2026
+        const konumRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KONUM}`, {
+            headers: { "Authorization": `token ${localStorage.getItem('gh_oauth_token')}` }
+        });
 
-        // Örnek çekilen veri kümesi (Farklı buton basışlarında sıradaki veriyi çekmek için index takibi yapılıyor)
-        const ornekCekilenVeriListesi = [
-            {
-                baslik: "Balışeyh",
-                tarihRaw: "September 23, 2025",
-                aciklama: "Aslında anayolu kullanıp buraya gelme niyetim yoktu. Karacaali Kızıldere köyleri üstünden kestirmeden Sulakyurt'a gitme niyetindeydim. Ama sabahın erken saatlerinde alışveriş imkanı olmadığında aç susuz ve tedariksiz ara yollara girmek istemedim.",
-                resimUrl: "https://media.prod.polarsteps.com/user_images/steps/large_thumb/u_5072821/fcc14524-a46f-43d3-ba60-f6682c92240c_fb9ae9cb-6841-470a-9659-65244afdc2df.jpg",
-                konum: "39.9056, 33.7186"
-            },
-            {
-                baslik: "Yahşihan",
-                tarihRaw: "September 24, 2025",
-                aciklama: "Irmak kenarında kısa bir mola ve çay molası.",
-                resimUrl: "https://media.prod.polarsteps.com/user_images/steps/large_thumb/u_5072821/0d1bcef2-840c-4ccc-bccc-7b11b112baf9_208230b2-9535-4ece-8a83-72aedf4071ed.jpg",
-                konum: "39.8510, 33.4520"
-            }
-        ];
+        if (!konumRes.ok) return;
+        const konumData = await konumRes.json();
+        const konumJson = JSON.parse(decodeURIComponent(atob(konumData.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')));
 
-        const secilenVeri = ornekCekilenVeriListesi[polarstepsIslenenIndex % ornekCekilenVeriListesi.length];
-        polarstepsIslenenIndex++; // Bir sonraki butona basışta farklı veri çekmeyi sağlayan sayaç
+        if (konumJson.aktifTur !== "evet" || !konumJson.canliTakipUrl) {
+            if (manuelTetikleme) bildirimGoster("Aktif tur bulunamadı.", "error");
+            return;
+        }
 
-        // Tarih Dönüştürme: "September 23, 2025" -> "2025-09-23"
-        const parsedDate = new Date(secilenVeri.tarihRaw);
-        const yil = parsedDate.getFullYear() || 2025;
-        const ay = String((parsedDate.getMonth() + 1) || 9).padStart(2, '0');
-        const gun = String(parsedDate.getDate() || 23).padStart(2, '0');
+        const urlParts = konumJson.canliTakipUrl.replace("https://www.polarsteps.com/", "").split("/");
+        const username = urlParts[0];
+        const tripSlug = urlParts[1];
+        const apiEndpoint = `https://api.polarsteps.com/api/trip/byurl/${username}/${tripSlug}`;
 
-        // Saat & Dakika (ID üretmek için)
-        const simdikiAn = new Date();
-        const saat = String(simdikiAn.getHours()).padStart(2, '0');
-        const dakika = String(simdikiAn.getMinutes()).padStart(2, '0');
+        const apiRes = await fetch(apiEndpoint);
+        if (!apiRes.ok) throw new Error("Polarsteps API yanıt vermedi.");
+        const tripData = await apiRes.json();
+
+        const steps = tripData.all_steps || [];
+        if (steps.length === 0) {
+            if (manuelTetikleme) bildirimGoster("Turda herhangi bir adım bulunamadı.", "warning");
+            return;
+        }
+
+        // Butona tekrar basıldığında farklı bir veriyi (veya en sonuncuyu) seçme mantığı
+        let secilenStep = null;
+        if (polarstepsSonIslenenStepId) {
+            const kalanalarm = steps.filter(s => s.id !== polarstepsSonIslenenStepId && !mevcutTaslakDizisi.some(t => t.polarsteps_id === s.id));
+            secilenStep = kalanalarm.length > 0 ? kalanalarm[kalanalarm.length - 1] : steps[steps.length - 1];
+        } else {
+            secilenStep = steps[steps.length - 1];
+        }
+
+        polarstepsSonIslenenStepId = secilenStep.id;
+
+        // Tarih Hesabı: Unix Timestamp -> YYYY-AA-GG ve Saat-Dakika
+        const pTarih = new Date((secilenStep.start_time || secilenStep.created_time) * 1000);
+        const yil = pTarih.getFullYear();
+        const ay = String(pTarih.getMonth() + 1).padStart(2, '0');
+        const gun = String(pTarih.getDate()).padStart(2, '0');
+        const saat = String(pTarih.getHours()).padStart(2, '0');
+        const dakika = String(pTarih.getMinutes()).padStart(2, '0');
 
         const tarihFormatli = `${yil}-${ay}-${gun}`;
         const idFormatli = `${tarihFormatli}-${saat}-${dakika}`;
         const kapakResmiYolu = `/img/posts/${yil}/${idFormatli}.jpg`;
 
-        // Oluşturulacak Taslak Objesi
-        const yeniTaslakObje = {
+        // Fotoğraf URL'si alma
+        let resimUrl = "";
+        if (secilenStep.super_large_thumb_url) {
+            resimUrl = secilenStep.super_large_thumb_url;
+        } else if (secilenStep.main_media_item && secilenStep.main_media_item.large_thumbnail_path) {
+            resimUrl = secilenStep.main_media_item.large_thumbnail_path;
+        }
+
+        // Koordinat Bilgisi
+        const konumStr = secilenStep.location ? `${secilenStep.location.lat}, ${secilenStep.location.lon}` : "";
+
+        // Birebir istenen Taslak Objesi
+        const yeniTaslak = {
             id: idFormatli,
-            baslik: secilenVeri.baslik,
-            aciklama: secilenVeri.aciklama,
+            polarsteps_id: secilenStep.id,
+            baslik: secilenStep.display_name || "Polarsteps Paylaşımı",
+            aciklama: secilenStep.description || "",
             url: "https://ferdimen.com/gram.html",
             tarih: tarihFormatli,
             kategori: "Anlık",
             ozel: "fotoğraf, anlık,",
-            konum: secilenVeri.konum,
+            konum: konumStr,
             kapakresmi: kapakResmiYolu,
             etiketler: ["fotoğraf,anlık,ferdimen,"]
         };
 
-        // Mevcut taslak veya yayınlananlarda aynı ID/Kapakresmi var mı?
-        const zatenVarMi = mevcutTaslakDizisi.some(t => t.id === yeniTaslakObje.id || t.kapakresmi === yeniTaslakObje.kapakresmi);
+        // Zaten var mı kontrolü
+        const ciftKayit = mevcutTaslakDizisi.some(t => t.id === yeniTaslak.id || (t.polarsteps_id && t.polarsteps_id === yeniTaslak.polarsteps_id));
 
-        if (!zatenVarMi) {
-            // Taslak dizisinin ALTINA/SONUNA Ekle (İçeriği koruyarak)
-            mevcutTaslakDizisi.push(yeniTaslakObje);
+        if (!ciftKayit) {
+            // İçeriği koruyarak ALT SATIRA / DİZİ SONUNA ekleme
+            mevcutTaslakDizisi.push(yeniTaslak);
 
-            // Görseli /img/posts/$yil/ yoluna yükle/kopyala
-            await gorselGithubaKopyala(secilenVeri.resimUrl, yeniTaslakObje.kapakresmi);
+            // Görseli GitHub repona ilgili yola kaydet
+            if (resimUrl) {
+                await gorselGithubaKopyala(resimUrl, yeniTaslak.kapakresmi);
+            }
 
-            // GitHub'daki taslak.json'a kaydet
-            await taslaklariGithubaGonder("Panel: Polarsteps verisi taslak.json dosyasına eklendi.");
-
+            await taslaklariGithubaGonder("Panel: Polarsteps Public API üzerinden yeni taslak eklendi.");
             taslaklariListele();
             polarstepsHaritasiniGuncelle();
-            if (manuelTetikleme) bildirimGoster("Polarsteps verisi başarıyla taslaklara çekildi!", "success");
+            if (manuelTetikleme) bildirimGoster("Polarsteps API'den yeni veri çekildi ve taslağa eklendi!", "success");
         } else {
-            if (manuelTetikleme) bildirimGoster("Bu Polarsteps paylaşımı zaten taslaklarda mevcut.", "success");
+            if (manuelTetikleme) bildirimGoster("Bu paylaşım zaten taslaklar arasında yer alıyor.", "info");
         }
 
-    } catch (e) {
-        console.log("Polarsteps tarama hatası: " + e.message);
+    } catch (err) {
+        console.log("Polarsteps API Çekme Hatası: " + err.message);
+        if (manuelTetikleme) bildirimGoster("Veri çekilirken hata oluştu: " + err.message, "error");
     }
 }
 
-// 5. LEAFLET HARİTASI VE POPUP GÖSTERİMİ
+// 5. LEAFLET HARİTASI VE POPUP UYGULAMASI
 function polarstepsHaritasiniKur() {
     if (!polarstepsHarita) {
         polarstepsHarita = L.map('polarsteps-harita').setView([39.0, 35.0], 6);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap'
-        }).addTo(polarstepsHarita);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(polarstepsHarita);
     }
     polarstepsHaritasiniGuncelle();
 }
@@ -3722,7 +3741,7 @@ function polarstepsHaritasiniGuncelle() {
     });
 }
 
-// 6. TASLAK LİSTELEME VE KART YAPISI
+// 6. TASLAK LİSTELEME
 function taslaklariListele() {
     const kapsayici = document.getElementById('taslak-listesi-kapsayici');
     kapsayici.innerHTML = "";
@@ -3753,7 +3772,7 @@ function taslaklariListele() {
     });
 }
 
-// 7. FORM DÜZENLEME VE DİNAMİK VİRGÜL İLE AYRILMIŞ ETİKET SİSTEMİ
+// 7. DÜZENLEME VE PARÇALANMIŞ / VİRGÜLLÜ ETİKET ARAMA SİSTEMİ
 function taslakDuzenleModuAc(index) {
     const item = mevcutTaslakDizisi[index];
     document.getElementById('t-index').value = index;
@@ -3764,7 +3783,6 @@ function taslakDuzenleModuAc(index) {
     document.getElementById('t-konum').value = item.konum || "";
     document.getElementById('t-kapakresmi').value = item.kapakresmi || "";
 
-    // Etiket dizisi kontrolü
     secilenTaslakEtiketleri = Array.isArray(item.etiketler) ? [...item.etiketler] : ["fotoğraf,anlık,ferdimen,"];
     taslakEtiketArayuzunuCiz();
 
@@ -3797,7 +3815,7 @@ function taslakEtiketCikar(idx) {
     taslakEtiketArayuzunuCiz();
 }
 
-// yazilar/yazilar.json Dosyasındaki Bütün Etiketleri Virgülle Ayrılmış Tekil Halde Getiren Arama Fonksiyonu
+// yazilar/yazilar.json Dosyasındaki Blok Halindeki Etiketleri Virgüllerle Ayırıp Tekil Arama Yapan Fonksiyon
 function taslakEtiketOnerisiArama(deger) {
     const onerilerKutusu = document.getElementById('taslak-etiket-onerileri');
     if (!deger || deger.length < 1) {
@@ -3811,7 +3829,7 @@ function taslakEtiketOnerisiArama(deger) {
         mevcutYazilarDizisi.forEach(y => {
             if (Array.isArray(y.etiketler)) {
                 y.etiketler.forEach(eStr => {
-                    // Blok halindeki metinleri virgüllerden tek tek parçala
+                    // Blok kelimeleri virgülle tek tek ayırıyoruz
                     const parcalanmis = eStr.split(',');
                     parcalanmis.forEach(p => {
                         const temiz = p.trim();
@@ -3844,7 +3862,7 @@ function taslakEtiketOnerisiArama(deger) {
     }
 }
 
-// 8. FORMDAN KAYDET VEYA ONAYLAYIP YAZILAR.JSON'A AKTAR
+// 8. KAYDET VE ONAYLAYIP YAZILAR.JSON'A AKTAR
 async function taslakFormKaydet(yayinlaAktar = false) {
     const index = parseInt(document.getElementById('t-index').value);
     if (index === -1) return;
@@ -3859,20 +3877,17 @@ async function taslakFormKaydet(yayinlaAktar = false) {
     };
 
     if (yayinlaAktar) {
-        // Taslaklardan çıkar
         mevcutTaslakDizisi.splice(index, 1);
-        await taslaklariGithubaGonder("Panel: Taslak güncellendi ve listeden kaldırıldı.");
+        await taslaklariGithubaGonder("Panel: Taslak onaylandı ve taslak.json'dan kaldırıldı.");
 
-        // yazilar/yazilar.json'a aktar
         if (typeof mevcutYazilarDizisi !== 'undefined') {
             mevcutYazilarDizisi.unshift(guncelObj);
-            await yazilariGithubaGonder("Panel: Taslak onaylanıp yazilar.json'a eklendi.");
+            await yazilariGithubaGonder("Panel: Taslak onaylanarak yazilar.json'a eklendi.");
         }
-        bildirimGoster("Taslak başarıyla onaylandı ve yazilar/yazilar.json'a aktarıldı!", "success");
+        bildirimGoster("Taslak onaylandı ve yazilar/yazilar.json'a aktarıldı!", "success");
     } else {
-        // Sadece taslağı güncelle
         mevcutTaslakDizisi[index] = guncelObj;
-        await taslaklariGithubaGonder("Panel: Taslak içeriği güncellendi.");
+        await taslaklariGithubaGonder("Panel: Taslak güncellendi.");
         bildirimGoster("Değişiklikler taslağa kaydedildi.", "success");
     }
 
@@ -3892,35 +3907,34 @@ async function taslakDirektOnayla(index) {
 
     if (typeof mevcutYazilarDizisi !== 'undefined') {
         mevcutYazilarDizisi.unshift(item);
-        await yazilariGithubaGonder("Panel: Taslak onaylanıp yazilar.json'a eklendi.");
+        await yazilariGithubaGonder("Panel: Taslak yazilar/yazilar.json dosyasına aktarıldı.");
     }
 
     taslaklariListele();
     polarstepsHaritasiniGuncelle();
-    bildirimGoster("Taslak onaylandı ve yazilar/yazilar.json'a aktarıldı!", "success");
+    bildirimGoster("Taslak onaylandı ve yayına aktarıldı!", "success");
 }
 
-// 9. SİLME (İLGİLİ KAPAK RESMİNİ DE GİTHUB'DAN SİLER)
+// 9. SİLME (İLGİLİ FOTOĞRAFI DA GİTHUB REPOSUNDAN SİLER)
 async function taslakSilVeResimKaldir(index) {
-    const onay = confirm("Bu taslağı ve ilişkili görsel dosyasını silmek istediğinize emin misiniz?");
+    const onay = confirm("Bu taslağı ve yüklenen görsel dosyasını silmek istediğinize emin misiniz?");
     if (!onay) return;
 
     const item = mevcutTaslakDizisi[index];
 
-    // İlgili resim dosyasını GitHub reponuzdan tamamen sil
     if (item.kapakresmi) {
         await gorselGithubdanSil(item.kapakresmi);
     }
 
     mevcutTaslakDizisi.splice(index, 1);
-    await taslaklariGithubaGonder("Panel: Taslak ve ilgili resim silindi.");
+    await taslaklariGithubaGonder("Panel: Taslak ve ilgili fotoğraf silindi.");
 
     taslaklariListele();
     polarstepsHaritasiniGuncelle();
     bildirimGoster("Taslak ve yüklenen fotoğraf başarıyla silindi.", "success");
 }
 
-// 10. GİTHUB API YARDIMCI İŞLEMLERİ
+// 10. GİTHUB API YARDIMCI BİLEŞENLERİ
 async function taslaklariGithubaGonder(mesaj) {
     const token = localStorage.getItem('gh_oauth_token');
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_TASLAK}`;
@@ -3962,16 +3976,23 @@ async function yazilariGithubaGonder(mesaj) {
 async function gorselGithubaKopyala(kaynakResimUrl, hedefGorselYolu) {
     const token = localStorage.getItem('gh_oauth_token');
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents${hedefGorselYolu}`;
-    // Görsel kopyalama için base64 simülasyonu
-    const dummyBase64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
 
     try {
-        await fetch(url, {
-            method: "PUT",
-            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
-            body: JSON.stringify({ message: `Panel: Polarsteps resmi kopyalandı (${hedefGorselYolu})`, content: dummyBase64 })
-        });
-    } catch (e) { console.log("Resim yükleme hatası: " + e.message); }
+        // İlgili resmi Polarsteps sunucusundan çekip base64 formatına çeviriyoruz
+        const imgRes = await fetch(kaynakResimUrl);
+        const blob = await imgRes.blob();
+        
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = async () => {
+            const base64data = reader.result.split(',')[1];
+            await fetch(url, {
+                method: "PUT",
+                headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+                body: JSON.stringify({ message: `Panel: Polarsteps resmi reponuza kopyalandı (${hedefGorselYolu})`, content: base64data })
+            });
+        };
+    } catch (e) { console.log("Resim aktarma hatası: " + e.message); }
 }
 
 async function gorselGithubdanSil(gorselYolu) {
@@ -3985,7 +4006,7 @@ async function gorselGithubdanSil(gorselYolu) {
             await fetch(url, {
                 method: "DELETE",
                 headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
-                body: JSON.stringify({ message: `Panel: Otomatik imha/silme - Kapak resmi kaldırıldı (${gorselYolu})`, sha: fileData.sha })
+                body: JSON.stringify({ message: `Panel: Otomatik imha/silme - Kapak resmi silindi (${gorselYolu})`, sha: fileData.sha })
             });
         }
     } catch (e) { console.log("Resim silme hatası: " + e.message); }
