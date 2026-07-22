@@ -3330,7 +3330,8 @@ async function anlikPaylasimGonder(event) {
     const saat = String(simdi.getHours()).padStart(2, '0');
     const dak = String(simdi.getMinutes()).padStart(2, '0');
 
-    const zamanFormatli = `${yil}-${ay}-${gun}-(${saat}-${dak})`;
+    const tarihFormatli = `${yil}-${ay}-${gun}`;
+    const zamanFormatli = `${yil}-${ay}-${gun}-${saat}-${dak}`;
     const idFormatli = `${yil}/${zamanFormatli}`;
 
     // GitHub Repo içindeki fiziksel yükleme yolu (başında '/' olmadan)
@@ -3366,7 +3367,7 @@ async function anlikPaylasimGonder(event) {
             "baslik": document.getElementById('anlik-baslik').value.trim(),
             "aciklama": document.getElementById('anlik-aciklama').value.trim(),
             "url": "",
-            "tarih": zamanFormatli,
+            "tarih": tarihFormatli,
             "kategori": "Anlık",
             "ozel": document.getElementById('anlik-ozel').value,
             "konum": document.getElementById('anlik-konum').value,
