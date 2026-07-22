@@ -1,5 +1,13 @@
 [
   {
+    "meta": "22 Temmuz 2026 / Altyapı",
+    "baslik": "Ferdigram Eklendi",
+    "aciklama": "Bir resim paylaşılacaksa şayet onu da kendi platformumuzda paylaşırız. Bu saatten sonra Insta gram umurumda olmaz.",
+    "resim": "",
+    "linkUrl": "https://ferdimen.com/gram.html",
+    "linkMetni": "Ferdigram"
+  },
+  {
     "meta": "20 Temmuz 2026 / Altyapı",
     "baslik": "Panel Eklendi",
     "aciklama": "kodlar arasında kaybolmadan siteyi daha iyi kontrol edebilmek düzenleme, ekleme çıkarma yapabilmek için kontol paneli eklendi  ",
