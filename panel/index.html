@@ -3227,8 +3227,9 @@ function anlikFotoOnizle(input) {
         const saat = String(simdi.getHours()).padStart(2, '0');
         const dak = String(simdi.getMinutes()).padStart(2, '0');
 
-        const zamanDamgasi = `${yil}${ay}${gun}-${saat}-${dak}`;
-        anlikYuklenenFotoAdi = `${zamanDamgasi}.jpg`;
+        const zamanDamgasi = `${yil}-${ay}-${gun}`;
+        const fotozamanDamgasi = `${yil}${ay}${gun}-${saat}-${dak}`;
+        anlikYuklenenFotoAdi = `${fotozamanDamgasi}.jpg`;
 
         const hedefYol = `/img/posts/${yil}/${anlikYuklenenFotoAdi}`;
 
