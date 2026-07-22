@@ -3597,13 +3597,11 @@ async function polarstepsKontrolVeHaritaBaslat() {
     }
 }
 
-// 4. POLARSTEPS PUBLIC API İLE DOĞRUDAN VERİ ÇEKME
+// 4. POLARSTEPS PUBLIC API İLE DOĞRUDAN VERİ ÇEKME (CORS PROXY DESTEKLİ)
 async function polarstepsApiDenVeriCek(manuelTetikleme = false) {
     if (manuelTetikleme) bildirimGoster("Polarsteps Public API sorgulanıyor...", "success");
 
     try {
-        // nerdeyim/konum.json 'dan canlı takip URL'sini alıp API endpoint'ine çeviriyoruz
-        // Örn: https://www.polarsteps.com/SafakYollarda/26970859-karadeniz-2026 -> https://api.polarsteps.com/api/trip/byurl/SafakYollarda/26970859-karadeniz-2026
         const konumRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KONUM}`, {
             headers: { "Authorization": `token ${localStorage.getItem('gh_oauth_token')}` }
         });
@@ -3617,13 +3615,19 @@ async function polarstepsApiDenVeriCek(manuelTetikleme = false) {
             return;
         }
 
-        const urlParts = konumJson.canliTakipUrl.replace("https://www.polarsteps.com/", "").split("/");
+        // Linkten kullanıcı adı ve tur slug'ını temizce ayıkla
+        const urlClean = konumJson.canliTakipUrl.replace(/\/$/, ""); // Sondaki eğik çizgiyi kaldır
+        const urlParts = urlClean.replace("https://www.polarsteps.com/", "").split("/");
         const username = urlParts[0];
         const tripSlug = urlParts[1];
-        const apiEndpoint = `https://api.polarsteps.com/api/trip/byurl/${username}/${tripSlug}`;
+        
+        const targetApiEndpoint = `https://api.polarsteps.com/api/trip/byurl/${username}/${tripSlug}`;
+        // CORS engeli ve HTML yönlendirmesini aşmak için proxy kullanımı:
+        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(targetApiEndpoint)}`;
 
-        const apiRes = await fetch(apiEndpoint);
-        if (!apiRes.ok) throw new Error("Polarsteps API yanıt vermedi.");
+        const apiRes = await fetch(proxyUrl);
+        if (!apiRes.ok) throw new Error("Polarsteps API yanıt vermedi veya adres hatalı.");
+        
         const tripData = await apiRes.json();
 
         const steps = tripData.all_steps || [];
@@ -3632,7 +3636,7 @@ async function polarstepsApiDenVeriCek(manuelTetikleme = false) {
             return;
         }
 
-        // Butona tekrar basıldığında farklı bir veriyi (veya en sonuncuyu) seçme mantığı
+        // İşlenecek adımı seç
         let secilenStep = null;
         if (polarstepsSonIslenenStepId) {
             const kalanalarm = steps.filter(s => s.id !== polarstepsSonIslenenStepId && !mevcutTaslakDizisi.some(t => t.polarsteps_id === s.id));
@@ -3655,7 +3659,7 @@ async function polarstepsApiDenVeriCek(manuelTetikleme = false) {
         const idFormatli = `${tarihFormatli}-${saat}-${dakika}`;
         const kapakResmiYolu = `/img/posts/${yil}/${idFormatli}.jpg`;
 
-        // Fotoğraf URL'si alma
+        // Görsel Bağlantısı
         let resimUrl = "";
         if (secilenStep.super_large_thumb_url) {
             resimUrl = secilenStep.super_large_thumb_url;
@@ -3666,7 +3670,7 @@ async function polarstepsApiDenVeriCek(manuelTetikleme = false) {
         // Koordinat Bilgisi
         const konumStr = secilenStep.location ? `${secilenStep.location.lat}, ${secilenStep.location.lon}` : "";
 
-        // Birebir istenen Taslak Objesi
+        // Taslak Objesi
         const yeniTaslak = {
             id: idFormatli,
             polarsteps_id: secilenStep.id,
@@ -3681,14 +3685,12 @@ async function polarstepsApiDenVeriCek(manuelTetikleme = false) {
             etiketler: ["fotoğraf,anlık,ferdimen,"]
         };
 
-        // Zaten var mı kontrolü
+        // Çift kayıt kontrolü
         const ciftKayit = mevcutTaslakDizisi.some(t => t.id === yeniTaslak.id || (t.polarsteps_id && t.polarsteps_id === yeniTaslak.polarsteps_id));
 
         if (!ciftKayit) {
-            // İçeriği koruyarak ALT SATIRA / DİZİ SONUNA ekleme
             mevcutTaslakDizisi.push(yeniTaslak);
 
-            // Görseli GitHub repona ilgili yola kaydet
             if (resimUrl) {
                 await gorselGithubaKopyala(resimUrl, yeniTaslak.kapakresmi);
             }
