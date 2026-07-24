@@ -3,7 +3,7 @@
     "baslik": "Deneme",
     "kategori": "Diğer",
     "tarih": "2000-01, 2021-10",
-    "kapakresmi": "img/resim-yok.png",
+    "kapakresmi": "/img/resim-yok.png",
     "aciklama": "vaudepişmanlıktır",
     "yorum": "vaudepişmanlıktır",
     "varsayilan": false,
