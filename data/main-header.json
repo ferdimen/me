@@ -1,6 +1,6 @@
 {
   "logo": {
-    "img": "img/logo.png",
+    "img": "https://ferdimen.com/img/logo.png",
     "alt": "Ferdimen Logo",
     "link": "index.html"
   },
