@@ -652,6 +652,73 @@
         .weight-counter { background: #eee; color: black; }
         .weight-val { color: black; }
       }
+	  /* ==========================================
+   MOBİL VE KÜÇÜK EKRAN UYUMU (RESPONSIVE)
+   ========================================== */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  /* Üst Kontrol Barı Düzenlemesi */
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px;
+    top: 5px;
+  }
+
+  /* Filtre ve Mod Butonları Toplu Alanı */
+  .filter-buttons {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    gap: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filter-buttons .btn {
+    flex: 0 0 auto; /* Butonların sıkışmasını önler */
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* Kategori, Sıralama ve Arama Grubu */
+  .search-select-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .search-select-group select,
+  .search-wrapper {
+    width: 100%;
+    max-width: 100%; /* Mobil ekranda tam genişlik */
+  }
+
+  /* Düzen ve Yan Paneller (Zaman Tüneli / Çanta) */
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .right-timeline-wrapper,
+  .checklist-sidebar {
+    position: static; /* Mobilde akışı bozmaması için sabitliği kaldırır */
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    margin-bottom: 15px;
+  }
+
+  /* Izgara Yapısı (Kartlar) */
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 15px;
+  }
+}
     </style>
 </head>
 <body>
