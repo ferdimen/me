@@ -1,5 +1,16 @@
 [
   {
+    "baslik": "Deneme",
+    "kategori": "Diğer",
+    "tarih": "2000-01, 2021-10",
+    "kapakresmi": "img/resim-yok.png",
+    "aciklama": "vaudepişmanlıktır",
+    "yorum": "vaudepişmanlıktır",
+    "varsayilan": false,
+    "agirlik": "10",
+    "etiketler": "vaudepişmanlıktır"
+  },
+  {
     "baslik": "Bianchi Hard Clash",
     "kategori": "Bisiklet",
     "tarih": "2011-02, 2012-05",
