@@ -1,16 +1,5 @@
 [
   {
-    "baslik": "Test",
-    "kategori": "Kamp Mutfağı",
-    "tarih": "2000-01, 2021-10",
-    "kapakresmi": "/img/resim-yok.png",
-    "aciklama": "yok",
-    "yorum": "yok",
-    "varsayilan": false,
-    "agirlik": "10",
-    "etiketler": "kamp mutfağı"
-  },
-  {
     "baslik": "Deneme",
     "kategori": "Diğer",
     "tarih": "2000-01, 2021-10",
