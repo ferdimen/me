@@ -1,16 +1,5 @@
 [
   {
-    "baslik": "Deneme",
-    "kategori": "Diğer",
-    "tarih": "2011-01-01, 2020-01-01",
-    "kapakresmi": "img/ekipman/2011/Dier-Deneme.png",
-    "aciklama": "#vaudepişmanlıktır",
-    "yorum": "#vaudepişmanlıktır",
-    "varsayilan": false,
-    "agirlik": "100",
-    "etiketler": "vaudepişmanlıktır"
-  },
-  {
     "baslik": "Bianchi Hard Clash",
     "kategori": "Bisiklet",
     "tarih": "2011-02, 2012-05",
