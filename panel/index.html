@@ -878,14 +878,14 @@
             <!-- TARİH ALANLARI (ELLE YAZIM VE TAKVİM SEÇİCİ BİRLİKTE) -->
             <div class="form-row">
                 <div class="form-group">
-                    <label for="e-tarih1">1. Kullanım Tarihi ($yil-$ay-$gun, $yil-$ay veya $yil):</label>
+                    <label for="e-tarih1">Başlangıç Tarihi:</label>
                     <div style="display: flex; gap: 6px;">
                         <input type="text" id="e-tarih1" placeholder="Örn: 2014-03 veya 2014-03-15" required style="flex: 1;">
                         <input type="date" id="e-tarih1-picker" title="Takvimden Tarih Seç" onchange="if(this.value) document.getElementById('e-tarih1').value = this.value" style="width: 42px; padding: 4px; cursor: pointer;">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="e-tarih2">2. Kullanım Tarihi (Opsiyonel):</label>
+                    <label for="e-tarih2">>Bitiş Tarihi:</label>
                     <div style="display: flex; gap: 6px;">
                         <input type="text" id="e-tarih2" placeholder="Örn: 2017-04" style="flex: 1;">
                         <input type="date" id="e-tarih2-picker" title="Takvimden Tarih Seç" onchange="if(this.value) document.getElementById('e-tarih2').value = this.value" style="width: 42px; padding: 4px; cursor: pointer;">
