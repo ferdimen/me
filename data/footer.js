@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // --- DİNAMİK URL HESAPLAMA ---
         const pathArray = window.location.pathname.split('/');
         const rootPath = window.location.origin + (pathArray[1] && !pathArray[1].includes('.') && pathArray[1] !== 'yazilar' ? '/' + pathArray[1] : '');
-        const jsonYolu = rootPath + "/yazilar/yazilar.json";
+        const jsonYolu = rootPath + "https://ferdimen.com/yazilar/yazilar.json";
 
         fetch(jsonYolu)
             .then(response => {
