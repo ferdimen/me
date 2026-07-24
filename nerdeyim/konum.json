@@ -1,9 +1,9 @@
 {
-  "aktifTur": "evet",
-  "canliTakipUrl": "https://www.polarsteps.com/SafakYollarda/26970859-karadeniz-2026",
+  "aktifTur": "hayir",
+  "canliTakipUrl": "",
   "tur-adi": "KARADENİZ 2026 Bisiklet Turu",
   "aciklama": "UYARI!: Test amaçlıdır -Veriler Şafak Omaç'ın yaptığı bisiklet turuna aittir.",
-  "rota": "evet",
+  "rota": "hayir",
   "gunleri-goster": "hepsi",
   "karakter-siniri": 120,
   "yazi": "evet",
