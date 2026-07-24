@@ -87,12 +87,12 @@
 				<button class="tab-btn" onclick="sekmeDegistir('video-tab')">🎬 Video Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('blog-tab')">📝 Blog Yazıları</button>
 				<button class="tab-btn" onclick="sekmeDegistir('haberler-tab')">📰 Haberler</button>
+				<button class="tab-btn" onclick="sekmeDegistir('ekipman-tab')">🎒 Ekipman Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('kronoloji-tab')">⏳ Kronoloji</button>
 				<button class="tab-btn" onclick="sekmeDegistir('sss-tab')">🙋 SSS Yönetimi</button>				
 				<button class="tab-btn" onclick="sekmeDegistir('rozetler-tab')">🛡️ Rozet Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('sosyal-tab')">🌐 Sosyal Medya</button>
 				<button class="tab-btn" onclick="sekmeDegistir('dosyalar-tab')">📁 Dosya Yönetimi</button>
-				<button class="tab-btn" onclick="sekmeDegistir('ekipman-tab')">🎒 Ekipman Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('footer-tab')">📢 Footer Mesajları</button>
                 <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
 <!-- // ==========================================	YENİ TABLARIN BAŞLIKLARI ÜSTE EKLENİYOR	-->				
@@ -839,93 +839,104 @@
     <h3>🎒 Ekipman Yönetimi</h3>
     
     <!-- Ekipman Ekleme ve Düzenleme Formu -->
-    <fieldset style="margin-bottom: 25px; border-color: #059669;">
-        <legend id="ekipman-form-baslik" style="color: #059669; font-weight: bold;">➕ Yeni Ekipman Ekle</legend>
+    <fieldset style="margin-bottom: 25px; border-color: #2563eb;">
+        <legend id="ekipman-form-baslik" style="color: #2563eb; font-weight: bold;">➕ Yeni Ekipman Ekle</legend>
         <form id="form-yeni-ekipman" onsubmit="ekipmanFormuGonder(event)">
-            <!-- Gizli input: Düzenlenen verinin dizideki sırasını (index) tutar -->
-            <input type="hidden" id="eq-index" value="-1">
+            <!-- Gizli input: Düzenlenen ekipmanın dizideki sırasını tutar -->
+            <input type="hidden" id="e-index" value="-1">
+            <input type="hidden" id="e-eski-resim-yolu" value="">
 
             <div class="form-row">
-                <div class="form-group" style="flex: 2;">
-                    <label for="eq-baslik">Ekipman / Ürün Başlığı:</label>
-                    <input type="text" id="eq-baslik" placeholder="Örn: Gidon Çantası" required>
+                <div class="form-group">
+                    <label for="e-baslik">Ekipman Başlığı:</label>
+                    <input type="text" id="e-baslik" placeholder="Örn: Gidon Çantası" required>
                 </div>
-                <div class="form-group" style="flex: 1;">
-                    <label for="eq-agirlik">Ağırlık (Gram/KG):</label>
-                    <input type="text" id="eq-agirlik" placeholder="Örn: 350" value="0">
+                <div class="form-group">
+                    <label for="e-agirlik">Ağırlık (gr/kg):</label>
+                    <input type="text" id="e-agirlik" placeholder="Örn: 450" value="0">
                 </div>
-                <div class="form-group" style="flex: 1;">
-                    <label for="eq-varsayilan">Varsayılan Liste:</label>
-                    <select id="eq-varsayilan">
-                        <option value="false">Hayır (False)</option>
-                        <option value="true">Evet (True)</option>
+            </div>
+
+            <!-- KATEGORİ SEÇİMİ VE CHIP SİSTEMİ -->
+            <div class="form-group" style="position: relative;">
+                <label>Kategori (Arayın veya Yazıp Ekleyin):</label>
+                <div id="e-kategori-kutusu" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; min-height: 38px; align-items: center;">
+                    <input type="text" id="e-kategori-input" placeholder="Kategori yazın..." style="border: none; outline: none; padding: 4px; flex: 1; min-width: 120px;" oninput="ekipmanKategoriOnerisi(this.value)" autocomplete="off">
+                </div>
+                <div id="e-kategori-onerileri" style="display: none; position: absolute; left: 0; right: 0; top: 100%; background: white; border: 1px solid #cbd5e1; border-top: none; z-index: 120; max-height: 120px; overflow-y: auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"></div>
+            </div>
+
+            <!-- ETİKET SEÇİMİ VE CHIP SİSTEMİ -->
+            <div class="form-group" style="position: relative;">
+                <label>Etiketler (Virgül, Enter veya Öneriden Seçin):</label>
+                <div id="e-etiket-kutusu" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; min-height: 38px; align-items: center;">
+                    <input type="text" id="e-etiket-input" placeholder="Etiket yazın..." style="border: none; outline: none; padding: 4px; flex: 1; min-width: 120px;" oninput="ekipmanEtiketOnerisi(this.value)" autocomplete="off">
+                </div>
+                <div id="e-etiket-onerileri" style="display: none; position: absolute; left: 0; right: 0; top: 100%; background: white; border: 1px solid #cbd5e1; border-top: none; z-index: 120; max-height: 120px; overflow-y: auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"></div>
+            </div>
+
+            <!-- TARİH ALANLARI -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="e-tarih1">1. Kullanım Tarihi ($yil-$ay-$gun, $yil-$ay veya $yil):</label>
+                    <input type="text" id="e-tarih1" placeholder="Örn: 2014-03" required>
+                </div>
+                <div class="form-group">
+                    <label for="e-tarih2">2. Kullanım Tarihi (Opsiyonel):</label>
+                    <input type="text" id="e-tarih2" placeholder="Örn: 2017-04">
+                </div>
+                <div class="form-group">
+                    <label for="e-varsayilan">Varsayılan Ekipman:</label>
+                    <select id="e-varsayilan">
+                        <option value="false">Hayır (false)</option>
+                        <option value="true">Evet (true)</option>
                     </select>
                 </div>
             </div>
 
-            <div class="form-row">
-                <!-- AJAX / DİNAMİK KATEGORİ SEÇİM ALANI -->
-                <div class="form-group" style="position: relative;">
-                    <label>Kategori (Arayıp Seçin veya Yeni Yazın):</label>
-                    <input type="text" id="eq-kategori-input" placeholder="Kategori ara/yaz..." oninput="ekipmanKategoriOneri(this.value)" autocomplete="off">
-                    <div id="eq-kategori-onerileri" style="display: none; position: absolute; left: 0; right: 0; top: 100%; background: white; border: 1px solid #cbd5e1; z-index: 120; max-height: 120px; overflow-y: auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"></div>
-                </div>
-
-                <!-- DİNAMİK MÜLKİYET TARİHLERİ ALANI -->
-                <div class="form-group">
-                    <label for="eq-tarih">Kullanım Tarihleri (Virgülle ayırarak 1 veya 2 tarih girin):</label>
-                    <input type="text" id="eq-tarih" placeholder="Örn: 2014-03, 2017-04 veya sadece 2021">
-                </div>
-            </div>
-
-            <!-- ETİKET SEÇİM/SİLME ALANI (Küçük x ile kaldırma destekli) -->
-            <div class="form-group" style="position: relative;">
-                <label>🏷️ Etiketler (AJAX Destekli Arama ve Ekleme):</label>
-                <div id="eq-etiket-kutusu" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; min-height: 38px; align-items: center;">
-                    <input type="text" id="eq-etiket-input" placeholder="Etiket yazıp entere basın..." style="border: none; outline: none; padding: 4px; flex: 1; min-width: 120px;" oninput="ekipmanEtiketOnerisi(this.value)" autocomplete="off">
-                </div>
-                <div id="eq-etiket-onerileri" style="display: none; position: absolute; left: 0; right: 0; top: 100%; background: white; border: 1px solid #cbd5e1; z-index: 120; max-height: 120px; overflow-y: auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"></div>
-            </div>
-
-            <!-- KAPAK RESMİ / DOSYA YÜKLEME ALANI -->
+            <!-- KAPAK RESMİ SEÇENEKLERİ -->
             <div class="form-row">
                 <div class="form-group" style="flex: 2;">
-                    <label for="eq-kapakresmi">Kapak Resmi URL / Yolu:</label>
-                    <input type="text" id="eq-kapakresmi" placeholder="https://... veya img/ekipman/2014/Cantalar-GidonCantasi.jpg">
+                    <label for="e-kapakresmi-url">Kapak Resmi URL / Yolu:</label>
+                    <input type="text" id="e-kapakresmi-url" placeholder="img/resim-yok.png veya https://...">
                 </div>
                 <div class="form-group" style="flex: 1;">
-                    <label for="eq-resim-dosya">veya Cihazdan Resim Yükle:</label>
-                    <input type="file" id="eq-resim-dosya" accept="image/*" onchange="ekipmanResmiHazırla(this)">
+                    <label for="e-resim-file">Cihazdan Resim Yükle:</label>
+                    <input type="file" id="e-resim-file" accept="image/*" onchange="ekipmanResimSecildi(this)">
                 </div>
             </div>
-
-            <div class="form-group">
-                <label for="eq-aciklama">Açıklama:</label>
-                <textarea id="eq-aciklama" rows="2" placeholder="Ekipman detay açıklaması..."></textarea>
+            <div id="e-resim-onizleme-kapsayici" style="margin-bottom: 15px; display: none; align-items: center; gap: 10px; padding: 10px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 6px;">
+                <img id="e-resim-onizleme" src="" style="max-height: 80px; border-radius: 4px; border: 1px solid #e2e8f0;">
+                <span id="e-resim-hedef-bilgi" style="font-size: 12px; color: #64748b; font-weight: bold;"></span>
             </div>
 
             <div class="form-group">
-                <label for="eq-yorum">Kullanıcı Yorumu / İnceleme:</label>
-                <textarea id="eq-yorum" rows="2" placeholder="Kullanım deneyimi..."></textarea>
+                <label for="e-aciklama">Açıklama:</label>
+                <textarea id="e-aciklama" rows="2" placeholder="Ekipman hakkında teknik açıklama..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="e-yorum">Kişisel Yorum:</label>
+                <textarea id="e-yorum" rows="2" placeholder="Kullanım deneyimi veya kişisel yorumlar..."></textarea>
             </div>
 
             <div style="display: flex; gap: 10px;">
-                <button type="submit" id="btn-ekipman-kaydet" class="btn" style="background: #059669; flex: 2;">Onayla ve Ekipmanı Kaydet</button>
+                <button type="submit" id="btn-ekipman-kaydet" class="btn" style="background: #2563eb; flex: 2;">Ekipman Listesine Ekle</button>
                 <button type="button" id="btn-ekipman-iptal" onclick="ekipmanFormuSifirla()" class="btn" style="background: #64748b; flex: 1; display: none;">İptal Et</button>
             </div>
         </form>
     </fieldset>
 
-    <!-- MEVCUT EKİPMAN LİSTESİ VE AJAX ARAMA -->
+    <!-- Mevcut Ekipman Listesi ve AJAX Arama -->
     <fieldset>
         <legend>🎒 Mevcut Ekipman Listesi (JSON Çıktısı)</legend>
         
-        <!-- AJAX Arama Kutusu -->
+        <!-- AJAX Destekli Arama Kutusu -->
         <div class="form-group" style="margin-bottom: 15px;">
-            <input type="text" id="eq-arama-input" placeholder="🔍 Mevcut ekipmanlar arasında dinamik arama yapın (Başlık, Kategori, Etiket)..." oninput="ekipmanAramaYap(this.value)">
+            <input type="text" id="ekipman-arama-input" placeholder="🔍 Başlık, kategori veya etiketlerde ara..." oninput="ekipmanAramaYap(this.value)">
         </div>
 
-        <div id="ekipman-listesi-kapsayici" style="display: flex; flex-direction: column; gap: 12px; max-height: 500px; overflow-y: auto; padding-right: 5px;">
+        <div id="ekipman-listesi-kapsayici" style="display: flex; flex-direction: column; gap: 12px; max-height: 550px; overflow-y: auto; padding-right: 5px;">
             <p style="color: #64748b; font-size: 14px; text-align: center;">Ekipmanlar yükleniyor...</p>
         </div>
     </fieldset>
@@ -1023,20 +1034,19 @@ let anlikSecilenEtiketler = ["fotoğraf", "anlık", "ferdimen"];
 let anlikSecilenRozetler = ["fotoğraf", "anlık"];
 let anlikYuklenenFotoBase64 = null;
 let anlikYuklenenFotoAdi = "";
-
-// EKİPMAN YÖNETİMİ PATH VE HAFIZA DEĞİŞKENLERİ
 const PATH_EKIPMAN = "ekipman/ekipman.json";
 let shaEkipman = "";
-let mevcutEkipmanDizisi = []; // ekipman.json içeriği
+let mevcutEkipmanDizisi = []; // Ekipman verileri hafızada tutulur
 
-// AJAX / Etiket & Kategori Öneri Havuzları
+// Ekipman Kategori ve Etiket takipçileri
+let secilenEkipmanKategorileri = [];
+let secilenEkipmanEtiketleri = [];
 let setEkipmanKategoriler = new Set();
 let setEkipmanEtiketler = new Set();
 
-// Form Takip Değişkenleri
-let secilenEkipmanEtiketleri = [];
-let ekipmanYuklenenResimBase64 = null;
-let ekipmanYuklenenResimUzanti = "";
+// Cihazdan yüklenecek geçici resim verisi
+let ekipmanYuklenecekResimBase64 = null;
+let ekipmanYuklenecekResimUzanti = "jpg";
 // ========================================== PATH_XXX BİLGİLERİ ÜSTE EKLENİYOR
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -1116,7 +1126,7 @@ if (token) {
 	blogYukle(token);
 	dosyalariYukle(token);
 	footerVerileriniYukle(token);
-	ekipmanYukle(token);
+	ekipmanlariYukle(token);
 // ========================================== XXX(token) BİLGİLERİ ÜSTE EKLENİYOR 
     yazilariYukle(token).then(() => {
         timelineYukle(token);
@@ -3519,10 +3529,10 @@ async function anlikPaylasimGonder(event) {
         bildirimGoster("Hata: " + error.message, "error");
     }
 }
-// ========================================== EKİPMAN YÖNETİMİ (ekipman/ekipman.json)
+// ========================================== EKİPMAN YÖNETİMİ FONKSİYONLARI ==========================================
 
-// 1. GİTHUB'DAN EKİPMAN JSON VERİSİNİ ÇEKME
-async function ekipmanYukle(token) {
+// 1. Ekipman JSON Verisini GitHub'dan Yükle
+async function ekipmanlariYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_EKIPMAN}`;
     try {
         const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
@@ -3534,343 +3544,476 @@ async function ekipmanYukle(token) {
         const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
         mevcutEkipmanDizisi = JSON.parse(decodedContent);
 
-        ekipmanHavuzlariniOlustur();
-        ekipmanListele(mevcutEkipmanDizisi);
+        // Kategori ve etiket havuzlarını doldur
+        ekipmanOnerileriDerle();
+        // Arayüzü çiz
+        ekipmanlariListele(mevcutEkipmanDizisi);
     } catch (error) {
         console.log("Ekipman yükleme hatası: " + error.message);
     }
 }
 
-// 2. KATEGORİ VE ETİKET HAVUZUNU DİNAMİK HAZIRLAMA
-function ekipmanHavuzlariniOlustur() {
+// Havuzlardan Kategori ve Etiket Kümesi Oluşturma
+function ekipmanOnerileriDerle() {
     setEkipmanKategoriler.clear();
     setEkipmanEtiketler.clear();
 
     mevcutEkipmanDizisi.forEach(item => {
-        if (item.kategori) setEkipmanKategoriler.add(item.kategori.trim());
+        if (item.kategori) {
+            item.kategori.split(',').forEach(k => {
+                const kat = k.trim();
+                if(kat) setEkipmanKategoriler.add(kat);
+            });
+        }
         if (item.etiketler) {
             item.etiketler.split(',').forEach(e => {
-                if (e.trim()) setEkipmanEtiketler.add(e.trim());
+                const etk = e.trim();
+                if(etk) setEkipmanEtiketler.add(etk);
             });
         }
     });
 }
 
-// 3. EKİPMANLARI LİSTELEME VE AJAX ARAMA FİLTRESİ
-function ekipmanListele(dizi) {
+// 2. Ekipmanları Kart Yapısında Listeleme
+function ekipmanlariListele(liste) {
     const kapsayici = document.getElementById('ekipman-listesi-kapsayici');
     kapsayici.innerHTML = "";
 
-    if (dizi.length === 0) {
+    if (!liste || liste.length === 0) {
         kapsayici.innerHTML = `<p style="color: #64748b; font-size: 14px; text-align: center;">Eşleşen veya eklenmiş ekipman bulunamadı.</p>`;
         return;
     }
 
-    dizi.forEach((item) => {
-        // Asıl dizideki gerçek indexini bul
-        const gercekIndex = mevcutEkipmanDizisi.indexOf(item);
-
+    liste.forEach((item) => {
+        // Asıl dizideki indeksini bul
+        const asilIndex = mevcutEkipmanDizisi.indexOf(item);
         const kart = document.createElement('div');
         kart.className = 'haber-kart';
-        kart.style.borderColor = '#059669';
+        
+        const kapak = item.kapakresmi || 'img/resim-yok.png';
+
         kart.innerHTML = `
-            <div class="haber-kart-detay">
-                <div class="haber-kart-meta" style="color:#059669;">${item.kategori || 'Genel'} // Tarih: ${item.tarih || 'Belirtilmedi'}</div>
-                <h4 class="haber-kart-baslik">${item.baslik} ${item.varsayilan ? '<span style="font-size:10px; background:#dcfce7; color:#15803d; padding:2px 6px; border-radius:4px;">Varsayılan</span>' : ''}</h4>
-                <div style="font-size:12px; color:#64748b; margin-top:3px;">🏷️ ${item.etiketler || '-'} | ⚖️ ${item.agirlik || 0}g</div>
+            <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+                <img src="${kapak}" onerror="this.src='img/resim-yok.png'" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px; border: 1px solid #cbd5e1;">
+                <div class="haber-kart-detay">
+                    <div class="haber-kart-meta">${item.kategori || 'Genel'} // ${item.tarih || 'Tarihsiz'}</div>
+                    <h4 class="haber-kart-baslik">${item.baslik} ${item.varsayilan ? '<span style="color:#16a34a; font-size:11px;">(Varsayılan)</span>' : ''}</h4>
+                    <div style="font-size: 12px; color: #64748b; margin-top: 2px;">Etiketler: ${item.etiketler || '-'}</div>
+                </div>
             </div>
             <div>
-                <button type="button" class="haber-kart-butonu btn-duzenle" onclick="ekipmanDuzenleTetikle(${gercekIndex})">Düzenle</button>
-                <button type="button" class="haber-kart-butonu btn-sil" onclick="ekipmanSil(${gercekIndex})">Sil</button>
+                <button type="button" class="haber-kart-butonu btn-duzenle" onclick="ekipmanDuzenleTetikle(${asilIndex})">Düzenle</button>
+                <button type="button" class="haber-kart-butonu btn-sil" onclick="ekipmanSil(${asilIndex})">Sil</button>
             </div>
         `;
         kapsayici.appendChild(kart);
     });
 }
 
-// AJAX ARAMA
-function ekipmanAramaYap(metin) {
-    const ara = metin.toLowerCase().trim();
+// 3. AJAX Arama Fonksiyonu
+function ekipmanAramaYap(sorgu) {
+    const q = sorgu.toLowerCase().trim();
+    if (!q) {
+        ekipmanlariListele(mevcutEkipmanDizisi);
+        return;
+    }
+
     const filtrelenmis = mevcutEkipmanDizisi.filter(item => {
         const b = (item.baslik || "").toLowerCase();
         const k = (item.kategori || "").toLowerCase();
         const e = (item.etiketler || "").toLowerCase();
-        return b.includes(ara) || k.includes(ara) || e.includes(ara);
+        const a = (item.aciklama || "").toLowerCase();
+        return b.includes(q) || k.includes(q) || e.includes(q) || a.includes(q);
     });
-    ekipmanListele(filtrelenmis);
+
+    ekipmanlariListele(filtrelenmis);
 }
 
-// 4. ETİKET YÖNETİMİ (KÜÇÜK 'X' İLE SİLME VEYA EKLEME)
-function ekipmanEtiketCiz() {
-    const kutu = document.getElementById('eq-etiket-kutusu');
-    const input = document.getElementById('eq-etiket-input');
-    
-    // Eski rozetleri temizle (input hariç)
-    kutu.querySelectorAll('.eq-tag').forEach(el => el.remove());
+// 4. Kategori ve Etiket Chip Yönetimi
+function ekipmanKategoriArayuzuCiz() {
+    const kutu = document.getElementById('e-kategori-kutusu');
+    const input = document.getElementById('e-kategori-input');
+    kutu.querySelectorAll('.chip-item').forEach(el => el.remove());
 
-    secilenEkipmanEtiketleri.forEach((tag, idx) => {
-        const span = document.createElement('span');
-        span.className = 'eq-tag';
-        span.style.cssText = "background: #e0e7ff; color: #3730a3; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; display: flex; align-items: center; gap: 5px;";
-        span.innerHTML = `${tag} <b onclick="ekipmanEtiketSil(${idx})" style="cursor:pointer; color:#ef4444;">×</b>`;
-        kutu.insertBefore(span, input);
+    secilenEkipmanKategorileri.forEach((kat, idx) => {
+        const chip = document.createElement('span');
+        chip.className = 'chip-item';
+        chip.style.cssText = "background: #dbeafe; color: #1e40af; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; display: flex; align-items: center; gap: 5px;";
+        chip.innerHTML = `${kat} <span style="cursor:pointer; color:#ef4444;" onclick="ekipmanKategoriCikar(${idx})">✕</span>`;
+        kutu.insertBefore(chip, input);
     });
 }
 
-function ekipmanEtiketSil(index) {
-    secilenEkipmanEtiketleri.splice(index, 1);
-    ekipmanEtiketCiz();
+function ekipmanKategoriEkle(val) {
+    const temiz = val.trim();
+    if (temiz && !secilenEkipmanKategorileri.includes(temiz)) {
+        secilenEkipmanKategorileri.push(temiz);
+        ekipmanKategoriArayuzuCiz();
+    }
+    document.getElementById('e-kategori-input').value = "";
+    document.getElementById('e-kategori-onerileri').style.display = "none";
+}
+
+function ekipmanKategoriCikar(idx) {
+    secilenEkipmanKategorileri.splice(idx, 1);
+    ekipmanKategoriArayuzuCiz();
+}
+
+function ekipmanKategoriOnerisi(val) {
+    const div = document.getElementById('e-kategori-onerileri');
+    if (!val.trim()) { div.style.display = "none"; return; }
+
+    const filtrelenen = Array.from(setEkipmanKategoriler).filter(k => k.toLowerCase().includes(val.toLowerCase()));
+    if (filtrelenen.length === 0) { div.style.display = "none"; return; }
+
+    div.innerHTML = "";
+    filtrelenen.forEach(k => {
+        const item = document.createElement('div');
+        item.style.cssText = "padding: 8px; cursor: pointer; font-size: 13px; border-bottom: 1px solid #f1f5f9;";
+        item.innerText = k;
+        item.onclick = () => ekipmanKategoriEkle(k);
+        div.appendChild(item);
+    });
+    div.style.display = "block";
+}
+
+function ekipmanEtiketArayuzuCiz() {
+    const kutu = document.getElementById('e-etiket-kutusu');
+    const input = document.getElementById('e-etiket-input');
+    kutu.querySelectorAll('.chip-item').forEach(el => el.remove());
+
+    secilenEkipmanEtiketleri.forEach((etk, idx) => {
+        const chip = document.createElement('span');
+        chip.className = 'chip-item';
+        chip.style.cssText = "background: #e0e7ff; color: #3730a3; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; display: flex; align-items: center; gap: 5px;";
+        chip.innerHTML = `${etk} <span style="cursor:pointer; color:#ef4444;" onclick="ekipmanEtiketCikar(${idx})">✕</span>`;
+        kutu.insertBefore(chip, input);
+    });
+}
+
+function ekipmanEtiketEkle(val) {
+    const temiz = val.trim();
+    if (temiz && !secilenEkipmanEtiketleri.includes(temiz)) {
+        secilenEkipmanEtiketleri.push(temiz);
+        ekipmanEtiketArayuzuCiz();
+    }
+    document.getElementById('e-etiket-input').value = "";
+    document.getElementById('e-etiket-onerileri').style.display = "none";
+}
+
+function ekipmanEtiketCikar(idx) {
+    secilenEkipmanEtiketleri.splice(idx, 1);
+    ekipmanEtiketArayuzuCiz();
 }
 
 function ekipmanEtiketOnerisi(val) {
-    const div = document.getElementById('eq-etiket-onerileri');
+    const div = document.getElementById('e-etiket-onerileri');
     if (!val.trim()) { div.style.display = "none"; return; }
 
-    const aranan = val.toLowerCase();
-    const uyusanlar = Array.from(setEkipmanEtiketler).filter(e => e.toLowerCase().includes(aranan));
-
-    if (uyusanlar.length === 0) { div.style.display = "none"; return; }
+    const filtrelenen = Array.from(setEkipmanEtiketler).filter(e => e.toLowerCase().includes(val.toLowerCase()));
+    if (filtrelenen.length === 0) { div.style.display = "none"; return; }
 
     div.innerHTML = "";
-    uyusanlar.forEach(item => {
-        const d = document.createElement('div');
-        d.style.cssText = "padding: 8px; cursor: pointer; border-bottom: 1px solid #f1f5f9; font-size: 13px;";
-        d.innerText = item;
-        d.onclick = () => {
-            if (!secilenEkipmanEtiketleri.includes(item)) secilenEkipmanEtiketleri.push(item);
-            document.getElementById('eq-etiket-input').value = "";
-            div.style.display = "none";
-            ekipmanEtiketCiz();
-        };
-        div.appendChild(d);
+    filtrelenen.forEach(e => {
+        const item = document.createElement('div');
+        item.style.cssText = "padding: 8px; cursor: pointer; font-size: 13px; border-bottom: 1px solid #f1f5f9;";
+        item.innerText = e;
+        item.onclick = () => ekipmanEtiketEkle(e);
+        div.appendChild(item);
     });
     div.style.display = "block";
 }
 
-// Enter veya Virgül İle Etiket Ekleme
-document.getElementById('eq-etiket-input')?.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ',') {
-        e.preventDefault();
-        const val = this.value.replace(',', '').trim();
-        if (val && !secilenEkipmanEtiketleri.includes(val)) {
-            secilenEkipmanEtiketleri.push(val);
-            this.value = "";
-            ekipmanEtiketCiz();
-        }
+// Input alanlarında Enter veya Virgül tuşunu yakalama Listener'ları
+document.addEventListener('DOMContentLoaded', () => {
+    const katInput = document.getElementById('e-kategori-input');
+    if(katInput) {
+        katInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ',') {
+                e.preventDefault();
+                ekipmanKategoriEkle(katInput.value);
+            }
+        });
+    }
+
+    const etkInput = document.getElementById('e-etiket-input');
+    if(etkInput) {
+        etkInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ',') {
+                e.preventDefault();
+                ekipmanEtiketEkle(etkInput.value);
+            }
+        });
     }
 });
 
-// 5. KATEGORİ AJAX ÖNERİSİ
-function ekipmanKategoriOneri(val) {
-    const div = document.getElementById('eq-kategori-onerileri');
-    if (!val.trim()) { div.style.display = "none"; return; }
-
-    const aranan = val.toLowerCase();
-    const uyusanlar = Array.from(setEkipmanKategoriler).filter(k => k.toLowerCase().includes(aranan));
-
-    if (uyusanlar.length === 0) { div.style.display = "none"; return; }
-
-    div.innerHTML = "";
-    uyusanlar.forEach(kat => {
-        const d = document.createElement('div');
-        d.style.cssText = "padding: 8px; cursor: pointer; border-bottom: 1px solid #f1f5f9; font-size: 13px;";
-        d.innerText = kat;
-        d.onclick = () => {
-            document.getElementById('eq-kategori-input').value = kat;
-            div.style.display = "none";
-        };
-        div.appendChild(d);
-    });
-    div.style.display = "block";
-}
-
-// 6. RESİM SEÇİLİNCE BASE64 VE OTOMATİK DOSYA YOLU OLUŞTURMA
-function ekipmanResmiHazırla(input) {
+// 5. Cihazdan Resim Yükleme Okuma
+function ekipmanResimSecildi(input) {
     if (input.files && input.files[0]) {
         const file = input.files[0];
-        ekipmanYuklenenResimUzanti = file.name.split('.').pop().toLowerCase();
+        ekipmanYuklenecekResimUzanti = file.name.split('.').pop().toLowerCase() || "jpg";
         
         const reader = new FileReader();
         reader.onload = function(e) {
-            ekipmanYuklenenResimBase64 = e.target.result.split(',')[1];
+            ekipmanYuklenecekResimBase64 = e.target.result.split(',')[1];
+            document.getElementById('e-resim-onizleme').src = e.target.result;
+            document.getElementById('e-resim-onizleme-kapsayici').style.display = "flex";
+            document.getElementById('e-resim-hedef-bilgi').innerText = "Resim cihazdan yüklendi (Kaydedildiğinde GitHub'a yüklenecek).";
         };
         reader.readAsDataURL(file);
-
-        // Otomatik isim ve yol simülasyonu
-        const baslik = document.getElementById('eq-baslik').value || "urun";
-        const kategori = document.getElementById('eq-kategori-input').value || "Genel";
-        const tarih = document.getElementById('eq-tarih').value || "2026";
-        const yil = tarih.split('-')[0].split(',')[0].trim();
-
-        // Türkçe Karakter Temizliği
-        const temizBaslik = baslik.replace(/[^a-zA-Z0-9]/g, '');
-        const temizKategori = kategori.replace(/[^a-zA-Z0-9]/g, '');
-
-        const hedefYol = `img/ekipman/${yil}/${temizKategori}-${temizBaslik}.${ekipmanYuklenenResimUzanti}`;
-        document.getElementById('eq-kapakresmi').value = hedefYol;
     }
 }
 
-// 7. FORMU DÜZENLEME MODUNA ALMA
+// Türkçe Karakter Temizleme ve Slugify Fonksiyonu
+function slugifyMetin(str) {
+    if(!str) return "";
+    let trMap = { 'ç':'c', 'Ç':'c', 'ğ':'g', 'Ğ':'g', 'ş':'s', 'Ş':'s', 'ö':'o', 'Ö':'o', 'ü':'u', 'Ü':'u', 'ı':'i', 'İ':'i' };
+    let s = str.replace(/[çÇğĞşŞöÖüÜıİ]/g, function(m){ return trMap[m]; });
+    return s.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+}
+
+// 6. Form Gönderimi (Ekleme / Güncelleme)
+async function ekipmanFormuGonder(event) {
+    event.preventDefault();
+
+    // Inputta kalan son metinleri chip olarak ekle
+    const katInputVal = document.getElementById('e-kategori-input').value;
+    if(katInputVal) ekipmanKategoriEkle(katInputVal);
+
+    const etkInputVal = document.getElementById('e-etiket-input').value;
+    if(etkInputVal) ekipmanEtiketEkle(etkInputVal);
+
+    const baslik = document.getElementById('e-baslik').value.trim();
+    const t1 = document.getElementById('e-tarih1').value.trim();
+    const t2 = document.getElementById('e-tarih2').value.trim();
+    
+    // Tarih birleştirme logic'i
+    let birlesikTarih = t1;
+    if(t2) birlesikTarih = `${t1}, ${t2}`;
+
+    // Yıl Ayıklama ($yil)
+    let yil = t1.split('-')[0] || new Date().getFullYear().toString();
+
+    // Kategori ve Etiket Stringleri
+    const kategoriStr = secilenEkipmanKategorileri.join(', ');
+    const etiketlerStr = secilenEkipmanEtiketleri.join(', ');
+
+    let kapakResmiUrl = document.getElementById('e-kapakresmi-url').value.trim();
+
+    // Cihazdan resim seçildiyse GitHub img/ekipman/$yil/$kategori-$baslik.jpg klasörüne yükle
+    if (ekipmanYuklenecekResimBase64) {
+        const katSlug = slugifyMetin(secilenEkipmanKategorileri[0] || 'genel');
+        const baslikSlug = slugifyMetin(baslik);
+        const dosyaAdi = `${katSlug}-${baslikSlug}.${ekipmanYuklenecekResimUzanti}`;
+        const hedefPath = `img/ekipman/${yil}/${dosyaAdi}`;
+
+        bildirimGoster("Kapak resmi GitHub'a yükleniyor...", "success");
+        const yuklenenYol = await ekipmanResmiGithubaYukle(hedefPath, ekipmanYuklenecekResimBase64);
+        if (yuklenenYol) {
+            kapakResmiUrl = yuklenenYol;
+        }
+    }
+
+    // Eğer resim hala boşsa varsayılan resim atama
+    if (!kapakResmiUrl) {
+        kapakResmiUrl = "img/resim-yok.png";
+    }
+
+    const yeniEkipman = {
+        "baslik": baslik,
+        "kategori": kategoriStr,
+        "tarih": birlesikTarih,
+        "kapakresmi": kapakResmiUrl,
+        "aciklama": document.getElementById('e-aciklama').value,
+        "yorum": document.getElementById('e-yorum').value,
+        "varsayilan": document.getElementById('e-varsayilan').value === "true",
+        "agirlik": document.getElementById('e-agirlik').value || "0",
+        "etiketler": etiketlerStr
+    };
+
+    const formIndex = parseInt(document.getElementById('e-index').value);
+
+    if (formIndex === -1) {
+        // En başa yeni ekipmanı ekle
+        mevcutEkipmanDizisi.unshift(yeniEkipman);
+    } else {
+        // Mevcut olanı güncelle
+        mevcutEkipmanDizisi[formIndex] = yeniEkipman;
+    }
+
+    ekipmanOnerileriDerle();
+    ekipmanlariListele(mevcutEkipmanDizisi);
+    ekipmanFormuSifirla();
+    ekipmanlariGithubaGonder();
+}
+
+// Resim Dosyasını GitHub Reposuna Yükleme
+async function ekipmanResmiGithubaYukle(path, base64Content) {
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`;
+
+    // Varsa mevcut SHA'yı al
+    let existingSha = "";
+    try {
+        const checkRes = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if(checkRes.ok) {
+            const checkData = await checkRes.json();
+            existingSha = checkData.sha;
+        }
+    } catch(e) {}
+
+    const payload = {
+        message: `Panel: Ekipman kapak resmi yüklendi (${path})`,
+        content: base64Content
+    };
+    if (existingSha) payload.sha = existingSha;
+
+    try {
+        const res = await fetch(url, {
+            method: "PUT",
+            headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+        if(!res.ok) throw new Error("Resim yüklenemedi.");
+        return path;
+    } catch(err) {
+        bildirimGoster("Resim yükleme hatası: " + err.message, "error");
+        return null;
+    }
+}
+
+// 7. Ekipman Düzenleme Modu
 function ekipmanDuzenleTetikle(index) {
     const item = mevcutEkipmanDizisi[index];
 
     document.getElementById('ekipman-form-baslik').innerText = "📝 Ekipmanı Düzenle";
-    document.getElementById('btn-ekipman-kaydet').innerText = "Değişiklikleri Onayla";
+    document.getElementById('btn-ekipman-kaydet').innerText = "Değişiklikleri Kaydet";
     document.getElementById('btn-ekipman-kaydet').style.background = "#eab308";
     document.getElementById('btn-ekipman-iptal').style.display = "inline-block";
 
-    document.getElementById('eq-index').value = index;
-    document.getElementById('eq-baslik').value = item.baslik || "";
-    document.getElementById('eq-agirlik').value = item.agirlik || "0";
-    document.getElementById('eq-varsayilan').value = item.varsayilan ? "true" : "false";
-    document.getElementById('eq-kategori-input').value = item.kategori || "";
-    document.getElementById('eq-tarih').value = item.tarih || "";
-    document.getElementById('eq-kapakresmi').value = item.kapakresmi || "";
-    document.getElementById('eq-aciklama').value = item.aciklama || "";
-    document.getElementById('eq-yorum').value = item.yorum || "";
+    document.getElementById('e-index').value = index;
+    document.getElementById('e-eski-resim-yolu').value = item.kapakresmi || "";
 
-    secilenEkipmanEtiketleri = item.etiketler ? item.etiketler.split(',').map(e => e.trim()).filter(Boolean) : [];
-    ekipmanEtiketCiz();
+    document.getElementById('e-baslik').value = item.baslik || "";
+    document.getElementById('e-agirlik').value = item.agirlik || "0";
+    document.getElementById('e-varsayilan').value = item.varsayilan ? "true" : "false";
+    document.getElementById('e-kapakresmi-url').value = item.kapakresmi || "";
+    document.getElementById('e-aciklama').value = item.aciklama || "";
+    document.getElementById('e-yorum').value = item.yorum || "";
+
+    // Tarihleri ayır
+    if (item.tarih) {
+        const tParca = item.tarih.split(',');
+        document.getElementById('e-tarih1').value = tParca[0] ? tParca[0].trim() : "";
+        document.getElementById('e-tarih2').value = tParca[1] ? tParca[1].trim() : "";
+    } else {
+        document.getElementById('e-tarih1').value = "";
+        document.getElementById('e-tarih2').value = "";
+    }
+
+    // Kategorileri doldur
+    secilenEkipmanKategorileri = [];
+    if (item.kategori) {
+        item.kategori.split(',').forEach(k => { if(k.trim()) secilenEkipmanKategorileri.push(k.trim()); });
+    }
+    ekipmanKategoriArayuzuCiz();
+
+    // Etiketleri doldur
+    secilenEkipmanEtiketleri = [];
+    if (item.etiketler) {
+        item.etiketler.split(',').forEach(e => { if(e.trim()) secilenEkipmanEtiketleri.push(e.trim()); });
+    }
+    ekipmanEtiketArayuzuCiz();
 
     document.getElementById('ekipman-form-baslik').scrollIntoView({ behavior: 'smooth' });
 }
 
-// FORM SIFIRLAMA
-function ekipmanFormuSifirla() {
-    document.getElementById('form-yeni-ekipman').reset();
-    document.getElementById('eq-index').value = "-1";
-    secilenEkipmanEtiketleri = [];
-    ekipmanYuklenenResimBase64 = null;
-    ekipmanEtiketCiz();
-
-    document.getElementById('ekipman-form-baslik').innerText = "➕ Yeni Ekipman Ekle";
-    document.getElementById('btn-ekipman-kaydet').innerText = "Onayla ve Ekipmanı Kaydet";
-    document.getElementById('btn-ekipman-kaydet').style.background = "#059669";
-    document.getElementById('btn-ekipman-iptal').style.display = "none";
-}
-
-// 8. FORM SUBMIT (GÖNDERME VE GİTHUB'A KAYDETME)
-async function ekipmanFormuGonder(event) {
-    event.preventDefault();
-    const token = localStorage.getItem('gh_oauth_token');
-
-    // 1. Resim Dosyası Yüklendiyse Öncelikle Onu GitHub Repository'e Commit Et
-    let kapakResmiYolu = document.getElementById('eq-kapakresmi').value;
-
-    if (ekipmanYuklenenResimBase64 && kapakResmiYolu.startsWith('img/')) {
-        try {
-            const imgUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${kapakResmiYolu}`;
-            
-            // Mevcut dosya var mı kontrol et (SHA almak için)
-            let imgSha = "";
-            const getRes = await fetch(imgUrl, { headers: { "Authorization": `token ${token}` } });
-            if (getRes.ok) {
-                const getJson = await getRes.json();
-                imgSha = getJson.sha;
-            }
-
-            await fetch(imgUrl, {
-                method: "PUT",
-                headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    message: `Panel: Ekipman resmi yüklendi (${kapakResmiYolu})`,
-                    content: ekipmanYuklenenResimBase64,
-                    sha: imgSha || undefined
-                })
-            });
-        } catch (err) {
-            console.log("Resim yükleme hatası: " + err.message);
-        }
-    }
-
-    // 2. Ekipman JSON Objesini Oluştur
-    const yeniEkipman = {
-        "baslik": document.getElementById('eq-baslik').value,
-        "kategori": document.getElementById('eq-kategori-input').value,
-        "tarih": document.getElementById('eq-tarih').value,
-        "kapakresmi": kapakResmiYolu,
-        "aciklama": document.getElementById('eq-aciklama').value,
-        "yorum": document.getElementById('eq-yorum').value,
-        "varsayilan": document.getElementById('eq-varsayilan').value === "true",
-        "agirlik": document.getElementById('eq-agirlik').value || "0",
-        "etiketler": secilenEkipmanEtiketleri.join(', ')
-    };
-
-    const formIndex = parseInt(document.getElementById('eq-index').value);
-
-    if (formIndex === -1) {
-        mevcutEkipmanDizisi.unshift(yeniEkipman);
-    } else {
-        mevcutEkipmanDizisi[formIndex] = yeniEkipman;
-    }
-
-    ekipmanHavuzlariniOlustur();
-    ekipmanListele(mevcutEkipmanDizisi);
-    ekipmanFormuSifirla();
-    ekipmanGithubaGonder();
-}
-
-// 9. EKİPMAN SİLME (İLGİLİ RESİM DOSYASI İLE BİRLİKTE)
+// 8. Ekipman Silme İşlemi (İlişkili Resimle Birlikte)
 async function ekipmanSil(index) {
     const item = mevcutEkipmanDizisi[index];
     const onay = confirm(`"${item.baslik}" ekipmanını silmek istediğinize emin misiniz?`);
     if (!onay) return;
 
-    const token = localStorage.getItem('gh_oauth_token');
-
-    // Eğer kapak resmi repo içi bir yolsa (img/ekipman/...) resmi de GitHub'dan sil
-    if (item.kapakresmi && item.kapakresmi.startsWith('img/')) {
-        try {
-            const imgUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${item.kapakresmi}`;
-            const getRes = await fetch(imgUrl, { headers: { "Authorization": `token ${token}` } });
-            if (getRes.ok) {
-                const getJson = await getRes.json();
-                await fetch(imgUrl, {
-                    method: "DELETE",
-                    headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        message: `Panel: Ekipman resmi silindi (${item.kapakresmi})`,
-                        sha: getJson.sha
-                    })
-                });
-            }
-        } catch (err) {
-            console.log("Resim silinirken hata: " + err.message);
-        }
+    // Eğer kapak resmi img/ekipman/ altındaysa GitHub'dan resmi de sil
+    if (item.kapakresmi && item.kapakresmi.startsWith("img/ekipman/")) {
+        await ekipmanResmiGithubdanSil(item.kapakresmi);
     }
 
-    // JSON Verisinden Kaldır
     mevcutEkipmanDizisi.splice(index, 1);
-    ekipmanHavuzlariniOlustur();
-    ekipmanListele(mevcutEkipmanDizisi);
+    ekipmanOnerileriDerle();
+    ekipmanlariListele(mevcutEkipmanDizisi);
     ekipmanFormuSifirla();
-    ekipmanGithubaGonder();
+    ekipmanlariGithubaGonder();
 }
 
-// 10. GİTHUB COMMIT İŞLEMİ
-async function ekipmanGithubaGonder() {
+// GitHub'dan Resim Dosyası Silme Fonksiyonu
+async function ekipmanResmiGithubdanSil(resimYolu) {
+    const token = localStorage.getItem('gh_oauth_token');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${resimYolu}`;
+
+    try {
+        const checkRes = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if (checkRes.ok) {
+            const checkData = await checkRes.json();
+            const deletePayload = {
+                message: `Panel: Ekipman resmi silindi (${resimYolu})`,
+                sha: checkData.sha
+            };
+            await fetch(url, {
+                method: "DELETE",
+                headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+                body: JSON.stringify(deletePayload)
+            });
+        }
+    } catch(err) {
+        console.log("Resim silinirken hata oluştu: " + err.message);
+    }
+}
+
+// 9. Formu Sıfırlama
+function ekipmanFormuSifirla() {
+    document.getElementById('form-yeni-ekipman').reset();
+    document.getElementById('e-index').value = "-1";
+    document.getElementById('e-eski-resim-yolu').value = "";
+    document.getElementById('ekipman-form-baslik').innerText = "➕ Yeni Ekipman Ekle";
+    document.getElementById('btn-ekipman-kaydet').innerText = "Ekipman Listesine Ekle";
+    document.getElementById('btn-ekipman-kaydet').style.background = "#2563eb";
+    document.getElementById('btn-ekipman-iptal').style.display = "none";
+    document.getElementById('e-resim-onizleme-kapsayici').style.display = "none";
+
+    secilenEkipmanKategorileri = [];
+    secilenEkipmanEtiketleri = [];
+    ekipmanYuklenecekResimBase64 = null;
+
+    ekipmanKategoriArayuzuCiz();
+    ekipmanEtiketArayuzuCiz();
+}
+
+// 10. Son Durumu GitHub'a Commit Etme
+async function ekipmanlariGithubaGonder() {
     const token = localStorage.getItem('gh_oauth_token');
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_EKIPMAN}`;
 
     const jsonString = JSON.stringify(mevcutEkipmanDizisi, null, 2);
     const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
 
+    const payload = {
+        message: "Panel: ekipman/ekipman.json güncellendi",
+        content: base64Content,
+        sha: shaEkipman
+    };
+
     try {
         const response = await fetch(url, {
             method: "PUT",
             headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
-            body: JSON.stringify({
-                message: "Panel: ekipman/ekipman.json listesi güncellendi",
-                content: base64Content,
-                sha: shaEkipman
-            })
+            body: JSON.stringify(payload)
         });
 
         if(!response.ok) throw new Error("GitHub ekipman verisini kaydedemedi.");
         const resData = await response.json();
         shaEkipman = resData.content.sha;
-        bildirimGoster("Ekipman verileri ve dosyaları GitHub'a başarıyla kaydedildi!", "success");
+        bildirimGoster("Ekipman listesi başarıyla kaydedildi!", "success");
     } catch (error) {
         bildirimGoster(error.message, "error");
     }
@@ -3882,7 +4025,6 @@ async function ekipmanGithubaGonder() {
         }
 
         tokenKontrolEt();
-		
     </script>
 </body>
 </html>
