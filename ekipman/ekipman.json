@@ -1,12 +1,25 @@
 [
   {
+    "baslik": "Deneme",
+    "kategori": "Diğer",
+    "tarih": "2011-01-01, 2020-01-01",
+    "kapakresmi": "https://public.flourish.studio/uploads/668469/5153f390-7bf6-4c2c-8cd9-f61f4f0cbd3a.png\t",
+    "aciklama": "#vaudepişmanlıktır",
+    "yorum": "#vaudepişmanlıktır",
+    "varsayilan": false,
+    "agirlik": "100",
+    "etiketler": "vaudepişmanlıktır"
+  },
+  {
     "baslik": "Bianchi Hard Clash",
     "kategori": "Bisiklet",
     "tarih": "2011-02, 2012-05",
     "kapakresmi": "https://lh3.googleusercontent.com/-Xyhaqk4OYKuIZ4xy2QXoP9YVn7noFTPlz3C61KTmpJic2qoPtmCqvnjKNG6JXxgmfED5opDxG0G5BkBkKw=w352-h220-rw",
     "aciklama": "2011 - 2012 yılları arasında kullandığım 26 jant ilk bisikletim.",
     "yorum": "Bilmeden aldım, sattım başka bisiklet aldım. Tüm Trakya'yı gezdim.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "bisiklet, Bianchi, Hard Clash"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "bisiklet, Bianchi, Hard Clash"
   },
   {
     "baslik": "Sedona Borla Bisiklet",
@@ -15,7 +28,9 @@
     "kapakresmi": "https://lh3.googleusercontent.com/KAfVef0IGGEQMHpJovaU8UF6GU40NEdfFo6_GyTkFZAZhKOosPPEFBnEnCAG2AMoja792e3OtkOsaztUDFo=w352-h220-rw",
     "aciklama": "2012 - 2014 yılları arasında kullandığım 26 jant bisikletim.",
     "yorum": "Çift amortisörlü bisikletten sonra kuş gibi geldi. Onun için İsmine Uçan Borla dedim. Bu bisikletle Antalya'ya gittim geldim. Daha sonra sattım.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "bisiklet, sedona, borla"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "bisiklet, sedona, borla"
   },
   {
     "baslik": "Kron Tourer 24 V Bisiklet",
@@ -24,7 +39,9 @@
     "kapakresmi": "https://lh3.googleusercontent.com/EKjB5DUtIqpghQ6uo8G4lDPU_S4qY_mfc8SMj6uPauPnfjnx6EZEAhm2nfYRJ1DLxWpXmONIWNv9m0ygBLg=w352-h220-rw",
     "aciklama": "Standart donanımlı yaklaşık 1000 lira civarı fiyatı olan basit sıradan bir alüminyum kadrolu bisiklet. uzun turlarda bakımı ve yedek parçası ucuz olduğu için V fren tercih ettim. \nKadro: 7005 Alüminyum\nKadro Tipi: Alüminyum\nSüspansiyon Kron: Neo Lockout\nSüspansiyon Tipi: Tek-Ön\nJant: Kron Neo\nJant Ebat: 28\nLastik Continental Country Plus\nVites: Shimano Altus RDM310\nVites Sayısı: 24\nFren: Shimano BRM422\nFren Tipi: V-Break\nSele Brooks b17\nAynakol: Shimano FCM171\nGidon: Kelebek",
     "yorum": "2019 yılından sonra daha çok aykırı yollara girip arazi sürüşü şeklinde tarzımı değiştirince kullanmamaya başladım. Duruyor ama emekli gibi.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "bisiklet, kron, tourer 24 v"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "bisiklet, kron, tourer 24 v"
   },
   {
     "baslik": "Cube Atention 27.5 Bisiklet",
@@ -33,7 +50,9 @@
     "kapakresmi": "https://lh3.googleusercontent.com/sDDAAYIy29YGaW0f406Xaq4Ek4gaUlBPXUt6S4yIBdui55rP9yVdHIxnv6wtVDhDrGuHRKzE_3FlROy9G7k=w352-h220-rw",
     "aciklama": "2014 - Günümüz",
     "yorum": "Göktay; 2020 yılından itibaren tüm turlarımı yaptığım bisikletim.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "bisiklet, cube, atention 27.5"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "bisiklet, cube, atention 27.5"
   },
   {
     "baslik": "Whistle Padwin Bisiklet",
@@ -42,7 +61,9 @@
     "kapakresmi": "https://lh3.googleusercontent.com/TvrPbve6yB9AFJZnIXTdrQVLypy6DtVUmum8jHXy9eTQHiYpEOLqGcrD1AWTK-LQudbAZCO0Owffqb7XMdQ=w352-h220-rw",
     "aciklama": "2020 - Günümüz",
     "yorum": "Pandemide mücbir sebepten aldım. Çok nadir kullanıyorum.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "bisiklet, whistle, padwin"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "bisiklet, whistle, padwin"
   },
   {
     "baslik": "Kazma ve Kürek (Kürşat)",
@@ -51,7 +72,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/1d07a7f8-3621-4a94-b2b5-399406e80955.jpg",
     "aciklama": "Ben ona Kürşat diyorum. \"Kür\" kürek kelimesinden. \"şat\" ise ingilizce \"shot\" yani vurucu gücünden geliyor. Çadır kuracağım alanını düzeltirken, yağışlı ya da yağış ihtimali olan zamanlarda çadırın etrafına suyun gitmesi için küçük hendekler kazmakta kullanıyorum.",
     "yorum": "ağırlık ve yer kaplaması sebebi ile uzun zamandır kullanmıyorum.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "kürek, kazma, alet"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kürek, kazma, alet"
   },
   {
     "baslik": "Çöp Poşeti",
@@ -60,8 +83,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/2ff9eda5-ac19-4d67-b363-e8b4667f487d.jpg",
     "aciklama": "Tenha, ıssız ve riskli bulduğum ortamlarda silah olarak kullanmaktan çekinmiyorum. Artıları saymakla bitmez ama bir tane eksisi var oda ağırlığı. Çoğu zaman yanıma almaktan imtina ediyorum.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "diğer, çöp poşeti"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "diğer, çöp poşeti"
+  },
   {
     "baslik": "Plastik Cırt Kelepçe",
     "kategori": "Diğer",
@@ -69,8 +94,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/e66dc389-e099-439e-a1d7-5487f2c1e0cf.jpg",
     "aciklama": "En zor zamanda hayat kurtarır.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "diğer, cırt, kelepçe"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "diğer, cırt, kelepçe"
+  },
   {
     "baslik": "Ara Kablo",
     "kategori": "Diğer",
@@ -78,7 +105,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/5a470b7e-cc52-413d-b761-bc9384e9841b.jpg",
     "aciklama": "Prize yakın çadır kurduğumda 3 metre kablo ile elektriği çadırın içine çekip elektronik malzemeleri güvenle şarj ediyorum.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "diğer, elektrik, kablo"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "diğer, elektrik, kablo"
   },
   {
     "baslik": "Canon A1400 Fotoğraf Makinesi ve Yedek Piller",
@@ -87,7 +116,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/1714e6b4-7b0b-488c-89ab-702662c22de8.jpg",
     "aciklama": "16.0 megapiksel hd video çekebilen bir fotoğraf makinesi kullanıyorum. içinde 8 gb harici hafıza kartı mevcut. şarj sıkıntısı yaşamamak için özellikle pilli olan bu cihazı tercih ettim. yanımda yedek pil olduğu sürece sıkıntı yaşamıyorum.",
     "yorum": "Duruyor ama yanıma almıyorum artık. Telefon ve diğer çekim ekipmanları ile çekim yapıyorum.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "elektronik, kayıt ekipmanı, kamera, fotoğraf makinesi, canon a1400"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektronik, kayıt ekipmanı, kamera, fotoğraf makinesi, canon a1400"
   },
   {
     "baslik": "Yedek Piller",
@@ -96,7 +127,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f64f4522-e3cf-49bc-a061-ba557da0c43f.jpg",
     "aciklama": "Kamplı bisiklet turlarına başladığım zamandan beri vazgeçilmezim.",
     "yorum": "başlangıçta fotoğraf makinesi için ihtiyaç duyuyordum şimdilerde navigasyon cihazı için mutlaka yanımda bulunuyor.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "elektronik, pil"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "elektronik, pil"
   },
   {
     "baslik": "LG Cep Telefonu",
@@ -105,8 +138,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/cfa6c02a-7e7c-44d7-88bc-76412d7b4776.jpg",
     "aciklama": "Bir telefona binlerce lira vermeyecek kadar akıllı ve fukara olduğumdan kendimden daha aptal ve yavaş bir telefon kullanıyorum.\nBir insanın telefonu kendisinden akıllı olmamalı diye düşünüyorum. Nihayetinde uzay teknolojisini mağara adamının eline versen yine taş olarak kullanır.\nBu cihazı herkesin yaptığı gibi haberleşme amaçlı kullanıyorum. çoğu zamanda yönümü bulmada faydalanıyorum. wikiloc için rota kaydettiğimde oluyor. inanması zor ama arada fotoğraf çekip paylaşabileceğim bir teknolojiyede sahip.",
     "yorum": "Çok yavaşladı ve bozuldu.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "telefon, elektronik, lg"
-  },  
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "telefon, elektronik, lg"
+  },
   {
     "baslik": "LG G4 Cep Telefonu",
     "kategori": "Elektronik",
@@ -114,7 +149,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/4f4f136d-5c3a-4bd3-983c-f29cf7070719.jpg",
     "aciklama": "",
     "yorum": "Çok yavaşladı ve bozuldu.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "telefon, elektronik, lg"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "telefon, elektronik, lg"
   },
   {
     "baslik": "Kask",
@@ -123,8 +160,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f1f39d4e-e4ed-4c12-9d49-ed618b176066.jpg",
     "aciklama": "Bisiklet sürüşlerimin Olmazsa olmazları arasındadır.",
     "yorum": "Eskidi",
-    "varsayilan": false, "agirlik": "0", "etiketler": "giyim, kask"
-  },  
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "giyim, kask"
+  },
   {
     "baslik": "Kask",
     "kategori": "Giyim",
@@ -132,7 +171,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f8423f70-0170-4715-9bcb-489bab243f1e.jpg",
     "aciklama": "Bisiklet sürüşlerimin Olmazsa olmazları arasındadır.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim, kask"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim, kask"
   },
   {
     "baslik": "Decathlon Arpeaz Çadır",
@@ -141,8 +182,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/c167d64b-779f-4e1d-8a20-273784473654.jpg",
     "aciklama": "Basit ve kolay kurulabilen bu çadır, 2 kişilik ama eşyalarım ile beraber tek kişi için ideal..",
     "yorum": "Ufak az yer kaplıyor, Kurmak toplamak kolay.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "kamp malzemeleri, Arpeaz, Çadır, Decathlon"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kamp malzemeleri, Arpeaz, Çadır, Decathlon"
+  },
   {
     "baslik": "Çadır Altı İçin Branda",
     "kategori": "Kamp Malzemeleri",
@@ -150,7 +193,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/d204c6f4-246b-4c3c-84c6-8a51ea5eec98.jpg",
     "aciklama": "Çadır Altına seriyorum. çadırı hem sıvı ve nemden hemde hemde altının kirlenmesini önlüyor.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "kamp malzemeleri, Çadır, branda"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kamp malzemeleri, Çadır, branda"
   },
   {
     "baslik": "Loap Vats 2 Çadır",
@@ -159,7 +204,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/fbd6248c-1a37-4152-bce6-262debaeb045.jpg",
     "aciklama": "Tur yaptığım mevsimler için yeterli bir çadır. Boyutları benim boyuma uygun. Ayrıca girişin önünde bulunan bagaj bölümü malzeme koymak için ilave alan oluşturuyor.",
     "yorum": "tek başıma yaptığım turlarda büyük geliyor. daha ufak çadır kullanıyorum.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "kamp malzemeleri, Çadır, loap, loap vats 2"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp malzemeleri, Çadır, loap, loap vats 2"
   },
   {
     "baslik": "Alyen Zincir Sökme Anahtarı",
@@ -168,8 +215,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/9103cce8-910c-4fc3-ad81-69f3725a5ce3.jpg",
     "aciklama": "Binde bir kullanılacak bir araç fakat yokluğu süründürür. olmazsa olmaz, taşımak gerek her zaman. Yaptığı işe göre fazla yer kapladığını düşünüyorum. en kısa zamanda daha pratik bir gereç ile değiştirmeliyim.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "tamir, bakım"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
+  },
   {
     "baslik": "Zincir Sökme Anahtarı",
     "kategori": "Tamir, Bakım",
@@ -177,7 +226,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/e379e9fc-44eb-4d35-8eee-27be3d5c6d64.jpg",
     "aciklama": "Binde bir kullanılacak bir araç fakat yokluğu süründürür. olmazsa olmaz, taşımak gerek her zaman. Yaptığı işe göre fazla yer kapladığını düşünüyorum. en kısa zamanda daha pratik bir gereç ile değiştirmeliyim.",
     "yorum": "tek iş için gereğinden fazla ağır. multitool kullanıyorum",
-    "varsayilan": false, "agirlik": "0", "etiketler": "tamir, bakım"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
   },
   {
     "baslik": "Loap Uyku Tulumu",
@@ -186,8 +237,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/9f2fa90e-203f-4292-a364-b58bfc8ed887.jpg",
     "aciklama": "Oldukça hafif ve az yer kaplıyor. İlkbahar ve yaz kamplarında kullanıyorum. Havanın biraz daha serin olduğu zamanlarda ilaveten bir adet polar battaniye yeterli oluyor. Zaten kış ayında pek tura çıkmıyorum.",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "kamp malzemeleri, loap"
-  }, 
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp malzemeleri, loap"
+  },
   {
     "baslik": "Uyku Tulumu",
     "kategori": "Kamp Malzemeleri",
@@ -195,7 +248,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/8ac5cd91-9cdb-42a1-a082-c19ff167758b.jpg",
     "aciklama": "Kış-İlkbahar ve Sonbahar aylarında kullandığım uyku tulumu. Yaz aylarında kullanmıyorum.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "kamp malzemeleri, uyku tulumu"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kamp malzemeleri, uyku tulumu"
   },
   {
     "baslik": "Şişme Yastık",
@@ -204,7 +259,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/6ff0d44b-734e-4799-b4f0-644a33204fed.jpg",
     "aciklama": "Hem az yer kaplaması hem de hafif olmasından dolayı taşırken sorun teşkil etmiyor. Kıyafetlerinizi bir poşet içine koyarak aynı işlevde bir yastık yapabileceğiniz gibi 5-10 liraya satın alabilirsiniz.",
     "yorum": "Taşımıyorum artık, kiyafetleri bir çantaya koyup çok güzel yastık oluyor.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "kamp malzemeleri"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp malzemeleri"
   },
   {
     "baslik": "Loap Şişme Mat",
@@ -213,7 +270,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/cc82a354-9847-4c7b-aae6-0ded680ec714.jpg",
     "aciklama": "Hafif ve son derece konforlu bir şişme mat kullanıyorum. Çoğu zaman yanımda ayrıca altına sermek için normal mat bulunduruyorum.",
     "yorum": "Patladı",
-    "varsayilan": false, "agirlik": "0", "etiketler": "kamp malzemeleri, şişme mat, loap"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp malzemeleri, şişme mat, loap"
   },
   {
     "baslik": "WESTTUNE Ultralight şişme",
@@ -222,7 +281,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/87e06791-6a1f-46b1-9195-e3dbcb5b16d0.jpg",
     "aciklama": "Bir turda 40 gün boyunca sorunsuz kullandım. Yeni tura çıkarken bir kontrol ettim her tarafı delik deşikti.",
     "yorum": "Patladı",
-    "varsayilan": false, "agirlik": "0", "etiketler": "kamp malzemeleri, şişme mat, westtune"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp malzemeleri, şişme mat, westtune"
   },
   {
     "baslik": "Şişme Mat/Yatak",
@@ -231,7 +292,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/4333fd94-0dd7-486f-a0f3-2356ca6b38cd.jpg",
     "aciklama": "Ne idüğü belirsiz Şişme Mat gibi bir şey. kullanmayı denedim, olmadı.",
     "yorum": "Eni zaten dar şişirdiğin zaman yükseliyor ve daralıyor. üstünden durmak zor sürekli kayıyorsun. Aldığıma pişmanım, Sattım gitti",
-    "varsayilan": false, "agirlik": "0", "etiketler": "kamp malzemeleri, şişme mat, mat"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp malzemeleri, şişme mat, mat"
   },
   {
     "baslik": "Normal Askeri Mat",
@@ -240,7 +303,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/1a632a60-c287-4d07-a8f1-a68e08cefadf.jpg",
     "aciklama": "Bir ara şişme mat aldığımda kullanmaya ara vermiş olsam da kamplı turlara başladığımdan beri kullanıyorum.",
     "yorum": "Şişme mat kadar konforlu olmasada asla yarı yolda bırakmaz. Bir süre sonra bisiklet turlarım survivor moduna döndüğü için konfor aramaz oldum.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "kamp malzemeleri, mat"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kamp malzemeleri, mat"
   },
   {
     "baslik": "Kamp Duşu",
@@ -249,7 +314,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/81676c63-aad5-485f-8299-713a00e65470.jpg",
     "aciklama": "Herhangi bir çeşmeden doldurduğum su ile duş alma imkanına sahip oluyorum. (2015 mayıs ayında yaptığım turda yere düşerek patladı. Yenisini almalıyım.)",
     "yorum": "Fazla su doldurunca ağırlıktan düşüp patladı. 2025 yılında yenisini aldım ama yaz turları pek yapmadığım için kullanmak kısmet olmadı.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "temizlik, kişisel bakım"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "temizlik, kişisel bakım"
   },
   {
     "baslik": "Kovea Booster +1 Ocak",
@@ -258,7 +325,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/af6c7eea-c30f-4c87-a9cc-0b59f8ec0a4c.jpg",
     "aciklama": "Memleketin her yerinde benzine ulaşmak çok kolay olduğu için benzin ocağı tercih ettim. bu cihaz ayrıca tüp ile çalışıyor.\nBenzinin kalorisi gaza göre çok daha yüksek olduğundan yemekleri çok daha çabuk pişiriyor.\nBenzin kullanıldığı zaman ön ısıtma esnasında ocak çok isleniyor ve sorun çıkartabiliyor. ideali beyaz benzin denilen bir yakıt fakat her yerde bulmak mümkün değil.\nFiyatı diğer ocaklara göre oldukça yüksek.",
     "yorum": "Aldığıma pişman olmadığım yegane ürünlerden biri.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "kamp mutfağı, kovea booster +1"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı, kovea booster +1"
   },
   {
     "baslik": "Kamp Tüpü",
@@ -267,7 +336,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/c8cb3b99-99b4-4236-9bf8-293c77f3ad6f.jpg",
     "aciklama": "Benzin ocağını almadan önce kullanmaya başladım. Uzun süre tüpü çakmak gazı ile doldurup benzin ocağı ile kullanmaya devam ettim. bir süre sonra çakmak gazları pahalıya gelmeye başlayınca kullanmayı bırakıp benzine döndüm.",
     "yorum": "Zor zamanlar yada kısa turlar için kıyıda köşede duruyor.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "kamp mutfağı, çakmak gazı, kamp tüpü"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı, çakmak gazı, kamp tüpü"
   },
   {
     "baslik": "Aluminyum Tencere Seti",
@@ -276,7 +347,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/b989c98c-65e1-4940-85f7-0060398afbbb.jpg",
     "aciklama": "Tek kişi için ideal bir tencere seti. Alüminyum malzemeden yapılmış, iç içe geçtiği için hafif ve fazla yer kaplamıyor.",
     "yorum": "Benzinli ocağın ısısına dayanıklı olmadığı ve sağlıksız olduğu için kullanmayı bıraktım. Hamam tas olarak kullanıyorum. :)",
-    "varsayilan": false, "agirlik": "0", "etiketler": "kamp mutfağı"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı"
   },
   {
     "baslik": "Çelik Tencere Seti",
@@ -285,7 +358,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/94941700-e7af-4ef3-9afd-e76105d3b349.jpg",
     "aciklama": "Tek kişi için yeterli tencere seti. Sözde çelik (aslında teneke gibi) malzemeden yapılmış, biraz yer kaplıyor. bir süre içine başka malzemeler koyarak kullandım. çin malı tavsiye etmiyorum. yemeği yapıştırıyor, temizliği zor.",
     "yorum": "Çelik diye aldım, teneke çıktı.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "kamp mutfağı"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı"
   },
   {
     "baslik": "Yama Seti ve Levye",
@@ -294,7 +369,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/7e72781e-4cc3-4591-bd6e-70acf1bac96e.jpg",
     "aciklama": "Dış lastiklerim patlamaya karşı dayanıklı olsada taşımakta fayda var her zaman. 3-5 liraya temin edilebilecek sıradan bir yama seti.",
     "yorum": "Demirbaş",
-    "varsayilan": true, "agirlik": "0", "etiketler": "tamir, bakım"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
   },
   {
     "baslik": "Pompa",
@@ -303,7 +380,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f9c855b9-d296-45ab-aaa5-8273eee914b1.jpg",
     "aciklama": "Olmazsa olmaz, taşımak gerek her zaman.",
     "yorum": "Demirbaş, Fotoğraftaki pompa bozuldu başka pompa kullanıyorum.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "tamir, bakım"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
   },
   {
     "baslik": "Alyen Anahtarı",
@@ -312,7 +391,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/28886c59-5d67-4f46-905e-ff441945b1e1.jpg",
     "aciklama": "Tur esnasında bisikletimin ayarlarında kullanacağım tüm araçları bünyesinde barındırıyor.",
     "yorum": "Demirbaş",
-    "varsayilan": true, "agirlik": "0", "etiketler": "tamir, bakım"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
   },
   {
     "baslik": "Pense",
@@ -321,8 +402,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/b0bfaba0-09fc-491f-a10d-d399d7f3fdf1.jpg",
     "aciklama": "2015 mayıs ayında yaptığım turda bulduğum bu ganimetten sonra önceden kullandığım normal penseyi emekliye ayırarak bu çok fonksiyonlu gereci kullanmaya başladım.",
     "yorum": "Kırıldı",
-    "varsayilan": false, "agirlik": "0", "etiketler": "tamir, bakım"
-  },  
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
+  },
   {
     "baslik": "Pense",
     "kategori": "Tamir, Bakım",
@@ -330,8 +413,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/e9e90e48-4502-4a15-8ef6-5aeb31323758.jpg",
     "aciklama": "Hafif ve sağlam iş görüyor.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "tamir, bakım"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
+  },
   {
     "baslik": "Kubağacık",
     "kategori": "Tamir, Bakım",
@@ -339,8 +424,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f50d3f5d-df22-4caf-9a40-a3ec1adc6deb.jpg",
     "aciklama": "Küçük boyutu ve hafifliği ile taşıma kolaylığı sağlıyor. boyutu 22 somunlar için biraz daha büyük olsaydı Ruble sökücü için taşıdığım kurbağacığı taşımaktan kurtaracak",
     "yorum": "Hafif ve sağlam iş görüyor.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "tamir, bakım"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
+  },
   {
     "baslik": "Kubağacık",
     "kategori": "Tamir, Bakım",
@@ -348,8 +435,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/5e3d7c10-7346-4b6c-8743-1ede4f2168e8.jpg",
     "aciklama": "Ruble sökücü için mecburen taşıyorum.",
     "yorum": "Hafif ve sağlam iş görüyor.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "tamir, bakım"
-  },    
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
+  },
   {
     "baslik": "Multi-tool",
     "kategori": "Tamir, Bakım",
@@ -357,8 +446,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/b975b313-3c93-4a97-96cf-d27a1ad9184d.jpg",
     "aciklama": "Küçük işlerde işe yarıyor.",
     "yorum": "Hafif ve sağlam iş görüyor.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "tamir, bakım"
-  },   
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
+  },
   {
     "baslik": "Demir Testeresi",
     "kategori": "Tamir, Bakım",
@@ -366,8 +457,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f3d0ef45-b18f-41d0-97a8-f52bf0d88ad1.jpg",
     "aciklama": "Yanında bulunmasında fayda var dediklerimden, ne zaman lazım olacağı bilinmez. kilit falan bozulursa hayat kurtarır.",
     "yorum": "Hafif ve sağlam iş görüyor.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "tamir, bakım"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
+  },
   {
     "baslik": "Akort Anahtarı",
     "kategori": "Tamir, Bakım",
@@ -375,8 +468,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/5980cc27-adf4-4cbc-9791-53af1e8f276a.jpg",
     "aciklama": "Jant tellerinin en yakın arkadaşı.",
     "yorum": "Hafif hafif modelleri vara ama sağlamlığı ile yarı yolda bırakmıyor.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "tamir, bakım"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
+  },
   {
     "baslik": "Ters Kılavuz",
     "kategori": "Tamir, Bakım",
@@ -384,8 +479,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/fa4a1a19-a17b-4b51-91a7-760b82730332.jpg",
     "aciklama": "Bagaj vidası kırılıp kadronun içinde kaldığından hayat kurtarıyor..",
     "yorum": "Binde bir lazım ama yanında taşımaya değer.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "tamir, bakım"
-  },   
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
+  },
   {
     "baslik": "Ruble Sökme Anahtarı",
     "kategori": "Tamir, Bakım",
@@ -393,8 +490,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/d7c231e6-b052-4f40-be7f-fd99e94289ec.jpg",
     "aciklama": "Rublenin en yakın arkadaşı.",
     "yorum": "Hafif hafif modelide vara ama sağlamlığı ile yarı yolda bırakmıyor.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "tamir, bakım"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
+  },
   {
     "baslik": "Unior Kaset Ruble Sökme Anahtarı 1669/4",
     "kategori": "Tamir, Bakım",
@@ -402,8 +501,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/2c69c22b-58c4-4e04-99e1-7ede30ec7eeb.jpg",
     "aciklama": "Kullanırken dikkat etmek gerekiyor.",
     "yorum": "Ruble sökmenin en hafif yolu ama güven vermiyor, kadro kulağı kırmışlığım var.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "tamir, bakım"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
+  },
   {
     "baslik": "Zincir Tutma Anahtarı",
     "kategori": "Tamir, Bakım",
@@ -411,7 +512,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/335a646c-2fa8-4466-a1ea-ea99083f9ae2.jpg",
     "aciklama": "Rubleyi sökmek için gerekli.",
     "yorum": "Yokluğunda icatlar yapmam gerekti, eşek gibi taşırım kafam rahat olur.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "tamir, bakım"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
   },
   {
     "baslik": "ATF Şanzıman Yağı",
@@ -420,7 +523,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/2bea88b4-c74b-4151-bc43-f535f3a7934a.jpg",
     "aciklama": "Zamanında bir litre aldım o zamandan bu zamana küçük yağ şişesine doldurup doldurup yanıma alıp kullanıyorum ancak yarısını kullanmışımdır",
     "yorum": "Başkalarına sorsan pislik tutuyor falan diyenler oluyor ama o kadar pinpirikli biri değilim.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "zincir yağı, tamir, bakım"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "zincir yağı, tamir, bakım"
   },
   {
     "baslik": "Arka Bagaj",
@@ -429,8 +534,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/0ab7c690-0c22-40d2-baae-59e148631d01.jpg",
     "aciklama": "Cube dağ bisikletimde takılı.",
     "yorum": ".",
-    "varsayilan": true, "agirlik": "0", "etiketler": "Taşıma, xlc"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "Taşıma, xlc"
+  },
   {
     "baslik": "Arka Bagaj",
     "kategori": "Taşıma",
@@ -438,8 +545,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/6fa61863-95fe-49b3-bf7c-5beab1cf5b7e.jpg",
     "aciklama": "Cube dağ bisikletimde kullandım. Montaj için uzun vida kullanmak gerektiğinden esneme olduğunda çok sık kırılıyordu.",
     "yorum": ".",
-    "varsayilan": false, "agirlik": "0", "etiketler": "Taşıma, topeak"
-  },   
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "Taşıma, topeak"
+  },
   {
     "baslik": "Arka Bagaj",
     "kategori": "Taşıma",
@@ -447,8 +556,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/84971436-fb0f-41ce-acb8-44d42124d19d.jpg",
     "aciklama": "Cube dağ bisikletimde kullandım. Montaj için uzun vida kullanmak gerektiğinden esneme olduğunda çok sık kırılıyordu.",
     "yorum": ".",
-    "varsayilan": false, "agirlik": "0", "etiketler": "Taşıma,"
-  },   
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "Taşıma,"
+  },
   {
     "baslik": "Ön Bagaj",
     "kategori": "Taşıma",
@@ -456,8 +567,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f7240d52-ef66-4715-943a-7f5f82022feb.jpg",
     "aciklama": "Cube dağ bisikletimde takılı.doğalgaz kelepçeleri ile maşaya sabitleyip kullanıyorum.",
     "yorum": ".",
-    "varsayilan": true, "agirlik": "0", "etiketler": "Taşıma, xlc"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "Taşıma, xlc"
+  },
   {
     "baslik": "Arka Bagaj",
     "kategori": "Taşıma",
@@ -465,7 +578,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/5153f390-7bf6-4c2c-8cd9-f61f4f0cbd3a.png",
     "aciklama": "Kron Tourer 24 V Tur Bisikletinde takılı.",
     "yorum": "Emekli sayılır.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "Taşıma"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "Taşıma"
   },
   {
     "baslik": "Ön Bagaj",
@@ -474,7 +589,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/5153f390-7bf6-4c2c-8cd9-f61f4f0cbd3a.png",
     "aciklama": "Kron Tourer 24 V Tur Bisikletinde takılı",
     "yorum": "Emekli sayılır.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "taşıma"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "taşıma"
   },
   {
     "baslik": "Ortlieb Ön/Arka Çanta",
@@ -483,7 +600,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/d6b6f46a-91da-4fd8-88b3-04e3e5a6a750.jpg",
     "aciklama": "",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "Çantalar, ortlieb"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "Çantalar, ortlieb"
   },
   {
     "baslik": "Ortlieb Gidon Çantası",
@@ -492,7 +611,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/5153f390-7bf6-4c2c-8cd9-f61f4f0cbd3a.png",
     "aciklama": "",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "Çantalar, ortlieb, gidon çantası"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "Çantalar, ortlieb, gidon çantası"
   },
   {
     "baslik": "Vaude Ön/Arka Çanta",
@@ -501,7 +622,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/5153f390-7bf6-4c2c-8cd9-f61f4f0cbd3a.png",
     "aciklama": "",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "Çantalar, vaude, vaudepişmanlıktır"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "Çantalar, vaude, vaudepişmanlıktır"
   },
   {
     "baslik": "Vaude Gidon Çantası",
@@ -510,8 +633,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f8ec5aef-9337-4c55-828a-695c5d7d9edc.jpg",
     "aciklama": "",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "Çantalar, vaude, gidon çantası, vaudepişmanlıktır"
-  }, 
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "Çantalar, vaude, gidon çantası, vaudepişmanlıktır"
+  },
   {
     "baslik": "Gidon Çantası",
     "kategori": "Çantalar",
@@ -519,7 +644,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f900e416-3f4c-456d-87d1-bdf1159858e5.jpg",
     "aciklama": "",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "Çantalar, gidon çantası"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "Çantalar, gidon çantası"
   },
   {
     "baslik": "NEWBOLER üçgen çanta",
@@ -528,7 +655,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f9be0a85-ff9d-4074-8356-14eec6c41bca.jpg",
     "aciklama": "aslında çok işlevsel ama fermuarı bozuldu",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "çantalar, NEWBOLER, üçgen çanta, kadro çantası"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "çantalar, NEWBOLER, üçgen çanta, kadro çantası"
   },
   {
     "baslik": "Bike Store Kadro çantası",
@@ -537,7 +666,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/9f2d8e40-2b18-4cf3-bc32-a51630d18f49.jpg",
     "aciklama": "Çok işlevsel bir çanta aslında kadro çantsı ama ben sele altı çantası olarak kullanıyorum",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "çantalar, Bike Store, sele altı çanta, kadro çantası"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "çantalar, Bike Store, sele altı çanta, kadro çantası"
   },
   {
     "baslik": "Dji Mic",
@@ -546,7 +677,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f52fb2a0-93df-4776-82c1-d9ec9fd89f33.jpg",
     "aciklama": "",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "elektronik, mikrofon, kayıt ekipmanı, dji"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektronik, mikrofon, kayıt ekipmanı, dji"
   },
   {
     "baslik": "Dji Mic mini",
@@ -555,7 +688,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f4b0bb9a-e673-465c-9beb-34fde25227f7.jpg",
     "aciklama": "",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "elektronik, mikrofon, kayıt ekipmanı, dji"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektronik, mikrofon, kayıt ekipmanı, dji"
   },
   {
     "baslik": "Dji Mic 2",
@@ -564,8 +699,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/92f5fde0-800f-4525-9d72-548e22f16508.jpg",
     "aciklama": "",
     "yorum": "",
-    "varsayilan": true, "agirlik": "28", "etiketler": "elektronik, mikrofon, kayıt ekipmanı, dji"
-	 
+    "varsayilan": true,
+    "agirlik": "28",
+    "etiketler": "elektronik, mikrofon, kayıt ekipmanı, dji"
   },
   {
     "baslik": "Dji action 3",
@@ -574,7 +710,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/d4ca234f-8505-4cfa-8ef7-3f9f527cfc91.jpg",
     "aciklama": "",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "elektronik, kamera, kayıt ekipmanı, dji"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektronik, kamera, kayıt ekipmanı, dji"
   },
   {
     "baslik": "Nikon CoolPix L810",
@@ -583,7 +721,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f2d47535-8eda-4d8c-b8e3-a931d5d77019.jpg",
     "aciklama": "Bir kaç turda kullandım. Boyut olarak bisiklet turu için fazla büyük çok fazla pil harcıyor. onun için emekli ettim. kenarda duruyor.",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "elektronik, kamera, fotoğraf makinesi, kayıt ekipmanı, Nikon"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektronik, kamera, fotoğraf makinesi, kayıt ekipmanı, Nikon"
   },
   {
     "baslik": "Dji action 4",
@@ -592,7 +732,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/151b7cf2-b757-4b3c-93e8-4bed1aae42a3.jpg",
     "aciklama": "",
     "yorum": "",
-    "varsayilan": true, "agirlik": "", "etiketler": "elektronik, kamera, kayıt ekipmanı, dji"
+    "varsayilan": true,
+    "agirlik": "",
+    "etiketler": "elektronik, kamera, kayıt ekipmanı, dji"
   },
   {
     "baslik": "Benro Monopod",
@@ -601,7 +743,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/38bf3e60-8f03-40e8-9375-263fcea149fd.jpg",
     "aciklama": "Benro MK10",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "Teknik, monapod, kayıt ekipmanı, Benro"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "Teknik, monapod, kayıt ekipmanı, Benro"
   },
   {
     "baslik": "Dji Action Monopod",
@@ -610,7 +754,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/91363538-8f15-4b1f-b18a-bb5bb6c9f86c.jpg",
     "aciklama": "Dji Action Monopod",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "Teknik, monapod, kayıt ekipmanı, dji"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "Teknik, monapod, kayıt ekipmanı, dji"
   },
   {
     "baslik": "Ulanzi Boyun Tutucu",
@@ -619,7 +765,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/6d8f88a3-0c5e-4794-b459-fc95f9e14967.jpg",
     "aciklama": "Ulanzi Quick-go II manyetik silikon boyun tutucu",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "Teknik, Boyun Tutucu, kayıt ekipmanı, Ulanzi"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "Teknik, Boyun Tutucu, kayıt ekipmanı, Ulanzi"
   },
   {
     "baslik": "Ulanzi Quick-go II Manyetik Bağlantı",
@@ -628,7 +776,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/862b02b7-8117-416a-812e-66651cf345c5.jpg",
     "aciklama": "Ulanzi Quick-go II Manyetik Bağlantı",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "Teknik, monapod, Triod, kayıt ekipmanı, Ulanzi"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "Teknik, monapod, Triod, kayıt ekipmanı, Ulanzi"
   },
   {
     "baslik": "Ulanzi Monopod/Triod",
@@ -637,7 +787,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f5a57d81-dcdf-4934-8e7e-f8fbb41b9f40.jpg",
     "aciklama": "Ulanzi MT-44",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "Teknik, monapod, Triod, kayıt ekipmanı, Ulanzi"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "Teknik, monapod, Triod, kayıt ekipmanı, Ulanzi"
   },
   {
     "baslik": "Şerif Kılavuz imalatı Ön/Arka Çanta",
@@ -646,7 +798,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/3a983c69-9e35-491a-8c65-dedbaf23a48b.jpg",
     "aciklama": "Rahmetli Şerif ağabeyin yaptığı çantalar sapasağlam önler hala duruyor, arka çantaları arkadaşıma verdim.",
     "yorum": "Su geçirmesizlik şahane, tek sıkıntısı bagaja bağlantı bölümleri.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "Çantalar"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "Çantalar"
   },
   {
     "baslik": "Sosis Çanta",
@@ -655,7 +809,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/5153f390-7bf6-4c2c-8cd9-f61f4f0cbd3a.png",
     "aciklama": "Aslında motorcular için üretilen çok sağlam kalın malzemesi vardı.",
     "yorum": "Sekiz sene kullanmanın sonunda yıprandı, delindi bir süre yapıştırma ile yama ile idare edip yeni çanta alınca emekli ettim.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "Çantalar"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "Çantalar"
   },
   {
     "baslik": "Motowolf Sosis Çanta",
@@ -664,7 +820,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/5153f390-7bf6-4c2c-8cd9-f61f4f0cbd3a.png",
     "aciklama": "",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "Çantalar"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "Çantalar"
   },
   {
     "baslik": "Organize Çanta",
@@ -673,7 +831,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/a9e6b210-e178-465f-9494-fefbeeac70ec.jpg",
     "aciklama": "Bisiklet turunda taşıma kapasitesi kısıtlı olunca aradığını kolayca bulmak için iyi bir çözüm.",
     "yorum": "Mavi: Kıyafet, Yeşil:Kamp Mutfağı, Turuncu: Elektronik, Gri: Yedek parça ve alet edevat",
-    "varsayilan": true, "agirlik": "0", "etiketler": "kamp mutfağı, Çantalar"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı, Çantalar"
   },
   {
     "baslik": "Organize Çanta",
@@ -682,8 +842,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/298c11c6-ba64-4e58-9400-62ca2ae9696c.jpg",
     "aciklama": "Bisiklet turunda taşıma kapasitesi kısıtlı olunca aradığını kolayca bulmak için iyi bir çözüm.",
     "yorum": "Mavi: Temizlik Sarı:Kamp Mutfağı",
-    "varsayilan": true, "agirlik": "0", "etiketler": "temizlik, kişisel bakım, kamp mutfağı, Çantalar"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "temizlik, kişisel bakım, kamp mutfağı, Çantalar"
+  },
   {
     "baslik": "Organize Çanta",
     "kategori": "Çantalar",
@@ -691,7 +853,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/a7d1d0ab-0062-4284-b412-593d46f11f5e.jpg",
     "aciklama": "Bisiklet turunda taşıma kapasitesi kısıtlı olunca aradığını kolayca bulmak için iyi bir çözüm.",
     "yorum": "Elektronik Malzemeleri Kablo ve adaptorleri bu çantada bulunduruyorum",
-    "varsayilan": true, "agirlik": "0", "etiketler": "elektronik, Çantalar"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "elektronik, Çantalar"
   },
   {
     "baslik": "Kilit (Anahtarlı)",
@@ -700,8 +864,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/d6bdd785-10c1-4e0e-bf6a-b74153cc8167.jpg",
     "aciklama": "Kamplı bisiklet turlarına başladığımdan beri vazgeçilmezim.",
     "yorum": "Bu kilidi sadece kamp attığımda kullanıyorum, kamp malzemeleri arasında sosis çantada duruyor. Gün içinde alışveriş için markete girdiğimde kullandığım el altında şifreli bir kilit daha var.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "kilit"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kilit"
+  },
   {
     "baslik": "Kilit (Şifreli)",
     "kategori": "Güvenlik",
@@ -709,7 +875,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/ad99f17b-a2c1-4d3e-8914-9db3242ea18b.jpg",
     "aciklama": "Kamplı bisiklet turlarına başladığımdan beri vazgeçilmezim.",
     "yorum": "Gün içinde alışveriş için markete girdiğimde ve günlük turlarda kullandığım sele borusuna bağlı el altında duruyor.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "kilit"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kilit"
   },
   {
     "baslik": "Loap Berg 2 Çadır",
@@ -718,8 +886,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/3268c14e-484b-42f1-a9f8-48d0fed28461.jpg",
     "aciklama": "Tur yaptığım mevsimler için yeterli bir çadır. Boyutları benim boyuma uygun. Ayrıca girişin önünde bulunan bagaj bölümü malzeme koymak için ilave alan oluşturuyor.",
     "yorum": "tek başıma yaptığım turlarda büyük geliyor. daha ufak çadır kullanıyorum.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "kamp malzemeleri, Çadır, Loap, berg 2"
-  },  
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp malzemeleri, Çadır, Loap, berg 2"
+  },
   {
     "baslik": "polar Battaniye",
     "kategori": "Kamp Malzemeleri",
@@ -727,7 +897,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/a934b3f5-e6dc-42fe-9c1b-d2bf022688cc.jpg",
     "aciklama": "Soğuk ve serin havalarda hayat kurtarıyor",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "kamp malzemeleri, polar, battaniye"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kamp malzemeleri, polar, battaniye"
   },
   {
     "baslik": "Kafa Lambası",
@@ -736,8 +908,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/85dd0c9d-658e-432a-956d-448d9ee8c73e.jpg",
     "aciklama": "Kamp hayatını iyi yönde etkileyen küçük ama önemli bir ayrıntı.",
     "yorum": "Kamplı bisiklet turlarına başladığım zamandan beri vazgeçilmezim.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "aydınlatma"
-  },   
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "aydınlatma"
+  },
   {
     "baslik": "El Feneri",
     "kategori": "Aydınlatma",
@@ -745,8 +919,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/4088aab1-bf01-4fc5-8fad-ca355ae4fa47.jpg",
     "aciklama": "Kamp hayatını iyi yönde etkileyen küçük ama önemli bir ayrıntı.",
     "yorum": "Pil derdi var.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "aydınlatma"
-  },  
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "aydınlatma"
+  },
   {
     "baslik": "Ön Far",
     "kategori": "Aydınlatma",
@@ -754,7 +930,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/5153f390-7bf6-4c2c-8cd9-f61f4f0cbd3a.png",
     "aciklama": "Gece sürüşleri için vazgeçilmez.",
     "yorum": "Az yer kaplıyor çok iş yapıyor, şarjlı olduğu için pil derdi yok.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "aydınlatma, Moon"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "aydınlatma, Moon"
   },
   {
     "baslik": "Ön Işık",
@@ -763,7 +941,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/3e2e1532-73ec-4621-9556-c498a7dcaec6.jpg",
     "aciklama": "Gece sürüşleri için vazgeçilmez.",
     "yorum": "Uzun süre kullandım. bir yanda batarya bir yanda far arada kablo ve adaptör kalabalığı olduğundan daha pratik çözümlere yöneldim. Zor zamanlar için kenarda duruyor.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "aydınlatma"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "aydınlatma"
   },
   {
     "baslik": "Arka Işık",
@@ -772,7 +952,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/dbb17f08-24ef-4306-baba-a46a9505c2e1.jpg",
     "aciklama": "Gece sürüşleri için vazgeçilmez.",
     "yorum": "Çok iyiydi ama bozuldu. son zamanlarda bitkisel hayattayken bile kullandım.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "aydınlatma"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "aydınlatma"
   },
   {
     "baslik": "Sıvı ve Normal Sabun",
@@ -781,7 +963,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f294176d-4374-4006-be00-fd140c859037.jpg",
     "aciklama": "Bir kampın olmazsa olmazı diyebileceğim bir malzemedir. Sıvı veya normal olmak üzere ikisinden birini mutlaka bulundururum",
     "yorum": "Kolay ulaşılabilecek bir yerde her zaman kullanıma hazır.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "temizlik, kişisel bakım"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "temizlik, kişisel bakım"
   },
   {
     "baslik": "Islak Mendil",
@@ -790,7 +974,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/398eb4fc-c855-4fac-a7b2-27ab2db6a332.jpg",
     "aciklama": "Bir kampın olmazsa olmazı diyebileceğim bir malzemedir.",
     "yorum": "Kolay ulaşılabilecek bir yerde her zaman kullanıma hazır.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "temizlik, kişisel bakım"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "temizlik, kişisel bakım"
   },
   {
     "baslik": "Talk Pudra",
@@ -799,7 +985,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/bc356bde-70b6-441b-916c-9f0f17b70540.jpg",
     "aciklama": "Bisiklet turculuğunun söylenmeyen sırlarından biri. Bir kampın olmazsa olmazı diyebileceğim bir malzemedir.",
     "yorum": "Her ihtimale karşı mutlaka yanımda taşırım. ne zaman ne olacağı belli olmaz.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "temizlik, kişisel bakım"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "temizlik, kişisel bakım"
   },
   {
     "baslik": "Bepanthol Krem",
@@ -808,7 +996,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/9570d756-bc28-44c8-9be5-a412342d52f6.jpg",
     "aciklama": "Talk pudranın ekürisi. Hassas kıçlar için bire bir. :) Bisiklet turculuğunun söylenmeyen sırlarından biri. Bir kampın olmazsa olmazı diyebileceğim bir malzemedir.",
     "yorum": "Her ihtimale karşı mutlaka yanımda taşırım. ne zaman ne olacağı belli olmaz.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "temizlik, kişisel bakım"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "temizlik, kişisel bakım"
   },
   {
     "baslik": "Tarak/Saç Fırçası",
@@ -817,7 +1007,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/4089e1bc-b637-4989-8872-7e86beab88ea.jpg",
     "aciklama": "Kendimi bildim bileli yanımda taşırım.",
     "yorum": "Keller çok şanslı bu ağırlıktan muaflar. :)",
-    "varsayilan": true, "agirlik": "0", "etiketler": "temizlik, kişisel bakım"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "temizlik, kişisel bakım"
   },
   {
     "baslik": "İlk yardım Çantası",
@@ -826,8 +1018,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/20a773a5-3a2a-4f77-9fa2-3e9ba225cc8c.jpg",
     "aciklama": "Kimseye kullanmak nasip olmasın. ama eksik de olmasın.",
     "yorum": "Can tatlı",
-    "varsayilan": true, "agirlik": "0", "etiketler": "temizlik, kişisel bakım"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "temizlik, kişisel bakım"
+  },
   {
     "baslik": "İlk yardım Çantası",
     "kategori": "Temizlik/Sağlık ve Kişisel Bakım",
@@ -835,7 +1029,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/165b290a-d7f0-4816-8cf9-3a4c4ddc45af.jpg",
     "aciklama": "Kimseye kullanmak nasip olmasın. ama eksik de olmasın.",
     "yorum": "Can tatlı",
-    "varsayilan": false, "agirlik": "0", "etiketler": "temizlik, kişisel bakım"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "temizlik, kişisel bakım"
   },
   {
     "baslik": "Hortum",
@@ -844,7 +1040,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/399510ab-5b05-4461-90a2-d13b75732b0e.jpg",
     "aciklama": "Her ortamda duş almak için mükemmel yöntem.",
     "yorum": "Faydasını sadece kullananlar bilir.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "temizlik, hortum, kişisel bakım"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "temizlik, hortum, kişisel bakım"
   },
   {
     "baslik": "Rüzgarlık",
@@ -853,7 +1051,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/338e3126-216f-4ecd-9021-4a7beeaf692c.jpg",
     "aciklama": "Rüzgârlı ortamlarda ateş yakarken ocağın altına ve kenarlarında kullanıyorum. Ateşin sağa sola yayılmasına mani oluyor. Olmasa da olur ama faydalı bir araç.",
     "yorum": "Başlangıçta benzin ocağının gücünü bilmediğimden bir tarafı eridi ama turlarımda demirbaş listesinde yer alır.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "kamp mutfağı"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı"
   },
   {
     "baslik": "Çatal Bıçak Kaşık seti",
@@ -862,8 +1062,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/d4f8cbd3-c301-4aa4-9e7f-2bf89eefe04d.jpg",
     "aciklama": "Her ne kadar dağda, bayırda, kırda kamp yapıyor olsak da bizler medeni insanlarız elbet. yemeklerimizi elimizle yemek yerine çatal bıçak kullanmakta fayda var.",
     "yorum": "boyutu ufak rahat yemek yenmiyor. çay kaşığı gibi kalıyor, yoklukta gider.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "kamp mutfağı"
-  },  
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı"
+  },
   {
     "baslik": "paket kilidi",
     "kategori": "Kamp Mutfağı",
@@ -871,7 +1073,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/b33a2bac-90db-401a-bc94-612615d94142.jpg",
     "aciklama": "Poşet içindeki malzemelerin hava almasını önleyen bir gereç",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "kamp mutfağı"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı"
   },
   {
     "baslik": "Bardak (Kuksa)",
@@ -880,8 +1084,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/205b9207-c66c-45ae-96bf-7e3ac080d87e.jpg",
     "aciklama": "Çeşme başında durunca su içmeye, buz gibi havada alelacele yapılan çorbayı içmeye kadar hizmet skalası geniş ",
     "yorum": "Arkadaşım Ayşe Kuş'un hediyesi.ne zaman bir şey içsem aklıma gelir. ",
-    "varsayilan": true, "agirlik": "0", "etiketler": "kamp mutfağı"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı"
+  },
   {
     "baslik": "Bardak",
     "kategori": "Kamp Mutfağı",
@@ -889,7 +1095,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f6b7d651-f302-4f25-96d5-b8ca9d64edcd.jpg",
     "aciklama": "Yanınızda bir adet bardak yada kupa taşımak isabetli bir karar olur.",
     "yorum": "Kayboldu",
-    "varsayilan": false, "agirlik": "0", "etiketler": "kamp mutfağı"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı"
   },
   {
     "baslik": "Tuz, Yağ ve Baharat",
@@ -898,7 +1106,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/e43a6969-827c-49a8-bc52-d3fdbf911d08.jpg",
     "aciklama": "Yemek yaparken olmazsa olmaz malzemeler. hepsinden az miktar bulundurmakta fayda var.",
     "yorum": "Olmazsa olmaz.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "kamp mutfağı"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı"
   },
   {
     "baslik": "Bıçak",
@@ -907,7 +1117,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/fb5270c6-31e7-4c04-80b9-837839b0e544.jpg",
     "aciklama": "Olmazsa olmaz malzemelerden. Issız adaya düşsen yanına alman gereken üç şeyden biri.",
     "yorum": "Birden fazla bıçak taşıyorum. kamp mutfağı malzemelerinin yanında 1-2 tane bir tane günlük kullanım için gidon çantasında.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "kamp mutfağı"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı"
   },
   {
     "baslik": "Apple Mp3player",
@@ -916,7 +1128,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/52ca17c0-c9df-46ec-b5d2-0949aea4b8ca.jpg",
     "aciklama": "Turlardaki en yakın dostumdur. Şarjı olduğu sürede bir insandan farklı olarak sus dediğimde susuyor, söyle bakalım bir şarkı dediğimde hemen şarkı çığırıyor. Zamanında satın aldığım Galileo uygulaması ile kullandığım offline harita bu cihazda.",
     "yorum": "artık doğanın sesini dinliyorum. illa bir şey dinleyeceksem telefonu kullanıyorum. şarj meselesi sıkıntılı zaten.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "elektronik, apple"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektronik, apple"
   },
   {
     "baslik": "Flash Disc",
@@ -925,7 +1139,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/a3d84306-c9aa-4167-8089-f97a58c85eb1.jpg",
     "aciklama": "Fotoğraf makinemin 8 gb hafıza kartına ilave olarak 16 gb kapasiteli bu flash disk ile fotoğraflarımı ve videolarımı depolama imkanına sahip oluyorum.",
     "yorum": "Artık boyutu yeterli gelmiyor.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "elektronik"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektronik"
   },
   {
     "baslik": "Hafıza kartı okuyucu",
@@ -934,7 +1150,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/95f2565c-75e7-4440-83be-c423ff447d03.jpg",
     "aciklama": "Fotoğraf makinemin hafıza kartındaki fotoğraflarımı ve videolarımı flash disk aktarmada kullanıyorum.",
     "yorum": "Bozuldu.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "elektronik"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektronik"
   },
   {
     "baslik": "Power bank",
@@ -943,7 +1161,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/e816ed61-49ea-4f2d-b4ee-7777f268a9e3.jpg",
     "aciklama": "10400 mAh kapasiteye sahip, cihazları ekonomik kullandığım takdirde yaklaşık bir hafta yetecek kadar elektrik depolayabiliyorum. ilerleyen zamanlarda dinamo yada güneş panelleri ile entegre etmeyi planlıyorum. Çoklu kablosu sayesinde kullandığım cihazları çok rahat şarj edebiliyorum.kıymetli cihazlarımın çalınma ihtimalinin olduğu gözümün tutmadığı ortamlarda kullanıyorum.",
     "yorum": "Bozuldu.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "powerbank, elektronik"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "powerbank, elektronik"
   },
   {
     "baslik": "Power bank 10000 MAh",
@@ -952,7 +1172,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/afa7c64c-5537-426a-93eb-58529c3d1cec.jpg",
     "aciklama": "10400 mAh kapasiteye sahip, Çoklu kablosu sayesinde kullandığım cihazları çok rahat şarj edebiliyorum..",
     "yorum": "Çalınsa kaybolsa umrumda olmaz. Kıymetli cihazlarımın çalınma ihtimalinin olduğu gözümün tutmadığı ortamlarda kullanıyorum",
-    "varsayilan": true, "agirlik": "0", "etiketler": "powerbank, elektronik"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "powerbank, elektronik"
   },
   {
     "baslik": "Power bank 30000 MAh",
@@ -961,7 +1183,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/fe560c34-e84c-49b9-8fd9-483af9fd6d27.jpg",
     "aciklama": "30000 mAh kapasiteye sahip, Çoklu kablosu sayesinde kullandığım cihazları çok rahat şarj edebiliyorum..",
     "yorum": "Kıymetli cihazlarımın çalınma ihtimalinin olduğu gözümün tutmadığı ortamlarda kullanıyorum",
-    "varsayilan": true, "agirlik": "0", "etiketler": "powerbank, elektronik"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "powerbank, elektronik"
   },
   {
     "baslik": "Tripod",
@@ -970,7 +1194,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/4033e34d-e605-4078-855b-526c4546dbb3.jpg",
     "aciklama": "Önceden kendi geliştirdiğim teknikler yada doğal kaynakları kullanarak çektiğim fotoğrafları şimdilerde bu tripod ile çekiyorum. alüminyum malzemeden son derece hafif ve az yer kaplıyor. açıldığı zaman 60 cm yüksekliğe sahip oluyor",
     "yorum": "daha az yer kaplayan seçeneklere yöneldim.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "teknik"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "teknik"
   },
   {
     "baslik": "Telefon Tutucu",
@@ -979,7 +1205,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/ff78cb37-9c46-4a6f-b497-6c5035898ab6.jpg",
     "aciklama": "Yokluktan ihtiyaca göre uydurduğum amatör telefon tutucu",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "teknik"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "teknik"
   },
   {
     "baslik": "İç Lastik",
@@ -988,8 +1216,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/a83aa9cf-0d77-40f4-8d40-ac1e2798266f.jpg",
     "aciklama": "Olmazsa olmaz, duruma göre 1-2 tane taşımak gerek her zaman. (Tur bisikletim ile yola çıktığımda yanıma alıyorum)",
     "yorum": "demirbaş",
-    "varsayilan": true, "agirlik": "0", "etiketler": "yedek parça"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "yedek parça"
+  },
   {
     "baslik": "Balata",
     "kategori": "Yedek Parça",
@@ -997,7 +1227,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f6b50b8a-5b2a-482f-b953-782e6a02e8c4.jpg",
     "aciklama": "Olmazsa olmaz, duruma göre 1-2 takım taşımak gerek her zaman.",
     "yorum": "demirbaş",
-    "varsayilan": true, "agirlik": "0", "etiketler": "yedek parça, balata"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "yedek parça, balata"
   },
   {
     "baslik": "Vites Fren Teli",
@@ -1006,7 +1238,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/90e20640-6e90-4af8-95a4-fbc2d6ad6883.jpg",
     "aciklama": "Dünyanın bin bir türlü hali var. tedarikli olmakta fayda var. (Tur bisikletim ile yola çıktığımda yanıma alıyorum)",
     "yorum": "Hidrolik fren dağ bisikleti ile tur yaptığım için kullanmıyorum.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "yedek parça"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "yedek parça"
   },
   {
     "baslik": "Orta ayaklık",
@@ -1015,7 +1249,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/ec87899d-677d-40ae-a555-a8ad39ababcc.jpg",
     "aciklama": "Bisikleti her zaman dayayacak yer bulunmadığında mükemmel çözüm.",
     "yorum": "Tur bisikletimde takılı olduğundan uzun zamandır kullanmıyorum. emekli sayılır.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "yedek parça"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "yedek parça"
   },
   {
     "baslik": "Yedek Mil",
@@ -1024,8 +1260,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/4484deea-c093-4922-b60f-277164ed2abf.jpg",
     "aciklama": "Dünyanın bin bir türlü hali var. tedarikli olmakta fayda var.",
     "yorum": "Tur bisikleti kullanırken taşıyordum.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "yedek parça"
-  },  
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "yedek parça"
+  },
   {
     "baslik": "Yedek Jant Teli",
     "kategori": "Yedek Parça",
@@ -1033,7 +1271,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/4cf0c5d5-f017-4521-baab-7839af3bd700.jpg",
     "aciklama": "Dünyanın bin bir türlü hali var. tedarikli olmakta fayda var.",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "yedek parça, jant teli"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "yedek parça, jant teli"
   },
   {
     "baslik": "Çeşitli Vidalar",
@@ -1042,7 +1282,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f9c83ecf-9fcb-4900-bfe7-672c645fb88e.jpg",
     "aciklama": "Öncelikle Port bagajı kadroya bağlayan vidaların yedekleri mutlaka yanımda bulunur. Resimde görünen büyük boy sunta vidasınıysa Şarap şişelerinin mantarını açmak için Tirbuşon olarak kullanıyorum",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "yedek parça"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "yedek parça"
   },
   {
     "baslik": "Cube Eldiven",
@@ -1051,8 +1293,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/cf649e03-32f3-4fa9-804d-96759bfdf76f.jpg",
     "aciklama": "Bisiklet sürüşlerimin Olmazsa olmazları arasındadır. Uzun kısa olarak iki çift eldivenim var lakin. uzun eldiveni sadece soğuk havalarda kullanıyorum.",
     "yorum": "Yazlık eldiven çöpe çıktı, aynısından bir kere daha aldım kullandım o da dağıldı. aynı eldiveni bulursam yine alırım",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim"
+  },
   {
     "baslik": "Kısa Parmak Eldiven",
     "kategori": "Giyim",
@@ -1060,7 +1304,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/b709a042-1ba9-463e-b9aa-4b7379d1c161.jpg",
     "aciklama": "Bisiklet sürüşlerimin Olmazsa olmazları arasındadır.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "Gözlük",
@@ -1069,7 +1315,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/43646d3e-17cf-4872-b923-61ad42a64c14.jpg",
     "aciklama": "Bisiklet sürüşlerimin Olmazsa olmazları arasındadır.\nGündüz ve gece kullanımına uygun olarak iki adet gözlük her zaman yanımdadır.",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "giyim, gözlük"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "giyim, gözlük"
   },
   {
     "baslik": "Gözlük",
@@ -1078,7 +1326,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/3569b9b4-3557-4c5e-9906-27e62b10913b.jpg",
     "aciklama": "Bisiklet sürüşlerimin Olmazsa olmazları arasındadır.\nGündüz ve gece kullanımına uygun olarak iki adet gözlük her zaman yanımdadır.",
     "yorum": "Çok abartılacak bir şey değil, iş güvenliği gözlüğü.",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim, gözlük"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim, gözlük"
   },
   {
     "baslik": "Spd Ayakkabı",
@@ -1087,7 +1337,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/cb0c8e4b-e057-4450-985c-13aae8916445.jpg",
     "aciklama": "Bisiklet sürerken ayağımda Spd ayakkabı bulunuyor, ayrıca günlük kullanım için az yer kaplayan hafif bir çift bez ayakkabı ile bir çift terlik bulunduruyorum.",
     "yorum": "2023 yılından beri zorlu hava şartlarında tur yaptığımdan spd kullanmıyorum. Altından su giriyor onun yerine Bot yada ayakkabı kullanıyorum. zaten eskidi emekli oldu.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "giyim, spd"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "giyim, spd"
   },
   {
     "baslik": "Terlik",
@@ -1096,7 +1348,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/6c29ec57-5d64-41c6-8687-3d9e7b34e9cd.jpg",
     "aciklama": "Kamplı bisiklet turlarına başladığım zamandan beri vazgeçilmezim.",
     "yorum": "Kamp konforunu ciddi oranda arttırıyor. Küçük bir taşıma ipucu vereyim. sağ ön çantanın yanına bağlandığında bisikleti bir yere dayarken bariyer yanından geçerken vs çantalarıda korur. <br>Bu bilgi bir gün işine yararsa <a href=\"https://ferdimen.com/#destek \">beni de gör.</a> :)",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim, terlik"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim, terlik"
   },
   {
     "baslik": "Forma",
@@ -1105,7 +1359,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/6da743b7-04e8-45fe-b963-740366e486dc.jpg",
     "aciklama": "Üzerinde pek çok reklamın olduğu reklam tabelası gibi formalar yerine kendi şahsıma özel yaptırdığım Formaları tercih ediyorum. (Nadiren forma giyiyorum)",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "T-shirt",
@@ -1114,7 +1370,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/11bbebe3-6bfe-4aea-b4a9-8c77fcd603fd.jpg",
     "aciklama": "Yanımda az yer kaplayan ve ter tutmayan ayrıca bir iki t-shirt bulunduruyorum.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "Tayt (Kısa)",
@@ -1123,7 +1381,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/163a59cb-fe0f-4c48-8618-99d394cab33b.jpg",
     "aciklama": "Performans odaklı turlar yapmadığım için pek pedli tayt aramıyorum. arada sırada giymek üzere yanımda bir adet tayt bulunduruyorum.",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "Tayt (Uzun)",
@@ -1132,7 +1392,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/498b01ef-f71c-4302-9989-bbf5f61eb3c1.jpg",
     "aciklama": "havanın serinliğine göre giymek üzere bir adet uzun tayt mevcut ama yaz aylarında yaptığım turlarda pek yanıma almıyorum.",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "Şort",
@@ -1141,7 +1403,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/5153f390-7bf6-4c2c-8cd9-f61f4f0cbd3a.png",
     "aciklama": "Şort yazın yapılan turların olmazsa olmazı. ayrıca yazın bir adet deniz şortu mutlaka bulundururum",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "Rüzgarlık",
@@ -1150,7 +1414,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/78549b56-7813-4608-9bc8-49b01bd5fcf2.jpg",
     "aciklama": "Tüm turlarda hava ve mevsim gözetmeksizin yanımda bulunduruyorum.",
     "yorum": "Fermuarı bozuldu.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "Rüzgar ve Soğuğa Karşı (Mont)",
@@ -1159,7 +1425,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/e53a56e1-ff4f-4497-9dd5-dfcf69beddc9.jpg",
     "aciklama": "Motosiklet için uygun olabilir ama bisiklet için uygun değildi.içten terleme yapıyor",
     "yorum": "Sattım.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "Yağmurluk",
@@ -1168,8 +1436,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/d628d924-b806-4207-86d8-4d5701d728c6.jpg",
     "aciklama": "Tüm turlarda hava ve mevsim gözetmeksizin yanımda bulunduruyorum.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim, yağmurluk"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim, yağmurluk"
+  },
   {
     "baslik": "Yağmurluk",
     "kategori": "Giyim",
@@ -1177,7 +1447,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/368df996-016d-4d22-9d21-383a38c3bc75.jpg",
     "aciklama": "Kapladığı alana göre çok kullanışlı bulmadım. Bir kenarda duruyor.",
     "yorum": "Rüzgarlı havada sağa sola savrulup çok ses yapmasının yanında savrulan bölümlerin tekerleklere takılma riski var.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "giyim, panço"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "giyim, panço"
   },
   {
     "baslik": "Yağmur Pantolonu",
@@ -1186,7 +1458,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/61fbf1fa-7abf-4973-9c3e-223e3fd9c7a8.jpg",
     "aciklama": "Tüm turlarda hava ve mevsim gözetmeksizin yanımda bulunduruyorum.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim, yağmur pantolonu"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim, yağmur pantolonu"
   },
   {
     "baslik": "Ayakkabı Kılıfı",
@@ -1195,7 +1469,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/cff964e9-b2d1-4828-ae5d-7369c2532f73.jpg",
     "aciklama": "Zaman zaman ihtiyaç anında kullanıyordum.",
     "yorum": "Teki kayboldu, zaten son 2023 yılından beri zorlu hava şartlarında tur yaptığımdan spd kullanmıyorum. Altından su giriyor onun yerine Bot yada ayakkabı kullanıyorum.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "Buff",
@@ -1204,7 +1480,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f5c04649-83fa-4d4e-a0e7-61cd15b1f8ba.jpg",
     "aciklama": "zevkime göre rengarek 2-3 tane bulundurup kullanırım.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "Reflektörlü Yelek",
@@ -1213,7 +1491,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/6717ef78-be55-40f9-a1fe-6e989a7b4db4.jpg",
     "aciklama": "Özellikle gece sürüşlerinde faydalı bir gereç. zaman zaman gündüz kullanılmasıda gerekebiliyor.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "Alt ve Üst İçlik",
@@ -1222,7 +1502,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/da1b6947-1134-474d-8c76-98b2057aabc1.jpg",
     "aciklama": "Rakıma veya hava durumuna göre gece soğuk olma ihtimaline karşı bulundurulmasında fayda var.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "Polar",
@@ -1231,7 +1513,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/8111a247-30d2-4936-b7c1-573302f0b75e.jpg",
     "aciklama": "Rakıma veya hava durumuna göre gece soğuk olma ihtimaline karşı bulundurulmasında fayda var.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "Çorap",
@@ -1240,7 +1524,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/c9431144-1bdb-4cd8-89ff-aa85fbf47901.jpg",
     "aciklama": "",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "İç çamaşırı",
@@ -1249,7 +1535,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/a383479e-6f6e-45a5-81ba-6222cb7d78f1.jpg",
     "aciklama": "",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "giyim"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "giyim"
   },
   {
     "baslik": "Dji Mavic Air Drone",
@@ -1258,7 +1546,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/dfffc10b-9324-4c3f-a3a4-e30dc2973b49.jpg",
     "aciklama": "2022 mart ayında aldım. Pek çok youtube videomu renklendirdi.",
     "yorum": "2024 yılından beri özel bir çekim yapmayacaksam yanıma almıyorum. Gerek kapladığı alan, gerek ağırlık en önemlisi zorlu hava şartlarında uçurmaya fırsat olmadığı için hamallık yapmıyorum. şarj ayrı bir tatava.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "elektronik, kayıt ekipmanı, kamera, dji mavic air"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektronik, kayıt ekipmanı, kamera, dji mavic air"
   },
   {
     "baslik": "Dji Pocket Kamera",
@@ -1267,7 +1557,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/283cbba4-eda6-4af3-87fe-146669d568af.jpg",
     "aciklama": "2022 mart ayında aldım. şimdiden gopronun pabucunu dama attı diyebilirim",
     "yorum": "Üstüne kedi işedi :(",
-    "varsayilan": false, "agirlik": "0", "etiketler": "elektronik, kayıt ekipmanı, kamera, dji pocket"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektronik, kayıt ekipmanı, kamera, dji pocket"
   },
   {
     "baslik": "Boya Mikrofon",
@@ -1276,7 +1568,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/2c7cf9e6-bc76-443f-a883-88f55a281923.jpg",
     "aciklama": "2022 mart ayında aldığım Dji Pocket ile kullandım",
     "yorum": "Kablosuz mikrofon alınca pabucu dama atıldı.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "elektronik, mikrofon, kayıt ekipmanı, boya"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektronik, mikrofon, kayıt ekipmanı, boya"
   },
   {
     "baslik": "LG G7 ThinQ Cep Telefonu",
@@ -1285,7 +1579,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/25e3d45d-0a95-4e58-b2ef-f7a3c1f2bd56.jpg",
     "aciklama": "2021 Kasım itibarıyla kullanmaya başladım.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "elektronik, telefon, lg, g7 thinq"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "elektronik, telefon, lg, g7 thinq"
   },
   {
     "baslik": "Toshiba Hard Disk",
@@ -1294,7 +1590,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/1b06f644-3fcc-437c-b6e4-928498ac45e9.jpg",
     "aciklama": "Çektiğim videoları bu diske aktarıp tur sonuna kadar burada depoluyorum.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "elektronik, toshiba"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "elektronik, toshiba"
   },
   {
     "baslik": "Gopro Hero 5 Black Kamera",
@@ -1303,7 +1601,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/a3f3c6d6-6f20-443c-8322-ab2232eefa41.jpg",
     "aciklama": "2020 Ocak ayından beri kullanıyorum.Dji kamera aldıktan sonra çok nadir kullanıyorum.",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "elektronik, kamera, kayıt ekipmanı, gopro hero 5 black"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektronik, kamera, kayıt ekipmanı, gopro hero 5 black"
   },
   {
     "baslik": "Garmin Etrex Touch 35 GPS",
@@ -1312,7 +1612,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/4399d17a-0e79-453a-98fe-4359ddad3898.jpg",
     "aciklama": "çok nadir olarak günlük turlarda kullanıyor olsam da kendisinden vazgeçemiyorum.",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "elektronik, yön bulma, garmin etrex touch 35"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektronik, yön bulma, garmin etrex touch 35"
   },
   {
     "baslik": "Garmin oregon 650 GPS",
@@ -1321,8 +1623,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/ca7c01ae-3dd1-4e21-822b-f78a1a5cbed5.jpg",
     "aciklama": "Uzun turlarda çoğunlukla bu cihazı kullanıyorum.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "elektronik, yön bulma, harita, garmin oregon 650"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "elektronik, yön bulma, harita, garmin oregon 650"
+  },
   {
     "baslik": "IgpSport GPS Kilometre Saati",
     "kategori": "Elektronik",
@@ -1330,7 +1634,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/c84695f3-9219-4db1-8848-2c4073dd5cfd.jpg",
     "aciklama": ".",
     "yorum": "Kırıldı",
-    "varsayilan": false, "agirlik": "0", "etiketler": "elektronik, yön bulma, harita, km saati, igpsport"
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektronik, yön bulma, harita, km saati, igpsport"
   },
   {
     "baslik": "Harita",
@@ -1339,8 +1645,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/cf955105-f15b-4cdc-a701-5c38f386b363.jpg",
     "aciklama": "Asla pili bitmez.",
     "yorum": "Biz tura başladığımız zamanlarda böyle haritalar vardı. Kayboldu",
-    "varsayilan": false, "agirlik": "0", "etiketler": "yön bulma, harita"
-  },  
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "yön bulma, harita"
+  },
   {
     "baslik": "Universal Adaptör",
     "kategori": "Diğer",
@@ -1348,8 +1656,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/727644c5-ea55-4b8c-bb8e-5856ee5406fd.jpg",
     "aciklama": "Yurt dışı turlarında farklı tip prizlerde kullanmak için tasarlanmı adaptör .",
     "yorum": "Şafak ağabeyin hediyesi. Türkiye içindeki turlarda kullanmıyorum.",
-    "varsayilan": false, "agirlik": "0", "etiketler": "yön bulma, harita"
-  },  
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "yön bulma, harita"
+  },
   {
     "baslik": "Çoklu Şarj Adaptörü",
     "kategori": "Diğer",
@@ -1357,8 +1667,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/28cc413a-f714-4078-8b3e-532546d10101.jpg",
     "aciklama": "USLION 6 In 1 USB şarj. Cihazlar çoğalınca on tane şarj aleti taşımaktansa hayat kurtarıyor.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "yön bulma, harita"
-  },  
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "yön bulma, harita"
+  },
   {
     "baslik": "Ateş başlatıcı",
     "kategori": "Diğer",
@@ -1366,8 +1678,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/cc83857b-ced8-4eb3-a039-4c9104c05b30.jpg",
     "aciklama": "Çakmak bozulur, kibrit ıslanır... Issız adaya düşecek olursam hayatta kalmak için çantada duruyor. ",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "yön bulma, harita"
-  },   
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "yön bulma, harita"
+  },
   {
     "baslik": "Yedek Ayna",
     "kategori": "Diğer",
@@ -1375,8 +1689,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/bfd4b97f-e260-4f35-b930-2dd6b2dad9f2.jpg",
     "aciklama": "ikili olarak A101'den almıştım diğeri gidonda takılı.",
     "yorum": "",
-    "varsayilan": false, "agirlik": "0", "etiketler": "aksesuar, ayna"
-  },   
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "aksesuar, ayna"
+  },
   {
     "baslik": "Ayna",
     "kategori": "Aksesuar",
@@ -1384,8 +1700,10 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/3f8d6320-20d9-43fb-8230-4ef0c86ac3ca.jpg",
     "aciklama": "ikili olarak A101'den almıştım diğeri gidonda takılı. XLC marka dış bükey ayna uzak gösterdiği için aynanın arkasına yapıştırdım. sorun yaşamadan kullanıyorum.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "aksesuar, ayna"
-  }, 
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "aksesuar, ayna"
+  },
   {
     "baslik": "Sele",
     "kategori": "Sele",
@@ -1393,7 +1711,9 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/bbf0286a-dcb7-4cdb-8c8d-f8e0e16b8f78.jpg",
     "aciklama": "Alışana kadar oldukça farkını hissetmedim ama şimdi onsuz yapamam.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "sele, brooks"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "sele, brooks"
   },
   {
     "baslik": "Dönüştürücü",
@@ -1402,6 +1722,8 @@
     "kapakresmi": "https://public.flourish.studio/uploads/668469/3f2102f2-a8d9-4445-880c-075b518509ad.jpg",
     "aciklama": "Type-C ve Microusb dönüştürücüleri Garmin, flashdisk ve harddiski telefona bağlamak için kullanıyorum.",
     "yorum": "",
-    "varsayilan": true, "agirlik": "0", "etiketler": "elektronik"
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "elektronik"
   }
 ]
