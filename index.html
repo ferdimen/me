@@ -5,14 +5,654 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferdimen // Adı yalnızlığından gelen kahraman</title>
     
-    <link rel="icon" type="image/png" href="img/logo.png">
-    
+    <link rel="icon" type="image/png" href="http://www.ferdimen.com/img/logo.png">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.css" />
-    
-    <link rel="stylesheet" href="data/css.css">
-    <link rel="stylesheet" href="nerdeyim/konum.css">
+    <link rel="stylesheet" href="https://www.ferdimen.com/data/css.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.js"></script>   
+    <style>
+      :root {
+        --bg-color: #f4f6f8;
+        --card-bg: #ffffff;
+        --text-color: #2c3e50;
+        --accent-color: #2563eb;
+        --accent-hover: #1d4ed8;
+        --active-badge: #10b981;
+        --retired-badge: #6b7280;
+        --border-color: #e5e7eb;
+        --tag-active-bg: #ef4444;
+        --tag-hover-bg: #2563eb;
+        --sidebar-bg: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.5;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header.page-header {
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      header.page-header h1 {
+        font-size: 2rem;
+        margin-bottom: 8px;
+      }
+
+      .controls {
+        position: sticky;
+        top: 10px;
+        z-index: 500;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 8px;
+        align-items: center;
+        background: var(--card-bg);
+        padding: 10px 14px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        margin-bottom: 25px;
+        overflow-x: auto;
+      }
+
+      .filter-buttons {
+        display: flex;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+
+      .btn {
+        border: 1px solid var(--border-color);
+        background: white;
+        padding: 7px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        color: var(--text-color);
+      }
+
+      .btn:hover, .btn.active {
+        background: var(--accent-color);
+        color: white;
+        border-color: var(--accent-color);
+      }
+
+      .search-select-group {
+        display: flex;
+        gap: 8px;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: flex-end;
+        min-width: 0;
+      }
+
+      .search-wrapper {
+        position: relative;
+        flex: 1;
+        min-width: 140px;
+        max-width: 250px;
+        display: flex;
+        align-items: center;
+      }
+
+      input[type="text"], select {
+        padding: 7px 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        outline: none;
+        background: #fff;
+        font-size: 0.85rem;
+        white-space: nowrap;
+      }
+
+      select {
+        max-width: 160px;
+        text-overflow: ellipsis;
+      }
+
+      #searchInput {
+        width: 100%;
+        padding-right: 25px;
+      }
+
+      .clear-btn {
+        position: absolute;
+        right: 8px;
+        cursor: pointer;
+        color: #94a3b8;
+        font-weight: bold;
+        font-size: 1rem;
+        display: none;
+        user-select: none;
+      }
+
+      .clear-btn:hover {
+        color: #ef4444;
+      }
+
+      .app-layout {
+        display: flex;
+        position: relative;
+        width: 100%;
+        gap: 20px;
+      }
+
+      .main-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        min-height: 400px;
+      }
+
+      .card {
+        background: var(--card-bg);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+      }
+
+      .card.selected {
+        border-color: var(--accent-color);
+        background-color: #eff6ff;
+      }
+
+      .card-img-wrapper {
+        position: relative;
+        width: 100%;
+        height: 180px;
+        background-color: #e2e8f0;
+      }
+
+      .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        z-index: 2;
+      }
+
+      .badge.aktif { background-color: var(--active-badge); }
+      .badge.emekli { background-color: var(--retired-badge); }
+
+      .card-body {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .card-category {
+        font-size: 0.8rem;
+        color: #64748b;
+        margin-bottom: 5px;
+      }
+
+      .card-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .card-date {
+        font-size: 0.85rem;
+        color: #475569;
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+
+      .card-weight {
+        font-size: 0.85rem;
+        color: #059669;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .card-desc {
+        font-size: 0.9rem;
+        color: #334155;
+        margin-bottom: 12px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .add-btn {
+        display: none;
+        margin-top: 10px;
+        padding: 8px;
+        border: none;
+        border-radius: 6px;
+        background: var(--accent-color);
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+        width: 100%;
+      }
+
+      body.checklist-active .add-btn {
+        display: block;
+      }
+
+      .add-btn:hover { background: var(--accent-hover); }
+      .card.selected .add-btn { background: #dc2626; }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 10px;
+      }
+
+      .tag {
+        background: #f1f5f9;
+        color: #475569;
+        font-size: 0.75rem;
+        padding: 2px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .tag:hover {
+        background: var(--tag-hover-bg) !important;
+        color: white !important;
+      }
+
+      .tag.selected-red {
+        background-color: var(--tag-active-bg) !important;
+        color: white !important;
+        font-weight: 600;
+      }
+
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background: white;
+        max-width: 600px;
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        background: white;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        z-index: 10;
+      }
+
+      .modal-body { padding: 20px; }
+
+      .modal-comment {
+        background: #eff6ff;
+        border-left: 4px solid var(--accent-color);
+        padding: 12px;
+        margin-top: 15px;
+        font-style: italic;
+        border-radius: 0 6px 6px 0;
+      }
+
+      .right-timeline-wrapper {
+        position: sticky;
+        top: 100px;
+        height: calc(100vh - 140px);
+        width: 150px;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        z-index: 90;
+        flex-shrink: 0;
+      }
+
+      body.timeline-active .right-timeline-wrapper {
+        display: flex;
+      }
+
+      .arrow-btn {
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        user-select: none;
+        z-index: 10;
+        margin: 5px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+
+      .arrow-btn:hover {
+        background: var(--accent-color);
+        color: white;
+      }
+
+      .timeline-container {
+        flex: 1;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        border-left: 2px solid var(--border-color);
+        margin-left: 15px;
+      }
+
+      .timeline-track {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transition: transform 0.2s ease-out;
+        padding-left: 15px;
+      }
+
+      .timeline-node {
+        padding: 8px 0;
+        cursor: pointer;
+        position: relative;
+        opacity: 0.4;
+        transition: all 0.2s ease;
+      }
+
+      .timeline-node::before {
+        content: '';
+        position: absolute;
+        left: -21px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--border-color);
+        transition: all 0.2s ease;
+      }
+
+      .timeline-node.active {
+        opacity: 1;
+      }
+
+      .timeline-node.active::before {
+        background: var(--accent-color);
+        box-shadow: 0 0 8px var(--accent-color);
+        width: 12px;
+        height: 12px;
+        left: -22px;
+      }
+
+      .node-date {
+        font-size: 0.85rem;
+        font-weight: bold;
+        color: var(--text-color);
+      }
+
+      .timeline-node.active .node-date {
+        color: var(--accent-color);
+        font-size: 0.95rem;
+      }
+
+      /* SAĞ TUR ÇANTASI PANELİ */
+      .checklist-sidebar {
+        position: sticky;
+        top: 100px;
+        height: calc(100vh - 140px);
+        width: 310px;
+        background: var(--card-bg);
+        color: var(--text-color);
+        padding: 18px 16px;
+        display: none;
+        flex-direction: column;
+        z-index: 90;
+        flex-shrink: 0;
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      }
+
+      body.checklist-active .checklist-sidebar {
+        display: flex;
+      }
+
+      .sidebar-header {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+      }
+
+      .sidebar-header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .sidebar-header h2 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--text-color);
+      }
+
+      .reset-bag-btn {
+        background: transparent;
+        border: 1px solid #fca5a5;
+        color: #ef4444;
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .reset-bag-btn:hover {
+        background: #ef4444;
+        color: white;
+        border-color: #ef4444;
+      }
+
+      .weight-counter {
+        background: #f8fafc;
+        border: 1px solid var(--border-color);
+        padding: 8px 12px;
+        border-radius: 8px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85rem;
+        color: #64748b;
+        font-weight: 500;
+      }
+
+      .weight-val {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #059669;
+      }
+
+      .list-container {
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 12px;
+        padding-right: 4px;
+      }
+
+      .sidebar-cat-group {
+        margin-bottom: 12px;
+      }
+
+      .sidebar-cat-title {
+        font-size: 0.75rem;
+        color: var(--accent-color);
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
+        padding-bottom: 3px;
+        border-bottom: 1px dashed var(--border-color);
+      }
+
+      .list-item {
+        background: #f8fafc;
+        border: 1px solid var(--border-color);
+        padding: 6px 10px;
+        border-radius: 6px;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        transition: all 0.2s;
+      }
+
+      .list-item.done span {
+        text-decoration: line-through;
+        color: #94a3b8;
+      }
+
+      .list-item-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1;
+        cursor: pointer;
+        font-size: 0.85rem;
+      }
+
+      .remove-item-btn {
+        background: none;
+        border: none;
+        color: #ef4444;
+        font-size: 1.1rem;
+        cursor: pointer;
+        padding: 0 4px;
+        line-height: 1;
+      }
+
+      .empty-msg {
+        text-align: center;
+        color: #64748b;
+        font-size: 0.85rem;
+        margin-top: 25px;
+        line-height: 1.5;
+        padding: 0 10px;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 8px;
+      }
+
+      .action-btn {
+        flex: 1;
+        padding: 8px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.2s;
+        font-size: 0.8rem;
+      }
+
+      .btn-print { background: #e2e8f0; color: #1e293b; }
+      .btn-copy { background: var(--accent-color); color: white; }
+      .action-btn:hover { opacity: 0.9; }
+
+      @media print {
+        body { background: white; color: black; padding: 0; }
+        header, .controls, .main-content, .remove-item-btn, .action-buttons, .right-timeline-wrapper, .reset-bag-btn { display: none !important; }
+        .checklist-sidebar {
+          width: 100%;
+          height: auto;
+          position: static;
+          background: white;
+          color: black;
+          box-shadow: none;
+          padding: 0;
+          display: block !important;
+          border: none;
+        }
+        .sidebar-cat-title { color: #0f172a; border-bottom-color: #000; font-size: 1rem; margin-top: 15px; }
+        .list-item { background: #f8fafc; border: 1px solid #ccc; color: black; }
+        .weight-counter { background: #eee; color: black; }
+        .weight-val { color: black; }
+      }
+    </style>
 </head>
 <body>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -20,536 +660,120 @@
     <header class="main-header">
         <div class="container nav-bar">
             <div class="logo-group">
-                <a href="#">
-                    <img src="img/logo.png" alt="Ferdimen Logo">
+                <a href="http://www.ferdimen.com">
+                    <img src="http://www.ferdimen.com/img/logo.png" alt="Ferdimen Logo">
                 </a>
             </div>
             <div class="nav-right-container">
                 <nav>
                     <ul class="nav-menu">
-                        <li><a href="#hakkimda">Hakkımda</a></li>
-                        <li><a href="/gram.html">Ferdigram</a></li>
-                        <li><a href="/yazilar">Yazılar</a></li>						
-                        <li><a href="#haberler">Haberler</a></li>
-                        <li><a href="#harita">Harita</a></li>
-                        <li><a href="#videolar">Videolar</a></li>
-                        <li><a href="#kronoloji">Kronoloji</a></li>
-                        <li><a href="#dosyalar">Dosyalar</a></li>
-                        <li><a href="#ekipman">Ekipman</a></li>
-                        <li><a href="#faq">S.S.S.</a></li>
-                        <li><a href="#sablon">Vasiyet</a></li>
-                        <li><a href="#destek">Destek</a></li>
-                        <li><a href="#iletisim">İletişim</a></li>
+                        <li><a href="https://www.ferdimen.com/#hakkimda">Hakkımda</a></li>
+                        <li><a href="/gram">Ferdigram</a></li>
+                        <li><a href="/yazilar">Yazilar</a></li>
+                        <li><a href="https://www.ferdimen.com/#haberler">Haberler</a></li>
+                        <li><a href="https://www.ferdimen.com/#harita">Harita</a></li>
+                        <li><a href="/izle">Videolar</a></li>
+                        <li><a href="https://www.ferdimen.com/#kronoloji">Kronoloji</a></li>
+                        <li><a href="https://www.ferdimen.com/#dosyalar">Dosyalar</a></li>
+                        <li><a href="https://www.ferdimen.com/#faq">S.S.S.</a></li>
+                        <li><a href="https://www.ferdimen.com/#sablon">Vasiyet</a></li>
+                        <li><a href="https://www.ferdimen.com/#destek">Destek</a></li>
+                        <li><a href="#iletisim">İletişim</a></li>	
                     </ul>
                 </nav>
-                <div class="header-socials">
-                    <a href="https://www.youtube.com/@ferdimen" target="_blank" title="YouTube">
-                        <svg viewBox="0 0 24 24"><path d="M21.543 6.498C22 8.21 22 12 22 12s0 3.79-.457 5.502A2.752 2.752 0 0 1 19.617 19.43C17.904 20 12 20 12 20s-5.904 0-7.617-.57a2.752 2.752 0 0 1-1.926-1.928C2 15.79 2 12 2 12s0-3.79.457-5.502A2.752 2.752 0 0 1 4.383 4.57C6.096 4 12 4 12 4s5.904 0 7.617.57a2.752 2.752 0 0 1 1.926 1.928zM10 15.5l5.5-3.5L10 8.5v7z"/></svg>
-                    </a>
-                    <a href="https://polarsteps.com/ferdimen" target="_blank" title="Polarsteps">
-                        <svg viewBox="0 0 48 48"><path d="M22.8 21.2c1-.4 2.1-.3 3 .3c.2.1.4.2.6.1l2.4-1c.5-.2.7-.9.3-1.3L18.8 8.9c-.7-.7-2-.2-2 .8l.2 14.5c0 .6.6 1 1.1.7l2.4-1c.2-.1.3-.3.4-.5c.2-.9.9-1.8 1.9-2.2Zm2.4 5.6c1-.4 1.7-1.3 1.8-2.4c0-.2.2-.4.4-.5l2.4-1c.5-.2 1.1.2 1.1.7l.2 14.5c0 1-1.2 1.6-2 .8L19 28.8c-.4-.4-.3-1.1.3-1.3l2.4-1c.2-.1.4 0 .6.1c.8.5 1.9.7 2.9.2Z"/></svg>
-                    </a>
-                </div>
             </div>
         </div>
     </header>
 
-    <section class="hero-section" id="hero">
-        <div class="hero-content">
-            <img src="img/logo.png" alt="Ferdimen Logo" class="hero-logo">
-            <h1 class="hero-title">Ferdimen</h1>
-            <p class="hero-subtitle">Adı yalnızlığından gelen kahraman</p>
-            <p class="hero-bio">
-                15 yılı aşkın süredir coğrafyanın kılcal damarlarını iki teker üzerinde pedallayan bağımsız bir "avare" ve dijital yol anlatıcısıyım. Hazır şablonları reddederek, modern dünyanın dayattığı tüketim çılgınlığına karşı az donanımlarla "Aykırı Yollarda" ham gerçekliğin izini sürüyorum.
-            </p>
-            <a href="#iletisim" class="hero-btn">İletişim</a> 
-        </div>
-    </section>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ekipman Envanteri</h1>
+    </header>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const heroSection = document.getElementById("hero");
-            if (!heroSection) return;
+    <div class="controls">
+      <div class="filter-buttons">
+        <button class="btn active" id="btnFilterTum" onclick="filterStatus('tum')">Tümü</button>
+        <button class="btn" id="btnFilterAktif" onclick="filterStatus('aktif')">Aktif</button>
+        <button class="btn" id="btnFilterEmekli" onclick="filterStatus('emekli')">Emekli</button>
+        <button class="btn" id="btnTimeline" onclick="toggleTimelineMode()">⏳ Zaman Tüneli</button>
+        <button class="btn" id="btnChecklist" onclick="toggleChecklistMode()">🎒 Tur Çantam (<span id="selectedCount">0</span>)</button>
+      </div>
 
-            fetch('data/bg.json?v=' + new Date().getTime())
-                .then(res => {
-                    if (!res.ok) throw new Error("Arka plan JSON dosyası yüklenemedi!");
-                    return res.json();
-                })
-                .then(bgDizisi => {
-                    if (bgDizisi && bgDizisi.length > 0) {
-                        const rastgeleIndeks = Math.floor(Math.random() * bgDizisi.length);
-                        const secilenResim = bgDizisi[rastgeleIndeks];
-                        heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('${secilenResim}')`;
-                    }
-                })
-                .catch(err => {
-                    console.error("Arka plan yüklenirken hata:", err);
-                    heroSection.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/ben.jpg')";
-                });
-        });
-    </script>
+      <div class="search-select-group">
+        <select id="categorySelect" onchange="onCategoryOrFilterChange()">
+          <option value="">Tüm Kategoriler</option>
+        </select>
 
-    <section class="about-section" id="hakkimda">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-block">
-                    <h2>Hakkımda</h2>
-                    <p>Modern dijital dünyanın dayattığı algoritmik kalıplara, hız tüketimine ve "<strong>sayısallaştırılmış</strong>" başarı kriterlerine meydan okuyan, kendi deyimimle <strong>"avare" bir bisikletçi, özgür bir yol anlatıcısıyım.</strong>
-<br><br>
-Yolları kilometre taşlarıyla veya hız göstergeleriyle değil; arkamda bıraktığı hikayelerle, dokunduğum hayatlarla ve coğrafyanın ruhuyla ölçerim. Popüler kültürün "influencer" veya standart "içerik üreticisi" tanımlarını reddederek, dijital dünyanın bir "ırgatı" olmayı değil, yaratıcı özerkliğini korumayı seçmiş bir modern zaman seyyahıyım.</p>
-                </div>
-                <div class="about-block">
-                    <h2>Felsefem</h2>
-                    <p>Benin için bisiklet, sadece bir ulaşım aracı değil; bağımsızlığın, sadeliğin ve doğayla kurulan sansürsüz bir bağın sembolüdür. Genellikle dağ bisikleti (MTB) tercihlerimle bilinen bu yolculuk tarzım, dayanıklılığı ve her türlü araziye uyum sağlamayı esas alır.
-<br><br>
-Seyahat felsefesimde "görünmezlik" ve "hamlık" ön plandadır. Popüler rotaları tüketmek yerine, Anadolu'nun derinliklerine, unutulmuş patikalara ve kalıpların ötesindeki topraklara yönelirim. Rotanın detaylarını (GPX verilerini) paylaşmayı veya yolculuğu mekanik bir veriye dönüştürmeyi reddediyorum; çünkü bana göre yol, sadece gidilerek ve hissedilerek keşfedilmesi gereken kişisel bir deneyimdir.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<section class="manifesto-section">
-    <div class="container">
-        <div class="manifesto-grid">
-            
-            <div class="manifesto-card">
-                <div class="manifesto-icon">
-                    <svg viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-                </div>
-                    <h3>Meta Karşıtlığı</h3>
-                    <p>Bisiklet bir statü göstergesi, fetiş objesi ya da vites sayısıyla övünülecek bir tüketim ürünü değildir. O, yalnızca doğaya, tarihe ve insana ulaşmayı sağlayan en saf, en mütevazı ulaşım aracıdır. Amacın kendisi değil, bağımsızlığın ve sadeliğin sembolü olan bir yol arkadaşıdır.</p>
-            </div>
-
-            <div class="manifesto-card">
-                <div class="manifesto-icon">
-                    <svg viewBox="0 0 24 24"><path d="M22 6.92V17c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6.92c0-.77.44-1.46 1.13-1.78l8-3.72c.55-.25 1.19-.25 1.74 0l8 3.72c.69.32 1.13 1.01 1.13 1.78zM11 6H4v2h7V6zm9 0h-7v2h7V6zm-9 4H4v2h7v-2zm9 0h-7v2h7v-2zm-9 4H4v2h7v-2zm9 0h-7v2h7v-2z"/></svg>
-                </div>
-                    <h3>Tüketimi Reddet</h3>
-                    <p>Sırf yenisi çıktı diye ekipman değiştirmeyi ve bisiklet endüstrisinin kölesi olmayı reddeder. Bu felsefede esas olan sürdürülebilirlik ve emektir; arızalanan bagaj kaynak yapılır, yamalanan lastiğe güvenilir. Zorlu arazilere meydan okuyan dağ bisikleti (MTB) tercihi de bu dayanıklılık ve sadelik anlayışının bir parçasıdır.</p>
-            </div>
-
-            <div class="manifesto-card">
-                <div class="manifesto-icon">
-                    <svg viewBox="0 0 24 24"><path d="M4.17 5.04c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41L6.15 12l-4.8 4.8c-.39.39-.39 1.02 0 1.41l1.42 1.42c-.39.39 1.02.39 1.41 0l6.21-6.22c.39-.39.39-1.02 0-1.41L4.17 5.04zm18.41 5.54l-6.21-6.22c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41l4.8 4.8-4.8 4.8c-.39.39-.39 1.02 0 1.41l1.42 1.42c.39.39 1.02.39 1.41 0l6.21-6.22c.39-.38.39-1.01 0-1.4zm-9.35 1.42l-2.83-2.83c-.39-.39-1.02-.39-1.41 0s-.39 1.02 0 1.41l2.83 2.83c.39.39 1.02.39 1.41 0s.39-1.03 0-1.41z"/></svg>
-                </div>
-                    <h3>Aykırı Yollar</h3>
-                    <p>Konforlu asfalt yollar insanı uyuşturur; gerçek keşif ise konfor alanının bittiği yerde başlar. Haritaların bile göstermediği patikalar, stabilizesi yüksek zorlu dağ geçitleri ve unutulmuş rotalar tercih edilerek hem fiziksel hem de zihinsel olarak kalıpların dışına çıkılır.</p>
-            </div>
-
-            <div class="manifesto-card">
-                <div class="manifesto-icon">
-                    <svg viewBox="0 0 24 24"><path d="M20 12c0-4.42-3.58-8-8-8s-8 3.58-8 8 3.58 8 8 8 8-3.58 8-8zm-8 6c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-8.5V6h-2v3.5H7.5v2H10V15h2v-3.5h2.5v-2H13z"/></svg>
-                </div>
-                    <h3>Algoritmayı Kır</h3>
-                    <p>YouTube algoritmalarının, yapay etkileşim şablonlarının, beğeni veya izlenme kaygılarının boyunduruğu altına girmeyi reddeder. İçerikler popüler kültür malzemesi olarak değil; yolun tarihini, insanını ve o derin sessizliğini olduğu gibi geleceğe aktaran ham, sansürsüz birer dijital belge ve arşiv olarak üretilir.</p>
-            </div>
-
-            <div class="manifesto-card">
-                <div class="manifesto-icon">
-                    <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-                </div>
-                    <h3>Yolun Gizemini Korumak</h3>
-                    <p>Yolculuğun kişisel ve ruhsal bir deneyim olduğuna inanılır. Rotanın milimetrik detaylarını (GPX verilerini) paylaşarak yolculuğu mekanik, dijital bir tüketim verisine dönüştürmeye karşı çıkar. Çünkü yol, bir başkasının çizdiği sanal çizgilerden değil; bizzat gidilerek ve hissedilerek keşfedilmesi gereken canlı bir süreçtir.</p>
-            </div>
-
-            <div class="manifesto-card">
-                <div class="manifesto-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                </div>
-                    <h3>Görünmezlik</h3>
-                    <p>Popüler ve turistik rotaları hızlıca tüketmek yerine, seyahatte "görünmezlik" ve "hamlık" felsefesiyle hareket edilir. Amaç, vitrinde olanı değil; Anadolu'nun derinliklerinde gizlenmiş, saklı kalmış toprakları ve o toprakların unuttuğumuz gerçek insani bağlarını sansürsüzce solumaktır.</p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-	<section class="routes-section" id="takip">
-    <div class="container">
-		    <!-- Ana Konteyner -->
-    <div id="polarsteps-tracker-root">
-        <div id="tracker-global-loader">
-            Tur bilgileri kontrol ediliyor...
-        </div>
-    </div>		
-    </div>
-</section>
-
-	<section class="routes-section" id="haberler">
-    <div class="container">
-        <h2 class="section-main-title">Haberler</h2>	
-        <div class="slider-wrapper">
-            
-            <div class="slider-arrow left-arrow disabled" onclick="scrollSlider('haber-slider', 'left')">
-                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-            </div>
-            
-            <div class="slider-arrow right-arrow" onclick="scrollSlider('haber-slider', 'right')">
-                <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-            </div>
-
-            <div class="horizontal-slider" id="haber-slider">
-                </div>
-        </div>
-    </div>
-</section>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const sliderContainer = document.getElementById("haber-slider");
-        if (!sliderContainer) return;
-
-        fetch('data/haber.json?v=' + new Date().getTime())
-            .then(res => {
-                if (!res.ok) throw new Error("Haber JSON dosyası yüklenemedi!");
-                return res.json();
-            })
-            .then(data => {
-                let htmlContent = '';
-
-                data.forEach(haber => {
-                    // Resim varsa img etiketini oluştur, yoksa boş bırak
-                    const imgHtml = haber.resim 
-                        ? `<img src="${haber.resim}" alt="${haber.baslik}" class="route-card-img" style="width:100%; height:auto; margin-bottom:15px; border-radius:4px;">` 
-                        : '';
-
-                    // Link varsa buton kodunu oluştur
-                    const linkHtml = (haber.linkUrl && haber.linkMetni) 
-                        ? `<div class="route-links"><a href="${haber.linkUrl}" target="_blank">${haber.linkMetni}</a></div>` 
-                        : '';
-
-                    htmlContent += `
-                        <div class="route-card">
-                            <div class="route-card-content">
-                                <div class="route-meta">${haber.meta}</div>
-                                <h3>${haber.baslik}</h3>
-                                ${imgHtml}
-                                <p>${haber.aciklama}</p>
-                            </div>
-                            ${linkHtml}
-                        </div>
-                    `;
-                });
-
-                sliderContainer.innerHTML = htmlContent;
-            })
-            .catch(err => {
-                console.error("Haberler yüklenirken hata oluştu:", err);
-                sliderContainer.innerHTML = "<p style='padding:20px;'>Haberler şu anda yüklenemiyor.</p>";
-            });
-    });
-</script>
-    <!-- ROTA HARİTASI -->
-    <section class="hero-map-section" id="harita">
-        <div class="container">
-            <div class="map-container">
-			            <h2 class="section-main-title">Bisikletle Gittiğim Yerler</h2>				
-                <div class="flourish-embed flourish-map" data-src="visualisation/7092325">
-                    <script src="https://public.flourish.studio/resources/embed.js"></script>
-                </div>
-				
-				<div class="flourish-embed flourish-chart" data-src="visualisation/11302675"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
-            </div>
-        </div>
-    </section>
-    <!-- VİDEO HARİTASI -->
-<section class="timeline-section" id="videolar">
-        <div class="container">
-            <h2 class="section-main-title">Son Videolar ve Video Haritası</h2> 
-            <!-- DİNAMİK CAROUSEL / SLIDER ALANI -->
-            <div class="index-carousel-container" style="max-width: 1200px; margin: 20px auto 40px auto; position: relative; font-family: Arial, sans-serif;">
-                <div class="carousel-wrapper" style="position: relative; width: 100%; display: flex; align-items: center;">
-                    <button class="carousel-btn left" id="idx-slide-left-btn" style="position: absolute; top: 35%; transform: translateY(-50%); left: -18px; background: rgba(255, 255, 255, 0.95); border: 1px solid #ccc; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: all 0.2s ease;"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: #0f0f0f;"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
-                    <div class="carousel-track-container" style="width: 100%; overflow: hidden; padding: 5px 0;">
-                        <div class="carousel-track" id="idx-carousel-track-target" style="display: flex; gap: 14px; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);">
-                            <!-- Videolar JavaScript ile buraya eklenecek -->
-                        </div>
-                    </div>
-                    <button class="carousel-btn right" id="idx-slide-right-btn" style="position: absolute; top: 35%; transform: translateY(-50%); right: -18px; background: rgba(255, 255, 255, 0.95); border: 1px solid #ccc; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: all 0.2s ease;"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: #0f0f0f;"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
-                </div>
-            </div>
-            <!-- HARİTA ALANI -->
-            <div id="index-global-map" style="width: 100%; height: 500px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin-top: 20px;"></div>
-			
-        </div>
-    </section>
-
-    <!-- Gerekli Ortak Harita ve Slider Stilleri -->
-    <style>
-        .carousel-btn:hover { background: #0f0f0f !important; border-color: #0f0f0f !important; }
-        .carousel-btn:hover svg { fill: #fff !important; }
-        .map-popup-btn {
-            display: block; background-color: #dc2626; color: #fff !important; 
-            padding: 6px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; 
-            text-decoration: none; margin-top: 5px; text-align: center; transition: background 0.2s;
-        }
-        .map-popup-btn:hover { background-color: #0f0f0f; }
+        <select id="sortSelect" onchange="applyFilters()">
+          <option value="default">Varsayılan Sıralama</option>
+          <option value="title-asc">Alfabetik (A-Z)</option>
+          <option value="title-desc">Alfabetik (Z-A)</option>
+          <option value="year-desc">Tarihe Göre (Yeni)</option>
+          <option value="year-asc">Tarihe Göre (Eski)</option>
+          <option value="category">Kategoriye Göre</option>
+        </select>
         
-        /* Slider Kart Tasarımları */
-        .idx-carousel-item { flex: 0 0 200px; width: 200px; text-decoration: none; color: #0f0f0f; display: flex; flex-direction: column; }
-        .idx-thumb-wrapper { position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #000; border-radius: 8px; overflow: hidden; margin-bottom: 6px; }
-        .idx-thumb-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.2s ease; }
-        .idx-carousel-item:hover .idx-thumb-wrapper img { opacity: 0.9; }
-        .idx-duration { position: absolute; bottom: 6px; right: 6px; background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 2px 5px; font-size: 0.72rem; font-weight: bold; border-radius: 4px; }
-        .idx-video-title { font-size: 0.88rem; font-weight: 600; line-height: 1.4; color: #0f0f0f; margin: 0 0 2px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
-        .idx-video-details { font-size: 0.8rem; color: #606060; margin: 0; }
-    </style>
-    <!-- KRONOLOJİK TIMELINE -->
-    <section class="timeline-section" id="kronoloji">
-        <div class="container">
-            <h2 class="section-main-title">Kronoloji & Dönüm Noktaları</h2>
-            <div class="custom-timeline" id="timeline-container">
-                </div>
+        <div class="search-wrapper">
+          <input type="text" id="searchInput" placeholder="Ekipman veya etiket..." oninput="handleSearchInput()">
+          <span class="clear-btn" id="clearBtn" onclick="clearSearch()" title="Aramayı Temizle">&times;</span>
         </div>
-    </section>
-    <!-- DOSYALAR BÖLÜMÜ (OK NAVİGASYONLU) <img src="xxx" alt="" width="400"> <br> -->
-<section class="routes-section" id="dosyalar">
-    <div class="container">
-        <h2 class="section-main-title">Paylaşılan Dosyalar</h2>
-        <div class="slider-wrapper">
-            
-            <div class="slider-arrow left-arrow disabled" onclick="scrollSlider('routes-slider', 'left')">
-                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-            </div>
-            
-            <div class="slider-arrow right-arrow" onclick="scrollSlider('routes-slider', 'right')">
-                <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-            </div>
-
-            <div class="horizontal-slider" id="routes-slider">
-                </div>
-        </div>
+      </div>
     </div>
-</section>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const routesSlider = document.getElementById("routes-slider");
-        if (!routesSlider) return;
+    <div class="app-layout">
+      <div class="main-content">
+        <div class="grid" id="equipmentGrid"></div>
+      </div>
 
-        // Tarayıcı önbelleğini aşmak için zaman damgası kullanıyoruz
-        fetch('data/dosyalar.json?v=' + new Date().getTime())
-            .then(res => {
-                if (!res.ok) throw new Error("Dosyalar JSON dosyası yüklenemedi!");
-                return res.json();
-            })
-            .then(data => {
-                let htmlContent = '';
-
-                data.forEach(kart => {
-                    // Kartın altındaki linkleri dinamik olarak döngüyle oluşturuyoruz
-                    let linksHtml = '';
-                    if (kart.linkler && kart.linkler.length > 0) {
-                        linksHtml += '<div class="route-links">';
-                        kart.linkler.forEach(link => {
-                            linksHtml += `<a href="${link.url}" target="_blank">${link.metin}</a>`;
-                        });
-                        linksHtml += '</div>';
-                    }
-
-                    // Ana kart şablonunu birleştiriyoruz
-                    htmlContent += `
-                        <div class="route-card">
-                            <div class="route-card-content">
-                                <div class="route-meta">${kart.meta}</div>
-                                <h3>${kart.baslik}</h3>
-                                <p>${kart.aciklama}</p>
-                            </div>
-                            ${linksHtml}
-                        </div>
-                    `;
-                });
-
-                routesSlider.innerHTML = htmlContent;
-            })
-            .catch(err => {
-                console.error("Dosyalar yüklenirken hata oluştu:", err);
-                routesSlider.innerHTML = "<p style='padding:20px;'>Dosyalar şu anda yüklenemiyor.</p>";
-            });
-    });
-</script>
-    <!-- EKİPMANLARIM BÖLÜMÜ (OK NAVİGASYONLU) -->
-    <section class="gear-section" id="ekipman">
-        <div class="container">
-            <h2 class="section-main-title">Kullandığım Ekipmanlar</h2>
-            <div class="slider-wrapper">
-                
-                <!-- Sol Ok -->
-                <div class="slider-arrow left-arrow disabled" onclick="scrollSlider('gear-slider', 'left')">
-                    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-                </div>
-                
-                <!-- Sağ Ok -->
-                <div class="slider-arrow right-arrow" onclick="scrollSlider('gear-slider', 'right')">
-                    <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                </div>
-
-                <div class="horizontal-slider" id="gear-slider">
-                    
-                    <div class="gear-category">
-                        <h3>Bisiklet & Taşıma</h3>
-                        <ul class="gear-list">
-                            <li>Tur Bisikleti <span>Kromoly Kadro</span></li>
-                            <li>Arka Bagaj <span>Onarılmış / Güçlendirilmiş</span></li>
-                            <li>Ön ve Arka Heybeler <span>Su Geçirmez Seri</span></li>
-                            <li>Gidon Çantası <span>Hızlı Erişim</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="gear-category">
-                        <h3>Kamp & Barınma</h3>
-                        <ul class="gear-list">
-                            <li>Çadır <span>3 Mevsim Minimalist</span></li>
-                            <li>Uyku Tulumu <span>Sentetik Dolgu</span></li>
-                            <li>Mat <span>Hafif Köpük</span></li>
-                            <li>Kamp Ocağı <span>Çok Yakıtlı Sistem</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="gear-category">
-                        <h3>Arşiv & Dijital</h3>
-                        <ul class="gear-list">
-                            <li>Kamera <span>Aksiyon ve VLOG Donanımı</span></li>
-                            <li>Ses Kayıt Cihazı <span>Yol ve Ambiyans Sesleri</span></li>
-                            <li>Güneş Paneli <span>Bağımsız Enerji Kaynağı</span></li>
-                            <li>Navigasyon <span>Polarsteps Altyapısı</span></li>
-                        </ul>
-                    </div>
-					
-					                    <div class="gear-category">
-                        <h3>Arşiv & Dijital</h3>
-                        <ul class="gear-list">
-                            <li>Kamera <span>Aksiyon ve VLOG Donanımı</span></li>
-                            <li>Ses Kayıt Cihazı <span>Yol ve Ambiyans Sesleri</span></li>
-                            <li>Güneş Paneli <span>Bağımsız Enerji Kaynağı</span></li>
-                            <li>Navigasyon <span>Polarsteps Altyapısı</span></li>
-                        </ul>
-                    </div>
-
-                </div>
-				            </div>
-<iframe src='https://flo.uri.sh/visualisation/7092441/embed' title='Interactive or visual content' class='flourish-embed-iframe' frameborder='0' scrolling='no' style='width:100%;height:600px;' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>			
+      <aside class="right-timeline-wrapper">
+        <button class="arrow-btn" id="btnUp">&#9650;</button>
+        <div class="timeline-container">
+          <div class="timeline-track" id="timelineTrack"></div>
         </div>
-		
-    </section>
+        <button class="arrow-btn" id="btnDown">&#9660;</button>
+      </aside>
 
+      <!-- SAĞ TUR ÇANTASI PANELİ -->
+      <aside class="checklist-sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-header-top">
+            <h2>🎒 Tur Çantam</h2>
+            <!-- SIFIRLAMA / TEMİZLEME BUTONU -->
+            <button class="reset-bag-btn" onclick="clearWholeChecklist()" title="Çantayı Sıfırla">✕ Sıfırla</button>
+          </div>
+          <div class="weight-counter">
+            <span>Tahmini Ağırlık:</span>
+            <span class="weight-val" id="totalWeight">0 gr</span>
+          </div>
+        </div>
 
-    <!-- SIK SORULAN SORULAR -->
-<section class="faq-section" id="faq">
-    <div class="container">
-        <h2 class="section-main-title">Sık Sorulan Sorular</h2>
-        <div class="faq-wrapper" id="faq-container">
-            </div>
+        <div class="list-container" id="checklistItems"></div>
+
+        <div class="action-buttons">
+          <button class="action-btn btn-copy" onclick="copyChecklist()">📋 Listeyi Kopyala</button>
+          <button class="action-btn btn-print" onclick="window.print()">🖨️ Yazdır</button>
+        </div>
+      </aside>
     </div>
-</section>
+  </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const faqContainer = document.getElementById("faq-container");
-        if (!faqContainer) return;
-
-        // Önbellek sorununu engellemek için anlık zaman damgası ekliyoruz
-        fetch('data/sss.json?v=' + new Date().getTime())
-            .then(res => {
-                if (!res.ok) throw new Error("SSS JSON dosyası yüklenemedi!");
-                return res.json();
-            })
-            .then(data => {
-                let htmlContent = '';
-
-                data.forEach(item => {
-                    htmlContent += `
-                        <details class="faq-item" name="faq">
-                            <summary><b>${item.soru}</b></summary>
-                            <div class="faq-content">
-                                <p>${item.cevap}</p>
-                            </div>
-                        </details>
-                    `;
-                });
-
-                faqContainer.innerHTML = htmlContent;
-            })
-            .catch(err => {
-                console.error("SSS yüklenirken hata oluştu:", err);
-                faqContainer.innerHTML = "<p style='padding:20px;'>Sorular şu anda yüklenemiyor.</p>";
-            });
-    });
-</script>
-<!-- PROTESTO & HAZIR ŞABLON BÖLÜMÜ -->
-<section class="protest-section" id="sablon">
-    <div class="container">
-        <h2 class="section-main-title">Duyarlı Dernekler İçin "Zorunlu" Şablon</h2>
-        <p class="protest-subtitle">Gelecekteki olası bir trafik cinayetinde, pusuya yatmış sözde duyarlı bisiklet derneklerinin/kulüplerinin acı üzerinden PR yaparken logo yerleştirmekle vakit kaybetmemesi için hazırlanmış resmi, açık kaynaklı protesto alanıdır.</p>
-        
-        <div class="protest-grid">
-            <!-- Şablonun Kendisi -->
-            <div class="template-box">
-                <div class="template-image-wrapper">
-                    <img src="img/ben.jpg" alt="Ferdimen" class="template-main-img">
-                    
-                    <!-- Sağ Üst: Logo İçin Ayrılan İkiyüzlülük Alanı -->
-                    <div class="logo-placeholder-slot">
-                        <span>DERNEK / KULÜP<br>LOGONUZU<br>BURAYA<br>EKLEYİN.</span>
-                    </div>
-                    
-                    <!-- Sol Alt: Klasik Sosyal Medya Sloganı -->
-                    <div class="template-slogan">
-                        #BisikletliÖlümleriDursun
-                    </div>
-                </div>
-                <div class="template-footer-text">
-                    "Bir reklam malzemesi olarak Ferdimen (1980 - 20XX)"
-                </div>
-            </div>
-
-            <!-- Eleştiri ve Kullanım Kılavuzu -->
-            <div class="protest-manifesto">
-                <h3>Kullanım Kılavuzu & Şartlar</h3>
-                <p>Bir gün trafikte bir maganda yüzünden hayatımı kaybedersem, arkamdan samimi bir yas tutmak yerine bunu bir 'etkileşim fırsatı' olarak görecek kurumlar için kurallar basittir:</p>
-                <ul class="protest-rules">
-                    <li>Görseli sağ tıklayıp farklı kaydedin.</li>
-                    <li>Sağ üstteki gri alana kendi kurumsal logonuzu, şeffaflık (opacity) değerini %100 yaparak gururla yerleştirin.</li>
-                    <li>Altına her zaman kullandığınız, hiçbir şeyi değiştirmeyen standart kınama metinlerinizi ekleyin.</li>
-                    <li><strong>Önemli Şart:</strong> Bu hazır şablonu kullanırken, kazanın hemen ardından açacağınız bağış linklerini görselin altına eklemeyi unutmayın ki samimiyetsizliğiniz tamamlansın.</li>
-                </ul>
-                <blockquote class="protest-quote">
-                    "Ölümümün, kurumsal görünürlüğünüze ve sponsorluk dosyalarınıza katkı sağlamasını temenni ederim."
-                </blockquote>
-            </div>
-        </div>
+  <div class="modal" id="detailModal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" style="width:100%; height:250px; object-fit:cover;">
+      <div class="modal-body">
+        <h2 id="modalTitle"></h2>
+        <p id="modalCategory" style="color:#64748b; font-size:0.9rem; margin: 4px 0;"></p>
+        <p id="modalDate" style="font-weight:bold; margin-bottom:5px;"></p>
+        <p id="modalWeight" style="color:#059669; font-weight:600; margin-bottom:5px; font-size:0.9rem;"></p>
+        <p id="modalDuration" style="color:#2563eb; font-weight:600; margin-bottom:12px; font-size:0.9rem;"></p>
+        <p id="modalDesc"></p>
+        <div id="modalComment" class="modal-comment"></div>
+        <div id="modalTags" class="tags" style="margin-top: 15px;"></div>
+      </div>
     </div>
-</section>
-
-    <!-- DESTEK OL BÖLÜMÜ -->
-    <section class="support-section" id="destek">
-        <div class="container">
-            <h2 class="section-main-title">Destek Ol</h2>
-            <div class="support-container">
-                <p>Aykırı Yollarda sürdürülen bu bağımsız seyahat felsefesine, reklamsız dijital arşiv çalışmalarına ve bağımsız içerik üretimine katkıda bulunmak isterseniz aşağıdaki kanallardan destek olabilirsiniz.</p>
-                
-                <div class="bank-card">
-                    <div class="bank-row">
-                        <span class="bank-label">ALICI</span>
-                        <span class="bank-value" id="bank-receiver">Ferdi Kızıl</span>
-                        <button class="copy-btn" onclick="copyToClipboard('bank-receiver', this)">Kopyala</button>
-                    </div>
-                    <div class="bank-row">
-                        <span class="bank-label">BANKA</span>
-                        <span class="bank-value">ENPARA</span>
-                        <span style="width:74px;"></span>
-                    </div>
-                    <div class="bank-row">
-                        <span class="bank-label">IBAN</span>
-                        <span class="bank-value" id="bank-iban">TR22 0015 7000 0000 0046 5881 43</span>
-                        <button class="copy-btn" onclick="copyToClipboard('bank-iban', this)">Kopyala</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- İLETİŞİM VE SOSYAL MEDYA -->
+  </div>
+  <!-- İLETİŞİM VE SOSYAL MEDYA -->
     <section class="contact-section" id="iletisim">
         <div class="container">
             <div class="contact-grid">
@@ -566,7 +790,7 @@ Seyahat felsefesimde "görünmezlik" ve "hamlık" ön plandadır. Popüler rotal
         const socialContainer = document.getElementById("social-container");
         if (!socialContainer) return;
 
-        fetch('data/sosyal.json?v=' + new Date().getTime())
+        fetch('https://ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
             .then(res => {
                 if (!res.ok) throw new Error("Sosyal medya JSON dosyası yüklenemedi!");
                 return res.json();
@@ -621,312 +845,614 @@ Seyahat felsefesimde "görünmezlik" ve "hamlık" ön plandadır. Popüler rotal
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="main-footer">
         <div class="container">
-<p class="footer-text"><script src="/data/footer.js?v=1"></script>© <span id="footer-year"></span> <span id="footer-dynamic-text"></p>			
+            <p class="footer-text"><script src="/data/footer.js?v=1"></script>© <span id="footer-year"></span> <span id="footer-dynamic-text"></p>
         </div>
     </footer>
+  <script>
+    let allEquipment = [];
+    let currentStatusFilter = 'tum';
+    let selectedTag = null;
+    let isTimelineMode = false;
+    
+    // ÇANTA VE VARSAYILAN YÜKLEME KONTROLLERİ
+    let isChecklistMode = false;
+    let isDefaultBagActive = false; // SAYFA İLK AÇILDIĞINDA TÜM ÜRÜNLER GÖRÜNSÜN
 
-    <!-- JAVASCRIPT: SLIDER KAYDIRMA VE AKILLI OK KONTROLLERİ -->
-    <script>
+    let selectedIds = new Set();
+    let checkedState = new Map();
 
-        // Tıklamayla Kaydırma Fonksiyonu
-        function scrollSlider(sliderId, direction) {
-            const slider = document.getElementById(sliderId);
-            if (!slider) return;
+    let eventNodes = [];
+    let currentIndex = 0;
 
-            // İlk kartın genişliğini dinamik alıp ona göre tam bir adım kaydırıyoruz
-            const firstCard = slider.querySelector('.route-card, .gear-category');
-            const cardWidth = firstCard ? firstCard.offsetWidth + 24 : 320; // 24px gap değeri dahil
+    const AYLAR = [
+      "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+      "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+    ];
 
-            if (direction === 'left') {
-                slider.scrollLeft -= cardWidth;
-            } else {
-                slider.scrollLeft += cardWidth;
-            }
+    function formatTarih(tarihStr) {
+      if (!tarihStr) return '';
+      const parcalar = tarihStr.trim().split('-');
+      if (parcalar.length >= 2) {
+        const yil = parcalar[0];
+        const ayIndex = parseInt(parcalar[1], 10) - 1;
+        const ayAdi = AYLAR[ayIndex] || parcalar[1];
+        if (parcalar.length === 3) {
+          const gun = parseInt(parcalar[2], 10);
+          return `${gun} ${ayAdi} ${yil}`;
         }
-
-        // Akıllı Ok Durumu Kontrolü (Başa veya Sona gelindiğinde okları gizler)
-        function updateArrowVisibility(slider) {
-            const wrapper = slider.closest('.slider-wrapper');
-            if (!wrapper) return;
-
-            const leftArrow = wrapper.querySelector('.left-arrow');
-            const rightArrow = wrapper.querySelector('.right-arrow');
-
-            if (leftArrow) {
-                if (slider.scrollLeft <= 5) {
-                    leftArrow.classList.add('disabled');
-                } else {
-                    leftArrow.classList.remove('disabled');
-                }
-            }
-
-            if (rightArrow) {
-                // Max kaydırma payını hesaplama toleransı dahil (+5)
-                const isEnd = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5;
-                if (isEnd) {
-                    rightArrow.classList.add('disabled');
-                } else {
-                    rightArrow.classList.remove('disabled');
-                }
-            }
-        }
-
-        // Tüm slider'lar için dinleyicileri bağlama
-        document.addEventListener("DOMContentLoaded", function() {
-            const sliders = document.querySelectorAll('.horizontal-slider');
-            
-            sliders.forEach(slider => {
-                // Hem kaydırma bittiğinde hem de ekran yeniden boyutlandığında okları güncelle
-                slider.addEventListener('scroll', () => updateArrowVisibility(slider));
-                window.addEventListener('resize', () => updateArrowVisibility(slider));
-                
-                // Sayfa ilk yüklendiğinde bir kez çalıştır
-                setTimeout(() => updateArrowVisibility(slider), 300);
-            });
-        });
-
-        // IBAN Kopyalama Fonksiyonu
-        function copyToClipboard(elementId, button) {
-            const textToCopy = document.getElementById(elementId).innerText;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                const originalText = button.innerText;
-                button.innerText = 'Kopyalandı!';
-                button.classList.add('copied');
-                
-                setTimeout(() => {
-                    button.innerText = originalText;
-                    button.classList.remove('copied');
-                }, 2000);
-            }).catch(err => {
-                console.error('Kopyalama başarısız: ', err);
-            });
-        }
-    </script>
-    <script>
-        // =========================================================================
-        // KRONOLOJİ / TIMELINE VERİ MERKEZİ (EKLEME, ÇIKARMA VE DÜZENLEMEYİ BURADAN YAP)
-        // =========================================================================
-
-    // Dinamik Timeline Oluşturma Motoru
-    function generateTimeline(turlarVerisi) {
-        const container = document.getElementById('timeline-container');
-        if (!container) return;
-
-        let htmlContent = '';
-
-        turlarVerisi.forEach((tur, index) => {
-            // Kartların sırayla sol-sağ dağılması için (Çift indeksler sağa, tek indeksler sola)
-            const sideClass = (index % 2 === 0) ? 'right-box' : 'left-box';
-            
-            // Resim etiketi (Eğer veri boşsa kod üretilmez)
-            const imgHtml = tur.resim ? `<img src="${tur.resim}" alt="${tur.baslik}">` : '';
-            
-            // Link etiketleri (Eğer veri boşsa kod üretilmez)
-            const linkHtml = (tur.linkUrl && tur.linkMetni) ? `<a href="${tur.linkUrl}" target="_blank" class="timeline-btn">${tur.linkMetni}</a>` : '';
-            const linkBlog = (tur.linkblogUrl && tur.linkblogMetni) ? `<a href="${tur.linkblogUrl}" target="_blank" class="timeline-btn">${tur.linkblogMetni}</a>` : '';
-            
-            htmlContent += `
-                <div class="timeline-row">
-                    <div class="timeline-year-badge">${tur.tarih}</div>
-                    <div class="timeline-box ${sideClass}">
-                        <div class="timeline-card-node">
-                            <h3>${tur.baslik}</h3> ${imgHtml}
-                            <p>${tur.aciklama}</p>
-                            ${linkHtml} ${linkBlog}
-                        </div>
-                    </div>
-                </div>
-            `;
-        });
-
-        container.innerHTML = htmlContent;
+        return `${ayAdi} ${yil}`;
+      }
+      return tarihStr;
     }
 
-    // JSON Verisini Çekme ve Başlatma Bölümü
-    // Tarayıcı eski veriyi önbelleğe almasın diye sonuna anlık zaman damgası ekliyoruz (?v=...)
-    fetch('data/timeline.json?v=' + new Date().getTime())
-        .then(res => {
-            if (!res.ok) throw new Error("JSON dosyası yüklenemedi!");
-            return res.json();
-        })
-        .then(data => {
-            // Gelen veriyi timeline motoruna gönderiyoruz
-            generateTimeline(data);
-        })
-        .catch(err => console.error("Hata:", err));
-
-        // Sayfa Yüklendiğinde Tetiklenecekler
-        document.addEventListener("DOMContentLoaded", function() {
-            // 1. Önce listeye göre Kronolojiyi oluştur
-            generateTimeline();
-
-            // 2. Slider oklarını dinle ve bağla
-            const sliders = document.querySelectorAll('.horizontal-slider');
-            sliders.forEach(slider => {
-                slider.addEventListener('scroll', () => updateArrowVisibility(slider));
-                window.addEventListener('resize', () => updateArrowVisibility(slider));
-                setTimeout(() => updateArrowVisibility(slider), 300);
-            });
-        });
-
-document.addEventListener("DOMContentLoaded", function() {
-    // Ayarlar
-    const SON_VIDEO = 10; // Slider'da gösterilecek maksimum son video sayısı
-    const MAP_PIN = "img/youtube.png";
-    const PIN_WIDTH = 32;
-    const PIN_HEIGHT = 32;
-    const bugun = new Date().toISOString().split('T')[0];
-
-    function getYoutubeId(url) {
-        let id = "";
-        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        const match = url.match(regExp);
-        if (match && match[2].length === 11) id = match[2];
-        return id;
+    function parseDateToValue(dateStr) {
+      if (!dateStr) return null;
+      const parts = dateStr.trim().split('-').map(Number);
+      const year = parts[0];
+      const month = parts[1] || 1;
+      return { year, month, val: year * 12 + (month - 1) };
     }
 
-    function setupCarouselEngine(track, leftBtn, rightBtn, itemsCount) {
-        const itemWidth = 214; // Kart genişliği (200px) + Gap (14px)
-        let localIndex = 0;
-        rightBtn.addEventListener('click', () => {
-            localIndex++;
-            if (localIndex > itemsCount - 4) { localIndex = 0; } // Ekran limitine göre başa sarar
-            track.style.transform = `translateX(-${localIndex * itemWidth}px)`;
-        });
-        leftBtn.addEventListener('click', () => {
-            localIndex--;
-            if (localIndex < 0) { localIndex = Math.max(0, itemsCount - 4); }
-            track.style.transform = `translateX(-${localIndex * itemWidth}px)`;
-        });
+    function hesaplaKullanimSuresi(baslangicStr, bitisStr) {
+      if (!baslangicStr || !bitisStr) return '';
+      const bParca = baslangicStr.trim().split('-');
+      const eParca = bitisStr.trim().split('-');
+      const bYil = parseInt(bParca[0], 10);
+      const bAy = parseInt(bParca[1], 10) - 1;
+      const bGun = bParca[2] ? parseInt(bParca[2], 10) : 1;
+      const eYil = parseInt(eParca[0], 10);
+      const eAy = parseInt(eParca[1], 10) - 1;
+      const eGun = eParca[2] ? parseInt(eParca[2], 10) : 1;
+
+      const baslangicTarihi = new Date(bYil, bAy, bGun);
+      const bitisTarihi = new Date(eYil, eAy, eGun);
+
+      let toplamAy = (bitisTarihi.getFullYear() - baslangicTarihi.getFullYear()) * 12 + (bitisTarihi.getMonth() - baslangicTarihi.getMonth());
+      if (bitisTarihi.getDate() < baslangicTarihi.getDate()) toplamAy--;
+
+      if (toplamAy < 1) {
+        const gunFarki = Math.round((bitisTarihi - baslangicTarihi) / (1000 * 60 * 60 * 24));
+        return gunFarki > 0 ? `${gunFarki} Gün` : '1 aydan az';
+      }
+
+      const yil = Math.floor(toplamAy / 12);
+      const kalanAy = toplamAy % 12;
+
+      let sonuc = [];
+      if (yil > 0) sonuc.push(`${yil} Yıl`);
+      if (kalanAy > 0) sonuc.push(`${kalanAy} Ay`);
+      return sonuc.join(' ');
     }
 
-    // Haritayı Başlat (İlk konum Türkiye merkezi)
-    const indexMap = L.map('index-global-map', { 
-        scrollWheelZoom: false, 
-        fullscreenControl: true 
-    }).setView([39.9207, 32.8541], 6);
+    // JSON Yükle
+    fetch('ekipman.json')
+      .then(response => response.json())
+      .then(data => {
+        allEquipment = data.map((item, idx) => {
+          const tarihler = item.tarih ? String(item.tarih).split(',').map(t => t.trim()) : [''];
+          const rawBaslangic = tarihler[0] || '';
+          const rawBitis = tarihler.length > 1 ? tarihler[1] : null;
+          const isAktif = (rawBitis === null || rawBitis === '');
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; Postmap for html by <a href="https://ferdimen.com/" target="_blank">Ferdimen</a>' }).addTo(indexMap);
+          let startObj = parseDateToValue(rawBaslangic) || { year: 2011, month: 1, val: 2011 * 12 };
+          let endObj = parseDateToValue(rawBitis) || { year: 2099, month: 12, val: 2099 * 12 };
 
-    const customIcon = L.icon({
-        iconUrl: MAP_PIN,
-        iconSize: [PIN_WIDTH, PIN_HEIGHT],
-        iconAnchor: [PIN_WIDTH / 2, PIN_HEIGHT],
-        popupAnchor: [0, -PIN_HEIGHT]
+          let etiketDizisi = [];
+          if (Array.isArray(item.etiketler)) {
+            etiketDizisi = item.etiketler;
+          } else if (typeof item.etiketler === 'string' && item.etiketler.trim() !== '') {
+            etiketDizisi = item.etiketler.split(',').map(e => e.trim()).filter(Boolean);
+          }
+
+          const id = item.id || idx + 1;
+          const varsayilan = !!item.varsayilan;
+
+          // String olarak gelen "28" değerini sayıya çeviriyoruz (Yoksa 0 atanır)
+const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null 
+  ? parseInt(item.agirlik, 10) || 0 
+  : 0;
+
+          // Varsayılan olan ürünleri seçili kimlikler listesine ekle
+          if (varsayilan) {
+            selectedIds.add(id);
+          }
+
+          return {
+            ...item,
+            id,
+            agirlik: parsedAgirlik,
+            varsayilan,
+            etiketler: etiketDizisi,
+            rawBaslangic, rawBitis,
+            baslangicTarihi: formatTarih(rawBaslangic),
+            bitisTarihi: formatTarih(rawBitis),
+            kullanimSuresi: !isAktif ? hesaplaKullanimSuresi(rawBaslangic, rawBitis) : '',
+            isAktif, startObj, endObj
+          };
+        });
+
+        populateCategories();
+        setupEventNodes();
+        buildTimelineUI();
+        applyFilters();
+        renderSidebar();
+      })
+      .catch(err => console.error("JSON Yükleme Hatası:", err));
+
+    function setupEventNodes() {
+      const selectedCategory = document.getElementById('categorySelect').value;
+      const search = document.getElementById('searchInput').value.toLowerCase().trim();
+
+      const relevantItems = allEquipment.filter(item => {
+        if (selectedCategory && item.kategori !== selectedCategory) return false;
+        if (search) {
+          const inTitle = item.baslik ? item.baslik.toLowerCase().includes(search) : false;
+          const inCategory = item.kategori ? item.kategori.toLowerCase().includes(search) : false;
+          const inTags = item.etiketler && item.etiketler.length > 0 ? item.etiketler.some(t => t.toLowerCase().includes(search)) : false;
+          if (!inTitle && !inCategory && !inTags) return false;
+        }
+        return true;
+      });
+
+      const uniqueVals = new Map();
+      relevantItems.forEach(p => {
+        if (p.startObj && !uniqueVals.has(p.startObj.val)) uniqueVals.set(p.startObj.val, p.startObj);
+        if (p.endObj && p.endObj.year !== 2099 && !uniqueVals.has(p.endObj.val)) uniqueVals.set(p.endObj.val, p.endObj);
+      });
+
+      eventNodes = Array.from(uniqueVals.values()).sort((a, b) => a.val - b.val);
+      if (currentIndex >= eventNodes.length) {
+        currentIndex = Math.max(0, eventNodes.length - 1);
+      }
+    }
+
+    function buildTimelineUI() {
+      const track = document.getElementById("timelineTrack");
+      if (eventNodes.length === 0) {
+        track.innerHTML = '<div style="font-size:0.8rem; color:#94a3b8; padding:10px 0;">Tarih Yok</div>';
+        return;
+      }
+
+      track.innerHTML = eventNodes.map((node, idx) => `
+        <div class="timeline-node ${idx === currentIndex ? 'active' : ''}" id="node-${idx}" data-idx="${idx}">
+          <div class="node-date">${node.year} ${AYLAR[node.month - 1]}</div>
+        </div>
+      `).join('');
+
+      updateTimelineDisplay();
+    }
+
+    function populateCategories() {
+      const select = document.getElementById('categorySelect');
+      const categories = [...new Set(allEquipment.map(e => e.kategori).filter(Boolean))];
+      categories.sort().forEach(cat => {
+        const option = document.createElement('option');
+        option.value = cat;
+        option.textContent = cat;
+        select.appendChild(option);
+      });
+    }
+
+    function onCategoryOrFilterChange() {
+      setupEventNodes();
+      buildTimelineUI();
+      applyFilters();
+    }
+
+    function filterStatus(status) {
+      currentStatusFilter = status;
+      if (isTimelineMode) {
+        toggleTimelineMode(false);
+      } else {
+        updateFilterButtons();
+        applyFilters();
+      }
+    }
+
+    function updateFilterButtons() {
+      document.getElementById('btnFilterTum').classList.toggle('active', !isTimelineMode && currentStatusFilter === 'tum');
+      document.getElementById('btnFilterAktif').classList.toggle('active', !isTimelineMode && currentStatusFilter === 'aktif');
+      document.getElementById('btnFilterEmekli').classList.toggle('active', !isTimelineMode && currentStatusFilter === 'emekli');
+      document.getElementById('btnTimeline').classList.toggle('active', isTimelineMode);
+      document.getElementById('btnChecklist').classList.toggle('active', isChecklistMode);
+    }
+
+    function toggleTimelineMode(forceState) {
+      isTimelineMode = forceState !== undefined ? forceState : !isTimelineMode;
+      document.body.classList.toggle('timeline-active', isTimelineMode);
+      
+      if (isTimelineMode) {
+        setupEventNodes();
+        buildTimelineUI();
+      }
+
+      updateFilterButtons();
+      applyFilters();
+    }
+
+    /* TUR ÇANTAM BUTONUNA BASILDIĞINDA:
+       - Panel açılır/kapanır
+       - Panel açıldığında SADECE "varsayilan": true ÜRÜNLER FİLTRELENİR
+    */
+    function toggleChecklistMode() {
+      isChecklistMode = !isChecklistMode;
+      document.body.classList.toggle('checklist-active', isChecklistMode);
+
+      if (isChecklistMode) {
+        isDefaultBagActive = true; // Sadece varsayılan ürünleri listele
+      } else {
+        isDefaultBagActive = false; // Çanta kapatılınca yine tüm ürünlere dön
+      }
+
+      updateFilterButtons();
+      applyFilters();
+      renderSidebar();
+    }
+
+    /* ✕ SIFIRLA BUTONUNA BASILDIĞINDA:
+       - Çanta temizlenir
+       - Sadece varsayılan filtreleme iptal edilir, TEKRAR TÜM ÜRÜNLER GÖRÜNÜR
+    */
+    function clearWholeChecklist() {
+      selectedIds.clear();
+      checkedState.clear();
+
+      // Varsayılan kısıtlamayı kaldır, tekrar tüm ürünleri görünür yap
+      isDefaultBagActive = false;
+
+      applyFilters();
+      renderSidebar();
+    }
+
+    function handleSearchInput() {
+      const searchInput = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearBtn');
+      clearBtn.style.display = searchInput.value.trim() === '' ? 'none' : 'block';
+      
+      if (isTimelineMode) {
+        setupEventNodes();
+        buildTimelineUI();
+      }
+      applyFilters();
+    }
+
+    function clearSearch() {
+      const searchInput = document.getElementById('searchInput');
+      searchInput.value = '';
+      selectedTag = null;
+      document.getElementById('clearBtn').style.display = 'none';
+      if (isTimelineMode) {
+        setupEventNodes();
+        buildTimelineUI();
+      }
+      applyFilters();
+    }
+
+    function toggleTag(tagText, e) {
+      if (e) e.stopPropagation();
+      closeModal();
+      const searchInput = document.getElementById('searchInput');
+      if (selectedTag && selectedTag.toLowerCase() === tagText.toLowerCase()) {
+        selectedTag = null;
+        searchInput.value = '';
+        document.getElementById('clearBtn').style.display = 'none';
+      } else {
+        selectedTag = tagText;
+        searchInput.value = tagText;
+        document.getElementById('clearBtn').style.display = 'block';
+      }
+      if (isTimelineMode) {
+        setupEventNodes();
+        buildTimelineUI();
+      }
+      applyFilters();
+    }
+
+    function getFilteredItems() {
+      const category = document.getElementById('categorySelect').value;
+      const search = document.getElementById('searchInput').value.toLowerCase().trim();
+
+      let activeTimelineVal = 0;
+      if (isTimelineMode && eventNodes[currentIndex]) {
+        activeTimelineVal = eventNodes[currentIndex].val;
+      }
+
+      return allEquipment.filter(item => {
+        // "🎒 Tur Çantam" modundayken SADECE "varsayilan": true ürünleri süz
+        if (isDefaultBagActive && !item.varsayilan) {
+          return false;
+        }
+
+        if (isTimelineMode) {
+          if (eventNodes.length === 0) return false;
+          const itemStart = item.startObj ? item.startObj.val : 0;
+          const itemEnd = item.endObj ? item.endObj.val : 2099 * 12;
+
+          if (activeTimelineVal < itemStart || activeTimelineVal > itemEnd) {
+            return false;
+          }
+        } else {
+          if (currentStatusFilter === 'aktif' && !item.isAktif) return false;
+          if (currentStatusFilter === 'emekli' && item.isAktif) return false;
+        }
+
+        if (category && item.kategori !== category) return false;
+        if (search) {
+          const inTitle = item.baslik ? item.baslik.toLowerCase().includes(search) : false;
+          const inDesc = item.aciklama ? item.aciklama.toLowerCase().includes(search) : false;
+          const inCategory = item.kategori ? item.kategori.toLowerCase().includes(search) : false;
+          const inTags = item.etiketler && item.etiketler.length > 0 ? item.etiketler.some(t => t.toLowerCase().includes(search)) : false;
+          if (!inTitle && !inDesc && !inCategory && !inTags) return false;
+        }
+        return true;
+      });
+    }
+
+    function applyFilters() {
+      let filtered = getFilteredItems();
+      
+      const sortCriterion = document.getElementById('sortSelect').value;
+      switch (sortCriterion) {
+        case 'title-asc':
+          filtered.sort((a, b) => (a.baslik || '').localeCompare(b.baslik || '', 'tr'));
+          break;
+        case 'title-desc':
+          filtered.sort((a, b) => (b.baslik || '').localeCompare(a.baslik || '', 'tr'));
+          break;
+        case 'year-desc':
+          filtered.sort((a, b) => (b.startObj ? b.startObj.val : 0) - (a.startObj ? a.startObj.val : 0));
+          break;
+        case 'year-asc':
+          filtered.sort((a, b) => (a.startObj ? a.startObj.val : 0) - (b.startObj ? b.startObj.val : 0));
+          break;
+        case 'category':
+          filtered.sort((a, b) => (a.kategori || '').localeCompare(b.kategori || '', 'tr'));
+          break;
+      }
+
+      renderGrid(filtered);
+    }
+
+    function createCardElement(item) {
+      const card = document.createElement('div');
+      const isSelected = selectedIds.has(item.id);
+      card.className = `card ${isSelected ? 'selected' : ''}`;
+      card.onclick = () => openModal(item);
+
+      const badgeClass = item.isAktif ? 'aktif' : 'emekli';
+      const badgeText = item.isAktif ? 'Aktif' : 'Emekli';
+      const tarihMetni = item.isAktif ? `${item.baslangicTarihi} → Kullanımda` : `${item.baslangicTarihi} - ${item.bitisTarihi}`;
+
+      const tagsHtml = (item.etiketler && item.etiketler.length > 0)
+        ? item.etiketler.map(t => {
+            const isSelectedTag = selectedTag && t.toLowerCase() === selectedTag.toLowerCase();
+            return `<span class="tag ${isSelectedTag ? 'selected-red' : ''}" onclick="toggleTag('${t}', event)">#${t}</span>`;
+          }).join('') 
+        : '';
+
+      card.innerHTML = `
+        <div class="card-img-wrapper">
+          <img class="card-img" src="${item.kapakresmi || 'https://via.placeholder.com/350x200?text=Resim+Yok'}" alt="${item.baslik}">
+          <span class="badge ${badgeClass}">${badgeText}</span>
+        </div>
+        <div class="card-body">
+          <div class="card-category">${item.kategori || ''}</div>
+          <h3 class="card-title">${item.baslik}</h3>
+          <div class="card-date">${tarihMetni}</div>
+          ${item.agirlik ? `<div class="card-weight">⚖️ ${item.agirlik} gr</div>` : ''}
+          <p class="card-desc">${item.aciklama || ''}</p>
+          <button class="add-btn" onclick="toggleSelect(${item.id}, event)">
+            ${isSelected ? 'Çantadan Çıkar' : '+ Çantaya Ekle'}
+          </button>
+          <div class="tags">${tagsHtml}</div>
+        </div>
+      `;
+      return card;
+    }
+
+    function renderGrid(items) {
+      const grid = document.getElementById('equipmentGrid');
+      grid.innerHTML = '';
+
+      if (items.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; padding: 60px 20px; color:#64748b; font-size:1.1rem;">Seçili kriterlerde aktif ürün bulunmuyordu.</p>';
+        return;
+      }
+
+      items.forEach(item => grid.appendChild(createCardElement(item)));
+    }
+
+    function updateTimelineDisplay() {
+      document.querySelectorAll('.timeline-node').forEach(n => n.classList.remove('active'));
+      const activeNode = document.getElementById(`node-${currentIndex}`);
+      if (activeNode) activeNode.classList.add('active');
+
+      const translateY = 100 - (currentIndex * 35);
+      document.getElementById("timelineTrack").style.transform = `translateY(${translateY}px)`;
+    }
+
+    function setTimelineIndex(idx) {
+      if (idx < 0 || idx >= eventNodes.length) return;
+      currentIndex = idx;
+      updateTimelineDisplay();
+      applyFilters();
+    }
+
+    document.getElementById("btnUp").addEventListener("click", () => {
+      setTimelineIndex(currentIndex - 1);
     });
 
-    // Tek fetch ile hem slider hem harita inşası
-    fetch('data/video.json?v=' + new Date().getTime())
-        .then(res => res.json())
-        .then(data => {
-            if (!data || data.length === 0) return;
+    document.getElementById("btnDown").addEventListener("click", () => {
+      setTimelineIndex(currentIndex + 1);
+    });
 
-const aktifVideolar = data
-    .filter(v => !v.date || v.date <= bugun)
-    // En alttaki (en eski) video 1 ID'sini alacak şekilde tersten index atıyoruz
-    .map((v, idx, arr) => ({ ...v, orijinalIndex: arr.length - idx }));
+    document.getElementById("timelineTrack").addEventListener("click", (e) => {
+      const node = e.target.closest('.timeline-node');
+      if (node) {
+        const idx = parseInt(node.dataset.idx);
+        setTimelineIndex(idx);
+      }
+    });
 
-// ==========================================
-            // 1. CAROUSEL / SLIDER İNŞASI (SON VİDEOLAR)
-            // ==========================================
-            // JSON yapısında en yeni videoların dizinin sonunda olması durumuna karşı sıralamayı tersine çeviriyoruz
-            const siraliVideolar = [...aktifVideolar]; 
-            const sonYayinlananlar = siraliVideolar.slice(0, SON_VIDEO); 
-            
-            // Slider'ın en başındaki genel yönlendirme görseli için en son videonun kapak resmini kullanıyoruz
-            const ilkYenivideoId = getYoutubeId(siraliVideolar[0].url);
-            
-            // İlk eleman olarak sabit "TÜM VİDEOLAR" kartını ekliyoruz
-            let sliderHtml = `
-                <a href="izle.html" class="idx-carousel-item">
-                    <div class="idx-thumb-wrapper">
-                        <img src="https://img.youtube.com/vi/${ilkYenivideoId}/mqdefault.jpg" alt="Tüm Videolar">
-                        <div style="position: absolute; top: 0; right: 0; width: 100%; height: 100%; background-color: rgba(44, 62, 80, 0.85); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: bold;">
-                            <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: #fff; margin-bottom: 4px;">
-                                <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/>
-                            </svg>
-                            <span>Keşfet</span>
-                        </div>
-                    </div>
-                    <h3 class="idx-video-title" style="color: #dc2626; font-weight: 700;">TÜM VİDEOLAR</h3>
-                    <p class="idx-video-details">${aktifVideolar.length} Video Arşivi</p>
-                </a>
-            `;
+    function toggleSelect(id, e) {
+      if (e) e.stopPropagation();
+      if (selectedIds.has(id)) {
+        selectedIds.delete(id);
+        checkedState.delete(id);
+      } else {
+        selectedIds.add(id);
+      }
+      applyFilters();
+      renderSidebar();
+    }
 
-            // Son yayınlanan videoları döngü ile ekliyoruz
-            sonYayinlananlar.forEach(video => {
-                const videoId = getYoutubeId(video.url);
-                const thumbUrl = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
-                let yayinTarihi = video.date ? video.date.split('-').reverse().join('.') : '';
+    function toggleCheck(id) {
+      const current = checkedState.get(id) || false;
+      checkedState.set(id, !current);
+      renderSidebar();
+    }
 
-                sliderHtml += `
-                    <a href="izle.html?v=${video.orijinalIndex}" class="idx-carousel-item">
-                        <div class="idx-thumb-wrapper">
-                            <img src="${thumbUrl}" loading="lazy" alt="${video.title}">
-                            <span class="idx-duration">${video.duration}</span>
-                        </div>
-                        <h3 class="idx-video-title">${video.title}</h3>
-                        <p class="idx-video-details">${yayinTarihi}</p>
-                    </a>`;
-            });
-            
-            const trackTarget = document.getElementById("idx-carousel-track-target");
-            trackTarget.innerHTML = sliderHtml;
-            
-            // Toplam eleman sayısına +1 ekleyerek kaydırma mekanizmasını güncelliyoruz
-            setupCarouselEngine(
-                trackTarget, 
-                document.getElementById('idx-slide-left-btn'), 
-                document.getElementById('idx-slide-right-btn'), 
-                sonYayinlananlar.length + 1
-            );
+function renderSidebar() {
+  const container = document.getElementById('checklistItems');
+  const countLabel = document.getElementById('selectedCount');
+  const weightLabel = document.getElementById('totalWeight');
 
-            // ==========================================
-            // 2. HARİTA PİNLERİNİN İNŞASI
-            // ==========================================
-            let pinCount = 0;
-            const bounds = [];
+  container.innerHTML = '';
+  const selectedItems = allEquipment.filter(item => selectedIds.has(item.id));
 
-            aktifVideolar.forEach(video => {
-                if (video.konum) {
-                    const coords = video.konum.split(',').map(n => parseFloat(n.trim()));
-                    if (coords.length === 2 && !isNaN(coords[0]) && !isNaN(coords[1])) {
-                        bounds.push(coords);
-                        pinCount++;
-                        
-                        const videoId = getYoutubeId(video.url);
-                        const thumbUrl = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
-                        
-                        const popupContent = `
-                            <div style="font-family: Arial, sans-serif; font-size:13px; line-height:1.4; max-width:200px;">
-                                <div style="width:100%; aspect-ratio:16/9; margin-bottom:8px; border-radius:6px; overflow:hidden; background:#000;">
-                                    <img src="${thumbUrl}" style="width:100%; height:100%; object-fit:cover; display:block;" alt="${video.title}">
-                                </div>
-                                <b style="color:#2c3e50; display:block; margin-bottom:2px;">${video.title}</b>
-                                <span style="color:#7f8c8d; font-size:11px; display:block; margin-bottom:6px;">Süre: ${video.duration}</span>
-                                <a href="izle.html?v=${video.orijinalIndex}" class="map-popup-btn">Videoyu İzle</a>
-                            </div>
-                        `;
+  countLabel.textContent = selectedItems.length;
 
-                        L.marker(coords, { icon: customIcon })
-                         .addTo(indexMap)
-                         .bindPopup(popupContent, { maxWidth: 220 });
-                    }
-                }
-            });
+  // Ağırlık değerini güvenli bir şekilde tam sayıya (number) dönüştürerek topluyoruz
+  const totalWeightGrams = selectedItems.reduce((acc, curr) => {
+    const val = parseInt(curr.agirlik, 10);
+    return acc + (isNaN(val) ? 0 : val);
+  }, 0);
 
-            if (pinCount > 0) {
-                indexMap.fitBounds(bounds, { padding: [40, 40] });
-            }
-        })
-        .catch(err => console.error("Veriler yüklenirken hata oluştu:", err));
-});
-    </script>
-<script src="nerdeyim/konum.js"></script>	
-</body>
-</html>
+  // 1000 gr ve üzerini kg cinsine çevirip yazdırıyoruz
+  if (totalWeightGrams >= 1000) {
+    weightLabel.textContent = `${(totalWeightGrams / 1000).toFixed(2)} kg`;
+  } else {
+    weightLabel.textContent = `${totalWeightGrams} gr`;
+  }
+
+  if (selectedItems.length === 0) {
+    container.innerHTML = `<p class="empty-msg">Henüz bir şey seçmedin.<br>Ekipman kartlarındaki <strong>"+ Çantaya Ekle"</strong> butonunu kullanabilirsin.</p>`;
+    return;
+  }
+
+  const groupedSelected = selectedItems.reduce((acc, item) => {
+    const cat = item.kategori || 'Diğer Ekipmanlar';
+    if (!acc[cat]) acc[cat] = [];
+    acc[cat].push(item);
+    return acc;
+  }, {});
+
+  Object.keys(groupedSelected).forEach(catName => {
+    const groupDiv = document.createElement('div');
+    groupDiv.className = 'sidebar-cat-group';
+
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'sidebar-cat-title';
+    titleDiv.textContent = catName;
+    groupDiv.appendChild(titleDiv);
+
+    groupedSelected[catName].forEach(item => {
+      const isChecked = checkedState.get(item.id) || false;
+      const listItem = document.createElement('div');
+      listItem.className = `list-item ${isChecked ? 'done' : ''}`;
+      
+      listItem.innerHTML = `
+        <div class="list-item-left" onclick="toggleCheck(${item.id})">
+          <input type="checkbox" ${isChecked ? 'checked' : ''} style="cursor:pointer;">
+          <span>${item.baslik}</span>
+        </div>
+        <button class="remove-item-btn" onclick="toggleSelect(${item.id}, event)" title="Listeden Çıkar">&times;</button>
+      `;
+
+      groupDiv.appendChild(listItem);
+    });
+
+    container.appendChild(groupDiv);
+  });
+}
+
+    function copyChecklist() {
+      const selectedItems = allEquipment.filter(item => selectedIds.has(item.id));
+      if (selectedItems.length === 0) {
+        alert("Kopyalamak için önce listeden ürün seçmelisiniz!");
+        return;
+      }
+
+      const grouped = selectedItems.reduce((acc, item) => {
+        const cat = item.kategori || 'Diğer Ekipmanlar';
+        if (!acc[cat]) acc[cat] = [];
+        acc[cat].push(item);
+        return acc;
+      }, {});
+
+      let text = "🚴‍♂️ BISIKLET TURU EKIPMAN CHECK-LISTI\n\n";
+
+      Object.keys(grouped).forEach(catName => {
+        text += `--- ${catName.toUpperCase()} ---\n`;
+        grouped[catName].forEach((item) => {
+          const status = checkedState.get(item.id) ? "[X]" : "[ ]";
+          text += `${status} ${item.baslik}\n`;
+        });
+        text += `\n`;
+      });
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Check-list kategorilerine ayrılmış olarak panoya kopyalandı!");
+      });
+    }
+
+    function openModal(item) {
+      document.getElementById('modalImg').src = item.kapakresmi || 'https://via.placeholder.com/600x300?text=Resim+Yok';
+      document.getElementById('modalTitle').textContent = item.baslik;
+      document.getElementById('modalCategory').textContent = item.kategori;
+      
+      const tarihMetni = item.isAktif ? `Giriş Tarihi: ${item.baslangicTarihi} (Aktif)` : `Kullanım Dönemi: ${item.baslangicTarihi} — ${item.bitisTarihi}`;
+      document.getElementById('modalDate').textContent = tarihMetni;
+
+      const weightBox = document.getElementById('modalWeight');
+      if (item.agirlik) {
+        weightBox.style.display = 'block';
+        weightBox.textContent = `⚖️ Ağırlık: ${item.agirlik} gr`;
+      } else {
+        weightBox.style.display = 'none';
+      }
+
+      const durationBox = document.getElementById('modalDuration');
+      if (!item.isAktif && item.kullanimSuresi) {
+        durationBox.style.display = 'block';
+        durationBox.textContent = `⏱️ Toplam Hizmet Süresi: ${item.kullanimSuresi}`;
+      } else {
+        durationBox.style.display = 'none';
+      }
+
+      document.getElementById('modalDesc').textContent = item.aciklama;
+
+      const commentBox = document.getElementById('modalComment');
+      if (item.yorum) {
+        commentBox.style.display = 'block';
+        commentBox.innerHTML = `<strong>Kişisel Tecrübe / Yorum:</strong><br>${item.yorum}`;
+      } else {
+        commentBox.style.display = 'none';
+      }
+
+      const tagsContainer = document.getElementById('modalTags');
+      tagsContainer.innerHTML = (item.etiketler && item.etiketler.length > 0)
+        ? item.etiketler.map(t => `<span class="tag ${selectedTag && t.toLowerCase() === selectedTag.toLowerCase() ? 'selected-red' : ''}" onclick="toggleTag('${t}', event)">#${t}</span>`).join('') 
+        : '';
+
+      document.getElementById('detailModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('detailModal').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
