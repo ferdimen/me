@@ -676,40 +676,147 @@ Seyahat felsefesimde "görünmezlik" ve "hamlık" ön plandadır. Popüler rotal
         // KRONOLOJİ / TIMELINE VERİ MERKEZİ (EKLEME, ÇIKARMA VE DÜZENLEMEYİ BURADAN YAP)
         // =========================================================================
 
-    // Dinamik Timeline Oluşturma Motoru
-    function generateTimeline(turlarVerisi) {
-        const container = document.getElementById('timeline-container');
-        if (!container) return;
+// Kesintisiz Timeline - Anlık Yıl Değişimi ve Çift Yönlü Parlama Animasyonu
+function generateTimeline(turlarVerisi) {
+    const container = document.getElementById('timeline-container');
+    if (!container) return;
 
-        let htmlContent = '';
+    const $yaziUzunlugu = 140;
+    let htmlContent = '';
 
-        turlarVerisi.forEach((tur, index) => {
-            // Kartların sırayla sol-sağ dağılması için (Çift indeksler sağa, tek indeksler sola)
-            const sideClass = (index % 2 === 0) ? 'right-box' : 'left-box';
-            
-            // Resim etiketi (Eğer veri boşsa kod üretilmez)
-            const imgHtml = tur.resim ? `<img src="${tur.resim}" alt="${tur.baslik}">` : '';
-            
-            // Link etiketleri (Eğer veri boşsa kod üretilmez)
-            const linkHtml = (tur.linkUrl && tur.linkMetni) ? `<a href="${tur.linkUrl}" target="_blank" class="timeline-btn">${tur.linkMetni}</a>` : '';
-            const linkBlog = (tur.linkblogUrl && tur.linkblogMetni) ? `<a href="${tur.linkblogUrl}" target="_blank" class="timeline-btn">${tur.linkblogMetni}</a>` : '';
-            
-            htmlContent += `
-                <div class="timeline-row">
-                    <div class="timeline-year-badge">${tur.tarih}</div>
-                    <div class="timeline-box ${sideClass}">
-                        <div class="timeline-card-node">
-                            <h3>${tur.baslik}</h3> ${imgHtml}
-                            <p>${tur.aciklama}</p>
+    // 1. Ekran Ortasında Sabit Duran Rozet ve Çizgi
+    htmlContent += `
+        <div class="sticky-year-wrapper">
+            <div id="sticky-year-badge" class="sticky-year-badge">---</div>
+        </div>
+        <div class="timeline-center-line"></div>
+    `;
+
+    // Kart HTML'i Üreten Fonksiyon
+    const kartUret = (tur, sideClass) => {
+        if (!tur) return '';
+
+        const imgHtml = tur.resim 
+            ? `<div class="card-media"><img src="${tur.resim}" alt="${tur.baslik}"></div>` 
+            : '';
+
+        const linkHtml = (tur.linkUrl && tur.linkMetni) 
+            ? `<a href="${tur.linkUrl}" target="_blank" class="timeline-btn primary-btn">${tur.linkMetni}</a>` : '';
+        const linkBlog = (tur.linkblogUrl && tur.linkblogMetni) 
+            ? `<a href="${tur.linkblogUrl}" target="_blank" class="timeline-btn secondary-btn">${tur.linkblogMetni}</a>` : '';
+
+        // Metin Uzunluğu Kontrolü
+        const aciklama = tur.aciklama || '';
+        let aciklamaHtml = '';
+
+        if (aciklama.length > $yaziUzunlugu) {
+            const kisaltilmis = aciklama.substring(0, $yaziUzunlugu) + '...';
+            aciklamaHtml = `
+                <p class="card-desc">
+                    <span class="short-text">${kisaltilmis}</span>
+                    <span class="full-text" style="display:none;">${aciklama}</span>
+                    <a href="javascript:void(0)" class="read-more-link" onclick="toggleStickyText(this)">devamı...</a>
+                </p>
+            `;
+        } else {
+            aciklamaHtml = `<p class="card-desc">${aciklama}</p>`;
+        }
+
+        // Yıl Bilgisini Ayıkla
+        const hamTarih = tur.tarih || '';
+        const matchYil = hamTarih.match(/\d{4}/);
+        const gosterilecekYil = matchYil ? matchYil[0] : hamTarih;
+
+        return `
+            <div class="sticky-card-box ${sideClass}" data-year="${gosterilecekYil}">
+                <div class="sticky-card-node">
+                    ${imgHtml}
+                    <div class="card-content">
+                        <h3 class="card-title">${tur.baslik}</h3>
+                        ${aciklamaHtml}
+                        <div class="card-actions">
                             ${linkHtml} ${linkBlog}
                         </div>
                     </div>
                 </div>
-            `;
-        });
+            </div>
+        `;
+    };
 
-        container.innerHTML = htmlContent;
+    // 2. Kesintisiz Yan Yana Dizilim Döngüsü
+    for (let i = 0; i < turlarVerisi.length; i += 2) {
+        const solTur = turlarVerisi[i];
+        const sagTur = turlarVerisi[i + 1];
+
+        htmlContent += `
+            <div class="sticky-timeline-row">
+                ${kartUret(solTur, 'side-left')}
+                ${sagTur ? kartUret(sagTur, 'side-right') : '<div class="sticky-card-box side-right empty-slot"></div>'}
+            </div>
+        `;
     }
+
+    container.innerHTML = htmlContent;
+
+    // 3. Scroll Takibini Başlat
+    initStickyYearObserver();
+}
+
+function toggleStickyText(btn) {
+    const parent = btn.parentElement;
+    const shortText = parent.querySelector('.short-text');
+    const fullText = parent.querySelector('.full-text');
+
+    if (fullText.style.display === 'none') {
+        fullText.style.display = 'inline';
+        shortText.style.display = 'none';
+        btn.textContent = ' daha az';
+    } else {
+        fullText.style.display = 'none';
+        shortText.style.display = 'inline';
+        btn.textContent = 'devamı...';
+    }
+}
+
+// Hassas Scroll Takibi ve Eşzamanlı Parlama Motoru
+function initStickyYearObserver() {
+    const badge = document.getElementById('sticky-year-badge');
+    const cards = document.querySelectorAll('.sticky-card-box[data-year]');
+
+    if (!badge || cards.length === 0) return;
+
+    // Ekranın tam ortasını (yatay çizgi hizasını) kesim noktası yapıyoruz
+    const observerOptions = {
+        root: null,
+        rootMargin: '-50% 0px -50% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const activeYear = entry.target.getAttribute('data-year');
+                
+                if (activeYear && badge.textContent !== activeYear) {
+                    // 1. Ortadaki Yıl Rozetini Güncelle ve Parlat
+                    badge.textContent = activeYear;
+                    badge.classList.remove('badge-pulse');
+                    void badge.offsetWidth; // Reflow tetikleme
+                    badge.classList.add('badge-pulse');
+
+                    // 2. O Yıla Ait Tüm Kartların Çerçevelerini Parlat
+                    document.querySelectorAll(`.sticky-card-box[data-year="${activeYear}"] .sticky-card-node`).forEach(node => {
+                        node.classList.remove('card-glow');
+                        void node.offsetWidth; // Reflow tetikleme
+                        node.classList.add('card-glow');
+                    });
+                }
+            }
+        });
+    }, observerOptions);
+
+    cards.forEach(card => observer.observe(card));
+}
 
     // JSON Verisini Çekme ve Başlatma Bölümü
     // Tarayıcı eski veriyi önbelleğe almasın diye sonuna anlık zaman damgası ekliyoruz (?v=...)
