@@ -1,5 +1,16 @@
 [
   {
+    "baslik": "Deneme",
+    "kategori": "Elektronik",
+    "tarih": "2000-01",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "",
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamera"
+  },
+  {
     "baslik": "Arka Işık",
     "kategori": "Aydınlatma",
     "tarih": "2022-04-20",
