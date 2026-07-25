@@ -1032,3 +1032,210 @@ body {
     .anlik-modal-arrow.prev-arrow { left: 6px; }
     .anlik-modal-arrow.next-arrow { right: 6px; }
 }
+
+#timeline-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 60px 0;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* 1. Ekran Ortasındaki Yıl Rozeti */
+.sticky-year-wrapper {
+    position: sticky;
+    top: 50vh;
+    transform: translateY(-50%);
+    z-index: 100;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0;
+}
+
+.sticky-year-badge {
+    pointer-events: auto;
+    background: #0f172a;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1.15rem;
+    padding: 10px 24px;
+    border-radius: 50px;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9), 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 2px solid #2563eb;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    min-width: 90px;
+}
+
+.sticky-year-badge.badge-pulse {
+    animation: badgeGlowAnim 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes badgeGlowAnim {
+    0% { transform: scale(1); background: #0f172a; }
+    50% {
+        transform: scale(1.25);
+        background: #2563eb;
+        border-color: #60a5fa;
+        box-shadow: 0 0 25px rgba(37, 99, 235, 0.9), 0 0 0 6px rgba(96, 165, 250, 0.5);
+    }
+    100% { transform: scale(1); background: #0f172a; }
+}
+
+/* 2. Tam Ortadaki Çizgi */
+.timeline-center-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: #cbd5e1;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* 3. Kesintisiz Yan Yana Satırlar */
+.sticky-timeline-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-bottom: 35px;
+    position: relative;
+    z-index: 2;
+}
+
+.sticky-card-box {
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.sticky-card-box.side-left { padding-right: 45px; }
+.sticky-card-box.side-right { padding-left: 45px; }
+
+/* 4. Kart Çerçevesi ve Kenar Parlama Animasyonu */
+.sticky-card-node {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sticky-card-node.card-glow {
+    animation: cardGlowAnim 0.8s ease-out;
+}
+
+@keyframes cardGlowAnim {
+    0% { border-color: #cbd5e1; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06); }
+    40% {
+        border-color: #2563eb;
+        box-shadow: 0 0 20px rgba(37, 99, 235, 0.4), 0 0 0 2px rgba(37, 99, 235, 0.3);
+    }
+    100% { border-color: #e2e8f0; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06); }
+}
+
+.card-media img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card-title {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    color: #0f172a;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.45;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.read-more-link {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* 5. Butonlar & Hover Animasyonları */
+.card-actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.timeline-btn {
+    position: relative;
+    padding: 8px 16px;
+    font-size: 0.82rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Birincil Buton (Tur Videolarını İzle) */
+.primary-btn {
+    background: #2563eb;
+    color: #ffffff;
+    border: 1px solid #1d4ed8;
+}
+
+.primary-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+    border-color: #3b82f6;
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+/* İkincil Buton (Blog Sayfası) */
+.secondary-btn {
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+}
+
+.secondary-btn:hover {
+    background: #ffffff;
+    color: #2563eb;
+    border-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.secondary-btn:active {
+    transform: translateY(0);
+}
+
+/* Mobil Uyum */
+@media (max-width: 768px) {
+    .timeline-center-line { left: 20px; }
+    .sticky-timeline-row { flex-direction: column; }
+    .sticky-card-box { width: 100% !important; padding: 0 0 0 45px !important; margin-bottom: 25px; }
+    .sticky-year-wrapper { justify-content: flex-start; padding-left: 5px; }
+}
