@@ -1002,7 +1002,7 @@
     }
 
     // JSON Yükle
-    fetch('data/ekipman.json')
+    fetch('ekipman/ekipman.json')
       .then(response => response.json())
       .then(data => {
         allEquipment = data.map((item, idx) => {
