@@ -3810,7 +3810,7 @@ async function ekipmanFormuGonder(event) {
         const katSlug = slugifyMetin(secilenEkipmanKategorileri[0] || 'genel');
         const baslikSlug = slugifyMetin(baslik);
         const dosyaAdi = `${katSlug}-${baslikSlug}.${ekipmanYuklenecekResimUzanti}`;
-        const hedefPath = `/img/ekipman/${yil}/${dosyaAdi}`;
+        const hedefPath = `img/ekipman/${yil}/${dosyaAdi}`;
 
         bildirimGoster("Kapak resmi GitHub'a yükleniyor...", "success");
         const yuklenenYol = await ekipmanResmiGithubaYukle(hedefPath, ekipmanYuklenecekResimBase64);
