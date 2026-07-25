@@ -1,5 +1,16 @@
 [
   {
+    "baslik": "resim seçilmedi",
+    "kategori": "Diğer",
+    "tarih": "2000-01",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "",
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": ""
+  },
+  {
     "baslik": "deneme",
     "kategori": "",
     "tarih": "2000-01",
