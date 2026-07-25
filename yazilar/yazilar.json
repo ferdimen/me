@@ -41,16 +41,15 @@
   {
     "id": "2026/2026-07-26-01-28",
     "baslik": "Trakya turundan...",
-    "aciklama": "",
     "url": "gram.html",
-    "tarih": "2026-07-26",
+    "tarih": "2017-07-11",
     "kategori": "Anlık",
-    "ozel": "fotoğraf, anlık",
-    "konum": "41.966755, 28.035790",
+    "ozel": "fotoğraf, anlık, yılın fotoğrafı",
     "kapakresmi": "/img/posts/2026/2026-07-26-01-28.jpg",
     "etiketler": [
-      "fotoğraf,anlık,ferdimen"
-    ]
+      "fotoğraf,anlık,ferdimen,yılın fotoğrafı,"
+    ],
+    "konum": "41.966755, 28.035790"
   },
   {
     "id": "2026/2026-07-26-01-27",
