@@ -3839,7 +3839,7 @@ async function ekipmanFormuGonder(event) {
     const formIndex = parseInt(document.getElementById('e-index').value);
 
     if (formIndex === -1) {
-        mevcutEkipmanDizisi.unshift(yeniEkipman);
+        mevcutEkipmanDizisi.push(yeniEkipman); // .unshift() en üst yerine .push() son için kullanıldı verinin nereye yazılacağı
     } else {
         mevcutEkipmanDizisi[formIndex] = yeniEkipman;
     }
