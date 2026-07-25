@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferdimen // Adı yalnızlığından gelen kahraman</title>
+    
+    <link rel="icon" type="image/png" href="http://www.ferdimen.com/img/logo.png">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.css" />
+    
+    <link rel="stylesheet" href="https://www.ferdimen.com/data/css.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.js"></script>   
+    <style>
+        /* Blog Arşiv Sayfası Özel Tasarımı */
+        .blog-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .blog-header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .blog-header p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+        }
+
+        /* Arama Kutusu Tasarımı */
+        .arama-kapsayici {
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+            position: relative;
+        }
+
+        .arama-input {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            font-size: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 30px;
+            outline: none;
+            color: #2c3e50;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            box-sizing: border-box;
+        }
+
+        .arama-input:focus {
+            border-color: #3498db;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+        }
+
+        .arama-ikonu {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            fill: #7f8c8d;
+            pointer-events: none;
+            transition: fill 0.3s ease;
+        }
+
+        .arama-input:focus + .arama-ikonu {
+            fill: #3498db;
+        }
+
+        /* Kategori, Alt Kategori ve Etiket Filtreleme Alanı Tasarımları */
+        .kategori-filtresi-alani,
+        .alt-kategori-filtresi-alani,
+        .etiket-filtresi-alani {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 8px 0;
+        }
+
+        .kategori-filtresi-alani {
+            margin-bottom: 5px;
+        }
+
+        .alt-kategori-filtresi-alani {
+            margin-bottom: 10px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .etiket-filtresi-alani {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .filtre-btn, .kategori-btn, .alt-kategori-btn {
+            background-color: #f5f6fa;
+            color: #7f8c8d;
+            border: 1px solid #e2e8f0;
+            padding: 6px 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .filtre-btn:hover, .kategori-btn:hover, .alt-kategori-btn:hover {
+            background-color: #3498db;
+            color: #fff;
+            border-color: #3498db;
+        }
+
+        .filtre-btn.aktif, .kategori-btn.aktif, .alt-kategori-btn.aktif {
+            background-color: #2c3e50;
+            color: #fff;
+            border-color: #2c3e50;
+        }
+
+        .alt-kategori-btn {
+            font-size: 0.85rem;
+            padding: 5px 12px;
+            background-color: #ffffff;
+            border-color: #cbd5e1;
+        }
+
+        /* Kartların Yan Yana Listelenmesi */
+        .blog-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .blog-card {
+            flex: 1 1 calc(50% - 15px);
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            position: relative; 
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Dinamik Kapak Resim Alanı */
+        .blog-card-image {
+            width: 100%;
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        /* ==========================================================
+           DİNAMİK ROZET TASARIMI
+           ========================================================== */
+        .rozet-konteyner {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            z-index: 5;
+            pointer-events: none;
+            max-width: calc(100% - 30px);
+        }
+
+        .ozel-tur-rozeti {
+            padding: 6px 10px;
+            font-size: 0.72rem;
+            font-weight: 850;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            backdrop-filter: blur(6px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(40, 40, 40, 0.95) 100%);
+        }
+
+        .ozel-tur-rozeti svg {
+            width: 13px;
+            height: 13px;
+            display: block;
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.5));
+            fill: currentColor;
+        }
+
+        /* Kart İçerik Alanı */
+        .blog-card-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .blog-card-date {
+            font-size: 0.85rem;
+            color: #95a5a6;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .blog-card-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin: 0 0 15px 0;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        .blog-card:hover .blog-card-title {
+            color: #3498db;
+        }
+
+        /* Kart İçi Küçük Etiket Tasarımları */
+        .blog-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .kart-etiket {
+            display: inline-block;
+            background-color: #f1f2f6;
+            color: #57606f;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .kart-etiket:hover {
+            background-color: #3498db !important;
+            color: #fff !important;
+        }
+
+        .kart-etiket.secili-etiket {
+            background-color: #e74c3c !important;
+            color: #fff !important;
+        }
+
+        .gizli-etiketler-grubu {
+            display: none;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .kart-etiket-more {
+            background-color: #2c3e50;
+            color: #fff;
+        }
+        .kart-etiket-more:hover {
+            background-color: #34495e !important;
+        }
+
+        .blog-card:hover .kart-etiket:not(.secili-etiket):not(.kart-etiket-more) {
+            background-color: #e4e7eb;
+        }
+
+        .loading-status {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            padding: 40px;
+            width: 100%;
+        }
+
+        /* ==========================================================
+           YENİ NESİL KISITLANMIŞ VE SÜRÜKLENEBİLİR YIL SÜRGÜSÜ
+           ========================================================== */
+        .zaman-tuneli-alani {
+            position: fixed;
+            right: 20px;
+            top: 85px; 
+            height: calc(100vh - 120px); /* Sürgü biraz daha aşağı uzatıldı */
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 9999;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 5px 4px;
+            border-radius: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(0,0,0,0.05);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .zaman-tuneli-alani.gorunur {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .zaman-nav-btn {
+            width: 100%;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            color: #7f8c8d;
+            cursor: pointer;
+            transition: color 0.2s;
+            flex-shrink: 0;
+        }
+
+        .zaman-nav-btn:hover {
+            color: #2c3e50;
+        }
+
+        .zaman-yillar-haznesi {
+            flex: 1;
+            width: 100%;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 0;
+            cursor: grab;
+            scroll-behavior: smooth;
+        }
+
+        .zaman-yillar-haznesi::-webkit-scrollbar {
+            display: none;
+        }
+
+        .zaman-yillar-haznesi:active {
+            cursor: grabbing;
+        }
+
+        .zaman-yil-btn {
+            background: transparent;
+            border: none;
+            color: #7f8c8d;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            position: relative;
+            flex-shrink: 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .zaman-yil-btn::after {
+            content: '';
+            position: absolute;
+            right: 2px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: #cbd5e1;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .zaman-yil-btn:hover {
+            color: #3498db;
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .zaman-yil-btn.aktif {
+            color: #fff;
+            background: #2c3e50;
+            font-size: 1rem;
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .zaman-yil-btn.aktif::after {
+            background: transparent;
+        }
+
+        @media (max-width: 1100px) {
+            .zaman-tuneli-alani {
+                right: 8px;
+                padding: 4px 2px;
+                scale: 0.9;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-card {
+                flex: 1 1 100%;
+            }
+            .blog-header h1 {
+                font-size: 2rem;
+            }
+            .zaman-tuneli-alani {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<header class="main-header"></header>
+
+<!-- Yine aynı şekilde / ile çağırılır, göreceli yol (../) derdi biter -->
+<script src="data/header-loader.js"></script>
+
+    <div class="zaman-tuneli-alani" id="zaman-tuneli"></div>
+
+    <main class="blog-container">
+        <div class="blog-header">
+            <h1>Yol Notları & Hikayeler & Fotoğraflar & Videolar</h1>
+            <p>Yayın tarihine göre tüm blog yazıları ve tur günlükleri</p>
+        </div>
+
+        <!-- YENİ NESİL ANLIK ARAMA ALANI -->
+        <div class="arama-kapsayici">
+            <input type="text" id="arama-girdisi" class="arama-input" placeholder="Yazılarda ara (başlık, etiket, tarih...)" autocomplete="off">
+            <svg class="arama-ikonu" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+        </div>
+
+        <div class="kategori-filtresi-alani" id="kategori-filtreleri" style="display: none;"></div>
+        <div class="alt-kategori-filtresi-alani" id="alt-kategori-filtreleri" style="display: none;"></div>
+        <div class="etiket-filtresi-alani" id="etiket-filtreleri"></div>
+
+        <div class="blog-grid" id="yazi-listesi">
+            <div class="loading-status" id="yukleniyor-mesaji">Yazılar yükleniyor, lütfen bekleyin...</div>
+        </div>
+    </main>
+
+    <!-- İLETİŞİM VE SOSYAL MEDYA -->
+    <section class="contact-section" id="iletisim">
+        <div class="container">
+            <div class="contact-grid">
+                
+                <div class="contact-info-side">
+                    <h3>Bağlantıda Kalın</h3>
+                    <p>Yol hikayelerini, bağımsız yayınları ve anlık telemetri paylaşımlarını resmi ağ istasyonları üzerinden takip edebilirsiniz.</p>
+                    
+<div class="social-links-container" id="social-container">
+    </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const socialContainer = document.getElementById("social-container");
+        if (!socialContainer) return;
+
+        fetch('https://ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
+            .then(res => {
+                if (!res.ok) throw new Error("Sosyal medya JSON dosyası yüklenemedi!");
+                return res.json();
+            })
+            .then(data => {
+                let htmlContent = '';
+
+                data.forEach(hesap => {
+                    htmlContent += `
+                        <a href="${hesap.url}" target="_blank" class="social-icon-btn">
+                            ${hesap.svg}
+                            <span>${hesap.ad}</span>
+                        </a>
+                    `;
+                });
+
+                socialContainer.innerHTML = htmlContent;
+            })
+            .catch(err => {
+                console.error("Sosyal medya butonları yüklenirken hata:", err);
+                // Hata durumunda boş kalmaması için manuel bir yedek bırakabilirsiniz:
+                socialContainer.innerHTML = `
+                    <a href="https://www.youtube.com/@ferdimen" target="_blank" class="social-icon-btn">
+                        <span>YouTube</span>
+                    </a>
+                `;
+            });
+    });
+</script>
+                </div>
+                
+                <div class="contact-form-side">
+                    <form action="https://formspree.io/f/xnjyjwnk" method="POST">
+                        <div class="form-group">
+                            <label for="name">İsim / Mahlas</label>
+                            <input type="text" id="name" name="name" required placeholder="Adınızı giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Posta Adresi</label>
+                            <input type="email" id="email" name="_replyto" required placeholder="E-posta adresinizi giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mesajınız</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Yol notunuzu buraya bırakın..."></textarea>
+                        </div>
+                        <input type="hidden" name="_language" value="tr" />
+                        <button type="submit" class="submit-btn">Gönder</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p class="footer-text"><script src="/data/footer.js?v=1"></script>© <span id="footer-year"></span> <span id="footer-dynamic-text"></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const listeKapsayici = document.getElementById("yazi-listesi");
+            const filtreKapsayici = document.getElementById("etiket-filtreleri");
+            const kategoriKapsayici = document.getElementById("kategori-filtreleri");
+            const altKategoriKapsayici = document.getElementById("alt-kategori-filtreleri");
+            const zamanTuneli = document.getElementById("zaman-tuneli");
+            const aramaGirdisi = document.getElementById("arama-girdisi");
+
+             // ==========================================
+            // KULLANICI AYARLARI (KONFİGÜRASYON)
+            // ==========================================           
+            const CONFIG_MAX_ETIKET = 30;         // 0 yapıldığı için üstteki dinamik filtre alanı tamamen gizlenir.
+            const CONFIG_SIRALAMA_TIPI = "guzergah"; // "populer", "alfabetik" veya "guzergah" (rotaya göre orijinal sıra)
+            const CONFIG_MAX_CARD_TAGS = 4;      // Kart altında varsayılan olarak gösterilecek maks etiket sayısı (Sadece filtre aktif değilken geçerlidir).
+            const KATEGORILER = "acik";           // acik / kapali yapıldığı için üstteki dinamik filtre alanı tamamen gizlenir.
+            // ==========================================  
+            let tumYazilar = [];
+            let rozetListesi = []; 
+            let aktifFiltre = "hepsi";
+            let aktifKategori = "hepsi"; 
+            let aktifAltKategori = "hepsi";
+            let aramaKelimesi = "";
+            
+            let anaKategoriFrekanslari = {};
+            let altKategoriFrekanslari = {}; 
+            let etiketFrekanslari = {}; 
+
+            // Türkçe Ay İsimleri Dizisi
+            const TURKCE_AYLAR = [
+                "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+                "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+            ];
+
+            // Girdi formatı: "YYYY-MM-DD" -> Çıktı: "D Ay YYYY" (örn: "8 Aralık 2018")
+            function tekTarihFormatla(tarihStr) {
+                const parts = tarihStr.trim().split('-');
+                if(parts.length !== 3) return tarihStr;
+                const yil = parseInt(parts[0], 10);
+                const ayIndex = parseInt(parts[1], 10) - 1;
+                const gun = parseInt(parts[2], 10);
+                if (isNaN(yil) || isNaN(ayIndex) || isNaN(gun) || ayIndex < 0 || ayIndex > 11) {
+                    return tarihStr;
+                }
+                return `${gun} ${TURKCE_AYLAR[ayIndex]} ${yil}`;
+            }
+
+            // Günübirlik ve Uzun turlar için dinamik tarih ve gün hesaplama fonksiyonu
+            function dinamikTarihFormatlayici(tarihVerisi) {
+                if (!tarihVerisi || tarihVerisi.trim() === "") return "";
+                
+                const tarihler = tarihVerisi.split(',').map(t => t.trim());
+
+                if (tarihler.length === 1) {
+                    return tekTarihFormatla(tarihler[0]);
+                } else if (tarihler.length === 2) {
+                    const basTarih = new Date(tarihler[0]);
+                    const bitTarih = new Date(tarihler[1]);
+
+                    const baslangicMetin = tekTarihFormatla(tarihler[0]);
+                    const bitisMetin = tekTarihFormatla(tarihler[1]);
+
+                    if (isNaN(basTarih.getTime()) || isNaN(bitTarih.getTime())) {
+                        return `${baslangicMetin} - ${bitisMetin}`;
+                    }
+
+                    // Gün hesaplaması (Tur turlarında başlangıç günü de dahil edilir: +1)
+                    const milisaniyeFarki = bitTarih.getTime() - basTarih.getTime();
+                    const gunSayisi = Math.round(milisaniyeFarki / (1000 * 3600 * 24)) + 1;
+
+                    return `${baslangicMetin} - ${bitisMetin} (${gunSayisi} Gün)`;
+                }
+
+                return tarihVerisi;
+            }
+
+            // Çoklu tarih alanından filtreleme ve zaman tüneli için temel referans yılını alma
+            function referansYiliBul(tarihVerisi) {
+                if (!tarihVerisi) return null;
+                const tarihler = tarihVerisi.split(',').map(t => t.trim());
+                // İlk tarihi (yani başlangıç yılını) baz alıyoruz
+                const parts = tarihler[0].split('-');
+                if(parts.length > 0) {
+                    const yil = parseInt(parts[0], 10);
+                    if(!isNaN(yil)) return yil;
+                }
+                return null;
+            }
+
+            function isFullyUpperCase(str) {
+                return str === str.toUpperCase() && str !== str.toLowerCase();
+            }
+
+            function turkceCapitalize(str) {
+                if (!str) return "";
+                return str.split(" ").map(kelime => {
+                    if (kelime.length === 0) return "";
+                    const ilkHarf = kelime.charAt(0).toLocaleUpperCase('tr-TR');
+                    const kalanHarfler = kelime.slice(1).toLocaleLowerCase('tr-TR');
+                    return ilkHarf + kalanHarfler;
+                }).join(" ");
+            }
+
+            function etiketleriAyristir(etiketDizisi) {
+                if (!etiketDizisi || !Array.isArray(etiketDizisi)) return [];
+                
+                let hamListe = [];
+                etiketDizisi.forEach(oge => {
+                    if (oge.includes(',')) {
+                        const bolunmusler = oge.split(',').map(e => e.trim());
+                        hamListe = hamListe.concat(bolunmusler);
+                    } else if (oge.trim() !== "") {
+                        hamListe.push(oge.trim());
+                    }
+                });
+
+                if (CONFIG_SIRALAMA_TIPI === "guzergah") {
+                    return hamListe.filter(item => item !== "");
+                }
+
+                const tekilSet = new Set();
+                const sonuc = [];
+
+                hamListe.forEach(item => {
+                    const kucukHarf = item.toLowerCase();
+                    if (!tekilSet.has(kucukHarf) && kucukHarf !== "") {
+                        tekilSet.add(kucukHarf);
+                        sonuc.push(item);
+                    }
+                });
+
+                return sonuc;
+            }
+
+            function yaziKategorileriniAyristir(kategoriStr) {
+                if (!kategoriStr || kategoriStr.trim() === "") return [];
+                
+                let parcalar = [];
+                let tempStr = kategoriStr.trim();
+                
+                const bracketRegex = />\s*\[([^\]]+)\]/g;
+                let match;
+                let placeholders = [];
+                let i = 0;
+                
+                while ((match = bracketRegex.exec(tempStr)) !== null) {
+                    const id = `__BRACKET_PLACEHOLDER_${i}__`;
+                    placeholders.push({
+                        id: id,
+                        content: match[1], 
+                        fullMatch: match[0] 
+                    });
+                    i++;
+                }
+
+                placeholders.forEach(p => {
+                    tempStr = tempStr.replace(p.fullMatch, `> ${p.id}`);
+                });
+
+                const hamParcalar = tempStr.split(',').map(k => k.trim());
+                
+                hamParcalar.forEach(hp => {
+                    if (hp.includes('>')) {
+                        let [anaPart, altPart] = hp.split('>').map(x => x.trim().toLowerCase());
+                        
+                        const pl = placeholders.find(p => altPart === p.id.toLowerCase());
+                        if (pl) {
+                            const subCategories = pl.content.split(',').map(s => s.trim().toLowerCase());
+                            subCategories.forEach(sub => {
+                                if (sub !== "") {
+                                    parcalar.push({ ana: anaPart, alt: sub });
+                                }
+                            });
+                        } else {
+                            if (anaPart !== "") {
+                                parcalar.push({ ana: anaPart, alt: altPart || null });
+                            }
+                        }
+                    } else {
+                        if (hp.toLowerCase() !== "") {
+                            parcalar.push({ ana: hp.toLowerCase(), alt: null });
+                        }
+                    }
+                });
+
+                return parcalar;
+            }
+
+            function frekanslariHesapla() {
+                anaKategoriFrekanslari = {};
+                altKategoriFrekanslari = {};
+                etiketFrekanslari = {};
+                
+                tumYazilar.forEach(yazi => {
+                    const ayrismisKatlar = yaziKategorileriniAyristir(yazi.kategori);
+
+                    ayrismisKatlar.forEach(kat => {
+                        anaKategoriFrekanslari[kat.ana] = (anaKategoriFrekanslari[kat.ana] || 0) + 1;
+                    });
+
+                    const anaUyumlu = aktifKategori === "hepsi" || ayrismisKatlar.some(k => k.ana === aktifKategori);
+
+                    if (anaUyumlu) {
+                        ayrismisKatlar.forEach(kat => {
+                            if (aktifKategori === "hepsi" || kat.ana === aktifKategori) {
+                                if (kat.alt) {
+                                    altKategoriFrekanslari[kat.alt] = (altKategoriFrekanslari[kat.alt] || 0) + 1;
+                                }
+                            }
+                        });
+
+                        const altUyumlu = aktifAltKategori === "hepsi" || ayrismisKatlar.some(k => {
+                            return (aktifKategori === "hepsi" || k.ana === aktifKategori) && k.alt === aktifAltKategori;
+                        });
+
+                        if (altUyumlu) {
+                            const ayrismisEtiketler = etiketleriAyristir(yazi.etiketler);
+                            ayrismisEtiketler.forEach(etiket => {
+                                const temizEtiket = etiket.toLowerCase().trim();
+                                if (temizEtiket !== "") {
+                                    etiketFrekanslari[temizEtiket] = (etiketFrekanslari[temizEtiket] || 0) + 1;
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+
+            const rozetleriYukle = fetch('yazilar/rozetler.json?v=' + new Date().getTime())
+                .then(res => res.ok ? res.json() : [])
+                .catch(err => {
+                    console.warn("rozetler.json okunamadı, boş bir diziyle devam ediliyor:", err);
+                    return [];
+                });
+
+            const yazilariYukle = fetch('yazilar/yazilar.json?v=' + new Date().getTime())
+                .then(res => {
+                    if (!res.ok) throw new Error("Yazı listesi yüklenemedi!");
+                    return res.json();
+                });
+
+            Promise.all([rozetleriYukle, yazilariYukle])
+                .then(([rozetler, yazilar]) => {
+                    rozetListesi = Array.isArray(rozetler) ? rozetler : [];
+                    
+                    // Sıralama yaparken çoklu tarih durumunu koruyarak ilk başlangıç yılına göre sıralama yapılır
+                    yazilar.sort((a, b) => {
+                        const tarihA_Str = a.tarih.split(',')[0].trim();
+                        const tarihB_Str = b.tarih.split(',')[0].trim();
+                        return new Date(tarihB_Str) - new Date(tarihA_Str);
+                    });
+                    
+                    tumYazilar = yazilar;
+
+                    if (tumYazilar.length === 0) {
+                        listeKapsayici.innerHTML = '<div class="loading-status">Henüz yayınlanmış bir yazı bulunamadı.</div>';
+                        return;
+                    }
+
+                    frekanslariHesapla();
+                    anaKategorileriOlustur(); 
+                    altKategorileriOlustur();
+                    filtreleriOlustur();
+                    yazilariEkranaBas();
+                })
+                .catch(err => {
+                    console.error("Veriler çekilirken hata oluştu:", err);
+                    listeKapsayici.innerHTML = '<div class="loading-status" style="color: #e74c3c;">Yazı listesi yüklenirken bir hata oluştu.</div>';
+                });
+
+            // ARAMA INPUTU OLAY DINLEYICISI
+            if (aramaGirdisi) {
+                aramaGirdisi.addEventListener("input", function(e) {
+                    aramaKelimesi = e.target.value.toLocaleLowerCase('tr-TR').trim();
+                    yazilariEkranaBas();
+                });
+            }
+
+            function anaKategorileriOlustur() {
+                if (KATEGORILER !== "acik") {
+                    kategoriKapsayici.style.display = 'none';
+                    return;
+                }
+
+                let kategoriDizisi = Object.keys(anaKategoriFrekanslari).map(key => {
+                    return { isim: key, adet: anaKategoriFrekanslari[key] };
+                });
+
+                if (kategoriDizisi.length === 0) {
+                    kategoriKapsayici.style.display = 'none';
+                    return;
+                }
+
+                kategoriDizisi.sort((a, b) => a.isim.localeCompare(b.isim, 'tr'));
+
+                let kategoriHtml = `<button class="kategori-btn ${aktifKategori === "hepsi" ? "aktif" : ""}" data-kategori="hepsi">Tüm Kategoriler</button>`;
+
+                kategoriDizisi.forEach(item => {
+                    const gosterilecekMetin = turkceCapitalize(item.isim);
+                    const isAktif = item.isim === aktifKategori ? "aktif" : "";
+                    kategoriHtml += `<button class="kategori-btn ${isAktif}" data-kategori="${item.isim}">${gosterilecekMetin} (${item.adet})</button>`;
+                });
+
+                kategoriKapsayici.innerHTML = kategoriHtml;
+                kategoriKapsayici.style.display = 'flex';
+            }
+
+            kategoriKapsayici.onclick = function(e) {
+                const btn = e.target.closest('.kategori-btn');
+                if (!btn) return;
+                
+                aktifKategori = btn.getAttribute('data-kategori').toLowerCase();
+                aktifAltKategori = "hepsi";
+                aktifFiltre = "hepsi";
+
+                document.querySelectorAll('.kategori-btn').forEach(b => {
+                    if (b.getAttribute('data-kategori') === aktifKategori) {
+                        b.classList.add('aktif');
+                    } else {
+                        b.classList.remove('aktif');
+                    }
+                });
+
+                frekanslariHesapla();
+                altKategorileriOlustur();
+                filtreleriOlustur();
+                yazilariEkranaBas();
+            };
+
+            function altKategorileriOlustur() {
+                let altKategoriDizisi = Object.keys(altKategoriFrekanslari).map(key => {
+                    return { isim: key, adet: altKategoriFrekanslari[key] };
+                });
+
+                if (aktifKategori === "hepsi" || altKategoriDizisi.length === 0) {
+                    altKategoriKapsayici.innerHTML = "";
+                    altKategoriKapsayici.style.display = 'none';
+                    return;
+                }
+
+                altKategoriDizisi.sort((a, b) => a.isim.localeCompare(b.isim, 'tr'));
+
+                let altKategoriHtml = `<button class="alt-kategori-btn ${aktifAltKategori === "hepsi" ? "aktif" : ""}" data-alt="hepsi">Tüm Alt Seçenekler</button>`;
+
+                altKategoriDizisi.forEach(item => {
+                    const gosterilecekMetin = turkceCapitalize(item.isim);
+                    const isAktif = item.isim === aktifAltKategori ? "aktif" : "";
+                    altKategoriHtml += `<button class="alt-kategori-btn ${isAktif}" data-alt="${item.isim}">${gosterilecekMetin} (${item.adet})</button>`;
+                });
+
+                altKategoriKapsayici.innerHTML = altKategoriHtml;
+                altKategoriKapsayici.style.display = 'flex'; 
+            }
+
+            altKategoriKapsayici.onclick = function(e) {
+                const btn = e.target.closest('.alt-kategori-btn');
+                if (!btn) return;
+
+                aktifAltKategori = btn.getAttribute('data-alt').toLowerCase();
+                aktifFiltre = "hepsi";
+
+                document.querySelectorAll('.alt-kategori-btn').forEach(b => {
+                    if (b.getAttribute('data-alt') === aktifAltKategori) {
+                        b.classList.add('aktif');
+                    } else {
+                        b.classList.remove('aktif');
+                    }
+                });
+
+                frekanslariHesapla();
+                filtreleriOlustur();
+                yazilariEkranaBas();
+            };
+
+            function filtreleriOlustur() {
+                if (CONFIG_MAX_ETIKET <= 0) {
+                    filtreKapsayici.style.display = 'none';
+                    return;
+                }
+
+                let etiketDizisi = Object.keys(etiketFrekanslari).map(key => {
+                    return { isim: key, adet: etiketFrekanslari[key] };
+                });
+
+                if (etiketDizisi.length === 0) {
+                    filtreKapsayici.innerHTML = "";
+                    filtreKapsayici.style.display = 'none';
+                    return;
+                }
+
+                etiketDizisi.sort((a, b) => b.adet - a.adet);
+
+                let filtrelenmisEtiketler = etiketDizisi.slice(0, CONFIG_MAX_ETIKET);
+
+                const gecerliEtiketMi = filtrelenmisEtiketler.some(e => e.isim === aktifFiltre);
+                if (!gecerliEtiketMi) {
+                    aktifFiltre = "hepsi";
+                }
+
+                let filtreHtml = `<button class="filtre-btn ${aktifFiltre === "hepsi" ? "aktif" : ""}" data-filtre="hepsi">Tüm Etiketler</button>`;
+
+                filtrelenmisEtiketler.forEach(item => {
+                    const gosterilecekMetin = turkceCapitalize(item.isim);
+                    const isAktif = item.isim === aktifFiltre ? "aktif" : "";
+                    filtreHtml += `<button class="filtre-btn ${isAktif}" data-filtre="${item.isim}">${gosterilecekMetin} (${item.adet})</button>`;
+                });
+
+                filtreKapsayici.innerHTML = filtreHtml;
+                filtreKapsayici.style.display = 'flex';
+            }
+
+            filtreKapsayici.onclick = function(e) {
+                const btn = e.target.closest('.filtre-btn');
+                if (!btn) return;
+                
+                filtrele(btn.getAttribute('data-filtre'));
+            };
+
+            function filtrele(filtreDegeri) {
+                aktifFiltre = filtreDegeri.toLowerCase();
+                
+                if (CONFIG_MAX_ETIKET > 0) {
+                    document.querySelectorAll('.filtre-btn').forEach(b => {
+                        if (b.getAttribute('data-filtre') === aktifFiltre) {
+                            b.classList.add('aktif');
+                        } else {
+                            b.classList.remove('aktif');
+                        }
+                    });
+                }
+
+                yazilariEkranaBas();
+                
+                const gecisHizalama = document.getElementById('blog-yazi-konumu');
+                const hedef = gecisHizalama ? gecisHizalama : listeKapsayici;
+                hedef.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            function etiketButonOlustur(etiket, isSelected) {
+                const extraClass = isSelected ? 'secili-etiket' : '';
+                const gosterimMetni = turkceCapitalize(etiket);
+                return `<button class="kart-etiket ${extraClass}" data-etiket="${etiket}">${gosterimMetni}</button>`;
+            }
+
+            /* ==========================================================
+               YENİ NESİL KISITLANMIŞ VE SÜRÜKLENEBİLİR YIL SÜRGÜSÜ
+               ========================================================== */
+            function zamanTuneliOlustur(aktifYazilar) {
+                let yillarSet = new Set();
+                
+                aktifYazilar.forEach(yazi => {
+                    const yil = referansYiliBul(yazi.tarih);
+                    if (yil) {
+                        yillarSet.add(yil);
+                    }
+                });
+
+                let siraliYillar = Array.from(yillarSet).sort((a, b) => b - a);
+
+                if (siraliYillar.length <= 1) {
+                    zamanTuneli.innerHTML = "";
+                    zamanTuneli.classList.remove("gorunur");
+                    return;
+                }
+
+                let html = `
+                    <button class="zaman-nav-btn up" id="zamanScrollUp" title="Yukarı">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                    </button>
+                    <div class="zaman-yillar-haznesi" id="zamanYilHaznesi">
+                `;
+
+                siraliYillar.forEach(yil => {
+                    html += `<button class="zaman-yil-btn" data-yil="${yil}">${yil}</button>`;
+                });
+
+                html += `
+                    </div>
+                    <button class="zaman-nav-btn down" id="zamanScrollDown" title="Aşağı">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                `;
+
+                zamanTuneli.innerHTML = html;
+                zamanTuneli.classList.add("gorunur");
+
+                const hazne = document.getElementById("zamanYilHaznesi");
+                const upBtn = document.getElementById("zamanScrollUp");
+                const downBtn = document.getElementById("zamanScrollDown");
+
+                const scrollStep = 60;
+                upBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    hazne.scrollBy({ top: -scrollStep, behavior: "smooth" });
+                });
+                downBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    hazne.scrollBy({ top: scrollStep, behavior: "smooth" });
+                });
+
+                let isDown = false;
+                let startY;
+                let scrollTop;
+                let isDragging = false;
+                const dragThreshold = 5;
+
+                const dragStart = (e) => {
+                    isDown = true;
+                    isDragging = false;
+                    hazne.style.scrollBehavior = "auto";
+                    const pageY = e.pageY || e.touches[0].pageY;
+                    startY = pageY - hazne.offsetTop;
+                    scrollTop = hazne.scrollTop;
+                };
+
+                const dragMove = (e) => {
+                    if (!isDown) return;
+                    const pageY = e.pageY || (e.touches ? e.touches[0].pageY : null);
+                    if (!pageY) return;
+
+                    const y = pageY - hazne.offsetTop;
+                    const walk = (y - startY) * 1.5;
+
+                    if (Math.abs(y - startY) > dragThreshold) {
+                        isDragging = true;
+                    }
+                    hazne.scrollTop = scrollTop - walk;
+                };
+
+                const dragEnd = () => {
+                    isDown = false;
+                    hazne.style.scrollBehavior = "smooth";
+                };
+
+                hazne.addEventListener("mousedown", dragStart);
+                hazne.addEventListener("mousemove", dragMove);
+                hazne.addEventListener("mouseup", dragEnd);
+                hazne.addEventListener("mouseleave", dragEnd);
+
+                hazne.addEventListener("touchstart", dragStart, { passive: true });
+                hazne.addEventListener("touchmove", dragMove, { passive: true });
+                hazne.addEventListener("touchend", dragEnd);
+
+                document.querySelectorAll(".zaman-yil-btn").forEach(btn => {
+                    btn.addEventListener("click", function(e) {
+                        if (isDragging) {
+                            e.preventDefault();
+                            return;
+                        }
+
+                        const tiklananYil = this.getAttribute("data-yil");
+                        const hedefKart = aktifYazilar.find(yazi => {
+                            const yil = referansYiliBul(yazi.tarih);
+                            return yil && yil.toString() === tiklananYil;
+                        });
+
+                        if (hedefKart) {
+                            const index = aktifYazilar.indexOf(hedefKart);
+                            const kartElement = document.getElementById(`yazi-kart-${index}`);
+                            if (kartElement) {
+                                const elementPosition = kartElement.getBoundingClientRect().top;
+                                const offsetPosition = elementPosition + window.pageYOffset - 120; 
+
+                                window.scrollTo({
+                                    top: offsetPosition,
+                                    behavior: "smooth"
+                                });
+                            }
+                        }
+                    });
+                });
+            }
+
+            window.addEventListener("scroll", function() {
+                const kartlar = document.querySelectorAll(".blog-card");
+                const yilButonlari = document.querySelectorAll(".zaman-yil-btn");
+                if (kartlar.length === 0 || yilButonlari.length === 0) return;
+
+                let aktifYil = null;
+
+                for (let kart of kartlar) {
+                    const rect = kart.getBoundingClientRect();
+                    if (rect.top < window.innerHeight / 2) {
+                        const tarihMetni = kart.querySelector(".blog-card-date").textContent;
+                        // Metnin içindeki ilk geçen 4 haneli yılı alırız
+                        const yilMatch = tarihMetni.match(/\d{4}/);
+                        if (yilMatch) {
+                            aktifYil = yilMatch[0];
+                        }
+                    }
+                }
+
+                if (aktifYil) {
+                    yilButonlari.forEach(btn => {
+                        if (btn.getAttribute("data-yil") === aktifYil) {
+                            btn.classList.add("aktif");
+                        } else {
+                            btn.classList.remove("aktif");
+                        }
+                    });
+                }
+            });
+
+            function yazilariEkranaBas() {
+                let gridHtml = '';
+
+const filtrelenmisYazilar = tumYazilar.filter(yazi => {
+    const ayrismisKatlar = yaziKategorileriniAyristir(yazi.kategori);
+
+    // Anlık kategorisi kontrolü: 
+    // Yazının ana kategorilerinden biri "anlık" mı?
+    const isAnlik = ayrismisKatlar.some(k => k.ana === "anlık");
+
+    // Tüm Kategoriler (hepsi) seçiliyken "anlık" kategorisindeki yazıları gizle.
+    // Yalnızca aktifKategori özel olarak "anlık" seçilmişse göster.
+    if (aktifKategori === "hepsi" && isAnlik) {
+        return false;
+    }
+
+    const anaUyumlu = aktifKategori === "hepsi" || ayrismisKatlar.some(k => k.ana === aktifKategori);
+
+    const altUyumlu = aktifAltKategori === "hepsi" || ayrismisKatlar.some(k => {
+        return (aktifKategori === "hepsi" || k.ana === aktifKategori) && k.alt === aktifAltKategori;
+    });
+
+                    const etiketUyumlu = aktifFiltre === "hepsi" || 
+                        etiketleriAyristir(yazi.etiketler).map(e => e.toLowerCase()).includes(aktifFiltre);
+
+                    // ARAMA SÜZGECİ (AJAX/CLIENT-SIDE INTEGRATION)
+                    let aramaUyumlu = true;
+                    if (aramaKelimesi !== "") {
+                        const baslikUyum = yazi.baslik ? yazi.baslik.toLocaleLowerCase('tr-TR').includes(aramaKelimesi) : false;
+                        const etiketUyum = yazi.etiketler ? yazi.etiketler.some(e => e.toLocaleLowerCase('tr-TR').includes(aramaKelimesi)) : false;
+                        const tarihUyum = yazi.tarih ? yazi.tarih.includes(aramaKelimesi) : false;
+                        const ozelUyum = yazi.ozel ? yazi.ozel.toLocaleLowerCase('tr-TR').includes(aramaKelimesi) : false;
+                        
+                        aramaUyumlu = baslikUyum || etiketUyum || tarihUyum || ozelUyum;
+                    }
+
+                    return anaUyumlu && altUyumlu && etiketUyumlu && aramaUyumlu;
+                });
+
+                zamanTuneliOlustur(filtrelenmisYazilar);
+
+                if (filtrelenmisYazilar.length === 0) {
+                    listeKapsayici.innerHTML = '<div class="loading-status">Aradığınız kriterlere uygun yazı bulunamadı.</div>';
+                    return;
+                }
+				// Yazılar sayfası index
+                filtrelenmisYazilar.forEach((yazi, index) => {
+                    let temizUrl = yazi.url;
+                    if(temizUrl.startsWith('/')) {
+                        temizUrl = temizUrl.replace('/', '');
+                    }
+
+                    // Tarihi dinamik olarak ayrıştırıp formatlayan fonksiyonu çağırdık
+                    const formatliTarih = dinamikTarihFormatlayici(yazi.tarih);
+
+                    const kapakResmi = yazi.kapakresmi && yazi.kapakresmi.trim() !== "" 
+                        ? yazi.kapakresmi 
+                        : "https://www.ferdimen.com/img/bg22.jpg";
+
+                    let tumRozetlerHtml = '';
+                    if (yazi.ozel && yazi.ozel.trim() !== "") {
+                        const ozelDegerler = yazi.ozel.split(',').map(item => item.trim().toLowerCase());
+                        let rozetParcalariHtml = '';
+
+                        ozelDegerler.forEach(ozelKelime => {
+                            if (ozelKelime === "") return;
+
+                            const eslesenRozet = rozetListesi.find(r => {
+                                if (!r.kelime) return false;
+                                return r.kelime.split(',')
+                                               .map(k => k.trim().toLowerCase())
+                                               .includes(ozelKelime);
+                            });
+
+                            if (eslesenRozet) {
+                                const sinif = eslesenRozet.sinif || 'rozet-varsayilan';
+                                const renk = eslesenRozet.renk || '#f39c12';
+                                const svg = eslesenRozet.svg || '<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>';
+                                
+                                rozetParcalariHtml += `
+                                    <div class="ozel-tur-rozeti ${sinif}" 
+                                         style="border-color: ${renk}; color: ${renk};" 
+                                         title="${ozelKelime}">
+                                        ${svg}
+                                        <span>${ozelKelime}</span>
+                                    </div>
+                                `;
+                            } else {
+                                rozetParcalariHtml += `
+                                    <div class="ozel-tur-rozeti rozet-varsayilan" title="${ozelKelime}">
+                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                        <span>${ozelKelime}</span>
+                                    </div>
+                                `;
+                            }
+                        });
+
+                        if (rozetParcalariHtml !== '') {
+                            tumRozetlerHtml = `<div class="rozet-konteyner">${rozetParcalariHtml}</div>`;
+                        }
+                    }
+
+                    let ayrismisEtiketler = etiketleriAyristir(yazi.etiketler);
+                    
+                    if (CONFIG_SIRALAMA_TIPI === "alfabetik") {
+                        ayrismisEtiketler.sort((a, b) => a.localeCompare(b, 'tr'));
+                    } else if (CONFIG_SIRALAMA_TIPI === "populer") {
+                        ayrismisEtiketler.sort((a, b) => {
+                            const adetA = etiketFrekanslari[a.toLowerCase().trim()] || 0;
+                            const adetB = etiketFrekanslari[b.toLowerCase().trim()] || 0;
+                            return adetB - adetA;
+                        });
+                    } else if (CONFIG_SIRALAMA_TIPI === "guzergah") {
+                        const normalEtiketler = [];
+                        const buyukHarfliEtiketler = [];
+
+                        ayrismisEtiketler.forEach(etiket => {
+                            if (isFullyUpperCase(etiket)) {
+                                buyukHarfliEtiketler.push(etiket);
+                            } else {
+                                normalEtiketler.push(etiket);
+                            }
+                        });
+
+                        ayrismisEtiketler = normalEtiketler.concat(buyukHarfliEtiketler);
+                    }
+
+                    let etiketlerHtml = '';
+                    if (ayrismisEtiketler.length > 0) {
+                        if (aktifFiltre !== "hepsi") {
+                            ayrismisEtiketler.forEach(etiket => {
+                                const isSelected = etiket.toLowerCase() === aktifFiltre;
+                                etiketlerHtml += etiketButonOlustur(etiket, isSelected);
+                            });
+                        } else {
+                            const gorunenEtiketler = ayrismisEtiketler.slice(0, CONFIG_MAX_CARD_TAGS);
+                            const gizliEtiketler = ayrismisEtiketler.slice(CONFIG_MAX_CARD_TAGS);
+
+                            gorunenEtiketler.forEach(etiket => {
+                                etiketlerHtml += etiketButonOlustur(etiket, false);
+                            });
+
+                            if (gizliEtiketler.length > 0) {
+                                etiketlerHtml += `<span class="gizli-etiketler-grubu">`;
+                                gizliEtiketler.forEach(etiket => {
+                                    etiketlerHtml += etiketButonOlustur(etiket, false);
+                                });
+                                etiketlerHtml += `</span>`;
+                                etiketlerHtml += `<button class="kart-etiket kart-etiket-more" data-action="toggle-tags">+${gizliEtiketler.length}</button>`;
+                            }
+                        }
+                    }
+
+                    gridHtml += `
+                        <a href="${temizUrl}" class="blog-card" id="yazi-kart-${index}">
+                            ${tumRozetlerHtml}
+                            <div class="blog-card-image" style="background-image: url('${kapakResmi}');"></div>
+                            <div class="blog-card-content">
+                                <div class="blog-card-date">${formatliTarih}</div>
+                                <h2 class="blog-card-title">${yazi.baslik}</h2>
+                                ${etiketlerHtml ? `<div class="blog-card-tags">${etiketlerHtml}</div>` : ''}
+                            </div>
+                        </a>
+                    `;
+                });
+
+                listeKapsayici.innerHTML = gridHtml;
+
+                document.querySelectorAll('.kart-etiket').forEach(etiketBtn => {
+                    etiketBtn.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        
+                        if (this.getAttribute('data-action') === 'toggle-tags') {
+                            const parentTagsDiv = this.closest('.blog-card-tags');
+                            const gizliGrup = parentTagsDiv.querySelector('.gizli-etiketler-grubu');
+                            if (gizliGrup) {
+                                gizliGrup.style.display = 'flex';
+                            }
+                            this.style.display = 'none';
+                            return;
+                        }
+
+                        const secilenEtiket = this.getAttribute('data-etiket').toLowerCase();
+
+                        if (aktifFiltre === secilenEtiket) {
+                            filtrele("hepsi");
+                        } else {
+                            filtrele(secilenEtiket);
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+	
+</body>
+</html>
