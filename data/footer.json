@@ -1,7 +1,7 @@
 {
   "varsayilanMesaj": "<b>Ferdimen.</b> Vazgeçtiklerim, sizin bir ömür aradıklarınızdır.",
   "ozelGunler": [
-    { "gun": 1,"ay": 1, "mesaj": " - Mutlu Yıllar! Yeni yılınız kutlu olsun. 🎄✨" }
+    { "gun": 1, "ay": 1, "mesaj": " - Mutlu Yıllar! Yeni yılınız kutlu olsun. 🎄✨" },
     { "gun": 20, "ay": 1, "mesaj": " - Bugün Özel Bir Gün! Her gün bir kahraman doğmuyor. 🎄✨" },
     { "gun": 14, "ay": 2, "mesaj": " - 14 Şubat Sevgililer Günü Kutlu Olsun! ❤️" },
     { "gun": 8, "ay": 3, "mesaj": " - 8 Mart Dünya Kadınlar Günü Kutlu Olsun. 💐" },
