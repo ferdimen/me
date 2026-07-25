@@ -1,5 +1,16 @@
 [
   {
+    "baslik": "Resim yüklme",
+    "kategori": "Diğer",
+    "tarih": "2026-07-24",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "",
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": ""
+  },
+  {
     "baslik": "resim seçilmedi",
     "kategori": "Diğer",
     "tarih": "2000-01",
