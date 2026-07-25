@@ -10,7 +10,7 @@
     { "title": "Yazılar", "href": "yazilar", "isSection": false, "hideOn": ["yazilar", "yazilar.html"] },
     { "title": "Haberler", "href": "/#haberler", "otherHref": "index.html/#haberler", "isSection": true },
     { "title": "Harita", "href": "/#harita", "isSection": true },
-    { "title": "Videolar", "href": "izle", "otherHref": "izle", "isSection": false, "hideOn": ["izle", "izle.html"] },
+    { "title": "Videolar", "href": "#videolar", "otherHref": "izle", "isSection": false, "hideOn": ["izle", "izle.html"] },
     { "title": "Kronoloji", "href": "/#kronoloji", "isSection": true },
     { "title": "Dosyalar", "href": "/#dosyalar", "isSection": true },
     { "title": "Ekipman", "href": "ekipman", "otherHref": "ekipman", "isSection": false, "hideOn": ["ekipman", "ekipman.html"] },
