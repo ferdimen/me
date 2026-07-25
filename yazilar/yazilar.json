@@ -502,29 +502,65 @@
       "ergene, çorlu, süleymanpaşa, tekirdağ, marmara, erdek, BANDIRMA, gönen, YENİCE, kalkım, HAVRAN, edremit, akçay, kalkım, zeybekçayırı, ÇAN, etli, çanakkale, eceabat, tayfur, gelibolu, EDİRNE, gökçetepe, keşan, uzunköprü"
     ]
   },
-  {
+    {
+    "id": "2018-07-17-tagozinga",
+    "baslik": "2018-07-17-tagozinga",
+    "url": "yazilar/2018-07-17-tagozinga.html",
+    "tarih": "2018-07-17",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, doğa, bisiklet",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOksI3U4cvrnU4zpZITPG_3AnRp88OvwO1Fq9P6wyWE7xECgHpi5WWTuvegG1mCiOFZ2f9LYnwqhLwrbpU5NtWCIqdJzUI2MRKy0L80UfQN8FwTWPo=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,önerler,"]
+  },
+    {
     "id": "2018-istiklal-yolundan-zafer-yoluna",
     "baslik": "İstiklal Yolundan Zafer Yoluna",
     "url": "yazilar/2018-istiklal-yolundan-zafer-yoluna.html",
     "tarih": "2018-07-2, 2018-07-6",
     "kategori": "Proje Turları",
-    "ozel": "3, kültür, tarih, proje",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczM5XaizIwBIcW_tUUMPRqFp-Q9s8Ngw8HlYD6KSGNYnBk9wk2KqIRQL7StMcEdwM31OpYxI3Z-PsaTAB-9V9V2qf0fqWOl_SgROLLX9JqdpB1zlEwQ=w1920-h1080",
-    "etiketler": [
-      "ANKARA, polatlı, KONYA, yunak, akşehir, yalvaç, ISPARTA, ÇAY, şuhut, afyonkarahisar, "
-    ]
-  },
+	"ozel": "3, kültür, tarih, proje",	
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczM5XaizIwBIcW_tUUMPRqFp-Q9s8Ngw8HlYD6KSGNYnBk9wk2KqIRQL7StMcEdwM31OpYxI3Z-PsaTAB-9V9V2qf0fqWOl_SgROLLX9JqdpB1zlEwQ=w1920-h1080",
+	"etiketler": ["ANKARA, polatlı, KONYA, yunak, akşehir, yalvaç, ISPARTA, ÇAY, şuhut, afyonkarahisar, "]
+  },     
   {
-    "id": "2018-eskisehir-bf",
+    "id": "2018-eskişehir-bf",
     "baslik": "Eskişehir Bisiklet Festivali",
-    "url": "yazilar/2018-eskisehir-bf.html",
+    "url": "yazilar/2018-eskişehir-bf.html",
     "tarih": "2018-06-29, 2018-07-1",
     "kategori": "Bisiklet Festivali",
-    "ozel": "100+, festival,",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOq5RI5C6Bs835YEnMSS3-9jtbjhWR3I9Do8hMU-uXNs-HK7ZIGnEqBhZV95lxfIU1e5e2oDLmy7lO3BoNz9caAJK04dZiYnnacOzrTWdLpGUlo9Z0=w1920-h1080",
-    "etiketler": [
-      "tepebaşı, odunpazarı, eskisehir, yeşilyurt, zemzemiye, masaözü, kızılinler"
-    ]
+	"ozel": "100+, festival,",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOq5RI5C6Bs835YEnMSS3-9jtbjhWR3I9Do8hMU-uXNs-HK7ZIGnEqBhZV95lxfIU1e5e2oDLmy7lO3BoNz9caAJK04dZiYnnacOzrTWdLpGUlo9Z0=w1920-h1080",
+	"etiketler": ["tepebaşı, odunpazarı, eskişehir, yeşilyurt, zemzemiye, masaözü, kızılinler"]
+  },  
+{
+    "id": "2018-06-03-bakirca",
+    "baslik": "Bakirca Bisiklet Turu",
+    "url": "yazilar/2018-06-03-bakirca.html",
+    "tarih": "2018-06-03",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, doğa, bisiklet",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczN2Qq0MSRnaOGCRwLBaf8_lY6iWAqJIInyFtyuXzSzJGcrGv63010u25EwC2jBdkc6GTGTAOD_7JKFOvOn8EbQjZDowwk4BKILLBemW5iXuWrQE-nw=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,yulaflı,velimese,karamehmet,bakırca,marmaracık"]
+  },  
+    {
+    "id": "2018-05-20-marmaraereglisi",
+    "baslik": "Marmaraereğlisi Bisiklet Turu",
+    "url": "yazilar/2018-05-20-marmaraereglisi.html",
+    "tarih": "2018-05-20",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, doğa, bisiklet",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMY4cS0iB9ESTbWtxwclAtGZkFXI_4TmYM8zgztcLS6aUTUjP83Isv1-3Y8MEO8GxL00smj0EDJZaS0yG7Gx_d31xqULIQEvCvFfsc6fyB7P6nmlg8=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,şahpaz, yakuplu,marmaraereglisi,seymen"]
+  },
+    {
+    "id": "2018-05-13-rodostobike",
+    "baslik": "2. Rodostobike Bisiklet Turu",
+    "url": "yazilar/2018-05-13-rodostobike.html",
+    "tarih": "2018-05-13",
+    "kategori": "Günlük Geziler > [bisiklet,grup,Gözde]",
+	"ozel": "2, bisiklet, organizasyon",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczO2-f7GLbCxxMOcJhHARjGKdrn0JMiJ7cqdADkZNkWiLNdNDyvIEhOnLwoh6JEnNHZtcAKgNSp_AbjgUs4btI6-cpteicCWYl3oQre1NhutdZ8-Dzo=w1920-h1080",
+	"etiketler": ["tekirdag,ergene,çorlu,rodostobike, sardos"]
   },
   {
     "id": "2018-sky",
@@ -532,418 +568,467 @@
     "url": "yazilar/2018-sky.html",
     "tarih": "2018-04-25, 2018-05-1",
     "kategori": "Proje Turları",
-    "ozel": "4,nehir,doğa,proje",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNE-icM9EyY66bzYVLEG9jW-ske8S0HM1K7xhGJixscP8gmJFHKiodipe70BFGw0bKy6WPJchwo-WZ7f-b4jJSTQ_UkmPQA_EzxTndK_CcPQhKwO50=w1920-h1080",
-    "etiketler": [
-      "İZMİR, selçuk, söke, atburgazı, büyük menderes nehri, DİDİM, koçarlı, AYDIN, yenipazar, nazilli, koçarlı, buharkent, DENİZLİ, saraykent, buldan, tripolis antik kenti, güney, çal, ÇİVRİL, AFYONKARAHİSAR, dinar "
-    ]
-  },
-  {
+	"ozel": "4,nehir,doğa,proje",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNE-icM9EyY66bzYVLEG9jW-ske8S0HM1K7xhGJixscP8gmJFHKiodipe70BFGw0bKy6WPJchwo-WZ7f-b4jJSTQ_UkmPQA_EzxTndK_CcPQhKwO50=w1920-h1080",
+	"etiketler": ["İZMİR, selçuk, söke, atburgazı, büyük menderes nehri, DİDİM, koçarlı, AYDIN, yenipazar, nazilli, koçarlı, buharkent, DENİZLİ, saraykent, buldan, tripolis antik kenti, güney, çal, ÇİVRİL, AFYONKARAHİSAR, dinar "]
+  }, 
+    {
     "id": "2018-abak",
     "baslik": "Az Bilinen Antik Kentler Bisiklet Turu",
     "url": "yazilar/2018-abak.html",
     "tarih": "2018-04-21, 2018-04-24",
-    "kategori": "Bisiklet Turları",
-    "ozel": "100+, organizasyon",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczM2H8Z1E4D36sr346XHRiAGkIxnUIapBSWKT8CeaIIEgCG7RN70yzCdh_b30OSUD_p7R7dok8aN6McGFFl2Xc-MCV4daoSgDt5upfZuQmGX79BRcKg=w1920-h1080",
-    "etiketler": [
-      "izmir, konak, alsancak, torbalı, metropolis antik kenti, selçuk, efe antik kenti, MENDERES, özdere, orhanlı, seferihisar, sığacık, urla, güzelbahçe, narlıdere, balçova, konak "
-    ]
+    "kategori": "Bisiklet Turları",	
+	"ozel": "100+, organizasyon",	
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczM2H8Z1E4D36sr346XHRiAGkIxnUIapBSWKT8CeaIIEgCG7RN70yzCdh_b30OSUD_p7R7dok8aN6McGFFl2Xc-MCV4daoSgDt5upfZuQmGX79BRcKg=w1920-h1080",
+	"etiketler": ["izmir, konak, alsancak, torbalı, metropolis antik kenti, selçuk, efe antik kenti, MENDERES, özdere, orhanlı, seferihisar, sığacık, urla, güzelbahçe, narlıdere, balçova, konak "]
+  }, 
+    {
+    "id": "2018-04-07-tekirdag",
+    "baslik": "Tekirdağ Köftesi Bisiklet Turu",
+    "url": "yazilar/2018-04-07-tekirdag.html",
+    "tarih": "2018-04-07",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, lezzet, bisiklet",	
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMYy2Fu_FGlnuuKvMVhjp8Efs7UsQUqGk2k1jZHm0e09w92HH4AdSAQIM_n8RQYVnczFGQblBtwFcbY_oWLYpDKpQ0BNgY3KR1bYfW2y3vCNT1uzbQ=w1920-h1080",
+	"etiketler": ["ergene,çorlu, balabanlı, çevrimkaya, hüsünlü,tekirdağ, uçak restoran, tekirdağ köftesi"]
   },
   {
+    "id": "2018-03-10-cesmeli",
+    "baslik": "Çeşmeli ve Türkgücü Bisiklet Turu",
+    "url": "yazilar/2018-03-10-cesmeli.html",
+    "tarih": "2018-03-10",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, doğa, bisiklet",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPiVwippHCl3mVgTbiOryO3wcWBDl8YJG41qeFzTFcaonwHjDBiTY0x_UgRXDiU6kCmjtv4WMIlf0b4-jPlzH3kZnPzk12NVOsc6kjnKNuHjxlI3GY=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,önerler, şahpaz, türkmenli, çeşmeli, türkgücü, havuzlar, çorlu"]
+  },
+    {
     "id": "2017-marmara",
     "baslik": "Marmara Adası Bisiklet Turu",
     "url": "yazilar/2017-marmara.html",
     "tarih": "2017-08-25, 2017-08-27",
-    "kategori": "Bisiklet Turları",
-    "ozel": "100+, organizasyon",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMwrmX1c7bwwQRw-9I86HLpBKlVGLPDJOqp8teXXi8kj7AqDGhDXT2CQaxL-x7uoe7zNjgiR3lWFJquovEXbByUgxmdxvSN8TvDhJ-f18-PKdW5DcA=w1920-h1080",
-    "etiketler": [
-      "ergene, çorlu, süleymanpaşa, tekirdağ, marmara, tekirdağ, çorlu, "
-    ]
-  },
+    "kategori": "Bisiklet Turları",	
+	"ozel": "100+, organizasyon",	
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMwrmX1c7bwwQRw-9I86HLpBKlVGLPDJOqp8teXXi8kj7AqDGhDXT2CQaxL-x7uoe7zNjgiR3lWFJquovEXbByUgxmdxvSN8TvDhJ-f18-PKdW5DcA=w1920-h1080",
+	"etiketler": ["ergene, çorlu, süleymanpaşa, tekirdağ, marmara, tekirdağ, çorlu, "]
+  },     
   {
     "id": "2017-trakya",
     "baslik": "Trakya Bisiklet Turu",
     "url": "yazilar/2017-trakya.html",
     "tarih": "2017-07-06, 2017-07-12",
     "kategori": "Bisiklet Turları > [trakya, marmara,]",
-    "ozel": "2,macera,doğa",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPaT_aM7nHZDbIspIQOAd8bfMovqIEfMpNt6m3IptPyWl8SWVdzR3bt5Ajn4VYN4Uf7tZTFMyDCBrPCzf_XbKEFc5x43DOwGX9BBD_nJtYbLJWI-YA=w1920-h1080",
-    "etiketler": [
-      "edirne, lalapaşa, KIRKLARELİ, kofçaz, dereköy, şükrüpaşa, sarpdere, demirköy, iğneada, sivriler, kıyıköy, saray, KAPAKLI, ergene, "
-    ]
-  },
-  {
+	"ozel": "2,macera,doğa",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPaT_aM7nHZDbIspIQOAd8bfMovqIEfMpNt6m3IptPyWl8SWVdzR3bt5Ajn4VYN4Uf7tZTFMyDCBrPCzf_XbKEFc5x43DOwGX9BBD_nJtYbLJWI-YA=w1920-h1080",
+	"etiketler": ["edirne, lalapaşa, KIRKLARELİ, kofçaz, dereköy, şükrüpaşa, sarpdere, demirköy, iğneada, sivriler, kıyıköy, saray, KAPAKLI, ergene, "]
+  },  
+    {
     "id": "2017-gokova",
     "baslik": "Gökova Bisiklet Turu",
     "url": "yazilar/2017-gokova.html",
     "tarih": "2017-05-13, 2017-05-17",
     "kategori": "Bisiklet Turları > [ege,]",
-    "ozel": "5+, 3,doğa,deniz",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNzBkWwGEoBW7y_qXdbMPjtLFZVE63mfcVALHK2CR3-ZzjaMfgO_pG6XyP-lsXOqXZJXxADQzBJgFCLIpvcjUhsQ54i0a2HnHmRQ8oDMV4lLGHNC7M=w1920-h1080",
-    "etiketler": [
-      "MUĞLA, bodrum, MİLAS, ören, akyaka, marmaris, datça, aydın, incirliova, germencik, SELÇUK, kuşadası"
-    ]
-  },
+	"ozel": "5+, 3,doğa,deniz",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNzBkWwGEoBW7y_qXdbMPjtLFZVE63mfcVALHK2CR3-ZzjaMfgO_pG6XyP-lsXOqXZJXxADQzBJgFCLIpvcjUhsQ54i0a2HnHmRQ8oDMV4lLGHNC7M=w1920-h1080",
+	"etiketler": ["MUĞLA, bodrum, MİLAS, ören, akyaka, marmaris, datça, aydın, incirliova, germencik, SELÇUK, kuşadası"]
+  }, 
   {
     "id": "2017-sky",
     "baslik": "Suyun Kaynağına Yolculuk",
     "url": "yazilar/2017-sky.html",
     "tarih": "2017-05-3, 2017-05-9",
     "kategori": "Proje Turları",
-    "ozel": "10+,nehir,doğa,proje",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNfiKrfk1itrqRHkubVe47UO0WYYUs02CbbTkjPcSj0OQGYVcTs_coq7x31hVTmoMjOHUlZhTSMwSbBmccVP_8ejI1GH4rOIDEILHE6tF8-kZ7LTi4=w1920-h1080",
-    "etiketler": [
-      "izmir, bakırçay, aliağa, çandarlı, bergama, MANİSA, soma, kırkağaç, akhisar, gölmarmara, ahmetli, turgutlu, kemalpaşa, torbalı, SELÇUK, kuşadası"
-    ]
-  },
+	"ozel": "10+,nehir,doğa,proje",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNfiKrfk1itrqRHkubVe47UO0WYYUs02CbbTkjPcSj0OQGYVcTs_coq7x31hVTmoMjOHUlZhTSMwSbBmccVP_8ejI1GH4rOIDEILHE6tF8-kZ7LTi4=w1920-h1080",
+	"etiketler": ["izmir, bakırçay, aliağa, çandarlı, bergama, MANİSA, soma, kırkağaç, akhisar, gölmarmara, ahmetli, turgutlu, kemalpaşa, torbalı, SELÇUK, kuşadası"]
+  },  
   {
     "id": "2017-manisa-bf",
     "baslik": "Manisa Bisiklet Festivali",
     "url": "yazilar/2017-manisa-bf.html",
     "tarih": "2017-04-28, 2017-04-30",
     "kategori": "Bisiklet Festivali",
-    "ozel": "100+, festival,",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczP-0AqWOkeQ745l6mUbgV-gVMRhcmbP5q_ctBV6EC23ZI0LabT8mLz3zfo9bSRz7ed1nGX2R6roFj-Yym7wyJHCCexRzmGsTtBgGkheYl9C8lzsoAs=w1920-h1080",
-    "etiketler": [
-      "manisa, yunuseme, Spil Dağı Milli Parkı, Saruhanlı, Türkmen Şelalesi"
-    ]
-  },
+	"ozel": "100+, festival,",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczP-0AqWOkeQ745l6mUbgV-gVMRhcmbP5q_ctBV6EC23ZI0LabT8mLz3zfo9bSRz7ed1nGX2R6roFj-Yym7wyJHCCexRzmGsTtBgGkheYl9C8lzsoAs=w1920-h1080",
+	"etiketler": ["manisa, yunuseme, Spil Dağı Milli Parkı, Saruhanlı, Türkmen Şelalesi"]
+  },  
   {
     "id": "2017-abak",
     "baslik": "Az Bilinen Antik Kentler Bisiklet Turu",
     "url": "yazilar/2017-abak.html",
     "tarih": "2017-04-22, 2017-04-25",
-    "kategori": "Bisiklet Turları",
-    "ozel": "100+, organizasyon",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPr3-u8HqzoNGL4Kv1V9W3TEtWFDQZBg0J0Op8xTL8MR8mVH3Q-RQ9wp36wf1Wbk_dVfLI816x39rfL84vP6axkvb7QY6LVZwnZxXyFMMX6U1BFk1M=w1920-h1080",
-    "etiketler": [
-      "izmir, konak, alsancak, aliağa, MANİSA, aigai antik kenti, pergamon antik kenti, bergama, dikili, aliağa"
-    ]
+    "kategori": "Bisiklet Turları",	
+	"ozel": "100+, organizasyon",	
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPr3-u8HqzoNGL4Kv1V9W3TEtWFDQZBg0J0Op8xTL8MR8mVH3Q-RQ9wp36wf1Wbk_dVfLI816x39rfL84vP6axkvb7QY6LVZwnZxXyFMMX6U1BFk1M=w1920-h1080",
+	"etiketler": ["izmir, konak, alsancak, aliağa, MANİSA, aigai antik kenti, pergamon antik kenti, bergama, dikili, aliağa"]
+  },  
+  {
+    "id": "2017-02-25-nato-limani",
+    "baslik": "Nato Limanı Bisiklet Turu",
+    "url": "yazilar/2017-02-25-nato-limani.html",
+    "tarih": "2017-02-25",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, doğa, bisiklet",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPtNddhHO81i1jP2v-WQIWXI2M3oOlaJ_bjBM3XH0KeTGXdo3Hbmps7bUDZpXXGFTMRIJ_LHpDwS94JDIhtk1gLnnFSscD9DdufjBynVjxueNPjDjQ=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,çeşmeli, yeniçiftlik, nato limanı, yenice, yağmur"]
+  }, 
+    {
+    "id": "2016-11-20-velimese",
+    "baslik": "Velimeşe Boza Turu",
+    "url": "yazilar/2016-11-20-velimese.html",
+    "tarih": "2016-11-20",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, lezzet, bisiklet",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNP9ELPgksmy5LgmEpnbthuogDOIZPh1rjA6eloPzqW9vmra6u-b4MQuGFrCzIlv9eQuL2oom5IUZ3A5xknrHB2Pj-M6xt8h-BGXa6YWRYkChc0cq4=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,velimeşe,yulaflı"]
   },
+  {
+    "id": "2016-10-09-yenice",
+    "baslik": "Yenice Bisiklet Turu",
+    "url": "yazilar/2016-10-09-yenice.html",
+    "tarih": "2016-10-09",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, doğa, mtb",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMV1_Shm2rtUaCVgYF6DlPunF5iU0qtIyF3CAZUd-VaOQSCEtcEZ5nJxehxsFPQNrmdVPJsSG1iMDKE34nBmhmzv7PF7idc-pbCItn7oIt8wnG9XFs=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,yenice, havuzlar"]
+  }, 
+    {
+    "id": "2016-08-27-kirazdere",
+    "baslik": "Kirazdere Bisiklet Turu",
+    "url": "yazilar/2016-08-27-kirazdere.html",
+    "tarih": "2016-08-27",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, mtb",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOLz7xsbeC0KLNMm-vZh0jeUu_-cCGElhjz7gYDrDi-3tP673LKs3mYBFBz6B4Zcf7_6kVpEXoXU8_urevg5SxSXEyqk0nsEAKk06Syho-0Bh3Fkus=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,önerler,kirazdere,seymen,"]
+  }, 
+    {
+    "id": "2016-saray",
+    "baslik": "3. Saray Bisiklet Etkinliği",
+    "url": "yazilar/2016-saray.html",
+    "tarih": "2016-08-21",
+    "kategori": "Günlük Geziler > [bisiklet,grup]",
+	"ozel": "50+, 1,doğa, mtb,organizasyon",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczP5qJwS5vlN30dXHzxOiots4_nLdd4RQcYVTdMFTOnfFd_7uloOMlxnHO5sFkD1B9CUjeHapVwJ7xxxqgpp63eLEnSjx23bDXwf6FT6uJsYW0wIWCQ=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ, çorlu,ergene,saray,laladere pinkik alanı,bahçeköy,safaalan,"]
+  }, 
+  {
+    "id": "2016-08-06-cilingoz-kastro",
+    "baslik": "Çilingoz ve Kastro Bisiklet Turu",
+    "url": "yazilar/2016-08-06-cilingoz-kastro.html",
+    "tarih": "2016-08-6",
+    "kategori": "Günlük Geziler",
+	"ozel": "1, doğa, mtb",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMiOCoWi2JeBLn5WBIRFADGAKLeqr5RHXsnRJdjDdYQ2fuzLJ735sI-ewusn5cdNJgw4usGUta_pkQDrRXwNb587l44ljJFI8jUdLUTd5UqsdYACAc=w1920-h1080",
+	"etiketler": ["ergene, çorlu, TEKİRDAĞ, çerkezköy, İSTANBUL, binkılıç, çilingoz, kastro, saray, çorlu"]
+  },   
   {
     "id": "2016-izmir-corlu",
     "baslik": "İzmir - Çorlu Bisiklet Turu",
     "url": "yazilar/2016-izmir-corlu.html",
     "tarih": "2016-05-09, 2016-05-11",
     "kategori": "Bisiklet Turları > [ege, trakya, marmara]",
-    "ozel": "1,bisiklet",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOG-h1YnKrXZaynVqBxGev9-FnhN14W7BjgP9-QHQXyA46-ZCIfPUJxI9HTvcl_qCd7Qd_zuspzTrRNcwEPhw9MSJco1qHwx6c19MBtn0H15nbsT-E=w1920-h1080",
-    "etiketler": [
-      "izmir, ciğli, aliağa, BALIKESİR, edremit, HAVRAN, YENİCE, kalkım, gönen, bandırma, erdek, süleymanpaşa, tekirdağ, çorlu, ergene"
-    ]
-  },
+	"ozel": "1,bisiklet",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOG-h1YnKrXZaynVqBxGev9-FnhN14W7BjgP9-QHQXyA46-ZCIfPUJxI9HTvcl_qCd7Qd_zuspzTrRNcwEPhw9MSJco1qHwx6c19MBtn0H15nbsT-E=w1920-h1080",
+	"etiketler": ["izmir, ciğli, aliağa, BALIKESİR, edremit, HAVRAN, YENİCE, kalkım, gönen, bandırma, erdek, süleymanpaşa, tekirdağ, çorlu, ergene"]
+  },  
   {
     "id": "2016-sky",
     "baslik": "Suyun Kaynağına Yolculuk",
     "url": "yazilar/2016-sky.html",
     "tarih": "2016-04-25, 2016-04-29",
     "kategori": "Proje Turları",
-    "ozel": "10+,nehir,doğa,proje",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczM84Xu7aqrGMniOZBruMHBeswGN7Oq-74NFWINZpJGE2TQ_pSHMXq94pIQwO4MXkbLFFyL4bDA2g4VaEqJL97YM94evAiWT8PJNEE1C5fZ9kGog47k=w1920-h1080",
-    "etiketler": [
-      "izmir, selçuk, tire, beydağ, kiraz, birgi, ödemiş, bayındır, torbalı, küçük menderes nehri"
-    ]
-  },
+	"ozel": "10+,nehir,doğa,proje",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczM84Xu7aqrGMniOZBruMHBeswGN7Oq-74NFWINZpJGE2TQ_pSHMXq94pIQwO4MXkbLFFyL4bDA2g4VaEqJL97YM94evAiWT8PJNEE1C5fZ9kGog47k=w1920-h1080",
+	"etiketler": ["izmir, selçuk, tire, beydağ, kiraz, birgi, ödemiş, bayındır, torbalı, küçük menderes nehri"]
+  },  
   {
     "id": "2016-abak",
     "baslik": "Az Bilinen Antik Kentler Bisiklet Turu",
     "url": "yazilar/2016-abak.html",
     "tarih": "2016-04-19, 2016-04-24",
-    "kategori": "Bisiklet Turları",
-    "ozel": "100+, organizasyon",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMBUNQ0_OXC1vplbMZ2-aIrlKQlTVDlh9V-a_cb_yEfJtbvFuq4FCv1NB9GQSnBbaNNN7vaKACMpIBMFo1Wc1hCnCAOh_7h7i0i6ihtMEjqAEUoDTk=w1920-h1080",
-    "etiketler": [
-      "izmir, bornova, bayraklı, alsancak, konak, balçova, narlıdere, güzelbahçe, urla, çeşme, ıldır, içmeler, klazomenai, seferihisar, sığacık, teos antik kenti,  gümüldür, klaros, selçuk, efes antik kenti, meryemana, pamucak"
-    ]
-  },
+    "kategori": "Bisiklet Turları",	
+	"ozel": "100+, organizasyon",	
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMBUNQ0_OXC1vplbMZ2-aIrlKQlTVDlh9V-a_cb_yEfJtbvFuq4FCv1NB9GQSnBbaNNN7vaKACMpIBMFo1Wc1hCnCAOh_7h7i0i6ihtMEjqAEUoDTk=w1920-h1080",
+	"etiketler": ["izmir, bornova, bayraklı, alsancak, konak, balçova, narlıdere, güzelbahçe, urla, çeşme, ıldır, içmeler, klazomenai, seferihisar, sığacık, teos antik kenti,  gümüldür, klaros, selçuk, efes antik kenti, meryemana, pamucak"]
+  },   
   {
     "id": "2015-kendime-yolculuk",
     "baslik": "Kendime Yolculuk Bisiklet Turu",
     "url": "yazilar/2015-kendime-yolculuk.html",
     "tarih": "2015-09-04, 2015-09-22",
     "kategori": "Bisiklet Turları > [ege, trakya, marmara,]",
-    "ozel": "1,4, keşif,unutulmaz",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOlAbPubOrrfm2bry4FQKaGhQJuh2QrR0aTafDiinJepbqeSJR5TGwT9U6R7N0WbQTNCG0Zf-S6Hsolwp5y82g6zTo0psV3zAGAK2OBPO5CGNbVW3o=w640-h400",
-    "etiketler": [
-      "TEKİRDAĞ, ergene, muratlı, hayrabolu, malkara, keşan, gökçetepe, gelibolu, kömür limanı, eceabat, çanakkale, bayramiç, ayazma, kalkım, balya, İVRİNDİ, balıkesir, bigadiç, SINDIRGI, simav, ŞAPHANE, gediz, çavdarhisar, ASLANAPA, kütahya, bursa, nilüfer, gemlik, mudanya, karacabey, bandırma, erdek, süleymanpaşa, tekirdağ, çorlu, ergene"
-    ]
-  },
+	"ozel": "1,4, keşif,unutulmaz",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOlAbPubOrrfm2bry4FQKaGhQJuh2QrR0aTafDiinJepbqeSJR5TGwT9U6R7N0WbQTNCG0Zf-S6Hsolwp5y82g6zTo0psV3zAGAK2OBPO5CGNbVW3o=w640-h400",
+	"etiketler": ["TEKİRDAĞ, ergene, muratlı, hayrabolu, malkara, keşan, gökçetepe, gelibolu, kömür limanı, eceabat, çanakkale, bayramiç, ayazma, kalkım, balya, İVRİNDİ, balıkesir, bigadiç, SINDIRGI, simav, ŞAPHANE, gediz, çavdarhisar, ASLANAPA, kütahya, bursa, nilüfer, gemlik, mudanya, karacabey, bandırma, erdek, süleymanpaşa, tekirdağ, çorlu, ergene"]
+  },   
   {
     "id": "2015-salda-bf",
     "baslik": "Salda Gölü Bisiklet Festivali",
     "url": "yazilar/2015-salda-bf.html",
     "tarih": "2015-05-29, 2015-05-31",
     "kategori": "Bisiklet Festivali",
-    "ozel": "100+, festival,",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczO6i4wFdxnBwLC1HfmlU8c-NiCVz1TQKXcKlAgU2V70nfuF3d-vMLnAxy3P5gduIIWUIJytbp7VHzAfXeTNExvhpxJZ3mzvC9QlT1eMgB73xeicKGk=w1920-h1080",
-    "etiketler": [
-      "BURDUR, yeşiova, salda, salda gölü"
-    ]
-  },
+	"ozel": "100+, festival,",	
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczO6i4wFdxnBwLC1HfmlU8c-NiCVz1TQKXcKlAgU2V70nfuF3d-vMLnAxy3P5gduIIWUIJytbp7VHzAfXeTNExvhpxJZ3mzvC9QlT1eMgB73xeicKGk=w1920-h1080",
+	"etiketler": ["BURDUR, yeşiova, salda, salda gölü"]
+  },    
   {
     "id": "2015-denizli-bf",
     "baslik": "Denizli Bisiklet Festivali",
     "url": "yazilar/2015-denizli-bf.html",
     "tarih": "2015-05-22, 2015-05-24",
     "kategori": "Bisiklet Festivali",
-    "ozel": "100+, festival,",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczN8i9dW3_JmPs-Obrbqx86fsu6TOJoD_JRwBUbCnXhAy0yrj8Jned3kAF9bJ9JGYWZPou0GPj5FlRqfMiazC0aXd-5UZGPxrLI2wdmYtCAdQswYLB0=w1920-h1080",
-    "etiketler": [
-      "denizli, merkezefendi, pamukkale, babadağ, tavas, kızılcabölük, hiarepolis antik kenti, leodikeia antik kenti,"
-    ]
-  },
-  {
+	"ozel": "100+, festival,",	
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczN8i9dW3_JmPs-Obrbqx86fsu6TOJoD_JRwBUbCnXhAy0yrj8Jned3kAF9bJ9JGYWZPou0GPj5FlRqfMiazC0aXd-5UZGPxrLI2wdmYtCAdQswYLB0=w1920-h1080",
+	"etiketler": ["denizli, merkezefendi, pamukkale, babadağ, tavas, kızılcabölük, hiarepolis antik kenti, leodikeia antik kenti,"]
+  },     
+    {
     "id": "2015-buralarda-geziyorum",
     "baslik": "Buralarda Geziyorum Bisiklet Turu",
     "url": "yazilar/2015-buralarda-geziyorum.html",
     "tarih": "2015-05-15, 2015-06-13",
     "kategori": "Bisiklet Turları > [ege, akdeniz, iç anadolu, trakya, marmara,]",
-    "ozel": "1, 2,unutulmaz",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMq0fBVHcdrsyq_TjxkWarKpoL4Lokd6Dn7yCjguRpvvglwWO4AwabzWBpBcqak6POP5zArU1Ru9D4JzejNzC4NWIybVOQ_ADinL56YgzYWbcWyJuc=w1920-h1080",
-    "etiketler": [
-      "ergene, çorlu, süleymanpaşa, tekirdağ, MALKARA, gelibolu, lapseki, çanakkale, ezine, aydıncık, akçay, burhaniye, gömeç, ayvalık, dikili, BERGAMA, aliağa, alsancak, konak, balçova, gaziemir, torbalı, bayındır, tire, ÖDEMİŞ, beydağ, kiraz, ALAŞEHİR, SARIGÖL, buldan, saraykent, denizli, HONAZ, bozkurt, çardak, BURDUR, yeşilova, karamanlı, tefenni, korkuteli,döşemealtı, kepez, muratpaşa, konyaaltı, aksu, serik, manavgat, alanya, KARAMAN, SARIVELİLER, ermenek, MUT, silifke, mersin, toroslar, mezitli,   "
-    ]
-  },
+	"ozel": "1, 2,unutulmaz",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMq0fBVHcdrsyq_TjxkWarKpoL4Lokd6Dn7yCjguRpvvglwWO4AwabzWBpBcqak6POP5zArU1Ru9D4JzejNzC4NWIybVOQ_ADinL56YgzYWbcWyJuc=w1920-h1080",
+	"etiketler": ["ergene, çorlu, süleymanpaşa, tekirdağ, MALKARA, gelibolu, lapseki, çanakkale, ezine, aydıncık, akçay, burhaniye, gömeç, ayvalık, dikili, BERGAMA, aliağa, alsancak, konak, balçova, gaziemir, torbalı, bayındır, tire, ÖDEMİŞ, beydağ, kiraz, ALAŞEHİR, SARIGÖL, buldan, saraykent, denizli, HONAZ, bozkurt, çardak, BURDUR, yeşilova, karamanlı, tefenni, korkuteli,döşemealtı, kepez, muratpaşa, konyaaltı, aksu, serik, manavgat, alanya, KARAMAN, SARIVELİLER, ermenek, MUT, silifke, mersin, toroslar, mezitli,   "]
+  },   
   {
     "id": "2015-bahara-merhaba",
     "baslik": "Bahara Merhaba Bisiklet Turu",
     "url": "yazilar/2015-bahara-merhaba.html",
     "tarih": "2015-04-23, 2015-04-27",
     "kategori": "Bisiklet Turları > [trakya, marmara,]",
-    "ozel": "10+,doğa,macera",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPl4gDrI0BmgUld0b8ukrZSOvfAe-N4OPNcKKJJwdHq4uFLYnCeI-Z4BrJtAsz-JVvg4yeWP5-knPpi--ztlUmd0MY__csJPFYvGoLxIUrwlRqg3UU=w1920-h1080",
-    "etiketler": [
-      "ergene, çorlu, KAPAKLI, saray, aksicim, sivriler, iğneada, demirköy, sivriler, saray, çorlu"
-    ]
-  },
+	"ozel": "10+,doğa,macera",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPl4gDrI0BmgUld0b8ukrZSOvfAe-N4OPNcKKJJwdHq4uFLYnCeI-Z4BrJtAsz-JVvg4yeWP5-knPpi--ztlUmd0MY__csJPFYvGoLxIUrwlRqg3UU=w1920-h1080",
+	"etiketler": ["ergene, çorlu, KAPAKLI, saray, aksicim, sivriler, iğneada, demirköy, sivriler, saray, çorlu"]
+  },   
   {
     "id": "2015-gelibolu-100-yil",
     "baslik": "Gelibolu 100. Yıl Bisiklet Turu",
     "url": "yazilar/2015-gelibolu-100-yil.html",
     "tarih": "2015-03-19, 2015-03-24",
     "kategori": "Bisiklet Turları",
-    "ozel": "50+,kültür,şehitlik",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczO4tI5FMSJmcBhMonmHos1hJZG9PaA19Xv1RomXBz9vT-JlMKD8dms4YZgfLLdgfW-fLkl9IoaujWeREjMYLJ_Y-umjm-yhO18psd-DCJbSp8N054s=w1920-h1080",
-    "etiketler": [
-      "ergene, çorlu, tekirdağ, süleymanpaşa, MALKARA, gelibolu, tekirdağ, çorlu, ergene"
-    ]
-  },
+	"ozel": "50+,kültür,şehitlik",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczO4tI5FMSJmcBhMonmHos1hJZG9PaA19Xv1RomXBz9vT-JlMKD8dms4YZgfLLdgfW-fLkl9IoaujWeREjMYLJ_Y-umjm-yhO18psd-DCJbSp8N054s=w1920-h1080",
+	"etiketler": ["ergene, çorlu, tekirdağ, süleymanpaşa, MALKARA, gelibolu, tekirdağ, çorlu, ergene"]
+  },     
   {
     "id": "2014-frig-lidya",
     "baslik": "Frig ve Lidya Bisiklet Turu",
     "url": "yazilar/2014-frig-lidya.html",
     "tarih": "2014-10-5, 2014-10-17",
     "kategori": "Bisiklet Turları > [ege, iç anadolu,]",
-    "ozel": "2,3,macera,ören yeri",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMlHEozxAUBaO0TX2Wb9rZ39aPfTemMvCclS-KKepdLZ0FGd8tJO1-n058NvleuJ_mamu3P9ZuvC-nOKnUPUsMQpvTeYoUu5RJWnIoLVVdYH6CqYK0=w1920-h1080",
-    "etiketler": [
-      "eskisehir, tepebaşı, odunpazarı, seyitgazi, HAN, İHSANİYE, afyonkarahisar, SİNANPAŞA, dumlupınar, banaz, uşak, MANİSA, kula, salihli, ahmetli, turgutlu, KEMALPAŞA, bornova, bayraklı, alsancak, karşıyaka, menderes, SELÇUK, kuşadası, didim "
-    ]
-  },
+	"ozel": "2,3,macera,ören yeri",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMlHEozxAUBaO0TX2Wb9rZ39aPfTemMvCclS-KKepdLZ0FGd8tJO1-n058NvleuJ_mamu3P9ZuvC-nOKnUPUsMQpvTeYoUu5RJWnIoLVVdYH6CqYK0=w1920-h1080",
+	"etiketler": ["eskişehir, tepebaşı, odunpazarı, seyitgazi, HAN, İHSANİYE, afyonkarahisar, SİNANPAŞA, dumlupınar, banaz, uşak, MANİSA, kula, salihli, ahmetli, turgutlu, KEMALPAŞA, bornova, bayraklı, alsancak, karşıyaka, menderes, SELÇUK, kuşadası, didim "]
+  },     
   {
     "id": "2014-kartaltepe",
     "baslik": "Kartaltepe Bisiklet Turu",
     "url": "yazilar/2014-kartaltepe.html",
     "tarih": "2014-07-29",
-    "kategori": "Günübirlik Tur",
-    "ozel": "4,doğa ,macera",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczN2KRAS6ZFA6mZsVMc0DeY_Scpn49SeBeIiKsduKnydyLvn7A2aEi3tvht9wdEvA2eWJP8EbmNfE3HqIa3XRHIyM4ziaFM9TlooT5R2_S_jnjss2RM=w1920-h1080",
-    "etiketler": [
-      "ergene, çorlu, süleymanpaşa, tekirdağ, çorlu"
-    ]
-  },
+    "kategori": "Günlük Geziler > [bisiklet,grup,islam]",
+	"ozel": "4,doğa ,macera,mtb",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczN2KRAS6ZFA6mZsVMc0DeY_Scpn49SeBeIiKsduKnydyLvn7A2aEi3tvht9wdEvA2eWJP8EbmNfE3HqIa3XRHIyM4ziaFM9TlooT5R2_S_jnjss2RM=w1920-h1080",
+	"etiketler": ["ergene, çorlu, süleymanpaşa, tekirdağ, çorlu"]
+  },   
   {
     "id": "2013-kusadasi-corlu",
     "baslik": "Kuşadası - Çorlu Bisiklet Turu",
     "url": "yazilar/2013-kusadasi-corlu.html",
     "tarih": "2013-10-08, 2013-10-12",
     "kategori": "Bisiklet Turları > [ege, trakya, marmara,]",
-    "ozel": "1,bisiklet",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPIUaiTPEEehmuvfIxdgNxiSE-wEOb3QCZS_6iiZ91F3DAnkJkR7ddtzGF-fmjD9Peo7ErGFZRleMfHe3zI5PXtBDlrGYqGimh9QYv96fXgohbovck=w1920-h1080",
-    "etiketler": [
-      "AYDIN, kuşadası, torbalı, menderes, gaziemir, buca, konak, alsancak, karşıyaka, çiğli, menemen, aliağa, bergama, dikili,ayvalık, gömeç, burhaniye, EDREMİT, akçay, küçükyuyu, ayvacık, ezine, çanakkale, eceabat, gelibolu, keşan, EDİRNE, uzunköprü, pehlivanköy, KIRKLARELİ, babaeski, lüleburgaz, TEKİRDAĞ, çorlu, "
-    ]
-  },
+	"ozel": "1,bisiklet",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPIUaiTPEEehmuvfIxdgNxiSE-wEOb3QCZS_6iiZ91F3DAnkJkR7ddtzGF-fmjD9Peo7ErGFZRleMfHe3zI5PXtBDlrGYqGimh9QYv96fXgohbovck=w1920-h1080",
+	"etiketler": ["AYDIN, kuşadası, torbalı, menderes, gaziemir, buca, konak, alsancak, karşıyaka, çiğli, menemen, aliağa, bergama, dikili,ayvalık, gömeç, burhaniye, EDREMİT, akçay, küçükyuyu, ayvacık, ezine, çanakkale, eceabat, gelibolu, keşan, EDİRNE, uzunköprü, pehlivanköy, KIRKLARELİ, babaeski, lüleburgaz, TEKİRDAĞ, çorlu, "]
+  },  
   {
     "id": "2013-guzelcamli",
     "baslik": "Güzelçamlı Bisiklet Festivali",
     "url": "yazilar/2013-guzelcamli.html",
     "tarih": "2013-09-26, 2013-09-29",
     "kategori": "Bisiklet Festivali",
-    "ozel": "2, 100+, festival",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczN0zakIcrqICxMcVhKdFeiqTon_SFyZoN73R5SslTy33IpFjoHzLULPVpSZrEtcp2APk6eY359gjTjYwYnccxLM_vwFWwSy-5XmQW9lnr5oZ1ZVndE=w1920-h1080",
-    "etiketler": [
-      "izmir,buca, gaziemir, menderes, torbalı, selçuk, kuşadası, güzelçamlı, kuşadası "
-    ]
-  },
+	"ozel": "2, 100+, festival",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczN0zakIcrqICxMcVhKdFeiqTon_SFyZoN73R5SslTy33IpFjoHzLULPVpSZrEtcp2APk6eY359gjTjYwYnccxLM_vwFWwSy-5XmQW9lnr5oZ1ZVndE=w1920-h1080",
+	"etiketler": ["izmir,buca, gaziemir, menderes, torbalı, selçuk, kuşadası, güzelçamlı, kuşadası "]
+  },  
   {
     "id": "2013-turkiye",
     "baslik": "Türkiye Bisiklet Turu",
     "url": "yazilar/2013-turkiye.html",
     "tarih": "2013-06-24, 2013-09-14",
     "kategori": "Bisiklet Turları > [ege, akdeniz, iç anadolu, trakya, marmara, karadeniz (orta), doğu, güneydoğu]",
-    "ozel": "1, başyapıt",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOrwvCooVbNYw4j3T_Pud0P0TSO4MNtsSw4A4YP7PxH66w7I6FFXdK7f-f2vDQgwU0z9-6C02zC-b0m7i9eAKew1Lk2sfBY_4f74TkRgdOfuXSKkxk=w1920-h1080",
-    "etiketler": [
-      "çorlu, süleymanpaşa, tekirdağ, erdek, bandırma, susurluk, balıkesir, İVRİNDİ, havran, EDREMİT, burhaniye, gömeç, ayvalık, dikili, BERGAMA, aliağa, menemen, çiğli, karşıyaka, alsancak, konak, kuşadası, SELÇUK, germencik, incirliova, aydın, köşk, sultanhisar, nazilli, kuyucak, karacasu, tavas, denizli, merkezefendi, pamukkale, HONAZ, AFYONKARAHİSAR, bozkurt, çardak, dazdırı, dinar, KEÇİBORLU, burdur, ağlasun, ısparta, eğirdir, gelendost, yalvaç, şarkikaraağaç, HÜYÜK, beyşehir, meram, selçuklu, konya, karapınar, emirgazi, aksaray, ıhlara, GÜZELYURT, gülağaç, acıgöl, nevşehir, avanos, ürgüp, derinkuyu, noriğde, bor, ulukışla, pozantı, MERSİN, tarsus, adana, seyhan, çukurova, yüreğir, ceyhan, ERZİN, dörtyol, payas, iskenderun, arsuz, samandağ, hatay, antakya, defne, kırkhan, hassa, islahiye, nurdağı, şehitkemal, şahinbey, gaziantep, nizip, birecik, SURUÇ, şanlıurfa, eyyübiye, karaköprü, bozova, adıyaman, kahta, nemrut dağı, GERGER, siverek, diyarbakır, kayapınar, bağlar, sur, ÇINAR, bismil, batman, hasankeyf, batman, kozluk, baykan, SİİRT, bitlis, tatvan, ahlat, adilcevaz, VAN, erciş, muradiye, çaldıran, doğubayazıt, DİYADİN, taşıçay, ağrı, eleşkirt, horosan, köprüköy, pasinler, yakutiye, palandöken, erzurum, aziziye, aşkale, tercan, PÜLÜMÜR, ÜZÜMLÜ, erzincan, refahiye, GÖLOVA, AKINCILAR, suşehri, KOYULHİSAR, reşadiye, niksar, tokat, turhal, zile, YOZGAT, ÇEKEREK, AYDINCIK, ÇORUM, alaca, boğazkale, sungurlu, delice, balışeyh, kırıkkale, yahşihan, elmadağ, mamak, çankaya, gölbaşı, etimesgut, ankara, polatlı, sivrihisar, MAHMUDİYE, eskisehir, tepebaşı, odunpazarı, bozüyük, BİLECİK, inegöl, kestel, gürsu, yıldırım, nilüfer, bursa, mudanya, istanbul, beyoğlu, fatih, zeytinburnu, bakırköy, küçükçekmece, avcılar, beylikdüzü, büyükçekmece, silivri, çorlu"
-    ]
-  },
+	"ozel": "1, başyapıt",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOrwvCooVbNYw4j3T_Pud0P0TSO4MNtsSw4A4YP7PxH66w7I6FFXdK7f-f2vDQgwU0z9-6C02zC-b0m7i9eAKew1Lk2sfBY_4f74TkRgdOfuXSKkxk=w1920-h1080",
+	"etiketler": ["çorlu, süleymanpaşa, tekirdağ, erdek, bandırma, susurluk, balıkesir, İVRİNDİ, havran, EDREMİT, burhaniye, gömeç, ayvalık, dikili, BERGAMA, aliağa, menemen, çiğli, karşıyaka, alsancak, konak, kuşadası, SELÇUK, germencik, incirliova, aydın, köşk, sultanhisar, nazilli, kuyucak, karacasu, tavas, denizli, merkezefendi, pamukkale, HONAZ, AFYONKARAHİSAR, bozkurt, çardak, dazdırı, dinar, KEÇİBORLU, burdur, ağlasun, ısparta, eğirdir, gelendost, yalvaç, şarkikaraağaç, HÜYÜK, beyşehir, meram, selçuklu, konya, karapınar, emirgazi, aksaray, ıhlara, GÜZELYURT, gülağaç, acıgöl, nevşehir, avanos, ürgüp, derinkuyu, noriğde, bor, ulukışla, pozantı, MERSİN, tarsus, adana, seyhan, çukurova, yüreğir, ceyhan, ERZİN, dörtyol, payas, iskenderun, arsuz, samandağ, hatay, antakya, defne, kırkhan, hassa, islahiye, nurdağı, şehitkemal, şahinbey, gaziantep, nizip, birecik, SURUÇ, şanlıurfa, eyyübiye, karaköprü, bozova, adıyaman, kahta, nemrut dağı, GERGER, siverek, diyarbakır, kayapınar, bağlar, sur, ÇINAR, bismil, batman, hasankeyf, batman, kozluk, baykan, SİİRT, bitlis, tatvan, ahlat, adilcevaz, VAN, erciş, muradiye, çaldıran, doğubayazıt, DİYADİN, taşıçay, ağrı, eleşkirt, horosan, köprüköy, pasinler, yakutiye, palandöken, erzurum, aziziye, aşkale, tercan, PÜLÜMÜR, ÜZÜMLÜ, erzincan, refahiye, GÖLOVA, AKINCILAR, suşehri, KOYULHİSAR, reşadiye, niksar, tokat, turhal, zile, YOZGAT, ÇEKEREK, AYDINCIK, ÇORUM, alaca, boğazkale, sungurlu, delice, balışeyh, kırıkkale, yahşihan, elmadağ, mamak, çankaya, gölbaşı, etimesgut, ankara, polatlı, sivrihisar, MAHMUDİYE, eskişehir, tepebaşı, odunpazarı, bozüyük, BİLECİK, inegöl, kestel, gürsu, yıldırım, nilüfer, bursa, mudanya, istanbul, beyoğlu, fatih, zeytinburnu, bakırköy, küçükçekmece, avcılar, beylikdüzü, büyükçekmece, silivri, çorlu"]
+  },  
   {
     "id": "2013-karamandere",
     "baslik": "Karamandere Bisiklet Turu",
     "url": "yazilar/2013-karamandere.html",
     "tarih": "2013-05-12, 2013-05-13",
-    "kategori": "Bisiklet Turları",
-    "ozel": "1,doğa,kamp",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPzDhc_YyU02sZNJRegVJy3zMZpyVk3SvtXdrbF7ymdmcn6VRKX4Bu0cOYwkuN6iv_R7l2CI773Sz0kr_6LGbEiD44b5YMmc7PSMcEs-7-9tJNZ7aI=w1920-h1080",
-    "etiketler": [
-      "ergene, çorlu, TEKİRDAĞ, çerkezköy, aydınlar, İSTANBUL, karamandere, aydınlar, çerkezköy, çorlu"
-    ]
-  },
+    "kategori": "Bisiklet Turları",	
+	"ozel": "1,doğa,kamp",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPzDhc_YyU02sZNJRegVJy3zMZpyVk3SvtXdrbF7ymdmcn6VRKX4Bu0cOYwkuN6iv_R7l2CI773Sz0kr_6LGbEiD44b5YMmc7PSMcEs-7-9tJNZ7aI=w1920-h1080",
+	"etiketler": ["ergene, çorlu, TEKİRDAĞ, çerkezköy, aydınlar, İSTANBUL, karamandere, aydınlar, çerkezköy, çorlu"]
+  },   
   {
     "id": "2012-begendik",
     "baslik": "İğneada ve Beğendik Bisiklet Turu",
     "url": "yazilar/2012-begendik.html",
     "tarih": "2012-11-17, 2012-11-20",
     "kategori": "Bisiklet Turları > [trakya, marmara]",
-    "ozel": "2,kamp,mücadele,kış",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczORyp5eybYhVf78sEGjh2e1CHCIfSr7NGCuc8JZYzYD_1Oq6JuZ9bR6f4qNHQI3WGJdNJhqjkBgKyZeT8rw-HUA0SlOzSBjwk-myV7MjkH1jzX-gXY=w1920-h1080",
-    "etiketler": [
-      "TEKİRDAĞ, çorlu, KAPAKLI, saray, VİZE, sivriler, DEMİRKÖY, iğneada, beğendik, sivriler, saray, çorlu"
-    ]
-  },
+	"ozel": "2,kamp,mücadele,kış",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczORyp5eybYhVf78sEGjh2e1CHCIfSr7NGCuc8JZYzYD_1Oq6JuZ9bR6f4qNHQI3WGJdNJhqjkBgKyZeT8rw-HUA0SlOzSBjwk-myV7MjkH1jzX-gXY=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ, çorlu, KAPAKLI, saray, VİZE, sivriler, DEMİRKÖY, iğneada, beğendik, sivriler, saray, çorlu"]
+  },   
   {
     "id": "2012-trakya",
     "baslik": "Trakya Bisiklet Turu",
     "url": "yazilar/2012-trakya.html",
     "tarih": "2012-10-12, 2012-10-20",
     "kategori": "Bisiklet Turları > [trakya, marmara]",
-    "ozel": "2,doğa, macera",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczM4m2pziQ1uxMhBLWoWzrIBLZAP3JZxRug4qrwpt_kXPZs2_qi6F6UYJm4rR4aohPVqOrK4RyABCyZxwokh29YrlvddwhdQNpf81siv61_a_ZEXSz4=w1920-h1080",
-    "etiketler": [
-      "TEKİRDAĞ, çorlu, ergene, KIRKLARELİ, LÜLEBURGAZ, PINARHİSAR, DEMİRKÖY, dupnisa mağarası, şükrüpaşa, dereköy, kırklareli, SÜLOĞLU, edirne, havsa, babaeski, lüleburgaz, ergene, çorlu"
-    ]
-  },
+	"ozel": "2,doğa, macera",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczM4m2pziQ1uxMhBLWoWzrIBLZAP3JZxRug4qrwpt_kXPZs2_qi6F6UYJm4rR4aohPVqOrK4RyABCyZxwokh29YrlvddwhdQNpf81siv61_a_ZEXSz4=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ, çorlu, ergene, KIRKLARELİ, LÜLEBURGAZ, PINARHİSAR, DEMİRKÖY, dupnisa mağarası, şükrüpaşa, dereköy, kırklareli, SÜLOĞLU, edirne, havsa, babaeski, lüleburgaz, ergene, çorlu"]
+  },  
   {
     "id": "2012-igneada",
     "baslik": "İğneada Bisiklet Turu",
     "url": "yazilar/2012-igneada.html",
     "tarih": "2012-08-25, 2012-08-27",
     "kategori": "Bisiklet Turları > [trakya, marmara]",
-    "ozel": "2,doğa,yaz",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOsIMyhLqC1kvpZVvei1gUxkNuA2iC-4C16fZQxpOHs33_5NPxsR3N5PJPKmiuKkkmeKYFHIkZUVq6aox_xityETCb9qC_afvhJP3L12QSHommk5Do=w1920-h1080",
-    "etiketler": [
-      "TEKİRDAĞ, çorlu, KAPAKLI, saray, VİZE, sivriler, demirköy, iğneada, sivriler, saray, çorlu"
-    ]
-  },
+	"ozel": "2,doğa,yaz",	
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOsIMyhLqC1kvpZVvei1gUxkNuA2iC-4C16fZQxpOHs33_5NPxsR3N5PJPKmiuKkkmeKYFHIkZUVq6aox_xityETCb9qC_afvhJP3L12QSHommk5Do=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ, çorlu, KAPAKLI, saray, VİZE, sivriler, demirköy, iğneada, sivriler, saray, çorlu"]
+  },    
   {
     "id": "2012-antalya",
     "baslik": "Ankara - Antalya - İzmir  Bisiklet Turu",
     "url": "yazilar/2012-antalya.html",
     "tarih": "2012-05-12, 2012-06-24",
-    "kategori": "Bisiklet Turları > [ege, akdeniz, iç anadolu, trakya, marmara,]",
-    "ozel": "2,1, unutulmaz,",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNw9e7mS2plCbo_mN8ccWrGcEiR3ulEUHdJE-LEMjMVddjfPHuy29TTQPv5ps7ZoIPnqeom7HvzvQg5Im83IFv4bkVtIa4IrxlcwMPyeXXteCQV4T0=w1920-h1080",
-    "etiketler": [
-      "ergene,çorlu,silivri,büyükçekmece,beylikdüzü,avcılar,küçükçekmece,bakırköy,zeytinburnu,fatih,istanbul,yalova, orhangazi, iznik, BURSA, osmaneli, bilecik, PAZARYERİ, bozüyük, tepebaşı, odunpazarı, eskisehir, MAHMUDİYE, sivrihisar, polatlı, ankara, altındağ, keçiören, çankaya, etimesgut, gölbaşı, bala, kulu, cihanbeyli, ALTINTEKİN, selçuklu, meram, konya, seydişehir, AKSEKİ, manavgat, serik, aksu, antalya, muratpaşa, konyaaltı, kepez, kemer, kumluca, finike, demre, kaş, seydikemer, fethiye, dalaman, ortaca, köyceğiz, ula, muğla, menteşe, yatağan, milas, DİDİM, söke, kuşadası, selçuk, torbalı, menderes, gaziemir, buca, alsancak, konak, balçova, narlıdere, güzelbahçe, urla, ÇEŞME, karşıyaka, çiğli, menemen, aliağa, bergama, dikili, ayvalık, gömeç, burhaniye, EDREMİT, akçay, küçükyuyu, ayvacık, ezine, çanakkale, eceabat, gelibolu, keşan, EDİRNE, malkara, tekirdağ, süleymanpaşa, çorlu"
-    ]
-  },
+	    "kategori": "Bisiklet Turları > [ege, akdeniz, iç anadolu, trakya, marmara,]",
+	"ozel": "2,1, unutulmaz,",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNw9e7mS2plCbo_mN8ccWrGcEiR3ulEUHdJE-LEMjMVddjfPHuy29TTQPv5ps7ZoIPnqeom7HvzvQg5Im83IFv4bkVtIa4IrxlcwMPyeXXteCQV4T0=w1920-h1080",
+	"etiketler": ["ergene,çorlu,silivri,büyükçekmece,beylikdüzü,avcılar,küçükçekmece,bakırköy,zeytinburnu,fatih,istanbul,yalova, orhangazi, iznik, BURSA, osmaneli, bilecik, PAZARYERİ, bozüyük, tepebaşı, odunpazarı, eskişehir, MAHMUDİYE, sivrihisar, polatlı, ankara, altındağ, keçiören, çankaya, etimesgut, gölbaşı, bala, kulu, cihanbeyli, ALTINTEKİN, selçuklu, meram, konya, seydişehir, AKSEKİ, manavgat, serik, aksu, antalya, muratpaşa, konyaaltı, kepez, kemer, kumluca, finike, demre, kaş, seydikemer, fethiye, dalaman, ortaca, köyceğiz, ula, muğla, menteşe, yatağan, milas, DİDİM, söke, kuşadası, selçuk, torbalı, menderes, gaziemir, buca, alsancak, konak, balçova, narlıdere, güzelbahçe, urla, ÇEŞME, karşıyaka, çiğli, menemen, aliağa, bergama, dikili, ayvalık, gömeç, burhaniye, EDREMİT, akçay, küçükyuyu, ayvacık, ezine, çanakkale, eceabat, gelibolu, keşan, EDİRNE, malkara, tekirdağ, süleymanpaşa, çorlu"]
+  },  
   {
     "id": "2012-cilingoz",
     "baslik": "Çilingoz Bisiklet Turu",
     "url": "yazilar/2012-cilingoz.html",
     "tarih": "2012-05-1",
-    "kategori": "Günübirlik Tur",
-    "ozel": "5, doğa, deniz",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMSck78klM-y8s5jBuTCjduV-d4g8zwwGBQbEClej35Ujis16ceaJKEfdOT72rxbmW6mfqu9WC2EaCpHZZzkhjJkjCRAu6VpaQ-YN2en6s8imOTLnk=w1920-h1080",
-    "etiketler": [
-      "ergene, çorlu, TEKİRDAĞ, çerkezköy, İSTANBUL, binkılıç, çilingoz, kastro, saray, çorlu"
-    ]
-  },
+    "kategori": "Günlük Geziler > [bisiklet,grup]",
+	"ozel": "5, doğa, deniz",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMSck78klM-y8s5jBuTCjduV-d4g8zwwGBQbEClej35Ujis16ceaJKEfdOT72rxbmW6mfqu9WC2EaCpHZZzkhjJkjCRAu6VpaQ-YN2en6s8imOTLnk=w1920-h1080",
+	"etiketler": ["ergene, çorlu, TEKİRDAĞ, çerkezköy, İSTANBUL, binkılıç, çilingoz, kastro, saray, çorlu"]
+  },    
   {
     "id": "2012-edirne",
     "baslik": "Edirne Bisiklet Turu",
     "url": "yazilar/2012-edirne.html",
     "tarih": "2012-04-18, 2012-04-20",
     "kategori": "Bisiklet Turları > [trakya, marmara]",
-    "ozel": "2, macera, kültür",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczM76g7eYw9yRnkmPu50tK3S6QF0OIPLA1fKZaFEu9oH-Eoavu9HvUAdZ5kZxzW3vF0HtLdSyNDG7w40wETuMiZ6HnKixN_vU7N9MKXOxZLsPrDD2yM=w1920-h1080",
-    "etiketler": [
-      "TEKİRDAĞ, çorlu, ergene, KIRKLARELİ, lüleburgaz, babaeski, havsa, edirne"
-    ]
-  },
+	"ozel": "2, macera, kültür",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczM76g7eYw9yRnkmPu50tK3S6QF0OIPLA1fKZaFEu9oH-Eoavu9HvUAdZ5kZxzW3vF0HtLdSyNDG7w40wETuMiZ6HnKixN_vU7N9MKXOxZLsPrDD2yM=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ, çorlu, ergene, KIRKLARELİ, lüleburgaz, babaeski, havsa, edirne"]
+  },   
   {
     "id": "2012-gelibolu",
     "baslik": "Gelibolu ve Gökçeada Bisiklet Turu",
     "url": "yazilar/2012-gelibolu.html",
     "tarih": "2012-03-24, 2012-03-28",
     "kategori": "Bisiklet Turları > [trakya, marmara]",
-    "ozel": "10+, 3, şehitlik",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNHLP9MXuBZ2dLI9v2tLQfTmAK0CJK2MjQc-VgLcwFIprhSI48h6bi-tyHa3brrkhdrcBAI8qKXs2acuVwRTtnWBUyJSGfKLxb1CC2xHrhdFdnG6ME=w1920-h1080",
-    "etiketler": [
-      "çorlu, süleymanpaşa, tekirdağ, MALKARA, ÇANAKKALE, gelibolu, eceabat, gökçeada, gelibolu, şarköy, uçmakdere, tekirdağ, çorlu"
-    ]
-  },
-  {
+	"ozel": "10+, 3, şehitlik",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNHLP9MXuBZ2dLI9v2tLQfTmAK0CJK2MjQc-VgLcwFIprhSI48h6bi-tyHa3brrkhdrcBAI8qKXs2acuVwRTtnWBUyJSGfKLxb1CC2xHrhdFdnG6ME=w1920-h1080",
+	"etiketler": ["çorlu, süleymanpaşa, tekirdağ, MALKARA, ÇANAKKALE, gelibolu, eceabat, gökçeada, gelibolu, şarköy, uçmakdere, tekirdağ, çorlu"]
+  },   {
     "id": "2012-demirkoy",
     "baslik": "Demirköy Bisiklet Turu",
     "url": "yazilar/2012-demirkoy.html",
     "tarih": "2012-03-20, 2012-03-21",
     "kategori": "Bisiklet Turları > [trakya, marmara]",
-    "ozel": "2, doğa, kamp, macera",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOJ0sFAxbC_f3RXb1BzgCRKerI0ulAtEb4f_gBu8EDvjwbDuKl_QeR9Q7IxU31fP0DaJB9QU4nBLNDQqc2RtuYE5-I-GYgnFQ1tUATNOhIq9oTR0hk=w1920-h1080",
-    "etiketler": [
-      "TEKİRDAĞ, çorlu, ergene, KIRKLARELİ, LÜLEBURGAZ, PINARHİSAR, demirköy, VİZE, saray, KAPAKLI, çorlu"
-    ]
-  },
+	"ozel": "2, doğa, kamp, macera",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOJ0sFAxbC_f3RXb1BzgCRKerI0ulAtEb4f_gBu8EDvjwbDuKl_QeR9Q7IxU31fP0DaJB9QU4nBLNDQqc2RtuYE5-I-GYgnFQ1tUATNOhIq9oTR0hk=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ, çorlu, ergene, KIRKLARELİ, LÜLEBURGAZ, PINARHİSAR, demirköy, VİZE, saray, KAPAKLI, çorlu"]
+  },    
   {
     "id": "2011-enez",
     "baslik": "Enez Bisiklet Turu",
     "url": "yazilar/2011-enez.html",
     "tarih": "2011-08-29, 2011-09-2",
     "kategori": "Bisiklet Turları > [trakya, marmara]",
-    "ozel": "5+,deniz,doğa, yaz",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNjWXsnX4slwx1gTXi7cYNNSF9jdK2dj93k6b6YiZGh0ThTYTQ2A-rMIc0O5WWMXUcj6-K0s0XWmvJQuiDDWKQAicJGoQt99QEWMhpNE-cU-Mz1yeY=w1920-h1080",
-    "etiketler": [
-      "ergene, çorlu, süleymanpaşa, tekirdağ, malkara, EDİRNE, keşan, enez, keşan, GELİBOLU, ÇANAKKALE, şarköy, uçmakdere, tekirdağ, çorlu"
-    ]
-  },
+	"ozel": "5+,deniz,doğa, yaz",	
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNjWXsnX4slwx1gTXi7cYNNSF9jdK2dj93k6b6YiZGh0ThTYTQ2A-rMIc0O5WWMXUcj6-K0s0XWmvJQuiDDWKQAicJGoQt99QEWMhpNE-cU-Mz1yeY=w1920-h1080",
+	"etiketler": ["ergene, çorlu, süleymanpaşa, tekirdağ, malkara, EDİRNE, keşan, enez, keşan, GELİBOLU, ÇANAKKALE, şarköy, uçmakdere, tekirdağ, çorlu"]
+  }, 
   {
     "id": "2011-incegiz",
     "baslik": "İnceğiz Mağaraları Bisiklet Turu",
     "url": "yazilar/2011-incegiz.html",
     "tarih": "2011-08-21",
-    "kategori": "Günübirlik Tur",
-    "ozel": "5+,keşif, mağara",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMer0y3ILUPJzwoQe2e86tq41p3Be9AA_LVuSw4nLTyGmsAV3O4ov7pyBI8ibGOERvAIsHgNP5alrkoluHu8LUg7D8-2tiHGYerJeuNjg55ddRkLrY=w1920-h1080",
-    "etiketler": [
-      "ergene, çorlu, İSTANBUL, silivri, ÇATALCA, inceğiz mağaraları, silivri, çorlu"
-    ]
-  },
+    "kategori": "Günlük Geziler > [bisiklet,grup]",
+	"ozel": "5+,keşif, mağara",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMer0y3ILUPJzwoQe2e86tq41p3Be9AA_LVuSw4nLTyGmsAV3O4ov7pyBI8ibGOERvAIsHgNP5alrkoluHu8LUg7D8-2tiHGYerJeuNjg55ddRkLrY=w1920-h1080",
+	"etiketler": ["ergene, çorlu, İSTANBUL, silivri, ÇATALCA, inceğiz mağaraları, silivri, çorlu"]
+  },  
   {
     "id": "2011-cehennem-selalesi",
     "baslik": "Cehennem Şelalasi Bisiklet Turu",
     "url": "yazilar/2011-cehennem-selalesi.html",
     "tarih": "2011-08-7",
-    "kategori": "Günübirlik Tur",
-    "ozel": "5+,keşif, şelale",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPnXkSi3s_A1nwkbO2Q8AetxA_hYMAothc0KkshZWRfpt4kxCEWrR2vt6B6anPedvN3Uyro8wWzYV-5bQdGsjrT4B8oYyEAjAJpMt5KFuzP3G5m3Jg=w1920-h1080",
-    "etiketler": [
-      "ergene, çorlu, KAPAKLI, saray, VİZE, cehennem şelalesi, Saray, çorlu"
-    ]
-  },
+    "kategori": "Günlük Geziler > [bisiklet,grup]",
+	"ozel": "5+,keşif, şelale",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPnXkSi3s_A1nwkbO2Q8AetxA_hYMAothc0KkshZWRfpt4kxCEWrR2vt6B6anPedvN3Uyro8wWzYV-5bQdGsjrT4B8oYyEAjAJpMt5KFuzP3G5m3Jg=w1920-h1080",
+	"etiketler": ["ergene, çorlu, KAPAKLI, saray, VİZE, cehennem şelalesi, Saray, çorlu"]
+  },  
   {
     "id": "2011-ucmakdere",
     "baslik": "Uçmakdere Bisiklet Turu",
     "url": "yazilar/2011-ucmakdere.html",
     "tarih": "2011-07-23, 2011-07-24",
     "kategori": "Bisiklet Turları > [trakya, marmara]",
-    "ozel": "5+, ilk tur,deniz",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOzZok-ZaWryhHRxf4EhUkdqdOjHBqwVdoo_Ix0_otyPI0SEksCkG7Po2AsxAkPFMdweMVzOJSYEBqJaNsQIgwR_AeAe2rluUd7HEwAlIdN6lyULqI=w1920-h1080",
-    "etiketler": [
-      "ergene, çorlu, süleymanpaşa, tekirdağ, uçmakdere, ŞARKÖY, tekirdağ, çorlu"
-    ]
-  }
+	"ozel": "5+, ilk tur,deniz",	
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOzZok-ZaWryhHRxf4EhUkdqdOjHBqwVdoo_Ix0_otyPI0SEksCkG7Po2AsxAkPFMdweMVzOJSYEBqJaNsQIgwR_AeAe2rluUd7HEwAlIdN6lyULqI=w1920-h1080",
+	"etiketler": ["ergene, çorlu, süleymanpaşa, tekirdağ, uçmakdere, ŞARKÖY, tekirdağ, çorlu"]
+  },  
+   {
+    "id": "2006-helloween",
+    "baslik": "Helloween Konseri",
+    "url": "yazilar/2006-helloween.html",
+    "tarih": "2006-2-1",
+    "kategori": "Konser",
+	"ozel": "konser,fotoğraf,",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNff-HskAmHI9k2_Z1QGPW65IOfKHs7Y073vU58cPdmDQmyGm9RWmSrxUzkGgtjCHWV7Vu1r7qG-7XKbdnEIR4w7AjKs62bDznRy5mJfi9_gAGmP4s=w1920-h1080",
+	"etiketler": ["helloween"]
+  },  
+  {
+    "id": "2005-destruction",
+    "baslik": "Candlemass & Destruction Konseri",
+    "url": "yazilar/2005-destruction.html",
+    "tarih": "2005-12-4",
+    "kategori": "Konser",
+	"ozel": "konser,fotoğraf,",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNXnez0zuZmBvB7KE8BzcmRSRgyBZ3wnO683SiOt6C8kl_e7Fy669qCzgpicgkDi4kXVV4zD10Y7NrAl1NqJ-7VfttbsgUS3s7ZibCsHqYlGp7JQJE=w1920-h1080",
+	"etiketler": ["destruction, candlemass"]
+  },
+  {
+    "id": "2005-kreator",
+    "baslik": "Kreator Konseri",
+    "url": "yazilar/2005-kreator.html",
+    "tarih": "2005-09-30",
+    "kategori": "Konser",
+	"ozel": "konser,fotoğraf,",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOQW7EZ0vJTRmKkq-MTXsS8ee_rb1wVqQODMdeYAu1E9RQxAXfsLVTna26266OXdwnQKHnSu-G0vrKBKUcIB9KRfDiy6ba36RMGH6AICf8qlmfMKdY=w1920-h1080",
+	"etiketler": ["kreator"]
+  },  
+  {
+    "id": "2005-rockrepublic",
+    "baslik": "Rock Republic Open Air Festival",
+    "url": "yazilar/2005-rockrepublic.html",
+    "tarih": "2005-7-1",
+    "kategori": "Konser, ",
+	"ozel": "organizasyon,kamp,konser",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPV8AiNLQgw_DpnDxa5-qeTGQzEnJQ4ymRsQ7FGt3pNrbDYchp7dbLW3JSc8RE92q6exwEBU9kCQFxJSfvGVRQal6t51PoFk-MEJ1EXAXfx8wECgQ4=w1920-h1080",
+	"etiketler": ["slayer, doro, overkill, in flames, do die for"]
+  } 
 ]
