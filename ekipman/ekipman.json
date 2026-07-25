@@ -1,5 +1,16 @@
 [
   {
+    "baslik": "en",
+    "kategori": "",
+    "tarih": "2000-01",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "",
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": ""
+  },
+  {
     "baslik": "Deneme",
     "kategori": "Elektronik",
     "tarih": "2000-01",
