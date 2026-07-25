@@ -93,7 +93,7 @@
 				<button class="tab-btn" onclick="sekmeDegistir('rozetler-tab')">🛡️ Rozet Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('sosyal-tab')">🌐 Sosyal Medya</button>
 				<button class="tab-btn" onclick="sekmeDegistir('dosyalar-tab')">📁 Dosya Yönetimi</button>
-				<button class="tab-btn" onclick="sekmeDegistir('footer-tab')">📢 Footer Mesajları</button>
+				<button class="tab-btn" onclick="sekmeDegistir('footer-tab')">📢 Footer Yönetimi</button>
                 <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
 <!-- // ==========================================	YENİ TABLARIN BAŞLIKLARI ÜSTE EKLENİYOR	-->				
                 <!-- Gelecekte buraya yeni butonlar gelebilir --> 
@@ -1029,10 +1029,6 @@ const PATH_DOSYALAR = "data/dosyalar.json";
 let shaDosyalar = "";
 let mevcutDosyalarDizisi = [];
 
-const PATH_FOOTER = "data/footer.json";
-let shaFooter = "";
-let footerAnaVeri = { "varsayilanMesaj": "", "ozelGunler": [] };
-
 let anlikHarita = null;
 let anlikMarker = null;
 let anlikSecilenEtiketler = ["fotoğraf", "anlık", "ferdimen"];
@@ -1052,6 +1048,15 @@ let setEkipmanEtiketler = new Set();
 // Cihazdan yüklenecek geçici resim verisi
 let ekipmanYuklenecekResimBase64 = null;
 let ekipmanYuklenecekResimUzanti = "jpg";
+
+	
+// --- PATH_XXX BİLGİLERİ ---
+const PATH_FOOTER = "data/footer.json";
+let shaFooter = "";
+let mevcutFooterVerisi = {
+    "varsayilanMesaj": "",
+    "ozelGunler": []
+};
 // ========================================== PATH_XXX BİLGİLERİ ÜSTE EKLENİYOR
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -1130,8 +1135,8 @@ if (token) {
 	videoYukle(token); // <--- Yeni eklenen video yükleyici fonksiyonumuz
 	blogYukle(token);
 	dosyalariYukle(token);
-	footerVerileriniYukle(token);
 	ekipmanlariYukle(token);
+	footerYukle(token);
 // ========================================== XXX(token) BİLGİLERİ ÜSTE EKLENİYOR 
     yazilariYukle(token).then(() => {
         timelineYukle(token);
@@ -3118,51 +3123,25 @@ async function dosyalariGithubaGonder() {
 }
 
 // ========================================== FOOTER SEKMESİ
-async function footerVerileriniYukle(token) {
+async function footerYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_FOOTER}`;
     try {
         const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
-        
-        if (!response.ok) {
-            // Dosya henüz GitHub'da yoksa varsayılan şablonu yükle
-            console.warn("footer.json bulunamadı, varsayılan şablon hazırlanıyor.");
-            footerAnaVeri = {
-                "varsayilanMesaj": "<b>Ferdimen.</b> Tüm Hakları Saklıdır.",
-                "ozelGunler": [
-	 { "gun": 1, "ay": 1, "mesaj": " - Mutlu Yıllar! Yeni yılınız kutlu olsun. 🎄✨" },
-    { "gun": 20, "ay": 1, "mesaj": " - Bugün Özel Bir Gün! Her gün bir kahraman doğmuyor. 🎄✨" },
-    { "gun": 14, "ay": 2, "mesaj": " - 14 Şubat Sevgililer Günü Kutlu Olsun! ❤️" },
-    { "gun": 8, "ay": 3, "mesaj": " - 8 Mart Dünya Kadınlar Günü Kutlu Olsun. 💐" },
-    { "gun": 18, "ay": 3, "mesaj": " - 18 Mart Çanakkale Zaferi ve Şehitleri Anma Günü. 🇹🇷" },
-    { "gun": 23, "ay": 4, "mesaj": " - 23 Nisan Ulusal Egemenlik ve Çocuk Bayramı Kutlu Olsun! 🇹🇷🧒" },
-    { "gun": 1, "ay": 5, "mesaj": " - 1 Mayıs Emek ve Dayanışma Günü Kutlu Olsun. 🛠️" },
-    { "gun": 19, "ay": 5, "mesaj": " - 19 Mayıs Atatürk'ü Anma, Gençlik ve Spor Bayramı Kutlu Olsun! 🇹🇷🏃‍♂️" },
-    { "gun": 20, "ay": 7, "mesaj": " — Kıbrıs Barış Harekatı Kutlu Olsun! 🇹🇷✨" },
-    { "gun": 17, "ay": 8, "mesaj": " - Unutmuş olabilirsiniz, 17 Ağustos 1999 depremini hatırlayın!" },
-    { "gun": 26, "ay": 8, "mesaj": " - 26 Ağustos Malazgirt Zaferi ve Büyük Taarruz Kutlu Olsun! 🇹🇷✨" },
-    { "gun": 30, "ay": 8, "mesaj": " - 30 Ağustos Zafer Bayramımız Kutlu Olsun! 🇹🇷✨" },
-    { "gun": 9, "ay": 9, "mesaj": " - İzmir'in Kurtuluşu Kutlu Olsun! 🇹🇷" },
-    { "gun": 29, "ay": 10, "mesaj": " - 29 Ekim Cumhuriyet Bayramımız Kutlu Olsun! 🇹🇷" },
-    { "gun": 10, "ay": 11, "mesaj": " - Gazi Mustafa Kemal Atatürk'ü Saygı, Özlem ve Minnetle Anıyoruz. 🇹🇷🕯️" },
-    { "gun": 24, "ay": 11, "mesaj": " - Tüm Öğretmenlerimizin 24 Kasım Öğretmenler Günü Kutlu Olsun! 👩‍🏫👨‍🏫" },
-    { "gun": 31, "ay": 12, "mesaj": " - Yılın son gününden herkese mutlu seneler! 🎆🎉" }
-                ]
-            };
-            document.getElementById('footer-varsayilan-input').value = footerAnaVeri.varsayilanMesaj;
-            footerOzelGunleriListele();
-            return;
-        }
+        if(!response.ok) throw new Error("Footer dosyası yüklenemedi.");
 
         const data = await response.json();
         shaFooter = data.sha;
 
         const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-        footerAnaVeri = JSON.parse(decodedContent);
+        mevcutFooterVerisi = JSON.parse(decodedContent);
 
-        document.getElementById('footer-varsayilan-input').value = footerAnaVeri.varsayilanMesaj || "";
+        // Varsayılan mesajı inputa doldur
+        document.getElementById('footer-varsayilan-input').value = mevcutFooterVerisi.varsayilanMesaj || "";
+
+        // Özel günleri listele
         footerOzelGunleriListele();
     } catch (error) {
-        console.log("Footer verisi yükleme hatası: " + error.message);
+        bildirimGoster("Footer yükleme hatası: " + error.message, "error");
     }
 }
 
@@ -3170,31 +3149,22 @@ function footerOzelGunleriListele() {
     const kapsayici = document.getElementById('footer-listesi-kapsayici');
     kapsayici.innerHTML = "";
 
-    if (!footerAnaVeri.ozelGunler || footerAnaVeri.ozelGunler.length === 0) {
-        kapsayici.innerHTML = `<p style="color: #64748b; font-size: 14px; text-align: center;">Kayıtlı özel gün bulunmuyor.</p>`;
+    if (!mevcutFooterVerisi.ozelGunler || mevcutFooterVerisi.ozelGunler.length === 0) {
+        kapsayici.innerHTML = `<p style="color: #64748b; font-size: 14px; text-align: center;">Henüz özel gün eklenmemiş.</p>`;
         return;
     }
 
-    // Aylara ve günlere göre sıralı gösterelim
-    footerAnaVeri.ozelGunler.sort((a,b) => (a.ay - b.ay) || (a.gun - b.gun));
-
-    footerAnaVeri.ozelGunler.forEach((item, index) => {
+    mevcutFooterVerisi.ozelGunler.forEach((item, index) => {
         const kart = document.createElement('div');
         kart.className = 'haber-kart';
-        kart.style.background = "#f0fdf4";
-        kart.style.borderColor = "#bbf7d0";
-        kart.style.padding = "10px";
-
         kart.innerHTML = `
             <div class="haber-kart-detay">
-                <span style="background: #bbf7d0; color: #166534; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 12px; margin-right: 10px;">
-                    📅 ${String(item.gun).padStart(2,'0')}/${String(item.ay).padStart(2,'0')}
-                </span>
-                <span style="font-size: 14px; color: #1e293b;">${item.mesaj}</span>
+                <div class="haber-kart-meta">Tarih: ${item.gun}.${item.ay}</div>
+                <h4 class="haber-kart-baslik">${item.mesaj}</h4>
             </div>
-            <div style="display:flex; gap:5px;">
-                <button type="button" class="haber-kart-butonu btn-duzenle" style="padding: 4px 8px;" onclick="footerOzelGunDuzenleTetikle(${index})">Düzenle</button>
-                <button type="button" class="haber-kart-butonu btn-sil" style="padding: 4px 8px;" onclick="footerOzelGunSil(${index})">Sil</button>
+            <div>
+                <button type="button" class="haber-kart-butonu btn-duzenle" onclick="footerOzelGunDuzenleTetikle(${index})">Düzenle</button>
+                <button type="button" class="haber-kart-butonu btn-sil" onclick="footerOzelGunSil(${index})">Sil</button>
             </div>
         `;
         kapsayici.appendChild(kart);
@@ -3202,52 +3172,52 @@ function footerOzelGunleriListele() {
 }
 
 function footerGenelMetniGuncelle() {
-    footerAnaVeri.varsayilanMesaj = document.getElementById('footer-varsayilan-input').value;
-    bildirimGoster("Genel imza metni listeye alındı. Kaydetmeyi unutmayın.", "success");
+    mevcutFooterVerisi.varsayilanMesaj = document.getElementById('footer-varsayilan-input').value;
+    bildirimGoster("Varsayılan footer metni hafızaya alındı. Kaydetmeyi unutmayın!", "success");
 }
 
 function footerOzelGunGonder(event) {
     event.preventDefault();
 
-    const yeniGun = {
-        "gun": parseInt(document.getElementById('footer-ozel-gun').value),
-        "ay": parseInt(document.getElementById('footer-ozel-ay').value),
-        "mesaj": document.getElementById('footer-ozel-mesaj').value
-    };
-
+    const gun = parseInt(document.getElementById('footer-ozel-gun').value);
+    const ay = parseInt(document.getElementById('footer-ozel-ay').value);
+    const mesaj = document.getElementById('footer-ozel-mesaj').value;
     const index = parseInt(document.getElementById('footer-ozel-index').value);
 
+    const yeniKayit = { "gun": gun, "ay": ay, "mesaj": mesaj };
+
     if (index === -1) {
-        // Yeni ekleme
-        footerAnaVeri.ozelGunler.push(yeniGun);
+        mevcutFooterVerisi.ozelGunler.push(yeniKayit);
     } else {
-        // Güncelleme
-        footerAnaVeri.ozelGunler[index] = yeniGun;
+        mevcutFooterVerisi.ozelGunler[index] = yeniKayit;
     }
 
     footerOzelGunleriListele();
     footerFormSifirla();
+    bildirimGoster("Özel gün listeye eklendi/güncellendi.", "success");
 }
 
 function footerOzelGunDuzenleTetikle(index) {
-    const item = footerAnaVeri.ozelGunler[index];
+    const kayit = mevcutFooterVerisi.ozelGunler[index];
     
     document.getElementById('footer-form-baslik').innerText = "📝 Özel Günü Düzenle";
-    document.getElementById('btn-footer-kaydet').innerText = "Listede Güncelle";
+    document.getElementById('btn-footer-kaydet').innerText = "Değişikliği Güncelle";
     document.getElementById('btn-footer-kaydet').style.background = "#eab308";
     document.getElementById('btn-footer-iptal').style.display = "inline-block";
-
+    
     document.getElementById('footer-ozel-index').value = index;
-    document.getElementById('footer-ozel-gun').value = item.gun;
-    document.getElementById('footer-ozel-ay').value = item.ay;
-    document.getElementById('footer-ozel-mesaj').value = item.mesaj;
+    document.getElementById('footer-ozel-gun').value = kayit.gun;
+    document.getElementById('footer-ozel-ay').value = kayit.ay;
+    document.getElementById('footer-ozel-mesaj').value = kayit.mesaj;
+
+    document.getElementById('footer-form-baslik').scrollIntoView({ behavior: 'smooth' });
 }
 
 function footerOzelGunSil(index) {
-    if(confirm("Bu özel gün tebriğini silmek istediğinizden emin misiniz?")) {
-        footerAnaVeri.ozelGunler.splice(index, 1);
+    if(confirm("Bu özel günü silmek istediğinize emin misiniz?")) {
+        mevcutFooterVerisi.ozelGunler.splice(index, 1);
         footerOzelGunleriListele();
-        footerFormSifirla();
+        bildirimGoster("Özel gün listeden silindi.", "success");
     }
 }
 
@@ -3260,19 +3230,18 @@ function footerFormSifirla() {
     document.getElementById('btn-footer-iptal').style.display = "none";
 }
 
-// Tüm verileri GitHub'a yazma işlemi
 async function footerVerileriniGithubaKaydet() {
-    // Input alanında unutulan bir değişiklik varsa diye son veriyi de eşitleyeliv
-    footerAnaVeri.varsayilanMesaj = document.getElementById('footer-varsayilan-input').value;
-
     const token = localStorage.getItem('gh_oauth_token');
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_FOOTER}`;
 
-    const jsonString = JSON.stringify(footerAnaVeri, null, 2);
+    // Genel metni son input değerinden güncelle
+    mevcutFooterVerisi.varsayilanMesaj = document.getElementById('footer-varsayilan-input').value;
+
+    const jsonString = JSON.stringify(mevcutFooterVerisi, null, 2);
     const base64Content = btoa(encodeURIComponent(jsonString).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
 
     const payload = {
-        message: "Panel: data/footer.json dinamik hale getirildi/güncellendi",
+        message: "Panel: data/footer.json güncellendi",
         content: base64Content,
         sha: shaFooter
     };
@@ -3284,10 +3253,10 @@ async function footerVerileriniGithubaKaydet() {
             body: JSON.stringify(payload)
         });
 
-        if(!response.ok) throw new Error("GitHub footer verilerini kaydedemedi.");
+        if(!response.ok) throw new Error("GitHub'a kaydetme başarısız.");
         const resData = await response.json();
         shaFooter = resData.content.sha;
-        bildirimGoster("Footer şablonu ve özel günleri başarıyla GitHub'a kaydedildi!", "success");
+        bildirimGoster("Tüm footer değişiklikleri GitHub'a başarıyla kaydedildi!", "success");
     } catch (error) {
         bildirimGoster(error.message, "error");
     }
