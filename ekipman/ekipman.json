@@ -1736,5 +1736,16 @@
     "varsayilan": true,
     "agirlik": "0",
     "etiketler": "elektronik"
+  },
+  {
+    "baslik": "Deneme",
+    "kategori": "Yedek Parça",
+    "tarih": "2026-07-24",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "",
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": ""
   }
 ]
