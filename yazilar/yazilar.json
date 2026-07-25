@@ -990,45 +990,5 @@
 	"ozel": "5+, ilk tur,deniz",	
 	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOzZok-ZaWryhHRxf4EhUkdqdOjHBqwVdoo_Ix0_otyPI0SEksCkG7Po2AsxAkPFMdweMVzOJSYEBqJaNsQIgwR_AeAe2rluUd7HEwAlIdN6lyULqI=w1920-h1080",
 	"etiketler": ["ergene, çorlu, süleymanpaşa, tekirdağ, uçmakdere, ŞARKÖY, tekirdağ, çorlu"]
-  },  
-   {
-    "id": "2006-helloween",
-    "baslik": "Helloween Konseri",
-    "url": "yazilar/2006-helloween.html",
-    "tarih": "2006-2-1",
-    "kategori": "Konser",
-	"ozel": "konser,fotoğraf,",		
-	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNff-HskAmHI9k2_Z1QGPW65IOfKHs7Y073vU58cPdmDQmyGm9RWmSrxUzkGgtjCHWV7Vu1r7qG-7XKbdnEIR4w7AjKs62bDznRy5mJfi9_gAGmP4s=w1920-h1080",
-	"etiketler": ["helloween"]
-  },  
-  {
-    "id": "2005-destruction",
-    "baslik": "Candlemass & Destruction Konseri",
-    "url": "yazilar/2005-destruction.html",
-    "tarih": "2005-12-4",
-    "kategori": "Konser",
-	"ozel": "konser,fotoğraf,",		
-	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNXnez0zuZmBvB7KE8BzcmRSRgyBZ3wnO683SiOt6C8kl_e7Fy669qCzgpicgkDi4kXVV4zD10Y7NrAl1NqJ-7VfttbsgUS3s7ZibCsHqYlGp7JQJE=w1920-h1080",
-	"etiketler": ["destruction, candlemass"]
-  },
-  {
-    "id": "2005-kreator",
-    "baslik": "Kreator Konseri",
-    "url": "yazilar/2005-kreator.html",
-    "tarih": "2005-09-30",
-    "kategori": "Konser",
-	"ozel": "konser,fotoğraf,",		
-	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOQW7EZ0vJTRmKkq-MTXsS8ee_rb1wVqQODMdeYAu1E9RQxAXfsLVTna26266OXdwnQKHnSu-G0vrKBKUcIB9KRfDiy6ba36RMGH6AICf8qlmfMKdY=w1920-h1080",
-	"etiketler": ["kreator"]
-  },  
-  {
-    "id": "2005-rockrepublic",
-    "baslik": "Rock Republic Open Air Festival",
-    "url": "yazilar/2005-rockrepublic.html",
-    "tarih": "2005-7-1",
-    "kategori": "Konser, ",
-	"ozel": "organizasyon,kamp,konser",		
-	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPV8AiNLQgw_DpnDxa5-qeTGQzEnJQ4ymRsQ7FGt3pNrbDYchp7dbLW3JSc8RE92q6exwEBU9kCQFxJSfvGVRQal6t51PoFk-MEJ1EXAXfx8wECgQ4=w1920-h1080",
-	"etiketler": ["slayer, doro, overkill, in flames, do die for"]
-  } 
+  }
 ]
