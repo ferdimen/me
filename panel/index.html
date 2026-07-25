@@ -904,7 +904,7 @@
             <div class="form-row">
                 <div class="form-group" style="flex: 2;">
                     <label for="e-kapakresmi-url">Kapak Resmi URL / Yolu:</label>
-                    <input type="text" id="e-kapakresmi-url" placeholder="/img/resim-yok.png veya https://...">
+                    <input type="text" id="e-kapakresmi-url" placeholder="/ekipman/img/resim-yok.png veya https://...">
                 </div>
                 <div class="form-group" style="flex: 1;">
                     <label for="e-resim-file">Cihazdan Resim Yükle:</label>
@@ -3595,11 +3595,11 @@ function ekipmanlariListele(liste) {
         kart.className = 'haber-kart';
         
         // Varsayılan resim kontrolü
-        const kapak = item.kapakresmi || '/img/resim-yok.png';
+        const kapak = item.kapakresmi || '/ekipman/img/resim-yok.png';
 
         kart.innerHTML = `
             <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
-                <img src="${kapak}" onerror="this.src='/img/resim-yok.png'" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px; border: 1px solid #cbd5e1;">
+                <img src="${kapak}" onerror="this.src='/ekipman/img/resim-yok.png'" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px; border: 1px solid #cbd5e1;">
                 <div class="haber-kart-detay">
                     <div class="haber-kart-meta">${item.kategori || 'Genel'} // ${item.tarih || 'Tarihsiz'}</div>
                     <h4 class="haber-kart-baslik">${item.baslik} ${item.varsayilan ? '<span style="color:#16a34a; font-size:11px;">(Varsayılan)</span>' : ''}</h4>
@@ -3810,7 +3810,7 @@ async function ekipmanFormuGonder(event) {
         const katSlug = slugifyMetin(secilenEkipmanKategorileri[0] || 'genel');
         const baslikSlug = slugifyMetin(baslik);
         const dosyaAdi = `${katSlug}-${baslikSlug}.${ekipmanYuklenecekResimUzanti}`;
-        const hedefPath = `/img/ekipman/${yil}/${dosyaAdi}`;
+        const hedefPath = `img/ekipman/${yil}/${dosyaAdi}`;
 
         bildirimGoster("Kapak resmi GitHub'a yükleniyor...", "success");
         const yuklenenYol = await ekipmanResmiGithubaYukle(hedefPath, ekipmanYuklenecekResimBase64);
@@ -3819,9 +3819,9 @@ async function ekipmanFormuGonder(event) {
         }
     }
 
-    // İstediğiniz Mantık: Resim URL'si yoksa veya dosya yüklenmediyse "/img/resim-yok.png" atanır
+    // İstediğiniz Mantık: Resim URL'si yoksa veya dosya yüklenmediyse "/ekipman/img/resim-yok.png" atanır
     if (!kapakResmiUrl) {
-        kapakResmiUrl = "/img/resim-yok.png";
+        kapakResmiUrl = "/ekipman/img/resim-yok.png";
     }
 
     const yeniEkipman = {
