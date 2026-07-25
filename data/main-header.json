@@ -8,7 +8,7 @@
     { "title": "Hakkımda", "href": "/#hakkimda", "isSection": true },
     { "title": "Ferdigram", "href": "gram", "isSection": false, "hideOn": ["gram", "gram.html"] },
     { "title": "Yazılar", "href": "yazilar", "isSection": false, "hideOn": ["yazilar", "yazilar.html"] },
-    { "title": "Haberler", "href": "/#haberler", "isSection": true },
+    { "title": "Haberler", "href": "/#haberler", "otherHref": "index.html/#haberler", "isSection": true },
     { "title": "Harita", "href": "/#harita", "isSection": true },
     { "title": "Videolar", "href": "izle", "otherHref": "izle", "isSection": false, "hideOn": ["izle", "izle.html"] },
     { "title": "Kronoloji", "href": "/#kronoloji", "isSection": true },
