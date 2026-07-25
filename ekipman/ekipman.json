@@ -6,7 +6,7 @@
     "kapakresmi": "/img/resim-yok.png",
     "aciklama": "",
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "110",
     "etiketler": "aydınlatma, çakar, arka çakar, ışık"
   },
