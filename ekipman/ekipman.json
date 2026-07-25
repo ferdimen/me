@@ -1,16 +1,5 @@
 [
   {
-    "baslik": "Resim yüklme",
-    "kategori": "Diğer",
-    "tarih": "2026-07-24",
-    "kapakresmi": "img/ekipman/2026/diger-resim-yuklme.jpg",
-    "aciklama": "",
-    "yorum": "",
-    "varsayilan": false,
-    "agirlik": "0",
-    "etiketler": ""
-  },
-  {
     "baslik": "resim yükleme denemesi",
     "kategori": "Diğer",
     "tarih": "2000-01",
