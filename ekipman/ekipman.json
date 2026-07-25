@@ -1,5 +1,16 @@
 [
   {
+    "baslik": "deneme",
+    "kategori": "",
+    "tarih": "2000-01",
+    "kapakresmi": "img/2000/genel-deneme.jpg",
+    "aciklama": "",
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": ""
+  },
+  {
     "baslik": "Arka Işık",
     "kategori": "Aydınlatma",
     "tarih": "2022-04-20",
