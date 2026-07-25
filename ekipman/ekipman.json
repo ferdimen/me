@@ -1,16 +1,5 @@
 [
   {
-    "baslik": "test",
-    "kategori": "",
-    "tarih": "2000-01",
-    "kapakresmi": "ekipman/img/2000/genel-test.jpg",
-    "aciklama": "",
-    "yorum": "",
-    "varsayilan": false,
-    "agirlik": "0",
-    "etiketler": ""
-  },
-  {
     "baslik": "sjcam sj4000",
     "kategori": "",
     "tarih": "2016-09-25",
