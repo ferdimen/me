@@ -54,16 +54,15 @@
   {
     "id": "2026/2026-07-26-01-27",
     "baslik": "Ildır",
-    "aciklama": "Az bilinen antik kentler turu",
     "url": "gram.html",
-    "tarih": "2026-07-26",
+    "tarih": "2016-04-21",
     "kategori": "Anlık",
-    "ozel": "fotoğraf, anlık",
-    "konum": "38.382295, 26.480581",
+    "ozel": "fotoğraf, anlık, yılın fotoğrafı",
     "kapakresmi": "/img/posts/2026/2026-07-26-01-27.jpg",
     "etiketler": [
-      "fotoğraf,anlık,ferdimen"
-    ]
+      "fotoğraf,anlık,ferdimen,yılın fotoğrafı,"
+    ],
+    "konum": "38.382295, 26.480581"
   },
   {
     "id": "2026/2026-07-22-18-44",
