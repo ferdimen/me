@@ -2,7 +2,7 @@
   {
     "id": "2026/2026-07-26-01-35",
     "baslik": "Enez turunda...",
-        "aciklama": "yılın fotoğrafı: 2011",
+    "aciklama": "yılın fotoğrafı: 2011",
     "url": "gram.html",
     "tarih": "2011-09-01",
     "kategori": "Anlık",
@@ -16,7 +16,7 @@
   {
     "id": "2026/2026-07-26-01-33",
     "baslik": "Ata yolu turundan...",
-        "aciklama": "yılın fotoğrafı: 2019",
+    "aciklama": "yılın fotoğrafı: 2019",
     "url": "gram.html",
     "tarih": "2019-06-12",
     "kategori": "Anlık",
@@ -30,7 +30,7 @@
   {
     "id": "2026/2026-07-26-01-31",
     "baslik": "Frig vadisi turundan...",
-    "aciklama": "yılın fotoğrafı: 2014",    
+    "aciklama": "yılın fotoğrafı: 2014",
     "url": "gram.html",
     "tarih": "2014-10-06",
     "kategori": "Anlık",
@@ -44,7 +44,7 @@
   {
     "id": "2026/2026-07-26-01-28",
     "baslik": "Trakya turundan...",
-    "aciklama": "yılın fotoğrafı: 2017",    
+    "aciklama": "yılın fotoğrafı: 2017",
     "url": "gram.html",
     "tarih": "2017-07-11",
     "kategori": "Anlık",
@@ -58,7 +58,7 @@
   {
     "id": "2026/2026-07-26-01-27",
     "baslik": "Ildır",
-    "aciklama": "yılın fotoğrafı: 2016",    
+    "aciklama": "yılın fotoğrafı: 2016",
     "url": "gram.html",
     "tarih": "2016-04-21",
     "kategori": "Anlık",
@@ -86,7 +86,7 @@
   {
     "id": "2026/2026-07-22-18-43",
     "baslik": "Alanya",
-    "aciklama": "yılın fotoğrafı: 2015",    
+    "aciklama": "yılın fotoğrafı: 2015",
     "url": "gram.html",
     "tarih": "2015-07-06",
     "kategori": "Anlık",
@@ -100,7 +100,6 @@
   {
     "id": "2026/2026-07-22-18-42",
     "baslik": "Yol arkadaşım Turan",
-    "aciklama": "yılın fotoğrafı: 2013",    
     "aciklama": "2013 Türkiye Turundan bir kare",
     "url": "gram.html",
     "tarih": "2013-09-09",
@@ -436,12 +435,13 @@
     "baslik": "Ormanın Kalbine Yolculuk",
     "url": "yazilar/2019-ormanin-kalbi.html",
     "tarih": "2019-11-12",
-    "kategori": "Günübirlik Tur",
-    "ozel": "2,doğa, keşif",
+    "kategori": "Günlük Geziler",
+    "ozel": "2, doğa, keşif",
     "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOMb9-D86O_a2ejisjajV-i5cLFkC8nRUoizdq381xClqSo2mLDcFf72Y--gM2cU6ORMqzZvhml6becVhXMD8ojGp80Xc7ICeDR7H3TJfEGmMiFRiw=w1920-h1080",
     "etiketler": [
-      "KIRKLARELİ, VİZE, kömürköy, çifte şelaleler"
-    ]
+      "KIRKLARELİ,VİZE,kömürköy,çifte şelaleler,"
+    ],
+    "konum": ""
   },
   {
     "id": "2019-bartin-bf",
