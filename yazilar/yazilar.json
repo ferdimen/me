@@ -539,18 +539,56 @@
       "adana, MERSİN, silifke, kıbrıs, kuzey kıbrıs türk cumhuriyeti, girne, güzelyurt, lefke, güzelyurt, lefkoşa, gazimağusa, iskele, dikkarpaz, girne, silifke"
     ]
   },
+     {
+    "id": "2018-11-14-edirne",
+    "baslik": "Edirne Kültür Show",
+    "url": "yazilar/2018-11-14-edirne.html",
+    "tarih": "2018-11-14, 2018-11-16",
+    "kategori": "Günlük Geziler > [kültür gezisi,Gözde]",
+	"ozel": "2, yürüyüş,kültür,tarih",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczPuTopvbRIXxK-jBP4aOel_yNsqB3BsMdVVhc2yivQyNlo7XhJSnWnu4lue9vtW6nG4BuFLKozeMjW0lIm2cWkoJKacUQbmfndXyMennIDCq8BWSoY=w1920-h1080",
+	"etiketler": ["edirne,"]
+  }, 
+    {
+    "id": "2018-10-28-yanikagil",
+    "baslik": "Karaağaç - Yanıkağıl Bisiklet Turu",
+    "url": "yazilar/2018-10-28-yanikagil.html",
+    "tarih": "2018-10-28",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "3, doğa, bisiklet",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMxIQsN7_jU4bu3rJDI-SXffFyDFX5te76P6sCbimUzqPXdQgqelfvgZHMXrUe6pYHAuOFDSIH-7ay1NTRo5iTvNc_LQpkCuRPC3jlYqoMCr9hRGwk=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,önerler,veliköy,karaağaç,yanıkağıl,velimeşe,yulaflı,çorlu"]
+  },
   {
     "id": "2018-abant-safranbolu",
     "baslik": "Batı Karadeniz Bisiklet Turu",
     "url": "yazilar/2018-abant-safranbolu.html",
     "tarih": "2018-10-15, 2018-10-20",
     "kategori": "Bisiklet Turları > [marmara, karadeniz (batı)]",
-    "ozel": "2, doğa, keşif, kültür",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOlvp2mo50KfF4hIo-u-rTbxfAQFS5vgritmBbgTuBjvzB1UPYYtDhOqUIvvPW449V-u5WBy8d2VU1uaTVicYwseAHUr9XI9faNE2fGKLapN1lyamQ=w1920-h1080",
-    "etiketler": [
-      "sakarya, erenler, akyazı, MUDURNU, bolu, yeniçağa, gerede, ESKİPAZAR, karabük, safranbolu, yenice, GÖKÇEBEY, DEVREK"
-    ]
+	"ozel": "2, doğa, keşif, kültür",
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOlvp2mo50KfF4hIo-u-rTbxfAQFS5vgritmBbgTuBjvzB1UPYYtDhOqUIvvPW449V-u5WBy8d2VU1uaTVicYwseAHUr9XI9faNE2fGKLapN1lyamQ=w1920-h1080",
+	"etiketler": ["sakarya, erenler, akyazı, MUDURNU, bolu, yeniçağa, gerede, ESKİPAZAR, karabük, safranbolu, yenice, GÖKÇEBEY, DEVREK"]
+  },  
+  {
+    "id": "2018-10-07-cesmeli",
+    "baslik": "Çeşmeli Türkgücü Bisiklet Turu",
+    "url": "yazilar/2018-10-07-cesmeli.html",
+    "tarih": "2018-10-07",
+    "kategori": "Günlük Geziler > [grup,Gözde,bisiklet,]",
+	"ozel": "5, bisiklet, lezzet, doğa",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMoR9Ie3byuuR0ahCudQhPbnaeIOfdi9FwbSeuCax4lXl1LeJVQi3koTBF_QnfXMaaVLojhekSWsdPcVdaekUawTJ9hBjNe4wIMitIJ2U-ucbRqiGo=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,şahpaz,türkmenli,çeşmeli,türkgücü,havuzlar,"]
   },
+  {
+    "id": "2018-09-23-tekirdag-skbt",
+    "baslik": "Tekirdag Süslü Kadınlar Bisiklet Turu",
+    "url": "yazilar/2018-09-23-tekirdag-skbt.html",
+    "tarih": "2018-09-23",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, bisiklet, organizasyon",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczNlyE9VrJ6TmlqclNgVp4Cp-EHZAvpq8xV3BOQQ-SMGcZF-5rjl5H-eVLL9WsNBVNaB34DSYM6k1czZFbrA111oanoChr_MrgUQ5YU3oFgnFFMehCk=w1920-h1080",
+	"etiketler": ["tekirdağ,"]
+  }, 
   {
     "id": "2018-09-06-yym",
     "baslik": "Yüz Yıllık Macera Bisiklet Festivali",
