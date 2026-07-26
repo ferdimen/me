@@ -14,6 +14,82 @@
         .contact-section { padding-top: 5px !important; padding-bottom: 20px !important; margin-top: 0 !important; }
         .post-body-content { max-width: 1000px; margin: 0 auto; padding: 0 20px; font-size: 1.15rem; line-height: 1.8; color: #333333; }
         
+        /* Global Arama Bölümü Stilleri */
+        .global-search-wrapper {
+            position: relative;
+            max-width: 680px;
+            margin: 0 auto 25px auto;
+        }
+        .global-search-input {
+            width: 100%;
+            padding: 12px 18px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #0f0f0f;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .global-search-input:focus {
+            border-color: #2c3e50;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .global-search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            max-height: 380px;
+            overflow-y: auto;
+            z-index: 1100;
+            display: none;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        .global-search-item {
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #0f0f0f;
+            border-bottom: 1px solid #f2f2f2;
+            transition: background-color 0.2s ease;
+        }
+        .global-search-item:last-child {
+            border-bottom: none;
+        }
+        .global-search-item:hover {
+            background-color: #f8f9fa;
+        }
+        .global-search-thumb {
+            width: 72px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 4px;
+            background-color: #000;
+            flex-shrink: 0;
+        }
+        .global-search-info h4 {
+            font-size: 0.9rem;
+            margin: 0 0 3px 0;
+            color: #0f0f0f;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .global-search-info span {
+            font-size: 0.78rem;
+            color: #606060;
+        }
+
         /* Carousel / Slider Tasarımı ve Üst Boşluğu */
         .carousel-wrapper { position: relative; width: 100%; margin: 5px auto 20px auto; display: flex; align-items: center; }
         .carousel-track-container { width: 100%; overflow: hidden; padding: 5px 0; }
@@ -176,12 +252,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.js"></script>   
 
 <header class="main-header"></header>
+
 <!-- Yine aynı şekilde / ile çağırılır, göreceli yol (../) derdi biter -->
 <script src="data/header-loader.js"></script>
 
     <section class="contact-section" id="yazi">
         <div class="post-body-content">
             
+            <!-- Global AJAX Destekli Arama Bölümü (Ana liste sayfasında liste içi filtreleme, diğer sayfalarda açılır dropdown) -->
+            <div class="global-search-wrapper">
+                <input type="text" id="globalSearchInput" class="global-search-input" placeholder="Tüm videolar arasında arama yap..." autocomplete="off">
+                <div id="globalSearchResults" class="global-search-dropdown"></div>
+            </div>
+
             <!-- MOD 1: TEKİL VİDEO İZLEME ALANI -->
             <div id="izleme-modu" style="display: none;">
                 <h1 id="video-title" class="post-title">Yükleniyor...</h1>
@@ -449,15 +532,103 @@
                         return;
                     }
 
-const aktifVideolar = data
-    .filter(v => !v.date || v.date <= bugun)
-    // En alttaki (en eski) video 1 ID'sini alacak şekilde tersten index atıyoruz
-    .map((v, idx, arr) => ({ ...v, orijinalIndex: arr.length - idx }));
+                    const aktifVideolar = data
+                        .filter(v => !v.date || v.date <= bugun)
+                        .map((v, idx, arr) => ({ ...v, orijinalIndex: arr.length - idx }));
 
                     if (aktifVideolar.length === 0) {
                         gridArea.innerHTML = `<p class="no-videos">Yayınlanmış video bulunmuyor.</p>`;
                         return;
                     }
+
+                    // --- ARAMA SİSTEMİ (Sayfa türüne göre dinamik davranış) ---
+                    const searchInput = document.getElementById('globalSearchInput');
+                    const searchDropdown = document.getElementById('globalSearchResults');
+
+                    // Sadece temiz `izle.html` sayfasında mıyız kontrolü (?v=, ?playlist=, ?harita yoksa)
+                    const isPureIndexPage = (videoParam === null && playlistParam === null && !haritaParam);
+
+                    searchInput.addEventListener('input', (e) => {
+                        const query = e.target.value.trim().toLowerCase();
+                        
+                        if (query.length === 0) {
+                            if (isPureIndexPage) {
+                                // Ana sayfadaysak arama temizlenince tekrar normal listeyi ve sayfalamayı yükle
+                                renderVideoList(aktifVideolar, 1, false);
+                                document.getElementById("main-carousel-outer").style.display = "flex";
+                                listHeading.textContent = "Yüklenen Videolar";
+                            } else {
+                                searchDropdown.style.display = 'none';
+                                searchDropdown.innerHTML = '';
+                            }
+                            return;
+                        }
+
+                        const matchedVideos = aktifVideolar.filter(video => 
+                            (video.title && video.title.toLowerCase().includes(query)) || 
+                            (video.description && video.description.toLowerCase().includes(query)) ||
+                            (video.playlist && video.playlist.toLowerCase().includes(query))
+                        );
+
+                        if (isPureIndexPage) {
+                            // Ana sayfadaysak sonuçları doğrudan ana grid alanında (videoların listelendiği bölümde) göster
+                            document.getElementById("main-carousel-outer").style.display = "none";
+                            listHeading.textContent = `Arama Sonuçları ("${e.target.value.trim()}")`;
+                            paginationTarget.innerHTML = "";
+                            
+                            if (matchedVideos.length === 0) {
+                                gridArea.innerHTML = '<p class="no-videos">Arama kriterine uygun video bulunamadı.</p>';
+                                return;
+                            }
+
+                            let htmlContent = "";
+                            matchedVideos.forEach(video => {
+                                const videoId = getYoutubeId(video.url);
+                                let yayınTarihi = video.date ? video.date.split('-').reverse().join('.') : '';
+                                htmlContent += `
+                                    <a href="?v=${video.orijinalIndex}" class="yt-video-card">
+                                        <div class="yt-thumbnail-wrapper">
+                                            <img src="https://img.youtube.com/vi/${videoId}/mqdefault.jpg" alt="${video.title}" loading="lazy">
+                                            <span class="yt-duration">${video.duration}</span>
+                                        </div>
+                                        <div class="yt-meta-info">
+                                            <h3 class="yt-video-title">${video.title}</h3>
+                                            <p class="yt-video-details">${yayınTarihi}</p>
+                                        </div>
+                                    </a>`;
+                            });
+                            gridArea.innerHTML = htmlContent;
+                        } else {
+                            // Diğer sayfalarda (?v=, ?playlist=, vb.) arama kutusunun altında açılır menü (dropdown) olarak göster
+                            if (matchedVideos.length === 0) {
+                                searchDropdown.innerHTML = '<div class="global-search-item"><span>Sonuç bulunamadı</span></div>';
+                                searchDropdown.style.display = 'block';
+                                return;
+                            }
+
+                            searchDropdown.innerHTML = matchedVideos.map(video => {
+                                const vId = getYoutubeId(video.url);
+                                return `
+                                    <a href="?v=${video.orijinalIndex}" class="global-search-item">
+                                        <img src="https://img.youtube.com/vi/${vId}/mqdefault.jpg" class="global-search-thumb" alt="">
+                                        <div class="global-search-info">
+                                            <h4>${video.title}</h4>
+                                            <span>${video.playlist ? video.playlist.replace(/-/g, ' ').toUpperCase() : 'Arşiv'} • ${video.duration}</span>
+                                        </div>
+                                    </a>
+                                `;
+                            }).join('');
+
+                            searchDropdown.style.display = 'block';
+                        }
+                    });
+
+                    // Sayfa içinde herhangi bir yere tıklandığında dropdown'ı kapat (Sadece dropdown kullanılan sayfalarda)
+                    document.addEventListener('click', (e) => {
+                        if (!e.target.closest('.global-search-wrapper')) {
+                            searchDropdown.style.display = 'none';
+                        }
+                    });
 
                     // --- GENEL HARİTA MODU KONTROLÜ (?harita) ---
                     if (haritaParam) {
@@ -612,16 +783,14 @@ const aktifVideolar = data
                             pArea.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" allowfullscreen allow="autoplay"></iframe>`;
                         });
 
-                        // --- SAĞ-SOL GEÇİŞ OKLARI ARTIK PLAYLIST İLE SINIRLI DEĞİL (GENEL AKIŞTA ÇALIŞIR) ---
+                        // --- SAĞ-SOL GEÇİŞ OKLARI ---
                         const prevBtn = document.getElementById("video-prev-link");
                         const nextBtn = document.getElementById("video-next-link");
 
-                        // Geçiş havuzu her zaman genel aktif videolar listesidir
                         const gecisHavuzu = aktifVideolar;
                         const havuzdakiIndex = gecisHavuzu.findIndex(v => v.orijinalIndex === targetIdx);
 
                         if (havuzdakiIndex !== -1) {
-                            // Bir önceki video kontrolü
                             if (havuzdakiIndex > 0) {
                                 const prevVideo = gecisHavuzu[havuzdakiIndex - 1];
                                 prevBtn.href = `?v=${prevVideo.orijinalIndex}`;
@@ -631,7 +800,6 @@ const aktifVideolar = data
                                 prevBtn.style.display = "none";
                             }
 
-                            // Bir sonraki video kontrolü
                             if (havuzdakiIndex < gecisHavuzu.length - 1) {
                                 const nextVideo = gecisHavuzu[havuzdakiIndex + 1];
                                 nextBtn.href = `?v=${nextVideo.orijinalIndex}`;
@@ -728,38 +896,47 @@ const aktifVideolar = data
                         playlistUpperNav.style.display = "none";
                     }
 
-                    if (gosterilecekVideolar.length === 0) {
-                        gridArea.innerHTML = `<p class="no-videos">Bu listede henüz video bulunmuyor.</p>`;
-                        return;
+                    function renderVideoList(videolarListesi, targetPage, isFiltered = false) {
+                        if (videolarListesi.length === 0) {
+                            gridArea.innerHTML = `<p class="no-videos">Bu listede henüz video bulunmuyor.</p>`;
+                            paginationTarget.innerHTML = "";
+                            return;
+                        }
+
+                        gridArea.innerHTML = "";
+                        const toplamVideo = videolarListesi.length;
+                        const toplamSayfa = Math.ceil(toplamVideo / V_LIMIT);
+                        const baslangic = (targetPage - 1) * V_LIMIT;
+                        const bitis = baslangic + V_LIMIT;
+                        const sayfaDilimi = videolarListesi.slice(baslangic, bitis);
+
+                        let htmlContent = "";
+                        sayfaDilimi.forEach(video => {
+                            const videoId = getYoutubeId(video.url);
+                            let yayınTarihi = video.date ? video.date.split('-').reverse().join('.') : '';
+
+                            htmlContent += `
+                                <a href="?v=${video.orijinalIndex}" class="yt-video-card">
+                                    <div class="yt-thumbnail-wrapper">
+                                        <img src="https://img.youtube.com/vi/${videoId}/mqdefault.jpg" alt="${video.title}" loading="lazy">
+                                        <span class="yt-duration">${video.duration}</span>
+                                    </div>
+                                    <div class="yt-meta-info">
+                                        <h3 class="yt-video-title">${video.title}</h3>
+                                        <p class="yt-video-details">${yayınTarihi}</p>
+                                    </div>
+                                </a>`;
+                        });
+                        gridArea.innerHTML = htmlContent;
+
+                        if (!isFiltered) {
+                            buildSmartPagination(targetPage, toplamSayfa, playlistParam);
+                        } else {
+                            paginationTarget.innerHTML = "";
+                        }
                     }
 
-                    gridArea.innerHTML = "";
-                    const toplamVideo = gosterilecekVideolar.length;
-                    const toplamSayfa = Math.ceil(toplamVideo / V_LIMIT);
-                    const baslangic = (pageParam - 1) * V_LIMIT;
-                    const bitis = baslangic + V_LIMIT;
-                    const sayfaDilimi = gosterilecekVideolar.slice(baslangic, bitis);
-
-                    let htmlContent = "";
-                    sayfaDilimi.forEach(video => {
-                        const videoId = getYoutubeId(video.url);
-                        let yayınTarihi = video.date ? video.date.split('-').reverse().join('.') : '';
-
-                        htmlContent += `
-                            <a href="?v=${video.orijinalIndex}" class="yt-video-card">
-                                <div class="yt-thumbnail-wrapper">
-                                    <img src="https://img.youtube.com/vi/${videoId}/mqdefault.jpg" alt="${video.title}" loading="lazy">
-                                    <span class="yt-duration">${video.duration}</span>
-                                </div>
-                                <div class="yt-meta-info">
-                                    <h3 class="yt-video-title">${video.title}</h3>
-                                    <p class="yt-video-details">${yayınTarihi}</p>
-                                </div>
-                            </a>`;
-                    });
-                    gridArea.innerHTML = htmlContent;
-
-                    buildSmartPagination(pageParam, toplamSayfa, playlistParam);
+                    renderVideoList(gosterilecekVideolar, pageParam, false);
                 })
                 .catch(err => {
                     console.error(err);
