@@ -50,7 +50,8 @@
     "yorum": "Göktay; 2020 yılından itibaren tüm turlarımı yaptığım bisikletim.",
     "varsayilan": true,
     "agirlik": "0",
-    "etiketler": "bisiklet, cube, atention 27.5"
+    "etiketler": "bisiklet, cube, atention 27.5",
+	"bagli_urunler": [111, 155, 48,51,54,60,55,154,84,50,59,157]
   },
   {
     "baslik": "Whistle Padwin Bisiklet",
