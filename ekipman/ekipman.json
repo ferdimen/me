@@ -1904,7 +1904,7 @@
     "baslik": "Test",
     "kategori": "Yedek Parça, Diğer",
     "tarih": "2014-05",
-    "kapakresmi": "img/ekipman/2014/yedek-parca-test.jpg",
+    "kapakresmi": "/img/ekipman/2014/yedek-parca-test.jpg",
     "aciklama": "deneme",
     "yorum": "deneme",
     "varsayilan": false,
