@@ -4006,8 +4006,8 @@ async function ekipmanSil(index) {
     const silinecekItem = mevcutEkipmanDizisi[index];
 
     try {
-        // Eğer kapak resmi /img/ekipman/ altındaysa resmi de repository'den sil
-        if (silinecekItem.kapakresmi && silinecekItem.kapakresmi.startsWith('/img/ekipman/')) {
+        // Eğer kapak resmi img/ekipman/ altındaysa resmi de repository'den sil
+        if (silinecekItem.kapakresmi && silinecekItem.kapakresmi.startsWith('img/ekipman/')) {
             const resYolu = silinecekItem.kapakresmi.substring(1); // Baştaki slash'ı kaldır
             const resShaUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${resYolu}`;
             
