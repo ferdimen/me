@@ -3568,8 +3568,8 @@ function ekipmanlariListele(liste) {
         return;
     }
 
-    liste.forEach((item, index) => {
-        // Gerçek index'i bulmak için (arama yapıldığında orijinal dizideki yeri bulabilmek adına)
+    liste.forEach((item) => {
+        // Arama yapılsa bile ana dizideki *gerçek ve güncel* index'i her seferinde yeniden buluyoruz:
         const orijinalIndex = mevcutEkipmanDizisi.indexOf(item);
         
         const kart = document.createElement('div');
