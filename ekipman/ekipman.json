@@ -1335,9 +1335,12 @@
   {
     "baslik": "Orta ayaklık",
     "kategori": "Yedek Parça",
-    "tarih": "2011, 2019",
+    "tarih": "2013-10-27",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/ec87899d-677d-40ae-a555-a8ad39ababcc.jpg",
     "aciklama": "Bisikleti her zaman dayayacak yer bulunmadığında mükemmel çözüm.",
+    "bagli_urunler": [
+      3
+    ],
     "yorum": "Tur bisikletimde takılı olduğundan uzun zamandır kullanmıyorum. emekli sayılır.",
     "varsayilan": false,
     "agirlik": "0",
