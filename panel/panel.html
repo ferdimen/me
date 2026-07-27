@@ -3791,7 +3791,7 @@ async function ekipmanFormuGonder(event) {
 
     const formIndex = parseInt(document.getElementById('e-index').value);
     if (formIndex === -1) {
-        mevcutEkipmanDizisi.unshift(ekipmanObjesi);
+        mevcutEkipmanDizisi.push(ekipmanObjesi); // // .unshift() en üst yerine .push() son için kullanıldı verinin nereye yazılacağı
     } else {
         mevcutEkipmanDizisi[formIndex] = ekipmanObjesi;
     }
