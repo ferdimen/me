@@ -1899,19 +1899,5 @@
     "varsayilan": false,
     "agirlik": "2500",
     "etiketler": ""
-  },
-  {
-    "baslik": "Test",
-    "kategori": "Yedek Parça, Bisiklet, Bisiklet Parçaları",
-    "tarih": "2000-01",
-    "kapakresmi": "/img/resim-yok.png",
-    "aciklama": "",
-    "bagli_urunler": [
-      9
-    ],
-    "yorum": "",
-    "varsayilan": false,
-    "agirlik": "0",
-    "etiketler": "bisiklet, borla, cube, Bianchi"
   }
 ]
