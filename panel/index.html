@@ -3792,21 +3792,21 @@ function ekipmanBagliUrunOnerisi(deger) {
         onerilerDiv.style.display = 'none';
         return;
     }
-    const filtrelenmis = mevcutEkipmanDizisi.filter((item, idx) => {
+    
+    let html = "";
+    // Diziyi doğrudan dönerek gerçek index'leri (idx) yakalıyoruz
+    mevcutEkipmanDizisi.forEach((item, idx) => {
         const baslik = (item.baslik || "").toLowerCase();
-        return baslik.includes(arama) && !secilenEkipmanBagliUrunler.includes(idx);
+        if (baslik.includes(arama) && !secilenEkipmanBagliUrunler.includes(idx)) {
+            html += `<div style="padding: 8px 12px; cursor: pointer; border-bottom: 1px solid #f1f5f9;" onclick="ekipmanBagliUrunEkle(${idx})">${item.baslik} (ID: ${idx})</div>`;
+        }
     });
     
-    if (filtrelenmis.length === 0) {
+    if (!html) {
         onerilerDiv.style.display = 'none';
         return;
     }
     
-    let html = "";
-    filtrelenmis.forEach(item => {
-        const orijinalIndex = mevcutEkipmanDizisi.indexOf(item);
-        html += `<div style="padding: 8px 12px; cursor: pointer; border-bottom: 1px solid #f1f5f9;" onclick="ekipmanBagliUrunEkle(${orijinalIndex})">${item.baslik} (ID: ${orijinalIndex})</div>`;
-    });
     onerilerDiv.innerHTML = html;
     onerilerDiv.style.display = 'block';
 }
