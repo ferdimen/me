@@ -51,7 +51,20 @@
     "varsayilan": true,
     "agirlik": "0",
     "etiketler": "bisiklet, cube, atention 27.5",
-	"bagli_urunler": [111, 155, 48,51,54,60,55,154,84,50,59,157]
+    "bagli_urunler": [
+      111,
+      155,
+      48,
+      51,
+      54,
+      60,
+      55,
+      154,
+      84,
+      50,
+      59,
+      157
+    ]
   },
   {
     "baslik": "Whistle Padwin Bisiklet",
@@ -1630,6 +1643,9 @@
     "tarih": "2022-03, 2026-02",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/283cbba4-eda6-4af3-87fe-146669d568af.jpg",
     "aciklama": "2022 mart ayında aldım. şimdiden gopronun pabucunu dama attı diyebilirim",
+    "bagli_urunler": [
+      142
+    ],
     "yorum": "Üstüne kedi işedi :(",
     "varsayilan": false,
     "agirlik": "0",
