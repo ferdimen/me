@@ -925,15 +925,7 @@
                 <label for="e-yorum">Kişisel Yorum:</label>
                 <textarea id="e-yorum" rows="2" placeholder="Kullanım deneyimi veya kişisel yorumlar..."></textarea>
             </div>
-<!-- YENİ EKLENECEK: BAĞLI ÜRÜNLER (CHIP SİSTEMİ VE AJAX ARAMA) -->
-            <div class="form-group" style="position: relative;">
-                <label>Bağlı Ürünler (Arayıp Seçin):</label>
-                <div id="e-bagli-urun-kutusu" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; min-height: 38px; align-items: center;">
-                    <input type="text" id="e-bagli-urun-input" placeholder="Ürün başlığı yazıp arayın..." style="border: none; outline: none; padding: 4px; flex: 1; min-width: 120px;" oninput="ekipmanBagliUrunOnerisi(this.value)" autocomplete="off">
-                </div>
-                <div id="e-bagli-urun-onerileri" style="display: none; position: absolute; left: 0; right: 0; top: 100%; background: white; border: 1px solid #cbd5e1; border-top: none; z-index: 120; max-height: 120px; overflow-y: auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"></div>
-            </div>
-			
+
             <div style="display: flex; gap: 10px;">
                 <button type="submit" id="btn-ekipman-kaydet" class="btn" style="background: #2563eb; flex: 2;">Ekipman Listesine Ekle</button>
                 <button type="button" id="btn-ekipman-iptal" onclick="ekipmanFormuSifirla()" class="btn" style="background: #64748b; flex: 1; display: none;">İptal Et</button>
@@ -1056,7 +1048,6 @@ let secilenEkipmanKategorileri = [];
 let secilenEkipmanEtiketleri = [];
 let setEkipmanKategoriler = new Set();
 let setEkipmanEtiketler = new Set();
-let secilenBagliUrunlerIds = []; // Seçilen ürünlerin ID'lerini tutar
 
 // Cihazdan yüklenecek geçici resim verisi
 let ekipmanYuklenecekResimBase64 = null;
@@ -3643,81 +3634,6 @@ function ekipmanAramaYap(sorgu) {
     ekipmanlariListele(filtrelenmis);
 }
 
-function ekipmanBagliUrunOnerisi(aranan) {
-    const onerilerDiv = document.getElementById('e-bagli-urun-onerileri');
-    const arananKucuk = aranan.toLowerCase().trim();
-    
-    if (!arananKucuk) {
-        onerilerDiv.style.display = 'none';
-        onerilerDiv.innerHTML = '';
-        return;
-    }
-
-    // Mevcut ekipmanlar içinde başlığa göre filtrele (Zaten ekli olanları ve şu an düzenleneni hariç tutabiliriz)
-    const filtrelenmis = mevcutEkipmanDizisi.filter(item => {
-        const itemId = item.id !== undefined ? item.id : mevcutEkipmanDizisi.indexOf(item);
-        // Zaten seçilmişse tekrar önerme
-        if (secilenBagliUrunlerIds.includes(itemId)) return false;
-        return item.baslik && item.baslik.toLowerCase().includes(arananKucuk);
-    });
-
-    if (filtrelenmis.length === 0) {
-        onerilerDiv.style.display = 'none';
-        onerilerDiv.innerHTML = '';
-        return;
-    }
-
-    let html = '';
-    filtrelenmis.forEach(item => {
-        const itemId = item.id !== undefined ? item.id : mevcutEkipmanDizisi.indexOf(item);
-        // Güvenli escape
-        const baslikGuvenli = item.baslik.replace(/'/g, "\\'");
-        html += `<div onclick="ekipmanBagliUrunSec(${itemId}, '${baslikGuvenli}')" style="padding: 8px 12px; cursor: pointer; border-bottom: 1px solid #f1f5f9; font-size: 13px;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='white'">${item.baslik} <span style="color:#94a3b8; font-size:11px;">(ID: ${itemId})</span></div>`;
-    });
-
-    onerilerDiv.innerHTML = html;
-    onerilerDiv.style.display = 'block';
-}
-function ekipmanBagliUrunSec(id, baslik) {
-    if (!secilenBagliUrunlerIds.includes(id)) {
-        secilenBagliUrunlerIds.push(id);
-    }
-    document.getElementById('e-bagli-urun-input').value = '';
-    document.getElementById('e-bagli-urun-onerileri').style.display = 'none';
-    ekipmanBagliUrunArayuzunuCiz();
-}
-
-function ekipmanBagliUrunSil(id) {
-    secilenBagliUrunlerIds = secilenBagliUrunlerIds.filter(itemid => itemid !== id);
-    ekipmanBagliUrunArayuzunuCiz();
-}
-
-function ekipmanBagliUrunArayuzunuCiz() {
-    const kutu = document.getElementById('e-bagli-urun-kutusu');
-    const input = document.getElementById('e-bagli-urun-input');
-    
-    // Eskiçipleri temizle (input hariç)
-    kutu.querySelectorAll('.bagli-urun-chip').forEach(el => el.remove());
-
-    secilenBagliUrunlerIds.forEach(id => {
-        // İlgili ID'ye ait ekipman başlığını bulalım
-        const bulunanEkipman = mevcutEkipmanDizisi.find(item => {
-            const itemId = item.id !== undefined ? item.id : mevcutEkipmanDizisi.indexOf(item);
-            return itemId === id;
-        });
-        
-        const baslikGosterim = bulunanEkipman ? bulunanEkipman.baslik : `ID: ${id}`;
-
-        const chip = document.createElement('div');
-        chip.className = 'bagli-urun-chip';
-        chip.style.cssText = 'display: inline-flex; align-items: center; background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 4px; font-size: 13px; font-weight: 500; gap: 6px;';
-        chip.innerHTML = `
-            <span>${baslikGosterim}</span>
-            <span onclick="ekipmanBagliUrunSil(${id})" style="cursor: pointer; font-weight: bold; color: #0284c7; font-size: 14px;" title="Kaldır">×</span>
-        `;
-        kutu.insertBefore(chip, input);
-    });
-}
 // 4. Kategori ve Etiket Chip Yönetimi
 function ekipmanKategoriArayuzuCiz() {
     const kutu = document.getElementById('e-kategori-kutusu');
@@ -3918,7 +3834,6 @@ async function ekipmanFormuGonder(event) {
         "varsayilan": document.getElementById('e-varsayilan').value === "true",
         "agirlik": document.getElementById('e-agirlik').value || "0",
         "etiketler": etiketlerStr
-		"bagli_urunler": [...secilenBagliUrunlerIds]
     };
 
     const formIndex = parseInt(document.getElementById('e-index').value);
@@ -4005,10 +3920,6 @@ function ekipmanDuzenleTetikle(index) {
         item.kategori.split(',').forEach(k => { if(k.trim()) secilenEkipmanKategorileri.push(k.trim()); });
     }
     ekipmanKategoriArayuzuCiz();
-	
-// Örn: ekipmanDuzenle(index) içinde:
-secilenBagliUrunlerIds = ekp.bagli_urunler ? [...ekp.bagli_urunler] : [];
-ekipmanBagliUrunArayuzunuCiz();
 
     // Etiketleri doldur
     secilenEkipmanEtiketleri = [];
@@ -4075,8 +3986,6 @@ function ekipmanFormuSifirla() {
     document.getElementById('btn-ekipman-iptal').style.display = "none";
     document.getElementById('e-resim-onizleme-kapsayici').style.display = "none";
 
-	secilenBagliUrunlerIds = [];
-	ekipmanBagliUrunArayuzunuCiz();
     secilenEkipmanKategorileri = [];
     secilenEkipmanEtiketleri = [];
     ekipmanYuklenecekResimBase64 = null;
