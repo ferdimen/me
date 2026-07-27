@@ -796,9 +796,13 @@
     "tarih": "2025-05",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/151b7cf2-b757-4b3c-93e8-4bed1aae42a3.jpg",
     "aciklama": "",
+    "bagli_urunler": [
+      62,
+      63
+    ],
     "yorum": "",
     "varsayilan": true,
-    "agirlik": "",
+    "agirlik": "0",
     "etiketler": "elektronik, kamera, kayıt ekipmanı, dji"
   },
   {
