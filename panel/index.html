@@ -3907,18 +3907,18 @@ async function ekipmanFormuGonder(event) {
         kapakResmiUrl = "/img/resim-yok.png";
     }
 
-const yeniEkipman = {
-    baslik: document.getElementById('e-baslik').value,
-    kategori: ..., // mevcut kategori yapınız
-    tarih: ...,    // mevcut tarih yapınız
-    kapakresmi: ...,
-    aciklama: document.getElementById('e-aciklama').value,
-    yorum: document.getElementById('e-yorum').value,
-    varsayilan: ...,
-    agirlik: ...,
-    etiketler: ...,
-    bagli_urunler: [...secilenBagliUrunlerIds] // <-- ID dizisi JSON'a bu şekilde kaydedilir
-};
+    const yeniEkipman = {
+        "baslik": baslik,
+        "kategori": kategoriStr,
+        "tarih": birlesikTarih,
+        "kapakresmi": kapakResmiUrl,
+        "aciklama": document.getElementById('e-aciklama').value,
+        "yorum": document.getElementById('e-yorum').value,
+        "varsayilan": document.getElementById('e-varsayilan').value === "true",
+        "agirlik": document.getElementById('e-agirlik').value || "0",
+        "etiketler": etiketlerStr
+		"bagli_urunler": [secilenBagliUrunlerIds]
+    };
 
     const formIndex = parseInt(document.getElementById('e-index').value);
 
@@ -3998,9 +3998,6 @@ function ekipmanDuzenleTetikle(index) {
         document.getElementById('e-tarih2').value = "";
     }
 
-// Örn: ekipmanDuzenle(index) içinde:
-secilenBagliUrunlerIds = ekp.bagli_urunler ? [...ekp.bagli_urunler] : [];
-ekipmanBagliUrunArayuzunuCiz();
     // Kategorileri doldur
     secilenEkipmanKategorileri = [];
     if (item.kategori) {
@@ -4095,9 +4092,7 @@ async function ekipmanlariGithubaGonder() {
         content: base64Content,
         sha: shaEkipman
     };
-// Örn: ekipmanDuzenle(index) içinde:
-secilenBagliUrunlerIds = ekp.bagli_urunler ? [...ekp.bagli_urunler] : [];
-ekipmanBagliUrunArayuzunuCiz();
+
     try {
         const response = await fetch(url, {
             method: "PUT",
