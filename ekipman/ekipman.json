@@ -1899,19 +1899,5 @@
     "varsayilan": false,
     "agirlik": "2500",
     "etiketler": ""
-  },
-  {
-    "baslik": "Deneme",
-    "kategori": "Diğer",
-    "tarih": "2000-01",
-    "kapakresmi": "/img/ekipman/2000/diğer-deneme.jpg",
-    "aciklama": "",
-    "bagli_urunler": [
-      61
-    ],
-    "yorum": "",
-    "varsayilan": false,
-    "agirlik": "10000",
-    "etiketler": "Hard Clash, sedona, padwin"
   }
 ]
