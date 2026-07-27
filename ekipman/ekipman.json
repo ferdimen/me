@@ -47,10 +47,6 @@
     "tarih": "2014-05",
     "kapakresmi": "https://lh3.googleusercontent.com/sDDAAYIy29YGaW0f406Xaq4Ek4gaUlBPXUt6S4yIBdui55rP9yVdHIxnv6wtVDhDrGuHRKzE_3FlROy9G7k=w352-h220-rw",
     "aciklama": "2014 - Günümüz",
-    "yorum": "Göktay; 2020 yılından itibaren tüm turlarımı yaptığım bisikletim.",
-    "varsayilan": true,
-    "agirlik": "0",
-    "etiketler": "bisiklet, cube, atention 27.5",
     "bagli_urunler": [
       111,
       155,
@@ -64,7 +60,11 @@
       50,
       59,
       157
-    ]
+    ],
+    "yorum": "Göktay; 2020 yılından itibaren tüm turlarımı yaptığım bisikletim.",
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "bisiklet, cube, atention 27.5"
   },
   {
     "baslik": "Whistle Padwin Bisiklet",
