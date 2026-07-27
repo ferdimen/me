@@ -1899,5 +1899,16 @@
     "varsayilan": false,
     "agirlik": "2500",
     "etiketler": ""
+  },
+  {
+    "baslik": "Test",
+    "kategori": "Yedek Parça, Diğer",
+    "tarih": "2014-05",
+    "kapakresmi": "img/ekipman/2014/yedek-parca-test.jpg",
+    "aciklama": "deneme",
+    "yorum": "deneme",
+    "varsayilan": false,
+    "agirlik": "1111",
+    "etiketler": "Decathlon, sedona"
   }
 ]
