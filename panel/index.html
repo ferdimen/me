@@ -842,7 +842,6 @@
     <fieldset style="margin-bottom: 25px; border-color: #2563eb;">
         <legend id="ekipman-form-baslik" style="color: #2563eb; font-weight: bold;">➕ Yeni Ekipman Ekle</legend>
         <form id="form-yeni-ekipman" onsubmit="ekipmanFormuGonder(event)">
-            <!-- Gizli input: Düzenlenen ekipmanın dizideki sırasını tutar -->
             <input type="hidden" id="e-index" value="-1">
             <input type="hidden" id="e-eski-resim-yolu" value="">
 
@@ -860,8 +859,8 @@
             <!-- KATEGORİ SEÇİMİ VE CHIP SİSTEMİ -->
             <div class="form-group" style="position: relative;">
                 <label>Kategori (Arayın veya Yazıp Ekleyin):</label>
-                <div id="e-kategori-kutusu" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; min-height: 38px; align-items: center;">
-                    <input type="text" id="e-kategori-input" placeholder="Kategori yazın..." style="border: none; outline: none; padding: 4px; flex: 1; min-width: 120px;" oninput="ekipmanKategoriOnerisi(this.value)" autocomplete="off">
+                <div id="e-kategori-kutusu" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; min-height: 38px; align-items: center;" onclick="document.getElementById('e-kategori-input').focus()">
+                    <input type="text" id="e-kategori-input" placeholder="Kategori yazın..." style="border: none; outline: none; padding: 4px; flex: 1; min-width: 120px;" oninput="ekipmanKategoriOnerisi(this.value)" onkeydown="ekipmanKategoriTus(event)" autocomplete="off">
                 </div>
                 <div id="e-kategori-onerileri" style="display: none; position: absolute; left: 0; right: 0; top: 100%; background: white; border: 1px solid #cbd5e1; border-top: none; z-index: 120; max-height: 120px; overflow-y: auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"></div>
             </div>
@@ -869,13 +868,13 @@
             <!-- ETİKET SEÇİMİ VE CHIP SİSTEMİ -->
             <div class="form-group" style="position: relative;">
                 <label>Etiketler (Virgül, Enter veya Öneriden Seçin):</label>
-                <div id="e-etiket-kutusu" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; min-height: 38px; align-items: center;">
-                    <input type="text" id="e-etiket-input" placeholder="Etiket yazın..." style="border: none; outline: none; padding: 4px; flex: 1; min-width: 120px;" oninput="ekipmanEtiketOnerisi(this.value)" autocomplete="off">
+                <div id="e-etiket-kutusu" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; min-height: 38px; align-items: center;" onclick="document.getElementById('e-etiket-input').focus()">
+                    <input type="text" id="e-etiket-input" placeholder="Etiket yazın..." style="border: none; outline: none; padding: 4px; flex: 1; min-width: 120px;" oninput="ekipmanEtiketOnerisi(this.value)" onkeydown="ekipmanEtiketTus(event)" autocomplete="off">
                 </div>
                 <div id="e-etiket-onerileri" style="display: none; position: absolute; left: 0; right: 0; top: 100%; background: white; border: 1px solid #cbd5e1; border-top: none; z-index: 120; max-height: 120px; overflow-y: auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"></div>
             </div>
 
-            <!-- TARİH ALANLARI (ELLE YAZIM VE TAKVİM SEÇİCİ BİRLİKTE) -->
+            <!-- TARİH ALANLARI -->
             <div class="form-row">
                 <div class="form-group">
                     <label for="e-tarih1">Başlangıç Tarihi:</label>
@@ -885,7 +884,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="e-tarih2">Bitiş Tarihi:</label>
+                    <label for="e-tarih2">Bitiş Tarihi (Opsiyonel):</label>
                     <div style="display: flex; gap: 6px;">
                         <input type="text" id="e-tarih2" placeholder="Örn: 2017-04" style="flex: 1;">
                         <input type="date" id="e-tarih2-picker" title="Takvimden Tarih Seç" onchange="if(this.value) document.getElementById('e-tarih2').value = this.value" style="width: 42px; padding: 4px; cursor: pointer;">
@@ -924,6 +923,15 @@
             <div class="form-group">
                 <label for="e-yorum">Kişisel Yorum:</label>
                 <textarea id="e-yorum" rows="2" placeholder="Kullanım deneyimi veya kişisel yorumlar..."></textarea>
+            </div>
+
+            <!-- BAĞLI ÜRÜNLER (ID BAZLI CHIP SİSTEMİ) -->
+            <div class="form-group" style="position: relative;">
+                <label>Bağlı Ürünler (Arayıp Seçin):</label>
+                <div id="e-bagli-urun-kutusu" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; min-height: 38px; align-items: center;" onclick="document.getElementById('e-bagli-urun-input').focus()">
+                    <input type="text" id="e-bagli-urun-input" placeholder="Ürün başlığı yazıp arayın..." style="border: none; outline: none; padding: 4px; flex: 1; min-width: 120px;" oninput="ekipmanBagliUrunOnerisi(this.value)" autocomplete="off">
+                </div>
+                <div id="e-bagli-urun-onerileri" style="display: none; position: absolute; left: 0; right: 0; top: 100%; background: white; border: 1px solid #cbd5e1; border-top: none; z-index: 120; max-height: 120px; overflow-y: auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"></div>
             </div>
 
             <div style="display: flex; gap: 10px;">
@@ -1039,19 +1047,19 @@ let anlikSecilenEtiketler = ["fotoğraf", "anlık", "ferdimen"];
 let anlikSecilenRozetler = ["fotoğraf", "anlık"];
 let anlikYuklenenFotoBase64 = null;
 let anlikYuklenenFotoAdi = "";
+
+
 const PATH_EKIPMAN = "ekipman/ekipman.json";
 let shaEkipman = "";
-let mevcutEkipmanDizisi = []; // Ekipman verileri hafızada tutulur
+let mevcutEkipmanDizisi = [];
 
-// Ekipman Kategori ve Etiket takipçileri
+// Ekipman Formu İçin Geçici Seçim Dizileri
 let secilenEkipmanKategorileri = [];
 let secilenEkipmanEtiketleri = [];
-let setEkipmanKategoriler = new Set();
-let setEkipmanEtiketler = new Set();
-
-// Cihazdan yüklenecek geçici resim verisi
-let ekipmanYuklenecekResimBase64 = null;
-let ekipmanYuklenecekResimUzanti = "jpg";
+let secilenEkipmanBagliUrunler = []; // Bağlı ürün ID'lerini tutar
+let yuklenenEkipmanFotoBase64 = null;
+let yuklenenEkipmanFotoAdi = "";
+let ekipmanFormGonderiliyor = false; // Çoklu kayıt engelleme bayrağı
 // ========================================== PATH_XXX BİLGİLERİ ÜSTE EKLENİYOR
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -1131,7 +1139,7 @@ if (token) {
 	blogYukle(token);
 	dosyalariYukle(token);
 	footerVerileriniYukle(token);
-	ekipmanlariYukle(token);
+	ekipmanYukle(token);
 // ========================================== XXX(token) BİLGİLERİ ÜSTE EKLENİYOR 
     yazilariYukle(token).then(() => {
         timelineYukle(token);
