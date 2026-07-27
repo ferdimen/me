@@ -1830,6 +1830,10 @@
     "tarih": "2018-03",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/bbf0286a-dcb7-4cdb-8c8d-f8e0e16b8f78.jpg",
     "aciklama": "Alışana kadar oldukça farkını hissetmedim ama şimdi onsuz yapamam.",
+    "bagli_urunler": [
+      3,
+      2
+    ],
     "yorum": "",
     "varsayilan": true,
     "agirlik": "0",
