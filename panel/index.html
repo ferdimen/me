@@ -4001,7 +4001,6 @@ function ekipmanDuzenleTetikle(index) {
 // Örn: ekipmanDuzenle(index) içinde:
 secilenBagliUrunlerIds = ekp.bagli_urunler ? [...ekp.bagli_urunler] : [];
 ekipmanBagliUrunArayuzunuCiz();
-
     // Kategorileri doldur
     secilenEkipmanKategorileri = [];
     if (item.kategori) {
@@ -4096,7 +4095,9 @@ async function ekipmanlariGithubaGonder() {
         content: base64Content,
         sha: shaEkipman
     };
-
+// Örn: ekipmanDuzenle(index) içinde:
+secilenBagliUrunlerIds = ekp.bagli_urunler ? [...ekp.bagli_urunler] : [];
+ekipmanBagliUrunArayuzunuCiz();
     try {
         const response = await fetch(url, {
             method: "PUT",
