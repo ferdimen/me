@@ -1910,5 +1910,20 @@
     "varsayilan": false,
     "agirlik": "1111",
     "etiketler": "Decathlon, sedona"
+  },
+  {
+    "baslik": "Deneme",
+    "kategori": "Diğer",
+    "tarih": "2014-05",
+    "kapakresmi": "/img/ekipman/2014/diger-deneme.jpg",
+    "aciklama": "Deneme",
+    "bagli_urunler": [
+      2,
+      3
+    ],
+    "yorum": "Deneme",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "sedona"
   }
 ]
