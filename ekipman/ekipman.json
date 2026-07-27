@@ -1866,7 +1866,7 @@
     "agirlik": "75",
     "etiketler": "kamera, kayıt ekipmanı, elektronik, sjcam"
   },
-    {
+  {
     "baslik": "Suntour 27,5\"Jant Amortisörlü Maşa",
     "kategori": "Bisiklet Parçaları",
     "tarih": "2024-02-01",
@@ -1877,6 +1877,20 @@
     ],
     "yorum": "",
     "varsayilan": true,
+    "agirlik": "2500",
+    "etiketler": ""
+  },
+  {
+    "baslik": "Suntour XCM 27,5\"Jant Amortisörlü Maşa",
+    "kategori": "Bisiklet Parçaları",
+    "tarih": "2015-05, 2024-02-01",
+    "kapakresmi": "/img/ekipman/2015/bisiklet-parçaları-suntourxcm275jantamortisrlmaa.jpg",
+    "aciklama": "Bisikletin üzerinde gelen standart maşa",
+    "bagli_urunler": [
+      4
+    ],
+    "yorum": "On yıl iyi dayandı.",
+    "varsayilan": false,
     "agirlik": "2500",
     "etiketler": ""
   }
