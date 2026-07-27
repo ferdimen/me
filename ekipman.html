@@ -60,15 +60,31 @@
         top: 10px;
         z-index: 500;
         display: flex;
-        flex-wrap: nowrap;
-        gap: 8px;
-        align-items: center;
+        flex-direction: column;
+        gap: 10px;
         background: var(--card-bg);
         padding: 10px 14px;
         border-radius: 10px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         margin-bottom: 25px;
+      }
+
+      .controls-top-row {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 8px;
+        align-items: center;
         overflow-x: auto;
+        width: 100%;
+      }
+
+      .controls-bottom-row {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        border-top: 1px solid var(--border-color);
+        padding-top: 8px;
       }
 
       .filter-buttons {
@@ -125,7 +141,7 @@
       }
 
       select {
-        max-width: 160px;
+        max-width: 180px;
         text-overflow: ellipsis;
       }
 
@@ -201,6 +217,20 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+
+      .card-id-badge {
+        position: absolute;
+        bottom: 6px;
+        right: 8px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #f8fafc;
+        font-size: 0.7rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        z-index: 2;
+        pointer-events: none;
       }
 
       .badge {
@@ -311,7 +341,7 @@
         font-weight: 600;
       }
 
-      /* Modal */
+      /* Modal Stilleri */
       .modal {
         display: none;
         position: fixed;
@@ -351,6 +381,33 @@
         z-index: 10;
       }
 
+      .modal-img-wrapper {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        background-color: #e2e8f0;
+      }
+
+      .modal-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .modal-id-badge {
+        position: absolute;
+        bottom: 8px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #f8fafc;
+        font-size: 0.75rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        z-index: 2;
+        pointer-events: none;
+      }
+
       .modal-body { padding: 20px; }
 
       .modal-comment {
@@ -360,6 +417,93 @@
         margin-top: 15px;
         font-style: italic;
         border-radius: 0 6px 6px 0;
+      }
+
+      .modal-related-section {
+        margin-top: 15px;
+        border-top: 1px solid var(--border-color);
+        padding-top: 12px;
+      }
+
+      .modal-related-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .modal-related-title {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--text-color);
+      }
+
+      .retired-toggle-btn {
+        background: #f1f5f9;
+        border: 1px solid var(--border-color);
+        color: #475569;
+        font-size: 0.75rem;
+        padding: 4px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .retired-toggle-btn.active {
+        background: var(--accent-color);
+        color: white;
+        border-color: var(--accent-color);
+      }
+
+      .related-items-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .related-item-card {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #f8fafc;
+        border: 1px solid var(--border-color);
+        padding: 8px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        color: var(--text-color);
+      }
+
+      .related-item-card:hover {
+        background: #eff6ff;
+        border-color: var(--accent-color);
+      }
+
+      .related-item-img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 4px;
+        background: #e2e8f0;
+      }
+
+      .related-item-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .related-item-title {
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .related-item-cat {
+        font-size: 0.75rem;
+        color: #64748b;
       }
 
       .right-timeline-wrapper {
@@ -652,73 +796,64 @@
         .weight-counter { background: #eee; color: black; }
         .weight-val { color: black; }
       }
-	  /* ==========================================
-   MOBİL VE KÜÇÜK EKRAN UYUMU (RESPONSIVE)
-   ========================================== */
-@media (max-width: 768px) {
-  body {
-    padding: 10px;
-  }
 
-  /* Üst Kontrol Barı Düzenlemesi */
-  .controls {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-    padding: 10px;
-    top: 5px;
-  }
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
 
-  /* Filtre ve Mod Butonları Toplu Alanı */
-  .filter-buttons {
-    display: flex;
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    gap: 6px;
-    -webkit-overflow-scrolling: touch;
-  }
+        .controls {
+          padding: 10px;
+          top: 5px;
+        }
 
-  .filter-buttons .btn {
-    flex: 0 0 auto; /* Butonların sıkışmasını önler */
-    padding: 8px 12px;
-    font-size: 0.8rem;
-  }
+        .controls-top-row {
+          overflow-x: auto;
+          padding-bottom: 4px;
+        }
 
-  /* Kategori, Sıralama ve Arama Grubu */
-  .search-select-group {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 8px;
-  }
+        .controls-bottom-row {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 8px;
+        }
 
-  .search-select-group select,
-  .search-wrapper {
-    width: 100%;
-    max-width: 100%; /* Mobil ekranda tam genişlik */
-  }
+        .filter-buttons .btn {
+          padding: 8px 12px;
+          font-size: 0.8rem;
+        }
 
-  /* Düzen ve Yan Paneller (Zaman Tüneli / Çanta) */
-  .app-layout {
-    flex-direction: column;
-  }
+        .search-select-group {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          gap: 8px;
+        }
 
-  .right-timeline-wrapper,
-  .checklist-sidebar {
-    position: static; /* Mobilde akışı bozmaması için sabitliği kaldırır */
-    width: 100%;
-    height: auto;
-    max-height: 400px;
-    margin-bottom: 15px;
-  }
+        .search-select-group select,
+        .search-wrapper {
+          width: 100%;
+          max-width: 100%;
+        }
 
-  /* Izgara Yapısı (Kartlar) */
-  .grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 15px;
-  }
-}
+        .app-layout {
+          flex-direction: column;
+        }
+
+        .right-timeline-wrapper,
+        .checklist-sidebar {
+          position: static;
+          width: 100%;
+          height: auto;
+          max-height: 400px;
+          margin-bottom: 15px;
+        }
+
+        .grid {
+          grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+          gap: 15px;
+        }
+      }
     </style>
 </head>
 <body>
@@ -726,7 +861,6 @@
 
 <header class="main-header"></header>
 
-<!-- Yine aynı şekilde / ile çağırılır, göreceli yol (../) derdi biter -->
 <script src="data/header-loader.js"></script>
 
   <div class="container">
@@ -735,31 +869,35 @@
     </header>
 
     <div class="controls">
-      <div class="filter-buttons">
-        <button class="btn active" id="btnFilterTum" onclick="filterStatus('tum')">Tümü</button>
-        <button class="btn" id="btnFilterAktif" onclick="filterStatus('aktif')">Aktif</button>
-        <button class="btn" id="btnFilterEmekli" onclick="filterStatus('emekli')">Emekli</button>
-        <button class="btn" id="btnTimeline" onclick="toggleTimelineMode()">⏳ Zaman Tüneli</button>
-        <button class="btn" id="btnChecklist" onclick="toggleChecklistMode()">🎒 Tur Çantam (<span id="selectedCount">0</span>)</button>
+      <div class="controls-top-row">
+        <div class="filter-buttons">
+          <button class="btn active" id="btnFilterTum" onclick="filterStatus('tum')">Tümü</button>
+          <button class="btn" id="btnFilterAktif" onclick="filterStatus('aktif')">Aktif</button>		  
+          <button class="btn" id="btnFilterEmekli" onclick="filterStatus('emekli')">Emekli</button>
+          <button class="btn" id="btnTimeline" onclick="toggleTimelineMode()">⏳ Zaman Tüneli</button>
+          <button class="btn" id="btnChecklist" onclick="toggleChecklistMode()">🎒 Tur Çantam (<span id="selectedCount">0</span>)</button>
+        </div>
       </div>
 
-      <div class="search-select-group">
-        <select id="categorySelect" onchange="onCategoryOrFilterChange()">
-          <option value="">Tüm Kategoriler</option>
-        </select>
+      <div class="controls-bottom-row">
+        <div class="search-select-group">
+          <select id="categorySelect" onchange="onCategoryOrFilterChange()">
+            <option value="">Tüm Kategoriler</option>
+          </select>
 
-        <select id="sortSelect" onchange="applyFilters()">
-          <option value="default">Varsayılan Sıralama</option>
-          <option value="title-asc">Alfabetik (A-Z)</option>
-          <option value="title-desc">Alfabetik (Z-A)</option>
-          <option value="year-desc">Tarihe Göre (Yeni)</option>
-          <option value="year-asc">Tarihe Göre (Eski)</option>
-          <option value="category">Kategoriye Göre</option>
-        </select>
-        
-        <div class="search-wrapper">
-          <input type="text" id="searchInput" placeholder="Ekipman veya etiket..." oninput="handleSearchInput()">
-          <span class="clear-btn" id="clearBtn" onclick="clearSearch()" title="Aramayı Temizle">&times;</span>
+          <select id="sortSelect" onchange="applyFilters()">
+            <option value="default">Varsayılan Sıralama</option>
+            <option value="title-asc">Alfabetik (A-Z)</option>
+            <option value="title-desc">Alfabetik (Z-A)</option>
+            <option value="year-desc">Tarihe Göre (Yeni)</option>
+            <option value="year-asc">Tarihe Göre (Eski)</option>
+            <option value="category">Kategoriye Göre</option>
+          </select>
+          
+          <div class="search-wrapper">
+            <input type="text" id="searchInput" placeholder="Ekipman veya etiket..." oninput="handleSearchInput()">
+            <span class="clear-btn" id="clearBtn" onclick="clearSearch()" title="Aramayı Temizle">&times;</span>
+          </div>
         </div>
       </div>
     </div>
@@ -782,7 +920,6 @@
         <div class="sidebar-header">
           <div class="sidebar-header-top">
             <h2>🎒 Tur Çantam</h2>
-            <!-- SIFIRLAMA / TEMİZLEME BUTONU -->
             <button class="reset-bag-btn" onclick="clearWholeChecklist()" title="Çantayı Sıfırla">✕ Sıfırla</button>
           </div>
           <div class="weight-counter">
@@ -804,7 +941,13 @@
   <div class="modal" id="detailModal" onclick="closeModal(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <span class="modal-close" onclick="closeModal()">&times;</span>
-      <img id="modalImg" src="" style="width:100%; height:250px; object-fit:cover;">
+      
+      <!-- Kapak resmi ve sağ alt köşesindeki #id rozeti -->
+      <div class="modal-img-wrapper">
+        <img id="modalImg" class="modal-img" src="">
+        <span id="modalIdBadge" class="modal-id-badge"></span>
+      </div>
+
       <div class="modal-body">
         <h2 id="modalTitle"></h2>
         <p id="modalCategory" style="color:#64748b; font-size:0.9rem; margin: 4px 0;"></p>
@@ -813,11 +956,20 @@
         <p id="modalDuration" style="color:#2563eb; font-weight:600; margin-bottom:12px; font-size:0.9rem;"></p>
         <p id="modalDesc"></p>
         <div id="modalComment" class="modal-comment"></div>
+        
+        <div id="modalRelated" class="modal-related-section" style="display:none;">
+          <div class="modal-related-header">
+            <div class="modal-related-title">Takılı / İlişkili Ekipmanlar</div>
+            <button id="retiredToggleBtn" class="retired-toggle-btn" style="display:none;" onclick="toggleRetiredInRelatedSetting()">Emekli ürünleri göster</button>
+          </div>
+          <div id="relatedItemsContainer" class="related-items-grid"></div>
+        </div>
+
         <div id="modalTags" class="tags" style="margin-top: 15px;"></div>
       </div>
     </div>
   </div>
-  <!-- İLETİŞİM VE SOSYAL MEDYA -->
+
     <section class="contact-section" id="iletisim">
         <div class="container">
             <div class="contact-grid">
@@ -826,44 +978,40 @@
                     <h3>Bağlantıda Kalın</h3>
                     <p>Yol hikayelerini, bağımsız yayınları ve anlık telemetri paylaşımlarını resmi ağ istasyonları üzerinden takip edebilirsiniz.</p>
                     
-<div class="social-links-container" id="social-container">
-    </div>
+                    <div class="social-links-container" id="social-container"></div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const socialContainer = document.getElementById("social-container");
-        if (!socialContainer) return;
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const socialContainer = document.getElementById("social-container");
+                            if (!socialContainer) return;
 
-        fetch('https://ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
-            .then(res => {
-                if (!res.ok) throw new Error("Sosyal medya JSON dosyası yüklenemedi!");
-                return res.json();
-            })
-            .then(data => {
-                let htmlContent = '';
-
-                data.forEach(hesap => {
-                    htmlContent += `
-                        <a href="${hesap.url}" target="_blank" class="social-icon-btn">
-                            ${hesap.svg}
-                            <span>${hesap.ad}</span>
-                        </a>
-                    `;
-                });
-
-                socialContainer.innerHTML = htmlContent;
-            })
-            .catch(err => {
-                console.error("Sosyal medya butonları yüklenirken hata:", err);
-                // Hata durumunda boş kalmaması için manuel bir yedek bırakabilirsiniz:
-                socialContainer.innerHTML = `
-                    <a href="https://www.youtube.com/@ferdimen" target="_blank" class="social-icon-btn">
-                        <span>YouTube</span>
-                    </a>
-                `;
-            });
-    });
-</script>
+                            fetch('https://ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
+                                .then(res => {
+                                    if (!res.ok) throw new Error("Sosyal medya JSON dosyası yüklenemedi!");
+                                    return res.json();
+                                })
+                                .then(data => {
+                                    let htmlContent = '';
+                                    data.forEach(hesap => {
+                                        htmlContent += `
+                                            <a href="${hesap.url}" target="_blank" class="social-icon-btn">
+                                                ${hesap.svg}
+                                                <span>${hesap.ad}</span>
+                                            </a>
+                                        `;
+                                    });
+                                    socialContainer.innerHTML = htmlContent;
+                                })
+                                .catch(err => {
+                                    console.error("Sosyal medya butonları yüklenirken hata:", err);
+                                    socialContainer.innerHTML = `
+                                        <a href="https://www.youtube.com/@ferdimen" target="_blank" class="social-icon-btn">
+                                            <span>YouTube</span>
+                                        </a>
+                                    `;
+                                });
+                        });
+                    </script>
                 </div>
                 
                 <div class="contact-form-side">
@@ -891,18 +1039,19 @@
 
     <footer class="main-footer">
         <div class="container">
-            <p class="footer-text"><script src="/data/footer.js?v=1"></script>© <span id="footer-year"></span> <span id="footer-dynamic-text"></p>
+            <p class="footer-text"><script src="/data/footer.js?v=1"></script>© <span id="footer-year"></span> <span id="footer-dynamic-text"></span></p>
         </div>
     </footer>
+	
   <script>
     let allEquipment = [];
-    let currentStatusFilter = 'tum';
+    let currentStatusFilter = 'tum'; // Sayfa ilk yüklendiğinde tüm ürünler listelensin
     let selectedTag = null;
     let isTimelineMode = false;
     
-    // ÇANTA VE VARSAYILAN YÜKLEME KONTROLLERİ
     let isChecklistMode = false;
-    let isDefaultBagActive = false; // SAYFA İLK AÇILDIĞINDA TÜM ÜRÜNLER GÖRÜNSÜN
+    let isDefaultBagActive = false;
+    let showRetiredInRelated = false;
 
     let selectedIds = new Set();
     let checkedState = new Map();
@@ -939,19 +1088,23 @@
       return { year, month, val: year * 12 + (month - 1) };
     }
 
-    function hesaplaKullanimSuresi(baslangicStr, bitisStr) {
-      if (!baslangicStr || !bitisStr) return '';
+    function hesaplaKullanimSuresi(baslangicStr, bitisStr, isAktif) {
+      if (!baslangicStr) return '';
       const bParca = baslangicStr.trim().split('-');
-      const eParca = bitisStr.trim().split('-');
       const bYil = parseInt(bParca[0], 10);
       const bAy = parseInt(bParca[1], 10) - 1;
       const bGun = bParca[2] ? parseInt(bParca[2], 10) : 1;
-      const eYil = parseInt(eParca[0], 10);
-      const eAy = parseInt(eParca[1], 10) - 1;
-      const eGun = eParca[2] ? parseInt(eParca[2], 10) : 1;
 
       const baslangicTarihi = new Date(bYil, bAy, bGun);
-      const bitisTarihi = new Date(eYil, eAy, eGun);
+      let bitisTarihi = new Date();
+
+      if (!isAktif && bitisStr) {
+        const eParca = bitisStr.trim().split('-');
+        const eYil = parseInt(eParca[0], 10);
+        const eAy = parseInt(eParca[1], 10) - 1;
+        const eGun = eParca[2] ? parseInt(eParca[2], 10) : 1;
+        bitisTarihi = new Date(eYil, eAy, eGun);
+      }
 
       let toplamAy = (bitisTarihi.getFullYear() - baslangicTarihi.getFullYear()) * 12 + (bitisTarihi.getMonth() - baslangicTarihi.getMonth());
       if (bitisTarihi.getDate() < baslangicTarihi.getDate()) toplamAy--;
@@ -970,7 +1123,44 @@
       return sonuc.join(' ');
     }
 
-    // JSON Yükle
+    function parseCategories(rawCategory) {
+      if (!rawCategory) return { primary: 'Diğer', list: ['Diğer'], display: 'Diğer' };
+      
+      let str = String(rawCategory).trim();
+      let list = [];
+      let displayStr = str;
+
+      if (str.includes('>')) {
+        let parts = str.split('>');
+        let mainCat = parts[0].trim();
+        let subPart = parts[1].trim();
+        
+        subPart = subPart.replace(/^[\[\(]/, '').replace(/[\)\]]$/, '');
+        let subCats = subPart.split(',').map(s => s.trim()).filter(Boolean);
+        
+        list.push(mainCat);
+        subCats.forEach(sub => {
+          list.push(`${mainCat} > ${sub}`);
+          list.subCatOnly = list.subCatOnly || [];
+          list.subCatOnly.push(sub);
+        });
+        displayStr = `${mainCat} > [${subCats.join(', ')}]`;
+      } else if (str.includes(',')) {
+        list = str.split(',').map(s => s.trim()).filter(Boolean);
+        displayStr = list.join(', ');
+      } else {
+        list = [str];
+        displayStr = str;
+      }
+
+      return {
+        primary: list[0] || 'Diğer',
+        list: list,
+        display: displayStr
+      };
+    }
+
+    // JSON Yükle ve Otomatik ID Atama
     fetch('ekipman/ekipman.json')
       .then(response => response.json())
       .then(data => {
@@ -990,18 +1180,19 @@
             etiketDizisi = item.etiketler.split(',').map(e => e.trim()).filter(Boolean);
           }
 
-          const id = item.id || idx + 1;
+          const id = idx + 1;
           const varsayilan = !!item.varsayilan;
 
-          // String olarak gelen "28" değerini sayıya çeviriyoruz (Yoksa 0 atanır)
-const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null 
-  ? parseInt(item.agirlik, 10) || 0 
-  : 0;
+          const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null 
+            ? parseInt(item.agirlik, 10) || 0 
+            : 0;
 
-          // Varsayılan olan ürünleri seçili kimlikler listesine ekle
           if (varsayilan) {
             selectedIds.add(id);
           }
+
+          const catInfo = parseCategories(item.kategori);
+          const hizmetSuresi = hesaplaKullanimSuresi(rawBaslangic, rawBitis, isAktif);
 
           return {
             ...item,
@@ -1009,17 +1200,22 @@ const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null
             agirlik: parsedAgirlik,
             varsayilan,
             etiketler: etiketDizisi,
+            categoryInfo: catInfo,
+            kategoriDisplay: catInfo.display,
+            kategoriListesi: catInfo.list,
             rawBaslangic, rawBitis,
             baslangicTarihi: formatTarih(rawBaslangic),
             bitisTarihi: formatTarih(rawBitis),
-            kullanimSuresi: !isAktif ? hesaplaKullanimSuresi(rawBaslangic, rawBitis) : '',
-            isAktif, startObj, endObj
+            kullanimSuresi: hizmetSuresi,
+            isAktif, startObj, endObj,
+            bagli_urunler: Array.isArray(item.bagli_urunler) ? item.bagli_urunler : []
           };
         });
 
         populateCategories();
         setupEventNodes();
         buildTimelineUI();
+        updateFilterButtons();
         applyFilters();
         renderSidebar();
       })
@@ -1030,10 +1226,10 @@ const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null
       const search = document.getElementById('searchInput').value.toLowerCase().trim();
 
       const relevantItems = allEquipment.filter(item => {
-        if (selectedCategory && item.kategori !== selectedCategory) return false;
+        if (selectedCategory && !item.kategoriListesi.includes(selectedCategory)) return false;
         if (search) {
           const inTitle = item.baslik ? item.baslik.toLowerCase().includes(search) : false;
-          const inCategory = item.kategori ? item.kategori.toLowerCase().includes(search) : false;
+          const inCategory = item.kategoriDisplay ? item.kategoriDisplay.toLowerCase().includes(search) : false;
           const inTags = item.etiketler && item.etiketler.length > 0 ? item.etiketler.some(t => t.toLowerCase().includes(search)) : false;
           if (!inTitle && !inCategory && !inTags) return false;
         }
@@ -1070,7 +1266,14 @@ const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null
 
     function populateCategories() {
       const select = document.getElementById('categorySelect');
-      const categories = [...new Set(allEquipment.map(e => e.kategori).filter(Boolean))];
+      const allCatsSet = new Set();
+      allEquipment.forEach(e => {
+        if (e.kategoriListesi) {
+          e.kategoriListesi.forEach(c => allCatsSet.add(c));
+        }
+      });
+      
+      const categories = Array.from(allCatsSet);
       categories.sort().forEach(cat => {
         const option = document.createElement('option');
         option.value = cat;
@@ -1095,9 +1298,24 @@ const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null
       }
     }
 
+    function toggleRetiredInRelatedSetting() {
+      showRetiredInRelated = !showRetiredInRelated;
+      const btn = document.getElementById('retiredToggleBtn');
+      if (btn) {
+        btn.classList.toggle('active', showRetiredInRelated);
+        btn.textContent = showRetiredInRelated 
+          ? "Kullanımdaki ürünleri göster" 
+          : "Emekli ürünleri göster";
+      }
+      const modal = document.getElementById('detailModal');
+      if (modal.style.display === 'flex' && activeModalItem) {
+        renderModalRelated(activeModalItem);
+      }
+    }
+
     function updateFilterButtons() {
-      document.getElementById('btnFilterTum').classList.toggle('active', !isTimelineMode && currentStatusFilter === 'tum');
       document.getElementById('btnFilterAktif').classList.toggle('active', !isTimelineMode && currentStatusFilter === 'aktif');
+      document.getElementById('btnFilterTum').classList.toggle('active', !isTimelineMode && currentStatusFilter === 'tum');
       document.getElementById('btnFilterEmekli').classList.toggle('active', !isTimelineMode && currentStatusFilter === 'emekli');
       document.getElementById('btnTimeline').classList.toggle('active', isTimelineMode);
       document.getElementById('btnChecklist').classList.toggle('active', isChecklistMode);
@@ -1116,18 +1334,14 @@ const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null
       applyFilters();
     }
 
-    /* TUR ÇANTAM BUTONUNA BASILDIĞINDA:
-       - Panel açılır/kapanır
-       - Panel açıldığında SADECE "varsayilan": true ÜRÜNLER FİLTRELENİR
-    */
     function toggleChecklistMode() {
       isChecklistMode = !isChecklistMode;
       document.body.classList.toggle('checklist-active', isChecklistMode);
 
       if (isChecklistMode) {
-        isDefaultBagActive = true; // Sadece varsayılan ürünleri listele
+        isDefaultBagActive = true;
       } else {
-        isDefaultBagActive = false; // Çanta kapatılınca yine tüm ürünlere dön
+        isDefaultBagActive = false;
       }
 
       updateFilterButtons();
@@ -1135,15 +1349,9 @@ const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null
       renderSidebar();
     }
 
-    /* ✕ SIFIRLA BUTONUNA BASILDIĞINDA:
-       - Çanta temizlenir
-       - Sadece varsayılan filtreleme iptal edilir, TEKRAR TÜM ÜRÜNLER GÖRÜNÜR
-    */
     function clearWholeChecklist() {
       selectedIds.clear();
       checkedState.clear();
-
-      // Varsayılan kısıtlamayı kaldır, tekrar tüm ürünleri görünür yap
       isDefaultBagActive = false;
 
       applyFilters();
@@ -1204,7 +1412,6 @@ const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null
       }
 
       return allEquipment.filter(item => {
-        // "🎒 Tur Çantam" modundayken SADECE "varsayilan": true ürünleri süz
         if (isDefaultBagActive && !item.varsayilan) {
           return false;
         }
@@ -1220,13 +1427,15 @@ const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null
         } else {
           if (currentStatusFilter === 'aktif' && !item.isAktif) return false;
           if (currentStatusFilter === 'emekli' && item.isAktif) return false;
+          // 'tum' durumunda filtre uygulanmaz
         }
 
-        if (category && item.kategori !== category) return false;
+        if (category && !item.kategoriListesi.includes(category)) return false;
+
         if (search) {
           const inTitle = item.baslik ? item.baslik.toLowerCase().includes(search) : false;
           const inDesc = item.aciklama ? item.aciklama.toLowerCase().includes(search) : false;
-          const inCategory = item.kategori ? item.kategori.toLowerCase().includes(search) : false;
+          const inCategory = item.kategoriDisplay ? item.kategoriDisplay.toLowerCase().includes(search) : false;
           const inTags = item.etiketler && item.etiketler.length > 0 ? item.etiketler.some(t => t.toLowerCase().includes(search)) : false;
           if (!inTitle && !inDesc && !inCategory && !inTags) return false;
         }
@@ -1252,7 +1461,7 @@ const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null
           filtered.sort((a, b) => (a.startObj ? a.startObj.val : 0) - (b.startObj ? b.startObj.val : 0));
           break;
         case 'category':
-          filtered.sort((a, b) => (a.kategori || '').localeCompare(b.kategori || '', 'tr'));
+          filtered.sort((a, b) => (a.kategoriDisplay || '').localeCompare(b.kategoriDisplay || '', 'tr'));
           break;
       }
 
@@ -1280,9 +1489,10 @@ const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null
         <div class="card-img-wrapper">
           <img class="card-img" src="${item.kapakresmi || 'https://via.placeholder.com/350x200?text=Resim+Yok'}" alt="${item.baslik}">
           <span class="badge ${badgeClass}">${badgeText}</span>
+          <!--<span class="card-id-badge">#${item.id}</span> -->
         </div>
         <div class="card-body">
-          <div class="card-category">${item.kategori || ''}</div>
+          <div class="card-category">${item.kategoriDisplay || ''}</div>
           <h3 class="card-title">${item.baslik}</h3>
           <div class="card-date">${tarihMetni}</div>
           ${item.agirlik ? `<div class="card-weight">⚖️ ${item.agirlik} gr</div>` : ''}
@@ -1301,7 +1511,7 @@ const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null
       grid.innerHTML = '';
 
       if (items.length === 0) {
-        grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; padding: 60px 20px; color:#64748b; font-size:1.1rem;">Seçili kriterlerde aktif ürün bulunmuyordu.</p>';
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; padding: 60px 20px; color:#64748b; font-size:1.1rem;">Seçili kriterlerde ürün bulunamadı.</p>';
         return;
       }
 
@@ -1358,69 +1568,67 @@ const parsedAgirlik = item.agirlik !== undefined && item.agirlik !== null
       renderSidebar();
     }
 
-function renderSidebar() {
-  const container = document.getElementById('checklistItems');
-  const countLabel = document.getElementById('selectedCount');
-  const weightLabel = document.getElementById('totalWeight');
+    function renderSidebar() {
+      const container = document.getElementById('checklistItems');
+      const countLabel = document.getElementById('selectedCount');
+      const weightLabel = document.getElementById('totalWeight');
 
-  container.innerHTML = '';
-  const selectedItems = allEquipment.filter(item => selectedIds.has(item.id));
+      container.innerHTML = '';
+      const selectedItems = allEquipment.filter(item => selectedIds.has(item.id));
 
-  countLabel.textContent = selectedItems.length;
+      countLabel.textContent = selectedItems.length;
 
-  // Ağırlık değerini güvenli bir şekilde tam sayıya (number) dönüştürerek topluyoruz
-  const totalWeightGrams = selectedItems.reduce((acc, curr) => {
-    const val = parseInt(curr.agirlik, 10);
-    return acc + (isNaN(val) ? 0 : val);
-  }, 0);
+      const totalWeightGrams = selectedItems.reduce((acc, curr) => {
+        const val = parseInt(curr.agirlik, 10);
+        return acc + (isNaN(val) ? 0 : val);
+      }, 0);
 
-  // 1000 gr ve üzerini kg cinsine çevirip yazdırıyoruz
-  if (totalWeightGrams >= 1000) {
-    weightLabel.textContent = `${(totalWeightGrams / 1000).toFixed(2)} kg`;
-  } else {
-    weightLabel.textContent = `${totalWeightGrams} gr`;
-  }
+      if (totalWeightGrams >= 1000) {
+        weightLabel.textContent = `${(totalWeightGrams / 1000).toFixed(2)} kg`;
+      } else {
+        weightLabel.textContent = `${totalWeightGrams} gr`;
+      }
 
-  if (selectedItems.length === 0) {
-    container.innerHTML = `<p class="empty-msg">Henüz bir şey seçmedin.<br>Ekipman kartlarındaki <strong>"+ Çantaya Ekle"</strong> butonunu kullanabilirsin.</p>`;
-    return;
-  }
+      if (selectedItems.length === 0) {
+        container.innerHTML = `<p class="empty-msg">Henüz bir şey seçmedin.<br>Ekipman kartlarındaki <strong>"+ Çantaya Ekle"</strong> butonunu kullanabilirsin.</p>`;
+        return;
+      }
 
-  const groupedSelected = selectedItems.reduce((acc, item) => {
-    const cat = item.kategori || 'Diğer Ekipmanlar';
-    if (!acc[cat]) acc[cat] = [];
-    acc[cat].push(item);
-    return acc;
-  }, {});
+      const groupedSelected = selectedItems.reduce((acc, item) => {
+        const cat = item.kategoriDisplay || 'Diğer Ekipmanlar';
+        if (!acc[cat]) acc[cat] = [];
+        acc[cat].push(item);
+        return acc;
+      }, {});
 
-  Object.keys(groupedSelected).forEach(catName => {
-    const groupDiv = document.createElement('div');
-    groupDiv.className = 'sidebar-cat-group';
+      Object.keys(groupedSelected).forEach(catName => {
+        const groupDiv = document.createElement('div');
+        groupDiv.className = 'sidebar-cat-group';
 
-    const titleDiv = document.createElement('div');
-    titleDiv.className = 'sidebar-cat-title';
-    titleDiv.textContent = catName;
-    groupDiv.appendChild(titleDiv);
+        const titleDiv = document.createElement('div');
+        titleDiv.className = 'sidebar-cat-title';
+        titleDiv.textContent = catName;
+        groupDiv.appendChild(titleDiv);
 
-    groupedSelected[catName].forEach(item => {
-      const isChecked = checkedState.get(item.id) || false;
-      const listItem = document.createElement('div');
-      listItem.className = `list-item ${isChecked ? 'done' : ''}`;
-      
-      listItem.innerHTML = `
-        <div class="list-item-left" onclick="toggleCheck(${item.id})">
-          <input type="checkbox" ${isChecked ? 'checked' : ''} style="cursor:pointer;">
-          <span>${item.baslik}</span>
-        </div>
-        <button class="remove-item-btn" onclick="toggleSelect(${item.id}, event)" title="Listeden Çıkar">&times;</button>
-      `;
+        groupedSelected[catName].forEach(item => {
+          const isChecked = checkedState.get(item.id) || false;
+          const listItem = document.createElement('div');
+          listItem.className = `list-item ${isChecked ? 'done' : ''}`;
+          
+          listItem.innerHTML = `
+            <div class="list-item-left" onclick="toggleCheck(${item.id})">
+              <input type="checkbox" ${isChecked ? 'checked' : ''} style="cursor:pointer;">
+              <span>${item.baslik}</span>
+            </div>
+            <button class="remove-item-btn" onclick="toggleSelect(${item.id}, event)" title="Listeden Çıkar">&times;</button>
+          `;
 
-      groupDiv.appendChild(listItem);
-    });
+          groupDiv.appendChild(listItem);
+        });
 
-    container.appendChild(groupDiv);
-  });
-}
+        container.appendChild(groupDiv);
+      });
+    }
 
     function copyChecklist() {
       const selectedItems = allEquipment.filter(item => selectedIds.has(item.id));
@@ -1430,7 +1638,7 @@ function renderSidebar() {
       }
 
       const grouped = selectedItems.reduce((acc, item) => {
-        const cat = item.kategori || 'Diğer Ekipmanlar';
+        const cat = item.kategoriDisplay || 'Diğer Ekipmanlar';
         if (!acc[cat]) acc[cat] = [];
         acc[cat].push(item);
         return acc;
@@ -1452,10 +1660,22 @@ function renderSidebar() {
       });
     }
 
+    let activeModalItem = null;
+
     function openModal(item) {
+      activeModalItem = item;
+      showRetiredInRelated = false; // Modal açıldığında varsayılan olarak sıfırla
+      
+      const toggleBtn = document.getElementById('retiredToggleBtn');
+      if (toggleBtn) {
+        toggleBtn.classList.remove('active');
+        toggleBtn.textContent = "Emekli ürünleri göster";
+      }
+
       document.getElementById('modalImg').src = item.kapakresmi || 'https://via.placeholder.com/600x300?text=Resim+Yok';
+      document.getElementById('modalIdBadge').textContent = `#${item.id}`;
       document.getElementById('modalTitle').textContent = item.baslik;
-      document.getElementById('modalCategory').textContent = item.kategori;
+      document.getElementById('modalCategory').textContent = item.kategoriDisplay;
       
       const tarihMetni = item.isAktif ? `Giriş Tarihi: ${item.baslangicTarihi} (Aktif)` : `Kullanım Dönemi: ${item.baslangicTarihi} — ${item.bitisTarihi}`;
       document.getElementById('modalDate').textContent = tarihMetni;
@@ -1469,7 +1689,10 @@ function renderSidebar() {
       }
 
       const durationBox = document.getElementById('modalDuration');
-      if (!item.isAktif && item.kullanimSuresi) {
+      if (item.isAktif && item.kullanimSuresi) {
+        durationBox.style.display = 'block';
+        durationBox.textContent = `⏱️ Toplam Hizmet Süresi: ${item.kullanimSuresi} kullanımda`;
+      } else if (!item.isAktif && item.kullanimSuresi) {
         durationBox.style.display = 'block';
         durationBox.textContent = `⏱️ Toplam Hizmet Süresi: ${item.kullanimSuresi}`;
       } else {
@@ -1486,6 +1709,8 @@ function renderSidebar() {
         commentBox.style.display = 'none';
       }
 
+      renderModalRelated(item);
+
       const tagsContainer = document.getElementById('modalTags');
       tagsContainer.innerHTML = (item.etiketler && item.etiketler.length > 0)
         ? item.etiketler.map(t => `<span class="tag ${selectedTag && t.toLowerCase() === selectedTag.toLowerCase() ? 'selected-red' : ''}" onclick="toggleTag('${t}', event)">#${t}</span>`).join('') 
@@ -1494,8 +1719,68 @@ function renderSidebar() {
       document.getElementById('detailModal').style.display = 'flex';
     }
 
+    function renderModalRelated(item) {
+      const relatedSection = document.getElementById('modalRelated');
+      const relatedContainer = document.getElementById('relatedItemsContainer');
+      const toggleBtn = document.getElementById('retiredToggleBtn');
+      relatedContainer.innerHTML = '';
+
+      if (item.bagli_urunler && item.bagli_urunler.length > 0) {
+        const rawRelatedList = allEquipment.filter(e => item.bagli_urunler.includes(e.id));
+        const hasRetired = rawRelatedList.some(e => !e.isAktif);
+
+        if (hasRetired) {
+          toggleBtn.style.display = 'inline-block';
+        } else {
+          toggleBtn.style.display = 'none';
+          showRetiredInRelated = false;
+        }
+
+        let relatedList = rawRelatedList;
+        if (showRetiredInRelated) {
+          // Sadece emekli ürünler listelensin
+          relatedList = relatedList.filter(e => !e.isAktif);
+        } else {
+          // Varsayılan olarak aktifler listelensin
+          relatedList = relatedList.filter(e => e.isAktif);
+        }
+
+        if (rawRelatedList.length > 0 && relatedList.length > 0) {
+          relatedSection.style.display = 'block';
+
+          relatedList.forEach(relItem => {
+            const relCard = document.createElement('div');
+            relCard.className = 'related-item-card';
+            relCard.onclick = () => {
+              openModal(relItem);
+            };
+
+            const sureBilgisi = relItem.isAktif 
+              ? `Kullanım Süresi: ${relItem.kullanimSuresi}` 
+              : `Hizmet Yılları: ${relItem.baslangicTarihi} - ${relItem.bitisTarihi} (${relItem.kullanimSuresi})`;
+
+            relCard.innerHTML = `
+              <img class="related-item-img" src="${relItem.kapakresmi || 'https://via.placeholder.com/40'}" alt="${relItem.baslik}">
+              <div class="related-item-info">
+                <span class="related-item-title">${relItem.baslik} <span style="font-size:0.75rem; color:${relItem.isAktif ? 'var(--active-badge)' : 'var(--retired-badge)'}; font-weight:normal;">(${relItem.isAktif ? 'Aktif' : 'Emekli'})</span></span>
+                <span class="related-item-cat">${sureBilgisi} ${relItem.agirlik ? '• ' + relItem.agirlik + ' gr' : ''}</span>
+              </div>
+            `;
+            relatedContainer.appendChild(relCard);
+          });
+        } else {
+          // Eğer o an filtrelenen grupta hiç ürün kalmadıysa
+          relatedContainer.innerHTML = '<div style="font-size:0.8rem; color:#64748b; padding:4px 0;">Bu kategoride ürün bulunmuyor.</div>';
+          relatedSection.style.display = 'block';
+        }
+      } else {
+        relatedSection.style.display = 'none';
+      }
+    }
+
     function closeModal() {
       document.getElementById('detailModal').style.display = 'none';
+      activeModalItem = null;
     }
   </script>
 </body>
