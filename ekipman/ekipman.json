@@ -1943,5 +1943,17 @@
     "varsayilan": false,
     "agirlik": "50",
     "etiketler": "kamp mutfağı, bıçak, çatal, kaşık"
+  },
+  {
+    "baslik": "Bıçak",
+    "kategori": "Kamp Mutfağı",
+    "tarih": "2018-04",
+    "kapakresmi": "/img/ekipman/2018/kamp-mutfagi-bicak.jpg",
+    "aciklama": "",
+    "bagli_urunler": [],
+    "yorum": "Gidon çantasında duruyor molalarda bir şeyler kesmek için kullanıyorum.",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı, bıçak"
   }
 ]
