@@ -2167,7 +2167,9 @@
     "tarih": "2018-04",
     "kapakresmi": "/img/ekipman/2018/bakim-brooks-bakim-yagi.jpg",
     "aciklama": "Derinin o sertliğini zamanla yumuşatıp seleyle bütünleşmemi sağlayan Brooks bakım yağı, uzun yollarda yolun ve güneşin yorduğu o sadık deri dostun yaşamsal iksiridir. Yola çıkmadan önce sürülen o incecik tabaka, kilometreler devirdikçe seleye turlarımızın izini ve karakterini kazandırır. :)",
-    "bagli_urunler": [],
+    "bagli_urunler": [
+      155
+    ],
     "yorum": "Yanımda taşımıyorum.",
     "varsayilan": false,
     "agirlik": "0",
