@@ -1768,13 +1768,14 @@
     "tarih": "2020-03",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/727644c5-ea55-4b8c-bb8e-5856ee5406fd.jpg",
     "aciklama": "Yurt dışı turlarında farklı tip prizlerde kullanmak için tasarlanmı adaptör .",
+    "bagli_urunler": [
+      9,
+      204
+    ],
     "yorum": "Şafak ağabeyin hediyesi. Türkiye içindeki turlarda kullanmıyorum.",
     "varsayilan": false,
     "agirlik": "0",
-    "etiketler": "yön bulma, harita",
-    "bagli_urunler": [
-      9
-    ]
+    "etiketler": "yön bulma, harita"
   },
   {
     "baslik": "Çoklu Şarj Adaptörü",
