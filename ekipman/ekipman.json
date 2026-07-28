@@ -1952,7 +1952,7 @@
     "aciklama": "Teflon tavanın çizilmemesi için gerekli",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "20",
     "etiketler": "kamp mutfağı, kaşık"
   },
@@ -1966,7 +1966,7 @@
       96
     ],
     "yorum": "Daha önce farklı tipte katlanır çatal bıçak takımları kullandım ama bu daha iyi eğilip bükülmüyor sağlam.",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "50",
     "etiketler": "kamp mutfağı, bıçak, çatal, kaşık"
   },
@@ -1978,7 +1978,7 @@
     "aciklama": "",
     "bagli_urunler": [],
     "yorum": "Gidon çantasında duruyor molalarda bir şeyler kesmek için kullanıyorum.",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "kamp mutfağı, bıçak"
   },
@@ -2002,7 +2002,7 @@
     "aciklama": "A101'den almıştım. Az yer kaplıyor çok iş yapıyor. Sabah kahvaltı tabağı diğer öğünlerde salata tabağı olarak kullanıyorum.",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "kamp mutfağı, tabak"
   },
@@ -2014,7 +2014,7 @@
     "aciklama": "Deterjanı koyduğum kabın kapağı açılıyor içi doldurmak için elverişli kapattığın zaman sızıntı olmuyor. deterjan haricinde bu aynı üründen bir iki tane daha var şampuan ve saç kremi koyuyorum. Sünger normal.",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "kamp mutfağı, bulaşık, sünger, deterjan"
   },
@@ -2050,7 +2050,7 @@
     "aciklama": "Lastik yama çantasının içinde duruyor. lastiklerdeki küçük tel kıyık çapakları çıkartmak için kullanıyorum.",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "cımbız, temizlik, tamir, bakım"
   },
@@ -2064,7 +2064,7 @@
       171
     ],
     "yorum": "Tıkanıklık açmak için tel zamanla kopuyor. vites yada fren telinden tek damarından kısa bir parça anahtara sıkıştırıp sorunsuz kullanılıyor.",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "20",
     "etiketler": "tamir, bakım, kamp ocağı, benzin ocağı, kovea"
   },
@@ -2079,7 +2079,7 @@
       95
     ],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "kamp mutfağı, kamp ocağı, benzin ocağı"
   },
@@ -2121,7 +2121,7 @@
       174
     ],
     "yorum": "Aslında gerek yok, çakmak gazının ucunu hafif çapraz kesip tüp gayet kolay dolduruluyor. bu konu ile ilgili videom var.",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "kamp mutfağı, kamp tüpü, çakmak gazı, ocak kartuşu"
   },
@@ -2135,7 +2135,7 @@
       32
     ],
     "yorum": "Ateşin üstünde sadece su ısıtmaya yarıyor. yemek yapmaya ince olduğu için yanıyor ve yapışıyor.",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "kamp mutfağı, tava, tabak"
   },
@@ -2147,7 +2147,7 @@
     "aciklama": "\"poşu\" \"çember\" veya \"yaşmak\" olarak adlandırılır. Yörükler için bu örtü; kavurucu güneşten, tozdan, rüzgardan ve dağlık alanlardaki çalılardan korunmak için hayati bir araçtır. Baş sarığı olmasının yanı sıra ter silmek, mola verildiğinde yere sermek, küçük eşyaları bağlamak veya acil durumlarda yaralanmalarda sargı bezi olarak kullanmak için de yörüklerin yanlarında taşıdıkları pratik bir eşyadır.",
     "bagli_urunler": [],
     "yorum": "Sofra bezi olarak kullanıyorum. hem pratik hem de derin kültürel anlamlar barındırıyor.",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "kamp mutfağı"
   },
@@ -2159,7 +2159,7 @@
     "aciklama": "hafif yer kaplamıyor. çantanın bir köşesinde zor zamanlar için bekliyor",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "kamp mutfağı, bıçak"
   },
@@ -2171,7 +2171,7 @@
     "aciklama": "Yumurta, uzun soluklu bisiklet turlarının en değerli enerji ve protein kaynağıdır; ancak heybelerde ya da çantaların derinliklerinde \"sağlam kalabilmesi\" bisikletçiler için küçük bir lojistik mücadelesidir. Yolculuklarda bu hassas gıdayı korumak adına kullanılan özel plastik yumurta taşıma kabı, hem pratikliği hem de tur konforunu artıran vazgeçilmez bir detaydır.",
     "bagli_urunler": [],
     "yorum": "Heybenin derinliklerinde yumurtaların güvenliği sadece plastikle bitmez; kabın içine yerleştirdiğim sarı bez, o sarsıntılı stabilize yollarda en sadık yastıkçım olur. Hem tıkırtıları keser hem de mola yerinde tezgahı kurduğumda elimizin altında hazır bekleyen pratik bir mutfak yardımcısına dönüşür.",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "kamp mutfağı, yumurtalık, yumurta"
   },
@@ -2183,7 +2183,7 @@
     "aciklama": "Marketten aldığım plastik fıstık ezmesi kavanozları",
     "bagli_urunler": [],
     "yorum": "Camın o ağır yükünü heybede taşımak yerine, marketten aldığım plastik fıstık ezmesi kavanozlarını depoya dönüştürdüm. Hafiflikleriyle dağ yollarında yükü hafifletirken, güvenle taşıyıp kamp mutfağını en pratik ve sağlam şekilde kurmamı sağlıyorlar.",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "kamp mutfağı, Taşıma, kavanoz"
   },
@@ -2195,7 +2195,7 @@
     "aciklama": "Heybenin en kuytu köşesinde yer kaplamayan, iç içe geçip katlanarak küçülen bu seyahat diş fırçası; uzun turların sonunda çadırda kurulan o yorgun akşam rutininin en pratik kurtarıcısıdır. Dağ başındaki kamplarda bile hijyenden ödün vermeden, doğanın ortasında ev konforunu yaşatır.",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "kişisel bakım, diş fırçası"
   },
@@ -2223,7 +2223,7 @@
       71
     ],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "20",
     "etiketler": "Teknik, tripod, Monopod, kayıt ekipmanı"
   },
@@ -2239,7 +2239,7 @@
       26
     ],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "kamp malzemeleri, mat, şişme mat, uyku tulumu"
   },
@@ -2251,7 +2251,7 @@
     "aciklama": "Heybenin bir köşesinde tüy gibi taşıdığım o iki metrelik ince, sağlam halat; bilinmez yollarda mola verip mescitlere sığındığımda içeriden kapıyı kilitleyip huzurla uyumamı sağlayan en sadık emniyet sübapımdır.",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "güvenlik, halat, ip"
   },
@@ -2306,7 +2306,7 @@
     "aciklama": "Heybenin bir gözünde derman niyetine taşıdığım o küçük ilaç ve kremler; yolda rüzgârın, güneşin ya da nasır tutmuş kasların çıkardığı hınzırlıklara karşı kurduğum en sağlam savunma hattım, yorgun günlerin sessiz şifacısıdır.",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "sağlık, ilaç, krem"
   },
@@ -2330,7 +2330,7 @@
     "aciklama": "Decathlon’un rafından tekne sporları için satılan o içi polar rüzgarlık mont; deniz tuzu görmese de, dağ başındaki o buraların deli rüzgârına ve ayazına karşı sırtıma geçirdiğim en sağlam kalkanım, kamp ateşinin başında titremeden oturmamı sağlayan sığınağımdır.",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "giyim, Rüzgarlık, Mont, Polar, yağmurluk"
   },
@@ -2402,7 +2402,7 @@
     "aciklama": "Aslında bir Denizli Bisiklet Festivali'nde hediye edilen o ilk hafif peştemalin yerini tam tutmasa da, Denizli'ye gittiğinde Gözde kankama özellikle sipariş edip getirtmiş olduğum; hafifliğiyle heybeye kolayca sığınan, çabuk kuruyan ve her çeşme başında ya da mola yerinde o dost elini sırtımda hissettiren en kıymetli yoldaşımdır.",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "temizlik, kişisel bakım, Peştemal"
   },
@@ -2426,7 +2426,7 @@
     "aciklama": "Yolda solda denk geldikçe pembesine, moruna bakmadan, rengine takılmadan heybeye attığım o küçük kalemlikler; dağınıklığı sevmeyen yapısıyla kabloları, pilleri ve ufak tefek ıvır zıvırı yerli yerinde tutarak tırnak kadar yer kaplamayan en pratik düzenleyicilerimdir.",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "Çantalar, kalemlik, Taşıma"
   },
@@ -2466,7 +2466,7 @@
     "aciklama": "Arkaya bağladığım güneş panelinden gelen elektriği heybenin karanlığındaki powerbank'e, oradan da 1.5 metrelik uzun kablosu sayesinde gözümün önündeki gidona kadar taşıyarak hareket halindeyken kesintisiz şarj imkânı sunan; o uzun kablosuyla yolda mesafeleri ve şarj derdini ortadan kaldıran en büyük elektrik cankurtaranımdır.",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "elektrik, kablo, şarj"
   },
@@ -2519,7 +2519,7 @@
     "aciklama": "Sadece sıradan bir parça değil; yolda dört ayaklılara karşı en sadık savunma siperim, mola yerinde bisikleti yaslayacak güvenli dayanağım, rüzgarlı günlerde bayrak direğim olan ve coğrafya coğrafya gezerek hak ettiği bu unvanı sonuna kadar taşıyan en vefalı ahşap yoldaşımdır.",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "güvenlik, sopa"
   },
@@ -2531,7 +2531,7 @@
     "aciklama": "Normal şartlarda RPG tercih ediyorum ama heybede tıkıştırması dert; AK-47 desen o tırmanışlarda o ağırlıkla insanın ciğerini söküyor. Ben de çareyi ruhsatlandırması taşımasından çok daha zor olan, heybenin en can alıcı yerinde saklamakta buluyorum.",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "güvenlik"
   }
