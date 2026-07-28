@@ -2111,5 +2111,17 @@
     "varsayilan": false,
     "agirlik": "0",
     "etiketler": "kamp mutfağı"
+  },
+  {
+    "baslik": "Katlanır Kart Bıçak",
+    "kategori": "Kamp Mutfağı",
+    "tarih": "2015-4",
+    "kapakresmi": "/img/ekipman/2015/kamp-mutfagi-katlanir-kart-bicak.jpg",
+    "aciklama": "hafif yer kaplamıyor. çantanın bir köşesinde zor zamanlar için bekliyor",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı, bıçak"
   }
 ]
