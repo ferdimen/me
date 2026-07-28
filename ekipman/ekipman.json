@@ -2436,5 +2436,17 @@
     "varsayilan": false,
     "agirlik": "0",
     "etiketler": "elektrik, elektronik, şarj, priz"
+  },
+  {
+    "baslik": "Keser Sapı (Sopa/Odun)",
+    "kategori": "Güvenlik",
+    "tarih": "2022-06",
+    "kapakresmi": "/img/ekipman/2022/guvenlik-keser-sapi-sopa-odun.jpg",
+    "aciklama": "Bolu Devrek'ten edindiğim o sağlam keser sapı; dört ayaklılardan ziyade iki ayaklılara karşı caydırıcılığıyla bilinen, sosis çantanın üstünde herkesin görebileceği şekilde parıldayan varlığıyla bile yolda içimi rahatlatan en sadık savunma ve güven yoldaşımdır.",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "güvenlik, caydırıcılık, savunma"
   }
 ]
