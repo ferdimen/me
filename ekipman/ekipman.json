@@ -2315,5 +2315,17 @@
     "varsayilan": true,
     "agirlik": "0",
     "etiketler": "giyim, şort"
+  },
+  {
+    "baslik": "Balaklava",
+    "kategori": "Giyim",
+    "tarih": "2014-03",
+    "kapakresmi": "/img/ekipman/2014/giyim-balaklava.jpg",
+    "aciklama": "ış turlarında dondurucu soğuktan korur diye aldığım ama kalın malzemesi yüzünden içeride teri hapsedip sırılsıklam eden, nefesimi tıkadığı için heybenin en dibine mahkûm edip bir daha yüzüne bakmadığım yanılgımdır.",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "giyim, Balaklava"
   }
 ]
