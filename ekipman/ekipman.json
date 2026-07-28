@@ -2579,5 +2579,21 @@
     "varsayilan": true,
     "agirlik": "100",
     "etiketler": "temizlik, kişisel bakım, kamp malzemeleri"
+  },
+  {
+    "baslik": "Blitzwolf 20W Güneş Paneli",
+    "kategori": "Elektronik",
+    "tarih": "2015-04",
+    "kapakresmi": "/img/ekipman/2015/elektronik-blitzwolf20wgnepaneli.jpg",
+    "aciklama": "Arkaya bağlayıp yolda pedallarken gücünü güneşten alan, 1.5 metrelik kablo aracılığıyla heybedeki powerbank'e kesintisiz enerji pompalyarak hareket halindeyken bile şarjı dert etmemi sağlayan; priz arama lüksümün olmadığı dağ başlarında en sadık enerji kaynağım olan 20 wattlık can damarımdır.",
+    "bagli_urunler": [
+      106,
+      107,
+      202
+    ],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "550",
+    "etiketler": "elektronik, elektrik, şarj"
   }
 ]
