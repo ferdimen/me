@@ -2039,5 +2039,17 @@
     "varsayilan": false,
     "agirlik": "20",
     "etiketler": "tamir, bakım, kamp ocağı, benzin ocağı, kovea"
+  },
+  {
+    "baslik": "Ocak Altlığı",
+    "kategori": "Kamp Mutfağı",
+    "tarih": "2014-4",
+    "kapakresmi": "/img/ekipman/2014/kamp-mutfagi-ocak-altligi.jpg",
+    "aciklama": "Rüzgarlığın Kardeşi, Riskli bölgelerde yada yağışlı havalarda çadır içinde (Önerilmez ama bazen mecbur kalınıyor) yada önünde ocağı yaktığınızda ısının aşağıdaki otları çadır vs. alev almasını önlüyor. Birde galiba aslında bu kar üstünde ocağı yaktığınızda karların eriyip ocağın devrilmemesi için gibi bir şey diye biliyorum.",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı, kamp ocağı, benzin ocağı"
   }
 ]
