@@ -2227,7 +2227,9 @@
     "tarih": "2014-9, 2023-04-13",
     "kapakresmi": "/img/ekipman/2014/bisiklet-parcalari-spd-pedal.jpg",
     "aciklama": "Cube dağ bisikletini ilk dizdiğim o hevesli günlerin mirası SPD pedal, 2023’ten sonra kış turlarına dönünce ayakkabı tabanından içeri sızdıran o buz gibi su yüzünden emekliye ayrıldı; şimdi yollarda botun o hantal ama sıcacık konforuyla pedal çeviriyorum.",
-    "bagli_urunler": [],
+    "bagli_urunler": [
+      4
+    ],
     "yorum": "",
     "varsayilan": false,
     "agirlik": "0",
