@@ -2424,5 +2424,17 @@
     "varsayilan": false,
     "agirlik": "0",
     "etiketler": "elektrik, elektronik, priz, şarj"
+  },
+  {
+    "baslik": "G tipi Priz Adaptörü",
+    "kategori": "Elektronik",
+    "tarih": "2019-12, 2020-03",
+    "kapakresmi": "/img/ekipman/2019/elektronik-g-tipi-priz-adaptoru.jpg",
+    "aciklama": "Kıbrıs'ta G tipi (Type G) adı verilen, İngiliz standartlarındaki 3 dikdörtgen uçlu (BS 1363) priz sistemi kullanılmaktadır. Türkiye'de kullanılan standart ikili yuvarlak fişler (Tip C ve F) bu prizlerle doğrudan uyumlu olmadığı için adaptör kullanımını zorunlu kılar.",
+    "bagli_urunler": [],
+    "yorum": "Kıbrıs yollarında o farklı prizlere uyum sağlayayım derken mecburen çantaya attığım; işimi gördükten sonra evrensel adaptörün hayatımıza girmesiyle birlikte Türkiye topraklarında yüzüne bakan kalmayıp heybenin en derin köşesinde emekliliğini yaşayan o yabancı misafirdir.",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "elektrik, elektronik, şarj, priz"
   }
 ]
