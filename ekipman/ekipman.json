@@ -2267,5 +2267,17 @@
     "varsayilan": true,
     "agirlik": "0",
     "etiketler": "sağlık, kişisel bakım"
+  },
+  {
+    "baslik": "Rüzgarlık Mont",
+    "kategori": "Giyim",
+    "tarih": "2022-11-15",
+    "kapakresmi": "/img/ekipman/2022/giyim-ruzgarlik-mont.jpg",
+    "aciklama": "Decathlon’un rafından tekne sporları için satılan o içi polar rüzgarlık mont; deniz tuzu görmese de, dağ başındaki o buraların deli rüzgârına ve ayazına karşı sırtıma geçirdiğim en sağlam kalkanım, kamp ateşinin başında titremeden oturmamı sağlayan sığınağımdır.",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "giyim, Rüzgarlık, Mont, Polar, yağmurluk"
   }
 ]
