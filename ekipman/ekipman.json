@@ -2015,5 +2015,17 @@
     "varsayilan": true,
     "agirlik": "0",
     "etiketler": "dikiş seti, iğne, iplik, makas"
+  },
+  {
+    "baslik": "Cımbız",
+    "kategori": "Tamir, Bakım, Temizlik/Sağlık ve Kişisel Bakım",
+    "tarih": "2015-4",
+    "kapakresmi": "/img/ekipman/2015/tamir-cimbiz.jpg",
+    "aciklama": "Lastik yama çantasının içinde duruyor. lastiklerdeki küçük tel kıyık çapakları çıkartmak için kullanıyorum.",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "cımbız, temizlik, tamir, bakım"
   }
 ]
