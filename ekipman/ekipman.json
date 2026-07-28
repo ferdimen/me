@@ -1113,6 +1113,11 @@
     "tarih": "2011-04, 2020-05",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/165b290a-d7f0-4816-8cf9-3a4c4ddc45af.jpg",
     "aciklama": "Kimseye kullanmak nasip olmasın. ama eksik de olmasın.",
+    "bagli_urunler": [
+      189,
+      190,
+      90
+    ],
     "yorum": "Can tatlı",
     "varsayilan": false,
     "agirlik": "0",
