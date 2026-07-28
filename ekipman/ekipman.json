@@ -1919,5 +1919,17 @@
     "varsayilan": true,
     "agirlik": "100",
     "etiketler": "çaydanlık, kamp mutfağı"
+  },
+  {
+    "baslik": "Tahta Kaşıklar",
+    "kategori": "Kamp Mutfağı",
+    "tarih": "2013-4",
+    "kapakresmi": "/img/ekipman/2013/kamp-mutfagi-tahta-kasiklar.jpg",
+    "aciklama": "Teflon tavanın çizilmemesi için gerekli",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "20",
+    "etiketler": "kamp mutfağı, kaşık"
   }
 ]
