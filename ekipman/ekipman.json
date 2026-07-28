@@ -2003,5 +2003,17 @@
     "varsayilan": true,
     "agirlik": "10",
     "etiketler": "kişisel bakım, temizlik, tırnak makası"
+  },
+  {
+    "baslik": "Dikişi Seti",
+    "kategori": "Tamir, Temizlik/Sağlık ve Kişisel Bakım",
+    "tarih": "2019-09",
+    "kapakresmi": "/img/ekipman/2019/tamir-dikisi-seti.jpg",
+    "aciklama": "ufak tefek yırtık söküklerin tamiri için gerekli.",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "dikiş seti, iğne, iplik, makas"
   }
 ]
