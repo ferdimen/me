@@ -1939,7 +1939,9 @@
     "tarih": "2014-4",
     "kapakresmi": "/img/ekipman/2014/kamp-mutfagi-catal-bicak-kasik.jpg",
     "aciklama": "Dağ başında geziyor olsak da medeni insanız.",
-    "bagli_urunler": [],
+    "bagli_urunler": [
+      96
+    ],
     "yorum": "Daha önce farklı tipte katlanır çatal bıçak takımları kullandım ama bu daha iyi eğilip bükülmüyor sağlam.",
     "varsayilan": false,
     "agirlik": "50",
