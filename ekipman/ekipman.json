@@ -2562,5 +2562,19 @@
     "varsayilan": true,
     "agirlik": "45",
     "etiketler": "Taşıma, Çantalar, Decathlon"
+  },
+  {
+    "baslik": "Orcamp Solar Kamp Duşu",
+    "kategori": "Temizlik/Sağlık ve Kişisel Bakım",
+    "tarih": "2025-03",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "2015 Mayıs ayındaki turda yere düşüp patladığından beri \"Yenisini almalıyım\" diye aklımın bir köşesinde duran, aradan geçen nerdeyse 10 kocaman yılın ardından A101'de uygun fiyatlı görünce anında kaptığım; sadece günün yorgunluğunu suyla akıtmak için değil, aynı zamanda şahane bir su torbası olarak da kullandığım 10 yıllık hasret yoldaşımdır.",
+    "bagli_urunler": [
+      28
+    ],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "100",
+    "etiketler": "temizlik, kişisel bakım, kamp malzemeleri"
   }
 ]
