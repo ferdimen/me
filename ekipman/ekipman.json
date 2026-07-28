@@ -2083,7 +2083,10 @@
     "tarih": "2018-04",
     "kapakresmi": "/img/ekipman/2018/kamp-mutfagi-tup-doldurma-adaptoru.jpg",
     "aciklama": "Çakmak gazı tüpündeki gazı ocak kartuşuna aktarmada kullanılıyor.",
-    "bagli_urunler": [],
+    "bagli_urunler": [
+      30,
+      174
+    ],
     "yorum": "Aslında gerek yok, çakmak gazının ucunu hafif çapraz kesip tüp gayet kolay dolduruluyor. bu konu ile ilgili videom var.",
     "varsayilan": false,
     "agirlik": "0",
