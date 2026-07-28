@@ -1991,5 +1991,17 @@
     "varsayilan": false,
     "agirlik": "0",
     "etiketler": "kamp mutfağı, bulaşık, sünger, deterjan"
+  },
+  {
+    "baslik": "Tırnak Makası",
+    "kategori": "Temizlik/Sağlık ve Kişisel Bakım",
+    "tarih": "2013-4",
+    "kapakresmi": "/img/ekipman/2013/temizlik-saglik-ve-kisisel-bakim-tirnak-makasi.jpg",
+    "aciklama": "Normal küçük boy tırnak makası",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": true,
+    "agirlik": "10",
+    "etiketler": "kişisel bakım, temizlik, tırnak makası"
   }
 ]
