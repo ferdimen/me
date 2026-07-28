@@ -1907,5 +1907,17 @@
     "varsayilan": false,
     "agirlik": "2500",
     "etiketler": ""
+  },
+  {
+    "baslik": "Çaydanlık",
+    "kategori": "Kamp Mutfağı",
+    "tarih": "2015-4",
+    "kapakresmi": "/img/ekipman/2015/kamp-mutfağı-aydanlk.jpg",
+    "aciklama": "",
+    "bagli_urunler": [],
+    "yorum": "Bir dronedan daha çok işe yarıyor.",
+    "varsayilan": false,
+    "agirlik": "100",
+    "etiketler": ""
   }
 ]
