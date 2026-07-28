@@ -2339,5 +2339,17 @@
     "varsayilan": true,
     "agirlik": "10",
     "etiketler": "giyim, kolluk, Güneş Kollukları"
+  },
+  {
+    "baslik": "Peştemal",
+    "kategori": "Temizlik/Sağlık ve Kişisel Bakım",
+    "tarih": "2023-03",
+    "kapakresmi": "/img/ekipman/2023/temizlik-saglik-ve-kisisel-bakim-pestemal.jpg",
+    "aciklama": "Aslında bir Denizli Bisiklet Festivali'nde hediye edilen o ilk hafif peştemalin yerini tam tutmasa da, Denizli'ye gittiğinde Gözde kankama özellikle sipariş edip getirtmiş olduğum; hafifliğiyle heybeye kolayca sığınan, çabuk kuruyan ve her çeşme başında ya da mola yerinde o dost elini sırtımda hissettiren en kıymetli yoldaşımdır.",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "temizlik, kişisel bakım, Peştemal"
   }
 ]
