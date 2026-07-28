@@ -2027,5 +2027,17 @@
     "varsayilan": false,
     "agirlik": "0",
     "etiketler": "cımbız, temizlik, tamir, bakım"
+  },
+  {
+    "baslik": "Benzin Ocağı Tamir Anahtarı",
+    "kategori": "Kamp Mutfağı, Tamir",
+    "tarih": "2014-4",
+    "kapakresmi": "/img/ekipman/2014/kamp-mutfagi-benzin-ocagi-tamir-anahtari.jpg",
+    "aciklama": "Ocakla ilgili her sorunu çözmek için gerekli. Benzin ocağı ile beraber geliyor ayrıca göstermek istedim. üstünde ocağı söküp takmak için gerekli her şey var. Birde üstünde ocak tıkanırsa tıkanıklığı açmak için ince bir tel var",
+    "bagli_urunler": [],
+    "yorum": "Tıkanıklık açmak için tel zamanla kopuyor. vites yada fren telinden tek damarından kısa bir parça anahtara sıkıştırıp sorunsuz kullanılıyor.",
+    "varsayilan": false,
+    "agirlik": "20",
+    "etiketler": "tamir, bakım, kamp ocağı, benzin ocağı, kovea"
   }
 ]
