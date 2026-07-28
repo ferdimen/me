@@ -1135,13 +1135,14 @@
     "tarih": "2014",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/338e3126-216f-4ecd-9021-4a7beeaf692c.jpg",
     "aciklama": "Rüzgârlı ortamlarda ateş yakarken ocağın altına ve kenarlarında kullanıyorum. Ateşin sağa sola yayılmasına mani oluyor. Olmasa da olur ama faydalı bir araç.",
+    "bagli_urunler": [
+      29,
+      172
+    ],
     "yorum": "Başlangıçta benzin ocağının gücünü bilmediğimden bir tarafı eridi ama turlarımda demirbaş listesinde yer alır.",
     "varsayilan": true,
     "agirlik": "0",
-    "etiketler": "kamp mutfağı",
-    "bagli_urunler": [
-      29
-    ]
+    "etiketler": "kamp mutfağı"
   },
   {
     "baslik": "Çatal Bıçak Kaşık seti",
