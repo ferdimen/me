@@ -1916,7 +1916,7 @@
     "aciklama": "",
     "bagli_urunler": [],
     "yorum": "Bir dronedan daha çok işe yarıyor.",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "100",
     "etiketler": "çaydanlık, kamp mutfağı"
   }
