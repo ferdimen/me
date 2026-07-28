@@ -2552,13 +2552,15 @@
   {
     "baslik": "Forclaz 2L Bel Çantaları",
     "kategori": "Taşıma, Çantalar ",
-    "tarih": "d",
-    "kapakresmi": "/img/resim-yok.png",
-    "aciklama": "",
-    "bagli_urunler": [],
+    "tarih": "2022-04",
+    "kapakresmi": "/img/ekipman/2022/taşıma,-çantalar--forclaz2lbelantalar.jpg",
+    "aciklama": "Adı üstünde bel çantası olsa da benim turda belime takmak yerine arka heybelerin dışına bağlayarak toplamda ekstra 4 litrelik devasa bir alan kazandırdığım; elbiselerin veya büyük eşyaların arasında kaybolmasını istemediğim en kritik malzemeleri koyup, elimi attığım gibi anında bulduğum en pratik dış cep depolama sistemimdir.",
+    "bagli_urunler": [
+      54
+    ],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "45",
-    "etiketler": "Taşıma, Çantalar"
+    "etiketler": "Taşıma, Çantalar, Decathlon"
   }
 ]
