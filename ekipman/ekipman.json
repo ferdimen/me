@@ -2191,7 +2191,11 @@
     "tarih": "2015-4",
     "kapakresmi": "/img/ekipman/2015/kamp-malzemeleri-mat-altligi-guneslik.jpg",
     "aciklama": "Yaz güneşinde arabaların camına serilen o naylonlu parlak güneşlik, dağ başındaki dondurucu ayazlarda matımın altındaki en sadık yalıtım sırrımdır. Tüy gibi hafifliğiyle yük yapmaz, o bet gibi soğuğu yerden kesip çadırın içinde sıcacık bir yuva kurar.",
-    "bagli_urunler": [],
+    "bagli_urunler": [
+      27,
+      24,
+      26
+    ],
     "yorum": "",
     "varsayilan": false,
     "agirlik": "0",
