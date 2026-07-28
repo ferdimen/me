@@ -2419,7 +2419,10 @@
     "tarih": "2015-4",
     "kapakresmi": "/img/ekipman/2015/elektronik-cogaltici-uclu-priz.jpg",
     "aciklama": "Yol üstü molalarında veya sığındığımız köy kahvelerinde çoğunlukla tek bir prizle karşılaşıp şarj edilecek telefon, powerbank ve kamera kuyruğu oluştuğunda imdada yetişen; o tek yuvayı üçe katlayarak tırnak kadar yerde tüm enerjiyi ortak noktada buluşturan en pratik kurtarıcımdır.",
-    "bagli_urunler": [],
+    "bagli_urunler": [
+      151,
+      202
+    ],
     "yorum": "",
     "varsayilan": false,
     "agirlik": "0",
