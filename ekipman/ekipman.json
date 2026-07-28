@@ -2327,5 +2327,17 @@
     "varsayilan": false,
     "agirlik": "0",
     "etiketler": "giyim, Balaklava"
+  },
+  {
+    "baslik": "Güneş Kollukları",
+    "kategori": "Giyim",
+    "tarih": "2024-10-16",
+    "kapakresmi": "/img/ekipman/2024/giyim-gunes-kolluklari.jpg",
+    "aciklama": "Umut Dikim'in \"mutlaka yanına al\" diye ısrarla elime sıkıştırdığı, başta \"ne gerek var, istemem\" diye dirensem de güneşinin altında pişerken takınca can simidine dönen, yollarda kollarımı kavrulmaktan koruyan en sadık yol hediyemdir.",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": true,
+    "agirlik": "10",
+    "etiketler": "giyim, kolluk, Güneş Kollukları"
   }
 ]
