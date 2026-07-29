@@ -838,201 +838,6 @@ body {
     .video-card { flex-direction: column; }
     .video-img-wrapper { width: 100%; height: 180px; }
 }
-/* --- ANLIK SOSYAL MEDYA KARTLARI --- */
-.anlik-card {
-    flex: 0 0 220px;
-    width: 220px;
-    background: #fff;
-    border: 1px solid #e5e5e5;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.anlik-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
-
-.anlik-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 10px;
-    background: #fff;
-}
-
-.anlik-avatar {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.anlik-author-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.anlik-author-name {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: #0f0f0f;
-    line-height: 1.1;
-}
-
-.anlik-date {
-    font-size: 0.68rem;
-    color: #8e8e8e;
-}
-
-/* Sabit Boyutlu Resim Çerçevesi */
-.anlik-img-wrapper {
-    width: 100%;
-    height: 240px;
-    background-color: #f4f4f4;
-    overflow: hidden;
-    position: relative;
-}
-
-.anlik-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.anlik-card:hover .anlik-img {
-    transform: scale(1.05);
-}
-
-/* --- MODAL / POP-UP BÜYÜTME EKRANI --- */
-.anlik-modal {
-    display: none;
-    position: fixed;
-    z-index: 99999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(4px);
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.anlik-modal-content {
-    background: #fff;
-    border-radius: 12px;
-    max-width: 850px;
-    width: 90%;
-    max-height: 90vh;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-.anlik-modal-close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-    z-index: 101;
-    line-height: 1;
-}
-
-.anlik-modal-body {
-    display: flex;
-    flex-direction: row;
-    max-height: 80vh;
-}
-
-.anlik-modal-img-wrapper {
-    flex: 1.5;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-height: 80vh;
-}
-
-.anlik-modal-img-wrapper img {
-    max-width: 100%;
-    max-height: 80vh;
-    object-fit: contain;
-}
-
-.anlik-modal-details {
-    flex: 1;
-    padding: 24px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Modal Ok Navigasyonları */
-.anlik-modal-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 42px;
-    height: 42px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 100;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: all 0.2s ease;
-}
-
-.anlik-modal-arrow:hover {
-    background: #0f0f0f;
-    border-color: #0f0f0f;
-}
-
-.anlik-modal-arrow:hover svg {
-    fill: #ffffff;
-}
-
-.anlik-modal-arrow svg {
-    width: 24px;
-    height: 24px;
-    fill: #0f0f0f;
-    transition: fill 0.2s ease;
-}
-
-.anlik-modal-arrow.prev-arrow { left: 12px; }
-.anlik-modal-arrow.next-arrow { right: 12px; }
-.anlik-modal-arrow.disabled { display: none !important; }
-
-/* Mobil Responsive Düzen */
-@media (max-width: 768px) {
-    .anlik-modal-body {
-        flex-direction: column;
-    }
-    .anlik-modal-img-wrapper {
-        max-height: 40vh;
-    }
-    .anlik-modal-arrow {
-        top: 25%;
-        width: 36px;
-        height: 36px;
-    }
-    .anlik-modal-arrow.prev-arrow { left: 6px; }
-    .anlik-modal-arrow.next-arrow { right: 6px; }
-}
-
 #timeline-container {
     position: relative;
     max-width: 1000px;
@@ -1238,4 +1043,169 @@ body {
     .sticky-timeline-row { flex-direction: column; }
     .sticky-card-box { width: 100% !important; padding: 0 0 0 45px !important; margin-bottom: 25px; }
     .sticky-year-wrapper { justify-content: flex-start; padding-left: 5px; }
+}
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 320px;
+    width: 100%;
+}
+
+.toast-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #1e1e1e;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 10px 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid #333;
+    text-decoration: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    animation: slideIn 0.4s ease-out forwards;
+    overflow: hidden;
+}
+
+.toast-card:hover {
+    transform: translateY(-3px);
+    border-color: #555;
+}
+
+.toast-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.toast-content {
+    flex-grow: 1;
+    padding-right: 15px;
+}
+
+.toast-badge {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #ff9800;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.toast-title {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #f1f1f1;
+    margin: 0;
+}
+
+.toast-close {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    color: #aaa;
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px;
+}
+
+.toast-close:hover {
+    color: #fff;
+}
+
+/* Kapanış animasyonu */
+.toast-card.hide {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+/* Aktif Tur Bildirim Kartı */
+.toast-card.active-tour-card {
+    background: linear-gradient(135deg, #1c1917 0%, #0f172a 100%);
+    border: 1px solid #dc2626; /* Tema rengi (cizgi-rengi uyarınca) */
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.25);
+}
+
+/* Yanıp Sönen Konum / Canlı İkon */
+.live-location-icon {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    background: rgba(220, 38, 38, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.live-location-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: #dc2626;
+    z-index: 2;
+}
+
+/* Radar Dalga Animasyonu */
+.live-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(220, 38, 38, 0.6);
+    border-radius: 50%;
+    animation: pulseWave 1.8s infinite ease-out;
+    z-index: 1;
+}
+
+@keyframes pulseWave {
+    0% {
+        transform: scale(0.6);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+.tour-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #ef4444;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 2px;
+}
+
+.tour-desc {
+    font-size: 12px;
+    color: #a1a1aa;
+    margin-top: 3px;
+    line-height: 1.35;
 }
