@@ -2746,9 +2746,12 @@
     "baslik": "French Press",
     "kategori": "Kamp Mutfağı",
     "tarih": "2018-05",
-    "kapakresmi": "/img/resim-yok.png",
+    "kapakresmi": "/img/ekipman/2018/kamp-mutfağı-frenchpress.jpg",
     "aciklama": "Heybelerde o narin cam modelini kıracağım diye tetikte beklemekten, her an \"eyvah çatladı mi\" stresi yaşamaktan gına gelince sonunda akıllanıp plastik modele terfi ettiğim; lezzetten ödün vermeden o taze kahve ritmini kampta kafam rahat bir şekilde sürdürmemi sağlayan en pratik kurtarıcımdır.",
-    "bagli_urunler": [],
+    "bagli_urunler": [
+      98,
+      29
+    ],
     "yorum": "",
     "varsayilan": false,
     "agirlik": "100",
