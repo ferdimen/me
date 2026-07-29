@@ -470,11 +470,12 @@
     "etiketler": "tamir, bakım"
   },
   {
-    "baslik": "Kubağacık",
+    "baslik": "Kurbağacık Anahtar",
     "kategori": "Tamir, Bakım",
     "tarih": "2020-04",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f50d3f5d-df22-4caf-9a40-a3ec1adc6deb.jpg",
     "aciklama": "Küçük boyutu ve hafifliği ile taşıma kolaylığı sağlıyor. boyutu 22 somunlar için biraz daha büyük olsaydı Ruble sökücü için taşıdığım kurbağacığı taşımaktan kurtaracak",
+    "bagli_urunler": [],
     "yorum": "Hafif ve sağlam iş görüyor.",
     "varsayilan": true,
     "agirlik": "0",
