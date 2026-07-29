@@ -2625,5 +2625,20 @@
     "varsayilan": true,
     "agirlik": "100",
     "etiketler": "giyim, yağmurluk, koruma"
+  },
+  {
+    "baslik": "Yoga Matı",
+    "kategori": "Kamp Malzemeleri",
+    "tarih": "2017-04",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "Standart asker matının haricinde, arkadaşım Ayşe Kuş'un hediyesi olan; az yer kaplayan, tüy gibi hafif yapısıyla heybelerde neredeyse hiç yük yaratmayan ve özellikle şişme mat kullandığım gecelerde onun altına sererek hem ekstra koruma sağlayan hem de konforu katlayan en değerli dost yadigarımdır.",
+    "bagli_urunler": [
+      27,
+      208
+    ],
+    "yorum": "Ayşe Kuş'un hediyeleri sadece heybelerimde yer kaplayan birer eşya değil; bu hafif yoga matını çadırda serdiğimde ya da o güzelim kuksa bardağı elime aldığımda işin rengi değişiyor. Buz gibi havada o bardaktan sıcacık çay çorba yudumlarken, cehennem sıcağında kana kana su içerken ve kampta başımı her yastığa koyduğumda an geliyor, o dost eli ve kulakları çınlatan hatırıyla Ayşe'yi hep sevgiyle ve minnetle anıyorum.",
+    "varsayilan": true,
+    "agirlik": "200",
+    "etiketler": "kamp malzemeleri, mat"
   }
 ]
