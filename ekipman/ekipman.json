@@ -2610,5 +2610,19 @@
     "varsayilan": true,
     "agirlik": "10",
     "etiketler": "cibinlik, sineklik, sinek, koruma"
+  },
+  {
+    "baslik": "Quechua Yağmurluk",
+    "kategori": "Giyim",
+    "tarih": "2017-04",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "Decathlon'dan aldığımda sanırım yanlışlıkla kadın modelini seçtiğimi fark ettiğim; ama sağanak altında pedallarken suyun bütün kusurları örttüğü, fiyaka peşinde koşanlardan olmadığım için beni rüzgardan ve sudan koruyup işini en kral şekilde yapan, üzerime tam oturup yolda en sadık sığınağım olan o cankurtaran yağmurluğumdur.",
+    "bagli_urunler": [
+      130
+    ],
+    "yorum": "Şiddetli sağanaklarda Quechua yağmurluğu giyiyorum; biraz terletse de o suda başka çare yok. Ama \"ahmak ıslatan\" hafif yağmurlarda, terlememek için daha nefes alabilen diğer yağmurluğumu tercih ediyorum.",
+    "varsayilan": false,
+    "agirlik": "100",
+    "etiketler": "giyim, yağmurluk, koruma"
   }
 ]
