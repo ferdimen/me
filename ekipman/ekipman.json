@@ -2727,5 +2727,17 @@
     "varsayilan": false,
     "agirlik": "0",
     "etiketler": "krom, bardak, kamp mutfağı"
+  },
+  {
+    "baslik": "French Press",
+    "kategori": "Kamp Mutfağı",
+    "tarih": "2018-05",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "Heybelerde o narin cam modelini kıracağım diye tetikte beklemekten, her an \"eyvah çatladı mi\" stresi yaşamaktan gına gelince sonunda akıllanıp plastik modele terfi ettiğim; lezzetten ödün vermeden o taze kahve ritmini kampta kafam rahat bir şekilde sürdürmemi sağlayan en pratik kurtarıcımdır.",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "100",
+    "etiketler": "kamp mutfağı, bardak, kahve, çay, French Press"
   }
 ]
