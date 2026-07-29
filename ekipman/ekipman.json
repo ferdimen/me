@@ -1563,14 +1563,15 @@
     "etiketler": "giyim, yağmurluk"
   },
   {
-    "baslik": "Yağmurluk",
+    "baslik": "Yağmurluk (Panço)",
     "kategori": "Giyim",
     "tarih": "2015-04, 2016-05",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/368df996-016d-4d22-9d21-383a38c3bc75.jpg",
     "aciklama": "Kapladığı alana göre çok kullanışlı bulmadım. Bir kenarda duruyor.",
+    "bagli_urunler": [],
     "yorum": "Rüzgarlı havada sağa sola savrulup çok ses yapmasının yanında savrulan bölümlerin tekerleklere takılma riski var.",
     "varsayilan": false,
-    "agirlik": "0",
+    "agirlik": "200",
     "etiketler": "giyim, panço"
   },
   {
