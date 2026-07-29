@@ -2714,15 +2714,18 @@
   },
   {
     "baslik": "Rollei Telefon Tutacağı",
-    "kategori": "",
+    "kategori": "Teknik,",
     "tarih": "2022-04",
     "kapakresmi": "/img/ekipman/2022/genel-rollei-telefon-tutacagi.jpg",
     "aciklama": "Aslında tamamen başka bir niyetle, DJI Pocket için aldığım bir ekipman olmasına rağmen gidona monte ederek harika bir telefon tutucusuna dönüştürdüğüm; piyasadaki plastik modellere kıyasla ağırlığı biraz daha fazla hissedilse de o sağlam metal yapısıyla en sert titreşimlerde bile telefonumu kökten sahiplenip kafamı rahatlatan o gizli kahramandır.",
-    "bagli_urunler": [],
+    "bagli_urunler": [
+      200,
+      183
+    ],
     "yorum": "",
     "varsayilan": false,
     "agirlik": "0",
-    "etiketler": ""
+    "etiketler": "kayıt ekipmanı"
   },
   {
     "baslik": "Krom Bardak",
