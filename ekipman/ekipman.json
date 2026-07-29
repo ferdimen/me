@@ -2692,7 +2692,9 @@
     "tarih": "2013-05",
     "kapakresmi": "/img/ekipman/2013/bisiklet-parcalari-shimano-pd-m324-cift-tarafli-spd-pedal.jpg",
     "aciklama": "2013 yılında tur bisikletimi ilk topladığım günden beri benimle olan, sonrasında Cube dağ bisikletime devrettiğim; bir yüzü kilitli SPD diğeri düz platform olan, yıllara meydan okuyan yapısıyla yolda bırakmayan o en vefalı emektar pedalım.",
-    "bagli_urunler": [],
+    "bagli_urunler": [
+      4
+    ],
     "yorum": "Uzun turlarda, hele bir de rotaya tarihi ören yerleri girip yürüyerek gezmek gerektiğinde o SPD ayakkabılarla dolaşmanın ne büyük eziyet olduğunu bildiğimden, bu çift taraflı pedal hayat kurtarıyor; kilitli ayakkabıyı çıkar, normal ayakkabı giy derdiyle uğraştırmayan, gerektiğinde kampta ya da sıcakta ayağıma terliği geçirip bile bisiklete atlamamı sağlayan o en pratik yol arkadaşımdır.",
     "varsayilan": true,
     "agirlik": "533",
