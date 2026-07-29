@@ -3,7 +3,7 @@
   "POSTS_JSON_URL": "./yazilar/yazilar.json",
   "HABER_JSON_URL": "./data/haber.json",
   "VIDEO_JSON_URL": "./data/video.json",
-  "HABERLER": false,
+  "HABERLER": true,
   "VIDEO": true,
   "VIDEO_PROMODAY": 1,
   "TOUR_DISPLAY_DURATION": 12000,
