@@ -366,14 +366,14 @@
     "tarih": "2014-04",
     "kapakresmi": "https://public.flourish.studio/uploads/af6c7eea-c30f-4c87-a9cc-0b59f8ec0a4c.jpg",
     "aciklama": "Memleketin her yerinde benzine ulaşmak çok kolay olduğu için benzin ocağı tercih ettim. bu cihaz ayrıca tüp ile çalışıyor.\nBenzinin kalorisi gaza göre çok daha yüksek olduğundan yemekleri çok daha çabuk pişiriyor.\nBenzin kullanıldığı zaman ön ısıtma esnasında ocak çok isleniyor ve sorun çıkartabiliyor. ideali beyaz benzin denilen bir yakıt fakat her yerde bulmak mümkün değil.\nFiyatı diğer ocaklara göre oldukça yüksek.",
-    "yorum": "Aldığıma pişman olmadığım yegane ürünlerden biri.",
-    "varsayilan": true,
-    "agirlik": "0",
-    "etiketler": "kamp mutfağı, kovea booster +1",
     "bagli_urunler": [
       95,
       30
-    ]
+    ],
+    "yorum": "Aldığıma pişman olmadığım yegane ürünlerden biri.",
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kamp mutfağı, kovea booster +1"
   },
   {
     "baslik": "Kamp Tüpü",
