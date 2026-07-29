@@ -1209,3 +1209,91 @@ body {
     margin-top: 3px;
     line-height: 1.35;
 }
+/* Arka plan resimli kartların çerçeve dışına taşmasını engelleme ve sığdırma */
+.toast-card.active-tour-card.has-bg {
+    background-size: cover;          /* Görseli kart boyutuna sığdırır */
+    background-position: center;     /* Görseli merkeze hizalar */
+    background-repeat: no-repeat;    /* Resmin tekrarlanmasını engeller */
+    position: relative;
+    overflow: hidden;                /* Görsel veya taşan elemanların çerçeve dışına çıkmasını engeller */
+    border-color: #ef4444;           /* Vurgu çerçeve rengi */
+}
+
+/* Arka plan üzerindeki koyu karartma (metinlerin okunması için) */
+.toast-card.active-tour-card.has-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(0, 0, 0, 0.75) 100%);
+    border-radius: inherit;          /* Kartın köşe kavislerine tam uyar */
+    z-index: 1;
+}
+
+/* Kart içeriklerinin kararmanın üzerinde kalması için */
+.toast-card.active-tour-card.has-bg > * {
+    position: relative;
+    z-index: 2;
+}
+/* Video Toast Kartı Genel Düzeni & Kırmızı Çerçeve */
+.toast-card.video-toast-card {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    overflow: hidden !important;
+    
+    /* Kırmızı Çerçeve ve Sol Aksan Şeridi */
+    border: 1.5px solid #dc2626 !important;
+    border-left: 5px solid #dc2626 !important;
+}
+
+/* Çerçeveli Kapak Resmi Kutusu (Taşmayı Önler) */
+.toast-thumb-container {
+    flex-shrink: 0 !important;
+    width: 85px !important;
+    height: 55px !important;
+    border-radius: 6px;
+    overflow: hidden !important;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.toast-thumb-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+.video-toast-card .toast-content {
+    min-width: 0 !important;
+    flex: 1;
+}
+
+/* ==========================================
+   ÖZEL HAREKETLİ GİRİŞ VE NEON PARLAMA ANİMASYONU
+   ========================================== */
+.animated-video-toast {
+    animation: videoToastSlideGlow 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+               redGlowPulse 2.5s infinite ease-in-out 0.6s;
+}
+
+/* Sağdan Yaylanarak Geliş */
+@keyframes videoToastSlideGlow {
+    0% {
+        opacity: 0;
+        transform: translateX(100px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+/* Kırmızı Nefes Alan (Pulsing Glow) Efekti */
+@keyframes redGlowPulse {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(220, 38, 38, 0.45);
+    }
+}
