@@ -2678,7 +2678,9 @@
     "tarih": "2025-09",
     "kapakresmi": "/img/ekipman/2025/bisiklet-parcalari-dsi-puncture-protection-3-5-mm-27-5-x-2-10-dis-lastik.jpg",
     "aciklama": "Schwalbe dış lastikler iyice ateş pahası olunca bütçeyi korumak adına tam bir fiyat-performans hamlesiyle deneme amaçlı aldığım; kalın koruma katmanına rağmen şimdilik yolda yüzümü hiç kara çıkartmayıp güvenle pedallamamı sağlayan o sürpriz kahramanım.",
-    "bagli_urunler": [],
+    "bagli_urunler": [
+      4
+    ],
     "yorum": "",
     "varsayilan": true,
     "agirlik": "0",
