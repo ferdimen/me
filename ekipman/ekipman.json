@@ -482,19 +482,19 @@
     "etiketler": "tamir, bakım"
   },
   {
-    "baslik": "Kubağacık",
+    "baslik": "Kurbağacık Anahtar (B)",
     "kategori": "Tamir, Bakım",
     "tarih": "2022-04",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/5e3d7c10-7346-4b6c-8743-1ede4f2168e8.jpg",
     "aciklama": "Ruble sökücü için mecburen taşıyorum.",
-    "yorum": "Hafif ve sağlam iş görüyor.",
-    "varsayilan": true,
-    "agirlik": "0",
-    "etiketler": "tamir, bakım",
     "bagli_urunler": [
       44,
       46
-    ]
+    ],
+    "yorum": "Hafif ve sağlam iş görüyor.",
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "tamir, bakım"
   },
   {
     "baslik": "Multi-tool",
