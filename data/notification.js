@@ -1,7 +1,7 @@
 // --- TARİHTE BUGÜN BİLDİRİMLERİ
 // --- AYARLAR ---
 const DISPLAY_DURATION = 5000; // Bildirimin ekranda kalma süresi (Milisaniye: 8000 = 8 saniye)
-const JSON_URL = 'yazilar/yazilar.json';
+const JSON_URL = './yazilar/yazilar.json';
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchAndCheckPosts();
@@ -94,7 +94,7 @@ function removeToast(toast) {
 }
 // --- TUR BİLDİRİMLERİ İÇİN  ---
 // --- AYARLAR ---
-const TOUR_JSON_URL = 'nerdeyim/konum.json';
+const TOUR_JSON_URL = './nerdeyim/konum.json';
 const DEFAULT_CHAR_LIMIT = 100; // JSON'da "karakter-siniri" bulunamazsa yedek sınır
 const TOUR_DISPLAY_DURATION = 10000; // Otomatik kapanma süresi (10 saniye)
 
