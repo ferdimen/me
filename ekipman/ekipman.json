@@ -773,11 +773,13 @@
     "tarih": "2014-03, 2017-04",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f900e416-3f4c-456d-87d1-bdf1159858e5.jpg",
     "aciklama": "",
+    "bagli_urunler": [
+      57
+    ],
     "yorum": "",
     "varsayilan": false,
     "agirlik": "0",
-    "etiketler": "Çantalar, gidon çantası",
-    "id": 58
+    "etiketler": "Çantalar, gidon çantası"
   },
   {
     "baslik": "NEWBOLER üçgen çanta",
