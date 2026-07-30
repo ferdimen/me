@@ -135,8 +135,8 @@
 				<button class="tab-btn" onclick="sekmeDegistir('rozetler-tab')">🛡️ Rozet Yönetimi</button>
 				<button class="tab-btn" onclick="sekmeDegistir('sosyal-tab')">🌐 Sosyal Medya</button>
 				<button class="tab-btn" onclick="sekmeDegistir('dosyalar-tab')">📁 Dosya Yönetimi</button>
-				<button class="tab-btn" onclick="sekmeDegistir('bildirimler-tab')">🔔 Bildirimler</button>	
 				<button class="tab-btn" onclick="sekmeDegistir('footer-tab')">📢 Footer Mesajları</button>
+				<button class="tab-btn" onclick="sekmeDegistir('bildirimler-tab')">🔔 Bildirimler</button>
                 <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
 <!-- // ==========================================	YENİ TABLARIN BAŞLIKLARI ÜSTE EKLENİYOR	-->				
                 <!-- Gelecekte buraya yeni butonlar gelebilir --> 
@@ -1007,51 +1007,51 @@
         <form id="form-bildirim-sistem" onsubmit="bildirimSistemKaydet(event)">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="b-haberler">Haberler Bildirimi):</label>
+                    <label for="b-haberler">Haberler Durumu (HABERLER):</label>
                     <select id="b-haberler">
                         <option value="true">Açık (true)</option>
                         <option value="false">Kapalı (false)</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="b-video">Video Bildirimi:</label>
+                    <label for="b-video">Video Durumu (VIDEO):</label>
                     <select id="b-video">
                         <option value="true">Açık (true)</option>
                         <option value="false">Kapalı (false)</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="b-video-promoday">Video Tanıtım:</label>
+                    <label for="b-video-promoday">Video Promo Günü (VIDEO_PROMODAY):</label>
                     <input type="number" id="b-video-promoday" required>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="b-tour-duration">Yoldayım Bild. Süresi (ms):</label>
+                    <label for="b-tour-duration">Tour Süresi (ms - TOUR_DISPLAY_DURATION):</label>
                     <input type="number" id="b-tour-duration" required onblur="sureyiDuzelt(this)">
                 </div>
                 <div class="form-group">
-                    <label for="b-post-duration">Tarihte Bild. Bugün Süresi (ms):</label>
+                    <label for="b-post-duration">Post Süresi (ms - POST_DISPLAY_DURATION):</label>
                     <input type="number" id="b-post-duration" required onblur="sureyiDuzelt(this)">
                 </div>
                 <div class="form-group">
-                    <label for="b-custom-duration">Özel Bild. Süresi (ms):</label>
+                    <label for="b-custom-duration">Özel Süre (ms - CUSTOM_DISPLAY_DURATION):</label>
                     <input type="number" id="b-custom-duration" required onblur="sureyiDuzelt(this)">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="b-haber-duration">Haber Bild. Süresi (ms):</label>
+                    <label for="b-haber-duration">Haber Süresi (ms - HABER_DISPLAY_DURATION):</label>
                     <input type="number" id="b-haber-duration" required onblur="sureyiDuzelt(this)">
                 </div>
                 <div class="form-group">
-                    <label for="b-video-duration">Video Bild. Süresi (ms):</label>
+                    <label for="b-video-duration">Video Süresi (ms - VIDEO_DISPLAY_DURATION):</label>
                     <input type="number" id="b-video-duration" required onblur="sureyiDuzelt(this)">
                 </div>
                 <div class="form-group">
-                    <label for="b-char-limit">Açıklama Karakter Sınırı:</label>
+                    <label for="b-char-limit">Karakter Sınırı (DEFAULT_CHAR_LIMIT):</label>
                     <input type="number" id="b-char-limit" required>
                 </div>
             </div>
@@ -1323,7 +1323,7 @@ if (token) {
 	dosyalariYukle(token);
 	footerVerileriniYukle(token);
 	ekipmanlariYukle(token);
-	bildirimleriYukle(token);	
+	bildirimleriYukle(token);
 // ========================================== XXX(token) BİLGİLERİ ÜSTE EKLENİYOR 
     yazilariYukle(token).then(() => {
         timelineYukle(token);
@@ -4197,7 +4197,7 @@ async function ekipmanlariGithubaGonder() {
         bildirimGoster(error.message, "error");
     }
 }
-// ==========================================	BİLDİRİMLER	-->	
+// ==========================================	BİLDİRİMLER	-->
 // 1. BİLDİRİMLER.JSON DOSYASINI GİTHUB'DAN ÇEKME
 async function bildirimleriYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_BILDIRIMLER}`;
@@ -4495,7 +4495,7 @@ async function githubDosyaSil(token, dosyaYolu, mesaj) {
             })
         });
     } catch(e) {}
-}
+}		
 // ==========================================	YENİ KODLAR ÜSTE EKLENİYOR	-->		
         function cikisYap() {
             localStorage.removeItem('gh_oauth_token');
