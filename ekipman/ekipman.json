@@ -2700,13 +2700,14 @@
     "aciklama": "Yol üstü molalarında veya sığındığımız köy kahvelerinde çoğunlukla tek bir prizle karşılaşıp şarj edilecek telefon, powerbank ve kamera kuyruğu oluştuğunda imdada yetişen; o tek yuvayı üçe katlayarak tırnak kadar yerde tüm enerjiyi ortak noktada buluşturan en pratik kurtarıcımdır.",
     "bagli_urunler": [
       151,
-      202
+      202,
+      9,
+      225
     ],
     "yorum": "",
     "varsayilan": false,
     "agirlik": "0",
-    "etiketler": "elektrik, elektronik, priz, şarj",
-    "id": 203
+    "etiketler": "elektrik, elektronik, priz, şarj"
   },
   {
     "baslik": "G tipi Priz Adaptörü",
