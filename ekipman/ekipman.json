@@ -3012,19 +3012,5 @@
     "agirlik": "500",
     "etiketler": "Çantalar",
     "id": 224
-  },
-  {
-    "baslik": "Test",
-    "kategori": "Diğer, Aydınlatma",
-    "tarih": "2000-01, 2021-10",
-    "kapakresmi": "/img/resim-yok.png",
-    "aciklama": "test",
-    "bagli_urunler": [
-      1
-    ],
-    "yorum": "test",
-    "varsayilan": false,
-    "agirlik": "0",
-    "etiketler": "Hard Clash, padwin"
   }
 ]
