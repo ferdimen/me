@@ -65,7 +65,7 @@
 .bildirim-kart-baslik { font-size: 14px; font-weight: bold; color: #1e293b; margin: 0; }
 .btn-bildirim-duzenle { background: #eab308; }
 .btn-bildirim-sil { background: #ef4444; }
-	</style>
+    </style>
 </head>
 <body>
 
@@ -425,12 +425,20 @@
                     <input type="text" id="b-url" placeholder="#" required>
                 </div>
                 <div class="form-group">
-                    <label for="b-tarih">Tarih (Çift tarih için virgül kullanabilirsiniz):</label>
-                    <input type="text" id="b-tarih" placeholder="2026-07-29 veya 2026-07-30, 2026-07-31" required>
-                </div>
-                <div class="form-group">
                     <label for="b-renk">Renk Paleti (renk):</label>
                     <input type="color" id="b-renk" value="#2563eb">
+                </div>
+            </div>
+
+            <!-- Çift Tarih Seçimi İçin İki Ayrı Takvim Alanı -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="b-tarih-baslangic">1. Başlangıç Tarihi:</label>
+                    <input type="date" id="b-tarih-baslangic" required>
+                </div>
+                <div class="form-group">
+                    <label for="b-tarih-bitis">2. Bitiş Tarihi (Opsiyonel):</label>
+                    <input type="date" id="b-tarih-bitis">
                 </div>
             </div>
 
@@ -1056,7 +1064,7 @@ async function timelineGithubaGonder() {
     }
 }
 
-// ==========================================	BİLGİLERİ
+// ==========================================	BİLDİRİMLER
 // 1. BİLDİRİMLER.JSON DOSYASINI GİTHUB'DAN ÇEKME
 async function bildirimleriYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_BILDIRIMLER}`;
@@ -1112,7 +1120,7 @@ async function bildirimSistemKaydet(event) {
     await bildirimleriGithubaGonder("Panel: bildirimler.json sistem ayarları güncellendi");
 }
 
-// 4. BİLDİRİMLERİ LİSTELEME KARTI
+// 4. BİLDİRİMLERİ LİSTELEME KARTI (Haberler sekmesindeki buton sınıflarıyla)
 function bildirimleriListele() {
     const kapsayici = document.getElementById('bildirimler-listesi-kapsayici');
     kapsayici.innerHTML = "";
@@ -1126,27 +1134,26 @@ function bildirimleriListele() {
 
     bildirimlerListesi.forEach((bildirim, index) => {
         const kart = document.createElement('div');
-        kart.className = 'bildirim-kart';
+        kart.className = 'haber-kart'; // Haberler sekmesindeki kart sınıfı ortak kullanılabilir
         kart.innerHTML = `
-            <div class="bildirim-kart-detay">
-                <div class="bildirim-kart-meta">${bildirim.kategori} / ${bildirim.tarih}</div>
-                <h4 class="bildirim-kart-baslik">${bildirim.baslik}</h4>
+            <div class="haber-kart-detay">
+                <div class="haber-kart-meta">${bildirim.kategori} / ${bildirim.tarih}</div>
+                <h4 class="haber-kart-baslik">${bildirim.baslik}</h4>
             </div>
             <div>
-                <button type="button" class="haber-kart-butonu btn-bildirim-duzenle" onclick="bildirimDuzenleTetikle(${index})">Düzenle</button>
-                <button type="button" class="haber-kart-butonu btn-bildirim-sil" onclick="bildirimSil(${index})">Sil</button>
+                <button type="button" class="haber-kart-butonu btn-duzenle" onclick="bildirimDuzenleTetikle(${index})">Düzenle</button>
+                <button type="button" class="haber-kart-butonu btn-sil" onclick="bildirimSil(${index})">Sil</button>
             </div>
         `;
         kapsayici.appendChild(kart);
     });
 }
 
-// 5. RESMİ BASE64 FORMATINA ÇEVİRME (DOSYA YÜKLEME İÇİN)
+// 5. RESMİ BASE64 FORMATINA ÇEVİRME
 function resmiBase6araDonustur(inputEl) {
     const file = inputEl.files[0];
     if (!file) return;
 
-    // Dosya adını Türkçe karakter ve boşluklardan arındırma hazırlığı
     let temizAd = file.name.toLowerCase()
         .replace(/ç/g, 'c').replace(/ğ/g, 'g').replace(/ı/g, 'i')
         .replace(/ö/g, 'o').replace(/ş/g, 's').replace(/ü/g, 'u')
@@ -1162,7 +1169,7 @@ function resmiBase6araDonustur(inputEl) {
     reader.readAsDataURL(file);
 }
 
-// 6. DÜZENLEME MODUNU TETİKLEME
+// 6. DÜZENLEME MODUNU TETİKLEME (İki ayrı takvime tarihleri bölme)
 function bildirimDuzenleTetikle(index) {
     const bildirim = mevcutBildirimlerJson["BILDIRIMLER"][index];
     
@@ -1178,14 +1185,23 @@ function bildirimDuzenleTetikle(index) {
     document.getElementById('b-baslik').value = bildirim.baslik || "";
     document.getElementById('b-aciklama').value = bildirim.aciklama || "";
     document.getElementById('b-url').value = bildirim.url || "";
-    document.getElementById('b-tarih').value = bildirim.tarih || "";
     document.getElementById('b-renk').value = bildirim.renk || "#2563eb";
     document.getElementById('b-kapakresmi').value = bildirim.kapakresmi || "";
+
+    // Tarih alanını virgülle ayrılmışsa iki ayrı inputa dağıtma
+    if (bildirim.tarih) {
+        const tarihler = bildirim.tarih.split(',').map(t => t.trim());
+        document.getElementById('b-tarih-baslangic').value = tarihler[0] || "";
+        document.getElementById('b-tarih-bitis').value = tarihler[1] || "";
+    } else {
+        document.getElementById('b-tarih-baslangic').value = "";
+        document.getElementById('b-tarih-bitis').value = "";
+    }
 
     document.getElementById('bildirim-form-baslik').scrollIntoView({ behavior: 'smooth' });
 }
 
-// 7. BİLDİRİM FORMU GÖNDERME (EKLEME VEYA GÜNCELLEME)
+// 7. BİLDİRİM FORMU GÖNDERME (İki takvim tarihini birleştirme)
 async function bildirimFormuGonder(event) {
     event.preventDefault();
     const token = localStorage.getItem('gh_oauth_token');
@@ -1193,7 +1209,6 @@ async function bildirimFormuGonder(event) {
     const id = document.getElementById('b-id').value.trim();
     const baslik = document.getElementById('b-baslik').value.trim();
     
-    // Dosya adı kurallarına göre Türkçe karakter ve boşlukları temizle ($id-$baslik)
     let temizId = id.toLowerCase().replace(/ç/g, 'c').replace(/ğ/g, 'g').replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ş/g, 's').replace(/ü/g, 'u').replace(/[^a-z0-9-]/g, '');
     let temizBaslik = baslik.toLowerCase().replace(/ç/g, 'c').replace(/ğ/g, 'g').replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ş/g, 's').replace(/ü/g, 'u').replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-');
     
@@ -1201,13 +1216,18 @@ async function bildirimFormuGonder(event) {
     const base64Veri = document.getElementById('b-resim-base64').value;
     const dosyaUzanti = document.getElementById('b-resim-uzanti').value || ".jpg";
 
-    // Eğer yeni bir dosya seçildiyse /img/bildirimler/ altına commit atalım
     if (base64Veri) {
         const hedefDosyaYolu = `img/bildirimler/${temizId}-${temizBaslik}${dosyaUzanti}`;
         kapakResmiYolu = `./img/bildirimler/${temizId}-${temizBaslik}${dosyaUzanti}`;
-        
-        // Resmi GitHub'a yükle
         await githubDosyaYukle(token, hedefDosyaYolu, base64Veri, `Panel: ${hedefDosyaYolu} kapak resmi yüklendi`);
+    }
+
+    // İki ayrı tarih inputunu birleştirme (Bitiş tarihi varsa virgülle ekle)
+    const tarihBaslangic = document.getElementById('b-tarih-baslangic').value;
+    const tarihBitis = document.getElementById('b-tarih-bitis').value;
+    let nihaiTarih = tarihBaslangic;
+    if (tarihBitis) {
+        nihaiTarih = `${tarihBaslangic}, ${tarihBitis}`;
     }
 
     const bildirimObjesi = {
@@ -1216,7 +1236,7 @@ async function bildirimFormuGonder(event) {
         "baslik": baslik,
         "aciklama": document.getElementById('b-aciklama').value,
         "url": document.getElementById('b-url').value,
-        "tarih": document.getElementById('b-tarih').value,
+        "tarih": nihaiTarih,
         "renk": document.getElementById('b-renk').value,
         "kapakresmi": kapakResmiYolu
     };
@@ -1237,7 +1257,7 @@ async function bildirimFormuGonder(event) {
     await bildirimleriGithubaGonder("Panel: data/bildirimler.json güncellendi");
 }
 
-// 8. BİLDİRİM SİLME (RESMİ DE BERABER SİLME)
+// 8. BİLDİRİM SİLME
 async function bildirimSil(index) {
     const bildirim = mevcutBildirimlerJson["BILDIRIMLER"][index];
     const onay = confirm(`"${bildirim.baslik}" bildirimini silmek istediğinize emin misiniz? (İlişkili kapak resmi de silinecektir)`);
@@ -1245,7 +1265,6 @@ async function bildirimSil(index) {
 
     const token = localStorage.getItem('gh_oauth_token');
 
-    // Eğer kapak resmi repo içindeyse (img/bildirimler yolunu barındırıyorsa) GitHub'dan dosya silme isteği atalım
     if (bildirim.kapakresmi && bildirim.kapakresmi.includes('img/bildirimler')) {
         let repoIciYol = bildirim.kapakresmi.replace('./', '');
         await githubDosyaSil(token, repoIciYol, `Panel: ${repoIciYol} kapak resmi silindi`);
@@ -1300,11 +1319,9 @@ async function bildirimleriGithubaGonder(mesaj) {
     }
 }
 
-// 10. YARDIMCI: GİTHUB'A RESİM YÜKLEME FONKSİYONU
+// 10. GİTHUB DOSYA YÜKLEME
 async function githubDosyaYukle(token, dosyaYolu, base64Data, mesaj) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${dosyaYolu}`;
-    
-    // Önce dosya var mı diye SHA kontrolü yapalım (güncelleme çakışmasını önlemek için)
     let fileSha = "";
     try {
         const getRes = await fetch(url, { headers: { "Authorization": `token ${token}` } });
@@ -1314,9 +1331,7 @@ async function githubDosyaYukle(token, dosyaYolu, base64Data, mesaj) {
         }
     } catch(e) {}
 
-    // Base64 stringin başındaki data meta verisini temizle (örn: data:image/jpeg;base64,)
     const temizBase64 = base64Data.split(',')[1] || base64Data;
-
     const payload = {
         message: mesaj,
         content: temizBase64
@@ -1330,7 +1345,7 @@ async function githubDosyaYukle(token, dosyaYolu, base64Data, mesaj) {
     });
 }
 
-// 11. YARDIMCI: GİTHUB'DAN DOSYA SİLME FONKSİYONU
+// 11. GİTHUB DOSYA SİLME
 async function githubDosyaSil(token, dosyaYolu, mesaj) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${dosyaYolu}`;
     try {
