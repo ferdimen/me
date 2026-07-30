@@ -3066,5 +3066,19 @@
     "varsayilan": false,
     "agirlik": "100",
     "etiketler": "Taşıma, Dış lastik, kancalı lastik"
+  },
+  {
+    "baslik": "Minimal Sele Altı Çantası",
+    "kategori": "Çantalar",
+    "tarih": "2014-05, 2016-04-30",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "Eskiden günlük MTB sürüşlerinde yama takımı, anahtar gibi en kritik ve acil malzemeleri yutarak güvenle saklayan, minimalist tasarımıyla sele altında neredeyse hiç ağırlık hissettirmeyen o sadık çantamdı; ne yazık ki zamanla fermuarı bozulup görevini yapamaz hale gelince ardında güzel anılar bırakarak hak ettiği emekliliğe ayrıldı.",
+    "bagli_urunler": [
+      4
+    ],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "200",
+    "etiketler": "Çantalar, sele altı çanta, merida"
   }
 ]
