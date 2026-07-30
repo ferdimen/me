@@ -3052,5 +3052,19 @@
     "varsayilan": false,
     "agirlik": "100",
     "etiketler": "kamp malzemeleri, mat, şişme mat, uyku tulumu"
+  },
+  {
+    "baslik": "Kancalı Lastik",
+    "kategori": "Taşıma",
+    "tarih": "2011-06",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "Bisiklet turlarına ilk adım attığım günden beri ister iki tekerlekli bisiklet seyahatlerinde ister başka bir yolculukta heybeleri, matları ve eşyaları sımsıkı kavramasından asla ödün vermediğim; o esnek yapısı ve uçlarındaki sağlam kancalarıyla yükleri cayır cayır sabitleyip yolda kafamı tamamen rahatlatan seyahatimin bir numaralı emniyet sübabıdır.",
+    "bagli_urunler": [
+      27
+    ],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "100",
+    "etiketler": "Taşıma, Dış lastik, kancalı lastik"
   }
 ]
