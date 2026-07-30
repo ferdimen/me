@@ -3037,5 +3037,20 @@
     "varsayilan": false,
     "agirlik": "20",
     "etiketler": "elektrik, priz, şarj"
+  },
+  {
+    "baslik": "Plaj Hasırı",
+    "kategori": "Kamp Malzemeleri",
+    "tarih": "2015-05",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "Özellikle yaz aylarında o kalın, yer kaplayan normal kamp matları veya yoga matları yerine heybelerde neredeyse hiç yer tutmayan ve inanılmaz hafif olan plaj hasırını şişme matın altına sererek hem çadır içi yalıtımı pratik bir şekilde hallettiğim hem de o serin dokusuyla yaz kamplarını konforlu kıldığım en akılcı alternatifimdir.",
+    "bagli_urunler": [
+      27,
+      214
+    ],
+    "yorum": "Standart haliyle bile hafif olan bu plaj hasırını daha da pratik hale getirmek için tam ortadan ikiye bölüp, arasına dayanıklı bir kumaş ekleterek katlanabilir bir form kazandırıp; böylece heybelerde sıfıra yakın yer kaplayarak kamp düzenini katbekat kolaylaştırıp kişiselleştirebilirsiniz",
+    "varsayilan": false,
+    "agirlik": "100",
+    "etiketler": "kamp malzemeleri, mat, şişme mat, uyku tulumu"
   }
 ]
