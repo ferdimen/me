@@ -3012,5 +3012,23 @@
     "agirlik": "500",
     "etiketler": "Çantalar",
     "id": 224
+  },
+  {
+    "baslik": "sjcam sj4000",
+    "kategori": [
+      "Yedek Parça",
+      "Bisiklet",
+      "Araç gereç"
+    ],
+    "tarih": "2025-04-30, 2026-07-30",
+    "kapakresmi": "/img/ekipman/2025/yedekparca-sjcamsj4000.png",
+    "aciklama": "",
+    "bagli_urunler": [
+      1
+    ],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "444",
+    "etiketler": "Hard Clash, padwin"
   }
 ]
