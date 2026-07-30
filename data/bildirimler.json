@@ -33,39 +33,43 @@
       "renk": "#16a34a",
       "kapakresmi": "http://localhost/me/img/bg9.jpg"
     },
-	{
-    "id": "duyuru-3",
-    "baslik": "2026-07-29",
-    "aciklama": "Ekipmanlar güncellendi",
-    "url": "ekipman.html",
-    "tarih": "2026-07-22",
-    "kategori": "kategori",
-    "renk": "#00FF00",
-	"ozel": "1, mücadele, macera, zor, yakında",
-	"kapakresmi": "http://localhost/me/img/bg9.jpg",
-	"etiketler": ["bartın, sinop, samsun"]
-  },  
-  {
-    "id": "duyuru-4",
-    "baslik": "2026-07-30",
-    "aciklama": "aciklama burda olacak",
-    "url": "yazilar/2026-anadolu-engeregi.html",
-    "tarih": "2026-07-22",
-    "kategori": "Anlık",
-    "renk": "#FFFF00",	
-	"ozel": "1, mücadele, macera, zor, yakında",
-	"kapakresmi": "https://ferdimen.com/img/logo.png",
-	"etiketler": ["bartın, sinop, samsun"]
-  },
-  {
-    "id": "duyuru-5",
-    "baslik": "2026-07-31",
-    "aciklama": "Açıklama burada olacak",
-    "url": "yazilar/2026-anadolu-engeregi.html",
-    "tarih": "2026-07-10", 
-    "kategori": "Anlık",
-    "renk": "#0000FF",	
-    "kapakresmi": "http://localhost/me/img/bg16.jpg"
-  }
+    {
+      "id": "duyuru-3",
+      "baslik": "2026-07-29",
+      "aciklama": "Ekipmanlar güncellendi",
+      "url": "ekipman.html",
+      "tarih": "2026-07-22",
+      "kategori": "kategori",
+      "renk": "#00FF00",
+      "ozel": "1, mücadele, macera, zor, yakında",
+      "kapakresmi": "http://localhost/me/img/bg9.jpg",
+      "etiketler": [
+        "bartın, sinop, samsun"
+      ]
+    },
+    {
+      "id": "duyuru-4",
+      "baslik": "2026-07-30",
+      "aciklama": "aciklama burda olacak",
+      "url": "yazilar/2026-anadolu-engeregi.html",
+      "tarih": "2026-07-22",
+      "kategori": "Anlık",
+      "renk": "#FFFF00",
+      "ozel": "1, mücadele, macera, zor, yakında",
+      "kapakresmi": "https://ferdimen.com/img/logo.png",
+      "etiketler": [
+        "bartın, sinop, samsun"
+      ]
+    },
+    {
+      "id": "duyuru-5",
+      "kategori": "Anlık",
+      "baslik": "2026-07-31",
+      "aciklama": "Açıklama burada olacak",
+      "url": "#",
+      "tarih": "2026-07-30",
+      "renk": "#fbff00",
+      "kapakresmi": "http://localhost/me/img/bg16.jpg"
+    }
   ]
 }
