@@ -3018,5 +3018,23 @@
     "varsayilan": false,
     "agirlik": "500",
     "etiketler": "Çantalar"
+  },
+  {
+    "baslik": "Topraksız Üçlü Priz",
+    "kategori": [
+      "Elektronik",
+      "Diğer"
+    ],
+    "tarih": "2014-05",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "Diğer o büyük çoğaltıcı üçlü prizin daha minik, daha az yer kaplayan modeli olan; tek farkı üzerinde topraklama barındırmasa da, ister kullandığım uzatma ara kablosunun ucuna ekleyerek ister doğrudan duvardaki ya da kamptaki prize takarak dar alanda pratik çözümler sunan o küçük ama işlevsel can kurtaranımdır.",
+    "bagli_urunler": [
+      203,
+      9
+    ],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "20",
+    "etiketler": "elektrik, priz, şarj"
   }
 ]
