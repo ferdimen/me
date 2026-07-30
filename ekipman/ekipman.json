@@ -131,15 +131,15 @@
     "tarih": "2015-04",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/5a470b7e-cc52-413d-b761-bc9384e9841b.jpg",
     "aciklama": "Prize yakın çadır kurduğumda 3 metre kablo ile elektriği çadırın içine çekip elektronik malzemeleri güvenle şarj ediyorum.",
+    "bagli_urunler": [
+      150,
+      151,
+      225
+    ],
     "yorum": "",
     "varsayilan": true,
     "agirlik": "0",
-    "etiketler": "diğer, elektrik, kablo",
-    "bagli_urunler": [
-      150,
-      151
-    ],
-    "id": 9
+    "etiketler": "diğer, elektrik, kablo"
   },
   {
     "baslik": "Canon A1400 Fotoğraf Makinesi ve Yedek Piller",
