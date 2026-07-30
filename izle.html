@@ -753,7 +753,7 @@
                         const secilenVideo = aktifVideolar.find(v => v.orijinalIndex === targetIdx);
 
                         if (!secilenVideo) {
-                            listeModuDiv.innerHTML = `<div class="alert alert-error">İçerik bulunamadı veya henüz yayında değil!</div>`;
+                            listeModuDiv.innerHTML = `<div class="alert alert-error"><a href="izle.html" class="btn-nav-back">← Video Listesine Geri Dön</a> İçerik bulunamadı veya henüz yayında değil!</div>`;
                             return;
                         }
 
