@@ -3003,17 +3003,20 @@
   },
   {
     "baslik": "İlk Bisiklet Heybe Deneyimi",
-    "kategori": "Taşıma, Çantalar",
+    "kategori": [
+      "Taşıma",
+      "Çantalar"
+    ],
     "tarih": "2012-05, 2016-04",
     "kapakresmi": "/img/ekipman/2012/taşıma,-çantalar-ilkgerekbisikletheybedeneyimi.jpg",
     "aciklama": "Yıllarca sırt çantalarıyla ve onlardan devşirme derme çatma çözümlerle yollarda mücadele ettikten sonra, bisiklete hak ettiği konforu ve dengesini veren; heybe kelimesinin hakkını sahada tam anlamıyla bana ilk defa yaşatan o dönüm noktası ekipmanımdır.",
     "bagli_urunler": [
-      72
+      72,
+      7
     ],
     "yorum": "Söküp takması epey zahmetli olan, üstelik su geçirme huyu yüzünden gökyüzü kararıp da yağmur gelmeden hemen önce durup çöp torbalarıyla içini desteklemek zorunda kaldığım; o nostaljik günlerin ardından nihayet su geçirmez yeni bir çantaya kavuşunca büyük bir hatıra bırakarak emekliye ayırdığım ilk emektar heybemdir.",
     "varsayilan": false,
     "agirlik": "500",
-    "etiketler": "Çantalar",
-    "id": 224
+    "etiketler": "Çantalar"
   }
 ]
