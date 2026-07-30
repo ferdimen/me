@@ -437,11 +437,13 @@
     "tarih": "2019-01, 2019-10",
     "kapakresmi": "https://public.flourish.studio/uploads/94941700-e7af-4ef3-9afd-e76105d3b349.jpg",
     "aciklama": "Tek kişi için yeterli tencere seti. Sözde çelik (aslında teneke gibi) malzemeden yapılmış, biraz yer kaplıyor. bir süre içine başka malzemeler koyarak kullandım. çin malı tavsiye etmiyorum. yemeği yapıştırıyor, temizliği zor.",
+    "bagli_urunler": [
+      176
+    ],
     "yorum": "Çelik diye aldım, teneke çıktı.",
     "varsayilan": false,
     "agirlik": "0",
-    "etiketler": "kamp mutfağı",
-    "id": 32
+    "etiketler": "kamp mutfağı"
   },
   {
     "baslik": "Yama Seti ve Levye",
