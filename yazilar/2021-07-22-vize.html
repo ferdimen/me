@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferdimen // Adı yalnızlığından gelen kahraman</title>
+    
+    <link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.css" />
+    <link rel="stylesheet" href="https://www.ferdimen.com/data/css.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/3.0.2/Control.FullScreen.min.js"></script>   
+    <style>
+/* Bilgilendirme (Info) Durumu İçin Özel Stiller */
+.alert-info {
+    background-color: #f0f7ff; /* Yumuşak pastel mavi arka plan */
+    border-color: #b3d7ff;     /* Açık mavi çerçeve */
+    color: #1a4870;            /* Okunabilirliği yüksek koyu mavi metin rengi */
+    border-left: 5px solid #3182ce; /* Sol tarafa vurgu yapan canlı mavi şerit */
+    box-shadow: 0 2px 4px rgba(49, 130, 206, 0.05); /* Hafif derinlik gölgesi */
+}
+
+/* Alert içindeki linklerin rengi */
+.alert-info a {
+    color: #123452;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.alert-info a:hover {
+    color: #0b2236;
+    text-decoration: none;
+}
+/* Genel Alert (Uyarı) Kutusu Temeli */
+.alert {
+    padding: 15px 20px;
+    margin: 20px 0;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Hata (Error) Durumu İçin Özel Stiller */
+.alert-error {
+    background-color: #fdf2f2; /* Gözü yormayan hafif pastel kırmızı arka plan */
+    border-color: #f8b4b4;     /* Yumuşak kırmızı çerçeve */
+    color: #9b1c1c;            /* Okunabilirliği yüksek koyu kırmızı metin rengi */
+    border-left: 5px solid #e02424; /* Sol tarafa dikkat çeken kalın canlı kırmızı şerit */
+    box-shadow: 0 2px 4px rgba(224, 36, 36, 0.05); /* Çok hafif bir derinlik gölgesi */
+}
+
+/* Eğer alert içinde link kullanırsan onun da rengini ayarla */
+.alert-error a {
+    color: #771d1d;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.alert-error a:hover {
+    color: #551414;
+    text-decoration: none;
+}
+ /* Genel Sayfa Düzeni */
+        .tur-sayfasi {
+            display: none; /* Varsayılan olarak tüm bölümleri gizle */
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .tur-sayfasi.aktif {
+            display: block; /* Sadece aktif olan bölümü göster */
+        }
+
+        /* Sayfalama Butonları */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        .pagination li {
+            margin: 0 5px;
+        }
+        .pagination button {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .pagination button:hover {
+            background-color: #3498db;
+            color: #fff;
+            border-color: #3498db;
+        }
+        .pagination li.aktif button {
+            background-color: #2c3e50;
+            color: #fff;
+            border-color: #2c3e50;
+            cursor: default;
+        }
+
+        /* Öne Çıkan Görsel Kutusu */
+        .post-featured-image {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 40px;
+            box-sizing: border-box;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        /* Görsel İçindeki Yazı Alanı */
+        .post-featured-content {
+            max-width: 800px;
+            text-align: left;
+        }
+
+        /* Kategori Etiketi */
+        .post-category {
+            display: inline-block;
+            background-color: #ff5722;
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        /* Yazı Başlığı */
+        .post-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            line-height: 1.2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Tarih ve Ek Bilgiler */
+        .post-meta {
+            font-size: 0.9rem;
+            color: #dddddd;
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Yazının Kendisi İçin Kapsayıcı */
+        .post-body-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #333333;
+        }
+
+        /* Dinamik Önceki - Sonraki Yazı Navigasyonu Tasarımı */
+        .post-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        .nav-box {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+        }
+        .nav-box:hover {
+            border-color: #3498db;
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .nav-box.prev { text-align: left; }
+        .nav-box.next { text-align: right; }
+        .nav-label {
+            display: block;
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+        .nav-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+
+        /* Mobil Ekranlar İçin Uyum */
+        @media (max-width: 768px) {
+            .post-featured-image {
+                height: 300px;
+                padding: 20px;
+            }
+            .post-title {
+                font-size: 1.8rem;
+            }
+            .post-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-box.next {
+                text-align: left;
+            }
+        }
+/* ==========================================================================
+   KİLİTLİ 16:9 YOUTUBE EMBED STİLLERİ (data/css.css için)
+   ========================================================================== */
+.custom-youtube-box {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 680px !important;    /* Okuma alanına tam oturan ideal genişlik */
+    margin: 30px auto !important;
+    aspect-ratio: 16 / 9 !important; /* Çerçeveyi kesinlikle 16:9 oranında kilitler */
+    background-color: #000000 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;     /* Çerçevenin dışına taşmaları tamamen engeller */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Çerçeve içindeki poster ve video iframe'inin boyutunu milimetrik kilitler */
+.custom-youtube-box iframe,
+.youtube-poster {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Kapak Resminin Çerçeveye 16:9 Formatında Tek Resim Olarak Tam Oturması */
+.youtube-poster {
+    background-size: cover !important;     /* Resmi esnetmeden veya dizmeden kutuya tam sığdırır */
+    background-position: center !important;   /* Resmi tam ortalar */
+    background-repeat: no-repeat !important; /* Resmin kesinlikle dizilmesini/tekrarlamasını engeller */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 2 !important;
+    transition: filter 0.3s ease !important;
+}
+
+.youtube-poster:hover {
+    filter: brightness(0.85) !important;
+}
+
+/* Küçültülmüş ve Kibar Oynat Butonu */
+.youtube-play-btn {
+    width: 54px !important;   /* Buton boyutu küçültüldü */
+    height: 38px !important;  /* YouTube standardında kibar dikdörtgen */
+    background-color: rgba(26, 26, 26, 0.9) !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background-color 0.2s ease, transform 0.2s ease !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+}
+
+.youtube-poster:hover .youtube-play-btn {
+    background-color: #dc2626 !important; /* YouTube kırmızı tonu */
+    transform: scale(1.05) !important;
+}
+
+/* Butonun İçindeki Küçük Oynat İkonu (Üçgen) */
+.youtube-play-btn svg {
+    width: 16px !important;  /* İkon boyutu küçültüldü */
+    height: 16px !important; /* İkon boyutu küçültüldü */
+    fill: #ffffff !important;
+    margin-left: 2px !important; /* Kusursuz merkezleme için küçük sağ kaydırma */
+}		
+    </style>
+</head>
+<body>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<header id="site-header"></header><script src="youtube.js?v=1"></script>
+<!-- YAZI DETAY BÖLÜMÜ -->
+<section class="contact-section" id="yazi">
+    
+    <!-- ÖNE ÇIKAN GÖRSEL ALANI (Elle URL girilebilir) -->
+    <div class="post-featured-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://lh3.googleusercontent.com/pw/AP1GczOXkkZ1Q8RbZUAG1r5_quM3TlZAgR7q0d3MUPup8Nu46GPBYMhaxpf3HxhobFsWmZs43VYA1U_F3jtLEyt0g3g7WtJHXAxnlMHnRXWyw28EhB3EK4I=w1920-h1080');">
+        <div class="post-featured-content">
+            <span class="post-category">Bayram Gezisi</span>
+            <h1 class="post-title">Kaynarca, Vize ve Kıyıköy Kaçamağı</h1>
+            <div class="post-meta">
+                <span class="post-date">22 Temmuz 2021</span>
+                <span class="post-read-time">Çorlu > Kaynarca > Vize > Kıyıköy > Çorlu</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- YAZININ GERÇEK İÇERİK ALANI -->
+<div class="post-body-content">
+<link rel="stylesheet" href="album.css">    <script src="album.js"></script>
+<div style="text-align: center; margin-bottom: 40px; width: 100%;"><p style="color: var(--text-light, #666);"><h1 data-path-to-node="0">Bayram Trafiğine İnat: Lüleburgaz, Kaynarca ve Kıyıköy Kaçamağı</h1>
+<p data-path-to-node="1">Prensip olarak herkesin tatil yaptığı, bayramlarda seyranlarda yollara döküldüğü o mahşeri kalabalık günlerde gezmeyi hiç mi hiç sevmem. Tam tersine; o resmi tatillerin bitmesini, herkesin işine gücüne dönüp yolların yeniden tenhalaşmasını beklediğim o sakin günlerden biriydi.</p>
+<p data-path-to-node="2">Evde sükûnetle otururken Tekirdağ’dan bir arkadaşım aradı; arabayla ziyaretime geliyormuş, <i data-path-to-node="2" data-index-in-node="91">"<strong>Haydi çıkalım, biraz dolaşalım</strong>"</i> dedi. İçimden <i data-path-to-node="2" data-index-in-node="148">"Olur"</i> dedim. Tam o sırada aklıma, Lüleburgaz’da köyde akraba ziyaretine tıkılıp kalmış olan diğer arkadaşım <b data-path-to-node="2" data-index-in-node="257">Rana</b> geldi. Zaten onun da bayramlaşmalardan, el öpmelerden ve o boğucu aile ziyaretlerinden gına geldiğine emindim. Telefonu elime alıp <i data-path-to-node="2" data-index-in-node="393">"<strong>Hadi Rana’yı almaya gidiyoruz</strong>"</i> dedim. Yanımdaki özel şoförüm hiç ikiletmeden kırdı direksiyonu Lüleburgaz istikametine. Rana’yı arayıp <i data-path-to-node="2" data-index-in-node="529">"<strong>Hemen hazırlan, geliyoruz</strong>"</i> dememle havaya uçması bir oldu; onun da zaten canına minnetti, o da kaçacak yer arıyordu.</p><br>
+
+<h3 data-path-to-node="3">Kaynarca’nın Suları ve Vize Kaleleri</h3>
+<p data-path-to-node="4">Lüleburgaz’da Rana’yı da kadroya dahil ettikten sonra rotayı <b data-path-to-node="4" data-index-in-node="61">Pınarhisar Kaynarca</b>’ya çevirdik. Orada o tarihi değirmeni ziyaret ettik, kaynak sularının akıp gittiği çeşme başlarında sıcaktan bunalan ruhumuzu ve bedenimizi serinlettik.</p>
+<p data-path-to-node="5">Durduk mu? Asla! Oradan istikamet <b data-path-to-node="5" data-index-in-node="34">Vize</b> oldu. Vize Kalesi derken, surların arasında tam anlamıyla bir klasik kültür turu patlattık.</p>
+
+<h3 data-path-to-node="6">Kıyıköy’e "Gelmeyin" Fiyaskosu ve Bahçe Kafe Finali</h3><br>
+<p data-path-to-node="7">Hızımızı alamayıp kısa bir <b data-path-to-node="7" data-index-in-node="27">Kıyıköy</b> gezisi girişiminde bulunalım dedik; lakin oralara varınca gördük ki ortalık mahşer yeri gibi kaynıyor. Kalabalıktan ve insan yığınından o kadar boğulduk ki, anında o mıntıkadan tabana kuvvet kaçtık! Zaten istesek de tadını çıkaramazdık; çünkü dönemin belediye başkanının basına yansıyan o meşhur demeçleri kulaklarımızdaydı, adam resmen dışarıdan gelenlere <i data-path-to-node="7" data-index-in-node="392">"<strong>Gelmeyin</strong>"</i> diye bas bas baarıyordu. Biz de adamı dinleyip <strong>Kıyıköy’ün</strong> kalabalığına hiç bulaşmadık.</p><br>
+<p data-path-to-node="8">Günün sonunda direksiyonu tekrar <strong>Çorlu’ya</strong> kırdık. Bu epik bayram kaçamağının finalini ise <b data-path-to-node="8" data-index-in-node="90">Bahçe Kafe</b>’de yudumladığımız o nefis kahvelerle yaptık. Bayram kalabalıklarına meydan okuduğumuz, otostopçular gibi daldığımız bu kısa ama kültür dolu bayram gezisi de hafızalara silinmez bir anı olarak kazındı!</p></p></div>
+[fotoalbum]
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN6syBiNzW-TLYTZlD1sNTwa6XiLsWdSE8oXmSUk7HVf-YB_4V2B47osB9vTmhaEGIr9kR_ARyvqXG0sIWTu0xIQDTSONZ_y5IFv3F21vf2HPppNiE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOAMWlQ4rF3HzZh6km90ytn8VdtLwTDsY48oz106GRKOHXyitb3IYSPi-x-C8PNSiTkQiUTXwWri4uyF0TryJ0cgIO_D7QLyEyEgoZ2JScc-sld44g=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNUh8W6VZkOD_OXDaGGT1PKVjMEeadx5FMm4PhfD-RImUl-nJzmglv8nueFMTA2ay7dcha3V0GHKU_mAeRCtBryt1eQJjYr-FHLAF6r6koavCHmmiE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNWsUXCo3JFtXEDanei06cr-gjMbPsfVRAvvGJ-yZ8VKVn8ZIFv6zuqlXMlzFsHP9CutBnVeU6cq7t__EYKCRWjBd4F9-gaCCAsr5LXyILiGy2mMR4=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNXFKvu3CVtZmI_daVJ7OpzAN_UuL5WMJrhYg8sSas94zzg5YeDeNlKmDhBlloYOqzPTfpcEqDqMWnoigrXsyUE-Qoe-BrdaGtEZ7gee3lpUh6GO8g=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOM9cwy0SwB09LGsLNPFYA3uxnyMdv6v_acvCMqx3vQWKE60nuyHnMOZLF7_rgN6r2mtgKgzAEr5zcMGijmI4aOYjQUFen52YrWdp-wMT8bHwbWYbA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPomV-ZXP9WIFUWEjBlgxV5rN1zFZuRanMhGxgbXe64woPlhPeclgKPi_S8cDsPS0kgJ9pyDg-iQQgw8kH_fntUuRzvP3Lu1qQwvaKC4Yj-7fUwyfQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNWunHhTPFiIou6yAIEXza0zZtbsQMCG1CEzSfe50V6ZaVadtaGR87Tg6lB1-oXH8KIRKGXl-Xs_QvsW0ic0pW6xGJNUmHnrEyd_13GX1SBu2Qz7iM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMygZjomqHo5RFjrh8jZ-IbYeU_haZOpR95Gqj-liOqwI-NANo5HaVRtK7z_0izW1Q-AYupf7ftKmIYRhLm1fLjgF0_Dq0J4p4YJLdwmXwnNIkd9wE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOSJaPwhevJj8rv46yEE-sUXo5RvF2rpj4PD16OZYiFvLaSSemLhLZ41D1qPAIXZ0WXNmBXJKoOvNDixoMXj2q4x9Cd4OKDZe3k3RA7CH17qwESftw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczPuVowQQ5QihTxCCsJwYbwkWZuHJ_YdvfiOEIyRR8MdojO1mkysiVx-nFyqGXopLIaQurBmVSIhFK3duhDn0HgaqNU2QgHaVmpSgLAT7usiGuvczmE=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczM8MXoH-zLUL3b4KKa6rUf6IIfVClpthFJnMg-gLFaslfrbEGEKDTGcxvq6iQNxZqJ5GcaI9x8Bt0FZZR_Xd3FbC8pwhaLtwcsr_6y4gGt-bUDqDjA=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMDtoNG5x4eGPDFmcUMxC2xgzGWjr37HIhSqpr6Jo3tuGv8kgWJKmoPe8wPQ70lvewK5YqywoBjcnzyLgggaQ9s2ao2CUM2of1ovurrV916eTJ4VpM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOgVR7KldIwBkgMj8t-jqmDtJ4jkPJCR6XwcfSeu2UJ2bognCVgTpJbeTy7MUBaztcIbaGjxgMKKjrm2I-biYtVq8-Y7wDuuZxafmbiv5ObrCG1Jwg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNADe9pe7cm4b9g9tiN2QS-1KewUIDZA9gqLuE7M6qzL4-BHkeQGxlIeWseFkDWbA5JKfgJECZIKUGMPtl6bQA5f2LB6WjCuBo4t46g3oyyFzoo3Yw=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOXkkZ1Q8RbZUAG1r5_quM3TlZAgR7q0d3MUPup8Nu46GPBYMhaxpf3HxhobFsWmZs43VYA1U_F3jtLEyt0g3g7WtJHXAxnlMHnRXWyw28EhB3EK4I=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP_bPrWIQIH7Oi-udTMsuMDkCT6CGZq05eicubtRg8RdJYrzpMmLbNRMaaKy8CV43m_2zxmyLys-3Zz2i8obTEC_q3037UVEYmwmSy8EsGazc6ncp0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMiR93PpfWU8zqHS0V5v7viObfTCop9Q_tyWAVynuljQePzxB3xiPAkopvFC5VTYljxrRg4atRpAxeBxlElwm96_SQXNPJLq3o6Fznsx16V9lYsydg=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczO8kFCJTHSP5A0-KcMX18yT5p4rFp0kGxKIdbJiecDfo2EkDvFH5606UjuwG5OqSgf2VVIQmmzoO_Tu6ZSG8ZMbBaVgAmuXDnD2NCAidjKPfUtkp3o=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNymdsX9OChbNRoSKYejJ8h19NjwsBQgFqxs06sBN6CSWwMEKsQHRu5VjioSBORfPPz2ub1FTNcUrLUKpJjjqh6b9YwOmJI6z5dG9MmbgA2VKUU-Pc=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMxQHx6u3_siprdLe7IzFM-FqHJqvD5FkD92Ob7_JAtTSnWPOvWFC8NaTElyjE6nD7NkmxkaBwVQcxSlLuA8adpR4Laj7kvhLGW5aEXxERvzT4Jtrk=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczN-nMp5iOawTOF7u3uWpVtzjekF2NWTHJ0JLl0J776PiGx4uRKzWiEK4pOSsE_u9VmzZpeL3otTzOemys50OYq11Tj3qWOvOY0Hggv7wzaiUMbe9SY=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOmqD4Y_AcEOOuvxswqshLjYQq3n4c5jw_qedIKz7nh-rZXFft5whVKN9pVjr75wyRivfagpsu7kB-3NI2FA-CnPBT9uZVa9PWmMi-C47YND9ZfXM0=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMrrXWmmKiQ5ILNORFWNxea2BQqdP0ofN6G0ZbNZtLff0oL9jSraW12ZxmwhSgtWkQdAGun7SKJPsVfskyv1k6zFq1tyfg3fi2rsO3UXlJSQiY7eoQ=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczP6C94yJNlhMUnLxAg_gutT_Zq6bkjVNM5UAqsdnzEp8Qb1sUbD3ZmtiIr54_NcJ4nM9uw_ma1AVAqypz_rl6zjzdOOTlnC8Z1F72cnVuciLmIGzoM=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMsAJXX1EV-rTK-tSIa3mz7ZhTLna0T4NeCHKLSUNWOL2FgF9Q5tAXHdQEFWISh_6r2QRJb1V4xP1fC8B45o4YhxD1duf-NnhApU4mpkxvwGFjUkfU=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczOZBjRz3Te8Uz2c7q3FdKKDDDgPkAyKHeNyrYQshmcQEJcaszCZzOukaFLqcVqQCLi3kZ5JwFZ8N4TQ8rXbRl0vzUN3f1Aq1sy2fv0h2eK4MZf6QZo=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczMZq2V6uum9kfD0UUKsAbgkz5gmKBZ0zzZpiEXbjW3hOxoPi7Hk-Lsklt65GE-qfb-6cVWsGZh9-g_M2xS1t3dS2E-sKtCwR6jiGcrwClIS0L3okww=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNIwbAf7Kt9S3Ge1c1M1P_Vq9noQVswWkT_QuA9ZzGrgPpx6eYl1jA53EpUX2_VIj-3Oj8ysLlHCCpbmzRrS-kxagmaCCcP_Px9XbJLpmUAjF76O0Y=w1920-h1080"></object>
+  <object data="https://lh3.googleusercontent.com/pw/AP1GczNo39C_QHEjfuC_1cA1KGiW_4DVBPrBiBkqjlsO8ro19ArmRCRouqr20iS6UVqrg5rzjpktMvxURXXKNRYlUOoG5QeQoWuojiTN20qhnri3h8cNnhI=w1920-h1080"></object>
+[/fotoalbum]
+  <!--
+    <div class="tur-sayfasi aktif" id="bolum-1"><h2>BAŞLIK</h2>yyyy</div>
+    <div class="tur-sayfasi" id="bolum-2"><h2>2. Gün</h2>xxx </div>
+    <div class="tur-sayfasi" id="bolum-3"><h2>3. Gün</h2>xxx </div> 
+
+    <ul class="pagination">
+        <li class="aktif"><button onclick="sayfaDegistir(1)">Videolar</button></li>
+        <li><button onclick="sayfaDegistir(2)">2</button></li>
+    </ul> -->    
+    </div>
+<div class="post-navigation" id="yazi-navigasyon"></div>
+
+
+    <script>
+        function sayfaDegistir(sayfaNo) {
+            // Tüm bölümleri gizle
+            const sayfalar = document.querySelectorAll('.tur-sayfasi');
+            sayfalar.forEach(sayfa => sayfa.classList.remove('aktif'));
+
+            // Tüm butonların aktiflik tarzını kaldır
+            const butonlar = document.querySelectorAll('.pagination li');
+            butonlar.forEach(btn => btn.classList.remove('aktif'));
+
+            // Seçilen bölümü göster
+            document.getElementById(`bolum-${sayfaNo}`).classList.add('aktif');
+
+            // Seçilen butonun tarzını aktif yap
+            butonlar[sayfaNo - 1].classList.add('aktif');
+
+            // Sayfa başına otomatik kaydır (sabit menünün hemen altına hizalar)
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+
+
+    <!-- İLETİŞİM VE SOSYAL MEDYA -->
+    <section class="contact-section" id="iletisim">
+        <div class="container">
+            <div class="contact-grid">
+                
+                <div class="contact-info-side">
+                    <h3>Bağlantıda Kalın</h3>
+                    <p>Yol hikayelerini, bağımsız yayınları ve anlık telemetri paylaşımlarını resmi ağ istasyonları üzerinden takip edebilirsiniz.</p>
+                    
+<div class="social-links-container" id="social-container">
+    </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const socialContainer = document.getElementById("social-container");
+        if (!socialContainer) return;
+
+        fetch('https://ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
+            .then(res => {
+                if (!res.ok) throw new Error("Sosyal medya JSON dosyası yüklenemedi!");
+                return res.json();
+            })
+            .then(data => {
+                let htmlContent = '';
+
+                data.forEach(hesap => {
+                    htmlContent += `
+                        <a href="${hesap.url}" target="_blank" class="social-icon-btn">
+                            ${hesap.svg}
+                            <span>${hesap.ad}</span>
+                        </a>
+                    `;
+                });
+
+                socialContainer.innerHTML = htmlContent;
+            })
+            .catch(err => {
+                console.error("Sosyal medya butonları yüklenirken hata:", err);
+                // Hata durumunda boş kalmaması için manuel bir yedek bırakabilirsiniz:
+                socialContainer.innerHTML = `
+                    <a href="https://www.youtube.com/@ferdimen" target="_blank" class="social-icon-btn">
+                        <span>YouTube</span>
+                    </a>
+                `;
+            });
+    });
+</script>
+                </div>
+                
+                <div class="contact-form-side">
+                    <form action="https://formspree.io/f/xnjyjwnk" method="POST">
+                        <div class="form-group">
+                            <label for="name">İsim / Mahlas</label>
+                            <input type="text" id="name" name="name" required placeholder="Adınızı giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Posta Adresi</label>
+                            <input type="email" id="email" name="_replyto" required placeholder="E-posta adresinizi giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mesajınız</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Yol notunuzu buraya bırakın..."></textarea>
+                        </div>
+                        <input type="hidden" name="_language" value="tr" />
+                        <button type="submit" class="submit-btn">Gönder</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <p class="footer-text"><script src="/data/footer.js?v=1"></script>© <span id="footer-year"></span> <span id="footer-dynamic-text"></p>
+        </div>
+    </footer>
+    <script>
+        // HER YAZI HTML DOSYASINDA BU ID ALANINI O YAZIYA ÖZEL DEĞİŞTİRİN
+        const MEVCUT_YAZI_ID = "2021-07-22-vize"; 
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const navContainer = document.getElementById("yazi-navigasyon");
+            if (!navContainer) return;
+
+            // JSON ARTIK YAZILAR KLASÖRÜNÜN İÇİNDEN ÇEKİLİYOR
+            fetch('yazilar.json?v=' + new Date().getTime())
+                .then(res => {
+                    if (!res.ok) throw new Error("Yazı listesi yüklenemedi!");
+                    return res.json();
+                })
+                .then(yazilar => {
+                    const currentIndex = yazilar.findIndex(yazi => yazi.id === MEVCUT_YAZI_ID);
+                    
+                    if (currentIndex === -1) return;
+
+                    let navHtml = '';
+
+                    // Eğer JSON'daki URL'ler 'yazilar/xx.html' şeklindeyse ve post.html de 'yazilar' içindeyse 
+                    // tarayıcının 'yazilar/yazilar/xx.html' aramasını engellemek için url temizleme fonksiyonu:
+                    function urlDuzenle(url) {
+                        if(url.startsWith('yazilar/')) {
+                            return url.replace('yazilar/', '');
+                        }
+                        return url;
+                    }
+
+ // Sonraki Yazı Kontrolü
+                    if (currentIndex > 0) {
+                        const prevPost = yazilar[currentIndex - 1];
+                        navHtml += `
+                            <a href="${urlDuzenle(prevPost.url)}" class="nav-box prev">
+                                <span class="nav-label">← Sonraki Yazı</span>
+                                <span class="nav-title">${prevPost.baslik}</span>
+                            </a>
+                        `;
+                    } else {
+                        navHtml += `<div style="flex:1;"></div>`;
+                    }
+
+                    // Önceki Yazı Kontrolü
+                    if (currentIndex < yazilar.length - 1) {
+                        const nextPost = yazilar[currentIndex + 1];
+                        navHtml += `
+                            <a href="${urlDuzenle(nextPost.url)}" class="nav-box next">
+                                <span class="nav-label">Önceki Yazı →</span>
+                                <span class="nav-title">${nextPost.baslik}</span>
+                            </a>
+                        `;
+                    } else {
+                        navHtml += `<div style="flex:1;"></div>`;
+                    }
+
+                    navContainer.innerHTML = navHtml;
+                })
+                .catch(err => console.error("Navigasyon hatası:", err));
+        });
+ </script>
+</body>
+</html>
