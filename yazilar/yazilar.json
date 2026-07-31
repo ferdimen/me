@@ -430,6 +430,16 @@
       "ankara, haymana, polatlı, mihalıçık, beylikova, mahmudiye, çifteler, seyitgazi, eskisehir, odunpazarı, tepebaşı, inönü, BİLECİK, söğüt, bozüyük, kütahya, ihsaniye, afyonkarahisar, şuhut, sinanpaşa, ALTINTAŞ, dumlupınar, banaz, uşak, ulubey, eşme, kula, MANİSA, alaşehir, salihli, ahmetli, turgutlu, kemalpaşa, izmir, bornova, bayraklı, alsancak, konak, "
     ]
   },
+	    {
+    "id": "2020-01-25-kusadasi",
+    "baslik": "Dilek Yarımadası Milli Parkı Bisiklet Turu",
+    "url": "yazilar/2020-01-25-kusadasi.html",
+    "tarih": "2020-01-25",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, doğa, bisiklet",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOybIiBAuspOPO6aL9jeXCWSNzGECAPzYNju2wqobyEq-h6ANVNAT6zNX9gNssq6nXxCJ4hK0fubBFvM9IE8qSxRxNwy30myTCzYppDXBfDpL_RNt0=w1920-h1080",
+	"etiketler": ["AYDIN, kuşadası, dilek yarımadasi milli parkı"]
+  },
   {
     "id": "2019-ormanin-kalbi",
     "baslik": "Ormanın Kalbine Yolculuk",
@@ -468,16 +478,63 @@
     ]
   },
   {
+    "id": "2019-08-29-pinarbasi",
+    "baslik": "Pınarbaşı - Sofular Bisiklet Turu",
+    "url": "yazilar/2019-08-29-pinarbasi.html",
+    "tarih": "2019-08-29",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, doğa, bisiklet",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczN8MGVwPDvjkHjmYDRci-vzvVxqA3kyReTcWD7hQVZTWGfcLrr9ydReqZK5CUa4XHxxvz7gOj0gsQTdSE2OOQRLQQsjRwPcireUUBBdGGrf7AbRgCs=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,marmaracık,ulaş,vakıflar,misinli,iğnler,pınarbaşı,sofular,osmanlı,beyazköy,göçerler,bakırca,karamehmet,ulaş,marmaracık"]
+  },{
+    "id": "2019-08-25-cayirdere",
+    "baslik": "Hallaçlı - Çayırdere Bisiklet Turu",
+    "url": "yazilar/2019-08-25-cayirdere.html",
+    "tarih": "2019-08-25",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, doğa, bisiklet",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMHvlL9QiLRyWNHfUo4nv5SrGqWV-U0mdzjq2pq5HETFfZQxx25SnVkO1c_mOP9jPrBM9HlLej9VCDVhtsQ819M-u08Kju-jswyhk-qNHXrqUAAcCY=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,önerler,kızılpınar,çerkezköy,hallaçlı,çayırdere,beyciler,çerkezköy,çorlu,"]
+  },
+  {
+    "id": "2019-08-18-karlikoy",
+    "baslik": "Büyükyoncalı - Karlıköy Bisiklet Turu",
+    "url": "yazilar/2019-08-18-karlikoy.html",
+    "tarih": "2019-08-18",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, doğa, bisiklet",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOVkRaJEFqllEhc6v54Ur5Oz5bDunO-1t9GRNgTpEQOtXDQYMX1MNY7baqdxeUfpg-KeposASy09TRg8pAirOEVekRFoixjLO-uZdMXtJd0qAGIzp8=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,önerler,velimeşe,yanikagil,büyükyoncalı,karlıköy,uzunhacı,karamehmet,ulaş,marmaracık,"]
+  },  
+   {
+    "id": "2019-08-07-gumusyaka",
+    "baslik": "Gümüşyaka Bisiklet Turu",
+    "url": "yazilar/2019-08-07-gumusyaka.html",
+    "tarih": "2019-08-07",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, doğa, bisiklet",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczOKtKGQ-EuByIY5zhvQfS4lE9tFLAMjTgzlcLpbe1QKa60g66a0GZtsn_JsxovVlLL_LaNsCC3OKBm85NHx3LH460ulwSz72_ARGFAV-jykF3wRrmw=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,önerler, değirmenköy,gümüşyaka,sultanköy"]
+  },
+  {
     "id": "2019-monapetra",
     "baslik": "Evciler - Monapetra Bisiklet Turu",
     "url": "yazilar/2019-monapetra.html",
     "tarih": "2019-08-03, 2019-08-05",
     "kategori": "Bisiklet Turları > [trakya, marmara,]",
-    "ozel": "4, 1, doğa, keşif",
-    "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczM36Y3SImqkmflSckUZh8tDDWs7izfQF2WiGfch_Uo76f5rRwA847NeszuBFkYOI26LvQW6ePZaiiI6__Yg5NQ_2pFx24BATb7oKt5amOlD0LLwNLQ=w1920-h1080",
-    "etiketler": [
-      "TEKİRDAĞ, çorlu, ergene, KIRKLARELİ, LÜLEBURGAZ, PINARHİSAR, eviler göleti, monapetra, çifte şelaleler, VİZE, kıyıköy, SARAY"
-    ]
+	"ozel": "4, 1, doğa, keşif",	
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczM36Y3SImqkmflSckUZh8tDDWs7izfQF2WiGfch_Uo76f5rRwA847NeszuBFkYOI26LvQW6ePZaiiI6__Yg5NQ_2pFx24BATb7oKt5amOlD0LLwNLQ=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ, çorlu, ergene, KIRKLARELİ, LÜLEBURGAZ, PINARHİSAR, eviler göleti, monapetra, çifte şelaleler, VİZE, kıyıköy, SARAY"]
+  },  
+    {
+    "id": "2019-07-22-kahve",
+    "baslik": "Bir Fincan Kahve Bisiklet Turu",
+    "url": "yazilar/2019-07-22-kahve.html",
+    "tarih": "2019-07-22",
+    "kategori": "Günlük Geziler > [bisiklet,Gözde]",
+	"ozel": "2, doğa, bisiklet",		
+	"kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczMepNeibFzvWgcbcRNL37WqjZ2rdTPSTVnkLjs6WdMqbFjLgEZa5aHx_-kSZx_lwhVOBpeGAcwSJU8TAxlxl_nnZrhIaCKHuMPNA2oQWyTo4NtMxMs=w1920-h1080",
+	"etiketler": ["TEKİRDAĞ,ergene,çorlu,"]
   },
   {
     "id": "2019-ata-yolu",
