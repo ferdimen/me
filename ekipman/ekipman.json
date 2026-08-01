@@ -2880,8 +2880,11 @@
   },
   {
     "baslik": "Schwalbe Smart Sam Plus 27.5x2.25",
-    "kategori": "Bisiklet Parçaları, Dış Lastik",
-    "tarih": "2015-05, 2025-09",
+    "kategori": [
+      "Bisiklet Parçaları",
+      "Dış Lastik"
+    ],
+    "tarih": "2019-05, 2025-09",
     "kapakresmi": "/img/ekipman/2015/bisiklet-parcalari-schwalbe-smart-sam-plus-27-5x2-25.jpg",
     "aciklama": "Tarzım artık daha sert, daha çetin ve dik başlarındaki patikalara evrilmeye başladıkça \"acaba yolda kalır mıyım\" derdini bitirmek için koruma seviyesini bir tık yukarı taşıdığım; kalınlaşan yapısıyla dikenleri, keskin taşları gülüp geçerek alt eden, engebeli coğrafyalarda sırtımı güvenle yasladığım dağ koçumdur.",
     "bagli_urunler": [
@@ -2890,8 +2893,7 @@
     "yorum": "Standart modele göre ağırlığı biraz daha fazla olsa da o sağlamlığı sayesinde sırtımı yere getirmeyen; en sert ve taşlı yollarda bile yola adeta mıh gibi tutunup pedal basarken kafamı tamamen rahatlatan o güven timsali dış lastiğimdir.",
     "varsayilan": false,
     "agirlik": "970",
-    "etiketler": "Schwalbe, smart sam plus, Dış lastik",
-    "id": 216
+    "etiketler": "Schwalbe, smart sam plus, Dış lastik"
   },
   {
     "baslik": "DSI Puncture Protection 3.5 mm 27.5′ x 2.10 Dış Lastik",
