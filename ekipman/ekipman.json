@@ -3090,5 +3090,22 @@
     "varsayilan": true,
     "agirlik": "100",
     "etiketler": "giyim, şapka"
+  },
+  {
+    "baslik": "Tava/Tencere (Sütlük)",
+    "kategori": "Kamp Mutfağı",
+    "tarih": "2022-04-20",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "Kamp için bugüne kadar türlü türlü tencere deneyip sonunda en pratik olanında karar kıldığım; halk arasında \"sütlük\" denilen o ufak teflon tenceredir. Suyu şıp diye kaynatmaya da yemek pişirmeye de on numara uyum sağlayan bu küçüğünü tek kişi kaldığım için rahatça kullanıyorum, fakat bir boy büyüğüyle yemek işleri çok daha konforlu olur diyeyim; nitekim bende bir büyüğü de vardı ama ocak üstünde dalgınlıkla unutup yakınca tarihe karıştı! Uzun sapını söküp atarak pratik bir tencere tutma aletleriyle kullanırsanız heybelerde sıfıra yakın yer kaplayan, minimalist kamp mutfağının baş tacıdır.",
+    "bagli_urunler": [
+      31,
+      32,
+      29,
+      162
+    ],
+    "yorum": "Yemek pişirirken tabanına yapışma derdini tamamen unutturan, yemek sonrası bulaşık krizini bitirip tek hamlede tertemiz olan; o pratik yapısıyla kamp mutfağındaki en büyük zahmeti ortadan kaldıran kusursuz yardımcımdır. Çizilmelere karşı korumak için metal kaşıkların kapısından bile geçmeyip yalnızca tahta kaşıkla yemek pişirmeye dikkat etmek gerekli",
+    "varsayilan": false,
+    "agirlik": "0",
+    "etiketler": "tava, tencere, kamp mutfağı"
   }
 ]
