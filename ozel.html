@@ -321,7 +321,7 @@
                     <!-- Liste Üstü Geri Buton Alanı -->
                     <div id="playlist-upper-nav" style="margin-bottom: 20px; display: none;" class="nav-links-group">
                         <a href="?playlist=hepsi" class="btn-nav-back">← Tüm Oynatma Listelerine Geri Dön</a>
-                        <a href="izle.html" class="btn-nav-back">← Tüm Videolara Geri Dön</a>
+                        <a href="ozel.html" class="btn-nav-back">← Tüm Videolara Geri Dön</a>
                     </div>
 
                     <h2 class="channel-heading" id="list-heading">Yüklenen Videolar</h2>
@@ -339,7 +339,8 @@
                 <h1 class="post-title">Video Haritası</h1>
                 <div id="main-global-map" style="width: 100%; height: 500px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"></div>
                 <div class="nav-links-group">
-                    <a href="izle.html" class="btn-nav-back">← Video Listesine Geri Dön</a>
+                    <a href="ozel.html" class="btn-nav-back">← Video Listesine Geri Dön</a>
+                    <a href="ozel.html" class="btn-nav-back">← Video Listesine Geri Dön</a>
                 </div>
             </div>
 
@@ -445,7 +446,6 @@
             const mainTrackTarget = document.getElementById("main-carousel-track-target");
             const playlistUpperNav = document.getElementById("playlist-upper-nav");
             const izlemeNavLinks = document.getElementById("izleme-nav-links");
-            const bugun = new Date().toISOString().split('T')[0];
 
             function getYoutubeId(url) {
                 let id = "";
@@ -532,12 +532,11 @@
                         return;
                     }
 
-                    const aktifVideolar = data
-                        .filter(v => !v.date || v.date <= bugun)
-                        .map((v, idx, arr) => ({ ...v, orijinalIndex: arr.length - idx }));
+                    // Tarih filtresi kaldırıldı: Gelecek tarihli veya tarihi olmayan tüm videolar özel sayfada doğrudan listeleniyor.
+                    const aktifVideolar = data.map((v, idx, arr) => ({ ...v, orijinalIndex: arr.length - idx }));
 
                     if (aktifVideolar.length === 0) {
-                        gridArea.innerHTML = `<p class="no-videos">Yayınlanmış video bulunmuyor.</p>`;
+                        gridArea.innerHTML = `<p class="no-videos">Video bulunmuyor.</p>`;
                         return;
                     }
 
@@ -545,7 +544,7 @@
                     const searchInput = document.getElementById('globalSearchInput');
                     const searchDropdown = document.getElementById('globalSearchResults');
 
-                    // Sadece temiz `izle.html` sayfasında mıyız kontrolü (?v=, ?playlist=, ?harita yoksa)
+                    // Sadece temiz `ozel.html` sayfasında mıyız kontrolü (?v=, ?playlist=, ?harita yoksa)
                     const isPureIndexPage = (videoParam === null && playlistParam === null && !haritaParam);
 
                     searchInput.addEventListener('input', (e) => {
@@ -584,7 +583,7 @@
                             let htmlContent = "";
                             matchedVideos.forEach(video => {
                                 const videoId = getYoutubeId(video.url);
-                                let yayınTarihi = video.date ? video.date.split('-').reverse().join('.') : '';
+                                let yayınTarihi = video.date ? video.date.split('-').reverse().join('.') : 'Özel Yayın';
                                 htmlContent += `
                                     <a href="?v=${video.orijinalIndex}" class="yt-video-card">
                                         <div class="yt-thumbnail-wrapper">
@@ -703,7 +702,7 @@
                         const genelytId = getYoutubeId(aktifVideolar[0].url);
                         
                         let sliderHtml = `
-                            <a href="izle.html" class="carousel-item">
+                            <a href="ozel.html" class="carousel-item">
                                 <div class="yt-thumbnail-wrapper">
                                     <img src="https://img.youtube.com/vi/${genelytId}/mqdefault.jpg">
                                     <div class="yt-playlist-badge"><svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg><span>Hepsi</span></div>
@@ -753,7 +752,7 @@
                         const secilenVideo = aktifVideolar.find(v => v.orijinalIndex === targetIdx);
 
                         if (!secilenVideo) {
-                            listeModuDiv.innerHTML = `<div class="alert alert-error"><a href="izle.html" class="btn-nav-back">← Video Listesine Geri Dön</a> İçerik bulunamadı veya henüz yayında değil!</div>`;
+                            listeModuDiv.innerHTML = `<div class="alert alert-error"><a href="ozel.html" class="btn-nav-back">← Video Listesine Geri Dön</a> İçerik bulunamadı!</div>`;
                             return;
                         }
 
@@ -765,7 +764,7 @@
                             const pGosterimAdi = secilenVideo.playlist.replace(/-/g, ' ').toUpperCase();
                             navLinksHtml += `<a href="?playlist=${secilenVideo.playlist}" class="btn-nav-back primary">← ${pGosterimAdi} Listesine Dön</a>`;
                         }
-                        navLinksHtml += `<a href="izle.html" class="btn-nav-back">← Video Listesine Geri Dön</a>`;
+                        navLinksHtml += `<a href="ozel.html" class="btn-nav-back">← Video Listesine Geri Dön</a>`;
                         izlemeNavLinks.innerHTML = navLinksHtml;
 
                         const videoId = getYoutubeId(secilenVideo.url);
@@ -913,7 +912,7 @@
                         let htmlContent = "";
                         sayfaDilimi.forEach(video => {
                             const videoId = getYoutubeId(video.url);
-                            let yayınTarihi = video.date ? video.date.split('-').reverse().join('.') : '';
+                            let yayınTarihi = video.date ? video.date.split('-').reverse().join('.') : 'Özel Yayın';
 
                             htmlContent += `
                                 <a href="?v=${video.orijinalIndex}" class="yt-video-card">

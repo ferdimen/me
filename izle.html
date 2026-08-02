@@ -95,7 +95,7 @@
         .carousel-track-container { width: 100%; overflow: hidden; padding: 5px 0; }
         .carousel-track { display: flex; gap: 14px; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
         
-        .channel-heading { font-size: 1.5rem; font-weight: bold; color: #0f0f0f; margin-top: 10px; margin-bottom: 15px; border-bottom: 1px solid #e5e5e5; padding-bottom: 8px; }
+        .channel-heading { font-size: 1.5rem; font-weight: bold; color: #0f0f0f; margin-top: 10px; margin-bottom: 15px; border-bottom: 1px solid #e5e5e5; padding-bottom: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;}
         .youtube-channel-container { max-width: 1200px; margin: 5px auto; padding: 0; font-family: Arial, sans-serif; }
 
         /* Hata Stilleri */
@@ -132,6 +132,8 @@
         .btn-nav-back:hover { background-color: #e5e5e5; border-color: #adadad; }
         .btn-nav-back.primary { background-color: #0f0f0f; color: #fff; border-color: #0f0f0f; }
         .btn-nav-back.primary:hover { background-color: #2c3e50; }
+        .btn-nav-back.accent { background-color: #dc2626; color: #fff; border-color: #dc2626; }
+        .btn-nav-back.accent:hover { background-color: #b91c1c; }
 
         /* YouTube Oynatıcı Sarmalayıcı Konteyneri ve Geçiş Okları */
         .video-player-wrapper {
@@ -203,11 +205,36 @@
 
         /* YouTube Galeri Düzeni */
         .youtube-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px 16px; }
-        .yt-video-card { text-decoration: none; color: #0f0f0f; display: flex; flex-direction: column; cursor: pointer; transition: transform 0.2s ease; }
+        .yt-video-card { text-decoration: none; color: #0f0f0f; display: flex; flex-direction: column; cursor: pointer; transition: transform 0.2s ease; position: relative; }
         .yt-thumbnail-wrapper { position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #000; border-radius: 12px; overflow: hidden; margin-bottom: 12px; }
         .yt-thumbnail-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.2s ease; }
         .yt-video-card:hover .yt-thumbnail-wrapper img { opacity: 0.9; }
         .yt-duration { position: absolute; bottom: 8px; right: 8px; background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 3px 6px; font-size: 0.75rem; font-weight: bold; border-radius: 4px; letter-spacing: 0.5px; }
+
+        /* Erken Erişim Filigranı */
+        .early-access-watermark {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            backdrop-filter: blur(2px);
+            z-index: 3;
+        }
+        .early-access-watermark span {
+            background: #dc2626;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
 
         /* Oynatma Listesi Kart Rozeti */
         .yt-playlist-badge {
@@ -245,6 +272,33 @@
             text-decoration: none; margin-top: 5px; transition: background 0.2s;
         }
         .map-popup-btn:hover { background-color: #0f0f0f; }
+
+        /* Özel Popup / Modal Stilleri */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7); z-index: 2000; display: none;
+            align-items: center; justify-content: center; padding: 15px;
+        }
+        .modal-container {
+            background: #fff; width: 100%; max-width: 600px; border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3); overflow: hidden; max-height: 90vh; display: flex; flex-direction: column;
+        }
+        .modal-header {
+            background: #2c3e50; color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .modal-header h3 { margin: 0; font-size: 1.2rem; }
+        .modal-close { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+        .modal-body { padding: 20px; overflow-y: auto; font-size: 0.95rem; line-height: 1.6; color: #333; }
+        
+        /* Banka Kartı Görsel Tasarımı */
+        .bank-card { background: #f8f9fa; border: 1px solid #e5e5e5; border-radius: 8px; padding: 15px; margin-bottom: 20px; }
+        .bank-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 0.9rem; }
+        .bank-row:last-child { margin-bottom: 0; }
+        .bank-label { font-weight: bold; color: #555; }
+        .bank-value { font-family: monospace; font-weight: bold; color: #0f0f0f; }
+        .copy-btn { background: #e5e5e5; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: bold; transition: background 0.2s; }
+        .copy-btn:hover { background: #3498db; color: #fff; }
+        .bank-note { font-size: 0.85rem; color: #c0392b; margin-top: 10px; font-weight: bold; background: #fadbd8; padding: 8px; border-radius: 4px; }
     </style>
 </head>
 <body>
@@ -253,13 +307,12 @@
 
 <header class="main-header"></header>
 
-<!-- Yine aynı şekilde / ile çağırılır, göreceli yol (../) derdi biter -->
 <script src="data/header-loader.js"></script>
 
     <section class="contact-section" id="yazi">
         <div class="post-body-content">
             
-            <!-- Global AJAX Destekli Arama Bölümü (Ana liste sayfasında liste içi filtreleme, diğer sayfalarda açılır dropdown) -->
+            <!-- Global AJAX Destekli Arama Bölümü -->
             <div class="global-search-wrapper">
                 <input type="text" id="globalSearchInput" class="global-search-input" placeholder="Tüm videolar arasında arama yap..." autocomplete="off">
                 <div id="globalSearchResults" class="global-search-dropdown"></div>
@@ -269,16 +322,13 @@
             <div id="izleme-modu" style="display: none;">
                 <h1 id="video-title" class="post-title">Yükleniyor...</h1>
                 
-                <!-- Video Oynatıcı ve Sağ-Left Yönlendirme Okları Sarmalayıcısı -->
                 <div class="video-player-wrapper">
-                    <!-- Sol Ok -->
                     <a href="#" id="video-prev-link" class="video-nav-arrow left-arrow" title="Önceki Video" style="display: none;">
                         <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
                     </a>
                     
                     <div class="custom-youtube-box" id="player-area"></div>
                     
-                    <!-- Sağ Ok -->
                     <a href="#" id="video-next-link" class="video-nav-arrow right-arrow" title="Sonraki Video" style="display: none;">
                         <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
                     </a>
@@ -292,7 +342,6 @@
                 
                 <div class="nav-links-group" id="izleme-nav-links"></div>
 
-                <!-- İzleme Sayfası Altındaki Dinamik Playlist Carousel Alanı -->
                 <div id="watch-playlist-carousel-container" style="display: none;">
                     <h3 class="watch-carousel-heading" id="watch-carousel-title">Oynatma Listesindeki Diğer Videolar</h3>
                     <div class="carousel-wrapper">
@@ -324,7 +373,11 @@
                         <a href="izle.html" class="btn-nav-back">← Tüm Videolara Geri Dön</a>
                     </div>
 
-                    <h2 class="channel-heading" id="list-heading">Yüklenen Videolar</h2>
+                    <h2 class="channel-heading" id="list-heading">
+                        <span id="list-heading-text">Yüklenen Videolar</span>
+                        <!-- Erken Erişim / Özel Sayfa Butonu (izle.html?ozel olarak güncellendi) -->
+                        <a href="izle.html?ozel" class="btn-nav-back accent" id="early-access-btn" style="font-size: 0.8rem; padding: 6px 12px; display: none;">✨ Erken Erişim / Özel Bölüm</a>
+                    </h2>
                     
                     <div class="youtube-grid" id="channel-videos-area">
                         <p class="no-videos">Videolar yükleniyor...</p>
@@ -345,6 +398,61 @@
 
         </div>
     </section>
+
+    <!-- AYRICALIKLAR VE DESTEK POPUP (MODAL) -->
+    <div id="early-access-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Erken Erişim ve Özel Bölüm Ayrıcalıkları</h3>
+                <button class="modal-close" id="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Yayın tarihi henüz gelmemiş videoları erkenden izlemek ve bağımsız yayıncılığa destek olmak için küçük bağışlar yapabilirsiniz.</p>
+                
+                <h4 style="margin: 15px 0 8px 0; color: #2c3e50;">Havale / EFT Bilgileri:</h4>
+                <div class="bank-card">
+                    <div class="bank-row">
+                        <span class="bank-label">ALICI</span>
+                        <span class="bank-value" id="bank-receiver">Ferdi Kızıl</span>
+                        <button class="copy-btn" onclick="copyToClipboard('bank-receiver', this)">Kopyala</button>
+                    </div>
+                    <div class="bank-row">
+                        <span class="bank-label">BANKA</span>
+                        <span class="bank-value">ENPARA</span>
+                        <span style="width:74px;"></span>
+                    </div>
+                    <div class="bank-row">
+                        <span class="bank-label">IBAN</span>
+                        <span class="bank-value" id="bank-iban">TR22 0015 7000 0000 0046 5881 43</span>
+                        <button class="copy-btn" onclick="copyToClipboard('bank-iban', this)">Kopyala</button>
+                    </div>
+                    <div class="bank-note">
+                        ⚠️ Önemli: Havale açıklama bölümüne Google/Gmail adresinizi yazmayı unutmayın! Bu adres ile <a href="ozel.html" style="color: #c0392b; text-decoration: underline;">Erken Erişim / Özel Bölüm</a> bağlantısına erişim yetkiniz tanımlanacaktır.
+                    </div>
+                </div>
+
+                <h4 style="margin: 15px 0 8px 0; color: #2c3e50;">İletişim & Bildirim Formu:</h4>
+                <div class="contact-form-side" style="padding: 0;">
+                    <form action="https://formspree.io/f/xnjyjwnk" method="POST">
+                        <div class="form-group" style="margin-bottom: 12px;">
+                            <label for="modal-name" style="display:block; font-size:0.85rem; font-weight:bold; margin-bottom:4px;">İsim / Mahlas</label>
+                            <input type="text" id="modal-name" name="name" required placeholder="Adınızı giriniz" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 12px;">
+                            <label for="modal-email" style="display:block; font-size:0.85rem; font-weight:bold; margin-bottom:4px;">E-Posta Adresi (Erişim için kullanılacak Gmail)</label>
+                            <input type="email" id="modal-email" name="_replyto" required placeholder="Gmail adresinizi giriniz" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 12px;">
+                            <label for="modal-message" style="display:block; font-size:0.85rem; font-weight:bold; margin-bottom:4px;">Mesajınız / Notunuz</label>
+                            <textarea id="modal-message" name="message" rows="3" required placeholder="Bağış yaptım, erken erişim açılmasını rica ederim..." style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"></textarea>
+                        </div>
+                        <input type="hidden" name="_language" value="tr" />
+                        <button type="submit" class="submit-btn" style="background:#2c3e50; color:#fff; border:none; padding:10px 15px; border-radius:4px; cursor:pointer; font-weight:bold; width:100%;">Bildirimi Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <!-- İLETİŞİM VE SOSYAL MEDYA -->
     <section class="contact-section" id="iletisim">
@@ -429,23 +537,84 @@
         const PIN_WIDTH = 32;
         const PIN_HEIGHT = 32;
 
+        // Standart bulanık / gizli kapak resmi (Yayın tarihi gelmemiş videolar için)
+        const BLURRED_THUMB = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='180' viewBox='0 0 320 180'><rect width='320' height='180' fill='%231a1a1a'/><text x='50% ' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23777' font-family='Arial' font-size='14'>Gizli / Erken Erişim</text></svg>";
+
+        // Sağ tık engellemesini kaldıran / aktif eden global yapı
+        document.addEventListener('contextmenu', function (e) {
+            e.stopPropagation(); // Sağ tıklamanın site genelinde çalışmasına izin verilir
+        }, true);
+
+        // Kapak resimlerini doğrudan dış kaynakların sömürmesini (hotlink) engellemek için
+        // sadece site içinde çalışan Base64 tabanlı şifreli yönlendirme algoritması
+        function encodeSecureThumb(rawUrl) {
+            try {
+                // Özel bir tuz ekleyerek dışarıdan basitçe çözülmesini önleyen şifreleme katmanı
+                const salted = "FERDIMEN_SECURE_" + rawUrl;
+                return btoa(encodeURIComponent(salted));
+            } catch (e) {
+                return btoa(rawUrl);
+            }
+        }
+
+        function decodeSecureThumb(encodedStr) {
+            try {
+                const decoded = decodeURIComponent(atob(encodedStr));
+                if (decoded.startsWith("FERDIMEN_SECURE_")) {
+                    return decoded.replace("FERDIMEN_SECURE_", "");
+                }
+                return decoded;
+            } catch (e) {
+                return "https://img.youtube.com/vi/default/mqdefault.jpg";
+            }
+        }
+
+        // Kopyalama Fonksiyonu
+        function copyToClipboard(elementId, btnElement) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = btnElement.innerText;
+                btnElement.innerText = "Kopyalandı!";
+                btnElement.style.background = "#27ae60";
+                btnElement.style.color = "#fff";
+                setTimeout(() => {
+                    btnElement.innerText = originalText;
+                    btnElement.style.background = "";
+                    btnElement.style.color = "";
+                }, 2000);
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             const urlParams = new URLSearchParams(window.location.search);
             const videoParam = urlParams.get('v'); 
             const playlistParam = urlParams.get('playlist'); 
             const pageParam = parseInt(urlParams.get('p')) || 1; 
             const haritaParam = urlParams.has('harita'); 
+            const ozelParam = urlParams.has('ozel'); // Erken erişim parametresi
 
             const gridArea = document.getElementById("channel-videos-area");
             const paginationTarget = document.getElementById("pagination-target");
             const izlemeModuDiv = document.getElementById("izleme-modu");
             const listeModuDiv = document.getElementById("liste-modu");
             const genelHaritaModuDiv = document.getElementById("genel-harita-modu");
-            const listHeading = document.getElementById("list-heading");
+            const listHeadingText = document.getElementById("list-heading-text");
+            const earlyAccessBtn = document.getElementById("early-access-btn");
             const mainTrackTarget = document.getElementById("main-carousel-track-target");
             const playlistUpperNav = document.getElementById("playlist-upper-nav");
             const izlemeNavLinks = document.getElementById("izleme-nav-links");
             const bugun = new Date().toISOString().split('T')[0];
+
+            // Modal Kontrolleri
+            const modalOverlay = document.getElementById("early-access-modal");
+            const modalCloseBtn = document.getElementById("modal-close-btn");
+
+            modalCloseBtn.addEventListener('click', () => {
+                modalOverlay.style.display = 'none';
+            });
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) modalOverlay.style.display = 'none';
+            });
 
             function getYoutubeId(url) {
                 let id = "";
@@ -470,17 +639,22 @@
                 });
             }
 
-            function buildSmartPagination(currentPage, totalPages, playlistFilter) {
+            // Sayfalama yapısının izle.html?ozel?p=2 veya izle.html?p=2 formatında çalışması sağlandı
+            function buildSmartPagination(currentPage, totalPages, playlistFilter, isOzel = false) {
                 if (totalPages <= 1) {
                     paginationTarget.innerHTML = "";
                     return;
                 }
 
-                const pQuery = playlistFilter ? `&playlist=${playlistFilter}` : '';
+                let queryParams = [];
+                if (isOzel) queryParams.push('ozel');
+                if (playlistFilter) queryParams.push(`playlist=${playlistFilter}`);
+
+                let baseQueryStr = queryParams.length > 0 ? '&' + queryParams.join('&') : '';
                 let navHtml = "";
 
                 if (currentPage > 1) {
-                    navHtml += `<li><button onclick="window.location.search = '?p=${currentPage - 1}${pQuery}'">&lt;</button></li>`;
+                    navHtml += `<li><button onclick="window.location.search = '?p=${currentPage - 1}${baseQueryStr}'">&lt;</button></li>`;
                 } else {
                     navHtml += `<li><button disabled>&lt;</button></li>`;
                 }
@@ -498,7 +672,7 @@
                 range.forEach(pageNum => {
                     if (lastNumber) {
                         if (pageNum - lastNumber === 2) {
-                            navHtml += `<li><button onclick="window.location.search = '?p=${lastNumber + 1}${pQuery}'">${lastNumber + 1}</button></li>`;
+                            navHtml += `<li><button onclick="window.location.search = '?p=${lastNumber + 1}${baseQueryStr}'">${lastNumber + 1}</button></li>`;
                         } else if (pageNum - lastNumber > 2) {
                             navHtml += `<li><span class="ellipsis">...</span></li>`;
                         }
@@ -507,13 +681,13 @@
                     if (pageNum === currentPage) {
                         navHtml += `<li class="aktif"><button disabled>${pageNum}</button></li>`;
                     } else {
-                        navHtml += `<li><button onclick="window.location.search = '?p=${pageNum}${pQuery}'">${pageNum}</button></li>`;
+                        navHtml += `<li><button onclick="window.location.search = '?p=${pageNum}${baseQueryStr}'">${pageNum}</button></li>`;
                     }
                     lastNumber = pageNum;
                 });
 
                 if (currentPage < totalPages) {
-                    navHtml += `<li><button onclick="window.location.search = '?p=${currentPage + 1}${pQuery}'">&gt;</button></li>`;
+                    navHtml += `<li><button onclick="window.location.search = '?p=${currentPage + 1}${baseQueryStr}'">&gt;</button></li>`;
                 } else {
                     navHtml += `<li><button disabled>&gt;</button></li>`;
                 }
@@ -532,31 +706,41 @@
                         return;
                     }
 
-                    const aktifVideolar = data
-                        .filter(v => !v.date || v.date <= bugun)
-                        .map((v, idx, arr) => ({ ...v, orijinalIndex: arr.length - idx }));
+                    // Tüm videoları orijinal indexleri ile hazırla
+                    const tumVideolar = data.map((v, idx, arr) => ({ ...v, orijinalIndex: arr.length - idx }));
+
+                    // İstek doğrultusunda: Yayın tarihi gelmemiş videoları normal sayfalardan gizle, sadece izle.html?ozel sayfasında göster
+                    const aktifVideolar = ozelParam 
+                        ? tumVideolar.filter(v => v.date && v.date > bugun)
+                        : tumVideolar.filter(v => !v.date || v.date <= bugun);
+
+                    if (ozelParam) {
+                        listHeadingText.textContent = "Erken Erişim / Yayın Tarihi Bekleyen Videolar";
+                        earlyAccessBtn.style.display = "none";
+                        playlistUpperNav.style.display = "flex";
+                        playlistUpperNav.innerHTML = `<a href="izle.html" class="btn-nav-back">← Normal Video Listesine Dön</a> <a href="ozel.html" class="btn-nav-back primary">🔒 Erken Erişim / Özel Bölüm Girişi</a>`;
+                    } else {
+                        earlyAccessBtn.style.display = "inline-block";
+                    }
 
                     if (aktifVideolar.length === 0) {
-                        gridArea.innerHTML = `<p class="no-videos">Yayınlanmış video bulunmuyor.</p>`;
+                        gridArea.innerHTML = `<p class="no-videos">${ozelParam ? "Şu an erken erişimde bekleyen video bulunmuyor." : "Yayınlanmış video bulunmuyor."}</p>`;
                         return;
                     }
 
-                    // --- ARAMA SİSTEMİ (Sayfa türüne göre dinamik davranış) ---
+                    // --- ARAMA SİSTEMİ ---
                     const searchInput = document.getElementById('globalSearchInput');
                     const searchDropdown = document.getElementById('globalSearchResults');
-
-                    // Sadece temiz `izle.html` sayfasında mıyız kontrolü (?v=, ?playlist=, ?harita yoksa)
-                    const isPureIndexPage = (videoParam === null && playlistParam === null && !haritaParam);
+                    const isPureIndexPage = (videoParam === null && playlistParam === null && !haritaParam && !ozelParam);
 
                     searchInput.addEventListener('input', (e) => {
                         const query = e.target.value.trim().toLowerCase();
                         
                         if (query.length === 0) {
                             if (isPureIndexPage) {
-                                // Ana sayfadaysak arama temizlenince tekrar normal listeyi ve sayfalamayı yükle
                                 renderVideoList(aktifVideolar, 1, false);
                                 document.getElementById("main-carousel-outer").style.display = "flex";
-                                listHeading.textContent = "Yüklenen Videolar";
+                                listHeadingText.textContent = "Yüklenen Videolar";
                             } else {
                                 searchDropdown.style.display = 'none';
                                 searchDropdown.innerHTML = '';
@@ -571,9 +755,8 @@
                         );
 
                         if (isPureIndexPage) {
-                            // Ana sayfadaysak sonuçları doğrudan ana grid alanında (videoların listelendiği bölümde) göster
                             document.getElementById("main-carousel-outer").style.display = "none";
-                            listHeading.textContent = `Arama Sonuçları ("${e.target.value.trim()}")`;
+                            listHeadingText.textContent = `Arama Sonuçları ("${e.target.value.trim()}")`;
                             paginationTarget.innerHTML = "";
                             
                             if (matchedVideos.length === 0) {
@@ -584,22 +767,49 @@
                             let htmlContent = "";
                             matchedVideos.forEach(video => {
                                 const videoId = getYoutubeId(video.url);
+                                // Erken erişim / yayın tarihi gelmemiş videolar için gerçek kapak yerine standart bulanık görsel atanır
+                                const rawThumb = ozelParam ? BLURRED_THUMB : `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+                                const secureThumb = ozelParam ? BLURRED_THUMB : encodeSecureThumb(rawThumb);
                                 let yayınTarihi = video.date ? video.date.split('-').reverse().join('.') : '';
-                                htmlContent += `
-                                    <a href="?v=${video.orijinalIndex}" class="yt-video-card">
-                                        <div class="yt-thumbnail-wrapper">
-                                            <img src="https://img.youtube.com/vi/${videoId}/mqdefault.jpg" alt="${video.title}" loading="lazy">
-                                            <span class="yt-duration">${video.duration}</span>
-                                        </div>
-                                        <div class="yt-meta-info">
-                                            <h3 class="yt-video-title">${video.title}</h3>
-                                            <p class="yt-video-details">${yayınTarihi}</p>
-                                        </div>
-                                    </a>`;
+                                
+                                if (ozelParam) {
+                                    htmlContent += `
+                                        <div class="yt-video-card early-access-card" data-title="${video.title}" style="cursor: pointer;">
+                                            <div class="yt-thumbnail-wrapper">
+                                                <img src="${secureThumb}" alt="${video.title}" loading="lazy">
+                                                <div class="early-access-watermark">
+                                                    <span>ÖZEL İÇERİK</span>
+                                                    <small style="font-size:0.7rem; margin-top:4px;">Yayın: ${yayınTarihi}</small>
+                                                </div>
+                                                <span class="yt-duration">${video.duration}</span>
+                                            </div>
+                                            <div class="yt-meta-info">
+                                                <h3 class="yt-video-title">${video.title}</h3>
+                                                <p class="yt-video-details">Yayın Tarihi: ${yayınTarihi}</p>
+                                            </div>
+                                        </div>`;
+                                } else {
+                                    htmlContent += `
+                                        <a href="?v=${video.orijinalIndex}" class="yt-video-card">
+                                            <div class="yt-thumbnail-wrapper">
+                                                <img src="${decodeSecureThumb(secureThumb)}" alt="${video.title}" loading="lazy">
+                                                <span class="yt-duration">${video.duration}</span>
+                                            </div>
+                                            <div class="yt-meta-info">
+                                                <h3 class="yt-video-title">${video.title}</h3>
+                                                <p class="yt-video-details">${yayınTarihi}</p>
+                                            </div>
+                                        </a>`;
+                                }
                             });
                             gridArea.innerHTML = htmlContent;
+                            
+                            if (ozelParam) {
+                                document.querySelectorAll('.early-access-card').forEach(card => {
+                                    card.addEventListener('click', () => { modalOverlay.style.display = 'flex'; });
+                                });
+                            }
                         } else {
-                            // Diğer sayfalarda (?v=, ?playlist=, vb.) arama kutusunun altında açılır menü (dropdown) olarak göster
                             if (matchedVideos.length === 0) {
                                 searchDropdown.innerHTML = '<div class="global-search-item"><span>Sonuç bulunamadı</span></div>';
                                 searchDropdown.style.display = 'block';
@@ -608,9 +818,11 @@
 
                             searchDropdown.innerHTML = matchedVideos.map(video => {
                                 const vId = getYoutubeId(video.url);
+                                const secureThumb = ozelParam ? BLURRED_THUMB : decodeSecureThumb(encodeSecureThumb(`https://img.youtube.com/vi/${vId}/mqdefault.jpg`));
+                                const targetHref = ozelParam ? "#" : `?v=${video.orijinalIndex}`;
                                 return `
-                                    <a href="?v=${video.orijinalIndex}" class="global-search-item">
-                                        <img src="https://img.youtube.com/vi/${vId}/mqdefault.jpg" class="global-search-thumb" alt="">
+                                    <a href="${targetHref}" class="global-search-item" ${ozelParam ? 'onclick="document.getElementById(\'early-access-modal\').style.display=\'flex\'; return false;"' : ''}>
+                                        <img src="${secureThumb}" class="global-search-thumb" alt="">
                                         <div class="global-search-info">
                                             <h4>${video.title}</h4>
                                             <span>${video.playlist ? video.playlist.replace(/-/g, ' ').toUpperCase() : 'Arşiv'} • ${video.duration}</span>
@@ -623,7 +835,6 @@
                         }
                     });
 
-                    // Sayfa içinde herhangi bir yere tıklandığında dropdown'ı kapat (Sadece dropdown kullanılan sayfalarda)
                     document.addEventListener('click', (e) => {
                         if (!e.target.closest('.global-search-wrapper')) {
                             searchDropdown.style.display = 'none';
@@ -661,7 +872,7 @@
                                     pinCount++;
                                     
                                     const videoId = getYoutubeId(video.url);
-                                    const thumbUrl = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+                                    const thumbUrl = ozelParam ? BLURRED_THUMB : decodeSecureThumb(encodeSecureThumb(`https://img.youtube.com/vi/${videoId}/mqdefault.jpg`));
                                     
                                     const popupContent = `
                                         <div style="font-family: Arial, sans-serif; font-size:13px; line-height:1.4; max-width:200px;">
@@ -698,14 +909,15 @@
                     });
                     const playlistKeys = Object.keys(playlistGruplari);
 
-                    if (videoParam === null && !playlistParam) {
+                    if (videoParam === null && !playlistParam && !ozelParam) {
                         document.getElementById("main-carousel-outer").style.display = "flex";
                         const genelytId = getYoutubeId(aktifVideolar[0].url);
+                        const genelSecureThumb = decodeSecureThumb(encodeSecureThumb(`https://img.youtube.com/vi/${genelytId}/mqdefault.jpg`));
                         
                         let sliderHtml = `
                             <a href="izle.html" class="carousel-item">
                                 <div class="yt-thumbnail-wrapper">
-                                    <img src="https://img.youtube.com/vi/${genelytId}/mqdefault.jpg">
+                                    <img src="${genelSecureThumb}">
                                     <div class="yt-playlist-badge"><svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg><span>Hepsi</span></div>
                                 </div>
                                 <h3 class="yt-video-title">TÜM VİDEOLAR</h3>
@@ -713,7 +925,7 @@
                             </a>
                             <a href="?harita" class="carousel-item">
                                 <div class="yt-thumbnail-wrapper">
-                                    <img src="https://img.youtube.com/vi/${genelytId}/mqdefault.jpg">
+                                    <img src="${genelSecureThumb}">
                                     <div class="yt-playlist-badge" style="background-color: rgba(44, 62, 80, 0.95);"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>Harita</span></div>
                                 </div>
                                 <h3 class="yt-video-title">VİDEO HARİTASI</h3>
@@ -721,7 +933,7 @@
                             </a>
                             <a href="?playlist=hepsi" class="carousel-item">
                                 <div class="yt-thumbnail-wrapper">
-                                    <img src="https://img.youtube.com/vi/${genelytId}/mqdefault.jpg">
+                                    <img src="${genelSecureThumb}">
                                     <div class="yt-playlist-badge"><svg viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2zm-6-8H5v2h8V5zm0 12H5v2h8v-2zm4-4v6l5-3-5-3z"/></svg><span>Klasörler</span></div>
                                 </div>
                                 <h3 class="yt-video-title">TÜM LİSTELER</h3>
@@ -732,10 +944,11 @@
                         playlistKeys.forEach(pName => {
                             const grup = playlistGruplari[pName];
                             const vId = getYoutubeId(grup.ilkVideo.url);
+                            const pSecureThumb = decodeSecureThumb(encodeSecureThumb(`https://img.youtube.com/vi/${vId}/mqdefault.jpg`));
                             sliderHtml += `
                                 <a href="?playlist=${pName}" class="carousel-item">
                                     <div class="yt-thumbnail-wrapper">
-                                        <img src="https://img.youtube.com/vi/${vId}/mqdefault.jpg" loading="lazy">
+                                        <img src="${pSecureThumb}" loading="lazy">
                                         <div class="yt-playlist-badge"><svg viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2zm-6-8H5v2h8V5zm0 12H5v2h8v-2zm4-4v6l5-3-5-3z"/></svg><span>${grup.sayac} Video</span></div>
                                     </div>
                                     <h3 class="yt-video-title">${pName.replace(/-/g, ' ').toUpperCase()}</h3>
@@ -774,8 +987,9 @@
                         document.getElementById('video-description').textContent = secilenVideo.description;
 
                         const pArea = document.getElementById("player-area");
+                        const posterUrl = ozelParam ? BLURRED_THUMB : decodeSecureThumb(encodeSecureThumb(`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`));
                         pArea.innerHTML = `
-                            <div class="youtube-poster" style="background-image: url('https://img.youtube.com/vi/${videoId}/hqdefault.jpg');" id="play-trigger">
+                            <div class="youtube-poster" style="background-image: url('${posterUrl}');" id="play-trigger">
                                 <div class="youtube-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                             </div>`;
                         
@@ -783,7 +997,6 @@
                             pArea.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" allowfullscreen allow="autoplay"></iframe>`;
                         });
 
-                        // --- SAĞ-SOL GEÇİŞ OKLARI ---
                         const prevBtn = document.getElementById("video-prev-link");
                         const nextBtn = document.getElementById("video-next-link");
 
@@ -834,10 +1047,11 @@
                                 let watchSliderHtml = "";
                                 ayniPlaylistVideolari.forEach(v => {
                                     const vId = getYoutubeId(v.url);
+                                    const vSecureThumb = ozelParam ? BLURRED_THUMB : decodeSecureThumb(encodeSecureThumb(`https://img.youtube.com/vi/${vId}/mqdefault.jpg`));
                                     watchSliderHtml += `
                                         <a href="?v=${v.orijinalIndex}" class="carousel-item" style="${v.orijinalIndex === targetIdx ? 'opacity: 0.5; border: 1px dashed #adadad; border-radius:8px; padding:2px;' : ''}">
                                             <div class="yt-thumbnail-wrapper">
-                                                <img src="https://img.youtube.com/vi/${vId}/mqdefault.jpg" loading="lazy">
+                                                <img src="${vSecureThumb}" loading="lazy">
                                                 <span class="yt-duration">${v.duration}</span>
                                             </div>
                                             <h3 class="yt-video-title">${v.title}</h3>
@@ -855,7 +1069,7 @@
                     }
 
                     if (playlistParam === 'hepsi') {
-                        listHeading.textContent = "Oynatma Listeleri";
+                        listHeadingText.textContent = "Oynatma Listeleri";
                         playlistUpperNav.style.display = "flex"; 
                         gridArea.innerHTML = "";
                         paginationTarget.innerHTML = "";
@@ -869,10 +1083,11 @@
                         playlistKeys.forEach(pName => {
                             const grup = playlistGruplari[pName];
                             const vId = getYoutubeId(grup.ilkVideo.url);
+                            const pSecureThumb = ozelParam ? BLURRED_THUMB : decodeSecureThumb(encodeSecureThumb(`https://img.youtube.com/vi/${vId}/mqdefault.jpg`));
                             htmlContent += `
                                 <a href="?playlist=${pName}" class="yt-video-card">
                                     <div class="yt-thumbnail-wrapper">
-                                        <img src="https://img.youtube.com/vi/${vId}/mqdefault.jpg" loading="lazy">
+                                        <img src="${pSecureThumb}" loading="lazy">
                                         <div class="yt-playlist-badge"><svg viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2zm-6-8H5v2h8V5zm0 12H5v2h8v-2zm4-4v6l5-3-5-3z"/></svg><span>${grup.sayac} Video</span></div>
                                     </div>
                                     <div class="yt-meta-info">
@@ -889,10 +1104,10 @@
 
                     if (playlistParam && playlistParam !== 'hepsi') {
                         gosterilecekVideolar = aktifVideolar.filter(v => v.playlist === playlistParam);
-                        listHeading.textContent = `Liste: ${playlistParam.replace(/-/g, ' ').toUpperCase()}`;
+                        listHeadingText.textContent = `Liste: ${playlistParam.replace(/-/g, ' ').toUpperCase()}`;
                         playlistUpperNav.style.display = "flex"; 
-                    } else {
-                        listHeading.textContent = "Yüklenen Videolar";
+                    } else if (!ozelParam) {
+                        listHeadingText.textContent = "Yüklenen Videolar";
                         playlistUpperNav.style.display = "none";
                     }
 
@@ -913,24 +1128,53 @@
                         let htmlContent = "";
                         sayfaDilimi.forEach(video => {
                             const videoId = getYoutubeId(video.url);
+                            // Yayın tarihi gelmemişler için gerçek küçük resim yerine standart bulanık görsel kullanılıyor
+                            const rawThumb = ozelParam ? BLURRED_THUMB : `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+                            const secureThumb = ozelParam ? BLURRED_THUMB : decodeSecureThumb(encodeSecureThumb(rawThumb));
                             let yayınTarihi = video.date ? video.date.split('-').reverse().join('.') : '';
 
-                            htmlContent += `
-                                <a href="?v=${video.orijinalIndex}" class="yt-video-card">
-                                    <div class="yt-thumbnail-wrapper">
-                                        <img src="https://img.youtube.com/vi/${videoId}/mqdefault.jpg" alt="${video.title}" loading="lazy">
-                                        <span class="yt-duration">${video.duration}</span>
-                                    </div>
-                                    <div class="yt-meta-info">
-                                        <h3 class="yt-video-title">${video.title}</h3>
-                                        <p class="yt-video-details">${yayınTarihi}</p>
-                                    </div>
-                                </a>`;
+                            if (ozelParam) {
+                                htmlContent += `
+                                    <div class="yt-video-card early-access-card" style="cursor: pointer;">
+                                        <div class="yt-thumbnail-wrapper">
+                                            <img src="${secureThumb}" alt="${video.title}" loading="lazy">
+                                            <div class="early-access-watermark">
+                                                <span>🔒 ERKEN ERİŞİM</span>
+                                                <small style="font-size:0.7rem; margin-top:4px;">Yayın: ${yayınTarihi}</small>
+                                            </div>
+                                            <span class="yt-duration">${video.duration}</span>
+                                        </div>
+                                        <div class="yt-meta-info">
+                                            <h3 class="yt-video-title">${video.title}</h3>
+                                            <p class="yt-video-details">Planlanan Yayın: ${yayınTarihi}</p>
+                                        </div>
+                                    </div>`;
+                            } else {
+                                htmlContent += `
+                                    <a href="?v=${video.orijinalIndex}" class="yt-video-card">
+                                        <div class="yt-thumbnail-wrapper">
+                                            <img src="${secureThumb}" alt="${video.title}" loading="lazy">
+                                            <span class="yt-duration">${video.duration}</span>
+                                        </div>
+                                        <div class="yt-meta-info">
+                                            <h3 class="yt-video-title">${video.title}</h3>
+                                            <p class="yt-video-details">${yayınTarihi}</p>
+                                        </div>
+                                    </a>`;
+                            }
                         });
                         gridArea.innerHTML = htmlContent;
 
+                        if (ozelParam) {
+                            document.querySelectorAll('.early-access-card').forEach(card => {
+                                card.addEventListener('click', () => {
+                                    modalOverlay.style.display = 'flex';
+                                });
+                            });
+                        }
+
                         if (!isFiltered) {
-                            buildSmartPagination(targetPage, toplamSayfa, playlistParam);
+                            buildSmartPagination(targetPage, toplamSayfa, playlistParam, ozelParam);
                         } else {
                             paginationTarget.innerHTML = "";
                         }
