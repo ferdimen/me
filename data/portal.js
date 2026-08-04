@@ -65,6 +65,7 @@ function initMap() {
 }
 
 // Rotaları data/rotalar.json Yolundan Okuma
+// loadRoutesData fonksiyonunun son satırına ekleyin:
 async function loadRoutesData() {
   try {
     const response = await fetch('data/rotalar.json');
@@ -75,12 +76,47 @@ async function loadRoutesData() {
     sortRoutesNewToOld(allRoutesData);
 
     renderCategories(allRoutesData);
+
+    // Otomatik yükleme kontrolünü çağır
+    checkUrlParams();
+
   } catch (error) {
     console.error("Yükleme Hatası:", error);
-    const container = document.getElementById('categoryContainer');
-    if (container) {
-      container.innerHTML = '<p style="padding:10px; color:#ef4444;">Rotalar yüklenemedi.</p>';
+  }
+}
+
+// URL Parametrelerini Kontrol Eden Fonksiyon
+function checkUrlParams() {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  // 1. Sadece harita görünümü istenmişse body'ye sınıf ekle (Sol menüyü gizler)
+  if (urlParams.get('sadeceHarita') === 'true') {
+    document.body.classList.add('embed-only-map');
+  }
+
+  const routeId = urlParams.get('rota');
+  const catName = urlParams.get('kategori');
+
+  // 2. Eğer özel bir rota ID'si istenmişse rotayı seç ve odaklan
+  if (routeId) {
+    const targetRoute = allRoutesData.find(r => r._id === routeId || r.id === routeId);
+    if (targetRoute) {
+      selectAndHighlightRoute(targetRoute);
     }
+  } 
+  // 3. Eğer sadece bir kategori istenmişse kategorideki tüm etapları haritada aç
+  else if (catName) {
+    const decodedCat = decodeURIComponent(catName);
+    document.querySelectorAll('.category-card').forEach(card => {
+      const titleSpan = card.querySelector('.category-title-group span');
+      if (titleSpan && titleSpan.innerText.trim() === decodedCat) {
+        card.classList.add('open');
+        const catCheckbox = card.querySelector('.map-check');
+        if (catCheckbox) {
+          catCheckbox.click();
+        }
+      }
+    });
   }
 }
 
@@ -99,13 +135,28 @@ function renderCategories(routes) {
   container.innerHTML = '';
 
   const categories = {};
+  
+  // 1. Rotaları kategorilerine göre grupla
   routes.forEach(route => {
     const catName = route.turKategorisi || 'Diğer Rotalar';
     if (!categories[catName]) categories[catName] = [];
     categories[catName].push(route);
   });
 
-  Object.keys(categories).forEach((catName) => {
+  // 2. Kategorileri, içlerindeki EN YENİ etabın sıra numarasına/tarihine göre sırala
+  const sortedCategoryNames = Object.keys(categories).sort((catA, catB) => {
+    // Kategorideki ilk rotaların sıra numaralarını al (Rotalar önceden en yeniden en eskiye sıralandığı için ilk eleman en yenisidir)
+    const topRouteA = categories[catA][0];
+    const topRouteB = categories[catB][0];
+
+    const numA = parseFloat(topRouteA.siraNo || topRouteA.etapNo || topRouteA.gun || 0);
+    const numB = parseFloat(topRouteB.siraNo || topRouteB.etapNo || topRouteB.gun || 0);
+
+    return numB - numA; // En yeni/yüksek numaralı kategori en üste
+  });
+
+  // 3. Sıralanmış kategori listesine göre DOM elemanlarını oluştur
+  sortedCategoryNames.forEach((catName) => {
     const catCard = document.createElement('div');
     catCard.className = 'category-card';
 
@@ -182,15 +233,23 @@ function selectAndHighlightRoute(route) {
   currentSelectedRoute = route;
 
   const catName = route.turKategorisi || 'Diğer Rotalar';
+  let isCategoryChecked = false;
+
+  // İlgili kategoriyi bul, kartını aç ve checkbox durumunu kontrol et
   document.querySelectorAll('.category-card').forEach(card => {
     const titleSpan = card.querySelector('.category-title-group span');
     if (titleSpan && titleSpan.innerText === catName) {
       card.classList.add('open');
+      const catCheckbox = card.querySelector('.map-check');
+      if (catCheckbox && catCheckbox.checked) {
+        isCategoryChecked = true;
+      }
     } else {
       card.classList.remove('open');
     }
   });
 
+  // Liste elemanlarının vurgusunu ayarla
   document.querySelectorAll('.route-item').forEach(i => i.classList.remove('active'));
   const activeItem = document.getElementById(`item_${route._id}`);
   if (activeItem) {
@@ -198,8 +257,19 @@ function selectAndHighlightRoute(route) {
     activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
+  // --- KRİTİK DEĞİŞİKLİK BURADA ---
+  // Eğer kategori seçili/işaretli DEĞİLSE, haritadaki diğer tekil seçilmiş rotaları kaldır
+  if (!isCategoryChecked) {
+    Object.keys(activeRouteLayers).forEach(routeId => {
+      map.removeLayer(activeRouteLayers[routeId]);
+      delete activeRouteLayers[routeId];
+    });
+  }
+
+  // Yalnızca tıkla seçilen bu etabı haritada görünür yap
   toggleRouteOnMap(route, true);
 
+  // Haritayı seçilen etaba odakla
   if (activeRouteLayers[route._id]) {
     const bounds = activeRouteLayers[route._id].getBounds();
     if (bounds && bounds.isValid()) {
@@ -207,6 +277,7 @@ function selectAndHighlightRoute(route) {
     }
   }
 
+  // Yükseklik profilini çizdir
   const geoObj = decodeGeoData(route.maskedGeoData);
   let profileData = null;
 
