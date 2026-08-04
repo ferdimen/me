@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rota Portalı</title>
-
+    <title>Ferdimen // Adı yalnızlığından gelen kahraman</title>
+    
+    <link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
   <!-- Leaflet CSS & JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+      <link rel="stylesheet" href="https://www.ferdimen.com/data/css.css">
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -249,10 +251,11 @@
   </style>
 </head>
 <body>
+<header class="main-header"></header>
 
-  <header>
-    <h1>Bisiklet & Doğa Rotaları</h1>
-  </header>
+<!-- Yine aynı şekilde / ile çağırılır, göreceli yol (../) derdi biter -->
+<script src="data/header-loader.js"></script>
+    </header><script src="youtube.js?v=1"></script>	
 
   <div class="layout">
     <div class="sidebar" id="categoryContainer">
@@ -260,8 +263,6 @@
     </div>
 
     <div class="map-box" id="mapBox">
-      <button class="fullscreen-btn" onclick="toggleFullScreen()">⤢ Tam Ekran</button>
-      
       <div id="map"></div>
       
 <!-- Yükseklik Profili Paneli -->
