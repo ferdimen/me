@@ -1,5 +1,16 @@
 [
   {
+    "meta": "Gps Kayıtları",
+    "baslik": "Yapım Aşamasında!",
+    "aciklama": "yaptığım bisiklet turlarının gpx kayıtlarını burada paylaşıyorum",
+    "linkler": [
+      {
+        "url": "rotalar.html",
+        "metin": "GPX indir"
+      }
+    ]
+  },
+  {
     "meta": "OpenStreetMap ve OpenTopoMap tabanlı",
     "baslik": "Garmin Haritalar",
     "aciklama": "Bu sayfada, <b>GPS</b> cihazları için güncel çevrimdışı haritalara ulaşabilirsiniz. Barlar, restoranlar, otobüs durakları ve mağazalar gibi <b>İlgi Çekici Noktalar (POI)</b> ile ilgili birçok ayrıntı içerirler . Yürüyüş, bisiklet, geocaching ve araba navigasyonu için mükemmeldir.",
