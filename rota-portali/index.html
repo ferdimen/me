@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rota Portalı</title>
+
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; height: 100vh; display: flex; flex-direction: column; background: #f8fafc; color: #1e293b; }
+    
+    header { background: #0f172a; color: white; padding: 0.8rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { font-size: 1.2rem; font-weight: 600; }
+
+    .layout { display: flex; flex: 1; height: calc(100vh - 50px); overflow: hidden; }
+    
+    /* Sol Menü */
+    .sidebar { width: 360px; background: #ffffff; border-right: 1px solid #e2e8f0; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    
+    .category-card { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; }
+    .category-header { padding: 10px 14px; font-weight: 600; font-size: 0.92rem; background: #e2e8f0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+    .category-header:hover { background: #cbd5e1; }
+    
+    .category-title-group { display: flex; align-items: center; gap: 10px; flex: 1; }
+
+    .route-list { display: none; padding: 8px; flex-direction: column; gap: 6px; background: #ffffff; }
+    .category-card.open .route-list { display: flex; }
+    .category-card.open .category-header { background: #3b82f6; color: white; }
+
+    .route-item { padding: 8px 10px; border-radius: 6px; border: 1px solid #e2e8f0; cursor: pointer; background: #f8fafc; font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; gap: 8px; transition: all 0.2s; }
+    .route-item:hover { border-color: #2563eb; background: #eff6ff; }
+    .route-item.active { background: #dbeafe; border-color: #2563eb; font-weight: 600; }
+
+    .route-label { display: flex; align-items: center; gap: 8px; flex: 1; cursor: pointer; }
+
+    /* Checkbox Özel Stil */
+    .map-check { width: 16px; height: 16px; cursor: pointer; accent-color: #2563eb; }
+
+    /* Sağ Harita Alanı */
+    .map-box { flex: 1; position: relative; display: flex; flex-direction: column; }
+    #map { width: 100%; flex: 1; }
+
+    .map-box.fullscreen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; }
+
+    .fullscreen-btn { 
+      position: absolute; 
+      top: 12px; 
+      left: 60px; 
+      z-index: 1000; 
+      background: #ffffff; 
+      border: 2px solid rgba(0,0,0,0.2); 
+      padding: 6px 12px; 
+      border-radius: 4px; 
+      cursor: pointer; 
+      font-weight: 600; 
+      font-size: 0.85rem; 
+      box-shadow: 0 1px 5px rgba(0,0,0,0.2); 
+    }
+    .fullscreen-btn:hover { background: #f4f4f4; }
+
+    /* Alt Yükseklik Profili Paneli */
+    .elevation-panel { 
+      background: #ffffff; 
+      border-top: 2px solid #cbd5e1; 
+      padding: 10px 16px; 
+      height: 180px; 
+      display: none; 
+      flex-direction: column; 
+      gap: 6px; 
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+      position: relative;
+    }
+    .elevation-panel.active { display: flex; }
+    
+    .elevation-header { display: flex; justify-content: space-between; align-items: center; }
+    .elevation-info { display: flex; gap: 24px; font-size: 0.9rem; font-weight: 600; color: #334155; }
+    .elevation-info span strong { color: #2563eb; font-size: 1rem; }
+    
+    .close-panel-btn { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 2px 8px; cursor: pointer; font-size: 0.8rem; }
+    .close-panel-btn:hover { background: #e2e8f0; }
+
+    .chart-container { flex: 1; position: relative; width: 100%; height: 100%; }
+
+    .custom-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 11px;
+      border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+    .start-icon { background: #16a34a; }
+    .stop-icon { background: #dc2626; }
+	.elevation-panel {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  padding: 10px 15px;
+  z-index: 1000;
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Harita İndirme Butonu Stili */
+.gpx-download-control {
+  margin-bottom: 10px !important;
+  margin-right: 10px !important;
+}
+
+.gpx-btn {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.gpx-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* Modal Stillerı */
+.custom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.modal-content {
+  position: relative;
+  background: #ffffff;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  padding: 20px;
+  z-index: 2;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #1f2937;
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+/* Banka Kartı Stilleri */
+.bank-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.bank-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+}
+
+.bank-label {
+  font-weight: bold;
+  color: #475569;
+  width: 60px;
+}
+
+.bank-value {
+  font-family: monospace;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.copy-btn {
+  background: #cbd5e1;
+  border: none;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  background: #94a3b8;
+  color: white;
+}
+
+.bank-note {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed #cbd5e1;
+  font-size: 0.8rem;
+  color: #475569;
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Bisiklet & Doğa Rotaları</h1>
+  </header>
+
+  <div class="layout">
+    <div class="sidebar" id="categoryContainer">
+      <p style="font-size:0.9rem; color:#64748b;">Kategoriler yükleniyor...</p>
+    </div>
+
+    <div class="map-box" id="mapBox">
+      <button class="fullscreen-btn" onclick="toggleFullScreen()">⤢ Tam Ekran</button>
+      
+      <div id="map"></div>
+      
+<!-- Yükseklik Profili Paneli -->
+<div id="elevationPanel" class="elevation-panel">
+  <div class="panel-header">
+    <div class="panel-info">
+      <span>Mesafe: <strong id="hoverDist">0 km</strong></span>
+      <span>Yükseklik: <strong id="hoverEle">0 m</strong></span>
+    </div>
+    <button onclick="closeElevationPanel()" class="close-btn">&times;</button>
+  </div>
+  <div class="chart-container" style="position: relative; height: 180px;">
+    <canvas id="elevationChart"></canvas>
+  </div>
+</div>
+    </div>
+  </div>
+<!-- Erken Erişim ve Özel Bölüm Modal (Popup) -->
+<div id="accessModal" class="custom-modal" style="display: none;">
+  <div class="modal-overlay" onclick="closeAccessModal()"></div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Erken Erişim ve Özel Bölüm Ayrıcalıkları</h3>
+      <button class="modal-close-btn" onclick="closeAccessModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:0.9rem; line-height:1.4; color:#4b5563; margin-bottom:15px;">
+        GPX iz kayıtlarını indirmek ve özel içeriklere erişebilmek için Erken Erişim/Özel Bölüm üyesi olmanız gerekmektedir. Aşağıdaki IBAN hesabına destek sağladıktan sonra bildirim formunu doldurarak erişim hakkı tanımlatabilirsiniz.
+      </p>
+
+      <!-- Banka Kartı -->
+      <div class="bank-card">
+        <div class="bank-row">
+          <span class="bank-label">ALICI</span>
+          <span class="bank-value" id="bank-receiver">Ferdi Kızıl</span>
+          <button class="copy-btn" onclick="copyToClipboard('bank-receiver', this)">Kopyala</button>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">BANKA</span>
+          <span class="bank-value">ENPARA</span>
+          <span style="width:74px;"></span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">IBAN</span>
+          <span class="bank-value" id="bank-iban">TR22 0015 7000 0000 0046 5881 43</span>
+          <button class="copy-btn" onclick="copyToClipboard('bank-iban', this)">Kopyala</button>
+        </div>
+        <div class="bank-note">
+          ⚠️ Önemli: Havale açıklama bölümüne Google/Gmail adresinizi yazmayı unutmayın! Bu adres ile <a href="../ozel.html" style="color: #c0392b; text-decoration: underline;">Erken Erişim / Özel Bölüm</a> bağlantısına erişim yetkiniz tanımlanacaktır.
+        </div>
+      </div>
+
+      <!-- İletişim Formu -->
+      <form action="https://formspree.io/f/xnjyjwnk" method="POST" style="margin-top:15px;">
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label for="modal-name" style="display:block; font-size:0.85rem; font-weight:bold; margin-bottom:4px;">İsim / Mahlas</label>
+          <input type="text" id="modal-name" name="name" required placeholder="Adınızı giriniz" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;">
+        </div>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label for="modal-email" style="display:block; font-size:0.85rem; font-weight:bold; margin-bottom:4px;">E-Posta Adresi (Erişim için kullanılacak Gmail)</label>
+          <input type="email" id="modal-email" name="_replyto" required placeholder="Gmail adresinizi giriniz" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;">
+        </div>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label for="modal-message" style="display:block; font-size:0.85rem; font-weight:bold; margin-bottom:4px;">Mesajınız / Notunuz</label>
+          <textarea id="modal-message" name="message" rows="3" required placeholder="Bağış yaptım, erken erişim açılmasını rica ederim..." style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;"></textarea>
+        </div>
+        <input type="hidden" name="_language" value="tr" />
+        <button type="submit" class="submit-btn" style="background:#2c3e50; color:#fff; border:none; padding:10px 15px; border-radius:4px; cursor:pointer; font-weight:bold; width:100%;">Bildirimi Gönder</button>
+      </form>
+    </div>
+  </div>
+</div>
+  <script src="js/portal.js"></script>
+</body>
+</html>
