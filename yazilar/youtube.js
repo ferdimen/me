@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <li><a href="../#kronoloji">Kronoloji</a></li>
                         <li><a href="../#dosyalar">Dosyalar</a></li>
                         <li><a href="../ekipman.html">Ekipman</a></li>
+                        <li><a href="../rotalar.html">Rotalar</a></li>
                         <li><a href="../#faq">S.S.S.</a></li>
                         <li><a href="../#sablon">Vasiyet</a></li>
                         <li><a href="../#destek">Destek Ol</a></li>
