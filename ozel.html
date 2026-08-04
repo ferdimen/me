@@ -943,5 +943,14 @@
                 });
         });
     </script>
+	<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const redirectTo = urlParams.get('redirect');
+
+  // Eğer yönlendirme adresi parametre olarak geldiyse oraya git
+  if (redirectTo) {
+    window.location.href = redirectTo;
+  }
+</script>
 </body>
 </html>

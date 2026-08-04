@@ -248,6 +248,13 @@
   font-size: 0.8rem;
   color: #475569;
 }
+body.embed-only-map #sidebar,
+body.embed-only-map .sidebar-container {
+  display: none !important;
+}
+body.embed-only-map #map-container {
+  width: 100% !important;
+}
   </style>
 </head>
 <body>
@@ -295,7 +302,7 @@
 
       <!-- Zaten Erişim İzni Olanlar İçin Giriş Butonu -->
       <div style="margin-bottom: 20px; text-align: center;">
-        <a href="../ozel.html" target="_blank" class="login-redirect-btn" style="display: block; background: #2563eb; color: #ffffff; padding: 12px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.95rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: background 0.2s;">
+        <a href="../ozel.html?redirect=rotalar.html" target="_blank" class="login-redirect-btn" style="display: block; background: #2563eb; color: #ffffff; padding: 12px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.95rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: background 0.2s;">
           🔑 Erişim İzniniz Var mı? Giriş Yapmak İçin Tıklayın
         </a>
         <small style="display: block; color: #6b7280; margin-top: 6px; font-size: 0.8rem;">
