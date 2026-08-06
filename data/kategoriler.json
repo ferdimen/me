@@ -1,0 +1,23 @@
+[
+  {
+    "id": "anadolu-irfani",
+    "baslik": "2025 Anadolu İrfanı",
+    "jsonPath": "data/kategoriler/25ai.json"
+  },
+    {
+  "id": "toros-canavari",
+  "baslik": "2025 Toros Canavarı",
+  "jsonPath": "data/kategoriler/25tc.json"
+  },
+  {
+    "id": "icten-anadolu",
+    "baslik": "2024 İçten Anadolu",
+    "jsonPath": "data/kategoriler/25ia.json"
+  },
+{
+  "id": "kuzeyden-galibau",
+  "baslik": "2024 Kuzeyden Galiba",
+  "jsonPath": "data/kategoriler/24kg.json"
+}  
+  
+]

@@ -1,164 +1,102 @@
 let map;
-let baseMaps = {};
-let activeRouteLayers = {}; 
+let activeLayers = {};
+let categoriesSummary = [];
+const loadedCategoryData = {};
+
+let elevationChart = null;
 let hoverMarker = null;
-let allRoutesData = [];
-let chartInstance = null;
-let currentSelectedRoute = null;
+let currentRoutePoints = [];
 
-const startIcon = L.divIcon({
-  className: 'custom-icon start-icon',
-  html: '▶',
-  iconSize: [24, 24],
-  iconAnchor: [12, 12]
-});
-
-const stopIcon = L.divIcon({
-  className: 'custom-icon stop-icon',
-  html: '■',
-  iconSize: [24, 24],
-  iconAnchor: [12, 12]
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  initMap();
-  loadRoutesData();
-});
-
+// 1. HARİTAYI VE KATMANLARI İLKLENDİRME
+// 1. HARİTAYI VE KATMANLARI İLKLENDİRME
 function initMap() {
-  const osmTile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap'
+  const mapEl = document.getElementById('map');
+  if (!mapEl) return;
+
+  const isAuthorized = checkUserIsAuthorized();
+
+  // Yetkisiz kullanıcılar için zoom sınırları
+  const minZoomLevel = isAuthorized ? 1 : 6;
+  const maxZoomLevel = isAuthorized ? 19 : 11; // Yetkisizse en fazla 11. seviyeye kadar yakınlaşabilir
+
+  const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: maxZoomLevel,
+    minZoom: minZoomLevel,
+    attribution: '© OpenStreetMap | Tüm Hakları Saklıdır <a href="https://ferdimen.com/" target="_blank">Ferdimen</a>'
   });
 
-  const openTopoTile = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-    maxZoom: 17,
-    attribution: '© OpenTopoMap'
+  const topoLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+    maxZoom: Math.min(maxZoomLevel, 17),
+    minZoom: minZoomLevel,
+    attribution: '© OpenTopoMap | Tüm Hakları Saklıdır <a href="https://ferdimen.com/" target="_blank">Ferdimen</a>'
   });
-
-  baseMaps = {
-    "OpenStreetMap": osmTile,
-    "OpenTopoMap (Topoğrafya)": openTopoTile
-  };
 
   map = L.map('map', {
-    center: [39.92077, 32.85411],
+    center: [39.0, 35.0],
     zoom: 6,
-    layers: [osmTile]
+    minZoom: minZoomLevel,
+    maxZoom: maxZoomLevel,
+    layers: [osmLayer],
+    fullscreenControl: true
   });
 
-  L.control.layers(baseMaps, null, { position: 'topright' }).addTo(map);
+  // Eğer zoom seviyesini TAMAMEN SABİTLEMEK (hiç yaklaştırıp uzaklaştırmamak) isterseniz:
+  if (!isAuthorized) {
+    // map.scrollWheelZoom.disable(); // Fare tekerleğiyle zoom'u kapatır
+    // map.doubleClickZoom.disable();  // Çift tıklamayla zoom'u kapatır
+    // map.touchZoom.disable();        // Mobilde pinch-to-zoom'u kapatır
+  }
 
-  const downloadControl = L.control({ position: 'bottomright' });
-  downloadControl.onAdd = function() {
-    const div = L.DomUtil.create('div', 'gpx-download-control');
-    div.innerHTML = `
-      <button class="gpx-btn" onclick="handleGPXDownload()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        Rotayı İndir (.GPX)
-      </button>
-    `;
-    L.DomEvent.disableClickPropagation(div);
-    return div;
+  const baseMaps = {
+    "OpenStreetMap": osmLayer,
+    "OpenTopoMap": topoLayer
   };
-  downloadControl.addTo(map);
-}
+  L.control.layers(baseMaps).addTo(map);
 
-// Rotaları data/rotalar.json Yolundan Okuma
-// loadRoutesData fonksiyonunun son satırına ekleyin:
-async function loadRoutesData() {
-  try {
-    const response = await fetch('data/rotalar.json');
-    if (!response.ok) throw new Error("JSON dosyası okunamadı.");
-    
-    allRoutesData = await response.json();
-    allRoutesData.forEach((r, idx) => { r._id = r.id || `route_${idx}`; });
-    sortRoutesNewToOld(allRoutesData);
-
-    renderCategories(allRoutesData);
-
-    // Otomatik yükleme kontrolünü çağır
-    checkUrlParams();
-
-  } catch (error) {
-    console.error("Yükleme Hatası:", error);
-  }
-}
-
-// URL Parametrelerini Kontrol Eden Fonksiyon
-function checkUrlParams() {
-  const urlParams = new URLSearchParams(window.location.search);
-
-  // 1. Sadece harita görünümü istenmişse body'ye sınıf ekle (Sol menüyü gizler)
-  if (urlParams.get('sadeceHarita') === 'true') {
-    document.body.classList.add('embed-only-map');
-  }
-
-  const routeId = urlParams.get('rota');
-  const catName = urlParams.get('kategori');
-
-  // 2. Eğer özel bir rota ID'si istenmişse rotayı seç ve odaklan
-  if (routeId) {
-    const targetRoute = allRoutesData.find(r => r._id === routeId || r.id === routeId);
-    if (targetRoute) {
-      selectAndHighlightRoute(targetRoute);
-    }
-  } 
-  // 3. Eğer sadece bir kategori istenmişse kategorideki tüm etapları haritada aç
-  else if (catName) {
-    const decodedCat = decodeURIComponent(catName);
-    document.querySelectorAll('.category-card').forEach(card => {
-      const titleSpan = card.querySelector('.category-title-group span');
-      if (titleSpan && titleSpan.innerText.trim() === decodedCat) {
-        card.classList.add('open');
-        const catCheckbox = card.querySelector('.map-check');
-        if (catCheckbox) {
-          catCheckbox.click();
-        }
-      }
-    });
-  }
-}
-
-function sortRoutesNewToOld(routes) {
-  routes.sort((a, b) => {
-    const numA = parseFloat(a.siraNo || a.etapNo || a.gun || 0);
-    const numB = parseFloat(b.siraNo || b.etapNo || b.gun || 0);
-    if (numA && numB && numA !== numB) return numB - numA;
-    return 0;
+  hoverMarker = L.circleMarker([0, 0], {
+    radius: 7,
+    fillColor: "#ef4444",
+    color: "#ffffff",
+    weight: 2,
+    opacity: 1,
+    fillOpacity: 1
   });
 }
 
-function renderCategories(routes) {
+// 2. MASKE ÇÖZME (BASE64 DECODE)
+function decodeGeoData(maskedData) {
+  try {
+    const jsonStr = decodeURIComponent(escape(atob(maskedData)));
+    return JSON.parse(jsonStr);
+  } catch (e) {
+    console.error("GeoData decode hatası:", e);
+    return null;
+  }
+}
+
+// 3. PORTAL ANA YÜKLEME
+async function loadPortal() {
+  try {
+    const response = await fetch('data/kategoriler.json');
+    if (!response.ok) throw new Error("Kategori indeksi okunamadı.");
+    categoriesSummary = await response.json();
+
+    renderCategorySkeleton();
+    checkUrlParams();
+  } catch (err) {
+    console.error("Portal yükleme hatası:", err);
+  }
+}
+// 4. KATEGORİ İSKELETİNİ ÇİZME
+function renderCategorySkeleton() {
   const container = document.getElementById('categoryContainer');
   if (!container) return;
   container.innerHTML = '';
 
-  const categories = {};
-  
-  // 1. Rotaları kategorilerine göre grupla
-  routes.forEach(route => {
-    const catName = route.turKategorisi || 'Diğer Rotalar';
-    if (!categories[catName]) categories[catName] = [];
-    categories[catName].push(route);
-  });
-
-  // 2. Kategorileri, içlerindeki EN YENİ etabın sıra numarasına/tarihine göre sırala
-  const sortedCategoryNames = Object.keys(categories).sort((catA, catB) => {
-    // Kategorideki ilk rotaların sıra numaralarını al (Rotalar önceden en yeniden en eskiye sıralandığı için ilk eleman en yenisidir)
-    const topRouteA = categories[catA][0];
-    const topRouteB = categories[catB][0];
-
-    const numA = parseFloat(topRouteA.siraNo || topRouteA.etapNo || topRouteA.gun || 0);
-    const numB = parseFloat(topRouteB.siraNo || topRouteB.etapNo || topRouteB.gun || 0);
-
-    return numB - numA; // En yeni/yüksek numaralı kategori en üste
-  });
-
-  // 3. Sıralanmış kategori listesine göre DOM elemanlarını oluştur
-  sortedCategoryNames.forEach((catName) => {
+  categoriesSummary.forEach(cat => {
     const catCard = document.createElement('div');
     catCard.className = 'category-card';
+    catCard.id = `cat_${cat.id}`;
 
     const header = document.createElement('div');
     header.className = 'category-header';
@@ -169,57 +107,48 @@ function renderCategories(routes) {
     const catCheckbox = document.createElement('input');
     catCheckbox.type = 'checkbox';
     catCheckbox.className = 'map-check';
-    
-    catCheckbox.onclick = (e) => {
+    catCheckbox.onclick = async (e) => {
       e.stopPropagation();
+      await ensureCategoryLoaded(cat);
       const isChecked = catCheckbox.checked;
-
-      if (isChecked) {
-        categories[catName].forEach(route => toggleRouteOnMap(route, true));
-        fitAllActiveBounds();
-      } else {
-        categories[catName].forEach(route => toggleRouteOnMap(route, false));
-        closeElevationPanel();
-        document.querySelectorAll('.route-item').forEach(i => i.classList.remove('active'));
+      
+      if (loadedCategoryData[cat.id]) {
+        loadedCategoryData[cat.id].forEach(route => {
+          toggleRouteOnMap(route, isChecked);
+        });
+        if (isChecked) fitAllActiveBounds();
       }
     };
 
+    // Kategori Başlığı (Solda)
     const catTitleText = document.createElement('span');
-    catTitleText.innerText = catName;
+    catTitleText.innerText = cat.baslik;
+
+    // Etap Sayısı (En Sağa Dayalı)
+    const catCountText = document.createElement('span');
+    catCountText.id = `cat_count_${cat.id}`;
+    catCountText.style.cssText = "margin-left: auto; font-size: 0.78rem; font-weight: 500; opacity: 0.75; white-space: nowrap;";
+    catCountText.innerText = cat.etapSayisi ? `(${cat.etapSayisi} Etap)` : '';
 
     catTitleGroup.appendChild(catCheckbox);
     catTitleGroup.appendChild(catTitleText);
-
-    const countBadge = document.createElement('small');
-    countBadge.innerText = `(${categories[catName].length} Etap)`;
-
+    catTitleGroup.appendChild(catCountText); // Sağa dayalı sayaç eklendi
     header.appendChild(catTitleGroup);
-    header.appendChild(countBadge);
-
-    header.onclick = (e) => {
-      if (e.target === catCheckbox) return;
-      document.querySelectorAll('.category-card').forEach(c => {
-        if (c !== catCard) c.classList.remove('open');
-      });
-      catCard.classList.toggle('open');
-    };
 
     const routeList = document.createElement('div');
     routeList.className = 'route-list';
+    routeList.id = `list_${cat.id}`;
 
-    categories[catName].forEach(route => {
-      const item = document.createElement('div');
-      item.className = 'route-item';
-      item.id = `item_${route._id}`;
+    header.onclick = async (e) => {
+      if (e.target === catCheckbox) return;
+      const isOpen = catCard.classList.contains('open');
+      document.querySelectorAll('.category-card').forEach(c => c.classList.remove('open'));
 
-      const titleText = document.createElement('span');
-      titleText.innerText = route.baslik;
-
-      item.appendChild(titleText);
-      item.onclick = () => selectAndHighlightRoute(route);
-
-      routeList.appendChild(item);
-    });
+      if (!isOpen) {
+        catCard.classList.add('open');
+        await ensureCategoryLoaded(cat);
+      }
+    };
 
     catCard.appendChild(header);
     catCard.appendChild(routeList);
@@ -227,190 +156,510 @@ function renderCategories(routes) {
   });
 }
 
-function selectAndHighlightRoute(route) {
-  if (!route) return;
+// 5. KATEGORİ VERİSİNİ LAZY LOAD YÜKLEME
+async function ensureCategoryLoaded(cat) {
+  if (loadedCategoryData[cat.id]) return loadedCategoryData[cat.id];
 
-  currentSelectedRoute = route;
-
-  const catName = route.turKategorisi || 'Diğer Rotalar';
-  let isCategoryChecked = false;
-
-  // İlgili kategoriyi bul, kartını aç ve checkbox durumunu kontrol et
-  document.querySelectorAll('.category-card').forEach(card => {
-    const titleSpan = card.querySelector('.category-title-group span');
-    if (titleSpan && titleSpan.innerText === catName) {
-      card.classList.add('open');
-      const catCheckbox = card.querySelector('.map-check');
-      if (catCheckbox && catCheckbox.checked) {
-        isCategoryChecked = true;
-      }
-    } else {
-      card.classList.remove('open');
-    }
-  });
-
-  // Liste elemanlarının vurgusunu ayarla
-  document.querySelectorAll('.route-item').forEach(i => i.classList.remove('active'));
-  const activeItem = document.getElementById(`item_${route._id}`);
-  if (activeItem) {
-    activeItem.classList.add('active');
-    activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
-  // --- KRİTİK DEĞİŞİKLİK BURADA ---
-  // Eğer kategori seçili/işaretli DEĞİLSE, haritadaki diğer tekil seçilmiş rotaları kaldır
-  if (!isCategoryChecked) {
-    Object.keys(activeRouteLayers).forEach(routeId => {
-      map.removeLayer(activeRouteLayers[routeId]);
-      delete activeRouteLayers[routeId];
-    });
-  }
-
-  // Yalnızca tıkla seçilen bu etabı haritada görünür yap
-  toggleRouteOnMap(route, true);
-
-  // Haritayı seçilen etaba odakla
-  if (activeRouteLayers[route._id]) {
-    const bounds = activeRouteLayers[route._id].getBounds();
-    if (bounds && bounds.isValid()) {
-      map.fitBounds(bounds, { padding: [40, 40] });
-    }
-  }
-
-  // Yükseklik profilini çizdir
-  const geoObj = decodeGeoData(route.maskedGeoData);
-  let profileData = null;
-
-  if (geoObj) {
-    profileData = geoObj.elevationProfile || (geoObj.gidis && geoObj.gidis.elevationProfile) || null;
-  }
-  if (!profileData && route.elevationProfile) {
-    profileData = route.elevationProfile;
-  }
-
-  if (profileData && profileData.length > 0) {
-    renderElevationChart(profileData);
-  } else {
-    closeElevationPanel();
-  }
-}
-
-function toggleRouteOnMap(route, isVisible) {
-  if (isVisible) {
-    if (!activeRouteLayers[route._id]) {
-      const layerGroup = createRouteLayerGroup(route);
-      if (layerGroup) {
-        activeRouteLayers[route._id] = layerGroup;
-        layerGroup.addTo(map);
-      }
-    }
-  } else {
-    if (activeRouteLayers[route._id]) {
-      map.removeLayer(activeRouteLayers[route._id]);
-      delete activeRouteLayers[route._id];
-    }
-  }
-}
-
-function createRouteLayerGroup(route) {
-  const geoObj = decodeGeoData(route.maskedGeoData);
-  if (!geoObj) return null;
-
-  const layerGroup = L.featureGroup();
-
-  if (geoObj.gidis && geoObj.gidis.coordinates && geoObj.gidis.coordinates[0]) {
-    const gidisCoords = geoObj.gidis.coordinates[0].map(pt => [pt[1], pt[0]]);
-    const line = L.polyline(gidisCoords, { color: '#2563eb', weight: 5, opacity: 0.85 });
-    
-    const startPin = L.marker(gidisCoords[0], { icon: startIcon });
-    const endPin = L.marker(gidisCoords[gidisCoords.length - 1], { icon: stopIcon });
-
-    startPin.bindTooltip(`<b>${route.baslik}</b><br>Başlangıç`, { direction: 'top' });
-    endPin.bindTooltip(`<b>${route.baslik}</b><br>Bitiş`, { direction: 'top' });
-
-    const handleRouteClick = (e) => {
-      if (e && e.originalEvent) L.DomEvent.stopPropagation(e);
-      selectAndHighlightRoute(route);
-    };
-
-    startPin.on('click', handleRouteClick);
-    endPin.on('click', handleRouteClick);
-    line.on('click', handleRouteClick);
-
-    layerGroup.addLayer(line);
-    layerGroup.addLayer(startPin);
-    layerGroup.addLayer(endPin);
-  }
-
-  return layerGroup;
-}
-
-function fitAllActiveBounds() {
-  const featureGroup = L.featureGroup(Object.values(activeRouteLayers));
-  const bounds = featureGroup.getBounds();
-  if (bounds && bounds.isValid()) {
-    map.fitBounds(bounds, { padding: [40, 40] });
-  }
-}
-
-// --- CLOUDFLARE ZERO TRUST (ozel.html) KORUMALI İNDİRME İŞLEMİ ---
-async function handleGPXDownload() {
-  if (!currentSelectedRoute) {
-    alert("Lütfen önce listeden veya haritadan bir rota seçiniz.");
-    return;
+  const routeListContainer = document.getElementById(`list_${cat.id}`);
+  if (routeListContainer) {
+    routeListContainer.innerHTML = '<div style="padding:8px; color:#64748b; font-size:0.8rem;">Etaplar yükleniyor...</div>';
   }
 
   try {
-    // Aynı dizinde (root) yer alan Zero Trust korumalı ozel.html sayfasına istek atılır
-    const authCheck = await fetch('ozel.html', {
-      method: 'GET',
-      headers: { 'X-Requested-With': 'XMLHttpRequest' },
-      redirect: 'manual'
+    const res = await fetch(cat.jsonPath);
+    if (!res.ok) throw new Error("Kategori JSON okunamadı.");
+    const routes = await res.json();
+    routes.forEach((r, idx) => { 
+      r._id = r.id || `${cat.id}_${idx}`; 
+      r.turKategorisi = cat.baslik;
+      r.catId = cat.id;
     });
 
-    if (authCheck.type === 'opaqueredirect' || authCheck.status === 401 || authCheck.status === 403 || authCheck.redirected) {
-      openAccessModal();
-      return;
+    loadedCategoryData[cat.id] = routes;
+
+    // Sağa dayalı etap sayacını güncelle
+    const catCountEl = document.getElementById(`cat_count_${cat.id}`);
+    if (catCountEl) {
+      catCountEl.innerText = `(${routes.length} Etap)`;
     }
 
-    if (!authCheck.ok) {
-      openAccessModal();
-      return;
-    }
-
-    generateAndDownloadGPX(currentSelectedRoute);
-
+    renderRoutesInCategory(cat.id, routes);
+    return routes;
   } catch (err) {
-    openAccessModal();
+    if (routeListContainer) {
+      routeListContainer.innerHTML = '<div style="padding:8px; color:#ef4444; font-size:0.8rem;">Etaplar yüklenemedi.</div>';
+    }
+    return [];
   }
 }
 
-function generateAndDownloadGPX(route) {
+// 6. ETAP LİSTESİNİ YAZMA (Sol menüde açıklama gizli)
+function renderRoutesInCategory(catId, routes) {
+  const routeListContainer = document.getElementById(`list_${catId}`);
+  if (!routeListContainer) return;
+  routeListContainer.innerHTML = '';
+
+  routes.forEach(route => {
+    const item = document.createElement('div');
+    item.className = 'route-item';
+    item.id = `item_${route._id}`;
+
+    item.innerHTML = `
+      <div style="font-weight: 600;">${escapeXml(route.baslik)}</div>
+    `;
+
+    item.onclick = () => selectAndHighlightRoute(route);
+    routeListContainer.appendChild(item);
+  });
+}
+
+// HARİTADAKİ TÜM ROTALARI TEMİZLEME FONKSİYONU
+function clearAllActiveRoutes() {
+  Object.keys(activeLayers).forEach(routeId => {
+    if (activeLayers[routeId]) {
+      map.removeLayer(activeLayers[routeId]);
+      delete activeLayers[routeId];
+    }
+  });
+}
+
+// 7. ETABA TIKLANDIĞINDA HARİTA VE YÜKSEKLİK GRAFİĞİNİ GÜNCELLEME
+function selectAndHighlightRoute(route) {
+  document.querySelectorAll('.route-item').forEach(el => el.classList.remove('active'));
+  const currentItem = document.getElementById(`item_${route._id}`);
+  if (currentItem) currentItem.classList.add('active');
+
+  // Kategori kutusunun seçili olup olmadığını kontrol et
+  const catId = route.catId || (Object.keys(loadedCategoryData).find(cId => loadedCategoryData[cId].some(r => r._id === route._id)));
+  const catCard = document.getElementById(`cat_${catId}`);
+  const catCheckbox = catCard ? catCard.querySelector('.map-check') : null;
+  const isCategoryChecked = catCheckbox ? catCheckbox.checked : false;
+
+  // Tüm etaplar seçilmediyse önceki tıklanan rotaları haritadan kaldır
+  if (!isCategoryChecked) {
+    clearAllActiveRoutes();
+  }
+
+  const layerGroup = toggleRouteOnMap(route, true);
+  if (layerGroup) {
+    const polyline = layerGroup.getLayers().find(l => l instanceof L.Polyline);
+    if (polyline) {
+      map.fitBounds(polyline.getBounds(), { padding: [40, 40] });
+      polyline.openPopup();
+    }
+  }
+
   const geoObj = decodeGeoData(route.maskedGeoData);
-  if (!geoObj || !geoObj.gidis || !geoObj.gidis.coordinates) {
-    alert("Bu rotanın GPX verisi okunamadı.");
+  const rawCoords = extractCoordinates(geoObj ? (geoObj.gidis || geoObj) : null);
+  
+  if (rawCoords && rawCoords.length > 0) {
+    buildElevationChart(rawCoords);
+  } else {
+    document.getElementById('elevation-panel').style.display = 'none';
+  }
+}
+
+// 8. HARİTAYA ROTA, PİNLER VE BAŞLANGIÇ/BİTİŞ İKONLARINI ÇİZME
+// 8. HARİTAYA ROTA VE PİNLERİ ÇİZME
+function toggleRouteOnMap(route, show) {
+  if (!map) return null;
+
+  if (!show) {
+    if (activeLayers[route._id]) {
+      map.removeLayer(activeLayers[route._id]);
+      delete activeLayers[route._id];
+    }
+    return null;
+  }
+
+  if (activeLayers[route._id]) {
+    return activeLayers[route._id];
+  }
+
+  const geoObj = decodeGeoData(route.maskedGeoData);
+  if (!geoObj) return null;
+
+  const layerGroup = L.layerGroup();
+  const isAuthorized = checkUserIsAuthorized();
+
+  const gidisObj = geoObj.gidis || geoObj;
+  const rawCoords = extractCoordinates(gidisObj);
+  
+  if (rawCoords && rawCoords.length > 0) {
+    const leafletLatLngs = rawCoords.map(pt => [pt[1], pt[0]]);
+    const polyline = L.polyline(leafletLatLngs, {
+      color: '#2563eb',
+      weight: 4,
+      opacity: 0.85
+    });
+
+// Raw koordinatlar alındıktan hemen sonra hesaplamayı yapıyoruz
+const stats = calculateRouteStats(rawCoords);
+
+polyline.bindPopup(() => {
+      const aciklamaHtml = (isAuthorized && route.aciklama)
+        ? `<div style="margin: 0 0 8px 0; font-size: 0.82rem; color: #475569; line-height: 1.3;">${route.aciklama}</div>`
+        : '';
+
+  // Dinamik hesaplanan istatistikler
+  const statsHtml = `
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 8px 0; padding: 6px; background: #f8fafc; border-radius: 6px; text-align: center; border: 1px solid #e2e8f0;">
+      <div>
+        <div style="font-size: 0.68rem; color: #64748b; font-weight: 600;">Mesafe</div>
+        <div style="font-size: 0.82rem; color: #0f172a; font-weight: 700;">${stats.mesafeKm} km</div>
+      </div>
+      <div>
+        <div style="font-size: 0.68rem; color: #16a34a; font-weight: 600;">Tırmanış</div>
+        <div style="font-size: 0.82rem; color: #15803d; font-weight: 700;">+${stats.tirmanis} m</div>
+      </div>
+      <div>
+        <div style="font-size: 0.68rem; color: #dc2626; font-weight: 600;">İniş</div>
+        <div style="font-size: 0.82rem; color: #b91c1c; font-weight: 700;">-${stats.inis} m</div>
+      </div>
+    </div>
+  `;
+
+  return `
+    <div style="min-width: 210px;">
+      <h4 style="margin: 0 0 6px 0; font-size: 0.95rem; color: #0f172a; line-height: 1.2;">${escapeXml(route.baslik)}</h4>
+      ${statsHtml}
+      ${aciklamaHtml}
+      <button onclick="triggerGpxDownload('${route._id}')" style="background:#2563eb; color:#fff; border:none; padding:6px 12px; border-radius:4px; font-weight:bold; cursor:pointer; font-size:0.8rem; width:100%; margin-top: 4px;">
+        📥 Rotayı İndir (.GPX)
+      </button>
+    </div>
+  `;
+});
+
+    layerGroup.addLayer(polyline);
+
+    // Başlangıç ve Bitiş İkonları (Sadece yetkili kullanıcılara gösterilir)
+    if (isAuthorized) {
+      const startLatLng = leafletLatLngs[0];
+      const startIcon = L.divIcon({
+        className: 'custom-start-icon',
+      html: `<div style="background-color: #10b981; color: white; border: 2px solid white; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 13px; box-shadow: 0 2px 5px rgba(0,0,0,0.4);" title="Başlangıç">▶</div>`,
+      iconSize: [18, 18],
+      iconAnchor: [12, 12]
+    });
+      
+      const startMarker = L.marker(startLatLng, { icon: startIcon });
+      startMarker.bindPopup(`<strong>🏁 Başlangıç:</strong> ${escapeXml(route.baslik)}`);
+      layerGroup.addLayer(startMarker);
+
+      const stopLatLng = leafletLatLngs[leafletLatLngs.length - 1];
+      const stopIcon = L.divIcon({
+        className: 'custom-stop-icon',
+      html: `<div style="background-color: #ef4444; color: white; border: 2px solid white; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.4);" title="Bitiş">⬛</div>`,
+      iconSize: [18, 18],
+      iconAnchor: [12, 12]
+    });
+
+      const stopMarker = L.marker(stopLatLng, { icon: stopIcon });
+      stopMarker.bindPopup(`<strong>🏁 Bitiş:</strong> ${escapeXml(route.baslik)}`);
+      layerGroup.addLayer(stopMarker);
+    }
+  }
+
+  // Gezi Noktaları / Özel Pinler (Sadece yetkili kullanıcılara gösterilir)
+  if (isAuthorized) {
+    const allWaypoints = [];
+    if (geoObj.gidis && geoObj.gidis.waypoints) allWaypoints.push(...geoObj.gidis.waypoints);
+    if (geoObj.donus && geoObj.donus.waypoints) allWaypoints.push(...geoObj.donus.waypoints);
+    if (geoObj.waypoints) allWaypoints.push(...geoObj.waypoints);
+
+    allWaypoints.forEach(wpt => {
+      const pinMarker = L.circleMarker([wpt.lat, wpt.lon], {
+        radius: 6,
+        fillColor: '#f59e0b',
+        color: '#ffffff',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.9
+      });
+
+      const wptPopup = `
+        <div style="min-width: 140px;">
+          <strong style="color: #0f172a; font-size: 0.88rem;">📍 ${escapeXml(wpt.name)}</strong>
+          ${wpt.desc ? `<p style="margin: 4px 0 0 0; font-size: 0.8rem; color: #475569;">${escapeXml(wpt.desc)}</p>` : ''}
+        </div>
+      `;
+      pinMarker.bindPopup(wptPopup);
+      layerGroup.addLayer(pinMarker);
+    });
+  }
+
+  layerGroup.addTo(map);
+  activeLayers[route._id] = layerGroup;
+  return layerGroup;
+}
+
+// 9. HAVERSINE FORMÜLÜ İLE MESAFE (KM) & ELEVATION VERİ HESABI
+function calculateRouteMetrics(rawCoords) {
+  let totalDist = 0;
+  const metrics = [];
+  currentRoutePoints = [];
+
+  for (let i = 0; i < rawCoords.length; i++) {
+    const lon = rawCoords[i][0];
+    const lat = rawCoords[i][1];
+    const ele = rawCoords[i][2] || 0;
+
+    if (i > 0) {
+      const prevLon = rawCoords[i - 1][0];
+      const prevLat = rawCoords[i - 1][1];
+      totalDist += getHaversineDistance(prevLat, prevLon, lat, lon);
+    }
+
+    metrics.push({
+      dist: parseFloat(totalDist.toFixed(2)),
+      ele: Math.round(ele),
+      lat: lat,
+      lon: lon
+    });
+
+    currentRoutePoints.push([lat, lon]);
+  }
+  return metrics;
+}
+
+function getHaversineDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
+// 10. CHART.JS İLE YÜKSEKLİK GRAFİĞİ VE MOUSE ETKİLEŞİMİ
+function buildElevationChart(rawCoords) {
+  const panel = document.getElementById('elevation-panel');
+  panel.style.display = 'block';
+
+  const metrics = calculateRouteMetrics(rawCoords);
+  const labels = metrics.map(m => m.dist);
+  const dataEle = metrics.map(m => m.ele);
+
+  const ctx = document.getElementById('elevationChart').getContext('2d');
+
+  if (elevationChart) {
+    elevationChart.destroy();
+  }
+
+  elevationChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'İrtifa (m)',
+        data: dataEle,
+        borderColor: '#0284c7',
+        backgroundColor: 'rgba(56, 189, 248, 0.2)',
+        borderWidth: 2,
+        fill: true,
+        pointRadius: 0,
+        pointHoverRadius: 6,
+        tension: 0.1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: {
+        mode: 'index',
+        intersect: false
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: (items) => `Mesafe: ${items[0].label} km`,
+            label: (item) => `Yükseklik: ${item.formattedValue} m`
+          }
+        }
+      },
+      scales: {
+        x: {
+          title: { display: true, text: 'Mesafe (km)', font: { size: 10 } },
+          ticks: { maxTicksLimit: 10, font: { size: 10 } }
+        },
+        y: {
+          title: { display: true, text: 'İrtifa (m)', font: { size: 10 } },
+          ticks: { font: { size: 10 } }
+        }
+      },
+      onHover: (event, chartElements) => {
+        if (chartElements && chartElements.length > 0) {
+          const index = chartElements[0].index;
+          const targetPoint = metrics[index];
+
+          if (targetPoint && map) {
+            hoverMarker.setLatLng([targetPoint.lat, targetPoint.lon]);
+            if (!map.hasLayer(hoverMarker)) {
+              hoverMarker.addTo(map);
+            }
+          }
+        } else {
+          if (map && map.hasLayer(hoverMarker)) {
+            map.removeLayer(hoverMarker);
+          }
+        }
+      }
+    }
+  });
+
+  map.invalidateSize();
+}
+
+// 11. KOORDİNAT DİZİSİNİ AYIKLAMA
+function extractCoordinates(dataObj) {
+  if (!dataObj) return null;
+  if (Array.isArray(dataObj) && dataObj.length > 0) {
+    return Array.isArray(dataObj[0][0]) ? dataObj[0] : dataObj;
+  }
+  if (dataObj.coordinates && Array.isArray(dataObj.coordinates)) {
+    return Array.isArray(dataObj.coordinates[0][0]) ? dataObj.coordinates[0] : dataObj.coordinates;
+  }
+  return null;
+}
+
+// 12. HARİTADAKİ TÜM AKTİF ROTALARA ZOOMLAMA
+function fitAllActiveBounds() {
+  const bounds = L.latLngBounds();
+  let count = 0;
+
+  Object.values(activeLayers).forEach(group => {
+    group.getLayers().forEach(layer => {
+      if (layer instanceof L.Polyline) {
+        bounds.extend(layer.getBounds());
+        count++;
+      }
+    });
+  });
+
+  if (count > 0 && map) {
+    map.fitBounds(bounds, { padding: [30, 30] });
+  }
+}
+
+// 13. GPX İNDİRME TETİKLEYİCİSİ (MODAL KONTROLÜ)
+function triggerGpxDownload(routeId) {
+  const modal = document.getElementById('loginModal');
+  if (modal) {
+    modal.style.display = 'flex';
+  } else {
+    alert("GPX indirmek için giriş yapmanız gerekmektedir.");
+  }
+}
+
+// 14. URL PARAMETRELERİNİ KONTROL ETME
+async function checkUrlParams() {
+  let routeId = localStorage.getItem('ferdimen_pending_route');
+  
+  if (!routeId) {
+    const urlParams = new URLSearchParams(window.location.search);
+    routeId = urlParams.get('rota');
+  }
+
+  const isAuthorized = checkUserIsAuthorized();
+
+  if (routeId) {
+    localStorage.removeItem('ferdimen_pending_route');
+
+    for (const cat of categoriesSummary) {
+      const routes = await ensureCategoryLoaded(cat);
+      const targetRoute = routes.find(r => r._id === routeId || r.id === routeId);
+      if (targetRoute) {
+        const catCard = document.getElementById(`cat_${cat.id}`);
+        if (catCard) catCard.classList.add('open');
+        selectAndHighlightRoute(targetRoute);
+
+        if (isAuthorized) {
+          downloadGpxFile(targetRoute);
+        }
+        break;
+      }
+    }
+  }
+
+  if (window.location.search) {
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+}
+
+function escapeXml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+// --- SAKLI / AKTİF ROTA BİLGİSİ ---
+let currentActiveRoute = null;
+
+const originalSelectAndHighlightRoute = selectAndHighlightRoute;
+selectAndHighlightRoute = function(route) {
+  currentActiveRoute = route;
+  if (typeof currentSelectedRouteId !== 'undefined') {
+    currentSelectedRouteId = route._id || route.id;
+  }
+  originalSelectAndHighlightRoute(route);
+};
+
+// --- YETKİ KONTROLÜ ---
+function checkUserIsAuthorized() {
+  return localStorage.getItem('ferdimen_gpx_authorized') === 'true';
+}
+
+// --- GPX İNDİRME BUTONU TETİKLEYİCİSİ (YETKİ KONTROLLÜ) ---
+function triggerGpxDownload(routeId) {
+  const isAuthorized = checkUserIsAuthorized();
+
+  if (isAuthorized) {
+    let route = currentActiveRoute;
+    if (routeId) {
+      route = Object.values(loadedCategoryData).flat().find(r => (r._id === routeId || r.id === routeId));
+    }
+    if (route) {
+      downloadGpxFile(route);
+      return;
+    }
+  }
+
+  if (typeof openLoginModal === 'function') {
+    openLoginModal(routeId);
+  }
+}
+
+// --- GPX DOSYASI OLUŞTURMA VE İNDİRME ---
+function downloadGpxFile(route) {
+  const geoObj = decodeGeoData(route.maskedGeoData);
+  if (!geoObj) {
+    alert("GPX verisi çözülemedi.");
     return;
   }
 
-  const coords = geoObj.gidis.coordinates[0];
-  let trkpts = "";
-
-  coords.forEach(pt => {
-    const lon = pt[0];
-    const lat = pt[1];
-    const ele = pt[2] !== undefined ? pt[2] : 0;
-    trkpts += `      <trkpt lat="${lat}" lon="${lon}"><ele>${ele}</ele></trkpt>\n`;
-  });
-
-  const gpxContent = `<?xml version="1.0" encoding="UTF-8"?>
-<gpx version="1.1" creator="Ganos Bisiklet" xmlns="http://www.topografix.com/GPX/1/1">
-  <metadata>
-    <name>${escapeXml(route.baslik)}</name>
-  </metadata>
+  const rawCoords = extractCoordinates(geoObj.gidis || geoObj) || [];
+  
+  let gpxContent = `<?xml version="1.1" encoding="UTF-8"?>
+<gpx version="1.1" creator="Ferdimen" xmlns="http://www.topografix.com/GPX/1/1">
   <trk>
     <name>${escapeXml(route.baslik)}</name>
-    <trkseg>
-${trkpts}    </trkseg>
+    <trkseg>`;
+
+  rawCoords.forEach(pt => {
+    gpxContent += `
+      <trkpt lat="${pt[1]}" lon="${pt[0]}"><ele>${pt[2] || 0}</ele></trkpt>`;
+  });
+
+  gpxContent += `
+    </trkseg>
   </trk>
 </gpx>`;
 
@@ -418,163 +667,74 @@ ${trkpts}    </trkseg>
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `${slugify(route.baslik)}.gpx`;
+  a.download = `${route.id || 'rota'}.gpx`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+// GİRİŞ / ÇIKIŞ BUTONUNU RENDER ETME
+function renderAuthStatus() {
+  const container = document.getElementById('authStatusContainer');
+  if (!container) return;
 
-function openAccessModal() {
-  const modal = document.getElementById('accessModal');
-  if (modal) modal.style.display = 'flex';
+  const isAuthorized = checkUserIsAuthorized();
+
+  if (isAuthorized) {
+    container.innerHTML = `
+      <button onclick="handleLogout()" style="background: #dc2626; color: white; border: none; padding: 5px 10px; border-radius: 5px; font-size: 0.75rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px; transition: background 0.2s;">
+        🚪 Çıkış Yap
+      </button>
+    `;
+  } else {
+    container.innerHTML = `
+      <a href="ozel.html?redirect=rotalar.html" style="background: #2563eb; color: white; text-decoration: none; padding: 5px 10px; border-radius: 5px; font-size: 0.75rem; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; transition: background 0.2s;">
+        🔑 Giriş Yap
+      </a>
+    `;
+  }
 }
 
-function closeAccessModal() {
-  const modal = document.getElementById('accessModal');
-  if (modal) modal.style.display = 'none';
+// ÇIKIŞ İŞLEMİ (Yetkiyi siler ve harita kısıtlamalarını uygulamak için sayfayı yeniler)
+function handleLogout() {
+  localStorage.removeItem('ferdimen_gpx_authorized');
+  window.location.reload();
 }
+// portal.js dosyasının en altı
+document.addEventListener('DOMContentLoaded', () => {
+  initMap();
+  loadPortal();
+  renderAuthStatus();
+});
+// Koordinatlardan (Lat, Lng, Ele) Mesafe, Tırmanış ve İniş Hesaplama
+function calculateRouteStats(rawCoords) {
+  let totalDistanceMeter = 0;
+  let totalAscent = 0;
+  let totalDescent = 0;
 
-function copyToClipboard(elementId, btnElem) {
-  const text = document.getElementById(elementId).innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    const originalText = btnElem.innerText;
-    btnElem.innerText = 'Kopyalandı!';
-    btnElem.style.background = '#22c55e';
-    btnElem.style.color = '#fff';
-    setTimeout(() => {
-      btnElem.innerText = originalText;
-      btnElem.style.background = '#cbd5e1';
-      btnElem.style.color = '#000';
-    }, 2000);
-  });
-}
+  for (let i = 0; i < rawCoords.length - 1; i++) {
+    const pt1 = rawCoords[i];
+    const pt2 = rawCoords[i + 1];
 
-function escapeXml(unsafe) {
-  return unsafe.replace(/[<>&'"]/g, function (c) {
-    switch (c) {
-      case '<': return '&lt;';
-      case '>': return '&gt;';
-      case '&': return '&amp;';
-      case '\'': return '&apos;';
-      case '"': return '&quot;';
-    }
-  });
-}
+    // 1. İki nokta arası mesafe (Leaflet LatLng distanceTo metodu ile)
+    const latLng1 = L.latLng(pt1[1], pt1[0]);
+    const latLng2 = L.latLng(pt2[1], pt2[0]);
+    totalDistanceMeter += latLng1.distanceTo(latLng2);
 
-function slugify(text) {
-  return text.toString().toLowerCase().trim()
-    .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's')
-    .replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')
-    .replace(/\s+/g, '-')
-    .replace(/[^\w\-]+/g, '')
-    .replace(/\-\-+/g, '-');
-}
-
-function renderElevationChart(profile) {
-  const panel = document.getElementById('elevationPanel');
-  const canvas = document.getElementById('elevationChart');
-
-  if (!panel || !canvas) return;
-
-  panel.classList.add('active');
-
-  setTimeout(() => {
-    if (map) map.invalidateSize();
-
-    const labels = profile.map(p => {
-      if (Array.isArray(p)) return Number(p[0]).toFixed(1);
-      return Number(p.km !== undefined ? p.km : 0).toFixed(1);
-    });
-
-    const elevations = profile.map(p => {
-      if (Array.isArray(p)) return Math.round(Number(p[1]));
-      return Math.round(Number(p.ele !== undefined ? p.ele : 0));
-    });
-
-    const ctx = canvas.getContext('2d');
-    if (chartInstance) chartInstance.destroy();
-
-    chartInstance = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Yükseklik (m)',
-          data: elevations,
-          borderColor: '#2563eb',
-          backgroundColor: 'rgba(37, 99, 235, 0.15)',
-          fill: true,
-          tension: 0.1,
-          pointRadius: 0,
-          pointHoverRadius: 6,
-          pointHoverBackgroundColor: '#dc2626'
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: false,
-        interaction: { mode: 'index', intersect: false },
-        onHover: (event, activeElements) => {
-          if (activeElements && activeElements.length > 0) {
-            const idx = activeElements[0].index;
-            const pt = profile[idx];
-
-            let kmVal = 0, eleVal = 0, latVal = null, lonVal = null;
-
-            if (Array.isArray(pt)) {
-              kmVal = pt[0]; eleVal = pt[1]; latVal = pt[2] || null; lonVal = pt[3] || null;
-            } else if (typeof pt === 'object' && pt !== null) {
-              kmVal = pt.km !== undefined ? pt.km : 0;
-              eleVal = pt.ele !== undefined ? pt.ele : 0;
-              latVal = pt.lat !== undefined ? pt.lat : null;
-              lonVal = pt.lon !== undefined ? pt.lon : null;
-            }
-
-            const distElem = document.getElementById('hoverDist');
-            const eleElem = document.getElementById('hoverEle');
-            if (distElem) distElem.innerText = `${Number(kmVal).toFixed(1)} km`;
-            if (eleElem) eleElem.innerText = `${Math.round(Number(eleVal))} m`;
-
-            if (latVal && lonVal) {
-              if (!hoverMarker) {
-                hoverMarker = L.circleMarker([latVal, lonVal], {
-                  radius: 7, color: '#dc2626', fillColor: '#ffffff', fillOpacity: 1, weight: 3
-                }).addTo(map);
-              } else {
-                hoverMarker.setLatLng([latVal, lonVal]);
-              }
-            }
-          }
-        },
-        plugins: { legend: { display: false } },
-        scales: {
-          x: { ticks: { maxTicksLimit: 12 } },
-          y: { beginAtZero: false }
-        }
+    // 2. Yükseklik farkı hesaplama (3. eleman yükselti / elevation ise)
+    if (pt1.length >= 3 && pt2.length >= 3 && pt1[2] !== undefined && pt2[2] !== undefined) {
+      const eleDiff = pt2[2] - pt1[2];
+      if (eleDiff > 0) {
+        totalAscent += eleDiff;
+      } else {
+        totalDescent += Math.abs(eleDiff);
       }
-    });
-  }, 50);
-}
-
-function closeElevationPanel() {
-  const panel = document.getElementById('elevationPanel');
-  if (panel) panel.classList.remove('active');
-  
-  if (hoverMarker && map) {
-    map.removeLayer(hoverMarker);
-    hoverMarker = null;
+    }
   }
-  if (map) setTimeout(() => map.invalidateSize(), 150);
-}
 
-function decodeGeoData(maskedGeoData) {
-  if (!maskedGeoData) return null;
-  try {
-    const jsonStr = decodeURIComponent(escape(atob(maskedGeoData)));
-    return JSON.parse(jsonStr);
-  } catch (e) {
-    return null;
-  }
+  return {
+    mesafeKm: (totalDistanceMeter / 1000).toFixed(1),
+    tirmanis: Math.round(totalAscent),
+    inis: Math.round(totalDescent)
+  };
 }
