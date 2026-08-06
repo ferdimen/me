@@ -943,11 +943,14 @@
                 });
         });
     </script>
-	<script>
+<script>
+  // Cloudflare Zero Trust doğrulaması başarılı olduğunda yetkiyi tarayıcı hafızasına yaz
+  localStorage.setItem('ferdimen_gpx_authorized', 'true');
+
   const urlParams = new URLSearchParams(window.location.search);
   const redirectTo = urlParams.get('redirect');
 
-  // Eğer yönlendirme adresi parametre olarak geldiyse oraya git
+  // Yönlendirme adresi geldiyse adres çubuğunu temiz tutarak geri gönder
   if (redirectTo) {
     window.location.href = redirectTo;
   }
