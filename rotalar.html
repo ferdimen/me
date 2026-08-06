@@ -4,395 +4,153 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ferdimen // Adı yalnızlığından gelen kahraman</title>
-  
   <link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
-  <!-- Leaflet CSS & JS -->
+
+  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <link rel="stylesheet" href="https://www.ferdimen.com/data/css.css">
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    /* Sayfa Kilit Yapısı */
-    html, body {
-      height: 100vh;
-      overflow: hidden;
-      font-family: system-ui, -apple-system, sans-serif;
-      background: #f8fafc;
-      color: #1e293b;
-    }
-    
-    header { 
-      background: #0f172a; 
-      color: white; 
-      padding: 0.8rem 1.5rem; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      height: 50px; 
-    }
-    header h1 { font-size: 1.2rem; font-weight: 600; }
-
-    #app-container {
-      display: flex;
-      height: calc(100vh - 50px);
-      width: 100vw;
-      overflow: hidden;
-      position: relative;
-    }
-    
-    /* Sabit Sol Menü Tasarımı */
-    .sidebar-container { 
-      width: 360px !important; 
-      height: 100% !important;
-      background: #ffffff !important; 
-      border-right: 1px solid #e2e8f0; 
-      display: flex !important; 
-      flex-direction: column !important; 
-      flex-shrink: 0;
-      z-index: 10;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.05);
-    }
-    
-    .sidebar-header {
-      padding: 16px;
-      background: #ffffff;
-      border-bottom: 1px solid #e2e8f0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-shrink: 0;
-    }
-
-    /* KESİN ÇÖZÜM: Kaydırma Alanı */
-    #categoryContainer {
-      width: 100%;
-      height: calc(100% - 70px) !important;
-      max-height: calc(100vh - 120px) !important;
-      overflow-y: scroll !important; /* Mouse ile dikey kaydırma */
-      overflow-x: hidden !important;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      -webkit-overflow-scrolling: touch;
-    }
-    
-    .category-card { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
-    .category-header { padding: 10px 14px; font-weight: 600; font-size: 0.92rem; background: #e2e8f0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: background 0.2s ease; }
-    .category-header:hover { background: #cbd5e1; }
-    
-    .category-title-group { display: flex; align-items: center; gap: 10px; flex: 1; }
-
-    .route-list { display: none; padding: 8px; flex-direction: column; gap: 6px; background: #ffffff; }
-    .category-card.open .route-list { display: flex; }
-    .category-card.open .category-header { background: #3b82f6; color: white; }
-    .category-card.open .category-header:hover { background: #2563eb; }
-
-    .route-item { padding: 8px 10px; border-radius: 6px; border: 1px solid #e2e8f0; cursor: pointer; background: #f8fafc; font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; gap: 8px; transition: all 0.2s; }
-    .route-item:hover { border-color: #2563eb; background: #eff6ff; }
-    .route-item.active { background: #dbeafe; border-color: #2563eb; font-weight: 600; }
-
-    .route-label { display: flex; align-items: center; gap: 8px; flex: 1; cursor: pointer; }
-
-    /* Checkbox Özel Stil */
-    .map-check { width: 16px; height: 16px; cursor: pointer; accent-color: #2563eb; }
-
-    /* Sağ Harita Alanı */
-    #map-container { 
-      flex: 1; 
-      position: relative; 
-      display: flex; 
-      flex-direction: column; 
-      height: 100%; 
-      overflow: hidden; 
-    }
-    #map { width: 100%; flex: 1; }
-
-    #map-container.fullscreen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; }
-
-    /* Alt Yükseklik Profili Paneli */
-    .elevation-panel { 
-      display: none; 
-      position: absolute; 
-      bottom: 0; 
-      left: 0; 
-      right: 0; 
-      background: #ffffff; 
-      border-top: 2px solid #cbd5e1; 
-      padding: 10px 16px; 
-      height: 190px; 
-      flex-direction: column; 
-      gap: 4px; 
-      box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
-      z-index: 1000;
-    }
-    .elevation-panel.active { display: flex; }
-    
-    .panel-header, .elevation-header { display: flex; justify-content: space-between; align-items: center; }
-    .elevation-info, .panel-info { display: flex; gap: 24px; font-size: 0.9rem; font-weight: 600; color: #334155; }
-    .elevation-info span strong, .panel-info span strong { color: #2563eb; font-size: 1rem; }
-    
-    .close-panel-btn, .close-btn { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 2px 8px; cursor: pointer; font-size: 0.8rem; }
-    .close-panel-btn:hover, .close-btn:hover { background: #e2e8f0; }
-
-    .chart-container { flex: 1; position: relative; width: 100%; height: calc(100% - 30px); }
-
-    .custom-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      font-size: 11px;
-      border-radius: 50%;
-      border: 2px solid white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    }
-    .start-icon { background: #16a34a; }
-    .stop-icon { background: #dc2626; }
-
-    /* Harita İndirme Butonu Stili */
-    .gpx-download-control {
-      margin-bottom: 10px !important;
-      margin-right: 10px !important;
-    }
-
-    .gpx-btn {
-      background-color: #2563eb;
-      color: #ffffff;
-      border: none;
-      padding: 8px 14px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s ease;
-    }
-
-    .gpx-btn:hover {
-      background-color: #1d4ed8;
-      transform: translateY(-1px);
-    }
-
-    /* Modal Stillerı */
-    .custom-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 99999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(2px);
-    }
-
-    .modal-content {
-      position: relative;
-      background: #ffffff;
-      width: 90%;
-      max-width: 500px;
-      max-height: 90vh;
-      overflow-y: auto;
-      border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      padding: 20px;
-      z-index: 2;
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 10px;
-      margin-bottom: 15px;
-    }
-
-    .modal-header h3 {
-      margin: 0;
-      font-size: 1.1rem;
-      color: #1f2937;
-    }
-
-    .modal-close-btn {
-      background: transparent;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #6b7280;
-    }
-
-    /* Banka Kartı Stilleri */
-    .bank-card {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 6px;
-      padding: 12px;
-    }
-
-    .bank-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 0.85rem;
-    }
-
-    .bank-label {
-      font-weight: bold;
-      color: #475569;
-      width: 60px;
-    }
-
-    .bank-value {
-      font-family: monospace;
-      font-weight: 600;
-      color: #0f172a;
-    }
-
-    .copy-btn {
-      background: #cbd5e1;
-      border: none;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      cursor: pointer;
-    }
-
-    .copy-btn:hover {
-      background: #94a3b8;
-      color: white;
-    }
-
-    .bank-note {
-      margin-top: 10px;
-      padding-top: 8px;
-      border-top: 1px dashed #cbd5e1;
-      font-size: 0.8rem;
-      color: #475569;
-    }
-  </style>
+  <!-- Leaflet Fullscreen CSS -->
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet-fullscreen.css" />
+  <!-- Portal Stil Dosyası -->
+  <link rel="stylesheet" href="data/style.css">
 </head>
 <body>
 <header class="main-header"></header>
-
 <script src="data/header-loader.js"></script>
-<script src="youtube.js?v=1"></script>	
-
   <div id="app-container">
-    <!-- SABİT SOL MENÜ -->
-    <div id="sidebar" class="sidebar-container">
 
-      <div id="categoryContainer">
-        <p style="font-size:0.9rem; color:#64748b; padding: 10px;">Kategoriler yükleniyor...</p>
-      </div>
+    <!-- SOL MENÜ -->
+    <div id="sidebar" class="sidebar-container">
+<div class="sidebar-header">
+  <div>
+  <!-- Giriş / Çıkış Buton Alanı -->
+  <div id="authStatusContainer"></div>
+  </div>
+
+</div>
+      <div id="categoryContainer"></div>
     </div>
 
     <!-- HARİTA & GRAFİK ALANI -->
     <div id="map-container">
       <div id="map"></div>
-      
-      <!-- Yükseklik Profili Paneli -->
-      <div id="elevationPanel" class="elevation-panel">
-        <div class="panel-header">
-          <div class="panel-info">
-            <span>Mesafe: <strong id="hoverDist">0 km</strong></span>
-            <span>Yükseklik: <strong id="hoverEle">0 m</strong></span>
-          </div>
-          <button onclick="closeElevationPanel()" class="close-btn">&times;</button>
-        </div>
-        <div class="chart-container">
-          <canvas id="elevationChart"></canvas>
-        </div>
+      <!-- YÜKSEKLİK GRAFİĞİ -->
+      <div id="elevation-panel">
+        <canvas id="elevationChart"></canvas>
       </div>
     </div>
   </div>
 
-  <!-- Erken Erişim ve Özel Bölüm Modal (Popup) -->
-  <div id="accessModal" class="custom-modal" style="display: none;">
-    <div class="modal-overlay" onclick="closeAccessModal()"></div>
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>Erken Erişim ve Özel Bölüm Ayrıcalıkları</h3>
-        <button class="modal-close-btn" onclick="closeAccessModal()">&times;</button>
+  <!-- GPX İNDİRME MODALI / POPUP -->
+  <div id="loginModal" class="modal" style="display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
+    <div class="modal-content" style="background-color: #fff; padding: 24px; border-radius: 12px; max-width: 440px; width: 90%; text-align: left; max-height: 90vh; overflow-y: auto;">
+      <h3 style="margin-top: 0; color: #1e293b; text-align: center;">🔒 GPX İndirme Erişimi</h3>
+      <p style="color: #475569; font-size: 0.88rem; line-height: 1.4; margin-bottom: 16px;">
+        GPX iz kayıtlarını daha yakından incelemek, indirmek ve özel içeriklere erişebilmek için Erken Erişim/Özel Bölüm üyesi olmanız gerekmektedir. Zaten yetkili bir e-posta adresiniz varsa giriş yapabilir veya destek sağladıktan sonra erişim talebinde bulunabilirsiniz.
+      </p>
+
+      <!-- Giriş Yap Butonu -->
+      <div style="margin-bottom: 20px; text-align: center;">
+        <a href="ozel.html?redirect=rotalar.html" class="login-redirect-btn" style="display: block; background: #2563eb; color: #ffffff; padding: 12px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.95rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: background 0.2s;">
+          🔑 Erişim İzniniz Var mı? Giriş Yapmak İçin Tıklayın
+        </a>
+        <small style="display: block; color: #6b7280; margin-top: 6px; font-size: 0.8rem;">
+          (Açılan sayfada yetkili Gmail adresinizle oturum açtıktan sonra rotayı indirebilirsiniz)
+        </small>
       </div>
-      <div class="modal-body">
-        <p style="font-size:0.9rem; line-height:1.4; color:#4b5563; margin-bottom:15px;">
-          GPX iz kayıtlarını indirmek ve özel içeriklere erişebilmek için Erken Erişim/Özel Bölüm üyesi olmanız gerekmektedir. Zaten yetkili bir e-posta adresiniz varsa giriş yapabilir veya destek sağladıktan sonra erişim talebinde bulunabilirsiniz.
-        </p>
 
-        <!-- Zaten Erişim İzni Olanlar İçin Giriş Butonu -->
-        <div style="margin-bottom: 20px; text-align: center;">
-          <a href="../ozel.html?redirect=rotalar.html" target="_blank" class="login-redirect-btn" style="display: block; background: #2563eb; color: #ffffff; padding: 12px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.95rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: background 0.2s;">
-            🔑 Erişim İzniniz Var mı? Giriş Yapmak İçin Tıklayın
-          </a>
-          <small style="display: block; color: #6b7280; margin-top: 6px; font-size: 0.8rem;">
-            (Açılan sayfada yetkili Gmail adresinizle oturum açtıktan sonra rotayı indirebilirsiniz)
-          </small>
+      <!-- Banka Kartı -->
+      <div class="bank-card">
+        <div class="bank-row">
+          <span class="bank-label">ALICI</span>
+          <span class="bank-value" id="bank-receiver">Ferdi Kızıl</span>
+          <button class="copy-btn" onclick="copyToClipboardText('bank-receiver', this)">Kopyala</button>
         </div>
-
-        <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0;">
-
-        <!-- Banka Kartı -->
-        <div class="bank-card">
-          <div class="bank-row">
-            <span class="bank-label">ALICI</span>
-            <span class="bank-value" id="bank-receiver">Ferdi Kızıl</span>
-            <button class="copy-btn" onclick="copyToClipboard('bank-receiver', this)">Kopyala</button>
-          </div>
-          <div class="bank-row">
-            <span class="bank-label">BANKA</span>
-            <span class="bank-value">ENPARA</span>
-            <span style="width:74px;"></span>
-          </div>
-          <div class="bank-row">
-            <span class="bank-label">IBAN</span>
-            <span class="bank-value" id="bank-iban">TR22 0015 7000 0000 0046 5881 43</span>
-            <button class="copy-btn" onclick="copyToClipboard('bank-iban', this)">Kopyala</button>
-          </div>
-          <div class="bank-note">
-            ⚠️ Önemli: Havale açıklama bölümüne Google/Gmail adresinizi yazmayı unutmayın!
-          </div>
+        <div class="bank-row">
+          <span class="bank-label">BANKA</span>
+          <span class="bank-value">ENPARA</span>
+          <span style="width:58px;"></span>
         </div>
+        <div class="bank-row">
+          <span class="bank-label">IBAN</span>
+          <span class="bank-value" id="bank-iban">TR22 0015 7000 0000 0046 5881 43</span>
+          <button class="copy-btn" onclick="copyToClipboardText('bank-iban', this)">Kopyala</button>
+        </div>
+        <div class="bank-note">
+          ⚠️ Önemli: Havale açıklama bölümüne Google/Gmail adresinizi yazmayı unutmayın!
+        </div>
+      </div>
 
-        <!-- İletişim Formu -->
-        <form action="https://formspree.io/f/xnjyjwnk" method="POST" style="margin-top:15px;">
-          <div class="form-group" style="margin-bottom: 12px;">
-            <label for="modal-name" style="display:block; font-size:0.85rem; font-weight:bold; margin-bottom:4px;">İsim / Mahlas</label>
-            <input type="text" id="modal-name" name="name" required placeholder="Adınızı giriniz" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;">
-          </div>
-          <div class="form-group" style="margin-bottom: 12px;">
-            <label for="modal-email" style="display:block; font-size:0.85rem; font-weight:bold; margin-bottom:4px;">E-Posta Adresi (Erişim tanımlanacak Gmail)</label>
-            <input type="email" id="modal-email" name="_replyto" required placeholder="Gmail adresinizi giriniz" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;">
-          </div>
-          <div class="form-group" style="margin-bottom: 12px;">
-            <label for="modal-message" style="display:block; font-size:0.85rem; font-weight:bold; margin-bottom:4px;">Mesajınız / Notunuz</label>
-            <textarea id="modal-message" name="message" rows="3" required placeholder="Bağış yaptım, erken erişim açılmasını rica ederim..." style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;"></textarea>
-          </div>
-          <input type="hidden" name="_language" value="tr" />
-          <button type="submit" class="submit-btn" style="background:#2c3e50; color:#fff; border:none; padding:10px 15px; border-radius:4px; cursor:pointer; font-weight:bold; width:100%;">Erişim Talebi Gönder</button>
-        </form>
+      <!-- İletişim Formu -->
+      <form action="https://formspree.io/f/xnjyjwnk" method="POST" style="margin-top:15px;">
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label for="modal-name" style="display:block; font-size:0.85rem; font-weight:bold; margin-bottom:4px;">İsim / Mahlas</label>
+          <input type="text" id="modal-name" name="name" required placeholder="Adınızı giriniz" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;">
+        </div>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label for="modal-email" style="display:block; font-size:0.85rem; font-weight:bold; margin-bottom:4px;">E-Posta Adresi (Erişim tanımlanacak Gmail)</label>
+          <input type="email" id="modal-email" name="_replyto" required placeholder="Gmail adresinizi giriniz" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;">
+        </div>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label for="modal-message" style="display:block; font-size:0.85rem; font-weight:bold; margin-bottom:4px;">Mesajınız / Notunuz</label>
+          <textarea id="modal-message" name="message" rows="3" required placeholder="Bağış yaptım, erişim açılmasını rica ederim..." style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;"></textarea>
+        </div>
+        <input type="hidden" name="_language" value="tr" />
+        <button type="submit" class="submit-btn" style="background:#2c3e50; color:#fff; border:none; padding:10px 15px; border-radius:4px; cursor:pointer; font-weight:bold; width:100%;">Erişim Talebi Gönder</button>
+      </form>
+
+      <div style="margin-top: 15px; text-align: center;">
+        <button onclick="closeLoginModal()" style="background: none; border: none; color: #64748b; cursor: pointer; text-decoration: underline;">Kapat</button>
       </div>
     </div>
   </div>
 
+  <!-- KÜTÜPHANELER -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Fullscreen Eklentisi -->
+  <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
+  <!-- Chart.js Grafikler İçi -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
   <script src="data/portal.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initMap();
+      loadPortal();
+    });
+
+function openLoginModal(routeId) {
+  const targetRouteId = routeId || currentSelectedRouteId;
+  const loginBtn = document.querySelector('.login-redirect-btn');
+  
+  if (loginBtn) {
+    // Rota ID'sini URL yerine yerel belleğe yazıyoruz
+    if (targetRouteId) {
+      localStorage.setItem('ferdimen_pending_route', targetRouteId);
+    }
+    
+    // Yönlendirme adresi tamamen yalın: sadece rotalar.html
+    loginBtn.href = 'ozel.html?redirect=rotalar.html';
+  }
+
+  const modal = document.getElementById('loginModal');
+  if (modal) modal.style.display = 'flex';
+}
+
+    function closeLoginModal() {
+      const modal = document.getElementById('loginModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function copyToClipboardText(elementId, btn) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const oldText = btn.innerText;
+        btn.innerText = 'Kopyalandı!';
+        setTimeout(() => { btn.innerText = oldText; }, 1500);
+      });
+    }
+  </script>
+  
 </body>
 </html>
