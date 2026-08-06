@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { "title": "Kronoloji", "href": "#kronoloji", "isSection": true },
         { "title": "Dosyalar", "href": "#dosyalar", "isSection": true },
         { "title": "Ekipman", "href": "ekipman.html", "otherHref": "/ekipman.html", "isSection": false, "hideOn": ["ekipman", "ekipman.html"] },
+        { "title": "Rotalar", "href": "rotalar.html", "otherHref": "/rotalar.html", "isSection": false, "hideOn": ["rotalar", "rotalar.html"] },          
         { "title": "S.S.S.", "href": "#faq", "isSection": true },
         { "title": "Vasiyet", "href": "#sablon", "isSection": true },
         { "title": "Destek", "href": "#destek", "isSection": true },
@@ -45,12 +46,12 @@ document.addEventListener("DOMContentLoaded", function () {
       "socials": [
         {
           "name": "YouTube",
-          "url": "https://www.youtube.com/@ferdimen",
+          "url": "https://www.ferdimen.com/youtube",
           "svg": "<svg viewBox=\"0 0 24 24\"><path d=\"M21.543 6.498C22 8.21 22 12 22 12s0 3.79-.457 5.502A2.752 2.752 0 0 1 19.617 19.43C17.904 20 12 20 12 20s-5.904 0-7.617-.57a2.752 2.752 0 0 1-1.926-1.928C2 15.79 2 12 2 12s0-3.79.457-5.502A2.752 2.752 0 0 1 4.383 4.57C6.096 4 12 4 12 4s5.904 0 7.617.57a2.752 2.752 0 0 1 1.926 1.928zM10 15.5l5.5-3.5L10 8.5v7z\"/></svg>"
         },
         {
           "name": "Polarsteps",
-          "url": "https://polarsteps.com/ferdimen",
+          "url": "https://ferdimen.com/polarsteps",
           "svg": "<svg viewBox=\"0 0 48 48\"><path d=\"M22.8 21.2c1-.4 2.1-.3 3 .3c.2.1.4.2.6.1l2.4-1c.5-.2.7-.9.3-1.3L18.8 8.9c-.7-.7-2-.2-2 .8l.2 14.5c0 .6.6 1 1.1.7l2.4-1c.2-.1.3-.3.4-.5c.2-.9.9-1.8 1.9-2.2Zm2.4 5.6c1-.4 1.7-1.3 1.8-2.4c0-.2.2-.4.4-.5l2.4-1c.5-.2 1.1.2 1.1.7l.2 14.5c0 1-1.2 1.6-2 .8L19 28.8c-.4-.4-.3-1.1.3-1.3l2.4-1c.2-.1.4 0 .6.1c.8.5 1.9.7 2.9.2Z\"/></svg>"
         }
       ]
