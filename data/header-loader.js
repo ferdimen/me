@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Ana sayfa kontrolü
     const isHomePage = (pathName === basePath || pathName === basePath + mainPageFile || fileName === mainPageFile);
 
-    // JSON verisini doğrudan JavaScript nesnesi olarak tanımlıyoruz
+    // JSON verisini doğrudan JavaScript nesnesi olarak tanımlıyoruz.
     const data = {
       "logo": {
         "img": "img/logo.png",
