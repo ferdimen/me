@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Rota Portalı Admin Panel (İnteraktif Pin Düzenleyici)</title>
+  
+  <!-- Leaflet Harita Kütüphanesi -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 20px; background: #f8fafc; color: #0f172a; }
+    .panel-container { max-width: 800px; margin: 0 auto; background: #ffffff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    h1 { font-size: 1.25rem; margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; color: #334155; }
+    input[type="text"], input[type="date"], textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 0.95rem; }
+    textarea { height: 60px; resize: vertical; }
+    .file-info { font-size: 0.85rem; color: #059669; font-weight: 600; margin-top: 4px; }
+    
+    /* Gün Kartı Stili */
+    .day-card { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 18px; border-radius: 10px; margin-bottom: 20px; }
+    .day-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+    .btn-remove-day { background: #ef4444; color: white; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; font-weight: 600; }
+    
+    .title-row { display: flex; gap: 12px; }
+    .title-row .date-group { flex: 0 0 170px; }
+    .title-row .text-group { flex: 1; }
+
+    .btn-add-day { background: #0f766e; color: white; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; font-size: 0.95rem; margin-bottom: 16px; }
+    .btn-save { background: #2563eb; color: #ffffff; border: none; padding: 14px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1.05rem; }
+    .btn-editor { background: #7c3aed; color: white; border: none; padding: 8px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.85rem; margin-top: 6px; }
+
+    .badge-id { display: inline-block; background: #e2e8f0; color: #475569; padding: 4px 8px; border-radius: 4px; font-family: monospace; font-size: 0.85rem; margin-top: 4px; }
+    .status-text { font-size: 0.75rem; color: #64748b; margin-top: 4px; }
+
+    .result-box { display: none; margin-top: 24px; background: #0f172a; color: #f8fafc; padding: 20px; border-radius: 8px; }
+    textarea.json-output { width: 100%; height: 160px; background: #1e293b; color: #e2e8f0; border: 1px solid #334155; border-radius: 6px; font-family: monospace; font-size: 0.85rem; padding: 10px; box-sizing: border-box; }
+    .btn-copy { background: #059669; color: white; border: none; padding: 8px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; margin-top: 6px; }
+
+    /* Modal Stilleri */
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.75); z-index: 9999; justify-content: center; align-items: center; }
+    .modal-container { background: #ffffff; width: 90%; max-width: 1000px; height: 85vh; border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; }
+    .modal-header { padding: 14px 20px; background: #1e293b; color: white; display: flex; justify-content: space-between; align-items: center; }
+    .modal-body { flex: 1; position: relative; }
+    #editorMap { width: 100%; height: 100%; }
+    .btn-close-modal { background: #059669; color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    .editor-hint { position: absolute; top: 10px; left: 50px; z-index: 1000; background: rgba(255,255,255,0.9); padding: 8px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+
+  <div class="panel-container">
+    <h1>Çoklu Gün Rota & Pin Düzenleme Paneli</h1>
+    
+    <div class="form-group">
+      <label for="turKategorisi">Ait Olduğu Bisiklet Turu / Kategori</label>
+      <input type="text" id="turKategorisi" list="kategoriListesi" placeholder="Örn: Güz Güneyi Bisiklet Turu..." autocomplete="off">
+      <datalist id="kategoriListesi"></datalist>
+      <div id="kategoriStatus" class="status-text">Mevcut kategoriler yükleniyor...</div>
+    </div>
+
+    <div id="daysContainer"></div>
+    <button class="btn-add-day" onclick="addDayBlock()">➕ Yeni Gün / Etap Ekle</button>
+    <button class="btn-save" onclick="generateAllJsonData()">⚙️ Modüler JSON Kodlarını Oluştur</button>
+
+    <div id="resultBox" class="result-box">
+      <h3>✅ Kodlar Oluşturuldu!</h3>
+      <h4>1. Adım: İlgili Kategori Dosyasına Yapıştırın</h4>
+      <small style="color: #cbd5e1;">Dosya Konumu: <strong>data/kategoriler/<span id="targetSlugName">kategori-adi</span>.json</strong></small>
+      <textarea id="jsonOutput" class="json-output" readonly></textarea>
+      <button class="btn-copy" onclick="copyToClipboard('jsonOutput')">📋 Etap Kodlarını Kopyala</button>
+
+      <hr style="border: 0; border-top: 1px solid #334155; margin: 20px 0;">
+
+      <h4>2. Adım: Ana İndeks Kontrolü (data/kategoriler.json)</h4>
+      <textarea id="indexOutput" class="json-output" style="height: 90px;" readonly></textarea>
+      <button class="btn-copy" onclick="copyToClipboard('indexOutput')">📋 İndeks Objesini Kopyala</button>
+    </div>
+  </div>
+
+  <!-- HARİTA MODAL DÜZENLEYİCİ -->
+  <div id="mapModal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 style="margin: 0; font-size: 1.05rem;" id="modalTitle">📍 Pin & Rota Düzenleyici</h3>
+        <button class="btn-close-modal" onclick="closeMapModal()">💾 Değişiklikleri Kaydet ve Kapat</button>
+      </div>
+      <div class="modal-body">
+        <div class="editor-hint">💡 İpucu: Haritada boş bir yere tıklayarak yeni pin ekleyebilirsiniz. Pinleri sürükleyerek taşıyabilirsiniz.</div>
+        <div id="editorMap"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let dayCounter = 0;
+    let parsedDaysData = {};
+    let iconLibrary = {};
+    let activeEditorDayId = null;
+    let editorMap = null;
+    let editorLayerGroup = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTourCategories();
+      loadIconLibrary();
+      addDayBlock();
+    });
+
+    async function loadIconLibrary() {
+      try {
+        const res = await fetch('icons.json');
+        if (res.ok) iconLibrary = await res.json();
+      } catch (e) {
+        console.error("İkon kütüphanesi yüklenemedi:", e);
+      }
+    }
+
+    async function loadTourCategories() {
+      const statusEl = document.getElementById('kategoriStatus');
+      const datalistEl = document.getElementById('kategoriListesi');
+      const possiblePaths = ['../data/kategoriler.json', '../../data/kategoriler.json', 'data/kategoriler.json'];
+      let categoriesData = null;
+
+      for (const path of possiblePaths) {
+        try {
+          const res = await fetch(path);
+          if (res.ok) { categoriesData = await res.json(); break; }
+        } catch (e) {}
+      }
+
+      if (categoriesData && Array.isArray(categoriesData)) {
+        datalistEl.innerHTML = '';
+        categoriesData.forEach(cat => {
+          const option = document.createElement('option');
+          option.value = cat.baslik;
+          datalistEl.appendChild(option);
+        });
+        statusEl.innerText = `✓ ${categoriesData.length} adet kayıtlı tur kategorisi yüklendi.`;
+        statusEl.style.color = '#059669';
+      }
+    }
+
+    function addDayBlock() {
+      // 1. En son eklenmiş günün tarihini tespit et ve 1 gün ekle
+      let nextDateValue = '';
+      const existingDateInputs = document.querySelectorAll('input[type="date"]');
+      if (existingDateInputs.length > 0) {
+        const lastDateVal = existingDateInputs[existingDateInputs.length - 1].value;
+        if (lastDateVal) {
+          const lastDate = new Date(lastDateVal);
+          if (!isNaN(lastDate.getTime())) {
+            lastDate.setDate(lastDate.getDate() + 1);
+            nextDateValue = lastDate.toISOString().split('T')[0];
+          }
+        }
+      }
+
+      dayCounter++;
+      const dayId = dayCounter;
+      parsedDaysData[dayId] = { gidis: null, donus: { coordinates: [], waypoints: [] } };
+
+      const container = document.getElementById('daysContainer');
+      const card = document.createElement('div');
+      card.className = 'day-card';
+      card.id = `dayCard_${dayId}`;
+
+      card.innerHTML = `
+        <div class="day-header">
+          <span class="day-title" style="font-weight:700;">📍 Etap / Gün</span>
+          <button class="btn-remove-day" onclick="removeDayBlock(${dayId})">🗑️ Gün Sil</button>
+        </div>
+
+        <div class="title-row">
+          <div class="form-group date-group">
+            <label>Tarih</label>
+            <input type="date" id="tarih_${dayId}" value="${nextDateValue}" onchange="updatePreviewId(${dayId})">
+          </div>
+          <div class="form-group text-group">
+            <label>Rota Adı / Güzergah</label>
+            <input type="text" id="baslikText_${dayId}" placeholder="Örn: Kırıkkale - Sulakyurt" oninput="updatePreviewId(${dayId})">
+          </div>
+        </div>
+        <div id="previewId_${dayId}" class="badge-id" style="margin-bottom: 12px;">Başlık / ID: -</div>
+
+        <div class="form-group">
+          <label>Rota Açıklaması</label>
+          <textarea id="aciklama_${dayId}" placeholder="Notlar..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Gidiş / Ana GPX Dosyası (Zorunlu)</label>
+          <input type="file" accept=".gpx,.geojson" onchange="handleFileSelect(event, ${dayId}, 'gidis')">
+          <div id="infoGidis_${dayId}" class="file-info"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Dönüş GPX Dosyası (Opsiyonel / Pin İçerebilir)</label>
+          <input type="file" accept=".gpx,.geojson" onchange="handleFileSelect(event, ${dayId}, 'donus')">
+          <div id="infoDonus_${dayId}" class="file-info"></div>
+        </div>
+
+        <button class="btn-editor" onclick="openMapModal(${dayId})">🗺️ Pinleri Haritada Gör & Düzenle</button>
+      `;
+
+      container.appendChild(card);
+      updatePreviewId(dayId);
+    }
+
+    function removeDayBlock(dayId) {
+      const card = document.getElementById(`dayCard_${dayId}`);
+      if (card) {
+        card.remove();
+        delete parsedDaysData[dayId];
+      }
+    }
+
+    function updatePreviewId(dayId) {
+      const fullTitle = getCombinedTitle(dayId);
+      const customId = generateRouteId(fullTitle);
+      document.getElementById(`previewId_${dayId}`).innerText = `Başlık: "${fullTitle || '-'}" | ID: ${customId}`;
+    }
+
+    function getCombinedTitle(dayId) {
+      const dateVal = document.getElementById(`tarih_${dayId}`)?.value || '';
+      const textVal = document.getElementById(`baslikText_${dayId}`)?.value.trim() || '';
+      return dateVal && textVal ? `${dateVal} ${textVal}` : (dateVal || textVal);
+    }
+
+    function generateRouteId(baslik) {
+      if (!baslik) return 'rota-';
+      const trMap = { 'ç':'c','Ç':'c','ğ':'g','Ğ':'g','ı':'i','I':'i','İ':'i','ö':'o','Ö':'o','ş':'s','Ş':'s','ü':'u','Ü':'u' };
+      return 'rota-' + baslik.split('').map(char => trMap[char] || char).join('').toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
+    }
+
+    function parseGpxToCoordinates(gpxText) {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(gpxText, "text/xml");
+      
+      const trkpts = xmlDoc.getElementsByTagName("trkpt");
+      const trackLine = [];
+      for (let i = 0; i < trkpts.length; i++) {
+        const pt = trkpts[i];
+        const lat = parseFloat(pt.getAttribute("lat"));
+        const lon = parseFloat(pt.getAttribute("lon"));
+        let ele = 0;
+        const eleNode = pt.getElementsByTagName("ele")[0];
+        if (eleNode && eleNode.textContent) ele = parseFloat(eleNode.textContent);
+        trackLine.push([lon, lat, ele]);
+      }
+
+      const wpts = xmlDoc.getElementsByTagName("wpt");
+      const waypoints = [];
+      for (let i = 0; i < wpts.length; i++) {
+        const wpt = wpts[i];
+        waypoints.push({
+          id: 'wpt_' + Math.random().toString(36).substr(2, 9),
+          lat: parseFloat(wpt.getAttribute("lat")),
+          lon: parseFloat(wpt.getAttribute("lon")),
+          name: wpt.getElementsByTagName("name")[0]?.textContent || "Gezi Noktası",
+          desc: wpt.getElementsByTagName("desc")[0]?.textContent || "",
+          icon: "default"
+        });
+      }
+
+      return {
+        coordinates: trackLine.length > 0 ? [trackLine] : [],
+        waypoints: waypoints
+      };
+    }
+
+    function handleFileSelect(event, dayId, key) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const content = e.target.result;
+        let parsedData;
+        if (file.name.toLowerCase().endsWith('.gpx')) {
+          parsedData = parseGpxToCoordinates(content);
+        } else {
+          parsedData = JSON.parse(content);
+        }
+
+        if (key === 'gidis') {
+          parsedDaysData[dayId].gidis = parsedData;
+          if (parsedData.waypoints && parsedData.waypoints.length > 0) {
+            if (!parsedDaysData[dayId].donus) parsedDaysData[dayId].donus = { coordinates: [], waypoints: [] };
+            parsedDaysData[dayId].donus.waypoints = [...(parsedDaysData[dayId].donus.waypoints || []), ...parsedData.waypoints];
+          }
+        } else {
+          parsedDaysData[dayId].donus = parsedData;
+        }
+
+        const count = parsedData?.coordinates[0]?.length || 0;
+        const wptCount = parsedData?.waypoints?.length || 0;
+        const infoEl = document.getElementById(key === 'gidis' ? `infoGidis_${dayId}` : `infoDonus_${dayId}`);
+        infoEl.innerText = `✓ ${file.name} (${count} nokta, ${wptCount} pin yüklendi)`;
+        infoEl.style.color = '#059669';
+      };
+      reader.readAsText(file);
+    }
+
+    // --- HARİTA MODAL VE PİN DÜZENLEME MİMARİSİ ---
+    function openMapModal(dayId) {
+      activeEditorDayId = dayId;
+      const modal = document.getElementById('mapModal');
+      modal.style.display = 'flex';
+      document.getElementById('modalTitle').innerText = `📍 Pin & Rota Düzenleyici: ${getCombinedTitle(dayId) || 'Etap'}`;
+
+      if (!parsedDaysData[activeEditorDayId].donus) {
+        parsedDaysData[activeEditorDayId].donus = { coordinates: [], waypoints: [] };
+      }
+      if (!parsedDaysData[activeEditorDayId].donus.waypoints) {
+        parsedDaysData[activeEditorDayId].donus.waypoints = [];
+      }
+
+      if (!editorMap) {
+        editorMap = L.map('editorMap').setView([39.0, 35.0], 6);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(editorMap);
+        editorLayerGroup = L.layerGroup().addTo(editorMap);
+
+        editorMap.on('click', (e) => {
+          if (!activeEditorDayId) return;
+
+          const newWpt = {
+            id: 'wpt_' + Math.random().toString(36).substr(2, 9),
+            lat: parseFloat(e.latlng.lat.toFixed(6)),
+            lon: parseFloat(e.latlng.lng.toFixed(6)),
+            name: "Yeni Pin",
+            desc: "",
+            icon: "default"
+          };
+          
+          parsedDaysData[activeEditorDayId].donus.waypoints.push(newWpt);
+          renderEditorMapLayers();
+        });
+      }
+
+      setTimeout(() => {
+        editorMap.invalidateSize();
+        renderEditorMapLayers();
+      }, 200);
+    }
+
+    function closeMapModal() {
+      if (activeEditorDayId) {
+        updateDonusFileInfo(activeEditorDayId);
+      }
+      document.getElementById('mapModal').style.display = 'none';
+      activeEditorDayId = null;
+    }
+
+    function updateDonusFileInfo(dayId) {
+      const donusObj = parsedDaysData[dayId]?.donus;
+      const infoEl = document.getElementById(`infoDonus_${dayId}`);
+      if (!infoEl) return;
+
+      const wptCount = donusObj?.waypoints?.length || 0;
+      const coordCount = donusObj?.coordinates[0]?.length || 0;
+
+      if (wptCount > 0 || coordCount > 0) {
+        infoEl.innerText = `✓ Düzenlendi: (${coordCount} iz noktası, ${wptCount} aktif pin kaydedildi)`;
+        infoEl.style.color = '#059669';
+      } else {
+        infoEl.innerText = `Pin bulunmuyor.`;
+        infoEl.style.color = '#64748b';
+      }
+    }
+
+    function createCustomSvgIcon(iconKey) {
+      const iconData = iconLibrary[iconKey] || iconLibrary['default'];
+      const svgStr = iconData ? iconData.svg : iconLibrary['default']?.svg || '';
+      return L.divIcon({
+        html: svgStr,
+        className: 'custom-svg-pin',
+        iconSize: [28, 28],
+        iconAnchor: [14, 28],
+        popupAnchor: [0, -28]
+      });
+    }
+
+    function renderEditorMapLayers() {
+      if (!editorLayerGroup || !activeEditorDayId) return;
+      editorLayerGroup.clearLayers();
+
+      const dayData = parsedDaysData[activeEditorDayId];
+      const bounds = L.latLngBounds();
+      let hasPoints = false;
+
+      if (dayData.gidis && dayData.gidis.coordinates && dayData.gidis.coordinates.length > 0) {
+        const leafletPts = dayData.gidis.coordinates[0].map(pt => [pt[1], pt[0]]);
+        const polylineGidis = L.polyline(leafletPts, { color: '#2563eb', weight: 4 }).addTo(editorLayerGroup);
+        bounds.extend(polylineGidis.getBounds());
+        hasPoints = true;
+      }
+
+      if (dayData.donus && dayData.donus.coordinates && dayData.donus.coordinates.length > 0) {
+        const leafletPtsDonus = dayData.donus.coordinates[0].map(pt => [pt[1], pt[0]]);
+        const polylineDonus = L.polyline(leafletPtsDonus, { color: '#ef4444', weight: 3, dashArray: '5, 5' }).addTo(editorLayerGroup);
+        bounds.extend(polylineDonus.getBounds());
+        hasPoints = true;
+      }
+
+      const waypoints = dayData.donus?.waypoints || [];
+
+      waypoints.forEach(wpt => {
+        hasPoints = true;
+        bounds.extend([wpt.lat, wpt.lon]);
+
+        const marker = L.marker([wpt.lat, wpt.lon], {
+          draggable: true,
+          icon: createCustomSvgIcon(wpt.icon || 'default')
+        }).addTo(editorLayerGroup);
+
+        marker.on('dragend', (e) => {
+          const newPos = e.target.getLatLng();
+          wpt.lat = parseFloat(newPos.lat.toFixed(6));
+          wpt.lon = parseFloat(newPos.lng.toFixed(6));
+        });
+
+        let iconOptionsHtml = '';
+        Object.keys(iconLibrary).forEach(key => {
+          iconOptionsHtml += `<option value="${key}" ${wpt.icon === key ? 'selected' : ''}>${iconLibrary[key].label}</option>`;
+        });
+
+        const popupDiv = document.createElement('div');
+        popupDiv.style.minWidth = '200px';
+        popupDiv.innerHTML = `
+          <div style="font-weight:bold; margin-bottom:6px; color:#0f172a;">📍 Pin Detayı Düzenle</div>
+          <label style="font-size:0.75rem; font-weight:600;">Başlık:</label>
+          <input type="text" id="pop_name_${wpt.id}" value="${wpt.name}" style="width:100%; margin-bottom:6px; padding:4px; box-sizing:border-box;">
+          <label style="font-size:0.75rem; font-weight:600;">Açıklama:</label>
+          <textarea id="pop_desc_${wpt.id}" style="width:100%; height:40px; margin-bottom:6px; padding:4px; box-sizing:border-box;">${wpt.desc || ''}</textarea>
+          <label style="font-size:0.75rem; font-weight:600;">Simge / İkon:</label>
+          <select id="pop_icon_${wpt.id}" style="width:100%; padding:4px; margin-bottom:8px;">${iconOptionsHtml}</select>
+          <div style="display:flex; gap:6px;">
+            <button onclick="saveWptDetails('${wpt.id}')" style="background:#059669; color:white; border:none; padding:6px 10px; border-radius:4px; cursor:pointer; flex:1; font-weight:bold;">Kaydet</button>
+            <button onclick="deleteWpt('${wpt.id}')" style="background:#ef4444; color:white; border:none; padding:6px 10px; border-radius:4px; cursor:pointer; font-weight:bold;">Sil</button>
+          </div>
+        `;
+
+        marker.bindPopup(popupDiv);
+      });
+
+      if (hasPoints) {
+        editorMap.fitBounds(bounds, { padding: [40, 40] });
+      }
+    }
+
+    function saveWptDetails(wptId) {
+      const waypoints = parsedDaysData[activeEditorDayId]?.donus?.waypoints || [];
+      const wpt = waypoints.find(w => w.id === wptId);
+
+      if (wpt) {
+        wpt.name = document.getElementById(`pop_name_${wptId}`).value;
+        wpt.desc = document.getElementById(`pop_desc_${wptId}`).value;
+        wpt.icon = document.getElementById(`pop_icon_${wptId}`).value;
+        renderEditorMapLayers();
+      }
+    }
+
+    function deleteWpt(wptId) {
+      if (parsedDaysData[activeEditorDayId]?.donus?.waypoints) {
+        parsedDaysData[activeEditorDayId].donus.waypoints = parsedDaysData[activeEditorDayId].donus.waypoints.filter(w => w.id !== wptId);
+        renderEditorMapLayers();
+      }
+    }
+
+    function encodeGeoData(geoObj) {
+      return btoa(unescape(encodeURIComponent(JSON.stringify(geoObj))));
+    }
+
+    function generateAllJsonData() {
+      const turKategorisi = document.getElementById('turKategorisi').value.trim() || "Genel Rotalar";
+      const catSlug = generateRouteId(turKategorisi).replace('rota-', '');
+      const generatedRoutes = [];
+
+      const dayCards = document.querySelectorAll('.day-card');
+      for (const card of dayCards) {
+        const dayId = card.id.replace('dayCard_', '');
+        const fullTitle = getCombinedTitle(dayId);
+        const aciklama = document.getElementById(`aciklama_${dayId}`).value.trim();
+
+        if (!fullTitle || !parsedDaysData[dayId] || !parsedDaysData[dayId].gidis) {
+          alert(`Lütfen "${fullTitle || 'Etap'}" için başlık ve Gidiş GPX dosyasını tamamlayın!`);
+          return;
+        }
+
+        generatedRoutes.push({
+          id: generateRouteId(fullTitle),
+          turKategorisi: turKategorisi,
+          baslik: fullTitle,
+          aciklama: aciklama,
+          maskedGeoData: encodeGeoData(parsedDaysData[dayId])
+        });
+      }
+
+      document.getElementById('targetSlugName').innerText = catSlug;
+      document.getElementById('jsonOutput').value = JSON.stringify(generatedRoutes, null, 2);
+      document.getElementById('indexOutput').value = JSON.stringify({
+        id: catSlug,
+        baslik: turKategorisi,
+        jsonPath: `data/kategoriler/${catSlug}.json`
+      }, null, 2);
+
+      document.getElementById('resultBox').style.display = 'block';
+    }
+
+    function copyToClipboard(elementId) {
+      const textarea = document.getElementById(elementId);
+      textarea.select();
+      document.execCommand('copy');
+      alert("📋 Kodlar panoya kopyalandı!");
+    }
+  </script>
+</body>
+</html>
