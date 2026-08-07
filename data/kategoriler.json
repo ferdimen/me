@@ -18,6 +18,11 @@
   "id": "kuzeyden-galibau",
   "baslik": "2024 Kuzeyden Galiba",
   "jsonPath": "data/kategoriler/24kg.json"
-}  
+},
+{
+  "id": "2024-guz-guneyi",
+  "baslik": "2024 Güz Güneyi",
+  "jsonPath": "data/kategoriler/24gg.json"
+}
   
 ]
