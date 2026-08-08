@@ -23,6 +23,21 @@
   "id": "2024-guz-guneyi",
   "baslik": "2024 Güz Güneyi",
   "jsonPath": "data/kategoriler/24gg.json"
+},
+{
+  "id": "2024-subat",
+  "baslik": "2024 Şubat",
+  "jsonPath": "data/kategoriler/24s.json"
+},
+{
+  "id": "2023-aklim-kalmasin",
+  "baslik": "2023 Aklım Kalmasın",
+  "jsonPath": "data/kategoriler/23-ak.json"
+},
+{
+  "id": "2023-yoklukta-gider",
+  "baslik": "2023 Yoklukta Gider",
+  "jsonPath": "data/kategoriler/23-yg.json"
 }
   
 ]
