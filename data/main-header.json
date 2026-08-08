@@ -19,7 +19,7 @@
     { "title": "Vasiyet", "href": "#sablon", "isSection": true },
     { "title": "Destek", "href": "#destek", "isSection": true },
     { "title": "İletişim", "href": "#iletisim", "isSection": true, "alwaysAnchor": true }
-  ],
+  ], 
   "socials": [
     {
       "name": "YouTube",
