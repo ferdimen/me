@@ -3107,5 +3107,17 @@
     "varsayilan": false,
     "agirlik": "0",
     "etiketler": "tava, tencere, kamp mutfağı"
+  },
+  {
+    "baslik": "Prezervatif",
+    "kategori": "Temizlik/Sağlık ve Kişisel Bakım",
+    "tarih": "2019-06",
+    "kapakresmi": "/img/ekipman/2019/temizliksaglikvekisiselbakim-prezervatif.jpg",
+    "aciklama": "Kendine ve karşısındakine değer veren her yetişkin bireyin günlük hayatında, seyahatlerinde ya da çantasında tıpkı diğer kişisel bakım eşyaları gibi prezervatif bulundurması son derece olağan ve sorumluluk sahibi bir davranıştır.",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "5",
+    "etiketler": "sağlık"
   }
 ]
