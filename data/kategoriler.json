@@ -1,43 +1,72 @@
 [
+{
+  "id": "2026-anadolu-engeregi",
+  "baslik": "2026 Anadolu Engereği",
+  "jsonPath": "data/kategoriler/2026-anadolu-engeregi.json"
+},
   {
-    "id": "anadolu-irfani",
+    "id": "2025-anadolu-irfani",
     "baslik": "2025 Anadolu İrfanı",
-    "jsonPath": "data/kategoriler/25ai.json"
+    "jsonPath": "data/kategoriler/2025-anadolu-irfani.json"
   },
     {
-  "id": "toros-canavari",
+  "id": "2025-toros-canavari",
   "baslik": "2025 Toros Canavarı",
-  "jsonPath": "data/kategoriler/25tc.json"
+  "jsonPath": "data/kategoriler/2025-toros-canavari.json"
   },
   {
-    "id": "icten-anadolu",
+    "id": "2025-icten-anadolu",
     "baslik": "2024 İçten Anadolu",
-    "jsonPath": "data/kategoriler/25ia.json"
+    "jsonPath": "data/kategoriler/2025-icten-anadolu.json"
   },
 {
-  "id": "kuzeyden-galibau",
+  "id": "2024-kuzeyden-galibakuzeyden-galiba",
   "baslik": "2024 Kuzeyden Galiba",
-  "jsonPath": "data/kategoriler/24kg.json"
+  "jsonPath": "data/kategoriler/2024-kuzeyden-galiba.json"
 },
 {
   "id": "2024-guz-guneyi",
   "baslik": "2024 Güz Güneyi",
-  "jsonPath": "data/kategoriler/24gg.json"
+  "jsonPath": "data/kategoriler/2024-guz-guneyi.json"
 },
 {
   "id": "2024-subat",
   "baslik": "2024 Şubat",
-  "jsonPath": "data/kategoriler/24s.json"
+  "jsonPath": "data/kategoriler/2024-subat.json"
 },
 {
   "id": "2023-aklim-kalmasin",
   "baslik": "2023 Aklım Kalmasın",
-  "jsonPath": "data/kategoriler/23-ak.json"
+  "jsonPath": "data/kategoriler/2023-aklim-kalmasin.json"
 },
 {
   "id": "2023-yoklukta-gider",
   "baslik": "2023 Yoklukta Gider",
-  "jsonPath": "data/kategoriler/23-yg.json"
+  "jsonPath": "data/kategoriler/2023-yoklukta-gider.json"
+},
+{
+  "id": "2022-kis-kis",
+  "baslik": "2022 Kış Kış",
+  "jsonPath": "data/kategoriler/2022-kis-kis.json"
+},
+{
+  "id": "2022-trakya-gelibolu",
+  "baslik": "2022 Trakya & Gelibolu",
+  "jsonPath": "data/kategoriler/2022-trakya-gelibolu.json"
+},
+{
+  "id": "2022-anadolum-benim",
+  "baslik": "2022 Anadolum Benim",
+  "jsonPath": "data/kategoriler/2022-anadolum-benim.json"
+},
+{
+  "id": "2022-istiklal-yolu",
+  "baslik": "2022 İstiklal Yolu",
+  "jsonPath": "data/kategoriler/2022-istiklal-yolu.json"
+},
+{
+  "id": "2022-az-anadolu",
+  "baslik": "2022 AZ Anadolu",
+  "jsonPath": "data/kategoriler/2022-az-anadolu.json"
 }
-  
 ]
