@@ -1,4 +1,9 @@
 [
+{
+  "id": "2026-anadolu-engeregi",
+  "baslik": "2026 Anadolu Engereği",
+  "jsonPath": "data/kategoriler/2026-anadolu-engeregi.json"
+},
   {
     "id": "2025-anadolu-irfani",
     "baslik": "2025 Anadolu İrfanı",
@@ -55,6 +60,11 @@
   "jsonPath": "data/kategoriler/2022-anadolum-benim.json"
 },
 {
+  "id": "2022-aykiri-yollar",
+  "baslik": "2022 Aykırı Yollar",
+  "jsonPath": "data/kategoriler/2022-aykiri-yollar.json"
+},
+{
   "id": "2022-istiklal-yolu",
   "baslik": "2022 İstiklal Yolu",
   "jsonPath": "data/kategoriler/2022-istiklal-yolu.json"
@@ -63,5 +73,40 @@
   "id": "2022-az-anadolu",
   "baslik": "2022 AZ Anadolu",
   "jsonPath": "data/kategoriler/2022-az-anadolu.json"
+},
+{
+  "id": "2021-alasehir-kusadasi",
+  "baslik": "2021 Alaşehir - Kuşadası",
+  "jsonPath": "data/kategoriler/2021-alasehir-kusadasi.json"
+},
+{
+  "id": "2021-karaburun",
+  "baslik": "2021 Karaburun",
+  "jsonPath": "data/kategoriler/2021-karaburun.json"
+},
+{
+  "id": "2021-bafa-golu",
+  "baslik": "2021 Bafa Gölü",
+  "jsonPath": "data/kategoriler/2021-bafa-golu.json"
+},
+{
+  "id": "2021-deli-divane",
+  "baslik": "2021 Deli Divane",
+  "jsonPath": "data/kategoriler/2021-deli-divane.json"
+},
+{
+  "id": "2021-kumpasa-geldim",
+  "baslik": "2021 Kumpasa Geldim",
+  "jsonPath": "data/kategoriler/2021-kumpasa-geldim.json"
+},
+{
+  "id": "2021-gelibolu-1915",
+  "baslik": "2021 Gelibolu 1915",
+  "jsonPath": "data/kategoriler/2021-gelibolu-1915.json"
+},
+{
+  "id": "2020-zafere-giden-yol",
+  "baslik": "2020 Zafere Giden Yol",
+  "jsonPath": "data/kategoriler/2020-zafere-giden-yol.json"
 }
 ]
