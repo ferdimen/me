@@ -108,5 +108,50 @@
   "id": "2020-zafere-giden-yol",
   "baslik": "2020 Zafere Giden Yol",
   "jsonPath": "data/kategoriler/2020-zafere-giden-yol.json"
+},
+{
+  "id": "2019-of-alanya",
+  "baslik": "2019 Of Alanya",
+  "jsonPath": "data/kategoriler/2019-of-alanya.json"
+},
+{
+  "id": "2019-monapetra",
+  "baslik": "2019 Monapetra",
+  "jsonPath": "data/kategoriler/2019-monapetra.json"
+},
+{
+  "id": "2019-ata-yolu",
+  "baslik": "2019 Ata Yolu",
+  "jsonPath": "data/kategoriler/2019-ata-yolu.json"
+},
+{
+  "id": "2019-sandras-arapapisti",
+  "baslik": "2019 Sandras & Arapapıştı",
+  "jsonPath": "data/kategoriler/2019-sandras-arapapisti.json"
+},
+{
+  "id": "2018-kibris",
+  "baslik": "2018 Kıbrıs",
+  "jsonPath": "data/kategoriler/2018-kibris.json"
+},
+{
+  "id": "2018-bati-karadeniz",
+  "baslik": "2018 Batı Karadeniz",
+  "jsonPath": "data/kategoriler/2018-bati-karadeniz.json"
+},
+{
+  "id": "2018-kaz-daglari",
+  "baslik": "2018 Kaz Dağları",
+  "jsonPath": "data/kategoriler/2018-kaz-daglari.json"
+},
+{
+  "id": "2018-zafer-yoluna",
+  "baslik": "2018 Zafer Yoluna",
+  "jsonPath": "data/kategoriler/2018-zafer-yoluna.json"
+},
+{
+  "id": "2018-sky-b-menderes",
+  "baslik": "2018 S.K.Y. B. Menderes",
+  "jsonPath": "data/kategoriler/2018-sky-b-menderes.json"
 }
 ]
