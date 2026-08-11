@@ -3104,7 +3104,7 @@
       162
     ],
     "yorum": "Yemek pişirirken tabanına yapışma derdini tamamen unutturan, yemek sonrası bulaşık krizini bitirip tek hamlede tertemiz olan; o pratik yapısıyla kamp mutfağındaki en büyük zahmeti ortadan kaldıran kusursuz yardımcımdır. Çizilmelere karşı korumak için metal kaşıkların kapısından bile geçmeyip yalnızca tahta kaşıkla yemek pişirmeye dikkat etmek gerekli",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "0",
     "etiketler": "tava, tencere, kamp mutfağı"
   },
