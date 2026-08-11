@@ -8,7 +8,6 @@ let hoverMarker = null;
 let currentRoutePoints = [];
 
 // 1. HARİTAYI VE KATMANLARI İLKLENDİRME
-// 1. HARİTAYI VE KATMANLARI İLKLENDİRME
 function initMap() {
   const mapEl = document.getElementById('map');
   if (!mapEl) return;
@@ -17,7 +16,7 @@ function initMap() {
 
   // Yetkisiz kullanıcılar için zoom sınırları
   const minZoomLevel = isAuthorized ? 1 : 6;
-  const maxZoomLevel = isAuthorized ? 19 : 11; // Yetkisizse en fazla 11. seviyeye kadar yakınlaşabilir
+  const maxZoomLevel = isAuthorized ? 19 : 9; // Yetkisizse en fazla 11. seviyeye kadar yakınlaşabilir
 
   const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: maxZoomLevel,
