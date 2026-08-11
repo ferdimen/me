@@ -3116,7 +3116,7 @@
     "aciklama": "Kendine ve karşısındakine değer veren her yetişkin bireyin günlük hayatında, seyahatlerinde ya da çantasında tıpkı diğer kişisel bakım eşyaları gibi prezervatif bulundurması son derece olağan ve sorumluluk sahibi bir davranıştır.",
     "bagli_urunler": [],
     "yorum": "",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "5",
     "etiketler": "sağlık"
   }
