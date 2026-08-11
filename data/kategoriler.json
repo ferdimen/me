@@ -1,9 +1,4 @@
 [
-{
-  "id": "2026-anadolu-engeregi",
-  "baslik": "2026 Anadolu Engereği",
-  "jsonPath": "data/kategoriler/2026-anadolu-engeregi.json"
-},
   {
     "id": "2025-anadolu-irfani",
     "baslik": "2025 Anadolu İrfanı",
@@ -153,5 +148,20 @@
   "id": "2018-sky-b-menderes",
   "baslik": "2018 S.K.Y. B. Menderes",
   "jsonPath": "data/kategoriler/2018-sky-b-menderes.json"
+},
+{
+  "id": "2017-trakya",
+  "baslik": "2017 Trakya",
+  "jsonPath": "data/kategoriler/2017-trakya.json"
+},
+{
+  "id": "2017-gokova",
+  "baslik": "2017 Gökova",
+  "jsonPath": "data/kategoriler/2017-gokova.json"
+},
+{
+  "id": "2017-sky-bakircay",
+  "baslik": "2017 S.K.Y. Bakırçay",
+  "jsonPath": "data/kategoriler/2017-sky-bakircay.json"
 }
 ]
