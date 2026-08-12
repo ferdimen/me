@@ -163,5 +163,45 @@
   "id": "2017-sky-bakircay",
   "baslik": "2017 S.K.Y. Bakırçay",
   "jsonPath": "data/kategoriler/2017-sky-bakircay.json"
+},
+  {
+  "id": "2016-sky-k-menderes",
+  "baslik": "2016 S.K.Y. K. Menderes",
+  "jsonPath": "data/kategoriler/2016-sky-k-menderes.json"
+},
+{
+  "id": "2015-kendime-yolculuk",
+  "baslik": "2015 Kendime Yolculuk",
+  "jsonPath": "data/kategoriler/2015-kendime-yolculuk.json"
+},
+{
+  "id": "2015-mersin",
+  "baslik": "2015 Mersin",
+  "jsonPath": "data/kategoriler/2015-mersin.json"
+},
+{
+  "id": "2014-frig-lidya",
+  "baslik": "2014 Frig & Lidya",
+  "jsonPath": "data/kategoriler/2014-frig-lidya.json"
+},
+{
+  "id": "2013-kusadasi---corlu",
+  "baslik": "2013 Kuşadası - Çorlu",
+  "jsonPath": "data/kategoriler/2013-kusadasi-corlu.json"
+},
+{
+  "id": "2013-turkiye",
+  "baslik": "2013 Türkiye",
+  "jsonPath": "data/kategoriler/2013-turkiye.json"
+},
+{
+  "id": "2012-ankara-antalya-izmir",
+  "baslik": "2012 Ankara - Antalya - İzmir",
+  "jsonPath": "data/kategoriler/2012-ankara-antalya-izmir.json"
+},
+{
+  "id": "2011-enez",
+  "baslik": "2011 Enez",
+  "jsonPath": "data/kategoriler/2011-enez.json"
 }
 ]
