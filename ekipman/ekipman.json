@@ -3119,5 +3119,17 @@
     "varsayilan": true,
     "agirlik": "5",
     "etiketler": "sağlık"
+  },
+  {
+    "baslik": "Powerbank 40000 mAh 22.5Watt",
+    "kategori": "Elektronik",
+    "tarih": "2026-08-17",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "Yeni envanter kaydı yapıldı",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "elektrik, elektronik, şarj, powerbank"
   }
 ]
