@@ -1372,19 +1372,19 @@
     "id": 104
   },
   {
-    "baslik": "Power bank",
+    "baslik": "Powerbank",
     "kategori": "Elektronik",
     "tarih": "2013, 2016",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/e816ed61-49ea-4f2d-b4ee-7777f268a9e3.jpg",
     "aciklama": "10400 mAh kapasiteye sahip, cihazları ekonomik kullandığım takdirde yaklaşık bir hafta yetecek kadar elektrik depolayabiliyorum. ilerleyen zamanlarda dinamo yada güneş panelleri ile entegre etmeyi planlıyorum. Çoklu kablosu sayesinde kullandığım cihazları çok rahat şarj edebiliyorum.kıymetli cihazlarımın çalınma ihtimalinin olduğu gözümün tutmadığı ortamlarda kullanıyorum.",
+    "bagli_urunler": [],
     "yorum": "Bozuldu.",
     "varsayilan": false,
     "agirlik": "0",
-    "etiketler": "powerbank, elektronik",
-    "id": 105
+    "etiketler": "powerbank, elektronik"
   },
   {
-    "baslik": "Power bank 10000 MAh",
+    "baslik": "Powerbank 10000 MAh",
     "kategori": "Elektronik",
     "tarih": "2020",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/afa7c64c-5537-426a-93eb-58529c3d1cec.jpg",
@@ -1398,7 +1398,7 @@
     "etiketler": "powerbank, elektronik, elektrik"
   },
   {
-    "baslik": "Power bank 30000 MAh",
+    "baslik": "Powerbank 30000 MAh",
     "kategori": "Elektronik",
     "tarih": "2022",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/fe560c34-e84c-49b9-8fd9-483af9fd6d27.jpg",
