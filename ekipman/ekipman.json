@@ -3131,5 +3131,17 @@
     "varsayilan": true,
     "agirlik": "0",
     "etiketler": "elektrik, elektronik, şarj, powerbank"
+  },
+  {
+    "baslik": "Tek Kullanımlık Lateks Eldiven",
+    "kategori": "Temizlik/Sağlık ve Kişisel Bakım",
+    "tarih": "2020-04-20",
+    "kapakresmi": "/img/ekipman/2020/temizliksaglikvekisiselbakim-tekkullanimliklatekseldiven.jpg",
+    "aciklama": "Asıl amacı genelde ufak tefek bisiklet tamir ve bakım işlerinde eller yağlanmasın, sim siyah kir içinde kalmasın diye kullanılmak olsa da, benim rotalarda asıl kullanım alanı çok daha başkadır: Suyun yetersiz olduğu o ıssız doğa anlarında tuvalet ihtiyacını giderdikten sonra tam bir hijyen sağlamak ve elleri korumak için kullandığım en pratik hayat kurtarıcımdır.",
+    "bagli_urunler": [],
+    "yorum": "Aslında acil durumlar için yanımda çoğunlukla su taşırım; İçme suyu ile kullanma suyunu karıştırmamak için kullanma suyunun etiketini söküyorum; etiketsiz şişenin temizlik suyu olduğunu bu sayede hemen anlıyorum.",
+    "varsayilan": false,
+    "agirlik": "10",
+    "etiketler": "temizlik, eldiven"
   }
 ]
