@@ -3140,7 +3140,7 @@
     "aciklama": "Asıl amacı genelde ufak tefek bisiklet tamir ve bakım işlerinde eller yağlanmasın, sim siyah kir içinde kalmasın diye kullanılmak olsa da, benim rotalarda asıl kullanım alanı çok daha başkadır: Suyun yetersiz olduğu o ıssız doğa anlarında tuvalet ihtiyacını giderdikten sonra tam bir hijyen sağlamak ve elleri korumak için kullandığım en pratik hayat kurtarıcımdır.",
     "bagli_urunler": [],
     "yorum": "Aslında acil durumlar için yanımda çoğunlukla su taşırım; İçme suyu ile kullanma suyunu karıştırmamak için kullanma suyunun etiketini söküyorum; etiketsiz şişenin temizlik suyu olduğunu bu sayede hemen anlıyorum.",
-    "varsayilan": false,
+    "varsayilan": true,
     "agirlik": "10",
     "etiketler": "temizlik, eldiven"
   }
