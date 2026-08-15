@@ -3171,5 +3171,20 @@
     "varsayilan": true,
     "agirlik": "820",
     "etiketler": "kamp malzemeleri, şişme mat"
+  },
+  {
+    "baslik": "Quechua 2 Kişilik Kamp Çadırı MH100 -",
+    "kategori": "Kamp Malzemeleri",
+    "tarih": "2026-08-15",
+    "kapakresmi": "/img/ekipman/2026/kampmalzemeleri-quechua2kisilikkampcadirimh100.jpg",
+    "aciklama": "Polleri kırılıp iç tentesi yıpranan eski Arpenaz çadırı tamamen hurdaya çıkarmak yerine, \"yedekte bulunsun\" mantığıyla birebir aynı ebatlarda yenisiyle güncellediğim, her ihtimale karşı stratejik yedekleme hamlem olan çadırımdır.",
+    "bagli_urunler": [
+      16,
+      17
+    ],
+    "yorum": "",
+    "varsayilan": true,
+    "agirlik": "2600",
+    "etiketler": "Çadır"
   }
 ]
