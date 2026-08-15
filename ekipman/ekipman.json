@@ -3143,5 +3143,19 @@
     "varsayilan": true,
     "agirlik": "10",
     "etiketler": "temizlik, eldiven"
+  },
+  {
+    "baslik": "Outdoor Sandalet",
+    "kategori": "Giyim",
+    "tarih": "2026-08-17",
+    "kapakresmi": "/img/ekipman/2026/giyim-outdoorsandalet.jpg",
+    "aciklama": "Sert bir arazi sürüşünde eski sandaletimle düşüp pert ettikten sonra, Decathlon'da yaz sonu indirimini yakalayıp edindiğim yeni outdoor sandaletimdir. Artık kampta ekstra terlik ya da yedek ayakkabı taşıma derdini tamamen bitirerek turlarda sadece bu sandalet ve bot ikilisiyle yola devam etmemi sağlayan en pratik hafiflik hamlemdir.",
+    "bagli_urunler": [
+      122
+    ],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "655",
+    "etiketler": "sandalet, giyim"
   }
 ]
