@@ -2760,17 +2760,18 @@
     "id": 207
   },
   {
-    "baslik": "Forclaz MT100 XL Şişme Mat",
+    "baslik": "Forclaz MT100 XL Şişme Mat (195x60)",
     "kategori": "Kamp Malzemeleri",
     "tarih": "2026-07-30",
     "kapakresmi": "/img/ekipman/2026/kamp-malzemeleri-forclazmt100xlimemat.jpg",
-    "aciklama": "Tam 193'e 60 ölçüleriyle boyuma boy, posuma pos uyan; sabahtan akşama kadar pedalladıktan sonra kamp yerini kurduğumda üzerine uzandığım an yorgunluğumu alan, gri rengiyle doğaya uyum sağlayan ve heybeye sığma derdiyle çok yormadan o tatlı uykuyu garantileyen en konforlu yatak yoldaşımdır.",
-    "bagli_urunler": [],
+    "aciklama": "Tam 195'e 60 ölçüleriyle boyuma boy, posuma pos uyan; sabahtan akşama kadar pedalladıktan sonra kamp yerini kurduğumda üzerine uzandığım an yorgunluğumu alan, gri rengiyle doğaya uyum sağlayan ve heybeye sığma derdiyle çok yormadan o tatlı uykuyu garantileyen en konforlu yatak yoldaşımdır.",
+    "bagli_urunler": [
+      235
+    ],
     "yorum": "",
     "varsayilan": true,
     "agirlik": "1020",
-    "etiketler": "şişme mat, mat, Decathlon, kamp malzemeleri",
-    "id": 208
+    "etiketler": "şişme mat, mat, Decathlon, kamp malzemeleri"
   },
   {
     "baslik": "Forclaz 2L Bel Çantaları",
