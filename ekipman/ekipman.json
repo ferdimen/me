@@ -3187,5 +3187,17 @@
     "varsayilan": true,
     "agirlik": "2600",
     "etiketler": "Çadır"
+  },
+  {
+    "baslik": "Yelek",
+    "kategori": "Giyim",
+    "tarih": "2020-04-1",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "",
+    "bagli_urunler": [],
+    "yorum": "Geçmişte geçirdiğim ameliyat sonrası göğsümün sol yanı rüzgara ve soğuğa karşı hassaslaştığı için, en ufak bir esintide üşütmemek adına yaz kış demeden üzerimden eksik etmediğim, hayati hassasiyeti koruyan en sadık giyim parçamdır.",
+    "varsayilan": false,
+    "agirlik": "200",
+    "etiketler": "giyim, yelek"
   }
 ]
