@@ -239,19 +239,18 @@
   {
     "baslik": "Çadır Altı İçin Branda",
     "kategori": "Kamp Malzemeleri",
-    "tarih": "2021-06",
+    "tarih": "2019-06",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/d204c6f4-246b-4c3c-84c6-8a51ea5eec98.jpg",
     "aciklama": "Çadır Altına seriyorum. çadırı hem sıvı ve nemden hemde hemde altının kirlenmesini önlüyor.",
-    "yorum": "",
-    "varsayilan": true,
-    "agirlik": "0",
-    "etiketler": "kamp malzemeleri, Çadır, branda",
     "bagli_urunler": [
       16,
       80,
       18
     ],
-    "id": 17
+    "yorum": "",
+    "varsayilan": true,
+    "agirlik": "0",
+    "etiketler": "kamp malzemeleri, Çadır, branda"
   },
   {
     "baslik": "Loap Vats 2 Çadır",
