@@ -3198,5 +3198,19 @@
     "varsayilan": false,
     "agirlik": "200",
     "etiketler": "giyim, yelek"
+  },
+  {
+    "baslik": "Solognac Crosshunt 100 Bot",
+    "kategori": "Giyim",
+    "tarih": "2022-11-22",
+    "kapakresmi": "/img/ekipman/2022/giyim-solognaccrosshunt100bot.jpg",
+    "aciklama": "Kış aylarında soğuk ve yağışlı havalarda tura çıkmaya başlayınca SPD ayakkabıyı bir kenara bırakıp geçtiğim; suyu geçirmeyen, ayakları sıcak tutan ve zorlu zeminlerde güven veren en sağlam kışlık yürüyüş ve sürüş botumdur.",
+    "bagli_urunler": [
+      121
+    ],
+    "yorum": "",
+    "varsayilan": false,
+    "agirlik": "1000",
+    "etiketler": "giyim, bot, ayakkabı"
   }
 ]
