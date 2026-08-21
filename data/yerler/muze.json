@@ -91,6 +91,15 @@
                 "lat": 36.544008,
                 "lng": 31.988705
             }
+        },
+        {
+            "name": "Amasya Arkeoloji Müzesi - Amasya",
+            "description": "1925’de kurulan Amasya Müzesi önceleri muhtelif binalarda hizmet vermiştir. 1980 yılında şimdiki modern binasına taşınan müzede Geç Neolitik Erken Kalkolitik Çağ’dan itibaren Tunç Çağı, Hitit, Urartu, Frig, İskit, Pers, Helenistik, Roma, Bizans, Selçuklu ve Osmanlı Dönemlerine ait 13 ayrı medeniyetin eserlerini bir arada görmek mümkündür. Müze binasının batısında bulunan müze bahçesi içerisinde Hitit, Helenistik, Roma, Bizans, İlhanlı, Selçuklu ve Osmanlı Dönemlerine ait taş eserler sergilenmektedir. Daha Önce Müzenin bahçesinde bulunan ve Selçuklu Sultanı I. Mesud’a ait olan türbe içinde sergilenen İlhanlılar dönemine ait 14. yy.’dan kalma mumyalar Müze içerisindeki özel bir bölümde sergilenmektedir. İlhanlıların Anadolu’daki hakimiyetleri döneminde Amasya’da nazırlık ve emirlik yapmış kişilere ve yakınlarına ait mumyaların bulunduğu bu bölüm, müzenin en ilgi çeken yerlerinden birini oluşturmaktadır. Müzede ziyaretçilerin amatör makinelerle fotoğraf ve görüntü almalarına izin verilmektedir.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.649554,
+                "lng": 35.824662
+            }
         }
     ]
 }
