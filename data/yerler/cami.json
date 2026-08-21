@@ -10,6 +10,15 @@
                 "lat": 41.6778963,
                 "lng": 26.5591908
             }
+        },
+        {
+            "name": "Üç Şerefeli Camii",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 41.6774693,
+                "lng": 26.552156
+            }
         }
     ]
 }
