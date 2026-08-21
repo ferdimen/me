@@ -3212,5 +3212,17 @@
     "varsayilan": false,
     "agirlik": "1000",
     "etiketler": "giyim, bot, ayakkabı"
+  },
+  {
+    "baslik": "Termal İçlik",
+    "kategori": "Giyim",
+    "tarih": "2026-08-25",
+    "kapakresmi": "/img/resim-yok.png",
+    "aciklama": "Soğuk günlerde ve gecelerde üşümeyi tamamen tarihe gömmek için envantere eklediğim; hem maksimum sıcaklık sunan hem de heybelerde neredeyse hiç yer kaplamayan vazgeçilmez termal içliklerim.",
+    "bagli_urunler": [],
+    "yorum": "",
+    "varsayilan": true,
+    "agirlik": "100",
+    "etiketler": "içlik, giyim, termal içlik"
   }
 ]
