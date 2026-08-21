@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferdimen // İçerik Yönetim Paneli</title>
     <link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
-	<!-- Leaflet CSS & JS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f4f6f9; color: #333; }
@@ -474,31 +473,15 @@
         </div>
     </fieldset>
 </div>
-
 <div id="yerler-tab" class="tab-content">
     <h3>Yer Yönetimi</h3>
-    <div class="form-group">
-        <label>Kategori Seç:</label>
-        <select id="kategori-secici" onchange="kategoriDegistirildi()"></select>
-    </div>
-    <div id="map" style="height: 400px; margin-bottom: 20px; border-radius: 8px;"></div>
+    <div id="map" style="height: 300px; margin-bottom: 20px; border-radius: 8px;"></div>
     
     <fieldset>
-        <legend>Yer Ekle/Düzenle</legend>
-        <form id="form-yer">
-            <input type="hidden" id="yer-index" value="-1">
-            <div class="form-row">
-                <div class="form-group"><label>İsim:</label><input type="text" id="yer-isim" required></div>
-                <div class="form-group"><label>Lat:</label><input type="text" id="yer-lat"></div>
-                <div class="form-group"><label>Lng:</label><input type="text" id="yer-lng"></div>
-            </div>
-            <textarea id="yer-desc" placeholder="Açıklama" rows="3"></textarea>
-            <button type="submit" class="btn">Kaydet</button>
-        </form>
+        <legend>Mevcut Yerler ve Düzenleme</legend>
+        <input type="text" id="yer-arama" placeholder="Yerlerde ara..." onkeyup="yerleriFiltrele()" style="margin-bottom:10px;">
+        <div id="yerler-listesi-kapsayici" style="max-height: 400px; overflow-y: auto;"></div>
     </fieldset>
-
-    <input type="text" id="yer-arama" placeholder="Yerler içinde ara..." onkeyup="yerleriListele()">
-    <div id="yerler-listesi-kapsayici"></div>
 </div>
 <!-- // ==========================================	SAYFA İÇERİKLERİ ÜSTE EKLENİYOR	-->
                 <!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
@@ -548,13 +531,9 @@ let mevcutBildirimlerJson = {}; // Tüm bildirimler.json objesini tutacak
 const PATH_BILDIRIMLER = "data/bildirimler.json";
 let shaBildirimler = "";
 let mevcutBildirimlerJson = {}; // Tüm bildirimler.json objesini tutacak
-
 const PATH_KATEGORILER = "data/yerler/kategoriler.json";
-let shaKategoriler = "";
-let aktifKategoriJsonPath = "";
-let mevcutYerListesi = [];
-let map;
-let marker;
+let harita;
+let tumYerler = []; // Tüm kategorilerden çekilen birleşik liste
 // ========================================== PATH_XXX BİLGİLERİ ÜSTE EKLENİYOR
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -606,7 +585,7 @@ if (token) {
     konumuYukle(token);
     haberleriYukle(token);
 	bildirimleriYukle(token);
-	kategorileriYukle(token);
+	yerleriYukle(token);
 // ========================================== XXX(token) BİLGİLERİ ÜSTE EKLENİYOR     
     // YENİ EKLENEN KRONOLOJİ YÜKLEYİCİLERİ
     yazilariYukle(token).then(() => {
@@ -1406,68 +1385,57 @@ async function githubDosyaSil(token, dosyaYolu, mesaj) {
         });
     } catch(e) {}
 }
-// KATEGORİLERİ GİTHUB'DAN ÇEKME
-async function kategorileriYukle(token) {
-    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KATEGORILER}`;
-    try {
-        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
-        if(!response.ok) throw new Error("Kategoriler yüklenemedi.");
-
-        const data = await response.json();
-        shaKategoriler = data.sha;
-
-        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-        const json = JSON.parse(decodedContent);
-
-        const select = document.getElementById('kategori-secici');
-        select.innerHTML = ""; // Temizle
-        
-        json.categories.forEach(cat => {
-            let opt = document.createElement('option');
-            opt.value = cat.jsonPath; // Örn: data/yerler/gol.json
-            opt.innerText = cat.baslik;
-            select.appendChild(opt);
-        });
-
-        // İlk kategoriyi varsayılan olarak yükle
-        if(json.categories.length > 0) {
-            aktifKategoriJsonPath = json.categories[0].jsonPath;
-            yerleriYukle(token);
-        }
-    } catch (error) {
-        console.log("Kategori yükleme hatası: " + error.message);
+// 1. Kategorileri ve tüm yerleri çek
+async function yerleriYukle(token) {
+    const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KATEGORILER}`, { headers: { "Authorization": `token ${token}` } });
+    const data = await res.json();
+    const kategoriler = JSON.parse(decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')));
+    
+    tumYerler = [];
+    for (let kat of kategoriler) {
+        const yerRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${kat.jsonPath}`, { headers: { "Authorization": `token ${token}` } });
+        const yerData = await yerRes.json();
+        const icerik = JSON.parse(decodeURIComponent(atob(yerData.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')));
+        icerik.places.forEach(p => tumYerler.push({...p, sha: yerData.sha, path: kat.jsonPath}));
     }
+    haritayiBaslat();
+    yerleriListele(tumYerler);
 }
-function haritaGuncelle() {
-    if (!map) {
-        map = L.map('map').setView([39, 35], 6);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-    }
-    // Marker ekleme ve sürükleme mantığı
-    if (marker) map.removeLayer(marker);
-    marker = L.marker([39, 35], {draggable: true}).addTo(map);
-    marker.on('dragend', function(e) {
-        document.getElementById('yer-lat').value = e.target.getLatLng().lat;
-        document.getElementById('yer-lng').value = e.target.getLatLng().lng;
+
+// 2. Haritayı başlat
+function haritayiBaslat() {
+    if(harita) harita.remove();
+    harita = L.map('map').setView([41.0, 28.0], 7);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(harita);
+    tumYerler.forEach((yer, index) => {
+        L.marker([yer.coordinates.lat, yer.coordinates.lng], {draggable: true})
+         .addTo(harita)
+         .bindPopup(yer.name)
+         .on('dragend', (e) => {
+             const pos = e.target.getLatLng();
+             // Burada güncelleme mantığını (koordinat kaydı) çalıştırın
+         });
     });
 }
-function yerleriListele() {
-    const arama = document.getElementById('yer-arama').value.toLowerCase();
+
+// 3. Liste görünümü
+function yerleriListele(liste) {
     const kapsayici = document.getElementById('yerler-listesi-kapsayici');
-    kapsayici.innerHTML = "";
-    mevcutYerListesi.filter(y => y.name.toLowerCase().includes(arama)).forEach((yer, index) => {
-        kapsayici.innerHTML += `
-            <div class="haber-kart">
-                <span>${yer.name}</span>
-                <button onclick="yerDuzenle(${index})">Düzenle</button>
-            </div>`;
-    });
+    kapsayici.innerHTML = liste.map((yer, i) => `
+        <div class="haber-kart" style="margin-bottom:5px;">
+            <span>${yer.name}</span>
+            <div>
+                <button class="btn-duzenle" onclick="duzenle(${i})">Düzenle</button>
+                <button class="btn-sil" onclick="sil(${i})">Sil</button>
+            </div>
+        </div>
+    `).join('');
 }
 
-function kategoriDegistirildi() {
-    const token = localStorage.getItem('gh_oauth_token');
-    aktifKategoriJsonPath = document.getElementById('kategori-secici').value;
-    yerleriYukle(token);
+// 4. Basit Arama
+function yerleriFiltrele() {
+    const arama = document.getElementById('yer-arama').value.toLowerCase();
+    yerleriListele(tumYerler.filter(y => y.name.toLowerCase().includes(arama)));
 }
 // ==========================================	YENİ KODLAR ÜSTE EKLENİYOR	-->		
         function cikisYap() {
