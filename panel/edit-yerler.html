@@ -1417,43 +1417,8 @@ async function kategorileriYukle(token) {
         opt.innerText = cat.baslik;
         select.appendChild(opt);
     });
-    aktifKategoriJsonPath = select.value;
-    yerleriYukle(token);
 }
 
-async function yerleriYukle(token) {
-    const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${aktifKategoriJsonPath}`, { headers: { "Authorization": `token ${token}` } });
-    const data = await res.json();
-    const json = JSON.parse(atob(data.content));
-    mevcutYerListesi = json.places;
-    yerleriListele();
-    haritaGuncelle();
-}
-function haritaGuncelle() {
-    if (!map) {
-        map = L.map('map').setView([39, 35], 6);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-    }
-    // Marker ekleme ve sürükleme mantığı
-    if (marker) map.removeLayer(marker);
-    marker = L.marker([39, 35], {draggable: true}).addTo(map);
-    marker.on('dragend', function(e) {
-        document.getElementById('yer-lat').value = e.target.getLatLng().lat;
-        document.getElementById('yer-lng').value = e.target.getLatLng().lng;
-    });
-}
-function yerleriListele() {
-    const arama = document.getElementById('yer-arama').value.toLowerCase();
-    const kapsayici = document.getElementById('yerler-listesi-kapsayici');
-    kapsayici.innerHTML = "";
-    mevcutYerListesi.filter(y => y.name.toLowerCase().includes(arama)).forEach((yer, index) => {
-        kapsayici.innerHTML += `
-            <div class="haber-kart">
-                <span>${yer.name}</span>
-                <button onclick="yerDuzenle(${index})">Düzenle</button>
-            </div>`;
-    });
-}
 // KATEGORİLERİ GİTHUB'DAN ÇEKME
 async function kategorileriYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KATEGORILER}`;
@@ -1486,6 +1451,32 @@ async function kategorileriYukle(token) {
         console.log("Kategori yükleme hatası: " + error.message);
     }
 }
+function haritaGuncelle() {
+    if (!map) {
+        map = L.map('map').setView([39, 35], 6);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    }
+    // Marker ekleme ve sürükleme mantığı
+    if (marker) map.removeLayer(marker);
+    marker = L.marker([39, 35], {draggable: true}).addTo(map);
+    marker.on('dragend', function(e) {
+        document.getElementById('yer-lat').value = e.target.getLatLng().lat;
+        document.getElementById('yer-lng').value = e.target.getLatLng().lng;
+    });
+}
+function yerleriListele() {
+    const arama = document.getElementById('yer-arama').value.toLowerCase();
+    const kapsayici = document.getElementById('yerler-listesi-kapsayici');
+    kapsayici.innerHTML = "";
+    mevcutYerListesi.filter(y => y.name.toLowerCase().includes(arama)).forEach((yer, index) => {
+        kapsayici.innerHTML += `
+            <div class="haber-kart">
+                <span>${yer.name}</span>
+                <button onclick="yerDuzenle(${index})">Düzenle</button>
+            </div>`;
+    });
+}
+
 function kategoriDegistirildi() {
     const token = localStorage.getItem('gh_oauth_token');
     aktifKategoriJsonPath = document.getElementById('kategori-secici').value;
