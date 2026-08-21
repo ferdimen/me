@@ -4,11 +4,11 @@
     "places": [
         {
             "name": "Selimiye Camii",
-            "description": "",
-            "image_url": null,
+            "description": "Selimiye Camii, Osmanlı padişahı II. Selim döneminde Mimar Sinan'ın yaptığı ve Osmanlı'nın önceki başkenti Edirne'de bulunan bir külliyedir. Mimar Sinan'ın 80 yaşında yaptığı ve \"ustalık eserim\" şeklinde nitelendirdiği Selimiye Camii, gerek Mimar Sinan'ın, gerek Osmanlı mimarisinin en önemli eserleri arasındadır.\n\nCaminin kitâbesine göre, yapımına 1568 (Hicrî: 976) yılında başlanmıştır. Caminin 27 Kasım 1574 Cuma günü açılması planlanmış olsa da ancak II. Selim'in ölümünün ardından 14 Mart 1575'te ibadete açılmıştır. Mülkiyeti, Sultan Selim Vakfı'ndadır. Bugün şehrin merkezinde bulunan caminin yapıldığı alanda inşasına Süleyman Çelebi devrinde başlanan, Yıldırım Bayezid devrinde geliştiririlen Edirne'nin ilk sarayı (Saray-ı elik) ve Baltacı Muhafızları haremi bulunmaktaydı. Kaynaklarda söz konusu bu alandan Sarıbayır ya da Kavak Meydanı isimleriyle de bahsedilir.\n\n2000'de UNESCO tarafından Dünya Mirası listesine dahil edilen Selimiye Camii ve külliyesi, 2011'de ise Dünya Mirası olarak tescil edildi.",
+            "image_url": "img/yerler/Selimiye_Mosque.jpg",
             "coordinates": {
-                "lat": 38.021418,
-                "lng": 27.072401
+                "lat": 41.6778963,
+                "lng": 26.5591908
             }
         }
     ]
