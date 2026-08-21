@@ -1,89 +1,96 @@
+{
+    "category_name": "Müzeler",
+    "category_icon": "img/yerler/ikon/arkeloji-muzesi.png",
+    "places": [
         {
-            "category_name": "Müzeler",
-			"category_icon": "img/yerler/ikon/arkeloji-muzesi.png",
-            "places": [
-                {
-                    "name": "Hatay Arkeoloji Müzesi",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 36.201949,
-                        "lng": 36.160169
-                    }
-                },
-				                {
-                    "name": "Afrodisias Müzesi - Aydın",
-                    "description": "<br><br>Afrodisyas Müzesi: ilçesi, Afrodisyas antik kenti içinde bulunmaktadir. 1979'da ziyarete açilan Müzede Afrodisyas kazilarindan elde edilen arkeolojik buluntular sergilenmektedir. M.Ö. 4000'den itibaren yapildigi anlasilan eserler sekiz ayri salonda yer almakta olup, bu salonlar; Afrodit salonu, Panthesilaia salonu, küçük eserler salonu, bitmemis eserler salonu,odeon salonu, Melpomene salonu( iç avlu ve bahçe açik salonu)'dur. Ayrica bu salonlarin disinda bahçede birçok eser bulunmaktadir.<br><br><br>Aphrodisias ören yerinde 1961 yılından önceki kazılarından çıkan buluntular İzmir ve İstanbul Arkeoloji Müzelerine götürülmüştür. 1961 yılında Prof. Dr. Kenan T. ERİM tarafından başlayan kazılarda çıkan buluntular kazı evi depoları ve kasaları ile Müzenin Önündeki Deveci Hanına koyuluyordu. Bu buluntuların korunup sergilenebilmesi için ören yerinde bir müzenin kurulması kararlaştırıldı. Müze yeri olarak da şimdiki yer önerildi. Kültür Varlıkları ve Müzeler (Eski Eserler ve Müzeler) Genel Müdürlüğü mimarlarından Sayın Erten ALTABAN tarafından çizilen müze planının inşaatına 1971-1972 kışında başlandı. İnşaat 1977 sonbaharında bitirildi. Hemen ardından teşhir çalışmalarına geçildi. Bu çalışmaların tamamlanmasının ardından Aphrodisias Müzesi yapılan resmi bir törenle dönemin Aydın Valisi Münir GÜNEY tarafından hizmete açıldı. Afrodisias Müze Müdürlüğü hizmet binasına ek olarak Geyre Vakfı tarafından yaptırılan ve Sebasteion Eserlerinin sergileneceği bina tamamlanmıştır. Binanın yapımına 2007 Mayıs ayında başlanmış olup, bina 2007 Ekim ayında tamamlanmıştır. Müze ek binasının teşhir ve tanzimi 2008 yılı Haziran ayında yapılmış ve yaklaşık 86 parça nadide mermer heykeltraşlık eserleri ziyaretçilerimize sunulmuştur. Yine ek bina yerinde bulunan stoa depoların yıkılması sonucu yeni stoa depolar da yapılmıştır. Aphrodisias Müzesi’ne yapılan açılışla eklenen, Mimar Cengiz BEKTAŞ'ın projesine uygun olarak inşa edilen Sebastion-Sevgi Gönül Salonu’nda görkemli mermer rölyefler, yapının iki yanı boyunca, öyküleri, özellikleri, katkıda bulunanların adlarıyla sergilenmektedir. Zemindeki camdan, kentin çok daha gerilere giden dokusu görülmektedir. Bir kabartmadan ötekine ilerlerken, o mermerin kaynağı olan Babadağ’a camdan bakabilmektesiniz ve hayranlık duyabilmektesiniz. Kaynakça: Aydın Kültür ve Turizm Müdürlüğü<br><br><br><br><br><br>",
-                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6DfxlM0pSjYlTyPUVOn5ENieDr7B55OhxkvAgU9foJkHOz_gWLoK_QEoayH5a22WCQuxxySy7ysALNnxhDxJVujB5vlGLItViUTNWO9QDa834t_wmM2nf3ese31R5cGeHgTJpkBcmk_qtFDKXgrJfcMyugMUgxxFSJQ9E_jDVXWlVjm7N5aNi4snngASAE7cTIvzM?authuser=0&fife=s16383",
-                    "coordinates": {
-                        "lat": 37.7093646,
-                        "lng": 28.7270807
-                    }
-                },
-                {
-                    "name": "Isparta Müzesi",
-					
-                    "description": "Isparta'da ilk müzenin temeli 1935 yılında Halk Evi'nin bir salonunun eski eserler için düzenlenmesiyle atılmıştır. Halkevlerinin kapanmasından sonra, buradan eserler belediyeye götürülmüştür. Isparta'da modern müze binası 1971 yılında yapılmaya başlanmıştır. Bu arada kütüphane binasında bir oda müze deposu olarak kullanılmış ve ilk Müze Memurluğu kurulmuştur. Müze inşaatının bitmesinden sonra kütüphanedeki eserler müze binasına taşınmış ve Müze Memurluğu da Müze Müdürlüğü olmuştur. 1984 yılında tamamlanan müze binası 6 Mart 1985 yılında halkın hizmetine açılmıştır.<br><br><br>Isparta Müzesi Arkeoloji ve Etnografya Müzesi olarak düzenlenmiştir. Teşhir çoğunlukla etnografik malzeme üzerinedir. Eserler bir küçük, üç büyük olmak üzere toplam dört salonda sergilenmektedir.<br><br><br>Etnografya Salonu<br><br><br>Busalondaki vitrinlerde yöreye ait yazma, peşkir, uçkur, çevre, lambalar, semaver, tespihler, porselen mutfak eşyaları, bakır kaplar, çeşitli boy ve markalardan oluşan tüfek, tabancalardan meydana gelen silah koleksiyonu, Osmanlı fermanları, kadın giysileri, süs takıları sergilenmektedir. Bu salonun giriş bölümünde, solda 19. yüzyıla ait hamamcı evinin bir odası kurulmuştur. Bu salonun vitrin aralarında ise çeşitli yerlerden gelen kilimler sergilenmektedir.<br><br><br>Arkeoloji Salonu<br><br><br>Etnografya Salonu'nun bitişiğindeki bir oda 1989 yılında Arkeoloji Salonu olarak düzenlenmiştir. Bu bölümde Paleolotik çağlardan günümüze kadar geçen süre içindeki eserler kronolojik olarak sergilenmektedir. Özellikle Atabey-Harmanören Köyü yakınındaki İlk Tunç Devri mezarlığında yapılan kazılarda elde edilen pişmiş toprak eserler ile Isparta ve çevresinden toplanmış Roma Dönemine ait eserler sergilenmektedir. Bunların yanı sıra Hellenistik Devirden Osmanlı Devri sonuna kadar geçen devrede kullanılan bakır, gümüş, bronz ve altın paralar ile Osmanlı nişan ve madalyonları sergilenmektedir.<br><br><br>Yörük Salonu<br><br><br>Bu salonda yörük çadırı bütün malzemeleriyle birlikte sergilenmektedir. Vitrinlerde ise yörük yün çorapları, kolanlar, çalgı aletleri, çoban eşyaları, torbalar ve heybeler, diğer tarafta çiftçilikle ilgili olarak harman aletleri, karasaban ve kağnı sergilenmektedir.<br><br><br>Halı Salonu<br><br><br>Bu salonda Türkiye'nin çeşitli halı merkezlerinden 17-20. yüzyıllara ait halı örnekleri sergilenmektedir.<br><br><br>Müzenin giriş holü ve bahçesinde, Roma, Bizans ve Osmanlı dönemlerine ait taş eserler sergilenmektedir.<br><br><br>1997 yılı sonu itibariyle müzede 11669 adet sikke, 2181 adet arkeolojik, 1937 adet etnografik eser bulunmaktadır.<br><br><br>Kenan Evren Caddesi No: 107<br><br><br>Tel : (0246) 218 34 37<br><br><br>Faks : (0246) 223 94 03<br><br><br>Pazartesi dışında her gün 08.00-12.00/13.00-17.00 saatlerinde ziyarete açıktır.",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.767609,
-                        "lng": 30.553359
-                    }
-                },
-                {
-                    "name": "Yalvaç Müzesi",
-                    "description": "Revak ve bahçede Yunan, Roma, Bizans, Selçuklu ve Osmanlı çağlarına ait mimarî parçalar, mezar stelleri, lahitler, ostotekler, sunaklar, yazıtlar, heykeller ve mil taşları teşhir edilmektedir. Ayrıca bahçede yer alan başlıklı sütunlardan oluşturulan sütunlu yol müzeye ilginç bir görünüm kazandırmaktadır.<br><br><br>Hükümet Caddesi, Yalvaç<br><br><br>Tel : (0246) 441 50 59<br><br><br>Faks : (0246) 441 49 37<br><br><br>Pazartesi dışında her gün 08.30-12.30/13.30-17.30 saatlerinde ziyarete açıktır.",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 38.298067,
-                        "lng": 31.178486
-                    }
-                },
-                {
-                    "name": "Taş Oda Etnografya Müzesi",
-                    "description": "Burdur İli merkez Pazar Mahallesi, Veyis Sokak'ta yer alan \"Taş Oda\" 17. yüzyıl Osmanlı sivil mimarlık örneklerindendir.<br><br>Adını, kesme taştan yapılmış başodadan aldığı sanılmaktadır. Bu yapının 17. yüzyıl ortalarında Burdur eşrafından Mahmut Paşa tarafından yaptırıldığı söylense de bu konuyla ilgili herhangi bir kayıt mevcut değildir.<br><br>Bir bahçe içinde yer alan iki katlı bu yapının, alt katı kesme taştan, üst katı kerpiçtendir ve yapıda ahşap malzemeye de çokça yer verilmiştir.<br><br>Kesme taştan yapılmış olan alt katta sivri kemerli olarak iki yanı açık ve mazgal delikli iki penceresi bulunan iki oda yer almaktadır.<br><br>İkinci katta bütün kapılar sofaya açılmaktadır. Sofa çıkışında, sağda baş oda yer almaktadır. Taş odanın en eski ve diğer bölümlerine göre daha iyi korunmuş bölümü olan baş oda girişinde yüklük ve dolaplar, davlumbazlı ocak, Bursa kemeriyle ayrılmış bir seki kısmı bulunmaktadır. Oda da sofaya ve dışa bakan pencereler iki sıra halinde olup üst sıradakiler geometrik desenli, renkli vitraylı tepe pencereleridir. Alt pencereler kepenkli olup pencere pervazları kalem işi bitki motifleriyle süslüdür. Dolap ve pencerelerin üzerinde altın yaldızla, konak sahibine methiyeler yazılmıştır. Yüklüğün üzerinde tavana kadar olan bölümde mihraplar içinde vazolar ve çeşitli süs bitkileri kalem işiye süslenmiştir.<br><br>Bursa kemeriyle ikiye ayrılmış olan ahşap tavanda daire ve yıldız biçimli süsler bulunmaktadır. Yıldızlar kalem işi kabartma tekniğiyle yapılmıştır; altın ve gümüş varaklıdır. Altıgen tavan bordürü stilize çiçek motifleriyle süslüdür.<br><br>Üst katta baş odanın dışında dört oda daha bulunmaktadır. Sofanın güneyinde dipte bulunan sandık odasında göbekli ahşap tavan vardır. Yüklüklerin yanında ise alçıdan karşılıklı iki şerbetlik göze çarpmaktadır.<br><br>Sofada oturanların çevreden görünmemesi için ahşap kafeslerle çevrilmiş olduğu görülür.<br><br>Pazar Mahallesi, Veyis Sokak<br><br>Tel/Faks: (0248) 233 10 42<br><br>Pazartesi dışında her gün 08.00-12.00/13.00-17.00 saatlerinde ziyarete açıktır.",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.717122,
-                        "lng": 30.288202
-                    }
-                },
-                {
-                    "name": "Aydın Müzesi",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.85317,
-                        "lng": 27.837296
-                    }
-                },
-                {
-                    "name": "Milet Müzesi",
-                    "description": "Milet Müzesi: Milet antik kenti içinde yer alir. 1973 yilinda hizmete açilan Milet Müzesi'nde mavi salon, küçük salon ve orta salon olmak üzere üç teshir salonu vardir. Mavi salonda;kronolojik sirayla eserler teshir edilmistir. Bunlar, fosiller, keramikler, geometrik eserler, taban mozaikler ile amphoralardir. Küçük salonda; tiyatro maskeleri, kandiller, maden eserler, cam eserler, heykelcikler, altin eserler ve küçük madeni esyalar ile sikkeler bulunmaktadir. Orta salonda; heykeller ve mezar taslari yer alir.<br><br>Aydın İli'nin Söke İlçesi'ne 40 km. kadar uzaklıkta Miletos antik kenti içinde yer alan \"Milet Müzesi\" 1973 yılında açılmıştır.<br><br>Genellikle Milet'de bulunmuş olan arkeolojik eserlerin teşhirine yönelik hazırlanmıştır. Havuzlu bir hol ile bu hole açılan biri asıl salon, diğeri de daha küçük olan ikinci bir salondan oluşur. Burada M.Ö. XV. yüzyıla tarihlenen Miken seramikleriyle, Arkaik, Klasik, Helenistik, Roma, Bizans, Selçuklu ve Osmanlı çağlarına ait eserler sergilenmektedir.<br><br>1- Aslan Galerisi: Toplam 30 eser bulunmaktadir.<br><br>2- Tas Eserler Salonu: Didyma, Milet, Priene kazilarinda bulunan eserler ile müzenin çalismalari ve vatandaslarin bularak müzeye getirdikleri eserlerden olusur. M.Ö. 6 yüzyildan M.S. 13 yüzyila dek olan dönemi kapsayan mermer eserler yer almaktadir.<br><br>3- Büyük/Mavi Salon: Kronolojik olarak jeolojik dönemlerden Osmanli Dönemine kadar olan zamana ait obje ve keramik eserler ile muhtelif sikkeler teshir edilmektedir.<br><br>4- Küçük Salon: Bu salonda keramik, maden, cam eserler vardir. Bu salonda kiymetli madenden takilar da sergilenmektedir.<br><br>5- Müze Bahçesi: Müze bahçesinde kitabeler, sunaklar, sütun basliklari, muhtelif kabartmalar, heykeller, lahitler sergilenmektedir.<br><br>6- Filozoflar Parki: Müzenin hemen karsisinda yeni olusturulan bu parka Milet'ten yetisen filozof, mimar ve sanatçilar bilgi levhalari ile tanitilmaktadir.<br><br>Milet<br><br>M.Ö. 2000'in ortalarında önemli bir Miken kolonisi olan kent, oldukça gelişmiş bir kültür ve ticaret merkeziydi. Bu özelliği ile Roma Çağı'nda da önemini sürdüren Milet, Bizanslılar zamanında, Latmos körfezinin dolması ile ticari önemini yitirmiştir. XIII. yüzyılda Menteşe Beyliği tarafından Türk Balat'ı haline getirilen Milet Menteşeoğulları'nın başkenti olarak parlak bir dönem yaşamıştır.<br><br>Söke-Milet yolunda ilerlerken göze ilk çarpan yerler tiyatroyla Bizans kalesidir. Tiyatro gezildikten sonra önündeki Kervansaray, Faustina Hamamı, İlyas Bey Camii, Serapis Mabedi, Bouleuterion, Kutsal Yol, İonik Stoa, Kuzey Agora, Delphinion, Hanikah, Liman Anıtı, St. Michael Kilisesi Hereon gibi başlıca yapıtlar görülmeye değerdir.<br><br>Priene<br><br>Söke İlçe merkezine 15 km. uzaklıktaki Güllübahçe Kasabası yakınındadır. Miletoslu ünlü mimar Hippodamos'un planına göre kurulmuş olan şehir Helenistik karakterdedir. Günümüze öteki kentlerden daha sağlam olarak ulaşmış olan Priene önce Pergamon Krallığı'nın, daha sonra ise Roma ve Bizans'ın egemenliğine geçmiştir.<br><br>Prytaneum, Bouleuterion, Evler, Athena Mabedi, Büyük Kilise, Tiyatro, Yukarı Gymnasion, Mısır Mabedi, Kutsal Stoa, Agora, Büyük İskender Mabedi veya Kutsal Evi görülmeye değerdir.<br><br>Didim<br><br>Söke İlçe merkezine 55 km. uzaklıkta önemli bir kutsal alan ve Apollon kehanet merkezlerinden biridir.<br><br>İon tapınaklarının en büyüğü ve en zengini bu bölgede yer almaktadır. Didymaion'un yapımı çok eskilere uzanır. Tapınak M.Ö. 494'te Miletos'a saldıran Persler tarafından yıkılmıştır. tapınağın yeniden yapımı ise Büyük İskender'in Pers zaferinden sonra gerçekleştirilmiştir. M.Ö. 300'de yapımına başlanan tapınakta çalışmalar uzun yıllar boyunca sürmüştür. Ölçüleri çok büyük tutulduğu için yapımı İ.S. 2. yüzyılın ortalarına dek süren tapınak, yine de tam olarak bitirilememiştir. Yapıda mimar olarak Ephesos'lu Paionios ile Miletos'lu Daphnis çalışmışlardır.<br><br>Balat, Aydın<br><br>Tel : (0256) 875 50 38- 875 52 06<br><br>Faks : (0256) 875 52 23<br><br>Pazartesi dışında her gün 08.00-17.00 saatlerinde ziyarete açıktır.",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.525469,
-                        "lng": 27.274804
-                    }
-                },
-                {
-                    "name": "Gaziantep Zeugma Mozaik Müzesi",
-                    "description": "<br><br>",
-                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4rklLoV4Bg66oF_9nEqnVoMaa2nGNiChjSFrurfbl5-p10nWzXII8RxTeTCTJuBvnycE69tQIzCmvU2RFJ12U7uukHClmAf72mkEAeckG9Xzz9RZXpxOhdOkwI7S67JAdTFpHVqaxI2ddxMgNRI6ncO1aNhsCv2u78viNKQ4L3rtkHmGQ8a28eRyExhkFKqhpiNy4?authuser=0&fife=s16383",
-                    "coordinates": {
-                        "lat": 37.0754326,
-                        "lng": 37.3853669
-                    }
-                },
-                {
-                    "name": "Boğazköy Müzesi",
-                    "description": "<br><br>Boğazköy Müzesi, Çorum’un güneybatısındaki Boğazkale ilçe merkezinde yer almaktadır. 12 Eylül 1966 yılında açılan müze, 2011 yılında yeniden düzenlenmiştir. Müzede, Hitit başkenti Hattuşa kazılarında açığa çıkartılan eserler sergilenmektedir. Boğazkale Müzesinin teşhir salonlarında tematik ve kronolojik sergileme yapılmıştır. Zemin kat birinci salonda Kalkolitik, Eski Tunç Çağı ve Asur Ticaret Kolonileri Çağı eserleri ile başlayan teşhir düzeni kronolojik olarak Frig, Galat, Roma Dönemi ile devam etmekte ve Doğu Roma dönemi ile son bulmaktadır. Hattuşa Antik Kenti içerisinde bulunan Sfenksli Kapıdaki iki Sfenks yangından çok hasar gördükleri için 1907´de restore edilmek üzere Berlin’e götürülmüşlerdir. Rrestorasyonlarının ardından sfenkslerden biri 1924 yılında İstanbul Arkeoloji Müzelerine geri verilmiş, diğeri ise 2011 yılına kadar Berlin Müzelerinde muhafaza edilmiştir. Her iki sfenks de 26 Kasım 2011 tarihinden itibaren Boğazköy Müzesinde sergilenmektedir. Sfenkslerin bulunduğu kapı ile geçilen Hitit salonunda Hititlerin devlet ve toplumsal yapısı zengin görsellere sahip panolar ve eserlerle anlatılmaktadır. Hitit döneminden bir taş ustası bu alanda canlandırma ile tasvir edilmiştir. Hitit salonunun üst katında Hititlerin dini ve askeri yapısı, yazı sistemi, kazılardan çıkan malzeme, pano bilgileri ve görsellerle anlatılmaktadır. Burada Hattuşa örenyeri ve Büyük Mabedin maketi de yer almaktadır. Müze bahçesinde ise Hitit dönemine ait sfenks, hiyeroglif yazıtlı kitabeler ile Roma ve Doğu Roma dönemlerine ait mil taşları ve mezar taşları sergilenmektedir. Kaynak: Çorum İl Kültür ve Turizm Müdürlüğü Arşivi -Coğrafyası Tarihi Kültürü ve Edebiyatıyla Çorum<br><br><br><br>",
-                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR571wRSXip7IATtVvPic3J7fshTH71lM79H1vDRj3pQA7ZSr0ZWtVYoJSuBiSlq-HYUGtf_8G4Am8dS32XoC2mH9utniCscLz1kp5fLSGxACJ7WxN1Qabhr0dISwc0Nq3mFHjUNDE-CxqjfzQVjS5hvA9MTpbRWtXFLtr13ui6zg793qJkXMrC0NVpQe8NywQxjaF8?authuser=0&fife=s16383",
-                    "coordinates": {
-                        "lat": 40.02492,
-                        "lng": 34.608336
-                    }
-                }
-            ]
+            "name": "Hatay Arkeoloji Müzesi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.201949,
+                "lng": 36.160169
+            }
+        },
+        {
+            "name": "Afrodisias Müzesi - Aydın",
+            "description": "<br><br>Afrodisyas Müzesi: ilçesi, Afrodisyas antik kenti içinde bulunmaktadir. 1979'da ziyarete açilan Müzede Afrodisyas kazilarindan elde edilen arkeolojik buluntular sergilenmektedir. M.Ö. 4000'den itibaren yapildigi anlasilan eserler sekiz ayri salonda yer almakta olup, bu salonlar; Afrodit salonu, Panthesilaia salonu, küçük eserler salonu, bitmemis eserler salonu,odeon salonu, Melpomene salonu( iç avlu ve bahçe açik salonu)'dur. Ayrica bu salonlarin disinda bahçede birçok eser bulunmaktadir.<br><br><br>Aphrodisias ören yerinde 1961 yılından önceki kazılarından çıkan buluntular İzmir ve İstanbul Arkeoloji Müzelerine götürülmüştür. 1961 yılında Prof. Dr. Kenan T. ERİM tarafından başlayan kazılarda çıkan buluntular kazı evi depoları ve kasaları ile Müzenin Önündeki Deveci Hanına koyuluyordu. Bu buluntuların korunup sergilenebilmesi için ören yerinde bir müzenin kurulması kararlaştırıldı. Müze yeri olarak da şimdiki yer önerildi. Kültür Varlıkları ve Müzeler (Eski Eserler ve Müzeler) Genel Müdürlüğü mimarlarından Sayın Erten ALTABAN tarafından çizilen müze planının inşaatına 1971-1972 kışında başlandı. İnşaat 1977 sonbaharında bitirildi. Hemen ardından teşhir çalışmalarına geçildi. Bu çalışmaların tamamlanmasının ardından Aphrodisias Müzesi yapılan resmi bir törenle dönemin Aydın Valisi Münir GÜNEY tarafından hizmete açıldı. Afrodisias Müze Müdürlüğü hizmet binasına ek olarak Geyre Vakfı tarafından yaptırılan ve Sebasteion Eserlerinin sergileneceği bina tamamlanmıştır. Binanın yapımına 2007 Mayıs ayında başlanmış olup, bina 2007 Ekim ayında tamamlanmıştır. Müze ek binasının teşhir ve tanzimi 2008 yılı Haziran ayında yapılmış ve yaklaşık 86 parça nadide mermer heykeltraşlık eserleri ziyaretçilerimize sunulmuştur. Yine ek bina yerinde bulunan stoa depoların yıkılması sonucu yeni stoa depolar da yapılmıştır. Aphrodisias Müzesi’ne yapılan açılışla eklenen, Mimar Cengiz BEKTAŞ'ın projesine uygun olarak inşa edilen Sebastion-Sevgi Gönül Salonu’nda görkemli mermer rölyefler, yapının iki yanı boyunca, öyküleri, özellikleri, katkıda bulunanların adlarıyla sergilenmektedir. Zemindeki camdan, kentin çok daha gerilere giden dokusu görülmektedir. Bir kabartmadan ötekine ilerlerken, o mermerin kaynağı olan Babadağ’a camdan bakabilmektesiniz ve hayranlık duyabilmektesiniz. Kaynakça: Aydın Kültür ve Turizm Müdürlüğü<br><br><br><br><br><br>",
+            "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6DfxlM0pSjYlTyPUVOn5ENieDr7B55OhxkvAgU9foJkHOz_gWLoK_QEoayH5a22WCQuxxySy7ysALNnxhDxJVujB5vlGLItViUTNWO9QDa834t_wmM2nf3ese31R5cGeHgTJpkBcmk_qtFDKXgrJfcMyugMUgxxFSJQ9E_jDVXWlVjm7N5aNi4snngASAE7cTIvzM?authuser=0&fife=s16383",
+            "coordinates": {
+                "lat": 37.7093646,
+                "lng": 28.7270807
+            }
+        },
+        {
+            "name": "Isparta Müzesi",
+            "description": "Isparta'da ilk müzenin temeli 1935 yılında Halk Evi'nin bir salonunun eski eserler için düzenlenmesiyle atılmıştır. Halkevlerinin kapanmasından sonra, buradan eserler belediyeye götürülmüştür. Isparta'da modern müze binası 1971 yılında yapılmaya başlanmıştır. Bu arada kütüphane binasında bir oda müze deposu olarak kullanılmış ve ilk Müze Memurluğu kurulmuştur. Müze inşaatının bitmesinden sonra kütüphanedeki eserler müze binasına taşınmış ve Müze Memurluğu da Müze Müdürlüğü olmuştur. 1984 yılında tamamlanan müze binası 6 Mart 1985 yılında halkın hizmetine açılmıştır.<br><br><br>Isparta Müzesi Arkeoloji ve Etnografya Müzesi olarak düzenlenmiştir. Teşhir çoğunlukla etnografik malzeme üzerinedir. Eserler bir küçük, üç büyük olmak üzere toplam dört salonda sergilenmektedir.<br><br><br>Etnografya Salonu<br><br><br>Busalondaki vitrinlerde yöreye ait yazma, peşkir, uçkur, çevre, lambalar, semaver, tespihler, porselen mutfak eşyaları, bakır kaplar, çeşitli boy ve markalardan oluşan tüfek, tabancalardan meydana gelen silah koleksiyonu, Osmanlı fermanları, kadın giysileri, süs takıları sergilenmektedir. Bu salonun giriş bölümünde, solda 19. yüzyıla ait hamamcı evinin bir odası kurulmuştur. Bu salonun vitrin aralarında ise çeşitli yerlerden gelen kilimler sergilenmektedir.<br><br><br>Arkeoloji Salonu<br><br><br>Etnografya Salonu'nun bitişiğindeki bir oda 1989 yılında Arkeoloji Salonu olarak düzenlenmiştir. Bu bölümde Paleolotik çağlardan günümüze kadar geçen süre içindeki eserler kronolojik olarak sergilenmektedir. Özellikle Atabey-Harmanören Köyü yakınındaki İlk Tunç Devri mezarlığında yapılan kazılarda elde edilen pişmiş toprak eserler ile Isparta ve çevresinden toplanmış Roma Dönemine ait eserler sergilenmektedir. Bunların yanı sıra Hellenistik Devirden Osmanlı Devri sonuna kadar geçen devrede kullanılan bakır, gümüş, bronz ve altın paralar ile Osmanlı nişan ve madalyonları sergilenmektedir.<br><br><br>Yörük Salonu<br><br><br>Bu salonda yörük çadırı bütün malzemeleriyle birlikte sergilenmektedir. Vitrinlerde ise yörük yün çorapları, kolanlar, çalgı aletleri, çoban eşyaları, torbalar ve heybeler, diğer tarafta çiftçilikle ilgili olarak harman aletleri, karasaban ve kağnı sergilenmektedir.<br><br><br>Halı Salonu<br><br><br>Bu salonda Türkiye'nin çeşitli halı merkezlerinden 17-20. yüzyıllara ait halı örnekleri sergilenmektedir.<br><br><br>Müzenin giriş holü ve bahçesinde, Roma, Bizans ve Osmanlı dönemlerine ait taş eserler sergilenmektedir.<br><br><br>1997 yılı sonu itibariyle müzede 11669 adet sikke, 2181 adet arkeolojik, 1937 adet etnografik eser bulunmaktadır.<br><br><br>Kenan Evren Caddesi No: 107<br><br><br>Tel : (0246) 218 34 37<br><br><br>Faks : (0246) 223 94 03<br><br><br>Pazartesi dışında her gün 08.00-12.00/13.00-17.00 saatlerinde ziyarete açıktır.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.767609,
+                "lng": 30.553359
+            }
+        },
+        {
+            "name": "Yalvaç Müzesi",
+            "description": "Revak ve bahçede Yunan, Roma, Bizans, Selçuklu ve Osmanlı çağlarına ait mimarî parçalar, mezar stelleri, lahitler, ostotekler, sunaklar, yazıtlar, heykeller ve mil taşları teşhir edilmektedir. Ayrıca bahçede yer alan başlıklı sütunlardan oluşturulan sütunlu yol müzeye ilginç bir görünüm kazandırmaktadır.<br><br><br>Hükümet Caddesi, Yalvaç<br><br><br>Tel : (0246) 441 50 59<br><br><br>Faks : (0246) 441 49 37<br><br><br>Pazartesi dışında her gün 08.30-12.30/13.30-17.30 saatlerinde ziyarete açıktır.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.298067,
+                "lng": 31.178486
+            }
+        },
+        {
+            "name": "Taş Oda Etnografya Müzesi",
+            "description": "Burdur İli merkez Pazar Mahallesi, Veyis Sokak'ta yer alan \"Taş Oda\" 17. yüzyıl Osmanlı sivil mimarlık örneklerindendir.<br><br>Adını, kesme taştan yapılmış başodadan aldığı sanılmaktadır. Bu yapının 17. yüzyıl ortalarında Burdur eşrafından Mahmut Paşa tarafından yaptırıldığı söylense de bu konuyla ilgili herhangi bir kayıt mevcut değildir.<br><br>Bir bahçe içinde yer alan iki katlı bu yapının, alt katı kesme taştan, üst katı kerpiçtendir ve yapıda ahşap malzemeye de çokça yer verilmiştir.<br><br>Kesme taştan yapılmış olan alt katta sivri kemerli olarak iki yanı açık ve mazgal delikli iki penceresi bulunan iki oda yer almaktadır.<br><br>İkinci katta bütün kapılar sofaya açılmaktadır. Sofa çıkışında, sağda baş oda yer almaktadır. Taş odanın en eski ve diğer bölümlerine göre daha iyi korunmuş bölümü olan baş oda girişinde yüklük ve dolaplar, davlumbazlı ocak, Bursa kemeriyle ayrılmış bir seki kısmı bulunmaktadır. Oda da sofaya ve dışa bakan pencereler iki sıra halinde olup üst sıradakiler geometrik desenli, renkli vitraylı tepe pencereleridir. Alt pencereler kepenkli olup pencere pervazları kalem işi bitki motifleriyle süslüdür. Dolap ve pencerelerin üzerinde altın yaldızla, konak sahibine methiyeler yazılmıştır. Yüklüğün üzerinde tavana kadar olan bölümde mihraplar içinde vazolar ve çeşitli süs bitkileri kalem işiye süslenmiştir.<br><br>Bursa kemeriyle ikiye ayrılmış olan ahşap tavanda daire ve yıldız biçimli süsler bulunmaktadır. Yıldızlar kalem işi kabartma tekniğiyle yapılmıştır; altın ve gümüş varaklıdır. Altıgen tavan bordürü stilize çiçek motifleriyle süslüdür.<br><br>Üst katta baş odanın dışında dört oda daha bulunmaktadır. Sofanın güneyinde dipte bulunan sandık odasında göbekli ahşap tavan vardır. Yüklüklerin yanında ise alçıdan karşılıklı iki şerbetlik göze çarpmaktadır.<br><br>Sofada oturanların çevreden görünmemesi için ahşap kafeslerle çevrilmiş olduğu görülür.<br><br>Pazar Mahallesi, Veyis Sokak<br><br>Tel/Faks: (0248) 233 10 42<br><br>Pazartesi dışında her gün 08.00-12.00/13.00-17.00 saatlerinde ziyarete açıktır.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.717122,
+                "lng": 30.288202
+            }
+        },
+        {
+            "name": "Aydın Müzesi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.85317,
+                "lng": 27.837296
+            }
+        },
+        {
+            "name": "Milet Müzesi",
+            "description": "Milet Müzesi: Milet antik kenti içinde yer alir. 1973 yilinda hizmete açilan Milet Müzesi'nde mavi salon, küçük salon ve orta salon olmak üzere üç teshir salonu vardir. Mavi salonda;kronolojik sirayla eserler teshir edilmistir. Bunlar, fosiller, keramikler, geometrik eserler, taban mozaikler ile amphoralardir. Küçük salonda; tiyatro maskeleri, kandiller, maden eserler, cam eserler, heykelcikler, altin eserler ve küçük madeni esyalar ile sikkeler bulunmaktadir. Orta salonda; heykeller ve mezar taslari yer alir.<br><br>Aydın İli'nin Söke İlçesi'ne 40 km. kadar uzaklıkta Miletos antik kenti içinde yer alan \"Milet Müzesi\" 1973 yılında açılmıştır.<br><br>Genellikle Milet'de bulunmuş olan arkeolojik eserlerin teşhirine yönelik hazırlanmıştır. Havuzlu bir hol ile bu hole açılan biri asıl salon, diğeri de daha küçük olan ikinci bir salondan oluşur. Burada M.Ö. XV. yüzyıla tarihlenen Miken seramikleriyle, Arkaik, Klasik, Helenistik, Roma, Bizans, Selçuklu ve Osmanlı çağlarına ait eserler sergilenmektedir.<br><br>1- Aslan Galerisi: Toplam 30 eser bulunmaktadir.<br><br>2- Tas Eserler Salonu: Didyma, Milet, Priene kazilarinda bulunan eserler ile müzenin çalismalari ve vatandaslarin bularak müzeye getirdikleri eserlerden olusur. M.Ö. 6 yüzyildan M.S. 13 yüzyila dek olan dönemi kapsayan mermer eserler yer almaktadir.<br><br>3- Büyük/Mavi Salon: Kronolojik olarak jeolojik dönemlerden Osmanli Dönemine kadar olan zamana ait obje ve keramik eserler ile muhtelif sikkeler teshir edilmektedir.<br><br>4- Küçük Salon: Bu salonda keramik, maden, cam eserler vardir. Bu salonda kiymetli madenden takilar da sergilenmektedir.<br><br>5- Müze Bahçesi: Müze bahçesinde kitabeler, sunaklar, sütun basliklari, muhtelif kabartmalar, heykeller, lahitler sergilenmektedir.<br><br>6- Filozoflar Parki: Müzenin hemen karsisinda yeni olusturulan bu parka Milet'ten yetisen filozof, mimar ve sanatçilar bilgi levhalari ile tanitilmaktadir.<br><br>Milet<br><br>M.Ö. 2000'in ortalarında önemli bir Miken kolonisi olan kent, oldukça gelişmiş bir kültür ve ticaret merkeziydi. Bu özelliği ile Roma Çağı'nda da önemini sürdüren Milet, Bizanslılar zamanında, Latmos körfezinin dolması ile ticari önemini yitirmiştir. XIII. yüzyılda Menteşe Beyliği tarafından Türk Balat'ı haline getirilen Milet Menteşeoğulları'nın başkenti olarak parlak bir dönem yaşamıştır.<br><br>Söke-Milet yolunda ilerlerken göze ilk çarpan yerler tiyatroyla Bizans kalesidir. Tiyatro gezildikten sonra önündeki Kervansaray, Faustina Hamamı, İlyas Bey Camii, Serapis Mabedi, Bouleuterion, Kutsal Yol, İonik Stoa, Kuzey Agora, Delphinion, Hanikah, Liman Anıtı, St. Michael Kilisesi Hereon gibi başlıca yapıtlar görülmeye değerdir.<br><br>Priene<br><br>Söke İlçe merkezine 15 km. uzaklıktaki Güllübahçe Kasabası yakınındadır. Miletoslu ünlü mimar Hippodamos'un planına göre kurulmuş olan şehir Helenistik karakterdedir. Günümüze öteki kentlerden daha sağlam olarak ulaşmış olan Priene önce Pergamon Krallığı'nın, daha sonra ise Roma ve Bizans'ın egemenliğine geçmiştir.<br><br>Prytaneum, Bouleuterion, Evler, Athena Mabedi, Büyük Kilise, Tiyatro, Yukarı Gymnasion, Mısır Mabedi, Kutsal Stoa, Agora, Büyük İskender Mabedi veya Kutsal Evi görülmeye değerdir.<br><br>Didim<br><br>Söke İlçe merkezine 55 km. uzaklıkta önemli bir kutsal alan ve Apollon kehanet merkezlerinden biridir.<br><br>İon tapınaklarının en büyüğü ve en zengini bu bölgede yer almaktadır. Didymaion'un yapımı çok eskilere uzanır. Tapınak M.Ö. 494'te Miletos'a saldıran Persler tarafından yıkılmıştır. tapınağın yeniden yapımı ise Büyük İskender'in Pers zaferinden sonra gerçekleştirilmiştir. M.Ö. 300'de yapımına başlanan tapınakta çalışmalar uzun yıllar boyunca sürmüştür. Ölçüleri çok büyük tutulduğu için yapımı İ.S. 2. yüzyılın ortalarına dek süren tapınak, yine de tam olarak bitirilememiştir. Yapıda mimar olarak Ephesos'lu Paionios ile Miletos'lu Daphnis çalışmışlardır.<br><br>Balat, Aydın<br><br>Tel : (0256) 875 50 38- 875 52 06<br><br>Faks : (0256) 875 52 23<br><br>Pazartesi dışında her gün 08.00-17.00 saatlerinde ziyarete açıktır.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.525469,
+                "lng": 27.274804
+            }
+        },
+        {
+            "name": "Gaziantep Zeugma Mozaik Müzesi",
+            "description": "<br><br>",
+            "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4rklLoV4Bg66oF_9nEqnVoMaa2nGNiChjSFrurfbl5-p10nWzXII8RxTeTCTJuBvnycE69tQIzCmvU2RFJ12U7uukHClmAf72mkEAeckG9Xzz9RZXpxOhdOkwI7S67JAdTFpHVqaxI2ddxMgNRI6ncO1aNhsCv2u78viNKQ4L3rtkHmGQ8a28eRyExhkFKqhpiNy4?authuser=0&fife=s16383",
+            "coordinates": {
+                "lat": 37.0754326,
+                "lng": 37.3853669
+            }
+        },
+        {
+            "name": "Boğazköy Müzesi",
+            "description": "<br><br>Boğazköy Müzesi, Çorum’un güneybatısındaki Boğazkale ilçe merkezinde yer almaktadır. 12 Eylül 1966 yılında açılan müze, 2011 yılında yeniden düzenlenmiştir. Müzede, Hitit başkenti Hattuşa kazılarında açığa çıkartılan eserler sergilenmektedir. Boğazkale Müzesinin teşhir salonlarında tematik ve kronolojik sergileme yapılmıştır. Zemin kat birinci salonda Kalkolitik, Eski Tunç Çağı ve Asur Ticaret Kolonileri Çağı eserleri ile başlayan teşhir düzeni kronolojik olarak Frig, Galat, Roma Dönemi ile devam etmekte ve Doğu Roma dönemi ile son bulmaktadır. Hattuşa Antik Kenti içerisinde bulunan Sfenksli Kapıdaki iki Sfenks yangından çok hasar gördükleri için 1907´de restore edilmek üzere Berlin’e götürülmüşlerdir. Rrestorasyonlarının ardından sfenkslerden biri 1924 yılında İstanbul Arkeoloji Müzelerine geri verilmiş, diğeri ise 2011 yılına kadar Berlin Müzelerinde muhafaza edilmiştir. Her iki sfenks de 26 Kasım 2011 tarihinden itibaren Boğazköy Müzesinde sergilenmektedir. Sfenkslerin bulunduğu kapı ile geçilen Hitit salonunda Hititlerin devlet ve toplumsal yapısı zengin görsellere sahip panolar ve eserlerle anlatılmaktadır. Hitit döneminden bir taş ustası bu alanda canlandırma ile tasvir edilmiştir. Hitit salonunun üst katında Hititlerin dini ve askeri yapısı, yazı sistemi, kazılardan çıkan malzeme, pano bilgileri ve görsellerle anlatılmaktadır. Burada Hattuşa örenyeri ve Büyük Mabedin maketi de yer almaktadır. Müze bahçesinde ise Hitit dönemine ait sfenks, hiyeroglif yazıtlı kitabeler ile Roma ve Doğu Roma dönemlerine ait mil taşları ve mezar taşları sergilenmektedir. Kaynak: Çorum İl Kültür ve Turizm Müdürlüğü Arşivi -Coğrafyası Tarihi Kültürü ve Edebiyatıyla Çorum<br><br><br><br>",
+            "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR571wRSXip7IATtVvPic3J7fshTH71lM79H1vDRj3pQA7ZSr0ZWtVYoJSuBiSlq-HYUGtf_8G4Am8dS32XoC2mH9utniCscLz1kp5fLSGxACJ7WxN1Qabhr0dISwc0Nq3mFHjUNDE-CxqjfzQVjS5hvA9MTpbRWtXFLtr13ui6zg793qJkXMrC0NVpQe8NywQxjaF8?authuser=0&fife=s16383",
+            "coordinates": {
+                "lat": 40.02492,
+                "lng": 34.608336
+            }
+        },
+        {
+            "name": "Alanya Arkeoloji Müzesi - Antalya",
+            "description": "Alanya Arkeoloji Müzesi, Ankara’daki Anadolu Medeniyetleri Müzesi’nden getirilen Tunç Çağı, Urartu, Frig ve Lidya dönemine ait eserler ve çevreden o güne kadar toplanan eserler ile 1967 yılında açılmıştır. Sonraki yıllarda, bölgedeki kazı çalışmalarından çıkan veya çeşitli yollarla müzeye getirilen eserlerle müze genişlemiş ve zenginleşmiştir. Müzenin arkeoloji ve etnografya bölümleri vardır. Arkeoloji bölümünde Alanya çevresinde bulunarak sergilenen en eski tarihli eser, İsa’dan önce 625 yılına ait Fenike dilinde bir taş yazıttır. Müzenin en ünlü eseri ise mitolojide dramatik bir öyküsü olan Herakles’in heykelidir. İsa’dan sonra 2. yüzyıla tarihlenen bronz döküm Herakles heykeli ayrı bir salonda sergilenmektedir. Alanya Arkeoloji Müzesi’nde Arkaik, Klasik, Hellenistik, Roma, Bizans dönemine ait bronz, mermer, pişmiş toprak, cam ve mozaik buluntularla zengin bir kül kutuları ve sikke koleksiyonu vardır. Yanı sıra Selçuklu ve Osmanlı dönemlerine ait Türk-İslam eserleri bulunmaktadır. Etnografya bölümünde Alanya çevresinden derlenen ve bölgenin folklorik özelliklerini yansıtan, yörük kilimleri, alaçuvallar, heybeler, giysiler, işleme örnekleri, silahlar, günlük kullanım kapları, takılar, el yazmaları ve yazı takımları gibi objeler ile eski bir Alanya evine ait günlük oda sergilenmektedir. Ayrıca, müze bahçesinde de Roma, Bizans ve İslami dönemlere ait taş eserler vardır. (Kaynakça: \"Arkeoloji Müzesi\", Dünden Bugüne Antalya [I. Cilt], Antalya İl Kültür ve Turizm Müdürlüğü, 2012, Antalya, s. 239-240.)",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.544008,
+                "lng": 31.988705
+            }
         }
-       
+    ]
+}
