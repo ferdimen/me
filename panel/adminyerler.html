@@ -1011,38 +1011,57 @@ async function yerleriYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KATEGORILER}`;
     try {
         const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
-        if(!response.ok) throw new Error("kategoriler.json bulunamadı.");
+        if(!response.ok) throw new Error("kategoriler.json dosyası GitHub'dan okunamadı.");
+        
         const data = await response.json();
         shaKategoriler = data.sha;
-        const decoded = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-        kategorilerDizisi = JSON.parse(decoded); // [{ "jsonPath": "data/yerler/gol.json" }, ...]
+        
+        // Türkçe karakterleri sorunsuz çözmek için TextDecoder kullanımı
+        const decodedContent = new TextDecoder("utf-8").decode(Uint8Array.from(atob(data.content), c => c.charCodeAt(0)));
+        let parseEdilen = JSON.parse(decodedContent);
+
+        // Eğer kategoriler.json direkt [] şeklinde değil de { "kategoriler": [...] } şeklindeyse diye koruma:
+        if (!Array.isArray(parseEdilen)) {
+            kategorilerDizisi = parseEdilen.kategoriler || parseEdilen.categories || Object.values(parseEdilen);
+        } else {
+            kategorilerDizisi = parseEdilen;
+        }
 
         // Kategori alt dosyalarını paralel olarak çekiyoruz
         await Promise.all(kategorilerDizisi.map(async (kat) => {
+            if(!kat.jsonPath) return; // Dosyada jsonPath değişkeni yoksa bu adımı atla
+            
             const katUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${kat.jsonPath}`;
             const katRes = await fetch(katUrl, { headers: { "Authorization": `token ${token}` } });
+            
             if(katRes.ok) {
                 const katData = await katRes.json();
-                const katDecoded = decodeURIComponent(atob(katData.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+                const katDecoded = new TextDecoder("utf-8").decode(Uint8Array.from(atob(katData.content), c => c.charCodeAt(0)));
                 tumYerlerVerisi[kat.jsonPath] = {
                     sha: katData.sha,
                     data: JSON.parse(katDecoded)
                 };
+            } else {
+                console.warn(`${kat.jsonPath} bulunamadı veya okunamadı.`);
             }
         }));
 
         haritayiKur();
         yerArayuzunuOlustur();
     } catch (error) {
-        console.log("Yerler yükleme hatası: " + error.message);
+        console.error("Yerler yükleme hatası: ", error);
+        document.getElementById('yerler-listesi-kapsayici').innerHTML = `<p style="color: #ef4444; font-weight:bold;">Yükleme Hatası: ${error.message} <br><br>Lütfen F12 (Geliştirici Araçları) Konsolunu kontrol edin.</p>`;
+        document.getElementById('y-kategori').innerHTML = '<option value="">-- Hata Oluştu, Kategori Yüklenemedi --</option>';
     }
 }
 
 // 2. LEAFLET HARİTASINI KUR
 function haritayiKur() {
-    if(yerlerHaritasi) return;
+    if(yerlerHaritasi) return; // Zaten kuruluysa çık
     
-    // Türkiye merkezli başlangıç noktası
+    const haritaKapsayici = document.getElementById('yerler-harita');
+    if(!haritaKapsayici) return;
+
     yerlerHaritasi = L.map('yerler-harita').setView([39.0, 35.0], 5);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
@@ -1050,13 +1069,26 @@ function haritayiKur() {
 
     yerlerMarkerGrubu = L.layerGroup().addTo(yerlerHaritasi);
 
-    // Haritaya tıklanınca koordinatları forma al (Yeni ekleme için kolaylık)
+    // Haritaya tıklanınca koordinatları forma al (Yeni ekleme için)
     yerlerHaritasi.on('click', function(e) {
         if(document.getElementById('y-index').value === "-1") {
-            document.getElementById('y-lat').value = e.latlng.lat;
-            document.getElementById('y-lng').value = e.latlng.lng;
+            document.getElementById('y-lat').value = e.latlng.lat.toFixed(7);
+            document.getElementById('y-lng').value = e.latlng.lng.toFixed(7);
         }
     });
+}
+
+function haritayiGuncelle() {
+    // Sekmeye tıklandığında sekmenin aktif(visible) olmasını bekle ve harita boyutunu onar
+    setTimeout(() => {
+        if(yerlerHaritasi) {
+            yerlerHaritasi.invalidateSize();
+        } else {
+            // Eğer yükleme gecikmişse ve harita henüz kurulmadıysa şimdi kurmayı dene
+            haritayiKur();
+            if(yerlerHaritasi) yerlerHaritasi.invalidateSize();
+        }
+    }, 300);
 }
 
 function haritayiGuncelle() {
