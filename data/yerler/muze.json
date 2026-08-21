@@ -100,6 +100,15 @@
                 "lat": 40.649554,
                 "lng": 35.824662
             }
+        },
+        {
+            "name": "Arkeoloji Müzesi - Adana",
+            "description": "<br><br>Müze 1924 yılında kurulmuştur. Çukurova’nın yanı sıra Kahramanmaraş, Gaziantep, Mersin Yumuk tepe, Tarsus Gözlü kule ve Misis kazısı buluntularını da bünyesinde topladığından aynı zamanda bölge müzesi konumundadır. Müzede bulunan birçok önemli eser içinde en dikkati çeken M.Ö. 7. yy. ait Hitit tanrısı Tarhunda’nın araba üzerindeki heykelidir. Ayrıca müze sikkeleri ile de ünlüdür.",
+            "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4sWDhisuIJS9ipH_Y1Li6TqWRwVZU21hM5ZA_N1d2d1SKTGQ9RkG0D5l2nwoNz30I59Z1DNliP1EYwSJtYGlBjqV-iQFNnFTjDZ7BgHVTVplpNXYuoprPiqrAf8acPAstV3543FaOyUkilWLsX2sbNA43Tcwi3dokSuu14Mo9Tgqa-qeBrSFjC1F4IKlLvwaGg7vA?authuser=0&fife=s16383",
+            "coordinates": {
+                "lat": 36.9921115,
+                "lng": 35.3314173
+            }
         }
     ]
 }
