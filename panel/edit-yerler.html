@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferdimen // İçerik Yönetim Paneli</title>
     <link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f4f6f9; color: #333; }
         h2 { color: #1e293b; margin-bottom: 20px; }
@@ -473,14 +471,18 @@
         </div>
     </fieldset>
 </div>
-<!-- Main Content içine ekle -->
 <div id="yerler-tab" class="tab-content">
-    <h3>Yerler Harita Yönetimi</h3>
-    <div id="admin-map" style="height: 400px; margin-bottom: 20px; border-radius: 8px;"></div>
+    <h3>Yerler Yönetimi</h3>
+    <!-- Harita Alanı -->
+    <div id="admin-map" style="height: 400px; margin-bottom: 20px; border: 1px solid #ddd;"></div>
+    
+    <!-- Arama ve Liste -->
     <div class="form-group">
-        <input type="text" id="yer-arama" onkeyup="yerleriFiltrele()" placeholder="Mekan adı ile arama yap...">
+        <input type="text" id="yer-ara" placeholder="Mekanlarda ara..." onkeyup="yerleriFiltrele()">
     </div>
-    <div id="yerler-listesi"></div>
+    <div id="yerler-listesi-kapsayici"></div>
+    
+    <!-- Düzenleme/Ekleme Formu (Haberler sekmesindeki yapıyı buraya kopyalayıp genişletin) -->
 </div>
 <!-- // ==========================================	SAYFA İÇERİKLERİ ÜSTE EKLENİYOR	-->
                 <!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
@@ -530,6 +532,11 @@ let mevcutBildirimlerJson = {}; // Tüm bildirimler.json objesini tutacak
 const PATH_BILDIRIMLER = "data/bildirimler.json";
 let shaBildirimler = "";
 let mevcutBildirimlerJson = {}; // Tüm bildirimler.json objesini tutacak
+
+// PATH_YERLER
+const PATH_KATEGORILER = "data/yerler/kategoriler.json";
+let kategorilerVerisi = []; // kategoriler.json içeriği
+let tumYerler = {}; // { "gol.json": { sha: "...", content: [...] }, ... }
 // ========================================== PATH_XXX BİLGİLERİ ÜSTE EKLENİYOR
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -581,7 +588,7 @@ if (token) {
     konumuYukle(token);
     haberleriYukle(token);
 	bildirimleriYukle(token);
-	yerleriYonetimIcinYukle(token);
+	adminYerleriYukle(token);
 // ========================================== XXX(token) BİLGİLERİ ÜSTE EKLENİYOR     
     // YENİ EKLENEN KRONOLOJİ YÜKLEYİCİLERİ
     yazilariYukle(token).then(() => {
@@ -1381,63 +1388,19 @@ async function githubDosyaSil(token, dosyaYolu, mesaj) {
         });
     } catch(e) {}
 }
-// --- YERLER YÖNETİMİ MİMARİSİ ---
-let adminMap = null;
-let yerlerMasterData = {}; 
-
-async function yerleriYonetimIcinYukle(token) {
-    // 1. Haritayı başlat
-    adminMap = L.map('admin-map').setView([39.16, 35.66], 6);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(adminMap);
-
-    // 2. Verileri çek
-    const katRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/data/yerler/kategoriler.json`, { headers: { "Authorization": `token ${token}` } });
-    const katData = await katRes.json();
-    const categories = JSON.parse(decodeURIComponent(escape(atob(katData.content))));
-
-    for (const cat of categories.categories) {
-        const fileRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${cat.jsonPath}`, { headers: { "Authorization": `token ${token}` } });
-        const fileData = await fileRes.json();
+async function adminYerleriYukle(token) {
+    // 1. Kategoriler.json'u çek
+    const katRes = await fetch(`.../contents/${PATH_KATEGORILER}`, { headers: { "Authorization": `token ${token}` } });
+    kategorilerVerisi = await katRes.json();
+    
+    // 2. Her bir jsonPath için döngü kur
+    kategorilerVerisi.categories.forEach(async (cat) => {
+        const fileData = await fetchFileContent(cat.jsonPath, token);
+        tumYerler[cat.jsonPath] = fileData;
         
-        yerlerMasterData[cat.jsonPath] = {
-            sha: fileData.sha,
-            data: JSON.parse(decodeURIComponent(escape(atob(fileData.content))))
-        };
-
-        // 3. Marker'ları Ekle (Sürüklenebilir)
-        yerlerMasterData[cat.jsonPath].data.places.forEach((p, idx) => {
-            const marker = L.marker([p.coordinates.lat, p.coordinates.lng], { draggable: true }).addTo(adminMap);
-            marker.bindPopup(`<b>${p.name}</b><br><button onclick="mekanDuzenle('${cat.jsonPath}', ${idx})">Düzenle</button>`);
-            
-            marker.on('dragend', (e) => {
-                const pos = e.target.getLatLng();
-                yerlerMasterData[cat.jsonPath].data.places[idx].coordinates = { lat: pos.lat, lng: pos.lng };
-                if(confirm("Konumu kaydetmek istiyor musunuz?")) {
-                    githubKaydet(cat.jsonPath);
-                }
-            });
-        });
-    }
-}
-
-async function githubKaydet(path) {
-    const token = localStorage.getItem('gh_oauth_token');
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(yerlerMasterData[path].data, null, 2))));
-    const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`, {
-        method: "PUT",
-        headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ message: "Admin: Yer konumu güncellendi", content: content, sha: yerlerMasterData[path].sha })
+        // 3. Leaflet Marker'larını haritaya ekle (draggable: true)
+        // marker.on('dragend', function(e) { ... yeni konumu güncelle ... });
     });
-    if(res.ok) {
-        const data = await res.json();
-        yerlerMasterData[path].sha = data.content.sha;
-        bildirimGoster("Konum güncellendi!", "success");
-    }
-}
-
-function yerleriFiltrele() {
-    const query = document.getElementById('yer-arama').value.toLowerCase();
-    // Liste elemanlarını DOM üzerinden filtrele
 }
 // ==========================================	YENİ KODLAR ÜSTE EKLENİYOR	-->		
         function cikisYap() {
