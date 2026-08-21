@@ -1,9 +1,9 @@
 {
   "categories": [
     {
-      "id": "muzeler-arkeoloji",
-      "baslik": "Müzeler (Arkeoloji)",
-      "jsonPath": "data/yerler/muze-arkeoloji.json"
+      "id": "muzeler",
+      "baslik": "Müzeler",
+      "jsonPath": "data/yerler/muze.json"
     },
     {
       "id": "goller",
@@ -49,6 +49,11 @@
       "id": "kopruler",
       "baslik": "Köprüler",
       "jsonPath": "data/yerler/kopru.json"
+    },	
+	{
+      "id": "camiler",
+      "baslik": "Camiler",
+      "jsonPath": "data/yerler/cami.json"
     },
 	    {
       "id": "plajlar",

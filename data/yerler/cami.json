@@ -1,0 +1,16 @@
+    {
+            "category_name": "Camiler",
+			"category_icon": "img/yerler/ikon/cami.png",			
+            "places": [
+                {
+                    "name": "Kalemlik Orman Kampı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 38.021418,
+                        "lng": 27.072401
+                    }
+                }
+            ]
+        }
+      
