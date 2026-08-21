@@ -1,0 +1,59 @@
+{
+  "categories": [
+    {
+      "id": "muzeler",
+      "baslik": "Müzeler",
+      "jsonPath": "data/yerler/muze.json"
+    },
+    {
+      "id": "goller",
+      "baslik": "Göller",
+      "jsonPath": "data/yerler/gol.json"
+    },      
+	{
+      "id": "Kamp-Piknik-Alanlari",
+      "baslik": "Kamp & Piknik Alanları",
+      "jsonPath": "data/yerler/kamp.json"
+    }, 	
+	{
+      "id": "Şelale",
+      "baslik": "Şelaleler",
+      "jsonPath": "data/yerler/selale.json"
+    },		
+	{
+      "id": "Gecitler",
+      "baslik": "Geçitler",
+      "jsonPath": "data/yerler/gecit.json"
+    },		
+	{
+      "id": "Kaleler-Kuleler",
+      "baslik": "Kaleler ve Kuleler",
+      "jsonPath": "data/yerler/kale.json"
+    },	
+	{
+      "id": "Milli-Parklar",
+      "baslik": "Milli Parklar",
+      "jsonPath": "data/yerler/milli-park.json"
+    },  	
+	{
+      "id": "Kanyonlar",
+      "baslik": "Kanyonlar",
+      "jsonPath": "data/yerler/kanyon.json"
+    },   
+	{
+      "id": "arkeolojik",
+      "baslik": "Arkeolojik Sit alanları",
+      "jsonPath": "data/yerler/arkeolojik.json"
+    },	
+	{
+      "id": "kopruler",
+      "baslik": "Köprüler",
+      "jsonPath": "data/yerler/kopru.json"
+    },
+	    {
+      "id": "plajlar",
+      "baslik": "Plajlar",
+      "jsonPath": "data/yerler/plaj.json"
+    }
+  ]
+}

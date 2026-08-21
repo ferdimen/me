@@ -1,0 +1,421 @@
+ {
+            "category_name": "Plajlar",
+			"category_icon": "img/yerler/ikon/plaj.png",			
+            "places": [
+                {
+                    "name": "Kömür Limanı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.4562379,
+                        "lng": 26.5111578
+                    }
+                },
+                {
+                    "name": "Gökçetepe",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.6313873,
+                        "lng": 26.5914631
+                    }
+                },
+                {
+                    "name": "Enez",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.6703204,
+                        "lng": 26.0652781
+                    }
+                },
+                {
+                    "name": "Kıyıköy",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 41.6397577,
+                        "lng": 28.094058
+                    }
+                },
+                {
+                    "name": "İğneada",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 41.8659815,
+                        "lng": 27.9793453
+                    }
+                },
+                {
+                    "name": "Kastro",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 41.5880525,
+                        "lng": 28.1437325
+                    }
+                },
+                {
+                    "name": "Çilingöz",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 41.5248047,
+                        "lng": 28.2202721
+                    }
+                },
+                {
+                    "name": "Yalıköy",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 41.4880061,
+                        "lng": 28.2928848
+                    }
+                },
+                {
+                    "name": "Kumbağ",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.8822335,
+                        "lng": 27.4610567
+                    }
+                },
+                {
+                    "name": "Uçmakdere",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.7841809,
+                        "lng": 27.367571
+                    }
+                },
+                {
+                    "name": "Şarköy",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.6105073,
+                        "lng": 27.1139681
+                    }
+                },
+                {
+                    "name": "Eğerce",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.3647762,
+                        "lng": 28.6284399
+                    }
+                },
+                {
+                    "name": "Yıldız Koyu",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.234231,
+                        "lng": 25.9036964
+                    }
+                },
+                {
+                    "name": "Eşelek",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.1465195,
+                        "lng": 25.9702849
+                    }
+                },
+                {
+                    "name": "Alanya",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 36.5428118,
+                        "lng": 31.986351
+                    }
+                },
+                {
+                    "name": "Side",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 36.7661772,
+                        "lng": 31.3929284
+                    }
+                },
+                {
+                    "name": "Konyaaltı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 36.8683774,
+                        "lng": 30.6500101
+                    }
+                },
+                {
+                    "name": "Eski Foça Sahili",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 38.6714063,
+                        "lng": 26.7549143
+                    }
+                },
+                {
+                    "name": "Ilıca Plajı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 38.3089204,
+                        "lng": 26.3759613
+                    }
+                },
+                {
+                    "name": "Buyuk Akkum Beach",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 38.19051,
+                        "lng": 26.7727600000001
+                    }
+                },
+                {
+                    "name": "Azmak Plajı\n",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 38.222437,
+                        "lng": 26.756258
+                    }
+                },
+                {
+                    "name": "Selçuk Belediyesi Halk Plajı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.937147,
+                        "lng": 27.275634
+                    }
+                },
+                {
+                    "name": "Ören Plajı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 39.4976605,
+                        "lng": 26.9330471000001
+                    }
+                },
+                {
+                    "name": "Kadınlar Plajı\n",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.8458334,
+                        "lng": 27.2431111
+                    }
+                },
+                {
+                    "name": "Kuşadası Halk Plajı\n",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.8670616,
+                        "lng": 27.2635603
+                    }
+                },
+                {
+                    "name": "Plaj",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.9022365,
+                        "lng": 27.2723365
+                    }
+                },
+                {
+                    "name": "Altınkum Plajı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.3549,
+                        "lng": 27.2773789
+                    }
+                },
+                {
+                    "name": "3 Plaj",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.343507,
+                        "lng": 27.263479
+                    }
+                },
+                {
+                    "name": "Plaj",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.7002227,
+                        "lng": 27.1758842
+                    }
+                },
+                {
+                    "name": "Plaj",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.6897297,
+                        "lng": 27.1288061
+                    }
+                },
+                {
+                    "name": "Sevgi Plajı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.744649,
+                        "lng": 27.2517491
+                    }
+                },
+                {
+                    "name": "Sarımsaklı Plajı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 39.26783,
+                        "lng": 26.6666332
+                    }
+                },
+                {
+                    "name": "Yeniçiftlik Plajı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.9922731,
+                        "lng": 27.8406429
+                    }
+                },
+                {
+                    "name": "Sultanköy Plajı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 41.012742,
+                        "lng": 27.9863834
+                    }
+                },
+                {
+                    "name": "Çevlik",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 36.124436,
+                        "lng": 35.919449
+                    }
+                },
+                {
+                    "name": "Kleopatra Plajı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 36.5422472,
+                        "lng": 31.9872415
+                    }
+                },
+                {
+                    "name": "Kaputaş Plajı - Antalya",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 36.2287831,
+                        "lng": 29.4491529
+                    }
+                },
+                {
+                    "name": "Kapanca Ceneviz (Korsan) Limanı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.3788515,
+                        "lng": 28.7246346
+                    }
+                },
+                {
+                    "name": "Poliçe Plajı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 41.7373245,
+                        "lng": 28.0383434
+                    }
+                },
+                {
+                    "name": "Begendik Plaji",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 41.9763514,
+                        "lng": 28.026918
+                    }
+                },
+                {
+                    "name": "Korsan Koyu",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 41.5722464,
+                        "lng": 28.1754165
+                    }
+                },
+                {
+                    "name": "Ece Limanı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.362251,
+                        "lng": 26.3241709
+                    }
+                },
+                {
+                    "name": "Fatma Kadın Plajı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.5064658,
+                        "lng": 26.6802116
+                    }
+                },
+                {
+                    "name": "Güneyli Plajı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.5073393,
+                        "lng": 26.6954721
+                    }
+                },
+                {
+                    "name": "Mavi Saroz",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.5061399,
+                        "lng": 26.6586678
+                    }
+                },
+                {
+                    "name": "Bolayır plajı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.545799,
+                        "lng": 26.7504547
+                    }
+                }
+            ]
+        }
+    

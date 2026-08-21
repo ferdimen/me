@@ -1,0 +1,439 @@
+    {
+            "category_name": "Şelaleler",
+			"category_icon": "img/yerler/ikon/selale.png",
+            "places": [
+                {
+                    "name": "Aktaş Şelalesi - Düzce",
+                    "description": "<br><br>Aktaş Şelalesi, İstanbul ve Ankara’nın sahille kesiştiği noktada bulunan Düzce’nin Akçakoca İlçesinin Aktaş Köyü sınırlarındadır. Akçakoca şehir merkezine 11 km, Aktaş Köyüne 3 km mesafede bulunan şelale, doğası, çevresindeki zengin bitki örtüsü ile Akçakoca’nın görülmeye değer doğal güzelliklerindendir. Bölgeye deniz turizmi için gelen turistlerin yeni keşfetmeye başladığı yerlerden biri olan Aktaş Şelalesi, 50 m yüksekten düşen suyun sesi ve etrafını saran yeşillikler arasında trekking, Foto-safari gibi doğa sporları için oldukça uygundur. Aktaş Şelalesi aynı zamanda Akçakoca'nın önemli yürüyüş parkurlarından birine sahiptir. Akçakoca çevre yolu Göktepe Köyü ayrımından yürüyüşe geçilen parkur 10 km’dir. Çoğunlukla dere kenarını takip eder, Aktaş Vadisiyle devam ederek şelaleye ulaşılmasıyla son bulur. Orta zorlukta bir parkurdur, su içinden geçmek gerekebilir. Kaynak: Düzcxe İl Kültür ve Turizm Müdürlüğü arşivi<br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4iqNzJgsSeL3l7oNEUYStBJ_9Y7viB5Q3aNbneeFrnpqhVyPey4ogs8rV1lQyifI_3sUz3wbgQYRAIFKH6vyG4_41njgdBduLlHPfs64XtKiLSr8nfIKm4ddngIY-PWWKthHUQ7pqLCErDV1PySBsMfHweZ5SgU_xl0G9obvOj_fVrSdPDn5zwP6S3N-gbA76of8M?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 41.031521,
+                        "lng": 31.064873
+                    }
+                },
+                {
+                    "name": "Alaçam Şelalesi Ve Kanyonu - Bursa",
+                    "description": "<br><br>Patika yolları, yeşilliği, kanyonu ve şelalesi ile doğaseverler ve dağ sporu ile ilgilenenler için muhteşem bir yerdir Alaçam Köyü. Özellikle dağ yürüyüşü yapmak isteyenler için ideal bir yer olan Alaçam Köyü’nün bitki örtüsü, Uludağ’ın 1800 metresine kadar uzanıyor. Zirve Dağcılık ve Doğa Sporları Kulübü’nün sürekli düzenledikleri dağ yürüyüş gezilerine katılarak Bursa’nın saklı cennet köşelerini gezebilirsiniz. Kaynak: Bursa İl Kültür ve Turizm Müdürlüğü",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6pvY8wYwKq2yNgk1FIg6aH32iZhmBN-yC1kgecMO3VrbY8lUgaA5dr27jup4rjKaU3lAAmoldOhiWHht5-ZG_q3uNw3j9DQYPr0jO_jY3CjrlC69QJo5WMtChElkynlLwN1HKJhvlTguYJazLeJQnU1SaFnR_-4voGVpZd1BrJ2RClB9XNlEk6j1drKFD47fRXiQA?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.11904,
+                        "lng": 29.2902369999999
+                    }
+                },
+                {
+                    "name": "Aras Şelalesi - Bursa",
+                    "description": "<br><br>Aras Deresi ve Aras Şelalesi Uludağ´ın kar sularını taşıyan ve tam kayalıkların içinden 15 metre yükseklikten düşer. Kaynakça: Bursa İl Kültür ve Turizm Müdürlüğü",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4E6s94Q_YBT15toTqG1yLUrKBR23LZbngDf7cWJe1XmW-kReDwoVppNDMLuuVZP2Jh_ijz7ZfvaUdiRucd3BYPZnZ7F4Q7bGg6gzVmhpuBjiSXsRYivZP3mCW8M80CyUSyiwx0wuH9lKWdPxEg_GLpKtwcri-q12-lMhq3JY2xmzCk4Tnjne86iByoUY5Zq3g-xRE?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.056264,
+                        "lng": 29.125099
+                    }
+                },
+                {
+                    "name": "Aşağı Düden Şelalesi - Antalya",
+                    "description": "Antalya kent merkezine 8 km uzaklıkta, Lara istikametinde bulunan şelale \"Karpuzkaldıran\" olarak da bilinir. Düden Nehri'nin denize ulaştığı Lara yolu üzerinden sularını denize 40 metre yükseklikten boşaltır; devasa suyun püskürmesiyle deniz üzerinde bir sis bulutu oluşturur. Yakınında bulunan Gençlik Parkı, şelale manzarası için ideal bir izleme noktasıdır. Parkta kafeterya, otopark ve piknik alanı da bulunmakta; şelale yakınına tekne turları düzenlenmektedir. (Kaynakça: \"Aşağı Düden Şelalesi\" Sonkaya, K., Antalya Tanıtım Kitapçığı, Antalya İl Kültür ve Turizm Müdürlüğü, 2016, Antalya, s.44.)",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 36.85129,
+                        "lng": 30.7830260000001
+                    }
+                },
+                {
+                    "name": "Aydınpınar Şelaleleri Tabiat Parkı - Düzce",
+                    "description": "<br><br>Düzce-Merkez Aydınpınar Köyü sınırları içerisinde bulunan Aydınpınar Şelaleleri, şehir merkezine 10 km mesafededir. Güzeldere ve Samandere Şelaleleri arasında ve yol güzergahı üzerinde bulunan şelale, arka arkaya dökülen 5 ayrı şelale kümesinden oluşmaktadır. Aydınpınar Şelaleleri Tabiat Parkı Düzce’nin önemli yürüyüş parkurlarından birine sahiptir. Sağlıklı her insanın yürüyebileceği orta zorluk ve orta zorluğu aşan parkurları vardır. Gürgen, meşe, kestane gibi karışık yapraklı orman ağaçları arasında trekking, foto-safari, çadır kampı yapabilirsiniz. Bölgede bulunan I. Şelale, şelale-kaya tırmanışı için oldukça uygundur. Özellikle Mayıs ayında dağ çileği, Ağustos ve Eylül aylarında böğürtlenlerle renklenen vadi, tamamen Düzce’ye hakim bir konumdadır. Kaynak: Düzce İl Kültür ve Turizm Müdürlüğü<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6FKNcTAcpCESgjnzHxPh2tpDRxu2fB58WBVzpj81VUl7Zt7CShAE_Y_khpSUuSPPYShtYKkF7G95f4rvnQ83qEieu4T6NyC5GTtixb7FPIHhFCYTcS7pKMKGIc-qrcvF_Yxmta8oN5Ju4tgE6J6k64xatozrEA_WXEvkGVM3b4DEIb43K86aKplB3VkezAmbkH7FE?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.748935,
+                        "lng": 31.103058
+                    }
+                },
+                {
+                    "name": "Doğançay Şelalesi - Sakarya",
+                    "description": "<br><br>Doğançay Şelalesi deniz seviyesinden 600 mt. yüksekliktedir. Yol, yürüyüş traking parkuru olarak da kullanılmaktadır. Görülecek yerler listesinde ilk sıralardadır. Bozulmamış doğasıyla görsel bir şölen sunmaktadır.<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7fpmkbSmttBPTFsJA1g-5MYvTH6TBhd0WPTmfR_1V4GWXEy_WT0BjaJsGWVN8mS6IWlCYvqtS454_9woyTXCA-3LuUEx_2WSyI0PPBiRr623HOx7SXcn4E8AS3xOora5-7ZCysBdNFIijI8W04MHNZHzNaHiqdb1kwvcbsKbRQNqXdpoFLcxr04mOh0XdeVlBJRfk?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.603136,
+                        "lng": 30.371776
+                    }
+                },
+                {
+                    "name": "Düden Şelalesi",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 36.9640205,
+                        "lng": 30.7266355
+                    }
+                },
+                {
+                    "name": "Erikli Çifte Şelale - Yalova",
+                    "description": "<br><br>Çınarcık İlçesi, Teşvikiye Beldesinden, Delmece Yaylasına çıkılan yol üzerinde, Kent Ormanı içerisinde bulunmaktadır. Erikli Şelaleleri eşsiz doğa güzellikleri ile kamp kurmak ve Trekking yapmak isteyenler için harika bir mekandır.<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR57wu944FP_4fX0zYsjHhevGAbmSklj7veK_qybFY5N1WQcel6Qb67liLLfZYD3NwnGV0GSxBuUG7Ru8m9xIW2AARwdUemJrj-pJB9uDWGYrKLtO6S4Ep7Srs3BRUkDM7OaQXGS6cqIu_NIPekv1n0BvhaNdZuqa41gQTeK8cbOigkgBHzabJFdqZBrAN6E1zBzYFk?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.585815,
+                        "lng": 29.0258719999999
+                    }
+                },
+                {
+                    "name": "Girlevik Şelalesi - Erzincan",
+                    "description": "<br><br>Girlevik Şelalesi, Erzincan şehir merkezine yaklaşık 35 km mesafede, Çağlayan bucağı, Girlevik köyünde bulunmaktadır. Şelale; doğal güzellikleri, bitki örtüsü, ağaçları, serin havası ve dinlenme yerleriyle Erzincan' ın en çok tercih edilen mesire yeridir. Yüksekliği yaklaşık 30 metre olan, üç katlı birçok koldan akan Girlevik Şelalesine, yerli ve yabancı turistlerin ilgisi her geçen yıl daha da artmaktadır. Özellikle bahar aylarında açan papatyalar, rengarenk küpe çiçekleri ve daha birçok farklı bitki türü görsel bir şölen sunmaktadır. Şelaleyi ziyarete gelen misafirler, iğde ağaçlarının gölgesinden piknik yapmakta ve serinlemektedir. Kış aylarında hava sıcaklığının sıfırın altına düşmesi, Girlevik Şelalesinin donmasına neden olmaktadır. Şelalenin bu hali, oldukça ilgi çekicidir. Donmayla birlikte oluşan buz sarkıtları, buz tırmanıcılığı sporu için elverişli bir ortam sağlamaktadır. Kış aylarında bu spora gönül verenler, donmuş şelalede gösteri yapmaktadır.",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7gClMQYwgckc_4xwged0lJQMh4Aj9twrI-NnfC3p5cJz6bcbBEPpWw9qkgof-umzbKCVBLOIfMNdVFXmvYcd96lPOXHEZLXtifUckIIPVr9ggARniq3jSV-xCYI49khzInuF3JZAwXuPC0Xz9RPH_Qr6dSlZuvWn1Jq__PmPj1hJO5roJR0nN2RFpTWr4D-2kfUrs?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 39.586641,
+                        "lng": 39.7308538
+                    }
+                },
+                {
+                    "name": "Güney Şelalesi - Denizli",
+                    "description": "<br><br>Güney Şelalesi, Denizli İli, Güney İlçesi, Cindere Köyü sınırları içinde yer almaktadır. Güney İlçesinin yaklaşık 4 km. güneyinden geçen Menderes Nehrinin kenarındadır. Şelale doğal güzelliği bakımından görülmeye değer yerlerdendir.<br><br>Denizli'ye 70 km uzaklıktaki gizli cennet, Birinci Derece Doğal Sit Alanıdır. Güney ilçe merkezinin 3 km uzağında yer alan Cindere Dağı yamaçlarından çıkan su kaynaklarından beslenmektedir. Büyük Menederes Nehri'ne yaklaşık 20 m yüksekten nazlı nazlı dökülen şelale suyu kireçli, bunun sonucu olarak da şelale yatağında kalker basamaklar ve çeşitli oluşumlar meydana getiriyor. Gün doğumundan akşama dek izlenmesi gereken Güney Şelalesi gelin duvağı tül perde, yelpaze biçiminde zümrüt yeşili kadife görünümlü yosunlar üzerinde süzülen su damlaları yıllarca süren akışıyla sarkıt dikitleri olan Damlataş Mağarası oluşturmuş, şelale akış seti içinde oluşan mağara içinde yüzülebilen derinlikte bir de göl saklıyor. Kültür ve Turizm Müdürlüğü<br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5SBls9z4UtEko5xb9T-Eq0UIrI_gxbYtdEQULh6YbikVhcbK-qx7K9Gb6zfOd2TYQeHYCXssR-oKcC2-aFDY_XZ5T2qHO06Vq4F3v5yLYDZtZ7wUC2sEFq9k0gIt_q_SuzuMaA4LbOC2E1qNiFk9cGPbI7MD-r5M1ZhgdgyQO4J0erbdWUYivvPNK0GjNGwXRB-08?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 38.1189934,
+                        "lng": 29.0598253
+                    }
+                },
+                {
+                    "name": "Günpınar Şelalesi - Malatya",
+                    "description": "<br><br>Darende ilçesine bağlı Günpınar köyündedir. İlçeye 7 kilometre uzaklıktadır. Suyu kaynağından üç kademe halinde, yaklaşık 40 metre yükseklikten dökülmektedir. Şelalenin sol tarafında ana dereden bağımsız gelen kaynak suyu, kış mevsiminde donarak şelaleyi adeta Pamukkale’ye benzetir. Şelalenin çevresinde yeme-içme tesisleri de bulunmaktadır. Ayrıca suyun kaynağına doğru 1,5 kilometre kadar yürüyüş imkânı vardır. Kaynak: İl Kültür ve Turizm Müdürlüğü",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6VASKJcC8zPVWn5_u1DoVwjBUaGsk5IaZwXENQOQVH5GLq8PyhsJ0SojXk4FsG2ls6tNlFPkSv2Pr_0eNvMpqmQeH6oePHW_SXxwy-5qjFi66M6HFqV72XW3_3OkKweNLjS9IdFjR_ZCQ7A7atTHlpDQp0_mu61RQL7leZVKecYZZIcF6jCcN-bIhc_zbz_Wew5no?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 38.555961,
+                        "lng": 37.4227100000001
+                    }
+                },
+                {
+                    "name": "Güzeldere Şelalesi - Düzce",
+                    "description": "<br><br>Güzeldere Şelalesi, Düzce’nin Gölyaka ilçesi sınırları içerisinde, 22.76 hektarlık alanı kapsamaktadır.javascript:void(); Düzce’ye 18, Gölyaka’ya 11 km mesafedeki Gölyaka-Güzeldere Köyü’ndedir ve rakımı 600 metredir. Mesire yeri olarak 28.12.1993 yılında, Tabiat Parkı olarak 11.07.2011 yılında tescil edilmiştir. Güzeldere Köyü’nden geçen Bıçkı Deresi üzerinde bulunan Şelale 120 metre yükseklikten dökülen suyun doğal coşkusunu dev Kayın ve Gürgen ağaçlarıyla bütünleştirerek muazzam bir görüntü arz etmektedir. Şelale, düzenlenen patika yol, merdivenler ve seyir terasları yardımıyla gezilebiliyor. Kışın beyaz yorganını örten, ilkbaharda ise ormangülleriyle canlanan Güzeldere Şelalesinin en görkemli zamanı ilkbahar ve güz mevsimi. İlkbaharın ve sonbaharın renk cümbüşüne dönüşen tonları bir tabloya benzetiyor bu nadide tabiat köşesini. Güzeldere Şelalesi, doğal peyzaj bitki örtüsü, Piknik alanları, düzenlenmiş orman içi dinlenme yerleri ve yürüyüş parkurları ile bölgenin önemli doğal değerlerindendir. Bölge manzara seyri, piknik, çadır kampı, trekking, at biniciliği, bisiklet sporları ve foto-safari aktiviteleri için uygun olup, kır gazinosu, ve kır kahvesi ile ziyaretçilerin ihtiyaçlarını karşılamaktadır. Elmacık Dağı (1700 m)’na uzanan bu şelale ve çevresi orman yapısı ile de dikkat çekmektedir. Şelalenin bulunduğu alanda, kayın, gürgen, köknar, porsuk, sarıçam, karaçam, kestane, ıhlamur, akçaağaç, dişbudak, ceviz, orman kavağı, orman söğüdü, orman gülü, karayemiş, papaz külahı ağaçları; böğürtlen, üvez, alıç, taflan, kantaron otu, kardelen, arap sümbülü, siklamen, menekşe, düğün, eğrelti, fiğ ve burçak gibi bitkiler de görülmektedir. Kaynak: Düzce İl Kültür ve Turizm Müdürlüğü arşivi<br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5WC7TYmUHKad47h1pjZ2Q-xh9Z7oDc6eL9F4R_ZVK09S-O9mzifWGv3Nr6fmEoO6oDCzKC5BnKMRTwmmNKRhDlOLkLO7-F8V1kSy7rP--37Xc1NhCnMe7DL3rUCgZ5HjkFCq6Fnd1L0SmB0bYL8wdA7uHZuIB5eRc6aaG_QOxVzhAXXDPHhbutjlfKuMW6CY6BONw?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.724234,
+                        "lng": 31.041527
+                    }
+                },
+                {
+                    "name": "Harkköy Şelalesi - Sakarya",
+                    "description": "<br><br>5 kattan oluşan doğal şelaledir. 4 mevsim boyunca akar.",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4mbIIPPnpTsuplavAIaHoYAZbvQ_w9-5WhTS7_efEPyaZvMDtFj-k8aOL-cybnXYypl7OPyw36LRMXz0mPEVh6NXfWQ-qPzoM7UPPdodHrFygDsMlvVtBkX57ix_fTsgvhmAoz5x6ew3crgh95zUltwbPTd5ZjtiqB5jKVzmhZ1_L_BA3wG_wWrLXJkzCftdAzWo4?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.497549,
+                        "lng": 30.525742
+                    }
+                },
+                {
+                    "name": "Harmankaya Şelaleleri - Zonguldak",
+                    "description": "<br><br>Şelalelerin yer aldığı vadi içine orman içindeki patika yoldan iniş yapılır. Vadinin çoğu yerinde 10 metre genişliğinde düz alanlar vardır. Vadi içinde, ortalama 1100 metrelik bir yürüyüş sonrası birinci şelale karşınıza çıkar. Birinci şelalenin hemen yanından yokuş yukarı 10 metresi % 80 eğimli, 15 metresi % 60 eğimli tırmanış ve yine çalılar arasındaki patikada 20 metre ilerledikten sonra 1. şelalenin akış tepesindeki vadiye inilir. Buradan 250 metre ilerleme yapıldıktan sonra 2. şelale karşınıza çıkar. Burada da hemen şelale yanından yukarıya orman içine % 70 eğimli 30 metre bir tırmanış ve tırmanıştan sonra 20 metrelik patika yoldan yüründüğünde 2. şelalenin üzerine çıkılır. Burada vadi içinde 200 metre daha ilerledikten sonra karşınıza 3. şelale çıkar. Parkur boyunca ziyaretçilere yemyeşil bir bitki örtüsü eşlik eder. Vadi içindeki ormanlık alanda kestane, meşe, gürgen, ıhlamur, şimşir, kızılcık, kızılağaç, kavak, çınar, karayemiş, kocayemiş, yabani elma, yabani kiraz, yabani fındık, defne, muşmula, yılkın çalısı, geyik üzümü, yabani üzüm, ovaz, ahlat, orman gülü, böğürtlen, kuşburnu gibi bitki türlerine rastlamak mümkündür. Ayrıca zılbıt, çiçekli ve çiçeksiz sarmaşık türleri, ısırgan, katırtırnağı, ballıbaba, papatya türleri, siklamen, mor menekşe, çuha çiçeği, böcek kapan, çaydanlık çiçeği, yabani çilek, yosun gibi endemikler de bulunmaktadır. Kaynak-Fotoğraf: İl Müdürlüğü arşivi.<br><br>Ulaşım: Ankara köprüsü yanındaki Çaydamar minibüslerine binilip en son durak olan İl Özel İdaresi ek binasının arkasında inilir. Araçtan indikten hemen sonra 1500 metre karelik, çevresi orman ve tabanı çimenlik olan piknik alanına gelinir.<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6Rh32XQMLKP3RMHhoTej3fEJBPRbOxCEepWzimcfaiVPFfbaRTDDjvMelixjnup04ANM87S04nfk_FDCKndWgV9WfMycq8PnEbJDT6Bx-vSOdSoQ-UHdnORYlv5QlA-5LYJtP7Uky92NFcahXRBJCVzmr8JyrFL67ppQJJgvgLPzvq4_IaCvkpWBzb-SgokgC42Ow?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 41.424291,
+                        "lng": 31.817641
+                    }
+                },
+                {
+                    "name": "Harmankaya Şelalesi - Düzce",
+                    "description": "<br><br>Düzce’nin Cumayeri ilçesi, Harmankaya Köyünde bulunan Harmankaya Şelalesi Düzce’ye 31 km İlçe merkezine 11 km mesafededir. Harmankaya Şelalesi, Cumayeri, Dokuzdeğirmen Köyü yanından geçen Büyük Melen Nehri üzerindeki 13 km'lik parkuru ile Türkiye’nin 3.büyük rafting alanına 5 km mesafededir. Harmankaya Şelalesi kendi görkemli görüntüsünün yanında 700 m'lik orta zorlukdaki yürüyüş parkuru ile de bölgenin saklı cenneti. Bölge, doğa yürüyüşü ve foto safari için oldukça uygundur. Kaynak: Düzce İl Kültür ve Turizm Müdürlüğü arşivi<br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5hW0bMgWqBYW59cYv7BpojJUydCLXxgAW7DGo7AiyArlznAHA5GAQMWQ0Rmbd0CsPhnoaknU5eK9NhYspCgvsVaVWC7t5W753gDeLri_TOJw7I73XE6V5dJujLFVOaESU8SZETIwWp0i4d_VZnVp0HlApHhiYs_0bvFGgXcsRcz-OfnBZBuWrB7fZMkqAu37r2L2E?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.907026,
+                        "lng": 30.9487009
+                    }
+                },
+                {
+                    "name": "Hasan Boğuldu/Sütüven Şelalesi Piknik Alanı - Balıkesir",
+                    "description": "<br><br>Edremit Akçay karayolundan 2 km. içeride bulunan Zeytinli Beldesi sınırları içindedir. Kazdağı’ nın eteklerinde bulunan bu şirin piknik alanına Beyoba Köyü’ nden geçerek ulaşabilirsiniz. Zeytin ve zeytinyağı ile ünlü belde ve çevresinin doğa tutkunları için uygun mekânlar oluşturduğunu fark edeceksiniz. Rakımı (deniz seviyesinden yüksekliği) 798 m.' dir.<br><br>Ulaşım: Edremit ile Akçay arasında bulunan karayolundan Zeytinli tabelasını görünce kuzeye dönülüp tipik bir Ege kasabası olan Zeytinli Kasabası' na ulaşılıyor. Zeytinli den kuzeye giden yoldan tabelaları takip ederek bugün Milli Park olan Sarıkız bölgesine geliyorsunuz. Tabelaları takip ederek yol ayrımından sola dönülünce yaklaşık 4-5 km sonra Sütüven Şelalesi'ne ve yakınındaki Hasan Boğuldu Göleti'ne ulaşıyorsunuz. Şehir içi ulaşım araçları ile ulaşım sağlanabilmektedir.<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6bK37lWve8KjBAEAsjCUQp-8PoyIZtRZotqMDlFeGT3THu0p4CoMc_qjNm0Io1V4IrySlI8vqQ_2FS3h1pg-EpVwVoPQfLtmiJlxx1M4vLRFBm-yD2sthmUJsccHcesUcLGkLTdehv433rqgaK2_DOjJL_dHnmDOTzoPWNjagpTnyY9ru4jCdy96z_6WCnUPgsNk8?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 39.64128,
+                        "lng": 26.921065
+                    }
+                },
+                {
+                    "name": "Homa (Gümüş Su) Şelalesi - Denizli",
+                    "description": "<br><br>Şelalenin bulunduğu mahalleye suyun iyi niteliği nedeni ile Gümüşsu adı verilmiştir. Yaklaşık 30 metre yükseklikten şut yapan bir şelale bulunmaktadır. Suyu çok soğuk ve tatlıdır. Kültür ve Turizm Müdürlüğü<br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4c6iZEDTSts6O2pqsfAoD1FtfxDW6tRPTveb8Mf8ZdEhVo5X0NMDVWP63_RZzO67yUAAE01fEWiIyxX689W4A8QoIWzz0FlTgJGxVayfx-yNUNZCDH7G4lOTxQ43EwxYlMapEYcC8difkJrMn4Jj4uPXK9F8-JNV3YSwV-P8meJ0hT4tJiDBIFYZg_TM4HLN3Tk3E?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 38.243169,
+                        "lng": 29.984608
+                    }
+                },
+                {
+                    "name": "Ilıca Şelalesi - Kastamonu",
+                    "description": "<br><br>Pınarbaşı’na 12 km. uzaklıkta Ilıca Köyü içinde yer alan şelale, 15 metre yükseklikten aşağıya dökülmektedir. Suyun döküldüğü yerde oluşan doğal havuzun çevresi oldukça çeşitli bitki örtüsü ile kaplanmış egzotik bir görünüme sahiptir. Kaynakça: Kastamonu İl Kültür ve Turizm Müdürlüğü. Kastamonu Rehberi. (2015)<br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7ZymKk2IX9JDvbdY1sEPjitCS9iF-li8mlY0QuCphynxu8a4RYq1S3fK_TAv4YYbQhOTAxtnTm8wIRl7iMAfhS8t_SQxczOo1whRd_mxHqAdl--pChZNhAesvCSTX1Y9GKW3ByqTZR_oQ3C8AQPu066Rio5_fKf6iC35N59LG_TDk4UUR9SCuFNHjGRUUNdrOdpKk?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 41.653983,
+                        "lng": 33.14166
+                    }
+                },
+                {
+                    "name": "Kadıncık Şelalesi - Ordu",
+                    "description": "<br><br>Ordu’ya 20 km uzaklıkta olan şelale Ulubey ilçemize bağlı Kadıncık mahallesindedir. Şelale’nin hemen yanında 200 yıllık değirmen bulunmaktadır. Kaynak: Ordu İl Kültür ve Turizm Müdürlüğü \"Gezi Rehberi\"",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4XEGSXJcA2NrCjPMI602HWoQ8Jw-BardBYNlGyLnQ1iH3zmMPnl3WcFPMq-TI8pApGqwxYJjyLZbS9O0HvnOoLXqwDLdiZubfyTUU0o0vNUyLRuQ3D4JRIjGXQEWIKLV_Rmup7Q76g7byfgOfKaHWtB2lp3ckn02wrWn_6ACTGh6A2_PawGmrYQTxX0i4248R7xJg?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.8226285,
+                        "lng": 37.6597373
+                    }
+                },
+                {
+                    "name": "Kapılı (Cıngırt) Kazankaya Şelaleleri - Ordu",
+                    "description": "<br><br>Çaybaşı ilçe sınırları içerisinde bulunan şelalelerdir. Doğal güzellikleri bakımından görülmeye değerdir. Şelalenin bulunduğu alan doğal gezi parkurudur. Tarihi Çayır Camii, Çayır Çeşme, Kapılı Şelalesi, Tirfil Tepesi önemli tarihi ve doğal değerler olarak dikkat çeker. Kaynak: Ordu İl Kültür ve Turizm Müdürlüğü \"Gezi Rehberi\"",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR720XcVcqXhRiyNqnKe1XnXbMlh7XariTHdjld_yfUBN5L6Taiu2LcgnbQNkUrT9TzTy9BepGmBsCnQ5SdkRsGApT6uRQ1SqNeRtuYn4ND3VdtfCTHgM8qSI2r_yw2ebOhtfSgaWctG-mx0Y0Cq-bGwpZetLVgS8lAHSjxmclnaTFddscPwoT_I7InrPEdhf0aJp_Q?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.910144,
+                        "lng": 36.992269
+                    }
+                },
+                {
+                    "name": "Kapuzbaşı Şelaleleri - Kayseri",
+                    "description": "Beş tanesi büyük, 2 tanesi küçük olmak üzere yan yana dizi halinde dökülen şelalelerin yükseklikleri ortalama 40-60m olup, her biri bir dereyi besleyecek güçtedir.Kapuzbaşı Şelaleleri, sularının yıl boyu gür akması ve yüksekliklerinin fazla olması nedeniyle yurdumuzun en büyük şelaleri arasında yer almaktadır. Dağ yamaçlarından biribiri ile yarışırcasına akan yan yana 7 şelale, doğanın Kayseri’ye armağan ettiği eşsiz güzelliklerden. Bembeyaz akan kapuzbaşı şelaleleri, etrafında piknik alanlarıyla, suyun huzur veren dinlendirici sesi eşliğinde güzel bir gün geçirmek için mükemmel bir ortam yaratıyor. Kayseri’deki en popüler treking parkuru üzerindeki şelaleler benzersiz manzalara eşliğinde bir yürüyüş deneyimi sunuyor. Yahyalı ilçesinde Kapuzbaşı Şelaleleri dışında Yeşilköy ve Derebağ şelaleleri de var ve etrafındaki yeşil alanla olağan üstü görüntüler yaratıyor. Derebağ Şelalesi yanında ferah bir gün geçirmek için çay evi, restoran ve piknik alanları da var. Torosların Tepesindeki doğal güzelliklere sahip Kapuzbaşı Şelalelerine ulaşımı sağlayan yolun tamamı asfaltlanmıştır. Önceden üç saate ulaşılan güzelliklere artık 1,5 saatte kavuşmak mümkündür. Dünyanın en yüksek ikinci şelalesi durumunda olan Kapuzbaşı şelalesi, görenleri adeta büyülemektedir. İrtifa akışı itibari ile Uganda'da bulunan Victoria çağlayanı (100 mt.) hariç, ABD'de bulunan Niagara'dan 55 m., Finlandiya'da bulunan İmatra'dan 25 m., Erzurum'daki Tortum'dan 50 m., Antalya'daki Düdenden 25 m. ve Manavgat'tan 5. m. daha büyük olan Kapuz başı şelalesinin aktığı yerin rakımı ise 700 m. dir. Aladağ'ın zirvesinde bulunan kar ve buzullardan beslenmekte ve yeşilköye 3 km. uzaklıkta olup, ziyaretçilerini yazın sıcaklığında buz gibi çağlayan sularının serinliği ile karşılamaktadır. Zamantı ırmağının iki yanında ve ırmağın üzerini kapatan tabii bir köprünün baş kısmında yer alan biri 20 m. diğeri 10 m., yükselikte iki şelale vardır. Yine Kapuz Başı Köyü yakınında tepenin doğu ve güneyindeki derin vadi yamaçlarından irili ufaklı büyük bir gürültü ile akan ve görenleri hayrete düşüren vadinin yamacından, Voklüz ayna şeklinde çıkan sular büyük şelale halinde Suarisi deresine dökülerek oradan da Zamantı ırmağına karışmaktadır. Yörede 5 tanesi büyük, iki tanesi küçük olmak üzere yükseklikleri 40 ile 80 m'yi bulan ve her biri dereyi besleyecek güçte olan 7 şelale vardır. Ayrıca ilçeye 7 km. uzaklıkta Derebağ Kesteliç Şelalesi de görenleri büyüleyecek derecede bir görkeme sahip oluşuyla, görmek isteyenleri etkileyecek bir doğa harikasıdır. Kayseri’nin Yahyalı İlçesi, halılarıyla olduğu kadar, Kapuzbaşı şelalesiyle de ünlüdür. Kayseri-Develi yoluyla Yahyalı’ya ulaşılıyor önce. Kayseri merkezinden 165 km olup, yaklaşık 1.45 - 2 Saatlik bir zamanda gidilmektedir. Yahyalı-Kapuzbaşı arasındaki 76 km’lik yol, stabilize, toprak, engebeli, dar ve virajlı. Yaklaşık 2 saat sürüyor. Ama büyük bölümü orman içinden geçen yolun manzarası keyif verici. Yorgunluğu alıp götürüyor. Kapuzbaşı Şelaleleri, Aladağ Milli Parkı sınırları içerisindedir. Şelale, Aladağlar trekking parkurunun en güzel durak noktalarından biri. Adana-Kayseri arasındaki Aladağlar geçişini 5 günde tamamlayan gruplar, 4. gün Kapuzbaşı Şelaleleri’nin yanıbaşında çadır kurup konaklıyorlar. Denizden yüksekliği 2000 metre olan bölgeye, yaz aylarında gidilmeli. Kapuzbaşı’da, 70 metre yükseklikten ve 7 ayrı noktadan dökülen Aladağ ve Aksu çayları, muhteşem bir görüntü oluşturuyor. Debinin çok yüksek olması nedeniyle, su zerrecikleri çok geniş bir alana yayılıyor ve yaz aylarında keyifli bir serinlik duygusu yaratıyor.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.771529,
+                        "lng": 35.3919060000001
+                    }
+                },
+                {
+                    "name": "Karaçay Şelalesi Ve Mesire Yeri - Osmaniye",
+                    "description": "<br><br>Şehir merkezine 4 km mesafede bulunan Karaçay mesire alanından sonra 3,5 km uzunluğunda, tabiat parkı özelliğinde bulunan vadi sonunda Karaçay şelalesi bulunmaktadır. Karaçay deresi dik yamaçlardan aşağıya inerken 25 m. yüksekliginde Karaçay Şelalesini oluşturur. Eşsiz güzellik ve manzara arz eden Karaçay Şelalesi buraya ayrı bir güzellik vermektedir. Karaçay Şelalesine ulaşım belli bir mesafe arabayla gidildikten sonra, ancak patika yolla ulaşılabilen bakir bir doğa harikasıdır. Hafta içi veya hafta sonu her zaman piknik yapan insanların bulunduğu, Çukurova’ya has doğal bitkilerin yetiştiği bir mekan aynı zamanda günübirlik mesire ve trekking alanıdır. İhtiyaca cevap veren küçük çaplı lokantalar bulunmaktadır. Tabiat Alanı olmasıyla ilgili çalışmalar devam etmektedir. KAYNAKÇA : İL KÜLTÜR VE TURİZM MÜDÜRLÜĞÜ",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR77PpIoNYEG8iwBSH2Rd2QEG2mWtNdSsEFpvSQLsiGW22qRNnQusqwtMq_wMcvCrvAqaLUQisav0xmvYXidjVIVyKM1xomvczvtpEJezp3sHlxwS-9lZNKxlUx5vIQXfRngGPAhI2aazTEcfYQSA9iirXJ7DvzsAKPFYgrD7Xtfo2nP1dYHHdc9aH3mGtwxRZvXOEg?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 37.046238,
+                        "lng": 36.288225
+                    }
+                },
+                {
+                    "name": "Karaoluk (Çiseli ) Şelalesi - Ordu",
+                    "description": "<br><br>Karaoluk (Çiseli ) Şelalesi :İlimiz merkez Karaoluk köyü sınırları içerisindedir.Doğal güzelliği ile doğa harikası bir göl olan Karaoluk (Çiseli) Şelalesi ilimiz turizmi açısından cazibe noktalarımızdan birisidir. Kaynak: Ordu İl Kültür ve Turizm Müdürlüğü \"Gezi Rehberi\"<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4VZPEHQSYAgv62M9r7hiISfoly_BotJf1jpc1KaEXr7PPJf7dqAezkT6vwgqtshHqbTb8_EF1qKK6ejM06yTVBuoyubMtVxPYxctVGGQUt7OIQ6-be0TDG2UIG6G01cBv_51hgZIzWbqjtPZIplNJT7U_2ILpt26zCYLornHrMsvrd9rXRl0sH-rKuG-tAOI1jBko?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.644078,
+                        "lng": 37.25254
+                    }
+                },
+                {
+                    "name": "Kösehoroz Şelalesi - Bursa",
+                    "description": "<br><br>Mustafakemalpaşa Kösehoroz Köyü yakınlarındaki Değirmendere üzerindedir. Yüksekliği yaklaşık 18 metre olup, suyun düştüğü yerde doğa harikası bir kaya gölet oluşturmuştur. Değirmendere daha sonra, Mustafakemalpaşa Çayı’nın kollarından olan Alev (Kocaçay) Çayı’na dökülür. Derenin isminin kaynağı da Devecikonak yakınlarındaki su değirmenidir. Kaynak: Bursa İl Kültür ve Turizm Müdürlüğü<br><br>Ulaşım: Kösehoroz Köyü Mustafakemalpaşa İlçe merkezine 20 km uzaklıktadır. Yol asfalt olup, Devecikonağı yönündedir. Kösehoroz köyüne, günün belli saatlerinde giden köy otobüsleri mevcuttur. Şelaleye toplu taşım aracı ile ulaşım yoktur. Köyden şelaleye ulaşmak için orman içi yollardan yaklaşık iki saat yürümek gerekmektedir. Böyle bir yürüyüş için rehber alınması önerilir",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5C_EK8CvQ0vKEBf8o1YALYOv2m8_pHucmkOi78jpYuTh_xn4tKUKsS54Pq5SBdWxO5mNo2PcCiqSIecqZUYdmbZlq611jDUsv0lPY9wwTcubAHLQwUsKKwEgYpe5uii8g75PT_8coXCsJWWHPhIQ9irVnEP-HnvNHaQDsVWWllxEMZkfX2QzCAL5Ha7IARcKwsYQnq?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 39.92524,
+                        "lng": 28.528726
+                    }
+                },
+                {
+                    "name": "Kurşunlu Şelalesi ve Tabiat Parkı - Antalya",
+                    "description": "Antalya-Mersin karayolunun 15.km. sinden sola dönülerek 7 km. gidilince zengin florası olan, 33 hektar alana sahip, 18 m. yükseklikten dökülen, çam ağaçlarının arasındaki 12.000 kişi/gün kapasiteli şelaleye ulaşılır. 7 adet küçük göletin küçük şelaleciklerle birbirine bağlandığı, 2 km.lik bir kanyon içindeki bu şelale, 1986’da hizmete açılmıştır. Çevresindeki zengin flora ve fauna, burayı doğa yürüyüşü, bitki ve hayvanları gözlemleme gibi eko turizm faaliyetleri açısından öncelikli konumlardan biri haline getirmiştir. Tabiat parkı içinde yürüyüş yaparken tavşan, sincap, ağaçkakan, kaplumbağa ve diğer küçük hayvanlarla karşılaşmak mümkündür. Temiz havası ve büyüleyici manzarasıyla tabiat parkı, birçok ziyaretçiyi günübirlik dinlenme ve piknik için cezbeder. Ziyaretçiler için seyir terasları, oyun alanları, araç parkı ve diğer imkanlar da mevcuttur. (Kaynakça: \"Kurşunlu Şelalesi\", Sonkaya, K., Antalya Tanıtım Kitabı, Antalya İl Kültür ve Turizm Müdürlüğü, 2016,Antalya, s.46)",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.002968,
+                        "lng": 30.821767
+                    }
+                },
+                {
+                    "name": "Küreklidere Şelalesi - Bursa",
+                    "description": "<br><br>Şelale; şehrin doğusunda, Ankara Yolu üzerinde bulunan Hamamlıkızık köyü sınırları içindedir. Bir ormanın içinden akan şelale yaz aylarında piknik yapmak isteyenlerin uğrak yeridir. Kış aylarında ise vahşi doğası ile meraklıların akınına uğrar. Kaynak: Bursa İl Kültür ve Turizm Müdürlüğü",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6bAEjJFaTcbSLMNhzli3HF-FGExED8FoSNkXJfJvY_XRJXf5bfg_Vhveapt08xpaCPB9uzX_VxJTmzexQpY2GcDdtTzjk51FPoIxZlDNIM0hlSa_tITp0LblKSlL7w_I-T1DtEAcRvYXYljEwF4pKrEMX75RPhJcMWyOrQYOqmp5ryhapaQp7Vlql9uiyOMpDkpoI?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.154708,
+                        "lng": 29.207954
+                    }
+                },
+                {
+                    "name": "Maden Deresi-Şelalesi Ve Mesire Alanı - Sakarya",
+                    "description": "<br><br>Karasu-Kocaali arasından içeriye doğru girince Çam Dağları’ndan kaynaklanan Maden Deresi’ne ulaşılır. Derenin sesini dinleyerek, yeşile bürünmüş bir çevrede yürüyüşler yapmak ve güzel bir kır sofrası kurmak için ideal bir yerdir.<br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7y2G48eRmJfXD3ywUjjWfY-VJH8ZwXuGrPg57tpbsQjoPD5fAUCbPxHWRYX4JVGzMwTFn50lxSdjTbC5M1HF3f57Dg2mKnMDSN3h83xdTRToEUblHM_WVoxT81ar888gQugH2Wxv5QmwY_Ows2uTEhQSpPihvfWQj9Z338ovfGFNqYeV3Bmb5T-mKoYTCWc_2pMOg?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 41.009957,
+                        "lng": 30.781488
+                    }
+                },
+                {
+                    "name": "Manavgat Şelalesi - Antalya",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 36.8131756,
+                        "lng": 31.4539625
+                    }
+                },
+                {
+                    "name": "Ohtamış Şelalesi - Ordu",
+                    "description": "<br><br>Ulubey İlçesine 20 km, Ordu’ya 38 km uzaklıkta Ulubey ilçesi, Ohtamış Köyünde bulunan şelale, Karadeniz’in en büyük şelalesidir. 30 metre yükseklikten 90 derecelik bir eğim ile dökülmektedir. Kaynak: Ordu İl Kültür ve Turizm Müdürlüğü \"Gezi Rehberi\"<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4apr_Zq6RW9gWmnOu2cFXIrSl0dFg83VHKJ9Ha91PyIZv_qSx4bz_NA91EoEougMI753V0Bd2JRTL8qEJuXD3pWfx9zdikh02oZfo65dn4ds-Kj0MQNP8IlF3ReP6U_edEnX0N5t0DOsGt6tJCzj1lc8e0moDqH81gj4PkszwFN2dUK6dTtiGlRx6op7ugOzY6y00?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.8287855,
+                        "lng": 37.7650893
+                    }
+                },
+                {
+                    "name": "Saitabat Şelalesi - Bursa",
+                    "description": "<br><br>Şelale bir kanyondan dökülmektedir. Şelale çevresinde et mangal lokantaları ve büfelerin yer aldığı bu mesire alanı Bursalılarca yoğun olarak kullanılmaktadır.",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5udvQruaZZcOC85zg1wECwj5ysDvmS8Rb49u7A1Je1wK12CFkkaKs8_zzwnmorbrXxkvSqzoiss1GySEjQVhTEyopmtfvxnuYmf4-MVChnKx8K-SQaGE-yevotXtZSsdzbWlu7D-lpWwm97AlQ_otfeoKff8wK3gMByfhDOTSUMQUQQO2Ofr7LEEnAHB91Z299fug?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.168642,
+                        "lng": 29.216595
+                    }
+                },
+                {
+                    "name": "Sakızcılar Asma Altı (Ağlayan Kaya) Şelalesi - Denizli",
+                    "description": "<br><br>Şelale eşsiz bir tabii güzellik sergilemektedir. Ağlayan Kaya olarak bilinen şelale, 30 metre yükseklikten dökülmektedir. Yeşille suyun birleştiği şelalenin dibinde alabalık yetiştirilmektedir. \"Hocanın Yeri\" olarak bilinen yer ilçe halkı tarafından çok sevilen bir piknik yeridir.<br><br>Ulaşım: 1-Denizli-Pamukkale karayolu 5km takip edilerek Korucuk Mahalllesi'nden kuzey yönde ayrılan yol yaklaşık 25 km takip edilerek sırasıyla Irlıganlı, Güzelpınar mahalleleri geçildikten sonra Çal sakızcılar Mahllesine geninir. Şelale Sakızcılar Mahalesi'nin hemen kuzeyindeki dere içide yer almaktadır. 2- Danizli-Ankara Karayolu'ndan 30 km gidildikten sonra Kaklık Mahallesinden ayrılarak kuzey yönde 30 km ilerleyerek Çal İlçesine geninir. Çal ilçesinin kuzeybatı yönündeki yol yaklaşık 18km takip edilerek, sırasıyla Selcen, Sazak, Kaplanlar, Karakaya mahalleleri takip edilerek Sakızcılar Mahallesine gelinir. Şelale sakızcılar Mahallesinin hemen kuzeyinde yer almaktadır. Denizli otogardan Çal ilçesine minibüs ulaşımı vardır. Kültür ve Turizm Müdürlüğü<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7Yh6Wz6E_IlaAV9CGweMuF5kyfXAFXrTKNJGHmtYo-32Gbxqa7PGhyi1JjR0LJdXTIKiygPIrJEy8si6PTnjxHOhnFKNp9RuAE0CMd3UqlGXHY6o6r1xY72DEX7yzIn-GJ8VL-h1qMm184VblghDD9qbLDyb-dvou11DFbv5NMuJYXEh98d1mQfIZqUSo0kY0AwTk?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 38.027253,
+                        "lng": 29.271668
+                    }
+                },
+                {
+                    "name": "Samandere Şelalesi Tabiat Anıtı - Düzce",
+                    "description": "<br><br>Samandere Şelalesi, Düzce’nin güneydoğusunda, Beyköy beldesi Samandere köyü sınırları içinde yer almaktadır. Beyköy beldesine 15 km Düzce’ye 24 km TEM Otoyolu’na 20 km D-100 Karayolu’na 26 km uzaklıktadır. Şelalenin kapladığı alan 10 ha olup, bu alandaki akarsular Uğursuyu ile birleşerek Efteni Gölü’ne ulaşmakta, buradan da Büyük Melen suyu ile birleşerek Akçakoca sınırları içerisinden Karadeniz’e dökülmektedir. Çevre çavlan, çağlayan ve cadı kazanı gibi ilginç jeolojik özellikler ve yer yer anıt ağaçların da var olduğu zengin ve bakir bitki örtüsüne sahiptir. Samandere Şelalesi Türkiye’nin tescil edilen ilk Tabiat Anıtı’dır. Bulunduğu köye adını veren, tabiat olaylarının meydana getirdiği özellikler ile oluşan Samandere Şelalesi doğal oluşum özellikleri ile Milli Parklar Kanunu gereğince ve Orman ve Su İşleri Bakanlığı Doğa Koruma ve Milli Parklar Genel Müdürlüğü’nce ‘‘Tabiat Anıtı’’ olarak tescil edilmiştir. Samandere Şelalesi’nin de bulunduğu 500 m dere boyunca, anıt ağaçlar, üç adet şelale ve birde Cadı Kazanı adı verilen derin bölümde tescillidir ve oldukça ilginçtir. Tabiat anıtı olarak ilan edilen Samandere Şelalesi, koruma altına alınmış doğal bir varlığımızdır. Zengin bitki örtüsünün su sesi ile bütünleştiği şelalede, mesire ve piknik alanları, doğa yürüyüş parkurları, kamp alanları, orman içi dinlenme yerleriyle muhteşem bir doğa güzelliğine sahiptir. Kaynak: Düzce İl Kültür ve Turizm Müdürlüğü arşivi<br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7MxEDQrZPOIz8oGlVWWYReS7OMev3arGfRLonu_XTMwQ6OCEvIMX7_m9Ao8BbgKppplzB8JrpjnImZWN4X2QwIa7z5qGhrCawtBNBUgPK2o4avM81Mng1v-o-NSNxCZnKAdOMcDaTIAkXj-iiRbuHEJT0Q8bcohRTn4SF48AeioloAcHoU_rZeC6UZHo2vGtU-8AY?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.696258,
+                        "lng": 31.264172
+                    }
+                },
+                {
+                    "name": "Sırakayalar Şelalesi - Bayburt",
+                    "description": "<br><br>Sırakayalar köyü, Bayburt-Erzurum karayolunun 6. kilometresinden ayrılarak 16 kilometre yol aldıktan sonra ulaşılan Sırakayalar Şelaleleri'nin, köyün girişi ve köy içinde olmak üzere iki adet olan şelale çevresinin yaz aylarında mesire yeri olarak kullanılmaktadır.",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5SfCwEQajhEfb57s5ZQFF5o99zBWgfAtX5Szneo5T3xdBLlfPHKnU97bITaHSBfWC4VJxXQybt4-7D3T6Z7x2jaq0rL4bczwFMmJRpTfrJRNFmUZjR8hQc3TjRaC8YHUNKGquTeCqVq21T-zKjZluVAJxQuqjPMaS1cfiaoKoJ8rHajdNmigtf69G_Cef3VLtqA10?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.0909097,
+                        "lng": 40.2351522
+                    }
+                },
+                {
+                    "name": "Sızır Şelalesi - Sivas",
+                    "description": "<br><br>SİT alanı ilan edilerek koruma altına alınan şelale, Gemerek ilçesi, Sızır kasabasına 1 km mesafede, Çat Ormanları içerisinde, Göksu Çayı üzerindedir. Yörenin sıkça gelinen dinlenme yerlerindendir. Sızır Şelalesi ve çevresi doğa yürüyüşü için uygundur. Kaynakça: Sivas İl Kültür ve Turizm Müdürlüğü<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4PfkZZvv0u_EL5_zsQyGOgnKiPA-n7Y4WsMCsDFu-IozcK_v5N9ds2iCqSbRYdwlEzxchJgIddYJ6Ow-5joNvWmYg5T820S0mKqFslzmWGpoX-p5IlO-J8r_TnZ20ZhropmWE4oOylnPVldbo_0_K0rwjFBb7WeKHavTBjIOggZpq7cohL9NAXylt98qJnzaw1lXo?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 39.3037529,
+                        "lng": 35.9443903
+                    }
+                },
+                {
+                    "name": "Soğucak Şelalesi - Sakarya",
+                    "description": "<br><br>Sapanca \"Soğucak Şelalesi\" Özellikleri: Yürüyüş boyunca kestane, kayın ve ıhlamur ağaçlarından oluşan orman içindeki patikadan geçilir. Haziran aylarında yapılan yürüyüşlerde ıhlamur kokuları eşlik eder.<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4q4avtcWeLUEsDgHNfpfVXv0BTf9tB1VEZg9y9ePm4_AjQjp8_582fCaOQLbQVX2rUEktNXz29zCmxFkwnysQfAfL37ud5X9lbc4POdaWoXADrE9ekDKq_CQf2P6JZJ2l8nG1GY9QrGTWvCiKVKQhnX0VZukgPhrrB05oBjStfyCBBCuSxp6x5065Bf6IvtG4-LfY?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.623204,
+                        "lng": 30.199327
+                    }
+                },
+                {
+                    "name": "Sori Şelalesi - Elazığ",
+                    "description": "Elazığ'ın Alacakaya İlçesinde bulunmaktadır. İlkbaharda karların erimesiyle birlikte su yoğunluluğu artmaktadır.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 38.462353,
+                        "lng": 39.863445
+                    }
+                },
+                {
+                    "name": "Sudüşen Şelalesi - Yalova",
+                    "description": "<br><br>Termal İlçesi Üvezpınar Köyü’nden 8 km uzaklıkta bulunan Sudüşen Şelalesi ve çevresi doğa tutkunlarına muhteşem bir şölen sunar. Şelaleye giden yol, rahat ve doğal bir yürüyüş parkuru olup, yaz aylarında yerli ve yabancı turistlerce yoğun olarak tercih edilmektedir. Şelaleye çıkarken eşsiz bir baraj gölü, Marmara Denizi manzarası ve çok çeşitli orman faunası ile karşılaşılır ki, bu güzergâh foto safari, doğa yürüyüşü ve piknik alanı olarak kullanılmaktadır. Panorama tepesi denizden 120 m. yükseklikte ve her mevsim yeşil bitki örtüsü ile kaplı çok güzel görüntülere sahip bir alandır.<br><br><br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7CV9G40tfO8m7RmjDyCSItykZ5NmdI8oj16nQ48tYAerKrP9CuC-RMqOAPW6C15fZ3DiqUj6_JA-3ifQRnrfsU6TEOu8K3vk46LFaaKJ-BMzRGiCsF9nKdA1Bbllzt5qQ_WWJXVUzAKaM1i59KQOELHIf-M_JHUXjX6bbm1ci428hnOEkjowSD4m5gxpLP5c_5m3Y?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.57202,
+                        "lng": 29.13962
+                    }
+                },
+                {
+                    "name": "Suuçtu Şelalesi - Bursa",
+                    "description": "<br><br>Suuçtu Şelalesi bir fay hattının çökmesi ile oluşmuştur. 38 metreden dökülen su, yazın suyunun azalmasına rağmen kış aylarında doldurduğu göleti ile güzel bir manzara sergiliyor. Gezi alanı ve piknik yeri olarak tercih edilen Suuçtu, etrafını saran kayın ağaçları arasında, serin havası ile tam bir temiz hava deposu. Ayrıca aracınız müsaitse tepede alabalık lokantasına gidebilir, temiz havada artmış olan iştahınızı biraz olsun dindirebilirsiniz Kaynak: Bursa İl Kültür ve Turizm Müdürlüğü<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6AHsGCa6-8YPoWzsjaMo3BrmnttnoB7GvodpyofYFl95ZwEhi69m4b2GdOBmEcdwZ9X7DEz6k7avrxU3kH5ZMQv5KQHwXjZ5ZZsnfEUt55TBhXu3BjakRd4kAEMApNU1puXlP5jzGPHaedOSj6QA8-ppqF6m7GJhjJR63OispOZZ1F8UdUANMBcFofycnxzJVN7Ac?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 39.9022309,
+                        "lng": 28.3847235
+                    }
+                },
+                {
+                    "name": "Turgut Şelalesi - Muğla",
+                    "description": "Bu defa aşağıya, Turgut köyüne yöneliyoruz. Bayır’dan 5,5 km sonra sağda “Şelale” tabelasını göreceksiniz. Yoldan 200 m içerideki “şelale” mevkiine toprak yolla araçla gitmek mümkün. “Şelale”, bildiğimiz o ulu şelalelerden değil. Vadi boyunca sık bir bitki örtüsü arasından akan ve yaz aylarında suyu iyice azalan bir derenin 3-4 metre yüksekten dökülmesiyle oluşmuş. Derenin suyu buz gibi. Mayonuz yanınızdaysa eğer, şelalenin yarattığı ve derinliği 2-3 metreye bulan gölcükte yüzebilir, bunaltıcı sıcağın etkisinden kısa bir süre de olsa kurtulabilirsiniz. Çevrede ve şelalenin yanıbaşında çardak lokantalar var. Köylü kadınların oracıkta pişirdikleri gözleme ve ayran, soğuk duş ardından iyi gelecek. Dilerseniz alabalık ve tavuk ta ısmarlayabilirsiniz. Zaman ayırabilirseniz dere boyunca ve vadinin içerisine doğru yürüyüş yapabilirsiniz. Ama sık bitki örtüsünün zaman zaman yürüyüşü zorlaştırdığını unutmayın.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 36.731592,
+                        "lng": 28.158182
+                    }
+                },
+                {
+                    "name": "Tarsus Şelalesi - Mersin",
+                    "description": "<br><br>Taşıdığı alüvyonlarla Çukurova deltasının ortaya çıkışında önemli rol oynayan Berdan Irmağı, Orta Toroslar'ın güneydoğu yamaçlarından (Bolkar Dağları) doğan derelerden meydana gelmektedir. Seyhan ve Ceyhan ırmaklarının aksine Çukurova'da kısa bir yol kat ederek Akdeniz'e dökülür. Toplam uzunluğu 142 km'yi bulan ırmağı oluşturan derelerin en önemlileri ise, Can, Pamuklu ve Kusun dereleridir. Akdeniz'e dökülmeden önce Tarsus ovasında geniş yaylar çizen Berdan, (antik Kydnos) aynı zamanda Tarsus'un kurulmasında önemli tercih sebebidir. Soğuk su anlamına gelen Berdan, aynı zamanda kentin 4 km kuzeyinde doğal bir güzelliği de barındırmaktadır. Bizans imparatoru Justinyen (M.S. 527-565) tarafından yatağı değiştirilirken, aslında Roma dönemi sonlarına dek kullanılmış nekropol alanında geniş ve yüksek bir çağlayana dönüşmüştür. Kenti su taşkınlarından korumak için yapılan bu çalışma sonunda bugün yaklaşık 15 m yükseklikteki konglomera kayalıklardan dökülen su, özellikle kış ve bahar aylarında karların erimesiyle en yoğun debisine ulaşmaktadır. Bugün aynı noktada yer alan nekropoldeki basamaklı ya da rampalı (dromos) oda mezarlar, oyuldukları konglomera kayaların zayıf oluşuyla güçlü akıntılara karşı koyamayarak büyük ölçüde tahrip olmuştur. Günümüzde Şelale ve çevresi, Tarsusluların özellikle sıcak yaz günlerinde ilgi gösterdikleri yerlerin başında gelmektedir. Bahar aylarında yükselen debisiyle (138 m3/sn) genişleyen göleti ve çağlayanı, güneşin batışıyla birlikte muhteşem bir görüntü oluşturur. Bu özelliğinden dolayı da Araplar Kydnos'a soğuk su anlamına gelen, \"El-Baradan\" ismini vermiştir. Bu isim günümüze Berdan olarak gelmiştir. Aynı zamanda şifa olarak da bilinen suyun bazılarının başına istenmeyen işler açtığı bir gerçektir. Bir ihtimali aktararak tarihi kaynaklar, Büyük İskender'in Kydnos'da yıkandıktan sonra zatürree olduğunu ve bir daha da iyileşemeyerek kısa bir süre sonra Suriye'de öldüğüne değinir. Halife Memun'da yine aynı akıbet sonucu Tarsus'ta ölmüş ve Tarsus'a gömülmüştür. Şelale manzarası eşliğinde çevredeki lokantalarda güzel bir ziyafet çekebilirsiniz. Fındık Lahmacun yemeyi unutmayın. Kaynak: Mersin İl Kültür ve Turizm Müdürlüğü arşivi.<br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7z5GL2dd-bKwkIUFY0cdXBnYicm5KQg-FDzuN2Ka3SrjW-5bNCcc9C3jkV9WRih8cc8y09IxzRs-1bSb4B5cvRHr8jxvN0l6AlBzF8I1P0py9WJFt0h3Q6CdYRc-YgWHdvnYIhg07qzKjDQ0Uf1c1NeGoG7ohgOeY9b7HRitdZnxF7MME-HqRk7QMLMBoY_ocnlgg?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 36.93302,
+                        "lng": 34.897916
+                    }
+                },
+                {
+                    "name": "Erfelek Tatlıca Şelaleleri Tabiat Parkı - Sinop",
+                    "description": "<br><br>Erfelek ilçesi Tatlıca Köyündedir. Aynı vadi içinde sıralanmış 28 irili ufaklı şelaleden oluşmuştur. Bu güzelliği ile dünyada bir benzeri yoktur. Dar ve 2 km uzunlukta bir vadi içinde, şelaleler kenarında, kayın ormanları içinde yapılacak 2 saatlik yürüyüş oldukça zevkli ve heyecanlıdır. KAYNAK: Sinop Valiliği, İl Özel İdaresi (2014), “Türkiye'nin Kaptan Köşkü SİNOP”, Sinop<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5klosejwGObg64vTPa4Es_4vlMPCgV6AxbwBWaIQWd8Tz0QYUgzxqdVPcJt27n6ko1-wwz4qCxQvw9CFGPCLJLYYrRt5yPInF5XMAZ2NHT9RAtxKgLIQG1UdhN7pamc5rG6bZORWxPSKk6TpEb3-WJ9lrVVEyEXLloYMmWa3P3plAfNYw3J-AMGpXcMqX5S3x5y8o?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 41.840362,
+                        "lng": 34.779795
+                    }
+                },
+                {
+                    "name": "Tortum Şelalesi - Erzurum",
+                    "description": "<br><br>Tortum Şelalesi; Tortum Gölü’nün Tev Vadisi’ndeki heyelan kütlesini aşarak dökülmesiyle oluşmuştur. 21 metre genişlik ve 48 metre yüksekliğe sahip şelale, üstte gökkuşağı, altta koca bir dev kazanı meydana getirmektedir. Erzurum her mevsim, farklı heyecanlar yaşayabileceğiniz, farklı güzellikler bulabileceğiniz bir şehirdir. Dünya’nın en büyük şelalelerinden biri olan Tortum Şelalesi bunu en iyi anlatan doğal güzelliklerden biridir. Yılın her mevsimi güzelliği ile ziyaretçileri büyüleyen Şelale, Şelalenin aktığı yere dipteki dev kazanına ise çok uzun, demir korkuluklu taş merdivenlerden inilmekte, diğer taraftaki merdivenleri takip ederek tekrar üst bölüme çıkılabilmektedir. Şelalenin önünde yer alan izleme balkonu, ziyaretçilerin ıslanma pahasına, büyük ilgisini çekmektedir. İzleme merdivenlerinin nefes darlığı ve kalp rahatsızlıklarını önlediğine inanılmaktadır. Uluslararası turizme açık bir alan olan Tortum Şelalesi, doğa tutkunlarını kendine hayran bırakan eşsiz bir güzellik sunar. Şelale, özellikle Mayıs ve Haziran aylarında bütün görkemiyle kendini gösterirken Haziran’dan sonra su miktarında azalma olmaktadır. Düşen su seviyesi de Tortum Şelalesi’ne farklı bir güzellik katmaktadır. Şelale ve çevresi, aynı zamanda önemli mesire alanlarından birini oluşturmaktadır. Tortum Şelalesi'ne 1952-1960 yılları arasında hidroelektrik santrali yapılmış ve Türkiye'nin elektrik arzına katkıda bulunmaya başlamıştır. Uzundere ilçesinde bulunan bu doğa harikası, Erzurum ilinin 100 km kuzeyinde, Uzundere ilçesine 16 km mesafede ve Tortum gülünün kuzey kenarında yer almaktadır. Kaynakça; (Erzurum Gezi Rehberi Kitabı Tablet İletişim Yayınevi)<br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5pgGqcpxOZ1Wc7rfzQjfsWZMAchl4vHhlXRe_1th58KbYmZ9L33yWanRad5ZukdR-7ZtLh0OH1dMzBUcpiz-2o9orsGHHgAT2UGfmFCjrKJIneo9AD2k9qmR2pAaUMIO9Wew23Vf1MCAKOl_NjvEREa0UNnJn_tLVVoK16dClnjHxGMFXwiuRG8KeGF-omgrAy52k?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.660522,
+                        "lng": 41.668287
+                    }
+                },
+                {
+                    "name": "Uçansu Şelalesi - Antalya",
+                    "description": "<br><br>Antalya’ya 70 km. uzaklıkta, Kayabükü köyü ile Eskibağ köyünü ayıran çizgidedir. Antalya-Serik-Alanya karayolu üzerinde, Abdurrahmanlar-Gebiz kavşağından sapılarak ulaşılır. Gebiz Beldesi’ne bağlı Akçapınar köyündeki bu tabiat harikası, Gebiz’den sonra 17 km mesafededir. Bu bölümdeki yol, stablize olup özellikle bahar aylarında su, bazı noktalarda araçlara geçit vermeyebilir. Toroslardan gelen su iki kez, her biri 25-30 metre yükseklikten, yeşillikler içine dökülür. Aslında dökülmekten öte süzülür; yavaş yavaş düşer de denebilir. Bu yüzden şelaleye, Uçansu ismi verilmiştir. (Kaynakça: \"Uçansu Şelalesi\", Serik, Dünden Bugüne Antalya (I. Cilt), Antalya İl Kültür ve Turizm Müdürlüğü, 2012, Antalya, s.446.)",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4SMGLjcyfT3PeyQIYRUiozbliiqWk22MEzCfTST2ByOoDNp-YwFTW-GNb8793uPzFRUlqf6Ty5p1e9DtnsK1WbP-bWiq4OisZx4onB9iKKsLNIvMPDvlOOdmvfP_nYtGdILUQcnHx75IZ4eZyDRX8MJDXVvRrz203w60HmjOOsuwoy3SiWSUcPf1kY4KsQyeGATbw?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 37.198583,
+                        "lng": 30.907406
+                    }
+                },
+                {
+                    "name": "Yerköprü-Göksu Şelalesi - Karaman",
+                    "description": "Karaman’ın batısında, Habiller köyü yakınlarında Göksu nehri civarındadır. Temiz havası, yeşilliği ve güzel suları ile ünlüdür. Göksu şelalesi Yerköprü alanında yer alır ve görülmeye değer güzelliktedir. Sabah erkenden gidilip-akşama Karaman’a dönülebilir. Karaman’a uzaklığı 60 km’dir. Kaynakça: ÇOLAK.A.(Ed).(2012)Karaman Gezi Rehberi. İstanbul Özgün Ofset",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.0284926,
+                        "lng": 32.699604
+                    }
+                },
+                {
+                    "name": "Yerköprü Şelalesi",
+                    "description": "Hadim İlçesindedir. Şelale olmasının yanında bazı cilt hastalıklarına iyi geldiği bilinmektedir.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 36.985757,
+                        "lng": 32.454214
+                    }
+                },
+                {
+                    "name": "Cehennem Şelaleleri",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 41.7132717,
+                        "lng": 27.8254158
+                    }
+                },
+                {
+                    "name": "Işıklı Gölü",
+                    "description": "<br><br>Işıklı Gölü Büyük Menderes Nehrini besleyen kaynakların üzerinde, Akdağ’ın güneyinde yer alan maksimum 7 m. derinliğinde tatlısu gölüdür. Göl; Kufi Çayı, Akçay, Işıklı kaynakları, yeraltı suları ve Büyük Menderes’in yukarı havzadaki iki büyük kolu tarafından beslenir. Işıklı gölün orta kesimlerinde kuvvetli rüzgârlarla yer değiştiren saz adacıkları, kuzey doğusunda sazlık ve bataklık alanlar bulunmaktadır. Bu adacıklar su kuşlarının barınma ve üreme yerleridir. Yüzölçümü 7300 ha. koordinatları 38º14’K 29º55’D, rakım 821 metredir. Kurak ve yağışlı dönemlerde alanı genişleyip daralır. Kuaternerdeki tektonik olaylar sonucu, Kufi çayının taşımış olduğu alüvyonların ovanın güneydoğusundaki çukurluğun batısında birikmesiyle oluşmuştur. Gölün batı, güney ve doğu kıyıları seddelerle çevrilidir. Bugün sulama amaçlı rezervuar olarak kullanılmaktadır.<br><br><br><br><br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4Gur73WCeiof6ysUnhMGfH96He1E61-QoagKbnAYWxICkKH34N2yWNONKkVF8oaX4lKVYr1YwbWGa_0Q5aGI6z31TwW0ZHztOjAJvJwizj1EMRAnOIQxNzdSZmPCbarf-OAbLLwga_OCf5S2HD7MXdgKfSSc4a1eBQ_v9rKfcL6cUQejTYZj1ZP72D8CS84aAd4bw?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 38.2252352,
+                        "lng": 29.8950005
+                    }
+                },
+                {
+                    "name": "Suçıkan (Büyük Menderes Nehrinin Kaynağı)",
+                    "description": "<br><br>Büyük Menderes nehrinin çıktığı eski Dinar hidroelektrik santralinin suyunu toplamak için yapılmış olan suçıkan havuzu daha sonra etrafı tesviye edilerek ağaçlandırılıp dinlenme parkı haline getirilir, Delikli taşlarla kaplı otel yapılan bazı değişiklikler sonrasında Etnografya müzesine dönüştürülmüştür. Tarihi efsanelerin yaşandığı Dinar Suçıkan park Belediye tarafından çalıştırıldığı için temizlik, disiplin ve fiyatlar ön plana alınmıştır. Yerli ve yabancıların istirahat, ihtiyaçları için her şey düşünülmüş, Daha parka girmeden 85 metreden havuza dökülen şelale hemen dikkatlerinizi çeker ve gözlerinizi ayıramazsınız. Gece havuzun içerisindeki fıskiyeler, şelalenin akışı ve parkın diğer kısımlarına konulmuş neon lambaları ışık ile suyun dansını yansıtmaktadır. Can sıkıntısı çekmeden bu güzel manzaraları seyrederek lezzetli yemeklerini yiyebilirsiz. https://www.dinar.bel.tr/dinar-sucikan/<br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7LMF_qTcK1Pz-xknlHc-PDuvGUWQM_W-R0RXyKYdc57TpbFUZv4cz0NselH0MtqU8p5KGRHNYbX2bXuof_OGqUIkaiLu2IsAfqW8ZW_8elH5LaathqT7hV0A9thLt4LKkkEDK_0sBEBlyqR6gPwvrdrcNm-kg0q-bnfm847c_lYu4x8p_a5uLh1WRFip98A2x7z4o?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 38.0707221,
+                        "lng": 30.1769972
+                    }
+                }
+            ]
+        }
+     

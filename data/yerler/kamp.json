@@ -1,0 +1,43 @@
+    {
+            "category_name": "Kamp & Piknik Alanları",
+			"category_icon": "img/yerler/ikon/piknik.png",			
+            "places": [
+                {
+                    "name": "Kalemlik Orman Kampı",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 38.021418,
+                        "lng": 27.072401
+                    }
+                },
+                {
+                    "name": "Orient Camping",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 36.3586743,
+                        "lng": 35.8317814
+                    }
+                },
+                {
+                    "name": "Mocamp Motel",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.940303,
+                        "lng": 27.276079
+                    }
+                },
+                {
+                    "name": "Çınar Kamping\n",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.7843515,
+                        "lng": 27.3670506
+                    }
+                }
+            ]
+        }
+      

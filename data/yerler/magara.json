@@ -1,0 +1,610 @@
+  {
+            "category_name": "Mağaralar",
+			"category_icon": "img/yerler/ikon/magara.png",
+            "places": [
+                {
+                    "name": "Ayıini Mağarası",
+                    "description": "Yeri: Isparta, Yalvaç İlçesi<br><br><br>Yalvaç'ın yaklaşık 15 km. kuzeydoğusunda bulunan Ayıini Mağarası, Sultan Dağları'nın güney eteklerinde, Nazilli Deresi'nin yukarı bölümünde yer alır. Vadi tabanından 20-30 metre yukarıda bulunan mağaraya hem Yalvaç, hem de Özgüney Kasabası'ndan stabilize iki yolla gidilir.<br><br><br>Özellikleri: 407 m. uzunlukta, yatay olarak gelişmiş, kaynak konumlu fosil bir mağaradır. Soğuk ve yarı nemli bir havaya sahiptir. Mağaranın çatlaklı yapısı ve iki kattan oluşması, içeride belirgin bir hava sirkülasyonuna yol açmıştır.<br><br><br>Ayıini Mağarası'nda belirgin bir hayvan topluluğu gözlenmemiştir. Ancak seyrek olarak değişik bölümlerde yarasalar yaşamaktadır.<br><br><br>Ayıini, hem doğal çevrenin güzelliği, hem de mağarada bulunan ilginç damlataşlar ve sarnıçlar nedeniyle turizm amaçlı kullanıma son derece elverişlidir. Özellikle, mağaranın değişik yerlerinde bulunan bu sarnıçlara, başka mağaralarda rastlamak mümkün değildir. Ayrıca, bazı bölümlerde yer alan korunma duvarları, mağarayı daha da cazip hale getirmektedir.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 38.275182,
+                        "lng": 31.231642
+                    }
+                },
+                {
+                    "name": "Balatini Mağarası",
+                    "description": "Yeri: Konya, Beyşehir ilçesi<br><br>Mağara Beyşehir'e bağlı Çamlık Beldesi ile Derebucak ilçesi sınırlarında yer almaktadır. Konya-Beyşehir-Üzümlü-Manavgat yolunun 45 km.sinden ayrılan yolla Çamlık veya Derebucak üzerinden, bu iki yerleşim merkezini bağlayan stabilize karayolu ile ulaşılmaktadır. Çamlık'a 5 km., Derebucak'a 6 km. uzaklıkta bulunmakta olup Körükini ile Suluin Mağaralarının 3 km. kuzey batısındadır.<br><br>Özellikleri: Toplam uzunluğu 1830 m. olan mağaranın düden ve kaynak konumunda iki girişi vardır. Yola yakın olan ağız küçük bir uvalanın sularını çalar ve 2 km. güneyde derince yarılmış bir vadinin kenarından, Uzunsu deresi tarafındaki yamaçtan boşaltır.<br><br>Balatini mağarası üst üste bulunan iki farklı seviyeden oluşmuştur. Üst katı oluşturan fosil kolun zemini tamamen mağara kili ile kaplıdır ve gelen ziyaretçilerin yapıp bıraktığı heykelciklerle dolu Heykel odası ile sonlanmaktadır. Alt kat olan su taşıyan asıl galeri de ise suyun aza olduğu dönemlerde su içinden yürünerek ilerlenebilmektedir. Sadece biri 5 m.den daha derin olan üç adet dev cadıkazanı geçiş tekniği ya da bot kullanılarık geçilebilir. Travertenler, heykel odası ve dev cadı kazanları mağaranın görülmeye değer güzellikleridir.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.371521,
+                        "lng": 31.576939
+                    }
+                },
+                {
+                    "name": "Büyük Düden Mağarası",
+                    "description": "Yeri: Konya, Derebucak ilçesi<br><br>Mağara Konya-Beyşehir-Derebucak yolundan sonra, Derebucak'dan İbradi yönünde, 18. kilometresinde, Kembos Ovası batı kıyısında yer almaktadır.<br><br>Özellikleri: Genişliği 1 km. uzunluğu 15 km. olan Kembos Ovası, bahan aylarında eriyen kar suları ve özellikle Uzunsu Deresi ile gelip toplanan suları bir başka düden olan Feyzullah Düdeni ile birlikte drene etmektedir. Bu düdenlerden batan su Altınbeşik Düdensuyu Mağarasından geçerek Manavgat Çayına karışmaktadır. Mağaranın turistik bir önemi olmamakla birlikte, speleolojik açıdan önem taşımaktadır. 714 m. uzunluğundaki düden de çok sayıda göller, dev cadı kazanları ve sifonlar bulunmakta, mağarayı zorlu hale getirmektedir.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.358833,
+                        "lng": 31.438408
+                    }
+                },
+                {
+                    "name": "Körükini Mağarası",
+                    "description": "Yeri: Konya, Beyşehir ilçesi<br><br>Beyşehir'e bağlı Çamlık Beldesinin 500 m. güneybatısında bulunan mağaraya stabilize yolla ulaşılmaktadır.<br><br>Özellikleri:Toplam uzunluğu 1250 m. olan Körükini Mağarasının içinden Uzunsu Deresi geçmektedir. Mağaradan çıkan su değirmen vadisine daha sonra da Değirmenini Mağarasına girmektedir. Tamamıyla aktif olan mağarada bot kullanımı hatta büyük kaya blokları arasından şelaleler yapan suyu geçmek ayrıca bir deneyim gerektirmektedir. Mağaraya giriş için yaz ve sonbahar ayları en uygun zamanlarıdır. Bahar ayları aşırı su, sifonlar, şelaleler nedeniyle tehlikeli olabilir.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.345256,
+                        "lng": 31.650538
+                    }
+                },
+                {
+                    "name": "Değirmen Önü Mağarası",
+                    "description": "Kozluçay kasabasının 1 km. kuzey-doğusunda Su geçidi deresinin yakınındadır. Yatay ve kuru mağaradır.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 38.206488,
+                        "lng": 31.306057
+                    }
+                },
+                {
+                    "name": "Pınargözü Mağarası",
+                    "description": "Yeri: Isparta Yenişarbademli İlçesi<br><br><br>Yenişarbademli'nin 11 km. batısında yer almaktadır.<br><br><br>Özellikleri: Daha önce 6 km.sine kadar girilmiş olan Pınargözü Mağarası, 1991 yılında ulaşılan 12 km.lik uzunluğu ile Türkiye'nin en uzun mağarasıdır. Daha girişten itibaren 50 m.deki sifonu ve içindeki uzun sifonları tırmanılması gereken şelaleler ve travertenler nedeniyle gezilmesi zor bir mağaradır. Halen araştırılması devam etmektedir.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.715331,
+                        "lng": 31.37043
+                    }
+                },
+                {
+                    "name": "İnönü Mağarası",
+                    "description": "Yeri: Isparta, Eğirdir İlçesi<br><br><br>Sarıidris Köyünün 1.5 km. güneyinde yükselen İnönü Tepe'nin kuzey yamacındadır. Köyden mağaraya traktörle ulaşılabilir.<br><br><br>Özellikleri: 227 m. toplam uzunlukta yatay ve kuru bir mağaradır. Yağışlı mevsimlerde Mağara'nın bazı kollarında küçük göletler oluşmaktadır. Genellikle kurudur. Mağara içinde ısı 16ºC dir. Hava nemi ise yüzde 82 dir.<br><br><br>İnönü Mağarası, İnönü Tepenin üzerinde takke gibi oturan Jura-Kretase yaşlı kireç taşları içinde değişik yönlü kırıklar boyunca gelişmiştir. Bu kireçtaşlarının altında Triyas yaşlı dolomit ve yer yer marn tabakaları yer alır. Mağara bu karstlaşmayan katmanlar nedeni ile derine doğru gelişememiştir.<br><br><br>İnönü Mağarası girişten itibaren dar galeriler halinde ve yatay bir şekilde gelişmiştir. Sadece giriş kısmında geniş bir salon vardır. Burada kalın bir toprak tabakası ve içinde bol miktarda iskelet parçaları vardır. Bundan da anlaşılıyor ki, mağaranın giriş kısmı ya iskan edilmiş ya da mezar olarak kullanılmıştır. Galerilerin büyük kısmı boş olmasına karşın, bazı kollarda bol miktarda damlataş oluşumları vardır.<br><br><br>Yerli halk tarafından eskiden beri bilinen mağaranın girişe yakın kısımlarda toprağa gömülü olarak çok sayıda iskelet parçaları bulunmuştur. Bu konuda henüz bir araştırma yapılmamıştır.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.929779,
+                        "lng": 31.006508
+                    }
+                },
+                {
+                    "name": "Tınaztepe Mağara Sistemi",
+                    "description": "Yeri: Konya, Seydişehir ilçesi<br><br>Tınaztepe Mağara Sistemi Seydişehir'in 35 km. güneybatısında Keçili Köyü mevkiindedir. Mağara Mortaş boksit yatağının 5 km. batısındadır. Seydişehir-Manavgat karayolu mağaranın hemen yakınından geçer.<br><br>Özellikleri: Kretase kireçtaşları içinde gelişen mağara sistemi, üst üste bulunan üç seviyeden meydana gelmiştir. En üstteki 100 metre uzunluğundaki kat tamamen fosilleşmiştir. 1015 metre toplam uzunluğu olan orta seviye ise yarı aktiftir. Yağışlı dönemlerde içinden bol su akan bu kat'ın, sonu sifonla biter. Alttaki seviye ise büyük bir fay üzerinde gelişmiş aktif bir koldur ve düden mağara özelliğindedir.Yağışlı dönemlerde geniş bir alanın yüzey suları buraya girer. Bu sular daha güneydoğuda bulunan Susuz Güvercinlik Mağarası'ndan geçerek Suğla Gölü kenarındaki kaynaklar dan çıkarlar. Bu aktif kolun günümüze kadar araştırılan bölümünün uzunluğu 527 m.dir. Ancak tam uzunluğu henüz tespit edilememiştir. İçinde bulunan derin fakat dar göller ve sifonlar araştırmaları zorlaştırmaktadır.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.24765,
+                        "lng": 31.928136
+                    }
+                },
+                {
+                    "name": "Kuz Mağarası",
+                    "description": "Yeri: Isparta, Sütcüler İlçesi<br><br><br>Kuz Mağarası, Kesme Kasabası'nın güneybatısında bulunan Asar Tepenin yakınında, Köprüçay kanyonunun dik yamacında yer alır. Kasabadan traktör veya arazi taşıtıyla 15-20 dakikada kanyonun kenarına kadar varmak mümkündür. Bu yol düzeltildiğinde herhangi bir araçla bu süre çok kısalır. Buna karşılık 700-750 m. derinliğinde olan kanyonun orta seviyelerinde bulunan mağaraya, yürüyerek yarım saatte inilebilmektedir. Bu iniş çok zor ve tehlikelidir.<br><br><br>Özellikleri: Toplam uzunluğu 224 m., girişe göre en derin noktası 17.5 metredir. Sıcak ve yarı kuru bir havaya sahiptir. Mağaranın dar geçitlerinde ve yan kol bağlantısında belirgin bir rüzgar hareketi vardır.<br><br><br>Genişliği 2-16 m, tavan yüksekliği 1-20 metreler arasında değişen mağaranın orta ve son bölümleri, görünümleri son derece güzel her türden damlataşlar (sarkıt, dikit, sütun, duvar ve örtü damlataşları, damlataş havuzları,...vb.) ile kaplıdır. Ana galerinin son bölümlerinde ise kalın bir kum ve çakıl deposu bulunur. Bu kesimler, mağaranın en derin noktalarıdır. Buna karşılık bu depoların yanından ayrılan yan kolun son noktası, girişten +10 m. yukarıdadır.<br><br><br>Akarsu yatağından 250-300 m. yukarıda bulunan Kuz, Hidrolojik olarak askıda (vadoz kuşak) kalmış, fosil bir mağaradır. Bu nedenle yağışlı dönemlerde tavandan damlayan veya yan duvarlardan sızan sular dışında bütünüyle kurudur. Bu sular, ana galerinin son bölümünde küçük gölcükler oluşturmaktadır.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.467637,
+                        "lng": 31.226406
+                    }
+                },
+                {
+                    "name": "Zindan Mağarası",
+                    "description": "Yeri: Isparta, Aksu İlçesi<br><br><br>Aksu İlçesinin 2 km. kuzeydoğusunda Aksu Çayı Vadisindedir. Çay kıyısını takip eden ve daha yukarıdaki yaylalara giden yol Zindan Mağarasının önünden geçer. Otobüs dahil her türlü araçla bu yoldan Zindan Mağarasına ulaşılabilir.<br><br><br>Özellikleri: Zindan Mağarası'nın bulunduğu Göller Bölgesi Yöresi yurdumuzun en yoğun karstlaşmış alanlarından birisidir. Toplam Uzunluğu 760 m. olan mağara yatay ve yarı aktif bir mağaradır. Romalılardan bu yana bilinen ve kullanılan bir mağaradır.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.811717,
+                        "lng": 31.084957
+                    }
+                },
+                {
+                    "name": "Ağcaçal Mağarası - Sinop",
+                    "description": "<br><br>Durağan ilçesine 25 km uzaklıktaki Cevizlibağ Köyünün üst kısmında Ağcaçal mevkiinde bulunmaktadır. Mağaranın giriş kısmında bulunan ve doğal olarak milyonlarca yılda oluştuğu bildirilen sütunlardan bir bölümü, defineciler ve bilinçsiz vatandaşlar tarafından tahribata uğramıştır. Buna rağmen alt kesimlerde bulunan galerilerde kireç taşı erimesi sonucu oluşmuş çok sayıda figür bulunmaktadır. KAYNAK: Sinop İl Kültür ve Turizim Müdürlüğü",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6SnKegbNwqkqB0_U_RKwXwkkZWIQxfuknZqbzRYKZENagj0t3Q8HUzvrMrEPkQLE1302M30DDqDS_P9zgvCJTgwcCpm9fRzOU4Pv9JlPj3HFQjD-StL9p5e1GZViqQM_icpXQ-NI6q0mio3V6fGumzN9QgcQIWezBN7IHvjZ4-sbudclaEaqfowawfxAPFGcNGzl0?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 41.364534,
+                        "lng": 35.178462
+                    }
+                },
+                {
+                    "name": "Altınbeşik - Düdensuyu Mağarası - Antalya",
+                    "description": "Altınbeşik Mağarası, Antalya ili İbradı (Aydınkent) ilçesine bağlı Ürünlü köyünün doğusunda, derin ve sarp Manavgat vadisinin batı yamacında bulunmaktadır. Toplam uzunluğu 2500 metre olan mağaranın girişe göre en yüksek noktası 101 metredir. Yatay ve kısmen aktif mağaradır. Mağaranın alt ve orta seviyesinin zaman zaman aktif olması nedeniyle kurak mevsimlerde de büyük ölçüde göletler oluşmaktadır. Üst eviye devamlı kurudur. Mağara havası çok rutubetli ve ısısı 16°-18° civarındadır. Altınbeşik Mağarası Türkiye’nin en güzel mağaralarından biridir. Çevrenin karstik topografyası ve çam ormanları güzel bir manzara oluşturmaktadır. Çok uzun ve büyük bir yeraltı sisteminin çıkış ucunda bulunmaktadır. Kızılova, Kambos ve Söbüce suyunu çeken bu büyük sistem, Oruç Düdeni Mağarası altında Altınbeşik-Düdensuyu Mağarası’nda son bulur. Böylece bu büyük yeraltı su sistemi, kuş uçuşu 100 km’den fazla uzunluğu ile dünyadaki en uzun ve büyük karst sistemlerinden biridir. Mağara içinden çıkan su Beyşehir Gölü ile bağlantılıdır. Su içinde kaldığı için mağarada gezinti, sandal ve kayıklarla yapılmaktadır. (Kaynakça: \"Altınbeşik Mağarası\", Antalya Mağaraları, T.C. Antalya Valiliği İl Kültür ve Turizm Müdürlüğü, 2015, Antalya, s.55)",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.037777,
+                        "lng": 31.632128
+                    }
+                },
+                {
+                    "name": "Aynalı Mağara - Amasya",
+                    "description": "<br><br>Ziyaret beldesi yolu üzerinde şehir merkezine 3,3 km uzaklıktadır. Kaya mezarlarının en iyi işlenmiş ve tamamlanmış olanıdır. Yerden dört basamakla çıkılan mezar düz bir kayaya oyulmuştur. Genişliği 9,8 metre yüksekliği 13 metre’dir. Dış cepheden bakıldığı zaman usta bir taş işçiliği ile yapıldığı görülebilir. Mağaranın dış cephe yüzeyi perdahlanarak parlatılmıştır. Buraya Aynalı Mağara denmesinin nedeni de, güneş vurduğu zaman mağaranın cephesinin parlamasıdır. Bu yapı, M.Ö. 2. yy da Helenistik çağda Amasya'da yaşamış Mitra Rahibi TES'in anıtsal mezarıdır. Mağaranın içinin çok geniş olması ve duvarlarda yer alan renkli resimler ve mağaranın alınlığında yazan \"Büyük Rahip Tes\" yazısı bu mezarın TES'e ait olduğunu desteklemektedir. Mezar odası dikdörtgen biçiminde olup, girişin sağ tarafında mezar nişi ve çukuru (teknesi) bulunmaktadır. Dikdörtgen şeklindeki mezar odasının yüzeyi ikinci kullanım olarak, 11. yy.’da Bizanslılar tarafından keşişhane olarak kullanıldığı ve bu kullanımda yapıldığı tahmin edilen renkli duvar resimleri bulunmaktadır. Tonoz kısmında altısı sağda, altısı solda olmak üzere on iki havari tasvirleri vardır.",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR41S-95XOcC3rEmj5x145QtGh-xs4IgCwgQxeMXB3cUKSDYeNp0y1pGg6_kBmgL6QiRsN4BZP5T4qn6goKybTbQwkqCORSbn6RbdgIGgc5F-W8NH2Ca6RKXBHQb-U_ot9xSH2nd_Pb-XhOTDXqnI-r1ezCwiw8mDgRAyQn3cSCkkdeYWkJ58qYgCDjDm43xp0Vb1So?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.672494,
+                        "lng": 35.849245
+                    }
+                },
+                {
+                    "name": "Ayvaini Mağarası - Bursa",
+                    "description": "<br><br>Mustafakemalpaşa İlçesinin yaklaşık 30 km. kuzeybatısında Doğanalan Köyü yakınlarında başlayan mağara 5, 5 Km. sonra Bursa, Ayvaköy civarında sonlanmaktadır. Her iki yönden girişi bulunan Mağara, girişlerinin sarp olması nedeniyle turizme kapalı olmakla beraber profesyonel dağcı ve mağaracılar tarafından tercih edilebilir. İçinden geçen Karadonlu deresi mağara boyunca 60’dan fazla irili ufaklı gölet oluşturmuştur. Her adımda mağarayı süsleyen sarkıtlar, dikitler ve travertenler birer doğa harikasıdır. Doğanalan Köyü Söğütalana yaklaşık 12 km uzaklıktadır. Mağaranın başlangıç kısmına ulaşabilmek için, Doğanalan köyünden kuzeydoğu yönüne giden stabilize yoldan yaklaşık 2 km ilerlemek gerekir. Kaynak: Bursa İl Kültür ve Turizm Müdürlüğü",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4fJl1rlAoCHT8RgvJ1ElWP3TcIHlH7ly7BTOqvF9Gi59THgI3512jtbzska7Zcpc2ydq1CPGERitCjiFbDvrs4eDGmOlGjTEwJcRciPKmtISHiRpq7mTOJsK4_ifcA31qZpPaKEDAF9sfUxGgXdOKUY2YueaZAzX5JxznRDhTKZv7Gzzrh7uq7dNayuV0Tgj-q5yw?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.085739,
+                        "lng": 28.628012
+                    }
+                },
+                {
+                    "name": "Ballıca Mağarası Tabiat Parkı - Tokat",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.227207,
+                        "lng": 36.301507
+                    }
+                },
+                {
+                    "name": "Birkleyn Mağaraları - Diyarbakır",
+                    "description": "<br><br>BİRKLEYN MAĞARALARI: Birkleyn Mağaraları, Türkiye ve hatta bütün Orta Doğu’da tarihi eser ve doğal güzellikleri bakımından benzeri olmayan bir yerdir. Asur Kralları I. Tiglat-pileser ve III. Salman Nassar, coğrafi bölgenin yapısı itibari ile burada kabartma ve çivi yazıtları yaptırarak egemenliklerini belgelenmişlerdir.",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4iIjSntygpd9Ca0KbCbutOAd_SzXyLL11rhPFkFfagKm40nj8b7UOmP1GesO-Ql3PIFihlsm1mWAV2rk244YiXhTWUhqejkFdbs2zcyasFPX-Oqndmau2GCygcEfu54iJiFevElQqMbVH9d04rhFgGhKHvo7ELZ44mrZnJwYF5-95Ct_bN8swCruxNvirdPgK_57M?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 38.444985,
+                        "lng": 40.649414
+                    }
+                },
+                {
+                    "name": "Bulak (Mencilis) Mağarası - Karabük",
+                    "description": "<br><br>Karabük Merkez Bulak Köyü sınırları içerisinde yer alan aynı zamanda Safranbolu İlçesi ile sınır olan Bulak (Mencilis) Mağarasının grişi, dik kayalar üzerinde olup mağaranın uzunluğu 6.5 km. dir. Mağaranın 2.5 km'lik kısmı harıtalanmış olup 380 metrelik kısmında elektrifikasyonu ve yürüyüş parkuru yapılarak turizme açılmıştır. Halen hidrolojik olarak aktif bir mağaradır. Yer altı nehirleri, göletler, şelaleler ilgi çekici ve olağanüstü güzellikteki sarkıt ve dikit oluşumları bulunan ve \"Doğal Varlık\" olarak tescil edilen mağara araştırmacıların ve ziyaretcilerin ilgisini çekmektedir.<br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7F-vVw6DB4nnqxMu3IendVBxKWKLmD2E9PJjqhafxN7gM4shXkManN2ZUbS5jARVGouSs_3mFV3ISF-HirJG4wi6DhTfJnJtUPST8tXVjBUqW6xQWVorF4Ldp-MJjO_qsS491PIImqRE2VO5zEhftQFr1lLWxGWOV2H5lNVogkt8XRtzi6Z17nrCISfLytDCBy2tY?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 41.274355,
+                        "lng": 32.6239869999999
+                    }
+                },
+                {
+                    "name": "Buz Mağarası - Ağrı",
+                    "description": "<br><br>Küçük Ağrı Dağının güney eteğinde Hallaç köyünün yaklaşık 3 km kuzey doğusunda, meteor çukuru ile aynı lav tüneli sistemi üzerinde bulunan doğal bir anıt mağarasıdır. Mağara, uzun eksenli, elips biçiminde, yaklaşık 100 m uzunluğunda, 50 metre genişliğinde, 8 m derinliğinde elips biçimli bir çukurdur. Mağaranın ağzı esas çukura göre biraz yukarıda kalmaktadır. İçinde bazalt lavlar, kayalar ve bu kayaların üzerinde saf ve temiz suların donmasıyla oluşmuş buz tabakalarını görmek mümkün. Kayaların üzerinde renk renk görünen temiz buz tabakaları, sarkıt ve dikitleri olan buz mağarası mevsimler göre değişken bir havaya sahiptir. Kışın fazla soğuk olmayan buz mağarası, hava akımının etkisiyle yukarıdan damlayan suları dondurarak buza çevirmektedir. Doğubayazıt ilçesinin en sıcak bölgesinde böylesine geniş bir çukurda dışarıdaki zıtlık gösteren buzdan sarkıt ve dikitler, insanı şaşırtacak şekildedir. Mağaranın ağzından süzülen, güneş ışığı, mağara içindeki buzlar üzerinde ışık oyunları yapmaktadır. Doğubayazıt ovasında çok sayıdaki bataklıktan anlaşılacağı üzere yer altı suyu tablası çok yüksektir. Bu durumda hava akımının mağaraya yakın yerlerden kaynaklandığı düşünülmektedir. Aşağı sinek köyünden başlayıp mağaraya doğru uzanan lav aracılığıyla mağaranın dip kısmından gelip, mağaranın iç kısmını soğutan ve mağara tavanı üzerindeki kaya kesimlerinden süzülerek damlayan suyun donmasına yol açan bu soğuk havanın özel bir bileşimi olduğu sanılmaktadır. Mağara içinde kuşların yuva yapması, şimdiye kadar mağara içinde kimsenin etkilenmemesi ve devamlı buzlu su alınması, hava bileşiminin zehirsiz olduğunu göstermektedir. Yöre halkının buzluk olarak adlandırdığı bu mağara, çevresindeki yerleşimlerin su ihtiyacını karşılamaktadır. Işık tutulduğunda kristal gibi parlayan ve renkten renge giren buz parçaları insanları hayretler içinde bırakır. Mağaranın en önemli özelliklerinden biri de yazın soğuk, kışın sıcak olmasıdır. Kapısında sürekli sıcak ve soğuk hava akımı bulunur. Kaynakça:\"Alpaslan, İ. (1995). Her Yönüyle Ağrı. Tutibay yayınları.\"<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7P36Q_VgkI6aChJVIT-YH1J5I9AwXmjbGuQoDkwbKlBYLg4OfN0y-_2Q-S2FpIWJy6irBE2J7M7aTD-FIGbDPpeG7wI7qyPTYd4RvrO9S1ied3OA-zxCuq75l5GG9MH5qMx99k6_Mt31U3lOb_ibnx1id-sVbGrGL2JzrxXrDschwtH4XYZKgZU12gjrVBY-dycmo?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 39.482315,
+                        "lng": 44.2937850000001
+                    }
+                },
+                {
+                    "name": "Buzluk Mağarası - Elazığ",
+                    "description": "<br><br>\"Buzluk Taşı\" denilen kayalıkların arasında derinliği 150-200 m. olarak tahmin edilen görülmeye değer bir doğa ve turizm harikasıdır. Mağaranın jeomorfolojik özelliği ve şekli ile burada gerçekleşen klimatolojik şartlardan dolayı mağarada yaz ayları içinde doğal olarak buz oluşmakta, kış aylarına ise mağarada buz teşekkül edememektedir. Bu durum mağaraya orijinal bir özellik kazandırmaktadır. Dünyada bu çeşit mağaraların sayısı çok azdır. Nitekim 45 mağara arasında bir tanesini de \"Harput Buzluğu\" teşkil etmektedir. buzluk Mağarasının üzerinde yer alan çöküntü dolini, doğu- batı yönünde 110 m. boyunda, 50 m. genişiliğinde elips şeklindedir. Dolin aynı zamanda buraya düşen yağışları toplandığı mağaranın en önemli su deposu vazifesini görmektedir. Buzluk Mağarasının girişinde bir eyvan kısmı vardır. Bu kısım 10-15 kişinin bir arada oturmasına uygun bir yerdir. Sonraki bölümde yapılan aydınlatma ve merdivenlerden buz tabakalarının oluştuğu birinci bölümde inilmektedir. Mağarada yer altı hava akımı mevcut olduğundan kışları sıcak, yazları ise üşünecek derecede soğuktur. Sıcak yaz aylarında bu mağarada buzlar oluşmaktadır. Eski dönemlerde yöre insanları Haziran-Temmuz-Ağustos aylarında bu mağaradan çıkardıkları buzları hayvan sırtlarında Harput'a getirip satıyor ve para kazanıyorlardı. Buzluk girişinde o zamandan yapılan toprak zeminli bir otopark ile son yıllarda faaliyete giren yazlık bir restoran da bulunmaktadır. Yaz aylarına burası öncelikle yerli turistlerin akınına uğramaktadır. buzluk kayalıklarından kuzeye bakıldığı zaman Keban Baraj Gölü'nün masmavi güzelliği , Pertek İlçesinin yeşilliği ile bütünleşerek, izleyenlere eşsiz bir doğal tablo sunmaktadır. 1990 yılında doğal yapısı korunarak iniş basamakları ve aydınlatılması yapılan mağaranın yerli ve yabancı turistler tarafından daha kolay ziyaret etme olanağı sağlanmıştır.",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5nauyVRTRxsGEhP57rrUVWPqBedNDYgiN0ntV0fgkhz9cxNsuworJZp68FwzelJ9iW_ZtL9v3owmk7FCQcuMW94fYVjJB7nbWRg9FdMBU4moeVF4LJjtVD_HyUkwqDD0lW58TovyS1OJmYoUwtkbf4iOffTFrqx0BF04GP59oUb8-nDwgrcQyGrqHS5161ZrwhkNk?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 38.735828,
+                        "lng": 39.28284
+                    }
+                },
+                {
+                    "name": "Cehennemağzı Mağaraları - Zonguldak",
+                    "description": "<br><br>Cehennemağzı Mağaraları, İlimiz Kdz.Ereğli İlçesi, İnönü mahallesinde (eski adı Ayazma - kutsal su anlamındadır) bulunmaktadır. Bu bölge Antik dönemin Acheron Vadisi olarak bilinmektedir. Zonguldak il merkezine uzaklığı 50 km, E5 karayoluna ise 70 km’dir. Kdz.Ereğli kent içinden mağaralara ulaşımı sağlayan yol tümüyle asfalt kaplıdır. Kdz.Ereğli Müzesi’ne bağlı örenyeri olarak faaliyet gösteren Cehennemağzı Mağaraları yanyana sıralanmış üç mağaradan oluşmaktadır. Birinci mağara, iki bölüm halinde düzenlenmiştir. Birinci bölümde, zemin orijinal bitki ve geometrik motifli mozaik ile döşelidir. İkinci bölümün doğu duvarında küçük bir apsis açılmıştır ve önünde kademeli basamaklar bulunmaktadır. Çok eski bir Hıristiyan kilisesi olan bu mağara, Hıristiyanlığın yayıldığı ilk yıllarda gizli ibadet yeri olarak kullanılmıştır. Orijinal halinde mağaraya, dışa doğru açılan iki sütunla önemine yakışır anıtsal bir şekil verilmiştir. İkinci mağara, yol kenarındaki 10 – 12 m yükseklikteki yamaç üzerinde bulunmakta ve yöre halkınca Koca Yusuf mağarası olarak adlandırılmaktadır. Yamaç üzerinde yer alan dar bir girişten geçilerek 3 basamaklı dikey bir merdivenden inilen mağara, 1,5 km dağın içine doğru devam etmektedir. 1960’larda tavandan düşen bir kaya yolu kapattığından, ancak 350 m kadar derinliğe gidilebilmektedir. İnsan elinden çıktığı taşçı kalem izlerinden anlaşılan mağara, yaklaşık 400 m2’lik bir alanı kaplamakta ve iki fil ayağı ile desteklenmektedir. Üçüncü mağara, yüzölçümü bakımından en geniş olanıdır. Zemini taban suyu ile kaplıdır. İnsan eli ile yapılan mağara birinci ve ikinci mağaralara su sarnıcı görevi görmüştür. Mağaraların Mitolojik ve Dinsel Önemi : 1.İnsanın doğaya karşı yenilmez dayanma ve saldırma gücünü simgeleyen Herakles’e (Herkül) Kral Eurystheus tarafından verilen on iki görevden sonuncu ve en güç olanı, Cehennem Köpeği Kerberus’un, hiçbir ölümlünün bir daha geriye dönemediği Ölüler Ülkesi’nden (Hades) kaçırılmasıdır. Herakles, Altın Post’u aramak üzere yola çıkan Argo Gemicileri ile birlikte Kdz.Ereğli’ye gelir ve Hermes ile Athena’nın da yardımıyla Kerberus’u yeryüzüne çıkarır. Eurystheus’un Kerberus’u gördüğünde çok korkması üzerine, Herakles onu tekrar Ölüler Ülkesi’ne bırakır. Herakles’in Kerberus’u kaçırmak üzere Ölüler Ülkesi’ne indiği yer Cehennemağzı Mağaraları’dır. 2.İlkçağın en önemli iki kehanet merkezinden birinin bu mağaralar olduğu bilinmektedir. Diğeri ise Yunanistan’ın Delphoi kentindedir. 3.Bir başka söylenceye göre, şehir tekfurunun kızı hizmetkarı olan gence aşık olur; birlikte evden kaçarlar ve Cehennemağzı Mağaraları’ndaki kız-oğlan odasına saklanırlar. Cehennem zebanisi de dışarıdan gelecek tehlikelere karşı onları korur. Mağaraya giremeyen tekfur kızına ve genç hizmetkarına “taş olun” diye seslenir, kız ve oğlan taş kesilir. 4.Cehennemağzı Mağaraları’nın birincisi olan ve kilise mağarası olarak da bilinen mağara içindeki sütunlar, sütun başlıkları, mozaik döşeme ve kandil yuvaları, mağaranın paganizmin egemen, Hıristiyanlığın ise yasak olduğu dönemde, ilk Hıristiyanlarca gizli ibadet merkezi olarak kullanıldığını göstermektedir. Bu mağara içinde bulunan kalıntılar, erken-Hıristiyanlık döneminin izlerini taşıyan motiflerle süslüdür. Kaynak-Fotoğraf: İl Müdürlüğü arşivi.<br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR47QTc6IlqUKjpIEVqpLMBy0XKNrIh3qwqojbAk5E65IeC5EkAyldJkkxPZp58FlE5RjFlCIZXznrps8R6LIX0L0nEgTAq0w_RML437QmB4RkpmQISifmIRKDUyOduV0R1Q8qlymeQ-sbDNP2fbYDVNuX2h3_awEFM9qb63s-A5ewSKB7SQV2JeEgvJKSbvR1kLv6A?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 41.292995,
+                        "lng": 31.414606
+                    }
+                },
+                {
+                    "name": "Cirbin Ali Mağarası - Kocaeli",
+                    "description": "<br><br>Sarkıt ve dikitlerin çokça görüldüğü mağaranın, yöre halkı tarafından 2 km uzunluğunda olduğu belirtilmiştir. Yapılan çalışmada mağaranın yaklaşık 100 m'lik kısmına girilmiştir. Hali hazırda damlataş oluşumları devam eden mağaranın, yöre halkı tarafından anlatıldığı kadarı ile tamamı gezildiğinde çok zengin ve farklı tipte damlataş oluşumlarını görmek mümkün olacaktır.<br><br><br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4xCNb_6pAT1dwtPKYGQqccliTZxbSFD3YXcbcC_jJr2R5GtmrGFD20aOBECTE43MsE9xmUCx1jtrhKVZP1xcFgkUk_G0S7GuKKQ3_5dySq0-TZhI5thgHLLGjzKS_hQkirRms6QzbMOEw8R1Ee6WiWHkIaJkx2PWbwN2I6XB31ymu8ORkbYpRnG3Ip_JkK7KBVPKg?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.667104,
+                        "lng": 29.922831
+                    }
+                },
+                {
+                    "name": "Çeşka Yeraltı Şehri - Yozgat",
+                    "description": "<br><br>Çeşka Yeraltı Şehri Yozgat il merkezinin yaklaşık 3 km kuzeydoğusunda ve Kirazlı Göledi olarak bilinen sulama göledinin kuzeyinde çevreye hâkim, yüksekçe bir tepenin üzerinde, tam tepe noktasında bulunmaktadır. Üç ayrı yerden girildiği tespit edilen yeraltı şehrinin kuzeybatı kısmındaki esas giriş kapısı kapanmıştır. İkinci bir giriş yeri olan güney kısmında iki katlı ve kayaya oyulmuş mekânın yarısı yıkılmış olup, iki ayrı odadan iki ayrı galeri ile içeri girilmektedir. Ancak; galerilerin iç içi kısmen dolu oldukları için buradan da girilememektedir. Bu kısımda üç oda bulunmakta ve bu odaların üzerinde ikinci bir kat bulunmaktadır. Doğu kısmındaki odanın duvarında yaklaşık 1,80 metre boyunda bir niş vardır. Ayrıca, batı kısmındaki odanın havalandırma bacası mevcuttur. Üçüncü giriş yeri ise kuzeyde ve kayalık olan kütlenin alt eteklerinde ağız kısmı bozulmuş dar bir kısmen dolu galeriden sürünmek suretiyle girilmekte. Yaklaşık 5 metre sonrasında dikdörtgen kısmen dolu bir odaya girilmekte, bu odanın batısında iki ayrı galeri bağlanmaktadır. Birinden girildikten sonra 10 metre mesafede geniş dikdörtgen şeklinde bir salona çıkılmakta ve bu salona iki büyük oda kapısı, iki küçük oda ve karşılıklı iki galeri kapısı açılmaktadır. Yaklaşık yüksekliği 1.30 metre civarındadır. Tavan kısımları tonoz şeklindedir. Ayrıca irili ufaklı nişler mevcuttur. Yeraltı şehrinin en üst kısmında kayalara oyulmuş büyük ve küçük kaya mezarları tespit edilmiştir. Tepenin eteklerinden yıkıntı taşlar arasında tek renkli astarlı ve astarsız Roma, Bizans ve boyalı Frig seramiğine rastlanılmıştır. Müze Müdürlüğünce 2008 Yılında galerilerde temizlik çalışması yapılmıştır. Kaynak: -Yozgat İl Kültür ve Turizm Müdürlüğü Arşiv -Yozgat Müze Müdürlüğü Arşiv<br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4YwF1fy4hVK-_RdK7goyFDwXTOWlPWVEwSi-5fLZ9izxZT2CcsGBJRfji145_hBRm9bcAFMCfzjyFdo6X5wvLYNc6pXA5ungsZ0pw6MPWLomU9EI1VJ_gTYPTCo7BEJFaTcyDnxIIL941c-5Blaj9j_19PoLoauqpm0WdHoeGwufSoftsOiX5OoGcFvGP80g0ZxNY?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 39.852302,
+                        "lng": 34.82563
+                    }
+                },
+                {
+                    "name": "Çımağıl Mağarası - Bayburt",
+                    "description": "<br><br>İl merkezine yaklaşık 35 km mesafedeki mağara küçük su birikintileri, sarkıtları, dikitleri, mağara incileri, mağara çiçekleri, org desenli duvarlar, traverten basamakları ve doğal yapısı ile görülmeye değer güzelliktedir. Özellikle bu doğal oluşumların taşıdıkları renkler ile mağara ayrı bir güzellik ve değer kazanmaktadır.",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5O_akJxjhF8LjV7mwgRCtrX3vf6hMojqGRGBkLx0kw-0CmNOyjq11tNhJkTIb9_BCwZP5E1-fIn4OSd7_FBFsBxK6gjro2o6PiaKZCGxD1vyd43ym8qs5F4Dyf6NgIGmxwnXb8ScOFylH2dPYng6wJgCILDFsNWS5071rUX1CTTQ1l9hyM7HM0q-EDhTmVwWEh058?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.243895,
+                        "lng": 40.2448429999999
+                    }
+                },
+                {
+                    "name": "Damlataş Mağarası - Antalya",
+                    "description": "Damlataş Mağarası, 1948 yılında, liman inşaatında kullanılacak taş için ocak açılması sırasında bulunmuştur. Mağara, tarihi yarımadanın batı kıyısındadır. Mağaranın giriş kısmında 50 metrelik bir geçit vardır. Yüksekliği 15 metreyi bulan geçitten sonra silindirik bir boşluğa gelinir. Buradan, mağaranın tabanına inilir. Yan kristalize kalker içinde bulunan mağaranın sarkıt ve dikitleri 15 bin yılda oluşmuştur. Mağaraya, sarkıtlardan damlamaya devam eden su damlaları nedeniyle Damlataş adı verilmiştir. Mağara, büyüleyici güzelliğinin yanı sıra astım hastalarına iyi gelen havasıyla da ünlüdür. Doktor kontrolünde, mağarada belli bir süre oturarak 21 günlük tedavi kürü uygulayan hastalar vardır. Mağaranın havası yaz kış değişmez; sıcaklık 22 santigrat derece, rutubet yüzde 95, sabit basınç 760 mm’dir. Mağaranın havasında %71 azot, %20,5 oksijen, on binde 2,5 karbondioksit ve bir miktar radyoaktivite ile iyonlar bulunmaktadır. Mağaraya giriş ücretlidir. Çevresinde küçük bir çarşı vardır, önü ise plajdır. (Kaynakça: \"Damlataş Mağarası\", Antalya Mağaraları, Antalya İl Kültür ve Turizm Müdürlüğü, 2015, Antalya, s.21.)",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 36.5418764,
+                        "lng": 31.9886459
+                    }
+                },
+                {
+                    "name": "Dim Mağarası - Antalya",
+                    "description": "<br><br>Alanya’nın 12 kilometre doğusunda, 1.649 metre yüksekliğindeki Cebel-i Reis dağının yamacındadır. Mağaranın denizden yüksekliği 232 metredir. 1998 yılında ziyarete açılmıştır. Türkiye’nin ziyarete açılan ikinci büyük mağarasıdır. 1 milyon yıl yaşında olduğu tahmin edilmektedir. İki ayrı koldan dağın içinde ilerleyen mağaranın kollarından biri 50, diğeri 360 metredir. Sarkıt ve dikitlerden oluşan mağaranın dip kısmında küçük bir göl vardır. Merdivenlerle inilip çıkılan mağaranın içindeki ortam, fantastik film dekorlarını andırmaktadır. Mağara gezisinden sonra, yamaçtan yürüyerek aşağıdaki Dim Çayı vadisine gidilebilir. Aynı şekilde Dim Çayı kenarındaki piknik yerlerinden de mağaraya tırmanma yürüyüşü yapılabilir. Mağaranın bulunduğu yamaçtan Alanya Kalesi’nin panoramik görüntüsü vardır. (Kaynakça:\"Dim Mağarası\", Antalya Mağaraları, T.C. Antalya Valiliği İl Kültür ve Turizm Müdürlüğü, Antalya, 2015, s.22.)<br><br>http://www.dimcave.com.tr",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5r3VfUI6qIxwVe0b7DiAMlGAzxh023P7NBL7UsOA521mFSR5Y47nMQl3yTTe5T946d0PPUBJPKSle_yc1DraMJkPawK26BzbnDXQtKl9SGnYGJ9_3dF1iV1j2xwWgsstP7kRz7282iLCbsDsQ0LFv1Iv0UK2iRKUaqY4Ka4G_YiXeQQ8kPSZ3njbZiV82Lrxf3h7Q?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 36.539967,
+                        "lng": 32.109045
+                    }
+                },
+                {
+                    "name": "Döngel Mağarası - Kahramanmaraş",
+                    "description": "<br><br>Kahramanmaraş-Kayseri karayolunun 50. km.sinde yer alan ve araba ile 50 dakikada ulaşılan Döngel, üst üste ve birbirine bağlı üç mağaradan oluşuyor ve bu bölgedeki en önemli mağaralardan biridir. Kahramanmaraş topraklarında ilk yerleşim İ.Ö 40.000-10.000 Paleolitik Dönem'de bu mağaralarda başlıyor. Mağaranın tabandan tavana kadar olan yüksekliği ise 102 m. Mağaranın etekleri ceviz ve çınar ağaçları ile kaplı, yemyeşil bir dinlenme ve piknik alanıdır. Kaynak: Kahramanmaraş İl Kültür ve Turizm Müdürlüğü<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6v8chuMQzIqqLgURlsmv99GRD66INHPMauNGtXOIKe0k3_VcVzcZck1MhLZ3kL2Kg_2JNMJcwfW-nSgSZZ0A8SUf0h_24TCiF77AtWOqXZm5_-y759N54q693I53rEfluhqPRRcnFMy8BmhIioETLyI7d3TrXmxQH53tA6AkQAtd6z8VuAQA1rzeWbaNssU6KRD94?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 37.85915,
+                        "lng": 36.641159
+                    }
+                },
+                {
+                    "name": "Dupnisa Mağarası - Kırklareli",
+                    "description": "<br><br>Yosun tutmuş taşları döve döve aşağılara inen, cılız ama buz gibi berrak sular karşılar sizi ilk olarak. Bu sular kendisini çevreleyen yeşile kesmiş ormana hayat sunar. Hele ki güneşe doğru uzanmak için birbiriyle yarışan kayınlar, Istranca ormanlarının süsüdür. Suyun düze kavuştuğu mesire alanının bulunduğu yerden yukarı doğru uzanan dar patikayı takip ederek bu saklı güzelliğe doğru adımlarınızı atmaya başlarsınız. Mağarayı saklayan, girişteki devasa taş kemer sizi büyüleyecektir. Suyun taşa şekil veren bu gücü karşısında hayranlığınızı gizleyemeyeceksiniz.<br><br>Taş sütunu mağraya doğru geçerken, hemen başınızın hizası kadar bir yükseklikten taşlara tutunarak dimdik yükselen, derenin yarattığı nem sebebiyle üzeri yosun bağlamış devasa ağaç da bir o kadar şaşırtıcıdır. O ana kadar mağranın nerede olabileceğini merak ediyor olabilirsiniz. Taş sütunu geçip, köşeyi dönünce Dupnisa’nın girişi görünüverir.<br><br>Dupnisa mağarası Demirköy’ün Sarpdere köyüne 5 km uzaklıkta, Trakya’nın turizme açılmış tek mağrasıdır. Kırklareli’ nin kuzeydoğusunda, Bulgaristan sınırına çok yakın bir mevkide yer alan mağra il merkezine yaklaşık 50 km uzaklıkta bulunur.<br><br>Demirköy, Pınarhisar ve Kırklareli yönünden mağaraya ulaşan yollar vardır. En çok tercih edilen güzergah, Kırklareli ve Pınarhisar yönünden gelenlerin kullandığı yoldur. Her iki yönden de gelenler Üsküp beldesinden geçip, Dupnisa’ ya ulaşan yolu tercih ederler. Istranca ormanlarının eşsiz doğasında yol alırken küçük ama bir o kadar sıcak Kırklareli köylerden geçersiniz. Çukurpınar ve Armutveren köylerini geçip, Demirköy’ün Sarpdere köyüne ulaşırsınız. Dupnisa’ ya giden yol bu köye 5 km uzaklıkta yer alıyor.<br><br>Bulgaristan ile sınırımızı çizen Rezve deresinin kollarını oluşturan derelerin üzerinden geçersiniz. Palamut, kayın, meşe, gürgen, kızılağaç ve dişbudaklara, buraların en bilindik ormanaltı bitkilerinden ormangülleri ( Halk arasında bunlara zelenika denir ), eğreltiotları, yaban menekşeleri; mevsimindeyseniz kırmızıya kesmiş gellincikler, papatyalar, savan çiçekleri eşlik eder yol boyunca. Ciğerlerinize kadar çektiğiniz tertemiz orman havası başınızı döndürebilir.<br><br>Yaban hayvanları bakımından da oldukça zengin bir bölgedir burası. Tavşan, karaca, tilki, porsuk, kurt, sincap ve daha bir çok hayvan için yuva gibidir bu coğrafya. Buz gibi tertemiz sularında kırmızı benekli alabalıkları doğal ortamlarında görebilirsiniz. Mağaranın kız mağarası diye adlandırılan kesiminde ise, 16 türe ait 60 bini bulan yarasa popülasyonunun devamı için mağra 15 Ekim-15 Mayıs tarihleri arasında ziyaretçi girişine kapalı tutuluyor.<br><br>Dupnisa hafta sonları sayfiyeciler ile dolup taşarken, her mevsim ayrı bir tat sunan yöre fotoğraf tutkunları için doğal bir plato, motor grupları, kamp karavancılar ve kültür gezginleri için de Trakya’ da muhakkak uğranması gereken bir güzergah oluşturuyor.<br><br>Dupnisa@ErkanYAVAŞDupnisa mağarası kuru mağra, kız mağrası ve sulu mağra olmak üzere üç mağra sisteminden oluşuyor. Bulgarca’ da Dupnisa “delik” manasına geliyor. Kuru mağara 900 mt, sulu mağra ise 1700 mt uzunluğundadır. Yan kollarla beraber mağranın toplam uzunluğu 2720 metredir. 3-4 milyon yaşında olduğu varsayılan mağrada karstik oluşumlar halen devam etmektedir. Özellikle kuru mağrada yer alan sarkıt, dikit ve sütunlar, bunların yer aldığı büyük galeriler oldukça görkemlidir. Sarı, krem ve kahverenginin tonlarında perde bayrak taşları ve damlataş havuzları ışıklandırmanın da etkisiyle çok daha büyüleyici gözükmektedir.<br><br>Mağaranın girişine yaklaşırken, yazın en sıcak günlerinde bile olsanız içeriden gelen soğuk hava akımını tüm vücudunuzda duyarsınız. Zira mağaranın en alt bölümünü oluşturan sulu mağrada sıcaklık 10 derecedir. Kuru mağrada ise sıcaklık yaz kış 17 derecedir. Derenin akışta olduğu sulu mağranın deniz seviyesinden yüksekliği 345 metredir. Bu seviye ile kuru mağaranın üstten çıkışı arasındaki kod farkı ise 61 metredir.<br><br>Mesire alanında yer alan bir jenaratör yardımıyla ışıklandırılan mağranın girişinde, başınızın hizasında bir yükseklikte yer alan devasa taş kütlesini geçince sulu mağranın en büyük galerisi karşılar sizi. Işıklandırmanın yarattığı büyülü atmosfer, krem ve kahverenginin değişik tonlarındaki perde bayrak taşlarından karstik oluşumlar, sol tarafınızda yer alır ve sizi büyüler. Eveli ve ahiri belirsiz zamanın imbeğinden sabırla ve mütemadiyen damlayan suyun aşındırıcı etkisiyle oluşumlarını devam ettiren bu görkemli karstik kayalar, damlataş gölcükleri oluşturan ve mağra içinden akan buz gibi derenin hizasına kadar iner.<br><br>Birbirine yaslanmış tepenizdeki devasa taşların altından geçerken ürperirsiniz.<br><br>Sulu mağaranın 250 metresi, kuru mağranın ise 200 metresi ışıklandırılmıştır. Sulu mağara içinden akan buz gibi dere, kuru mağraya yükselen merdivenlerin altındaki taşların arasından kaybolurken, daha ötesinde ne olduğuna dair ürperten bir merak sizi sarıverir. Bu merakı pek zorlamayıp; merdivenler boyunca yukarıya, kuru mağraya çıkmaya başlamak en iyisi.<br><br>İçerideki kuvvetli aydınlatma ışıklarının da etkisiyle mağaradaki nem bazen nefesinizi zorlayacağı için, çok acele etmeden dinlene dinlene ve tadını çıkarta çıkarta merdivenleri adımlamanız iyi olacaktır. Kimi zaman daracık taşların arasından ürkerek geçerken, birden ferah galerilere çıkarsınız. Buralardaki sarkıt, dikit ve sütun oluşumları büyüleyicidir.<br><br>Zaman zaman en üstteki galerilerde uçuşan yarasaları görmeniz mümkündür. Yarasalar kız mağarası olarak isimlendirilen bölümde bulunur ve bu bölüm aydınlatılmamıştır. Bu bölümü araştıran mağracılar, en görkemli oluşumların burada olduğunu söylemektedir.<br><br>Son büyük galerinin az ötesinde, yukarı çıkan dik merdivenleri görünce ister istemez bir ferahlama hissi duyarsınız. Mağarayı gezerken ne kadar büyülenmiş de olsanız, sizi sarmalayan kısılmışlık, kuşatılmışlık hissi mağranın üst girişinden içeriye akmaya çalışan ferah hava ile kaybolur gider. Ve nedense, boğulmak üzere olan birinin son bir çırpınışla bir nefes daha bulmak istemesi gibi bir hisle hemen yukarıya çıkmayı istersiniz.<br><br><br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR64oK5iKo2k51rzdWm1GDW17B58S8IBFx2LSb3rjKKaxg9uHue21RlOZVsnY9iWrnZaf9qxtk7jtrEW4I8S9Ynh6o73KB5gaUsiXfIRAXNOtGKCfgZ8-lBmwIfC_tYkWLbKJTOo0_lwMRqp-TTNysFUvlt5iQPndMpzvWtnRr17eGG-GlljwPJLiqwUbPt1C7amnt0?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 41.8407206,
+                        "lng": 27.5554759
+                    }
+                },
+                {
+                    "name": "Elmalı Mağarası - Erzurum",
+                    "description": "Elmalı Mağarası; Maden köprübaşı Elmalı Mahallesi'nin 1 km doğusunda, kayaların koynunda bir mağaradır. Elmalı Mağarası, sarkıt ve dikitlerin ilginç görüntüler oluşturduğu bir damlataş mağarasıdır. Kaynakça; (Erzurum Gezi Rehberi Kitabı Tablet İletişim Yayınevi)",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.458803,
+                        "lng": 40.853353
+                    }
+                },
+                {
+                    "name": "Fakıllı Mağarası - Düzce",
+                    "description": "<br><br>Fakıllı Mağarası Düzce’nin Akçakoca ilçesinin 8 km güney doğusundaki Fakıllı Köyünde bulunmaktadır. Kültür ve Turizm Bakanlığı Kültür ve Tabiat Varlıkları Koruma Bölge Kurulu Müdürlüğü tarafından I. Derecede Sit alanı olarak tescillenmiştir. Bulunduğu köyden ismini alan mağaranın toplam uzunluğu 1017, ziyarete açık alanı ise 350 m'dir. Doğal özellikler taşıyan mağaranın içinde çeşitli yönlere giden galeriler, sarkıt ve dikitler vardır. Özellikle beyaz oda olarak anılan bölgeler damlataş bakımından zengindir.<br><br>Mağaraya yağışlı dönemlerde düden girişler ile önemli oranda su girişi vardır. Birbirine bağlı iki bölümden oluşan mağaranın kuzey-güney veya KKD-GGB yönlü ana galerileri tabakaların doğrultusuna bağlı olarak gelişmişlerdir. Buna karşılık doğu-batı veya BKB-DGD yönlü bağlantı galerileri ise tabakaların eğim yönünde ve bunları kesen çatlaklar üzerinde uzanırlar. Bu şekliyle mağaranın kafesli bir yapısı vardır. <br><br>Çok dönemli gelişimi karakterize eden şekil ve yapılara sahip olan Fakıllı Mağarası yarı aktif bir mağaradır. Yüzeye yakın bir noktada bulunması nedeniyle yaz ve kış mevsimlerinde büyük farklılıklar gösteren nemli, sıcak ve serin bir havaya sahiptir. Mağaranın havasının astım ve nefes darlığı hastalığına iyi geldiği söylenmektedir. Mağaranın çevresi yapılan düzenlemeyle piknik alanı olarak kullanılmaktadır.<br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6k2pMQ0g7SoQ-6k3QkIfRWTwuPNh46SaUF2H4NIsY815XzoWtfaI5JdiFqlN4pHNkkgzyjrUEXLoHTbJjlgAlqqqRJetiel7DBjalvy5tyw5zqhEU4UWAGswdjpmi5zDIISaO_uGe5rYyFe8OZINgQUw70xTEWprFk4B1QcytrWtHosSPjajwlxPT7pJ9eKZCT7uo?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 41.052431,
+                        "lng": 31.175594
+                    }
+                },
+                {
+                    "name": "Gelemiç Köyü Mağarası - Bursa",
+                    "description": "<br><br>Kocasu (Atranos) nehrinin Keles ilçesi sınırları içerisinde aktığı kayalık ve çok sert bir vadiye Kayalı dere kanyonu denilmektedir. Burası Kocakovacık köyü altlarından başlayarak Gelemiç köyü arazisine kadar uzanır. Burası karşıdan çok sert ve içerisine girilemez bir kanyon şeklinde görünse de içerisine girildiğinde gelen ziyaretçileri büyüler. Bu sert kanyonun her iki yakası heybetli kayalardan oluşur. Tam ortasından akan Kocasu nehri boyunca çok keyif alınarak yürünecek bir yol güzergahı bulunmaktadır. Nehir boyunca yapılacak bir yürüyüşten sonra sola doğru yaklaşık 30 dakikalık bir tırmanış ile Gavurini mağarasına ulaşılır. Gavurini mağarası içerisinde sarkıt ve dikitlerin oluştuğu 3 ana bölüm ve bunları birleştiren bir galeriden oluşmuştur. Mağara içerisinde bulunan iki ana bölümde oluşmuş heybetli sarkıt ve dikitler meraklı ziyaretçileri için keyifli fotoğraf imkanı sunar. Mağara girişinde bulunan ana giriş bölümü Bizans döneminde ön kısmı bir duvar ile kapatılmış ve bir yerleşime dönüştürülmüştür. Bu bölümde zamanında bir sarnıçta görülmektedir. Kaynak: Bursa İl Kültür ve Turizm Müdürlüğü",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7F0DKUgCqj6Bwm5u-QdKfhn8HROH_d9kSyzOkdGCMGGicx9iYqmtC5f3TQhV2UD8gdD39TnHWqFoEDgVeWIeDxI-ZsoZMBHLvMPnRaBSC2FYb039s3BMhGF97Pa1pufL92e_yyTuZuVNPNhGRaDzwJYKjJtRN-RxTIHnBjGwpK-JDLjNnBfhjeo8QhC3U-C12MwZg?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 39.89036,
+                        "lng": 29.276486
+                    }
+                },
+                {
+                    "name": "Gelin Odaları Ve Mağaraları - Tunceli",
+                    "description": "<br><br>İlçe merkezine 3 km. uzaklıkta, Urartular tarafından yapıldığı sanılan oyma kayalardır. İçinde bir kral tahtı ve tutsakların cezalandırıldığı zindanın olduğu ve kaya içinde kaya oyularak çok derinlere oyma taş merdivenlerle inilerek oradan Hanım Köprüsünün bulunduğu noktada çaya ulaşıldığı, su alındığı gizli bir geçit vardır.<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4Nu1xJVWtGp3CYMQXo6lrIk7cDPsc0zkolyQyGYUR90B_9VpKGu2ldPFM_FcybPrG8m4XNOeDZiPLanaWAHeri-43zG0pvt4F9dhPjDuqL6PIQyPA8BCWLW-XP5ua5ISF-W9P6SpFQJfVsOImMFzZOcOEtIAiOsTmiEf9dvn03UlyLlngITOPF9C0UAxAg65L1OEM?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 39.480726,
+                        "lng": 39.894104
+                    }
+                },
+                {
+                    "name": "Gökgöl Mağarası - Zonguldak",
+                    "description": "<br><br>Jeolojik yapı bakımından yörenin jeomorfolojik ve hidrolojik gelişim evrelerini ve özelliklerini de içeren Gökgöl Mağarası birbirinden farklı dört kattan oluşmuştur. Birinci katı oluşturan ağız kısmı ve çevresi (mağaranın ilk oluşan bölümü) ile Büyük Çöküntü Salonu’nda bulunan damlataşların yer aldığı ikinci kat tamamen fosilleşmiştir. Mağaranın en genç bölümü olan üçüncü ve dördüncü katlarda Damlataşlar Salonu, yer altı deresi ve aktif küçük kol bulunur. Mağaranın ikisi fosilleşmiş, biri aktif olmak üzere üç ağzı vardır. Girişi sağlayan fosil ağızlardan büyük olanı, görkemli görünümüyle dikkat çekicidir. Dar ve sulu olan aktif ağız ise giriş için uygun değildir. Kollarıyla birlikte toplam uzunluğu 3350 metre olan Gökgöl Mağarası, doğu, güneydoğu - batı, kuzeybatı yönünde gelişen ana galeri ile iki büyük yan koladan meydana gelmiştir. Dar ve sulu bir sifonla sona eren ana galeriden sonra, yan kollardan gelen suların birleşerek oluşturduğu Büyük Çöküntü Salonu’nda yer altı deresi görülür. Yürüyüş yolu üzerinde bulunan ve köprülerle geçilen bu dere, mağaranın aktif ağzından Erçek Deresi’ne dökülür. Mağara içi damlataş birikimi yönünden son derece zengin olan Gökgöl Mağarası, her traverten, sarkıt, dikit sütunlar yanında, bayrak, perde, akma damlataşları ile süslüdür. Aktif ve yarı aktif katlarda duvar damlataşları, makarna sarkıtlar, mağara gülleri, mağara iğneleri ve içi su dolu damlataş havuzları bulunmaktadır. Gelişim halinde olan bu damlataşlar, mağaradaki oluşumun hala devam ettiğinin belirtileridir. Gökgöl Mağarası’nın ilk 875 metresi turizm amaçlı kullanıma açılmıştır. Girişten Büyük Çöküntü Salonu’na kadar uzanan bu bölüm 2-15 metre genişlik, 1-18 metre yükseklikte olup, Fosil Giriş, Damlataşlar Galerisi, Çöküntü Salonu, Muhteşem Salon, Büyük Çöküntü Salonu ve Harikalar Salonu gibi adlarla nitelendirilmiştir. Aydınlatması yapılan bu alanda yürüyüş parkuru, köprüler ve seyir terasları bulunmaktadır. Kaynak-Fotoğraf: İl Müdürlüğü arşivi.<br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR78mUo9-fyeAMngTkUuqmEPfEwudfZ2KeoDBi1anLXA4CprAtZ8HZPqBZjCXZiaz4bYjyjyl7-Ej_s6tV8XsetdYeRAMPhYxDJpnt2deWR2nAsXmatifPpz6zJkQrMWLr2SGdhqJMrkm-Exkztpvrfhw6HXYMk40pb-s1HUTRdRiI7MNfTY-aocK7ZkKjbu2oqIyOg?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 41.440611,
+                        "lng": 31.833175
+                    }
+                },
+                {
+                    "name": "Helva Köyü Buz Mağarası - Bayburt",
+                    "description": "İl merkezine 33 km mesafede bulunan mağaranın içinde buzdan oluşmuş sarkıt ve dikitler görülür. Buz oluşumlarının değişik şekillerini yansıtması bakımından dikkat çekicidir.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.157899,
+                        "lng": 40.488993
+                    }
+                },
+                {
+                    "name": "Çimağıl Mağarası",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.1429273,
+                        "lng": 40.5953407
+                    }
+                },
+                {
+                    "name": "Güngörmez Mağarası - Tekirdağ",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 41.4752422,
+                        "lng": 27.970376
+                    }
+                },
+                {
+                    "name": "Ilgarini Mağarası - Kastamonu",
+                    "description": "Uzunluğu 858 metre, derinliği 250 metre olan mağaraya, köyden yaklaşık 1,5-2 saatlik bir yürüyüş ile ulaşmak mümkündür. Ancak yoğun ormanlık alanda kaybolma tehlikesine karşı yerel rehber mutlaka alınmalıdır. Mağara içinde birçok sarkıt ve dikitler bulunduğu gibi Geç Roma ve Bizans dönemlerine ait şapel, mezarlar ve sarnıçlar da görülebilir. Kaynakça: Kastamonu İl Kültür ve Turizm Müdürlüğü. Kastamonu Rehberi. (2015)",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 41.707244,
+                        "lng": 32.99491
+                    }
+                },
+                {
+                    "name": "İnaltı Mağarası - Sinop",
+                    "description": "<br><br>Ayancık İlçesine 40 km uzaklıkta bulunan İnaltı Köyü sınırları içerisinde olan mağara denizden 1070 metre yüksekliktedir. Mağaranın 50 m altına kadar araçla ulaşım bulunmaktadır. Buradan da merdivenler aracılığıyla mağaranın ağzına ulaşılabilmektedir. Mağara ağzında geniş bir sahanlık bulunmaktadır. İnaltı Mağarası, gerek mağara içi damlataşları özelliği, gerekse doğal çevresinin güzelliği ile turizm amaçlı kullanıma son derece uygundur. Ortalama uzunluğu 658 metredir. MTA tarafından 1996 yılında inceleme yapılan İnaltı Mağarasının 300 metrelik bölümü aydınlatılmış olup turizme açılmıştır. Mağaranın devamındaki 358 metrelik kısmının ancak 125 metrelik bölümünün turizme açılmaya uygun olduğu tespit edilmiştir. Mağara doğu-batı yönünde (S) çizerek uzanır. Giriş salonunun boyu 125 m, tavan yüksekliği 15 m, genişliği 10-12 m arasında değişen düzgün bir galeriye açılır. Bu galeri mağaranın en geniş ve en kuru bölümüdür. Daralarak ilerleyen mağarada sarkıt, dikit, sütun, örtü ve duvar damlataşları, damlataş havuzları görülmeye başlanır. Tabanda bulunan Dogger yaşlı granit temel üzerine gelen ve karst taban düzeyini oluşturan Malt- Alt Kereatse yaşlı inatlı formasyonu içinde yatay gelişmiştir. Buna karşılık mağara tabanına yakın alt kesimlerde ve su düzeyinin hemen üzerinde karnabahar ve patlamış mısır şekilli damlataşlara da yer yer rastlanılmaktadır. Bu bölgedeki mağara ve çukurların oluşum temelinde erime özelliğini barındıran yüksek derecede kireçtaşı bulunur. İnaltı Mağarası, mistik ve gizemli görüntüsü ile gelen ziyaretçilerini büyüler. Mağaranın içerisine gezi güzergâhı ve önüne de kır kahvesi yapılmış olup; misafirlerini heyecanla beklemektedir. KAYNAK: http://www.inaltikanyon.gov.tr/<br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4lzxR1rKtBQhKX_BpNm11-mszHH7zRw4ydOVLyVZy4pHm0sSeBhlgUJOVd9VMdnGSMKGySwySu2dCtf1yPuDobsFKrS3v_HM3LP5KZFmQaOfz3rYd_q2R_Npy8bacXFYms26TxICUjTDMjOZDNr3CqRN_0HOC3Lo2V2SQDojkdjq7JeyL0VOEnCRnfhCpV1jmXODU?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 41.732195,
+                        "lng": 34.569016
+                    }
+                },
+                {
+                    "name": "İnceğiz Mağaraları - İstanbul",
+                    "description": "",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 41.1830144,
+                        "lng": 28.4044218
+                    }
+                },
+                {
+                    "name": "İncesu Mağarası - Karaman",
+                    "description": "<br><br>Karaman Merkez Taşkale Köyü sınırları içerisinde Köy merkezinin 9 km. güneyinde İncesu Deresi’nin doğu yamaçlarında yer alır. Uzunluğu 1.356 m.dir. İçerisinde sarkıt, dikit ve travarten havuzları bulunur. Bir doğa harikasıdır. İncesu Mağarasının yurdumuzdaki “mağara turizm envanterine” girmesiyle artan önemi, mağara turizmine açılmakla daha iyi anlaşılacaktır. Mağaranın diğer bir özelliğinin astım,bronşit ve kalp yetersizliği gibi hastalıklara iyi geldiği bilinmektedir. MTA Genel Müdürlüğü tarafından fizibilitesi yapılan mağaranın aydınlatma ve içerisinin yürüyüş yolu yaptırılmıştır. Taşkale Köyü ve İncesu Mağarası arasındaki 9 km stabilize yol asfaltlanmıştır. İncesu Mağarası 2013 yılında Turizme açılmıştır. Kaynakça : Topal.C.(Ed).(2009).Karaman Kültür Envanteri.Karaman. Komsan Ofset<br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5mN1dxKPWv9nbNgUZR1bAfrftzqpyJURKwK4SYmlexkjkUWkkj47CFO54bWiDKg-BZY1EZbOegVLv4wPt74SLCi6J__UuwkLdftWFhbROmcemxwMLisLuFh6LXpIXQ8N3V3cPSM86urpcMjw2SVZkrbio8vQrW52rQ8zAU77hAvDdl1Xaw_MyT_H7_T3dzpPEvEBk?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 37.094161,
+                        "lng": 33.6243059999999
+                    }
+                },
+                {
+                    "name": "İnsuyu Mağarası - Burdur",
+                    "description": "<br><br>İnsuyu Mağarası, Burdur-Antalya karayolu üzerinde, Burdur’a 13 km uzaklıkta bulunan ve ülkemizde turizme açılan ilk mağaralardandır (1965). Mağara 597 mt uzunluğunda olup deniz seviyesinden 900 mt yüksekliktedir. İnsuyu Mağarasında; karstik yapının zamanla erimesi ve aşınması sonucu, mağara içinde sarkıt ve dikitler meydana gelmiştir. Ayrıca girintili çıkıntılı çeşitli yönlere açılan dehlizler bulunmaktadır. Mağaranın suyu karbonatlı maden suyudur. İnsuyu mağarası, Kültür Bakanlığı kararı (1976) ile I. derece Doğal Sit olarak tescil edilmiştir. Kaynak: Kültür Envanteri, Ankara 2007.<br><br>Burdur-Antalya karayolunun 13 kilometresinde yoldan 900 m. doğuda, Mandıra köyündedir.<br><br>Özellikleri: Toplam 597 m. uzunluğunda yatay ve kuru bir mağaradır. Uygun ulaşımı bulunduğu için Türkiye'de turizme açılan ilk mağaralardan biridir. Kalker tortulanmalarından türlü şekil ve yapıda meydana gelen sarkıt ve dikitlerin teşekkül tarzları dikkate alınarak mağaranın binlerce yıl evvel teşekkül ettiği tahmin edilmektedir. Mağara içinde girintili-çıkıntılı muhtelif istikametlere açılan dehlizlerde yer alan irili ufaklı 9 göl mevcuttur.<br><br>Mağara içinde serin ve temiz bir hava cereyanı vardır. Bir kısım mağara sularının şeker ve mide hastalıklarına şifalı olduğuna inanılmaktadır. Mağara civarında İl Özel İdaresince kurulmuş bir konaklama tesisi vardır.<br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR76GaFGiLUbneHs2AP3GpUFFbwNphTvAGIVDWG15902CBNS7wE6ZGJ8tYUtXkdCnWwYSiOfAU29ElS8JWXr0KhSKe5jCO3MzZrUn4XOstfkc_DvfjU7MHpzBQDCHow4cD3z17Z4p7EYdLdA-BkbghWNXSmxka7WrytS_affAJdf5Z6a4IHz-IO1yzmlvyr_VRwHSCI?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 37.659091,
+                        "lng": 30.374306
+                    }
+                },
+                {
+                    "name": "Kaklık Mağarası - Denizli",
+                    "description": "<br><br>Denizli Ankara karayolunda Denizli il merkezine 30 km. mesafede Honaz ilçesi Kaklık Mahallesindedir. Mağaralar insanların ilk doğal barınaklarına oluştururlar.Bu nedenle uzun yıllardan beri araştırmacıların dikkatlerini üzerlerine çekmiş ve ayrıntılı araştırmalara konu olmuştur.Ancak bu özelliklerinin yanında mağaralar içlerinde sakladıkları gizli güzelliklerin keşif ve seyrinin insanlara verdiği mutluluk,mağaracılığın son yıllarda bir bilim dalı olarak karşımıza çıkarmaktadır.Bunun yanında bir spor dalı olarakda karşımıza çıkmaktadır.Kaklık Mağarası damlataşı, sarkıtları ve dikitleriyle süslü olup,Pamukkalede bulunan travertenlere benzer ,traverten basamaklarıyla eşine rastlanmaz güzellikte olup, Küçük Pamukkale veya Mağara Pamukkale olarak adlandırılmaktadır. Mağara içerisinde bol miktarda termal su bulunmaktadır.Berrak,renksiz ve kükürt kokulu olan bu su varlığı bazı cilt hastalıklarına iyi geldiği bilinmektedir. Ayrıca mağaranın yakınında ziyaretçilerin istifadesine sunulmak üzere yapılan yüzme havuzu, küçük amfi tiyatro, seyir alanları, kafeterya ve kameriyeler mayıs 2002 tarihinden itibaren turizmin hizmetine sunulmuştur. Düden-kaynak, çöküntü obruğu konumlu aktif bir magara olan \"Kaklık Mağarası\"nın çevresi; Mesozoik kireçtaşları, Eeosen marn, kil, kumtaşı ve konglomeraları, miyosen-pliyosen yaşlı kil, kum, Marn ve kalkerler ile kuveternere ait traverten ve alüvyonlardan meydana gelmiştir. Kaklık Mağarasının içinden ve yakınında yüzeyden çıkan termal kaynakların hidrojeokimyasal özellikleri : Görünüş Berrak PH 6.85 Renk Renksiz Toplam Sertlik (FS ) 116.9 Koku Kükürt Kokusu Klorür (mg/lt) 31.6 Tat - Amonyak Yok Tortu Yok Organik Maddeler için Nifrit Yok Sarfedilen Oksijen (mg/lt) 0.7 Aktif Klor (mg/lt) Yok Kalsiyum (mg/lt) 286.17 Magnezyum (mg/lt) 110.62 Kaklık Mağarasının doğrudan gün alan ve sürekli damlayan veya akan duvarlarında, sık bir yosun ve küçük yapraklı sarmaşık türü bitkiler gelişmiştir. Aydınlanmaya bağlı olarak gün içinde yeşilin değişik tonlarını alan bu bitkiler, mağaraya ayrı bir güzellik katmıştır. Kültür ve Turizm Müdürlüğü<br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4pLWjXnOOXe6kINVs2IsbJP3NdDS4sOMPLjFKr2Q-6RNqxhO358RxzijAPJ14KXuclDd2B5wT5n_v7ZXwZsnHfsmqXnI1DniOqljP9BjC9KnaOVX0Xecsp058RzkX-1cJ-Ch3nCnuQ563y_YTayWz43CTD5MWUbDpPwLXURbKOs-iiyE41MGJU2BhFzV6RPUYGvi4?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 37.855847,
+                        "lng": 29.3854240000001
+                    }
+                },
+                {
+                    "name": "Karaca Mağarası - Gümüşhane",
+                    "description": "<br><br>Gümüşhane’nin gizli tacı, yeraltı dünyasının resim sergisi, mağaracılığın gizemli dünyası Karaca Mağarası, Torul’un Cebeli Köyü sınırları içerisinde bulunmaktadır. Mağara, şehir merkezine 17 km mesafededir. Mağaranın ulaşımı çift şerit asfaltlanmış, tur otobüslerinin rahatça gidebileceği kara yolu ile yapılmaktadır.<br><br>Karakterli volkaniklerin çevrelediği bol çatlaklı masif kalkerler içerisinde gelişme olanağı bulan ve fosil bir mağara olan Karaca Mağarası, mağara değil adeta yeraltı sarayı durumundadır.<br><br>Denizden 1550 m yükseklikteki bu yeraltı sarayı; çok çeşitli renklerde sarkıtlar, dikitler, org desenli duvarlar, bayrak şekilleri perde damlataşları, mağara çiçekleri, mağara incileri, fil kulakları, traverten havuzları, traverten basamakları, sütunlar, mağara gülleri görünüm ve seyirleri ile görenleri büyülemektedir. Bu yeraltı sarayı, yatay yönde gelişme göstererek elipse benzeyen dört ayrı salonun birbirine birleşmesinden meydana gelmiştir. Giriş noktasından en uç nokta arası 105 m olan yeraltı sarayı, mağaranın tavan yüksekliği 18 m, toplam iç alanı ise 1.500 m3‘dür.<br><br>Mağaranın doğal klima özelliği ile havası ziyaretçilerine özellikle astımlılara rahat bir atmosfer sunarak mağara turizmi yanında sağlık turizmi yönünden de önemli hizmetler sunmaktadır.<br><br>Doğanın yeraltı sarayı Karaca Mağarası, ziyaretçilerine damlataşı şekillerinin en güzel en görkemli ve büyüleyici örnekleri ile yeraltında oluşturduğu gizemli dünyanın seyrini sunmaktadır. Doğanın yeraltı sarayı Karaca Mağarası, yeraltı zenginliklerimizden, eşine rastlanılmayacak bir resim sergisi, doğal mimari ve peyzaj örneklerinin görünüm ve seyri ile ziyaretçilerine huzur ve mutluluk vererek, seyir defterlerine unutamayacakları bir sayfa açacaktır.<br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6spD_xVzbBZOG1kgAT2kRVUHAhxHQnVsrSf5pEJnRs-Ww8b5zUcmLIXbAwf8OLTdUe3pjDi-xwjpQTibRVpF-IOfUjJxJffdt7RIEKKeuaNk4Mffw_rQYU9o0R3p78w7EKVhw-dJGkXnV8L1OtZqpgPymBJK3rESNhS9VnvTkoCD4a2bIMcYD8rtkollCvw_myYgY?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.54433,
+                        "lng": 39.4028089999999
+                    }
+                },
+                {
+                    "name": "Karaca Mağarası",
+                    "description": "Karaca Mağarası<br><br>Yeri: Aydın, Kuşadası İlçesi<br><br>Özellikleri: Pasif bir mağaradır. Pasif mağara olduğundan içerisinde akarsu yoktur. Ancak, tavandaki çatlaklardan damlayan sular, çeşitli damlataş şekillerinin oluşumunun günümüzde de devam etmesine sebep olmaktadır. Ayrıca, mağara içerisinde traverten havuzları ve bir kaç küçük gölcük yer almaktadır. Mağara içerisinde belirgin bir hava hareketi söz konusu değildir. Mağara havasının nemi, ağız kısmından içeriye doğru gidildikçe nispi bir artış göstermektedir.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.851001,
+                        "lng": 27.2612
+                    }
+                },
+                {
+                    "name": "Karain Mağarası - Antalya",
+                    "description": "Antalya'nın 30 km kuzeybatısında eski Antalya-Burdur karayoluna 5-6 km uzaklıkta bulunan Yağca Köyü sınırları içinde yer alır. Türkiye'nin en büyük doğal mağaraları arasında olan Karain mağarası, önünde bulunan traverten ovasından 150 metre, denizden ise 430-450 metre yüksekliktedir. İnsanlık tarihinin başlangıcındaki süreç içinde mağara, alt Yontmataş'tan başlayarak, orta ve üst Yontmataş evreleri, Neolitik, Kalkolitik, Eski Tunç gibi Prehistorik Çağlarda ve Klasik Çağda insanlar tarafından sürekli bir biçimde iskan edilmiştir. Bunun doğal bir sonucu olarak da yaklaşık 11 metreyi bulan kalın bir kültür dolgusu içermektedir. Ancak mağaranın en uzun süren ve en önemli iskânı Paleolitik (Yontmataş Çağı) ile ilgilidir. Klasik dönemlerdeki kullanımı daha çok Adak Mağara (tapınak) niteliğinde olup, mağara alnı ve dış duvarları üzerinde Grekçe kitabe ve nişler bulunmaktadır. Karain mağarasında yapılan kazılarda elde edilen arkeolojik buluntular, Antalya Müzesi'nde ve mağaranın hemen yakınında bulunan Karain Müzesi'nde sergilenmektedir. (Kaynakça: Karain Mağarası, Antalya Mağaraları,,Antalya İl Kültür ve Turizm Müdürlüğü, 2015, Antalya,s.37)",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.077778,
+                        "lng": 30.570831
+                    }
+                },
+                {
+                    "name": "Keloğlan Mağarası - Denizli",
+                    "description": "Denizli İli, Acıpayam İlçesi’nin 18 km. doğusunda bulunan Dodurgalar Mahallesi’nin 3 km. batısındaki Mallı Dağı’nın doğu yamacındadır. Mağara içerisinde çok miktarda dikit, sarkıt ve sütun bulunmaktadır. Mağaranın bol çatlaklı yapısı nedeniyle karstlaşmaya son derece uygun, Jura-krtase kireç taşları içinde gelişen mağara birçok damlataş sütunları ile birbirine geçen çok sayıda adacığa ayrıldığından girintili çıkıntılı bir yapıya sahiptir. Kültür ve Turizm Müdürlüğü",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.3879491,
+                        "lng": 29.5003424
+                    }
+                },
+                {
+                    "name": "Kocain Mağarası - Antalya",
+                    "description": "Kocain Mağarası, anıtsal sarkıt ve dikitleri ile tabiat tarihini, tarih öncesi buluntuları ve okunabilen yazıtlarıyla da Antalya bölgesinin tarih ve arkeolojisini yansıtan en önemli mağaralardan bir tanesidir. İlk kez 1919 yılında keşfedilen mağaradaki arkeolojik araştırmalar, 1946 yılından sonra çeşitli dönemlerde Ankara Üniversitesi Dil, Tarih, Coğrafya Fakültesi Prehistorya bölümünden Prof. Dr. İ. Kılıç KÖKTEN tarafından yapılmıştır. Speleollojik yönden ilk araştırması ise 1972 yılında Dr. Temuçin AYGEN ekibi ve Fransız mağaracılar tarafından gerçekleştirilmiştir. İçinde bulunan dev sarkıt-dikitler ve kar beyazı oluşumları ile doğa harikası olan mağaranın giriş ağzı yaklaşık 20 metre yüksekliğinde ve 75 metre genişliğindedir. Uzunluğu ise 633 metre olup ana hatlarıyla iki büyük salondan oluşmakta, tavan yüksekliği yer yer 80 metreye varmaktadır. Prehistorik dönemden Bizans dönemine kadar bölge arkeolojisine ışık tutan mağaranın okunabilen yazıtlarından erken Hıristiyanlık döneminde de dinsel bir işlevi olduğu anlaşılmaktadır. (Kaynakça: \"Kocain Mağarası\", Antalya Mağaraları, T.C. Antalya Valiliği İl Kültür ve Turizm Müdürlüğü, 2015, Antalya, s.38.)",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.2273336,
+                        "lng": 30.701014
+                    }
+                },
+                {
+                    "name": "Künav Mağrası - Muş",
+                    "description": "<br><br>3 km uzunluğunda olup tavan yüksekliği yer yer 35 m civarında ve iki kattan oluşmakta alt kattan nehir büyüklüğünde su geçmektedir. İlk çağlarda yerleşim yeri olarakta kullanıldılğına dair izlere raslanılmaktadır.<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR640eeHyuqRkT_DlcYXt7igSEwo-LvBRTyjgiFP97o5hib0RcAi-BNGz5PWWl2PKUlin5O6U5hS5S5FUVAipAwINXuSp9vidIOGESelNEIl1FFh9_03y7KeBjs6IEn9Ay3YaxN0IBtlHwhGlzvLgA5-cYXojsRgFWSA55m6E2NBjwUS2kXmgJnFEVsXyJUm1UwhKtU?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 39.17878,
+                        "lng": 41.589775
+                    }
+                },
+                {
+                    "name": "Mağara Köyü - Şırnak",
+                    "description": "Mağara Köyü adını mağaralarından alır. Hasankeyf'tekine benzer ilkçağ hayat izlerini taşıyan barınaklar mevcuttur. (Konum doğru olmayabilir)",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.3094237,
+                        "lng": 41.6159964
+                    }
+                },
+                {
+                    "name": "Mağaralar - Kars",
+                    "description": "<br><br>Kağızman İlçesi Kötek Belediyesi Çamuşlu Köyü Yazılıkaya resimleri Çamuşlu Köyü civarlarında Aladağ’ın doğu yamaçlarında bulunmaktadır. Üst Paleotik çağlardan kalmıştır. Bu civarda tombul tepe ve Kurbanağa mağaralarında bulunan taş araçlar, ocak yerleri ve şölen tipi el baltaları ise M.Ö. 10.000 yılında tekabül eden alt paleolitik dönemden kalmıştır. Kurbanağa mağarasında ayrıca, tunç çağına ait çanak-çömlek ve kement file gibi avlanma araçlarını gösteren duvar resimleri bulunmaktadır. Yazılıkaya, Bazalt yapılı bir kayanın dik ve düzgün yüzünde, biri büyük, diğeri küçük iki panodan oluşmaktadır. Büyük pano yerden 4 m. yüksekten olup, 14 m. uzunlukta ve yaklaşık 4 m. genişliktedir. Küçük pano ise aynı duvarın doğu uzantısı üzerinde yer almaktadır. Yazılıkaya panolarında insan ve hayvan figürleri bulunmaktadır. Bu hayvanlar geçi, geyik ve eşeklerden oluşmaktadır. İkinci panonun üzerinde kale benzeri araçlarla oynandığı saptanmıştır. Daha genç dönemlerde yaptığı sanılan bu çizgi üzerinde küçük opsitdiyen kalemler kullanıldığı sanılmaktadır.",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4ezUt_IYnvne2aEdJBhXCzb14cTGR8jyAKUY3d82L-KH5S9QjZi2A6SkCS7JXc1PcXFP89gvduAIjMUdNBmdwRirfYDsr8_MqD2mN3VhbKuDqNXBUn-ZQTO0BfN5tQpq3crOQScMI3NJ4ELeY7bHbVR3PCLv2RV1OlzQuX5b0UU-3HfE6VfQE28PQ2hJ_B4iBvNV4?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.21544,
+                        "lng": 42.95578
+                    }
+                },
+                {
+                    "name": "Manazan Mağaraları - Karaman",
+                    "description": "<br><br>MANAZAN MAĞARALARI : Manazan Mağaraları Yeşildere (ibrala) Taşkale (Kızıllar) Köyleri arasında uzanan Yeşildere Vadisinin doğusunda, Karaman – Yeşildere Taşkale yolunun kenarındadır. Karaman’a uzaklığı 40 km. dir. Mağaralar içerisinde kil oranı yüksek kireçtaşı arazide, yüksek bir kaya kütlesine tamamen insan eli ile oyulmuş beş katlı toplu meskenler halindedir. İlk iki kat doğu batı yönünde hücre şeklinde birçok odacıktan oluşmaktadır. Doğudan ve batıdan vadiyi kontrol edebilecek stratejik konuma sahiptir. Ortada bulunan yüksek kaya kütlesine oyulan diğer katlar yörede sırasıyla; Kum Kale, At Meydanı ve Ölüler Meydanı olarak adlandırılmıştır. Mağaraların ön cephesi doğal olaylar sonucu tahrip olduğundan günümüzde belirgin bir girişi yoktur. 1. katta oyuntular şeklinde bir çok mezar odaları vardır. Bu katta doğudan batıya doğruya sıralanan odalardan bazılarının şapel olduğu tespit edilmiştir. Bunların içerisinde bazı geometrik şekillerin ve freskoların izleri bulunmaktadır.Şapellerin en büyüğü doğu bölümde yer almaktadır. Üstü beşik tonozlu olup yamaçta yer alan güney cephe doğal olaylar sonucu yıkılmıştır. Mağaraların ne zaman oyulduğunu kesin olarak ortaya koyacak veriler olmamakla birlikte buradan ele geçen küçük buluntulardan mağaraların Bizans Devrinde 6. - 7. yüzyıllarda oyulduğu ve yerleşildiği anlaşılmaktadır. Mağaralar bu devirde hem güvenlik açısından hem de killi kireç taşının ısı ve nemi sabit tutması özelliği nedeniyle oyulmuş ve kullanılmış olmalıdır. Kaynakça : Topal.C.(Ed).(2009).Karaman Kültür Envanteri.Karaman. Komsan Ofset<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4u5mlYF783EHvBzXGtXvDzFypHi1ceS09GlQlSO1z1-x_KkNQDBg3PYd2k9arvmPuoT4uowo9enjxjWSLgZH9UZ83MKXrvJibSSzIUZZFzdCrQnPxxRq59ycWczOM66-fyf9tkBUx9XuFbiX8R8ODmXbnDVxyjf5H0AAUvduYSro2Tn974BrFV8NEV3_spuexRTtw?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 37.144001,
+                        "lng": 33.568168
+                    }
+                },
+                {
+                    "name": "Mavi Mağara - Antalya",
+                    "description": "Kaş'a 18 km ve Kalkan'a 6 km uzaklıkta olup, Kaputaş Plajı'na gelmeden yaklaşık 600 metre öncedir. 1972 yılında Jeolog Dr Temuçin Aygen tarafından bulunmuştur. 50 metre uzunluğunda, 40 metre genişliğinde ve 15 metre yüksekliktedir. Farklı odacıkları ve kanalları olan oldukça büyük bir mağaradır. İç ve dış galeriler olarak ikiye ayrılan mağara, ismini, dış kısımdaki dehlizlerden içeri giren mavi ışıktan alır. Hava boşluğuna çıkış yapmaya imkan veren iç galerilerin ise tamamı karanlıktır. Mağaranın hem iç hem de dış galerilerinde yumuşak mercan oluşumları ve canlı çeşitliliği dikkat çeker. Döneme bağlı olarak, iç galerilerde karides sürüleri görülmektedir. Hem derinlik seviyesi hem de yapısı ile her seviyede dalıcıya mağara dalışı yapma imkanı tanımaktadır. (Kaynakça: \"Mavi Mağara\", Antalya Mağaraları, Antalya İl Kültür ve Turizm Müdürlüğü, 2015, Antalya, s.63.)",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 36.225592,
+                        "lng": 29.455407
+                    }
+                },
+                {
+                    "name": "Günbuldu Köyü",
+                    "description": "<br><br>Diyadin ilçe merkezine 12 km uzaklıktaki Günbuldu köyündedir. Antik bir kent görünümündeki yerleşim yerinde mağaralar ve tarihi kalıntılar köyün 400 m uzağında bulunmaktadır. Kayalara oyularak yapılmış, barınma yerleri, tapınak, ibadethane, oda ve mağaralar oldukça ilgi çekicidir. Barınak ve ibadethanelerde değişik inançların izleri görülmektedir. Oldukça tahrip edilmiş kentten, günümüze mihrap, haçlı taşlar ve mezarlar kalmıştır.Buradan çıkarılan iki koç heykeli, şu anda il merkezinde bulunmaktadır. Kaynakça:\"Alpaslan, İ. (1995). Her Yönüyle Ağrı. Tutibay yayınları.\"<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7aCW1MzSg5GKakTgmNX-j3pfdYcXzGOv1Xoy8_2W9VUeihdkzvs14haV-Ap4nZ-QfAdEn23_vlA31q8lgkAS3kgUd7YenQJXczS6abaknmIyx3OnzxKfgsqFKuGEkyRuXSO0xCs2t0TOUbGYgSDUbHMvtd3iuOiFXeVeSgxcnQNehh96WeCxaF6PSfJsrD9s4AmQ4?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 39.48706,
+                        "lng": 43.5657179
+                    }
+                },
+                {
+                    "name": "Oylat Mağarası - Bursa",
+                    "description": "<br><br>Toplam uzunluğu 665 m. olan mağara iki ana bölümden oluşur. Dar galerilerden oluşan birinci bölüm girişten çöküntü sonuna kadar olan kısımdır. İçeride dev kazanları ve damlataş havuzları bulunur. İkinci bölüm büyük bir çöküntü salonudur. İri blok ve dev damlataş şekillerinden (sarkıt, dikit ve sütun) oluşmaktadır. Mağara önünde sıcaklık 29ºC, nem yüzde 47, girişte sıcaklık 19ºC, nem yüzde 55, dar galeride 17ºC, nem yüzde 78, çöküntü salonlarında 14ºC, yüzde 90 nem oranlar Kaynakça: Bursa İl Kültür ve Turizm Müdürlüğü",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4oHUq3thA_sEQplEGtfjapbPoboUkPgGrzPFOqN6DE4gT26jF05KqmPLl3cquqj9ewxz9t72mal_oRU_APNOOOK5amjeoxjMwataIQvbAyKLQbRdJfMMwSx2UhhQNsoTh9rYuMgFoR7WUyEdnFykEwawPG3V8ym8k87pFbB6rTXIT7c-fg8FCHmebVDOwAIkJ1NJY?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 39.951727,
+                        "lng": 29.598885
+                    }
+                },
+                {
+                    "name": "Parsık Mağarası - Kocaeli",
+                    "description": "<br><br>Başiskele ilçesi, Yuvacık beldesi, Kazandere köyü mevkiinde yer alan mağara, zengin damlataş oluşukları ile görenleri cezbeden doğal bir oluşuma sahiptir. Sarkıt, dikit, sütun ve soğan şekilli damlataşları ile görülmeye değerdir. Parsık Mağarası yataya yakın, kimi yerde dar kimi yerde rahat hareket edilebilecek genişliğe sahiptir. Damlataş oluşumları mağarada hala devam etmektedir.<br><br><br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5J8CGYFKG0_qqtcqblxTviRP_BLar7UtC2uD9Oo_zdkggeT2YpQGkzqbUJ95jzNA6c75mbFjZwIHi7kOheezA6OEGVehQ95pxEnvugLONQXTmfz63CkVg9BlwtyJ7pNeWeOJlMScH_c1Ys7yW_bVuhG_VG9XBMdGUySfrEYPrL2pddMBUraC6VfIIzUaUhIVwxQuo?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.617103,
+                        "lng": 29.969114
+                    }
+                },
+                {
+                    "name": "Polat Sulu Mağara - Malatya",
+                    "description": "<br><br>Mağara, Doğanşehir ilçesinin Polat kasabasında bulunmaktadır. Kasabaya kadar ulaşım, asfalt yol ile sağlanmaktadır. Polat kasabasından sonra 6 kilometre stabilize yolu da araç ile aşmak mümkündür. Ancak, yolun mağaraya kadar ulaştırılması çalışmaları henüz tamamlanmadığından mağaraya ulaşabilmek için biraz yürümek gerekiyor. Mağaraya dar ve alçak bir girişten geçilerek girilmektedir. Mağaranın zemini içindeki rutubetten ötürü kaygan bir durumdadır. Mağara, 2260 metre yüksekliğindeki Kuzkaya Tepesi’nin 2150. metresinde yer almaktadır. Mağaraya 20 metre uzunluğunda, dar ve alçak bir giriş açıklığı ile girilir. Birinci bölüm yaklaşık 35 metre çapında dairevi bir formdadır. Bu bölümden, kuzeydeki teraslara tırmanarak, mağaranın ikinci bölümüne çok dar bir boğazdan, ancak sürünerek geçilir. Bu bölüm ise yaklaşık 6 metre çapında ve 3 metre yüksekliğindedir. Yerli halk, mağaranın ikinci bölümden sonra da devam ettiğini söylemektedir. Fakat burada herhangi bir geçiş yeri bulunamamıştır. Her iki bölümde de çok sayıda sarkıt ve dikit bulunmaktadır. Mağaranın, oluşumundan itibaren doğal şekliyle kaldığı ve büyük bölümüne insan elinin değmediği tahmin edilmektedir. Kaynak: Malatya Valiliği Yayını, Malatya Kent Rehberi, İstanbul 2013, Baskı: Seçil Ofset",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4fZI-KM2e0YvQ8ZkkiCrDJyWavpUGpBjAC39ACNafvi8ze59YfzT-dbVepIzzAAZIL7UDFbabNQoCSPMO1MBDh8VcOOJmfab0lahdcCt16vZDKceJkVLVFkg53Uhr27GX3YcO1IDclzHL-F1P0W5BkayjeRod0ybNApywiCQacoqWlNDuiAJbMPuhLBixFWwvMo4U?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 38.187571,
+                        "lng": 37.904952
+                    }
+                },
+                {
+                    "name": "Sarıkaya Mağarası - Düzce",
+                    "description": "<br><br>Sarıkaya Mağarası, Düzce’nin Yığılca ilçesinin 5 km kuzeybatısında bulunan Sarıkaya Köyünün 1,5 km kuzeydoğusunda yer alır. Paloesen-alt eosen yaşlı kireç taşları içinde yarı yatay eğimli olarak gelişmiş, düden konumlu, yarı aktif fosil bir mağaradır. Kültür ve Turizm Bakanlığı Ankara Kültür ve Tabiat Varlıkları Koruma Bölge Müdürlüğü tarafından I. Derecede Sit Alanı olarak tescillenmiştir. Batı Karadeniz Bölgesinin en büyük mağarası olan Sarıkaya Mağarası, kireçtaşları ve kumtaşlarının kontağında kireçtaşlarının doğrultusu ve dağılımı yönünde eğimli olarak gelişmiştir. İki birimin dokunağında zayıf zondan giren su, bir yandan kireç taşlarını eritmiş, diğer yandan alttaki gevşek marn ve kumtaşlarını fiziksel olarak aşındırmıştır. Kireçtaşları ve kumtaşlarında derine doğru kazılma ile oluşan Sarıkaya Mağarası aynı zamanda bir su geçiş yoludur. Toplam uzunluğu 717 m olan mağaranın ana galeri uzunluğu, 510 m genişliği, 80 m boyu 75 m tavan yüksekliği 15-40 m’dir. Salonda iki gelişim dönemine ait fosil ve genç damlataş şekilleri bulunmaktadır. Salonun ortasında Aksu Çayından gelen derenin oluşturduğu küçük bir şelale ve ikinci evreye ait bir kanyon-vadi bulunmaktadır ve ilk oluştuğu bölümden 17 m ve gittikçe artan bir derinliktedir. Melen Çayı tarafından derince yarılmış plato karakterinde bir düzlüğün üzerinde düden konumunda bulunan mağara, yakın çevresinin yüzey sularını toplayarak Aksu Mağarası ile Melen Çayına boşaltır. Kaynak: Düzce İl Kültür ve Turizm Müdürlüğü<br><br><br><br><br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4V0aUYUpKsIcjopZR24RBfCXc5sdb3fQhSmzcVNvbmB7iiZ7xVgLHnAPYMjthaajFOJxDss0CnUt1cck5xtzBBz2_cT1XmqS0GwvDmwj_mXyotjhMkgP0H23cWRlP1Qnd6sMevNKR1VHqQpo96scGXSXCeV3q_Ux9i5ZZwp8dpucKH2i7dCFqkk1nx355WKDg4Lxo?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.9350755,
+                        "lng": 31.3986208
+                    }
+                },
+                {
+                    "name": "Savruk Mağarası ve Şelalesi - Kahramanmaraş",
+                    "description": "Savruk, Savran veya Sarıkız isimleriyle anılan bu doğa harikası mağaraya Kısık Kanyonu boyunca uzanan yoldan ulaşmak mümkün. Bu mağarada yapılan incelemeler sonucunda, Paleosen Dönem'de oluştuğu sonucuna varılmış. Mağaranın iç kısmı Damlataş Dışına çıktığınızda ise sizi harika bir şelale ve piknik alanı bekliyor. Mağarası'nı aratmayacak sarkıt ve dikitlerle bezeli. Mağaranın içinde onlarca oyuk var. Kaynak: Kahramanmaraş İl Kültür ve Turizm Müdürlüğü",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.861166,
+                        "lng": 36.973114
+                    }
+                },
+                {
+                    "name": "Sırtlanini Mağarası - Aydın",
+                    "description": "<br><br>Mağara Karacasu ilçesine 13.5 km., Afrodisias'a ise 9.5 km. uzaklıktadır. Mağara genel anlamda bir doğa harikasıdır. 348 metre uzunluğundadır. Yaklaşık 4 metre sürünülerek girilebilen ağız kısmından sonra mağara birden büyük bir galeri halini almaktadır. Galerinin girişe yakın bölümünde görülen seramik parçaları antik bir yerleşim olduğunu düşündürmektedir. Sarkıt ve dikitler vardır. Kaynakça: Aydın Kültür ve Turizm Müdürlüğü<br><br>Mağara Karacasu İlçesi, Yukarı Çamarası ile Narlıgedik köyü arasında yer alır. Mağaraya her iki köyden de gidilebilir. 20-25 dakikalık bir yürüyüşle Narlıgedik köyü daha yakındır. Afrodisias harabelerine de yakındır.<br><br>Özellikleri: Toplam uzunluğu 348 m. (Ana Galeri:147 m.) olan mağaranın girişe göre en derin noktası -32 m dir. Yatay ve kuru bir mağaradır.<br><br>Mağara çok dar bir ağızla başlar. 4-5 m. sonra asıl mağara boşluğuna ulaşılır. Salon yan yana gelişip duvar şeklini alan sütunlarla 5-6 bölüme ayrılmıştır. Salona bağlı tüm odalar sarkıt, dikit ve sütunlarla süslüdür. Dışarıda ısı 28ºC, nispi nem yüzde 44 iken, mağara içinde ısı 17ºC ve nem miktarı %85'tir.<br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4BpHLyD_G77K0wLk_uMAwgTJkejC9CTVI76jxQ3tsutjQFvD5HwIqfaNUTL0ipHg6rubhjLhoOw-cWsyF5UUDpJuWGHIpfQf7PkwT43C3Zfi3RUA9_yaSxOokgRLX-ShaAG2aC0YRT6PUFEVupaz1qj72chcB-MDvJ1Wn1_ISkTM5jWb6cVypcH09k_5S143E7GLk?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 37.633334,
+                        "lng": 28.681269
+                    }
+                },
+                {
+                    "name": "Sulu Mağara - Kırıkkale",
+                    "description": "Sulu Mağara: Mağara Kırıkkale ili, Keskin ilçesi, Arzu Bayırı mevkiinde yer almaktadır. Yatay olarak gelişmiş, yarı doğal-yarı yapay, düden konumlu fosil bir mağaradır. Büyük bir bölümü maden ocağı olarak açılan Sulu Mağara’nın doğal bölümü birbirine bağlı üç kattan meydana gelen Pliyosen rölyef sistemine aittir. Toplam uzunluğu 285 m’dir. Üç kattan oluşan yapay galerilerde kurşun işletmesi yapılmıştır. Gerek doğal gerekse yapay bölümleri birbirine bağlayan dar geçitler Erken Hıristiyanlık döneminde yapılmış taş duvarlarla örtülüdür. Hidrolojik olarak vadoz zonda yer alan Sulu Mağara yağışlı dönemlerde tavandan damlayan sular dışında bütünüyle kurudur. Bu suları toplamak için eski dönemlerde derinliği 2 m’yi bulan havuzlar yapılmıştır. Mağara kuru ve sıcak bir havaya sahiptir. Mağara turizm amaçlı değerlendirilebilir. Kırıkkale Valiliği, İl Özel İdaresi'nce yapım işi ve çevre düzenlenmesi yapılarak ziyarete hazır hale getirilmiştir. Sulu Mağara'nın Ören yeri statüsüne alınması ve Kültür ve Turizm Bakanlığı'na devri için gerekli çalışmalar başlatılmıştır. Bakanlığımız Döner Sermaye İşletmeleri Müdürlüğünce görevlendirilen personelin kiraya verilip verilemeyeceği araştırılmıştır ve Kültür Varlıklarını Koruma Bölge Kurulu Müdürlüğü uzmanınca da mağara yerinde görülmüş olup Bakanlığımıza tahsisinin yapılması ve ören yeri açılışı beklenmektedir.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 39.686053,
+                        "lng": 33.612671
+                    }
+                },
+                {
+                    "name": "Tekkeköy Mağaraları - Samsun",
+                    "description": "<br><br>1940’da yapılan arkeolojik kazı çalışmaları sonucunda Hitit ve Eski Tunç Çağı dönemlerine ait buluntular ele geçmiştir. Buluntular arasında çark yapımı, devetüyü, kırmızı renkli seramikler çoğunluktadır. Eski Tunç Çağı katında ise çok sayıda gömüt, el yapımı seramik buluntular, siyah zemin üzerine beyaz boyayla yapılmış geometrik desenlerle süslü, dişli, yivli, çizgi bezekli kaplar, kabartma insan yüzlü vazolar (antropomorf) gün ışığına çıkarılmıştır. (Kaynak: Samsun İl Kültür ve Turizm Müdürlüğü)<br><br><br><br><br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5AH_aQcyuiVInj-3MDRjLF9fQx7LvM3gDw472zI1e7wmwYJHGsAYBN9p9MnvObYZ_HIvQUQRhAd0fB3wQHV4Qo2igMGH0V_P7vN2TD70qZVWE7Mn71Ndd7KQsSGcxoGh67GKQooJf2CuRd7ONRSZkPveAmuL5hjkLQm4dGSmpBWBvJk9T3tpusNld-jyNH0tHaZzw?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 41.204808,
+                        "lng": 36.461668
+                    }
+                },
+                {
+                    "name": "Titus Tüneli Ve Beşikli Mağara - Hatay",
+                    "description": "<br><br>Samandağı Çevlik civarında bulunan tünel İ.Ö. 1. yüzyılda yapılmıştır. Dağlardan inen yaşamı tehdit eden sel ve taşkınlardan korunmak amacıyla Roma imparatoru Vespasian şehrin etrafını dolanacak, böylece akıntıların yönünü değiştirecek bir tünelin yapımını emretti. İnşaat İ.S. 69 da başladı, İ.S.81 yılında halefi ve oğlu Titus tarafından bitirildi. Tünel inşasında Roma lejyonları ve köleler çalışmıştır. Tümüyle dağ içine oyulan tünel 1380 metre uzunluğunda, 7 metre yüksekliğinde ve 6 metre genişliğindedir. Beşikli Mağara Tünelin deniz tarafındaki girişine göre sağ tarafta 100 metre kadar uzaklıkta bulunan Beşikli Mağara, kaya mezarlarının en geniş ve en ünlülerinden olup, içerisinde bölümler halinde on iki mezar vardır. Mezarlar birbirlerinden duvarlar ile ayrılmıştır. Bu taş mezarlar, taş sütunlar ve kemerlerin birbirine bağladığı bölümler halinde olup, yukarıdan aşağıya yine taş merdivenlerle inilmektedir. Kayaların oyulması ile meydana getirilen, yer yer kapıların açıldığı bölümlerdeki sütunlar, sütun başlıkları, kademeler ve üst örtüyü kısmen süsleyen motifler orijinallerine uygun biçimde yapılmıştır.<br><br><br><br><br><br>",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7amWC7duB3NgFVL59P3hiqPR7_xu7sruVkS2v9iCsEHJsEOHqi1pagysUz15PlX7r2ucjvCUI9ZBlGTjXgm2GEYuRtMTdHQDai6-Gsl2a8vrhWSHvB0LIGIS4ALw5phUiEJLF0-emy2PSWc-kzn8jPltS7w9tCTOmj3qV4iKs-B4velZ0DjbJ01D1uOgoy8dYVPMM?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 36.1203185,
+                        "lng": 35.9284472
+                    }
+                },
+                {
+                    "name": "Tuz Mağaraları - Iğdır",
+                    "description": "<br><br>Tuz mağaraları Tuzluca ilçesinde bulunmaktadır. 55 dönümlük bir araziyi kaplamaktadır. Türkiye'nin 100 yıllık tuz ihtiyacını karşılayacak kapasitededir. Tünellerde bulunan havanın bir çok solunum yolu hastalığına iyi geldiği bilinmektedir. Günlük 60 ton tuz üretilmektedir.",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7BePZBZE0favY64G78JMZmperMnEAW46JfyyM2mSwkFhOfBIoBRuSwKPPCe4bpEnpbHnLwr4jOTee_sSDfhz7eD2L_y3x0fu5SDIu_YxMo6kqOogq-XT7Nck503cEjxiEvUGFq_bZ5dt11k3dRlcP99ust_RGS5_bsise82yOfjhTPnhQM6vDtV4oPqIv6e10h-Eo?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 40.041809,
+                        "lng": 43.659668
+                    }
+                },
+                {
+                    "name": "Tuz Mağarası - Çankırı",
+                    "description": "İlimizin turizm potansiyeli içerisinde önemli bir konumu bulunan Tuz Mağarası; yaklaşık 5000 yıldır yararlanıldığı tahmin edilen yurdumuzun en büyük kaya tuzu rezervlerinin bulunduğu yörede yer almaktadır. Merkez İlçe'nin doğusunda yaklaşık 20 km. mesafede bulunan Tuz Mağarası, kaya tuzu yataklarının işletilmesi maksadıyla açılmış olup bugün nispeten dar girişinin devamında modern karayolu tünellerini andıran onlarca galeriden meydana gelmiş çok büyük bir mağaradır. Toplam galeri uzunluğu 10 km. yüksekliği 6-8 m. civarında olan ve oda topuk yöntemi ile açılan mağarada halen özel bir işletme tarafından kaya tuzu üretimi yapılmakta, girişin haricinde herhangi bir suni koruma olmaksızın her 10 m. mesafede bırakılan 150-200 m² taban alanlı kaya tuzu kolonlar mağarayı taşımaktadır. Yer yer tuzdan bembeyaz sarkıt ve dikitlerin bulunduğu mağarada üretilen kaya tuzu, İlimizde bulunan tuz fabrikalarında rafine edilerek büyük ölçüde kimya sektörüne verilmekte, tablet olarak arıtma sistemlerinde, gıda sektörü ile mutfak ve sofralarımızda yer almaktadır. İlimizin en dikkat çekici turizm değerlerinden birisi olan Tuz Mağarasının kaya tuzundan heykel ve rölyeflerin yapılabileceği atölyelere ev sahipliği yapabileceği; “Osmanlı”, “Çağdaş Sanatlar”, “Rönesans”, “Destansı Kahramanlar”, “Mitoloji” vb. Güzel Sanatlar Galerileri şeklinde kullanılabileceği, diğer bir kısmının ise fonetik sanatların icra edilebileceği salonlara dönüştürülerek çok ilginç ve farklı mekanların kazanılabileceği; bir kısmının ise kafeterya ve restoran olarak değerlendirilebileceği düşünülmekte bu çerçevede çalışmalar yapılmaktadır. * * Çankırı İl Kültür ve Turizm Müdürlüğü Arşivi (2006)",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.544188,
+                        "lng": 33.7596129999999
+                    }
+                },
+                {
+                    "name": "Veysel Candan Mağarası - Kocaeli",
+                    "description": "Cirbin Ali mağarasının yaklaşık 1 km güney doğusunda, Soğuksu mevkiinde yer alan mağaranın yaklaşık 200 m uzunluğunda olduğu belirtilmiştir. Rekristalize kireçtaşları içerisinde oluşan mağara yaklaşık D-B uzanımlı olup, girişi batı taraftadır. Oldukça zor ilerlenen mağara hakkında Hasan Candan tarafından yapılan sözlü anlatımda, mağaranın ilk 100. metresinde bir göl oluşumu bulunmaktadır. Mağaranın ilerlenebilen son kısmı olan 200. metresinde ise 8 metrelik bir şelale bulunmaktadır. Şelaleden sonra ilerlemenin mümkün olmadığı belirtilmiştir. Çeşitli damlataş oluşumlarının yer aldığı mağaranın ancak 50-60 metrelik kesimi görülebilmiştir. Kaynak ; Kocaeli İl Kültürve Turizm Müdürlüğü",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 40.6044,
+                        "lng": 29.9286990000001
+                    }
+                },
+                {
+                    "name": "Vize Mağara Manastırları - Kırklareli",
+                    "description": "Vize Mağara Manastırları: Vize Asmakaya Mevkii’nde, Bizans Dönemi eserleridir. Bir takım sıralı doğal mağaralardan yararlanarak, taş ustalarının şekillendirmesiyle meydana gelmiştir. Yakın çevresinde yine benzer özellikler taşıyan kaya mezarların varlığı da göze çarpmaktadır. Manastırın bir kısmı, hayvan ağılı olarak kullanılmaktadır.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 41.615442,
+                        "lng": 27.770348
+                    }
+                },
+                {
+                    "name": "Yerküpe Mağarası - Muğla",
+                    "description": "Mağara ise Menteşe nin 2km. güneyindedir. Doğu Menteşe dağları üzerinde bulunan Yerküpe mağarası, Genek çayının bir kolu olan Hebil deresi üzerinde yer alır. Mağaranın yakınında Kavaklıdere-Menteşe -Çamyayla köyü geçmektedir. Yerküpe mağrasının hemen üzerinde bulunan düzlük, piknik ve güreş alanı olarak düzenlenmiştir. Mağara tipi olarak geçit konumlu yarı aktiftir. Mağaranın toplam uzunluğu 100m. Olup, tek bir galeriden meydana gelmiştir. Genel olarak vadi tabanının eğimine uygun şekilde uzanan mağaranın üst girişi ile alt çıkışı arasında 17m.lik yükselti farkı vardır. Mağara içindeki küçük iniş ve çıkışlar, tavandan düşen bloklar ve damlataş birikimlerinden kaynaklanmaktadır. Genişliği 3-10m. Tavan yüksekliği ise 2-8m.arasında değişen Yerküpe mağarasının tabanında çakıl ve kum yığınları yer alır. Tabana yakın kenarlarda ve yan duvarlarda sarkıt ve dikitler mevcuttur. Özellikle havuzlar ilginç bir görünüme sahiptir. İçleri su ile dolu olan havuzların boyutları ve derinlikleri, bulunduğu bölgeye göre değişmektedir. Yerküpe mağarası, genç bir mağaradır. Doğal köprü özelliğinde olan mağara, oluşum ve gelişim yönünden ilginçtir. Gerek mağara içi damlataşların ve gerekse doğal çevrenin güzelliği nedeniyle turizm amaçlı kullanıma son derece uygundur. Ayrıca mağaranın üst kesimi piknik ve dinlenme alanı olarak düzenlenmiştir.",
+                    "image_url": null,
+                    "coordinates": {
+                        "lat": 37.445383,
+                        "lng": 28.366124
+                    }
+                },
+                {
+                    "name": "Zeus Mağarası - Aydın",
+                    "description": "<br><br>Zeus Mağarası Davutlar Milli Parkı girişine 100-150 m. uzaklıkta, dağ eteğinde, içinden çıkan su kaynağının oluşturduğu oldukça derin, küçük havuz benzeri su birikintilerinin oluşturduğu doğal bir mağaradır. Yer aldığı tepenin üst kısmında Panionion antik kenti yer almaktadır. Tam bir doğa harikası olan mağaranın suyunun çıktığı yer tam olarak bilinmemektedir. Mağaraya Zeus isminin, Zeusla ilgili anlatılan öykülerden yola çıkarak verildiği düşünülmektedir. Yapılan incelemede mağarada yüzeyde hiçbir kültür varlığına rastlanılmamıştır. Mağara korunması gerekli tabiat varlığı özelliğindedir. Kaynakça: Aydın Kültür ve Turizm Müdürlüğü",
+                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4v38eeCSVGksCNRnCHB1mpQ6HIbGnJtj9Xasr5EMSOU86Y0Yb6axrA2XSoKGOYGtOmXTwckfiyUPaahsPRqXd_amj48CMvn7glPB1vqSsGf9rd5e78MkZcxTH4xkx7_xJd8NLiesi0EgtJhfnJJR6Oau_qWWOoAoi83rcXse8l5Dls7jWnwK3YSO_-Rb-351KJLT4?authuser=0&fife=s16383",
+                    "coordinates": {
+                        "lat": 37.7110539,
+                        "lng": 27.2162935
+                    }
+                }
+            ]
+        }
+    
