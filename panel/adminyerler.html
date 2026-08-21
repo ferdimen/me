@@ -328,14 +328,13 @@
 </div>
 <!-- 5. SEKME: YERLER (data/yerler/*.json) -->
 <div id="yerler-tab" class="tab-content">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3>🗺️ Yerler ve Konum Yönetimi</h3>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <h3 style="margin: 0;">🗺️ Yerler ve Konum Yönetimi</h3>
+        <button type="button" onclick="haritayiTamEkranYap()" class="btn" style="width: auto; background: #334155; padding: 8px 15px; font-size: 13px;">⛶ Haritayı Tam Ekran Yap</button>
     </div>
 
-    <!-- Leaflet Harita Alanı -->
-    <div id="yerler-harita" style="height: 400px; width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 20px; z-index: 1;"></div>
-
-    <!-- Yer Ekleme ve Düzenleme Formu -->
+<!-- Leaflet Harita Alanı (Yükseklik 600px yapıldı) -->
+    <div id="yerler-harita" style="height: 600px; width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 20px; z-index: 1;"></div>    <!-- Yer Ekleme ve Düzenleme Formu -->
     <fieldset style="margin-bottom: 25px; border-color: #0284c7;">
         <legend id="yer-form-baslik" style="color: #0284c7; font-weight: bold;">➕ Yeni Yer Ekle</legend>
         <form id="form-yeni-yer" onsubmit="yerFormuGonder(event)">
@@ -1056,6 +1055,7 @@ async function yerleriYukle(token) {
 }
 
 // 2. LEAFLET HARİTASINI KUR
+// 2. LEAFLET HARİTASINI KUR (OSM ve TopoMap ile)
 function haritayiKur() {
     if(yerlerHaritasi) return; // Zaten kuruluysa çık
     
@@ -1063,13 +1063,31 @@ function haritayiKur() {
     if(!haritaKapsayici) return;
 
     yerlerHaritasi = L.map('yerler-harita').setView([39.0, 35.0], 5);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
+    // 1. Katman: OpenStreetMap
+    const osmKatmani = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
-    }).addTo(yerlerHaritasi);
+    });
+
+    // 2. Katman: OpenTopoMap
+    const topoKatmani = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        maxZoom: 17,
+        attribution: 'Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)'
+    });
+
+    // Varsayılan olarak OSM haritasını ekrana ekle
+    osmKatmani.addTo(yerlerHaritasi);
+
+    // Sağ üstteki Katman Kontrolcüsü (Seçici)
+    const haritaTurleri = {
+        "OpenStreetMap": osmKatmani,
+        "OpenTopoMap (Topoğrafik)": topoKatmani
+    };
+    L.control.layers(haritaTurleri).addTo(yerlerHaritasi);
 
     yerlerMarkerGrubu = L.layerGroup().addTo(yerlerHaritasi);
 
-    // Haritaya tıklanınca koordinatları forma al (Yeni ekleme için)
+    // Haritaya tıklanınca koordinatları forma al (Yeni ekleme için kolaylık)
     yerlerHaritasi.on('click', function(e) {
         if(document.getElementById('y-index').value === "-1") {
             document.getElementById('y-lat').value = e.latlng.lat.toFixed(7);
@@ -1425,6 +1443,19 @@ async function yerResimYukle(event) {
         bildirimGoster("Görsel yüklendi ve forma URL'si eklendi.", "success");
     } catch (e) {
         bildirimGoster(e.message, "error");
+    }
+}
+// HARİTAYI TAM EKRAN YAPMA FONKSİYONU
+function haritayiTamEkranYap() {
+    const haritaDiv = document.getElementById('yerler-harita');
+    if (!haritaDiv) return;
+
+    if (haritaDiv.requestFullscreen) {
+        haritaDiv.requestFullscreen();
+    } else if (haritaDiv.webkitRequestFullscreen) { /* Safari desteği */
+        haritaDiv.webkitRequestFullscreen();
+    } else if (haritaDiv.msRequestFullscreen) { /* IE11 desteği */
+        haritaDiv.msRequestFullscreen();
     }
 }
 // ==========================================	YENİ KODLAR ÜSTE EKLENİYOR	-->		
