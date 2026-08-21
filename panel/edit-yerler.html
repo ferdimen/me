@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferdimen // İçerik Yönetim Paneli</title>
     <link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
+	<!-- Leaflet CSS & JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f4f6f9; color: #333; }
         h2 { color: #1e293b; margin-bottom: 20px; }
@@ -91,7 +94,7 @@
 				<button class="tab-btn" onclick="sekmeDegistir('kronoloji-tab')">⏳ Kronoloji</button>
 				<button class="tab-btn" onclick="sekmeDegistir('bildirimler-tab')">🔔 Bildirimler</button>
                 <button class="tab-btn" onclick="sekmeDegistir('yeni-sekme-tab')">📁 Yeni Sekme Örneği</button>
-				<button class="tab-btn" onclick="sekmeDegistir('yerler-tab')">📍 Yerler Yönetimi</button>
+				<button class="tab-btn" onclick="sekmeDegistir('yerler-tab')">📍 Yerler</button>
 <!-- // ==========================================	YENİ TABLARIN BAŞLIKLARI ÜSTE EKLENİYOR	-->						
                 <!-- Gelecekte buraya yeni butonlar gelebilir -->
             </div>
@@ -471,18 +474,31 @@
         </div>
     </fieldset>
 </div>
+
 <div id="yerler-tab" class="tab-content">
-    <h3>Yerler Yönetimi</h3>
-    <!-- Harita Alanı -->
-    <div id="admin-map" style="height: 400px; margin-bottom: 20px; border: 1px solid #ddd;"></div>
-    
-    <!-- Arama ve Liste -->
+    <h3>Yer Yönetimi</h3>
     <div class="form-group">
-        <input type="text" id="yer-ara" placeholder="Mekanlarda ara..." onkeyup="yerleriFiltrele()">
+        <label>Kategori Seç:</label>
+        <select id="kategori-secici" onchange="kategoriDegistirildi()"></select>
     </div>
-    <div id="yerler-listesi-kapsayici"></div>
+    <div id="map" style="height: 400px; margin-bottom: 20px; border-radius: 8px;"></div>
     
-    <!-- Düzenleme/Ekleme Formu (Haberler sekmesindeki yapıyı buraya kopyalayıp genişletin) -->
+    <fieldset>
+        <legend>Yer Ekle/Düzenle</legend>
+        <form id="form-yer">
+            <input type="hidden" id="yer-index" value="-1">
+            <div class="form-row">
+                <div class="form-group"><label>İsim:</label><input type="text" id="yer-isim" required></div>
+                <div class="form-group"><label>Lat:</label><input type="text" id="yer-lat"></div>
+                <div class="form-group"><label>Lng:</label><input type="text" id="yer-lng"></div>
+            </div>
+            <textarea id="yer-desc" placeholder="Açıklama" rows="3"></textarea>
+            <button type="submit" class="btn">Kaydet</button>
+        </form>
+    </fieldset>
+
+    <input type="text" id="yer-arama" placeholder="Yerler içinde ara..." onkeyup="yerleriListele()">
+    <div id="yerler-listesi-kapsayici"></div>
 </div>
 <!-- // ==========================================	SAYFA İÇERİKLERİ ÜSTE EKLENİYOR	-->
                 <!-- 2. SEKME: YENİ SEKME ÖRNEĞİ (Gelecekte doldurabilmen için şablon) -->
@@ -533,10 +549,12 @@ const PATH_BILDIRIMLER = "data/bildirimler.json";
 let shaBildirimler = "";
 let mevcutBildirimlerJson = {}; // Tüm bildirimler.json objesini tutacak
 
-// PATH_YERLER
 const PATH_KATEGORILER = "data/yerler/kategoriler.json";
-let kategorilerVerisi = []; // kategoriler.json içeriği
-let tumYerler = {}; // { "gol.json": { sha: "...", content: [...] }, ... }
+let shaKategoriler = "";
+let aktifKategoriJsonPath = "";
+let mevcutYerListesi = [];
+let map;
+let marker;
 // ========================================== PATH_XXX BİLGİLERİ ÜSTE EKLENİYOR
         function bildirimGoster(mesaj, tip) {
             const box = document.getElementById('status-box');
@@ -588,7 +606,7 @@ if (token) {
     konumuYukle(token);
     haberleriYukle(token);
 	bildirimleriYukle(token);
-	adminYerleriYukle(token);
+	kategorileriYukle(token);
 // ========================================== XXX(token) BİLGİLERİ ÜSTE EKLENİYOR     
     // YENİ EKLENEN KRONOLOJİ YÜKLEYİCİLERİ
     yazilariYukle(token).then(() => {
@@ -1388,19 +1406,90 @@ async function githubDosyaSil(token, dosyaYolu, mesaj) {
         });
     } catch(e) {}
 }
-async function adminYerleriYukle(token) {
-    // 1. Kategoriler.json'u çek
-    const katRes = await fetch(`.../contents/${PATH_KATEGORILER}`, { headers: { "Authorization": `token ${token}` } });
-    kategorilerVerisi = await katRes.json();
-    
-    // 2. Her bir jsonPath için döngü kur
-    kategorilerVerisi.categories.forEach(async (cat) => {
-        const fileData = await fetchFileContent(cat.jsonPath, token);
-        tumYerler[cat.jsonPath] = fileData;
-        
-        // 3. Leaflet Marker'larını haritaya ekle (draggable: true)
-        // marker.on('dragend', function(e) { ... yeni konumu güncelle ... });
+async function kategorileriYukle(token) {
+    const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KATEGORILER}`, { headers: { "Authorization": `token ${token}` } });
+    const data = await res.json();
+    const json = JSON.parse(atob(data.content));
+    const select = document.getElementById('kategori-secici');
+    json.categories.forEach(cat => {
+        let opt = document.createElement('option');
+        opt.value = cat.jsonPath;
+        opt.innerText = cat.baslik;
+        select.appendChild(opt);
     });
+    aktifKategoriJsonPath = select.value;
+    yerleriYukle(token);
+}
+
+async function yerleriYukle(token) {
+    const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${aktifKategoriJsonPath}`, { headers: { "Authorization": `token ${token}` } });
+    const data = await res.json();
+    const json = JSON.parse(atob(data.content));
+    mevcutYerListesi = json.places;
+    yerleriListele();
+    haritaGuncelle();
+}
+function haritaGuncelle() {
+    if (!map) {
+        map = L.map('map').setView([39, 35], 6);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    }
+    // Marker ekleme ve sürükleme mantığı
+    if (marker) map.removeLayer(marker);
+    marker = L.marker([39, 35], {draggable: true}).addTo(map);
+    marker.on('dragend', function(e) {
+        document.getElementById('yer-lat').value = e.target.getLatLng().lat;
+        document.getElementById('yer-lng').value = e.target.getLatLng().lng;
+    });
+}
+function yerleriListele() {
+    const arama = document.getElementById('yer-arama').value.toLowerCase();
+    const kapsayici = document.getElementById('yerler-listesi-kapsayici');
+    kapsayici.innerHTML = "";
+    mevcutYerListesi.filter(y => y.name.toLowerCase().includes(arama)).forEach((yer, index) => {
+        kapsayici.innerHTML += `
+            <div class="haber-kart">
+                <span>${yer.name}</span>
+                <button onclick="yerDuzenle(${index})">Düzenle</button>
+            </div>`;
+    });
+}
+// KATEGORİLERİ GİTHUB'DAN ÇEKME
+async function kategorileriYukle(token) {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KATEGORILER}`;
+    try {
+        const response = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if(!response.ok) throw new Error("Kategoriler yüklenemedi.");
+
+        const data = await response.json();
+        shaKategoriler = data.sha;
+
+        const decodedContent = decodeURIComponent(atob(data.content).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        const json = JSON.parse(decodedContent);
+
+        const select = document.getElementById('kategori-secici');
+        select.innerHTML = ""; // Temizle
+        
+        json.categories.forEach(cat => {
+            let opt = document.createElement('option');
+            opt.value = cat.jsonPath; // Örn: data/yerler/gol.json
+            opt.innerText = cat.baslik;
+            select.appendChild(opt);
+        });
+
+        // İlk kategoriyi varsayılan olarak yükle
+        if(json.categories.length > 0) {
+            aktifKategoriJsonPath = json.categories[0].jsonPath;
+            yerleriYukle(token);
+        }
+    } catch (error) {
+        console.log("Kategori yükleme hatası: " + error.message);
+    }
+}
+function kategoriDegistirildi() {
+    const token = localStorage.getItem('gh_oauth_token');
+    aktifKategoriJsonPath = document.getElementById('kategori-secici').value;
+    yerleriYukle(token);
 }
 // ==========================================	YENİ KODLAR ÜSTE EKLENİYOR	-->		
         function cikisYap() {
