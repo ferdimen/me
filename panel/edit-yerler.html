@@ -1406,19 +1406,6 @@ async function githubDosyaSil(token, dosyaYolu, mesaj) {
         });
     } catch(e) {}
 }
-async function kategorileriYukle(token) {
-    const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KATEGORILER}`, { headers: { "Authorization": `token ${token}` } });
-    const data = await res.json();
-    const json = JSON.parse(atob(data.content));
-    const select = document.getElementById('kategori-secici');
-    json.categories.forEach(cat => {
-        let opt = document.createElement('option');
-        opt.value = cat.jsonPath;
-        opt.innerText = cat.baslik;
-        select.appendChild(opt);
-    });
-}
-
 // KATEGORİLERİ GİTHUB'DAN ÇEKME
 async function kategorileriYukle(token) {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PATH_KATEGORILER}`;
