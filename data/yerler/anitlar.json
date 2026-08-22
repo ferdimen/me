@@ -1,8 +1,15 @@
-    {
-            "category_name": "Anıtlar",
-			"category_icon": "img/yerler/ikon/anitlar.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Anıtlar",
+    "category_icon": "img/yerler/ikon/anitlar.png",
+    "places": [
+        {
+            "name": "Şükrü Paşa Anıtı",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 41.6749593,
+                "lng": 26.5762764
+            }
         }
-      
+    ]
+}
