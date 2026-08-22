@@ -37,6 +37,15 @@
                 "lat": 36.7466217,
                 "lng": 30.5647802
             }
+        },
+        {
+            "name": "Adnan Sezgin Tüneli",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.7638987,
+                "lng": 30.5702466
+            }
         }
     ]
 }
