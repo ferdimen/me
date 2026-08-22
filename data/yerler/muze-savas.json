@@ -1,8 +1,15 @@
-    {
-            "category_name": "Müzeler (Savaş)",
-			"category_icon": "img/yerler/ikon/muze-savas.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Müzeler (Savaş)",
+    "category_icon": "img/yerler/ikon/muze-savas.png",
+    "places": [
+        {
+            "name": "Balkan Savaşları Müzesi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 41.675156,
+                "lng": 26.5755989
+            }
         }
-      
+    ]
+}
