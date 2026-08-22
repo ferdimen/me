@@ -2710,6 +2710,15 @@
                 "lat": 37.8710731,
                 "lng": 28.2343904
             }
+        },
+        {
+            "name": "Xanthos Antik Kenti",
+            "description": "Ksanthos veya Ksantos (Likçe: 𐊀𐊕𐊑𐊏𐊀, Arñna; Yunanca: Ξάνθος, Ksanthos), Kaş'ın Kınık köyündeki antik kent. Kaş kara yoluna 70 km uzaklıkta bulunmaktadır. Antik Çağda Likya'ya başkentlik yapmıştır. UNESCO tarafından ’Dünya Kültür Mirası’ listesine alınmıştır. Kentin isminin \"sarı\" anlamındaki Yunanca ξᾰνθός (ksănthós) kelimesinden geldiği düşünülmektedir.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.3567121,
+                "lng": 29.3188083
+            }
         }
     ]
 }
