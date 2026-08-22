@@ -1,8 +1,15 @@
-    {
-            "category_name": "Müzeler (Deniz)",
-			"category_icon": "img/yerler/ikon/muze-deniz.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Müzeler (Deniz)",
+    "category_icon": "img/yerler/ikon/muze-deniz.png",
+    "places": [
+        {
+            "name": "Bandırma Gemi Müzesi - Samsun",
+            "description": "<br><br>Türkiye Cumhuriyetinin kuruluşunda önemli bir rolü olan bu gemi, 1878 yılında Glasgov'da yapılan gemi Kymi adıyla uzun yıllar yük taşımıştır. 12 Aralık 1891 yılında batan gemi aynı yıl içinde yeniden yüzdürülmüş. 1894 yılında o zamanki Deniz Yolları İşletmesi anlamına gelen İdare-i Mahsusa'ya nakledilen gemi bu tarihten itibaren \"Panderma\" adıyla Osmanlı denizlerinde yük ve yolcu taşımaya başlamıştır. 28 Ekim 1910 tarihinde İdare-i Mahsusa adı \"Osmanlı Seyrüsefain İdaresi\" (Osmanlı Denizcilik İşletmesi) olunca geminin adı \"Bandırma\" olarak değiştirilmiş ve posta vapuru haline getirilmiştir. 19 Mayıs 1919'da Ulu Önder Atatürk ve silah arkadaşlarını Samsun'a getirdikten sonra yine posta hizmetlerine devam etmiş ve 1924 yılında \"Türkiye Seyrüsefain İdaresi\" tarafından hizmet dışı bırakılmıştır. 1925 yılında İlhami Söke'ye satılan gemi aynı şahıs tarafından 4 ay içinde Haliç'te sökülmüştür. 07 Şubat 2005 tarihinde Bandırma Vapuru'nun kullanım hakkı ve işletmesini devralan Samsun Büyükşehir belediyesi tarafından müze haline dönüştürülerek 19 Mayıs 2006 tarihinde ziyarete açılmıştır. Gemi içindeki kamarada Mustafa Kemal Paşa ve dört silah arkadaşının balmumu heykelleri bulunmaktadır. 1878 yılında imal edilmiş duvar saati, telefon, harita ölçüm malzemeleri, yangın tüpü, masa ve sandalyeler, burada sergilenen diğer eserlerdir. 35.000 metre kare alana kurulmuş olan Milli Mücadele Parkı ve Açık Hava Müzesi bünyesinde; Çanakkale Savaşı'ndan düşmanın İzmir'de denize dökülüşüne kadar süren zorlu mücadeleyi simgeleyen seramik rölyefler, Samsun ve ilçelerinden İstiklal Savaşı'nda kaybettiğimiz 1.200 şehidimizin adlarının yer aldığı şehitler yazıtı, Milli Mücadele'yi anlatan 10 adet bronz rölyef,yedi figürlü Milli Kurtuluş Anıtı ve İstiklal Mücadelesi'nde kahraman Mehmetçik tarafından kullanılan top, tüfek, torpido, denizaltı mayınları ve uçaksavar gibi savaş malzemeleri bulunmaktadır. (Kaynak: Samsun İl Kültür ve Turizm Müdürlüğü)<br><br><br><br>",
+            "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5-ayQCWWPU75GRMqIW54gFIfKBtXQlEifT_N7JDJqXaBuAE2N34UDcdmC74T0WbUFdLRXTlRkdWWxnxMUk9SZcEGLr06cFALz9qBhWq6wDS6vx1IP728RyXclDQoEtis4VdkQqwkaP2NLXgf10bvsAgTI7LhJeDwuQ2PmINW2nWMU7GBurhYcYoRiYCl6OJMqgyRg?authuser=0&fife=s16383",
+            "coordinates": {
+                "lat": 41.273485,
+                "lng": 36.367793
+            }
         }
-      
+    ]
+}
