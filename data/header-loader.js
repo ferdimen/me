@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "menu": [
         { "title": "Hakkımda", "href": "#hakkimda", "isSection": true },
         { "title": "Ferdigram", "href": "gram.html", "isSection": false, "hideOn": ["gram.html"] },
+        { "title": "Yerler", "href": "yerler.html", "isSection": false, "hideOn": ["yerler.html"] },          
         { "title": "Yazılar", "href": "yazilar.html", "isSection": false, "hideOn": ["yazilar", "yazilar.html"] },
         { "title": "Haberler", "href": "#haberler", "isSection": true },
         { "title": "Harita", "href": "#harita", "isSection": true },
