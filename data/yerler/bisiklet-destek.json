@@ -1,8 +1,15 @@
-    {
-            "category_name": "Bisiklet ve Ekipman Destek",
-			"category_icon": "img/yerler/ikon/bisiklet-destek.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Bisiklet ve Ekipman Destek",
+    "category_icon": "img/yerler/ikon/bisiklet-destek.png",
+    "places": [
+        {
+            "name": "Ganos Bisiklet",
+            "description": "Tekirdağ'ın eşsiz doğasında, profesyonel ekipmanlar ve uzman teknik servisimizle sürüş keyfinizi zirveye taşıyın.\n\nErtuğrul Mahallesi Rakoczi Caddesi Ceylan Apt. B Blok No:56-1A Süleymanpaşa, Tekirdağ, 59100\n\n+90 (505) 644 99 85\n\nhttps://ganosbisiklet.com/",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.9725631,
+                "lng": 27.5084272
+            }
         }
-      
+    ]
+}
