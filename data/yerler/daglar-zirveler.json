@@ -19,6 +19,15 @@
                 "lat": 40.070172,
                 "lng": 29.2219913
             }
+        },
+        {
+            "name": "Hasandağı",
+            "description": "3256 metre",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.1264632,
+                "lng": 34.1651094
+            }
         }
     ]
 }
