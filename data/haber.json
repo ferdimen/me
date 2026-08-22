@@ -1,5 +1,13 @@
 [
   {
+    "meta": "22 Ağustos 2026 / Altyapı",
+    "baslik": "Türkiye Gezi Haritası Yayında!",
+    "aciklama": "Yıllardır üzerinde çalıştığım, bugüne kadar yarım milyon insanın yoluna ışık tutan Türkiye Gezi Haritası için altyapı da büyük bir dönüşüm gerçekleşti.<br>\n\nHarita verilerini artık dış servislerde barındırmak yerine, tamamen kendi alan adıma kurduğum özgür ve bağımsız bir sisteme taşıdım. Artık tüm gezi noktalarına, kamp alanlarına ve keşif duraklarına doğrudan yerler.html adresinden, hiçbir aracı sunucuya bağımlı kalmadan kesintisiz bir şekilde ulaşabilirsiniz.<br>\n\nKendi kodumuz, kendi haritamız, kendi yolumuz... Yolda görüşmek üzere!",
+    "resim": "",
+    "linkUrl": "yerler.html",
+    "linkMetni": "Gezi Haritası"
+  },
+  {
     "meta": "4 Ağustos 2026 / Altyapı",
     "baslik": "Rotalar Bölümü Yayında",
     "aciklama": "Pedal basılan her kilometre, haritada saklı bir hikaye bırakır. Bu bölümde turlarıma ait GPX kayıtlarını, detaylı rota analizlerini ve özel gezi noktası işaretlerini paylaşıyorum.\n<br>\nAncak harita üzerindeki zoom kısıtlamaları, detaylı açıklamalar ve GPX dosyalarını indirme imkânı yalnızca onaylı kullanıcılarımıza açıktır. Rotaları daha yakından incelemek, iz kayıtlarını indirmek ve bu özel içeriklere erişebilmek için Erken Erişim / Özel Bölüm üyesi olmanız gerekmektedir.",
