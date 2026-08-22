@@ -1477,6 +1477,15 @@
                 "lat": 39.4070194,
                 "lng": 29.2361641
             }
+        },
+        {
+            "name": "Keçi Kalesi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.0245239,
+                "lng": 27.4225917
+            }
         }
     ]
 }
