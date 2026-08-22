@@ -1,8 +1,15 @@
-    {
-            "category_name": "Güvenli Kamp Alanları",
-			"category_icon": "img/yerler/ikon/kamp-alanlari.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Güvenli Kamp Alanları",
+    "category_icon": "img/yerler/ikon/kamp-alanlari.png",
+    "places": [
+        {
+            "name": "Altın Koz Mesire Yeri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.7383195,
+                "lng": 34.7285718
+            }
         }
-      
+    ]
+}
