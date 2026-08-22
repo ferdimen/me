@@ -1,10 +1,13 @@
 {
   "categories": [
-    {
-      "id": "muzeler",
-      "baslik": "Müzeler",
-      "jsonPath": "data/yerler/muze.json"
-    },
+    { "id": "muzeler", "baslik": "Müzeler (Arkeoloji)", "jsonPath": "data/yerler/muze-arkeoloji.json"},
+    { "id": "muzeler-sanat", "baslik": "Müzeler (Sanat)", "jsonPath": "data/yerler/muze-sanat.json"},
+    { "id": "muzeler-acikhava", "baslik": "Müzeler (Açıkhava)", "jsonPath": "data/yerler/muze-acikhava.json"},
+    { "id": "muzeler-bilim", "baslik": "Müzeler (Bilim)", "jsonPath": "data/yerler/muze-bilim.json"},
+    { "id": "muzeler-savas", "baslik": "Müzeler (Savaş)", "jsonPath": "data/yerler/muze-savas.json"},
+    { "id": "muzeler-deniz", "baslik": "Müzeler (Deniz)", "jsonPath": "data/yerler/muze-deniz.json"},
+    { "id": "muze-endustri", "baslik": "Müzeler (Endustri)", "jsonPath": "data/yerler/muze-endustri.json"},
+    { "id": "muze-elsanatlari", "baslik": "Müzeler (El Sanatlari)", "jsonPath": "data/yerler/muze-elsanatlari.json"},
     {
       "id": "goller",
       "baslik": "Göller",
@@ -12,7 +15,7 @@
     },      
 	{
       "id": "Kamp-Piknik-Alanlari",
-      "baslik": "Kamp & Piknik Alanları",
+      "baslik": "Kamp / Piknik Alanları",
       "jsonPath": "data/yerler/kamp.json"
     }, 	
 	{
@@ -26,9 +29,14 @@
       "jsonPath": "data/yerler/gecit.json"
     },		
 	{
-      "id": "Kaleler-Kuleler",
-      "baslik": "Kaleler ve Kuleler",
+      "id": "Kaleler",
+      "baslik": "Kaleler",
       "jsonPath": "data/yerler/kale.json"
+    },		
+	{
+      "id": "Kuleler",
+      "baslik": "Kuleler",
+      "jsonPath": "data/yerler/kule.json"
     },	
 	{
       "id": "Milli-Parklar",
@@ -37,7 +45,7 @@
     },  	
 	{
       "id": "Kanyonlar",
-      "baslik": "Kanyonlar",
+      "baslik": "Kanyonlar/Vadiler",
       "jsonPath": "data/yerler/kanyon.json"
     },   
 	{
@@ -59,6 +67,44 @@
       "id": "plajlar",
       "baslik": "Plajlar",
       "jsonPath": "data/yerler/plaj.json"
-    }
+    },
+  { "id": "magaralar", "baslik": "Mağaralar", "jsonPath": "data/yerler/magara.json" },
+  { "id": "bayrak", "baslik": "İşaret Bayrak", "jsonPath": "data/yerler/bayrak.json" },
+  { "id": "yildiz", "baslik": "İşaret Yıldız", "jsonPath": "data/yerler/yildiz.json" },
+  { "id": "daglar-zirveler", "baslik": "Dağlar / Zirveler", "jsonPath": "data/yerler/daglar-zirveler.json" },
+  { "id": "seyir-noktalari", "baslik": "Seyir / Manzara Noktaları", "jsonPath": "data/yerler/seyir-noktalari.json" },
+  { "id": "nehirler", "baslik": "Nehirler", "jsonPath": "data/yerler/nehirler.json" },
+  { "id": "dunya-mirasi", "baslik": "Dünya Mirası Alanı", "jsonPath": "data/yerler/dunya-mirasi.json" },
+  { "id": "harabeler", "baslik": "Harabeler", "jsonPath": "data/yerler/harabeler.json" },
+  { "id": "orman", "baslik": "Orman", "jsonPath": "data/yerler/orman.json" },
+  { "id": "koylar-korfezler", "baslik": "Koylar / Körfezler", "jsonPath": "data/yerler/koylar-korfezler.json" },
+  { "id": "yaylalar", "baslik": "Yaylalar", "jsonPath": "data/yerler/yaylalar.json" },
+  { "id": "volkanik-olusumlar", "baslik": "Volkanik Kaya Oluşumları", "jsonPath": "data/yerler/volkanik-olusumlar.json" },
+  { "id": "anit-agaclar", "baslik": "Anıt Ağaçlar", "jsonPath": "data/yerler/anit-agaclar.json" },
+  { "id": "obruk-duden", "baslik": "Obruklar / Düdenler", "jsonPath": "data/yerler/obruk-duden.json" },
+  { "id": "deltalar-sulak", "baslik": "Deltalar / Sulak Alanlar", "jsonPath": "data/yerler/deltalar-sulak.json" },
+  { "id": "falezler-yarlar", "baslik": "Falezler / Dik Yarlar", "jsonPath": "data/yerler/falezler-yarlar.json" },
+  { "id": "termal-kaynaklar", "baslik": "Termal Kaynaklar", "jsonPath": "data/yerler/termal-kaynaklar.json" },
+  { "id": "antik-yollar", "baslik": "Antik Yollar", "jsonPath": "data/yerler/antik-yollar.json" },
+  { "id": "kaya-mezarlari", "baslik": "Kaya Mezarları", "jsonPath": "data/yerler/kaya-mezarlari.json" },
+  { "id": "tapinaklar", "baslik": "Tapınaklar", "jsonPath": "data/yerler/tapinaklar.json" },
+  { "id": "hoyukler-tumulusler", "baslik": "Höyükler / Tümülüsler", "jsonPath": "data/yerler/hoyukler-tumulusler.json" },
+  { "id": "su-kemerleri", "baslik": "Su Kemerleri", "jsonPath": "data/yerler/su-kemerleri.json" },
+  { "id": "antik-tiyatrolar", "baslik": "Antik Tiyatrolar", "jsonPath": "data/yerler/antik-tiyatrolar.json" },
+  { "id": "deniz-fenerleri", "baslik": "Deniz Fenerleri", "jsonPath": "data/yerler/deniz-fenerleri.json" },
+  { "id": "tren-istasyonlari", "baslik": "Tren İstasyonları", "jsonPath": "data/yerler/tren-istasyonlari.json" },
+  { "id": "hanlar-kervansaraylar", "baslik": "Hanlar / Kervansaraylar", "jsonPath": "data/yerler/hanlar-kervansaraylar.json" },
+  { "id": "kiliseler-manastirlar", "baslik": "Kiliseler / Manastırlar", "jsonPath": "data/yerler/kiliseler-manastirlar.json" },
+  { "id": "turbeler-kulliyeler", "baslik": "Türbeler / Külliyeler", "jsonPath": "data/yerler/turbeler-kulliyeler.json" },
+  { "id": "tarihi-evler", "baslik": "Tarihi Evler", "jsonPath": "data/yerler/tarihi-evler.json" },
+  { "id": "anitlar", "baslik": "Anıtlar", "jsonPath": "data/yerler/anitlar.json" },
+  { "id": "tuneller", "baslik": "Tüneller", "jsonPath": "data/yerler/tuneller.json" },
+  { "id": "meydanlar", "baslik": "Meydanlar", "jsonPath": "data/yerler/meydanlar.json" },
+  { "id": "su-kaynaklari", "baslik": "Çeşmeler", "jsonPath": "data/yerler/su-kaynaklari.json" },
+  { "id": "kamp-alanlari", "baslik": "Güvenli Serbest Kamp Alanları", "jsonPath": "data/yerler/kamp-alanlari.json" },
+  { "id": "zorlu-rampalar", "baslik": "Zorlu Rampalar", "jsonPath": "data/yerler/zorlu-rampalar.json" },
+  { "id": "bisiklet-destek", "baslik": "Bisiklet / Ekipman Destek", "jsonPath": "data/yerler/bisiklet-destek.json" },
+  { "id": "lezzet-duraklari", "baslik": "Yöresel Lezzet Durakları", "jsonPath": "data/yerler/lezzet-duraklari.json" },
+  { "id": "limanlar-iskeleler", "baslik": "Limanlar / İskeleler", "jsonPath": "data/yerler/limanlar-iskeleler.json" }
   ]
 }
