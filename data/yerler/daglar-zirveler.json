@@ -28,6 +28,15 @@
                 "lat": 38.1264632,
                 "lng": 34.1651094
             }
+        },
+        {
+            "name": "Erciyes Dağı",
+            "description": "3917 metre",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.531516,
+                "lng": 35.4489756
+            }
         }
     ]
 }
