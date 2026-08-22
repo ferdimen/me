@@ -19,6 +19,15 @@
                 "lat": 36.7620688,
                 "lng": 28.894397
             }
+        },
+        {
+            "name": "Phaselis Tüneli",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.5347434,
+                "lng": 30.540061
+            }
         }
     ]
 }
