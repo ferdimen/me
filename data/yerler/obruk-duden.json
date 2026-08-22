@@ -1,8 +1,15 @@
-    {
-            "category_name": "Obruklar / Düdenler",
-			"category_icon": "img/yerler/ikon/obruk-duden.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Obruklar / Düdenler",
+    "category_icon": "img/yerler/ikon/obruk-duden.png",
+    "places": [
+        {
+            "name": "Gümüşdere Obruğu",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.3893604,
+                "lng": 29.0238914
+            }
         }
-      
+    ]
+}
