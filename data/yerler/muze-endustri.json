@@ -1,8 +1,15 @@
-    {
-            "category_name": "Müzeler (Endustri)",
-			"category_icon": "img/yerler/ikon/muze-endustri.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Müzeler (Endustri)",
+    "category_icon": "img/yerler/ikon/muze-endustri.png",
+    "places": [
+        {
+            "name": "Adatepe Zeytinyağı Müzesi - Çanakkale",
+            "description": "Küçükkuyu’nun Çanakkale girişinde Adatepe Zeytinyağı Müzesi yazan bir tabela dikkat çekmektedir.. Burası eski bir sabunhaneden müzeye dönüştürülmüş bir mekandır. Yapının giriş ve birinci katında zeytin ve zeytinyağı ile ilgili objeler çevre köylerden toplanmıştır. Ahşap presler, zeytin taşıma ve saklama kapları gibi objeler ilgi çekicidir. Burası yaşayan bir müzedir. (ÖZDEM, Filiz (Ed.), Aşklar, Savaşlar, Kahramanlar ve Çanakkale; Veysel Tolun, Osmanlı’nın Akdeniz’e Açılan Kapısı. Çanakkale, Yapı Kredi Yayınları, İstanbul, 2012, s. 11-162. )",
+            "image_url": null,
+            "coordinates": {
+                "lat": 39.56911,
+                "lng": 26.6192550000001
+            }
         }
-      
+    ]
+}
