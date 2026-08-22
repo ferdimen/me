@@ -1,8 +1,15 @@
-    {
-            "category_name": "Dağlar",
-			"category_icon": "img/yerler/ikon/daglar.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Dağlar",
+    "category_icon": "img/yerler/ikon/daglar.png",
+    "places": [
+        {
+            "name": "Türkmen Dağı",
+            "description": "1479 metre",
+            "image_url": null,
+            "coordinates": {
+                "lat": 39.0957933,
+                "lng": 28.5370517
+            }
         }
-      
+    ]
+}
