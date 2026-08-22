@@ -2719,6 +2719,15 @@
                 "lat": 36.3567121,
                 "lng": 29.3188083
             }
+        },
+        {
+            "name": "Pınara Antik Kenti",
+            "description": "Pınara (Likçe: 𐊓𐊆𐊍𐊍𐊁𐊑𐊏𐊆; Pilleñni; Grekçe: τὰ Πίναρα, eskiden Artymnesus veya Artymnesos), Kragos Dağı'nın (günümüzde Babadağ) eteklerinde yer alan, antik Likya'nın en büyük kentlerinden biriydi. Şehir, adını paylaştığı antik Xanthos kentinin (günümüzde Eşen Çayı) batı kıyısına oldukça yakın bir konumda kurulmuştur. Antik kentin kalıntıları arasında çok sayıda tapınak, bir \"kral mezarı\" da dahil olmak üzere kaya mezarları, yukarı ve aşağı akropoller, bir tiyatro, bir odeon, bir agora ve bir kilise görülmektedir.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.489058,
+                "lng": 29.2574823
+            }
         }
     ]
 }
