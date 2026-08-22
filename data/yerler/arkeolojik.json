@@ -2845,15 +2845,6 @@
                 "lat": 37.8710731,
                 "lng": 28.2343904
             }
-        },
-        {
-            "name": "İkitaş Kanyonu Eğrigöz/Emet/Kütahya",
-            "description": "",
-            "image_url": null,
-            "coordinates": {
-                "lat": 39.4349762,
-                "lng": 29.245087
-            }
         }
     ]
 }
