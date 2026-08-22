@@ -1,8 +1,15 @@
-    {
-            "category_name": "Tüneller",
-			"category_icon": "img/yerler/ikon/tuneller.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Tüneller",
+    "category_icon": "img/yerler/ikon/tuneller.png",
+    "places": [
+        {
+            "name": "Karacabel Tüneli",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.4225685,
+                "lng": 27.5651693
+            }
         }
-      
+    ]
+}
