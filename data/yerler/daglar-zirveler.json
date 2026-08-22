@@ -10,6 +10,15 @@
                 "lat": 39.0957933,
                 "lng": 28.5370517
             }
+        },
+        {
+            "name": "Uludağ",
+            "description": "2543 metre",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.070172,
+                "lng": 29.2219913
+            }
         }
     ]
 }
