@@ -55,6 +55,15 @@
                 "lat": 36.7770815,
                 "lng": 30.5698764
             }
+        },
+        {
+            "name": "Ovit Dağı Tüneli",
+            "description": "Ovit Dağı Tüneli\t14.346 m<br><br>D 925\t<br>14.346 m<br>2 x 2<br>2018<br>İkizdere - İspir<br>Rize - Erzurum",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.617708,
+                "lng": 40.780915
+            }
         }
     ]
 }
