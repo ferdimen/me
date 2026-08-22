@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
     <!-- Leaflet Fullscreen Eklentisi -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-fullscreen@1.0.2/dist/leaflet.fullscreen.css" />
+	  <link rel="stylesheet" href="data/style.css">
     <style>
         body { display: flex; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         #sidebar { width: 320px; height: 100vh; overflow-y: auto; border-right: 1px solid #ddd; background: #fff; box-shadow: 2px 0 5px rgba(0,0,0,0.1); }
@@ -53,7 +54,8 @@
     </style>
 </head>
 <body>
-
+<header class="main-header"></header>
+<script src="data/header-loader.js"></script>
 <div id="sidebar">
     <!-- Tümünü Seç / Kaldır Kontrolü -->
     <div class="select-all-container">
