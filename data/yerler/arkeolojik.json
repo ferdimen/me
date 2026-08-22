@@ -2728,6 +2728,15 @@
                 "lat": 36.489058,
                 "lng": 29.2574823
             }
+        },
+        {
+            "name": "Tlos Antik Kenti",
+            "description": "Tlos (Likçe: 𐊗𐊍𐊀𐊇𐊀 Tlawa, Hititçe: 𒁕𒆷𒉿 Dalawa, Antik Yunanca: Τλώς veya Τλῶς) bugün Muğla'nın Seydikemer ilçesi yakınlarında yer alan kadim bir Likya kentiydi. Likya'nın en önemli yerleşimlerinden biri olan Tlos Antik Kenti, Fethiye İlçesi'nin yaklaşık 42 km doğusundaki Yaka Köyü sınırları içerisinde kalmaktadır. Bölgenin en yüksek dağları olan Akdağlar'ın (Kragos) sarp batı yamaçlarında başlayan antik yerleşim, Eşen Nehri'nin getirdiği alüvyonlarla oluşmuş vadi düzlüğüne kadar ulaşır. Ayrıca güneydeki Saklıkent Kanyonu ile kuzey yönde bulunan Kemer Beldesi antik kentin egemenlik sınırlarını çizer.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.5546277,
+                "lng": 29.4200081
+            }
         }
     ]
 }
