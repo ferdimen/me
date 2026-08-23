@@ -37,6 +37,15 @@
                 "lat": 38.531516,
                 "lng": 35.4489756
             }
+        },
+        {
+            "name": "Akdağ",
+            "description": "1212 metre",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.5565718,
+                "lng": 26.5013677
+            }
         }
     ]
 }
