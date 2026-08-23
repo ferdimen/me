@@ -46,6 +46,15 @@
                 "lat": 40.7383195,
                 "lng": 34.7285718
             }
+        },
+        {
+            "name": "Adagöl",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.9075682,
+                "lng": 27.2717464
+            }
         }
     ]
 }
