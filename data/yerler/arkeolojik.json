@@ -2710,6 +2710,15 @@
                 "lat": 36.5546277,
                 "lng": 29.4200081
             }
+        },
+        {
+            "name": "Atarneus",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 39.0912246,
+                "lng": 26.9214579
+            }
         }
     ]
 }
