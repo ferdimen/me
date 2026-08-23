@@ -1,8 +1,15 @@
-    {
-            "category_name": "Deltalar ve Sulak Alanlar",
-			"category_icon": "img/yerler/ikon/deltalar-sulak.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Deltalar ve Sulak Alanlar",
+    "category_icon": "img/yerler/ikon/deltalar-sulak.png",
+    "places": [
+        {
+            "name": "Samsun Bafra Kızılırmak Deltası",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 41.6308289,
+                "lng": 36.0783291
+            }
         }
-      
+    ]
+}
