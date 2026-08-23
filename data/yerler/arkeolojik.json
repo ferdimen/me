@@ -1110,15 +1110,6 @@
             }
         },
         {
-            "name": "Tarihi Roma Hamamı\n",
-            "description": "eski yıkık dökük bir yapı<br>alttan sıcak su kaynıyor. <br><br>Koordinatlar (Enlem ve Boylam): 38°19'47\"N 26°39'13\"E",
-            "image_url": null,
-            "coordinates": {
-                "lat": 38.3298407,
-                "lng": 26.6536903
-            }
-        },
-        {
             "name": "Erythrai Arkeolojik Ören Yeri",
             "description": "",
             "image_url": null,
