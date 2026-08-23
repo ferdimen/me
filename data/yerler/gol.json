@@ -1,205 +1,213 @@
- {
-            "category_name": "Göller",
-			"category_icon": "img/yerler/ikon/gol.png",
-            "places": [
-                {
-                    "name": "Acıgöl",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.8228024,
-                        "lng": 29.866333
-                    }
-                },
-				                {
-                    "name": "Işıklı Gölü",
-                    "description": "<br><br>Işıklı Gölü Büyük Menderes Nehrini besleyen kaynakların üzerinde, Akdağ’ın güneyinde yer alan maksimum 7 m. derinliğinde tatlısu gölüdür. Göl; Kufi Çayı, Akçay, Işıklı kaynakları, yeraltı suları ve Büyük Menderes’in yukarı havzadaki iki büyük kolu tarafından beslenir. Işıklı gölün orta kesimlerinde kuvvetli rüzgârlarla yer değiştiren saz adacıkları, kuzey doğusunda sazlık ve bataklık alanlar bulunmaktadır. Bu adacıklar su kuşlarının barınma ve üreme yerleridir. Yüzölçümü 7300 ha. koordinatları 38º14’K 29º55’D, rakım 821 metredir. Kurak ve yağışlı dönemlerde alanı genişleyip daralır. Kuaternerdeki tektonik olaylar sonucu, Kufi çayının taşımış olduğu alüvyonların ovanın güneydoğusundaki çukurluğun batısında birikmesiyle oluşmuştur. Gölün batı, güney ve doğu kıyıları seddelerle çevrilidir. Bugün sulama amaçlı rezervuar olarak kullanılmaktadır.<br><br><br><br><br><br><br><br><br><br>",
-                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4Gur73WCeiof6ysUnhMGfH96He1E61-QoagKbnAYWxICkKH34N2yWNONKkVF8oaX4lKVYr1YwbWGa_0Q5aGI6z31TwW0ZHztOjAJvJwizj1EMRAnOIQxNzdSZmPCbarf-OAbLLwga_OCf5S2HD7MXdgKfSSc4a1eBQ_v9rKfcL6cUQejTYZj1ZP72D8CS84aAd4bw?authuser=0&fife=s16383",
-                    "coordinates": {
-                        "lat": 38.2252352,
-                        "lng": 29.8950005
-                    }
-                },
-                {
-                    "name": "Konya - Akgöl Tabiatı Koruma Alanı",
-                    "description": "Konumu: İç Anadolu Bölgesi'nde, Konya ili, Ereğli ilçesi sınırları içerisinde yer almaktadır.<br><br>Özellikleri: Akgöl ve çevresi ihtiva ettiği su kuşu türlerinin çeşit ve miktar itibariyle zenginliği ve içlerinde nesli tehlikeye düşmüş veya düşebilir türlerin mevcutiyeti ile ulusal ve uluslararası düzeyde öneme sahip nadir bir ekosistem göstermektedir. Saha; 6787 Ha. büyüklüğündedir.<br><br>Akgöl ve çevresi alüvyal bir sahadır. Aktüel Akgöl, çevresindeki alüvyal ovadan bir kaç metrelik seki eşikleri ile ayrılır. Akgöl, bugün geniş açık aynalardan sazlık kamışlık alanlardan, irili ufaklı çok sayıdaki kum ve çamur adalarından oluşmaktadır.<br><br>Ormitolojik açıdan son derece zengin olan Ereğli Sazlıklarından şimdiye kadar 200'den fazla kuş türü gözlenmektedir. Gölgede bulunan ve kuluçkaya yatan başlıca kuş türleri; Flamingo tepeli batağan, kızıl boyunlu batağan, kara boyunlu batağan, karabatak, küçük karabatak, tepeli kutan, küçük balaban, gece balıkçılı, alaca balıkçıl, küçük ak balıkçıl, büyük ak balıkçıl, erguvan balıkçıl, çeltikçi, kaşıkçı, kuğu, kaz, angut, suna, yaz ördeği, macar ördeği, mısır akbabası, yılan kartalı, saz delicesi, turna, dikkuyruk, uzunbacak, kılıçgaga, kocagöz, batak kırlangıcı, mahmuzlu kırlangıç, ince gagalı martı, büyük cılıbıt, gülen sumru, küçük sumru, büyük sumru, kara sumrudur.<br><br>Akkutan, öküz balıkçılı, puhu kuşu ve uludoğan ise kuluçkaya yatmamakta, yılın belli bir döneminde sahada konaklamaktadır. Göç sırasında ve kışın gölgede gözlenen türlerden; küçük batağan,tepeli batağan, büyük akbalıkçıl, sakarca kazı, boz kaz, angıt, çamurcun, kılördek, boz dalağan, dikkuyruk, sakarmeke ve turna sahada yoğun olarak bulunmaktadır.",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.516126,
-                        "lng": 33.778324
-                    }
-                },
-                {
-                    "name": "Konya - Beyşehir Gölü Milli Parkı",
-                    "description": "Yeri: Konya ili Beyşehir ilçesi sınırları içerisinde yer almaktadır.<br><br>Ulaşım: Milli Park alanına Konya-Beyşehir bağlantısını sağlayan 238 nolu Devlet Karayolu ile ulaşılmaktadır. Saha, Konya'ya 94 km,Isparta'ya 105 km mesafededir.<br><br>Özelliği: Ülkemizin üçüncü büyük gölü olan Beyşehir Gölünün jeomorfolojik yapısı karstik arazi şekillerinden, çok sayıda düden ve dolinlerin birleşmesi sonucu oluşan polye karakterindedir. Yörenin genel jeolojik yapısını teşkil eden kalkerlerin , suların kimyasal reaksiyonu sonucu ezilmesi, bu karstik yer şekillerinin kalıntıları olan ve yükseklikleri 20-50 m. arasında değişen çok sayıda ada bulunmaktadır.<br><br>Göl suyu alkalin özelliktedir. Sazan ,alabalık , çiçek balığı, gövce, sarıbalık ve tatlı su levreği gibi türler, su kaplumbağası ve yılanlar gölün faunasını oluşturmaktadır. Göl içerisindeki irili ufaklı adalar, su kuşlarının yuvalanmaları ve kuluçkalanmaları açısından önem teşkil ederler. Adalar dalgıç türleri , kuğular, karabataklar, bazı balıkçıl türleri ve ördekler için kışlama ve kuluçka alanlarıdır.<br><br>Milli parkın orman formasyonu ardıç , karaçam, göknar, sedir ve meşe türleri oluşturmakta ağaçlar yeryer göl kenarına kadar uzanarak Beyşehir Gölünün koylarını ve körfezlerini görsel açıdan eşsiz manzara güzelliklerini kavuştururlar.<br><br>Hitit, Frig,Lidya, Pers,Roma ve Bizans egemenliği altında kalan yine 1076'da Konya'da Anadolu Selçuklu Devleti'nin kurulmasıyla Türk egemenliğine girmiştir. Yenişarbademli yakınlarında, göl kenarında ve 3 km. kadar açıktaki Kızkalesi adacığı üzerindeki kalıntılar,Kubadabad Sarayı Harabeleri Selçuk Döneminin eserleridir.<br><br>Görülebilecek Yerler: Üstün değerdeki peyzaj güzellikleri, göçmen kuşlar için iyi bir barınak olması , potansiyel göl sularına dayalı su sporlarına elverişli göl kıyılarının bulunması ile Selçuklu Dönemine ait kültürel kaynaklar, Milli Parkın özelliğini oluşturmakta ve görülmeye değer niteliktedir.<br><br>Mevcut Hizmetler ve Konaklama: Milli Parkın yoğun ziyaretli dönemi Mayıs-ekim aylarıdır. Ziyaretçiler için günübirlik ve kamp yapma imkanlarını sunmaktadır.<br><br>Çadırla ve karavanla Milli Park yetkililerinin kontrolünde ve göstereceği yerlerde kamp yapılabilir. Ayrıca Beyşehir ilçesi de konaklama için uygundur.",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.798391,
-                        "lng": 31.57608
-                    }
-                },
-                {
-                    "name": "Burdur Gölü",
-                    "description": "Şehir merkezine 4 km. uzaklıktadır. Burdur Gölü tektonik bir göldür. Dünyada nesli tükenmekte olan \"dikkuyruk\" ördeklerinin % 70'ine ev sahipliği yapmaktadır. Endemik kuş türlerinin barınma alanı olan Burdur Gölü uluslararası öneme sahip bir sulak alandır. 85 kuş türü yaşar.<br><br>Yüzölçümü: 23700<br><br>Rakım: 857 m<br><br>Koruma: var<br><br>Başlıca Özellikleri: hafif tuzlu göl<br><br>Kuş Türleri: Kışın çok sayıda bulunan su kuşları açısından önem taşır. Nesli dünya çapında tehlike altında olan dikkuyruk için dünyadaki en önemli kışlama alanıdır (maks. 10.927 dünya kış popülasyonunun üçte ikisinden fazla).Bu tür, Burdur Gölü'nde üreme döneme dışında kalan aylarda çok sayıda görülebilir. Kışın kaydedilen en yüksek toplam sukuşu sayısı 202.119 olup, sayılan önemli türler arasında kara boyunlu batağan (maks. 25.280),angıt (temmuzda maks. 1889, kışın maks. 472), Macar ördeği (maks 2814), elmabaş patka (maks. 57.555), tepeli patka (maks. 6000) ve sakarmeke (maks. 138.925) başta gelir. Mahmuzlu kızkuşu göl çevresinde kuluçkaya yatar.",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.729453,
-                        "lng": 30.191803
-                    }
-                },
-                {
-                    "name": "Atatürk Baraj Gölü",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.4770378,
-                        "lng": 38.4164429
-                    }
-                },
-                {
-                    "name": "Bafa Gölü\n",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.4966523,
-                        "lng": 27.4356079
-                    }
-                },
-                {
-                    "name": "Beydağ Baraj Gölü",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 38.1109914,
-                        "lng": 28.2187271
-                    }
-                },
-                {
-                    "name": "Çatal Gölü\n",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.9909543,
-                        "lng": 27.3172474
-                    }
-                },
-                {
-                    "name": "Eğirdir Gölü\n",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.9593578,
-                        "lng": 30.8743286
-                    }
-                },
-                {
-                    "name": "Gebekirse Gölü\n",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.9858808,
-                        "lng": 27.303257
-                    }
-                },
-                {
-                    "name": "Kalkım Göleti\n",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 39.8049755,
-                        "lng": 27.1984577
-                    }
-                },
-                {
-                    "name": "Karacaören Barajı",
-                    "description": "Aksu çayı üzerindeki baraj Bucak ilçesine 35 km uzaklıktadır. Bölgenin enerji ve sulama ihtiyacını karşılamanın ötesinde doğal güzellikleri ile mesire yeri olarak ilgi görmektedir.",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.402892,
-                        "lng": 30.84343
-                    }
-                },
-                {
-                    "name": "Kuşgölü\n",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 40.1883158,
-                        "lng": 27.9341125
-                    }
-                },
-                {
-                    "name": "Meke Krater Gölü",
-                    "description": "Karapınar ilçesine 8 km mesafede çift volkan patlaması ile oluşmuş bir krater gölüdür. Bu özelliği zeminde olmasından dolayı jeolojik açıdan oldukça ilgi çekicidir. Ayrıca bölgede Acıgöl, Çırak Göl ve Meyil Gölü adında bir çok krater bulunmaktadır.",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.684364,
-                        "lng": 33.639836
-                    }
-                },
-                {
-                    "name": "İznik Gölü\n",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 40.4396311,
-                        "lng": 29.5518494
-                    }
-                },
-                {
-                    "name": "Salda Gölü\n",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 37.544577,
-                        "lng": 29.682312
-                    }
-                },
-                {
-                    "name": "Süleymaniye Gölü",
-                    "description": "Denizli İli, Buldan İlçesi yaylasındadır. Etrafı ormanlarla çevrilidir. Doğal güzelliği bakımından görülmeye değer yerlerdendir.",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 38.056202,
-                        "lng": 28.775253
-                    }
-                },
-                {
-                    "name": "Tuzgölü",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 38.7712164,
-                        "lng": 33.3215332
-                    }
-                },
-                {
-                    "name": "Ulubat Gölü\n",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 40.1489634,
-                        "lng": 28.6214447
-                    }
-                },
-                {
-                    "name": "Van Gölü",
-                    "description": "",
-                    "image_url": null,
-                    "coordinates": {
-                        "lat": 38.6436905,
-                        "lng": 42.8645325
-                    }
-                },
-                {
-                    "name": "Azap Gölü",
-                    "description": "<br><br>Yüksek bir ekonomik değere sahiptirler. Balıkçılık, tarım ve hayvancılık, saz üretimi, turizm olanaklarıyla bölge ve ülke ekonomisine önemli katkı sağlarlar. Birçok sulakalanın yokedildiği günümüzde, koruma statüsü bulunmayan ancak bölgemiz için önemli bir sulak alan niteliği taşıyan ve yaban hayatı koruma alanı olabilecek kriterde bir yer olan Azap Gölü' de bunlardan biridir. Azap Gölü, ılıman iklimin koşullarının olduğu bir sulak alan ekosistemi olup, Aydın’ın Söke İlçesi’ne bağlı Yeşilköy ve Avşar Köyleri arasındadır. Yüzölçümü 0,29 km karedir. Bafa Gölü'nün kuzeyinde olup, rakımı 7 mt.dir. İon kıyı kentlerinden Myus'a çok yakındır. Batısında Büyük Menderes Nehri ve Antik Myus kenti, Doğusunda Beşparmak Dağları, güneyinde Bafa Gölü bulunmaktadır. Büyük bir leylek kolonisinin olduğu Avşar Köyü yakınındadır. Göl kıyısındaki tepelerde antik döneme ait kaya mezarları bulunmaktadır. Azap gölü sığ ve köklü su bitkilerinin yoğun olarak bulunduğu ve besince zengin bir göl olup, yüksek biyolojik çeşitlilik barındırmaktadır. Sazlıklar bu biyolojik çeşitliliğin en önemli parçasıdır. Hem kuşlar, hem de değişik canlılar için sazlıklar hayati önem taşımaktadır. http://www.ekodosd.org/index.php/azap-goelue",
-                    "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5SRg4dtFEOOfxJkLoIuR5JnZJoYoauiSKZ3vnFhxge4VP2M_ErgpyUh-qcLZqaBCyEWS35VCF5MxrnyWmtifa-QCeQnN_kvXDTdoaSIqOLp3cjQnS-yE1pUB8ygT1mxlB8Uj1wremk5tbVs4-TYEl-sy3piFVISeVjTJUwpFir0cIKNBW7klwbYNVVN_xwUWsdCdA?authuser=0&fife=s16383",
-                    "coordinates": {
-                        "lat": 37.5912133,
-                        "lng": 27.4445343
-                    }
-                }
-            ]
+{
+    "category_name": "Göller",
+    "category_icon": "img/yerler/ikon/gol.png",
+    "places": [
+        {
+            "name": "Acıgöl",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.8228024,
+                "lng": 29.866333
+            }
+        },
+        {
+            "name": "Işıklı Gölü",
+            "description": "<br><br>Işıklı Gölü Büyük Menderes Nehrini besleyen kaynakların üzerinde, Akdağ’ın güneyinde yer alan maksimum 7 m. derinliğinde tatlısu gölüdür. Göl; Kufi Çayı, Akçay, Işıklı kaynakları, yeraltı suları ve Büyük Menderes’in yukarı havzadaki iki büyük kolu tarafından beslenir. Işıklı gölün orta kesimlerinde kuvvetli rüzgârlarla yer değiştiren saz adacıkları, kuzey doğusunda sazlık ve bataklık alanlar bulunmaktadır. Bu adacıklar su kuşlarının barınma ve üreme yerleridir. Yüzölçümü 7300 ha. koordinatları 38º14’K 29º55’D, rakım 821 metredir. Kurak ve yağışlı dönemlerde alanı genişleyip daralır. Kuaternerdeki tektonik olaylar sonucu, Kufi çayının taşımış olduğu alüvyonların ovanın güneydoğusundaki çukurluğun batısında birikmesiyle oluşmuştur. Gölün batı, güney ve doğu kıyıları seddelerle çevrilidir. Bugün sulama amaçlı rezervuar olarak kullanılmaktadır.<br><br><br><br><br><br><br><br><br><br>",
+            "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4Gur73WCeiof6ysUnhMGfH96He1E61-QoagKbnAYWxICkKH34N2yWNONKkVF8oaX4lKVYr1YwbWGa_0Q5aGI6z31TwW0ZHztOjAJvJwizj1EMRAnOIQxNzdSZmPCbarf-OAbLLwga_OCf5S2HD7MXdgKfSSc4a1eBQ_v9rKfcL6cUQejTYZj1ZP72D8CS84aAd4bw?authuser=0&fife=s16383",
+            "coordinates": {
+                "lat": 38.2252352,
+                "lng": 29.8950005
+            }
+        },
+        {
+            "name": "Konya - Akgöl Tabiatı Koruma Alanı",
+            "description": "Konumu: İç Anadolu Bölgesi'nde, Konya ili, Ereğli ilçesi sınırları içerisinde yer almaktadır.<br><br>Özellikleri: Akgöl ve çevresi ihtiva ettiği su kuşu türlerinin çeşit ve miktar itibariyle zenginliği ve içlerinde nesli tehlikeye düşmüş veya düşebilir türlerin mevcutiyeti ile ulusal ve uluslararası düzeyde öneme sahip nadir bir ekosistem göstermektedir. Saha; 6787 Ha. büyüklüğündedir.<br><br>Akgöl ve çevresi alüvyal bir sahadır. Aktüel Akgöl, çevresindeki alüvyal ovadan bir kaç metrelik seki eşikleri ile ayrılır. Akgöl, bugün geniş açık aynalardan sazlık kamışlık alanlardan, irili ufaklı çok sayıdaki kum ve çamur adalarından oluşmaktadır.<br><br>Ormitolojik açıdan son derece zengin olan Ereğli Sazlıklarından şimdiye kadar 200'den fazla kuş türü gözlenmektedir. Gölgede bulunan ve kuluçkaya yatan başlıca kuş türleri; Flamingo tepeli batağan, kızıl boyunlu batağan, kara boyunlu batağan, karabatak, küçük karabatak, tepeli kutan, küçük balaban, gece balıkçılı, alaca balıkçıl, küçük ak balıkçıl, büyük ak balıkçıl, erguvan balıkçıl, çeltikçi, kaşıkçı, kuğu, kaz, angut, suna, yaz ördeği, macar ördeği, mısır akbabası, yılan kartalı, saz delicesi, turna, dikkuyruk, uzunbacak, kılıçgaga, kocagöz, batak kırlangıcı, mahmuzlu kırlangıç, ince gagalı martı, büyük cılıbıt, gülen sumru, küçük sumru, büyük sumru, kara sumrudur.<br><br>Akkutan, öküz balıkçılı, puhu kuşu ve uludoğan ise kuluçkaya yatmamakta, yılın belli bir döneminde sahada konaklamaktadır. Göç sırasında ve kışın gölgede gözlenen türlerden; küçük batağan,tepeli batağan, büyük akbalıkçıl, sakarca kazı, boz kaz, angıt, çamurcun, kılördek, boz dalağan, dikkuyruk, sakarmeke ve turna sahada yoğun olarak bulunmaktadır.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.516126,
+                "lng": 33.778324
+            }
+        },
+        {
+            "name": "Konya - Beyşehir Gölü Milli Parkı",
+            "description": "Yeri: Konya ili Beyşehir ilçesi sınırları içerisinde yer almaktadır.<br><br>Ulaşım: Milli Park alanına Konya-Beyşehir bağlantısını sağlayan 238 nolu Devlet Karayolu ile ulaşılmaktadır. Saha, Konya'ya 94 km,Isparta'ya 105 km mesafededir.<br><br>Özelliği: Ülkemizin üçüncü büyük gölü olan Beyşehir Gölünün jeomorfolojik yapısı karstik arazi şekillerinden, çok sayıda düden ve dolinlerin birleşmesi sonucu oluşan polye karakterindedir. Yörenin genel jeolojik yapısını teşkil eden kalkerlerin , suların kimyasal reaksiyonu sonucu ezilmesi, bu karstik yer şekillerinin kalıntıları olan ve yükseklikleri 20-50 m. arasında değişen çok sayıda ada bulunmaktadır.<br><br>Göl suyu alkalin özelliktedir. Sazan ,alabalık , çiçek balığı, gövce, sarıbalık ve tatlı su levreği gibi türler, su kaplumbağası ve yılanlar gölün faunasını oluşturmaktadır. Göl içerisindeki irili ufaklı adalar, su kuşlarının yuvalanmaları ve kuluçkalanmaları açısından önem teşkil ederler. Adalar dalgıç türleri , kuğular, karabataklar, bazı balıkçıl türleri ve ördekler için kışlama ve kuluçka alanlarıdır.<br><br>Milli parkın orman formasyonu ardıç , karaçam, göknar, sedir ve meşe türleri oluşturmakta ağaçlar yeryer göl kenarına kadar uzanarak Beyşehir Gölünün koylarını ve körfezlerini görsel açıdan eşsiz manzara güzelliklerini kavuştururlar.<br><br>Hitit, Frig,Lidya, Pers,Roma ve Bizans egemenliği altında kalan yine 1076'da Konya'da Anadolu Selçuklu Devleti'nin kurulmasıyla Türk egemenliğine girmiştir. Yenişarbademli yakınlarında, göl kenarında ve 3 km. kadar açıktaki Kızkalesi adacığı üzerindeki kalıntılar,Kubadabad Sarayı Harabeleri Selçuk Döneminin eserleridir.<br><br>Görülebilecek Yerler: Üstün değerdeki peyzaj güzellikleri, göçmen kuşlar için iyi bir barınak olması , potansiyel göl sularına dayalı su sporlarına elverişli göl kıyılarının bulunması ile Selçuklu Dönemine ait kültürel kaynaklar, Milli Parkın özelliğini oluşturmakta ve görülmeye değer niteliktedir.<br><br>Mevcut Hizmetler ve Konaklama: Milli Parkın yoğun ziyaretli dönemi Mayıs-ekim aylarıdır. Ziyaretçiler için günübirlik ve kamp yapma imkanlarını sunmaktadır.<br><br>Çadırla ve karavanla Milli Park yetkililerinin kontrolünde ve göstereceği yerlerde kamp yapılabilir. Ayrıca Beyşehir ilçesi de konaklama için uygundur.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.798391,
+                "lng": 31.57608
+            }
+        },
+        {
+            "name": "Burdur Gölü",
+            "description": "Şehir merkezine 4 km. uzaklıktadır. Burdur Gölü tektonik bir göldür. Dünyada nesli tükenmekte olan \"dikkuyruk\" ördeklerinin % 70'ine ev sahipliği yapmaktadır. Endemik kuş türlerinin barınma alanı olan Burdur Gölü uluslararası öneme sahip bir sulak alandır. 85 kuş türü yaşar.<br><br>Yüzölçümü: 23700<br><br>Rakım: 857 m<br><br>Koruma: var<br><br>Başlıca Özellikleri: hafif tuzlu göl<br><br>Kuş Türleri: Kışın çok sayıda bulunan su kuşları açısından önem taşır. Nesli dünya çapında tehlike altında olan dikkuyruk için dünyadaki en önemli kışlama alanıdır (maks. 10.927 dünya kış popülasyonunun üçte ikisinden fazla).Bu tür, Burdur Gölü'nde üreme döneme dışında kalan aylarda çok sayıda görülebilir. Kışın kaydedilen en yüksek toplam sukuşu sayısı 202.119 olup, sayılan önemli türler arasında kara boyunlu batağan (maks. 25.280),angıt (temmuzda maks. 1889, kışın maks. 472), Macar ördeği (maks 2814), elmabaş patka (maks. 57.555), tepeli patka (maks. 6000) ve sakarmeke (maks. 138.925) başta gelir. Mahmuzlu kızkuşu göl çevresinde kuluçkaya yatar.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.729453,
+                "lng": 30.191803
+            }
+        },
+        {
+            "name": "Atatürk Baraj Gölü",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.4770378,
+                "lng": 38.4164429
+            }
+        },
+        {
+            "name": "Bafa Gölü\n",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.4966523,
+                "lng": 27.4356079
+            }
+        },
+        {
+            "name": "Beydağ Baraj Gölü",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.1109914,
+                "lng": 28.2187271
+            }
+        },
+        {
+            "name": "Çatal Gölü\n",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.9909543,
+                "lng": 27.3172474
+            }
+        },
+        {
+            "name": "Eğirdir Gölü\n",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.9593578,
+                "lng": 30.8743286
+            }
+        },
+        {
+            "name": "Gebekirse Gölü\n",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.9858808,
+                "lng": 27.303257
+            }
+        },
+        {
+            "name": "Kalkım Göleti\n",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 39.8049755,
+                "lng": 27.1984577
+            }
+        },
+        {
+            "name": "Karacaören Barajı",
+            "description": "Aksu çayı üzerindeki baraj Bucak ilçesine 35 km uzaklıktadır. Bölgenin enerji ve sulama ihtiyacını karşılamanın ötesinde doğal güzellikleri ile mesire yeri olarak ilgi görmektedir.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.402892,
+                "lng": 30.84343
+            }
+        },
+        {
+            "name": "Kuşgölü\n",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.1883158,
+                "lng": 27.9341125
+            }
+        },
+        {
+            "name": "Meke Krater Gölü",
+            "description": "Karapınar ilçesine 8 km mesafede çift volkan patlaması ile oluşmuş bir krater gölüdür. Bu özelliği zeminde olmasından dolayı jeolojik açıdan oldukça ilgi çekicidir. Ayrıca bölgede Acıgöl, Çırak Göl ve Meyil Gölü adında bir çok krater bulunmaktadır.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.684364,
+                "lng": 33.639836
+            }
+        },
+        {
+            "name": "İznik Gölü\n",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.4396311,
+                "lng": 29.5518494
+            }
+        },
+        {
+            "name": "Salda Gölü\n",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.544577,
+                "lng": 29.682312
+            }
+        },
+        {
+            "name": "Süleymaniye Gölü",
+            "description": "Denizli İli, Buldan İlçesi yaylasındadır. Etrafı ormanlarla çevrilidir. Doğal güzelliği bakımından görülmeye değer yerlerdendir.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.056202,
+                "lng": 28.775253
+            }
+        },
+        {
+            "name": "Tuzgölü",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.7712164,
+                "lng": 33.3215332
+            }
+        },
+        {
+            "name": "Ulubat Gölü\n",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.1489634,
+                "lng": 28.6214447
+            }
+        },
+        {
+            "name": "Van Gölü",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.6436905,
+                "lng": 42.8645325
+            }
+        },
+        {
+            "name": "Azap Gölü",
+            "description": "<br><br>Yüksek bir ekonomik değere sahiptirler. Balıkçılık, tarım ve hayvancılık, saz üretimi, turizm olanaklarıyla bölge ve ülke ekonomisine önemli katkı sağlarlar. Birçok sulakalanın yokedildiği günümüzde, koruma statüsü bulunmayan ancak bölgemiz için önemli bir sulak alan niteliği taşıyan ve yaban hayatı koruma alanı olabilecek kriterde bir yer olan Azap Gölü' de bunlardan biridir. Azap Gölü, ılıman iklimin koşullarının olduğu bir sulak alan ekosistemi olup, Aydın’ın Söke İlçesi’ne bağlı Yeşilköy ve Avşar Köyleri arasındadır. Yüzölçümü 0,29 km karedir. Bafa Gölü'nün kuzeyinde olup, rakımı 7 mt.dir. İon kıyı kentlerinden Myus'a çok yakındır. Batısında Büyük Menderes Nehri ve Antik Myus kenti, Doğusunda Beşparmak Dağları, güneyinde Bafa Gölü bulunmaktadır. Büyük bir leylek kolonisinin olduğu Avşar Köyü yakınındadır. Göl kıyısındaki tepelerde antik döneme ait kaya mezarları bulunmaktadır. Azap gölü sığ ve köklü su bitkilerinin yoğun olarak bulunduğu ve besince zengin bir göl olup, yüksek biyolojik çeşitlilik barındırmaktadır. Sazlıklar bu biyolojik çeşitliliğin en önemli parçasıdır. Hem kuşlar, hem de değişik canlılar için sazlıklar hayati önem taşımaktadır. http://www.ekodosd.org/index.php/azap-goelue",
+            "image_url": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5SRg4dtFEOOfxJkLoIuR5JnZJoYoauiSKZ3vnFhxge4VP2M_ErgpyUh-qcLZqaBCyEWS35VCF5MxrnyWmtifa-QCeQnN_kvXDTdoaSIqOLp3cjQnS-yE1pUB8ygT1mxlB8Uj1wremk5tbVs4-TYEl-sy3piFVISeVjTJUwpFir0cIKNBW7klwbYNVVN_xwUWsdCdA?authuser=0&fife=s16383",
+            "coordinates": {
+                "lat": 37.5912133,
+                "lng": 27.4445343
+            }
+        },
+        {
+            "name": "Kazan Gölü",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.9867218,
+                "lng": 27.2753808
+            }
         }
-    
+    ]
+}
