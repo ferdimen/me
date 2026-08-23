@@ -1,8 +1,15 @@
-    {
-            "category_name": "Anıt Ağaçlar",
-			"category_icon": "img/yerler/ikon/anit-agaclar.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Anıt Ağaçlar",
+    "category_icon": "img/yerler/ikon/anit-agaclar.png",
+    "places": [
+        {
+            "name": "Selkisaray Gazi Ağaçlar",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.8823221,
+                "lng": 30.0950959
+            }
         }
-      
+    ]
+}
