@@ -46,6 +46,15 @@
                 "lat": 38.5565718,
                 "lng": 26.5013677
             }
+        },
+        {
+            "name": "Yunt Dağı",
+            "description": "1076 metre",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.9275311,
+                "lng": 27.4224007
+            }
         }
     ]
 }
