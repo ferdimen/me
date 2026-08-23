@@ -2,18 +2,20 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-<title>Ferdimen // Gezilecek Yerler Haritası</title>
-<link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
+    <title>Ferdimen // Gezilecek Yerler Haritası</title>
+    <link rel="icon" type="image/png" href="https://www.ferdimen.com/img/logo.png">
     <!-- Leaflet ve MarkerCluster Kütüphaneleri -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
     <!-- Leaflet Fullscreen Eklentisi -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-fullscreen@1.0.2/dist/leaflet.fullscreen.css" />
-	  <link rel="stylesheet" href="data/style.css">
+    <!-- Leaflet Routing Machine -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="../data/style.css">
     <style>
         body { display: flex; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        #sidebar { width: 320px; height: 100vh; overflow-y: auto; border-right: 1px solid #ddd; background: #fff; box-shadow: 2px 0 5px rgba(0,0,0,0.1); }
+        #sidebar { width: 320px; height: 100vh; overflow-y: auto; border-right: 1px solid #ddd; background: #fff; box-shadow: 2px 0 5px rgba(0,0,0,0.1); z-index: 1000; }
         #map { flex-grow: 1; height: 100vh; }
         
         /* Tümünü Seç Alanı */
@@ -31,6 +33,45 @@
         .place-item:hover { background: #f0f7ff; color: #007bff; }
         .hidden { display: none; }
         
+        /* Sol Üst (Zoom Altı) Kompakt Rota Araç Çubuğu */
+        .leaflet-bar.compact-action-bar {
+            display: flex;
+            flex-direction: row;
+            background: #fff;
+            border: 2px solid rgba(0,0,0,0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+            margin-top: 5px;
+        }
+        .compact-action-btn {
+            background: #fff;
+            border: none;
+            border-right: 1px solid #ddd;
+            padding: 6px 10px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+            color: #2c3e50;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .compact-action-btn:last-child {
+            border-right: none;
+        }
+        .compact-action-btn:hover {
+            background: #f4f4f4;
+            color: #007bff;
+        }
+        .compact-action-btn:disabled, .compact-action-btn.disabled {
+            color: #bbb;
+            cursor: not-allowed;
+            background: #fafafa;
+        }
+
         /* Popup Düzenlemeleri */
         .popup-content-box {
             max-height: 150px;       
@@ -47,6 +88,18 @@
             margin-bottom: 8px; 
             border-radius: 4px; 
         }
+        .popup-gpx-container {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            padding-top: 6px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            font-weight: 500;
+            color: #2c3e50;
+            cursor: pointer;
+        }
         .btn-container { display: flex; gap: 5px; margin-top: 8px; flex-wrap: wrap; }
         .gmaps-btn { display: inline-block; background-color: #1a73e8; color: #ffffff !important; padding: 5px 8px; font-size: 11px; text-decoration: none; border-radius: 4px; font-weight: 500; }
         .gmaps-btn:hover { background-color: #1557b0; }
@@ -56,7 +109,8 @@
 </head>
 <body>
 <header class="main-header"></header>
-<script src="data/header-loader.js"></script>
+<script src="../data/header-loader.js"></script>
+
 <div id="sidebar">
     <!-- Tümünü Seç / Kaldır Kontrolü -->
     <div class="select-all-container">
@@ -71,56 +125,336 @@
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <!-- Leaflet Fullscreen Eklentisi Scripti -->
 <script src="https://unpkg.com/leaflet-fullscreen@1.0.2/dist/Leaflet.fullscreen.min.js"></script>
+<!-- Leaflet Routing Machine Scripti -->
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 
 <script>
+    let allPlacesRegistry = [];
+    let categoryCheckboxes = [];
+
+    // Rota Geri/İleri Al (Undo/Redo) ve Seçilen Mekanlar (Waypoints) Yönetimi
+    let undoStack = [];
+    let redoStack = [];
+    let isInternalChange = false;
+    let latestCalculatedCoordinates = []; 
+    let selectedWaypointsRegistry = []; 
+
     // Altlık haritalar (Base Layers)
     var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '© OpenStreetMap contributors'
+        attribution: '© OpenStreetMap | Tüm Hakları Saklıdır <a href="https://ferdimen.com/" target="_blank">Ferdimen</a>'
     });
 
     var opentopoLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
         maxZoom: 17,
-        attribution: 'Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)'
+        attribution: '© OpenTopoMap | Tüm Hakları Saklıdır <a href="https://ferdimen.com/" target="_blank">Ferdimen</a>'
     });
 
     var map = L.map('map', {
         center: [39.1667, 35.6667],
         zoom: 6,
-        layers: [osmLayer], // Varsayılan olarak OpenStreetMap açılır
+        layers: [osmLayer], 
         fullscreenControl: true,
         fullscreenControlOptions: {
             position: 'topright'
-        }
+        },
+        zoomControl: true
     });
 
-    // Katman Seçici (Layer Control)
     var baseLayers = {
         "OpenStreetMap": osmLayer,
         "OpenTopoMap": opentopoLayer
     };
-
     L.control.layers(baseLayers).addTo(map);
 
-    var markersGroup = L.markerClusterGroup();
+    // Kompakt Araçlar Çubuğu (Sol Üst)
+    var CompactActionBar = L.Control.extend({
+        options: { position: 'topleft' },
+        onAdd: function (map) {
+            var container = L.DomUtil.create('div', 'compact-action-bar');
+            
+            var btnGpx = L.DomUtil.create('button', 'compact-action-btn', container);
+            btnGpx.innerHTML = '📥 GPX';
+            btnGpx.title = 'Oluşturduğunuz rotayı ve seçilen yerleri GPX olarak indir (G tuşu)';
+            L.DomEvent.on(btnGpx, 'click', function (e) {
+                L.DomEvent.stopPropagation(e);
+                L.DomEvent.preventDefault(e);
+                downloadGPX();
+            });
+
+            var btnUndo = L.DomUtil.create('button', 'compact-action-btn disabled', container);
+            btnUndo.id = 'btn-undo';
+            btnUndo.innerHTML = '↩️';
+            btnUndo.disabled = true;
+            btnUndo.title = 'Son yapılan rota işlemini geri al (Ctrl+Z)';
+            L.DomEvent.on(btnUndo, 'click', function (e) {
+                L.DomEvent.stopPropagation(e);
+                L.DomEvent.preventDefault(e);
+                undoAction();
+            });
+
+            var btnRedo = L.DomUtil.create('button', 'compact-action-btn disabled', container);
+            btnRedo.id = 'btn-redo';
+            btnRedo.innerHTML = '↪️';
+            btnRedo.disabled = true;
+            btnRedo.title = 'Geri alınan işlemi tekrar uygula (Ctrl+Y)';
+            L.DomEvent.on(btnRedo, 'click', function (e) {
+                L.DomEvent.stopPropagation(e);
+                L.DomEvent.preventDefault(e);
+                redoAction();
+            });
+
+            L.DomEvent.disableClickPropagation(container);
+            return container;
+        }
+    });
+    map.addControl(new CompactActionBar());
+
+    var markersGroup = L.markerClusterGroup({
+        spiderfyOnMaxZoom: true,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true
+    });
     map.addLayer(markersGroup);
 
-    let categoryCheckboxes = [];
+    // Leaflet Routing Machine
+    var routingControl = L.Routing.control({
+        waypoints: [],
+        routeWhileDragging: true,
+        lineOptions: {
+            styles: [{ color: '#e74c3c', weight: 5, opacity: 0.8 }]
+        },
+        createMarker: function(i, wp, nWps) {
+            return L.marker(wp.latLng, { draggable: true });
+        },
+        addWaypoints: true,
+        fitSelectedRoutes: false,
+        show: false 
+    }).addTo(map);
 
-    // Önce ana kategoriler listesini çekiyoruz
+    routingControl.on('routesfound', function(e) {
+        if (e.routes && e.routes.length > 0 && e.routes[0].coordinates) {
+            latestCalculatedCoordinates = e.routes[0].coordinates;
+        }
+    });
+
+    function saveState() {
+        if (isInternalChange) return;
+        let currentWps = routingControl.getWaypoints()
+            .filter(wp => wp.latLng !== null)
+            .map(wp => L.latLng(wp.latLng.lat, wp.latLng.lng));
+        
+        undoStack.push(currentWps);
+        redoStack = []; 
+        updateUndoRedoButtons();
+    }
+
+    map.on('click', function(e) {
+        saveState();
+        var currentWaypoints = routingControl.getWaypoints();
+        var validWaypoints = currentWaypoints.filter(wp => wp.latLng !== null).map(wp => wp.latLng);
+        validWaypoints.push(e.latlng);
+        routingControl.setWaypoints(validWaypoints);
+    });
+
+    function undoAction() {
+        if (undoStack.length === 0) return;
+        
+        let currentWps = routingControl.getWaypoints()
+            .filter(wp => wp.latLng !== null)
+            .map(wp => L.latLng(wp.latLng.lat, wp.latLng.lng));
+        redoStack.push(currentWps);
+
+        let previousWps = undoStack.pop();
+        isInternalChange = true;
+        routingControl.setWaypoints(previousWps);
+        isInternalChange = false;
+        
+        updateUndoRedoButtons();
+    }
+
+    function redoAction() {
+        if (redoStack.length === 0) return;
+
+        let currentWps = routingControl.getWaypoints()
+            .filter(wp => wp.latLng !== null)
+            .map(wp => L.latLng(wp.latLng.lat, wp.latLng.lng));
+        undoStack.push(currentWps);
+
+        let nextWps = redoStack.pop();
+        isInternalChange = true;
+        routingControl.setWaypoints(nextWps);
+        isInternalChange = false;
+
+        updateUndoRedoButtons();
+    }
+
+    function updateUndoRedoButtons() {
+        const undoBtn = document.getElementById('btn-undo');
+        const redoBtn = document.getElementById('btn-redo');
+        if (undoBtn) {
+            undoBtn.disabled = undoStack.length === 0;
+            undoBtn.classList.toggle('disabled', undoStack.length === 0);
+        }
+        if (redoBtn) {
+            redoBtn.disabled = redoStack.length === 0;
+            redoBtn.classList.toggle('disabled', redoStack.length === 0);
+        }
+    }
+
+    function getNearestPlaceName(latlng) {
+        if (!allPlacesRegistry || allPlacesRegistry.length === 0) return null;
+        let nearestName = null;
+        let minDistance = Infinity;
+        
+        allPlacesRegistry.forEach(p => {
+            let dist = Math.hypot(p.lat - latlng.lat, p.lng - latlng.lng);
+            if (dist < minDistance) {
+                minDistance = dist;
+                nearestName = p.name;
+            }
+        });
+
+        return minDistance < 0.04 ? nearestName : null;
+    }
+
+    function sanitizeFileName(name) {
+        return name
+            .replace(/İ/g, 'I').replace(/ı/g, 'i')
+            .replace(/Ğ/g, 'G').replace(/ğ/g, 'g')
+            .replace(/Ü/g, 'U').replace(/ü/g, 'u')
+            .replace(/Ş/g, 'S').replace(/ş/g, 's')
+            .replace(/Ö/g, 'O').replace(/ö/g, 'o')
+            .replace(/Ç/g, 'C').replace(/ç/g, 'c')
+            .replace(/[^a-zA-Z0-9-_]/g, '_')
+            .replace(/_+/g, '_');
+    }
+
+    // Popup içindeki GPX checkbox değişimlerini dinle ve listeyi güncelle
+    document.addEventListener('change', function(e) {
+        if (e.target && e.target.classList.contains('gpx-toggle-checkbox')) {
+            let lat = parseFloat(e.target.dataset.lat);
+            let lng = parseFloat(e.target.dataset.lng);
+            let isChecked = e.target.checked;
+
+            if (isChecked) {
+                let placeObj = allPlacesRegistry.find(p => p.lat === lat && p.lng === lng);
+                if (placeObj) {
+                    let exists = selectedWaypointsRegistry.some(p => p.lat === lat && p.lng === lng);
+                    if (!exists) {
+                        selectedWaypointsRegistry.push({
+                            name: placeObj.name,
+                            lat: placeObj.lat,
+                            lng: placeObj.lng,
+                            desc: placeObj.desc
+                        });
+                    }
+                }
+            } else {
+                selectedWaypointsRegistry = selectedWaypointsRegistry.filter(p => !(p.lat === lat && p.lng === lng));
+            }
+        }
+    });
+
+    // GPX Dosyasını Rota ve Tıklanan Pinler (Waypoints) ile İndirme
+    function downloadGPX() {
+        var validWps = routingControl.getWaypoints().filter(wp => wp.latLng !== null);
+
+        if (validWps.length < 2 && selectedWaypointsRegistry.length === 0) {
+            alert("İndirilecek aktif bir rota veya GPX'e eklenmiş mekan yok! Lütfen harita üzerinden rota çizin veya mekan pinlerindeki 'GPX Dosyasına Dahil Et' seçeneğini işaretleyin.");
+            return;
+        }
+
+        let startPlace = validWps.length > 0 ? getNearestPlaceName(validWps[0].latLng) : null;
+        let endPlace = validWps.length > 0 ? getNearestPlaceName(validWps[validWps.length - 1].latLng) : null;
+
+        let startStr = startPlace ? sanitizeFileName(startPlace) : (selectedWaypointsRegistry.length > 0 ? sanitizeFileName(selectedWaypointsRegistry[0].name) : "Rota");
+        let endStr = endPlace ? sanitizeFileName(endPlace) : "";
+
+        let dateStr = new Date().toISOString().slice(0, 10);
+        let fileName = endStr ? `rota_${startStr}_ile_${endStr}_${dateStr}.gpx` : `rota_${startStr}_${dateStr}.gpx`;
+
+        let gpxData = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+        gpxData += `<gpx version="1.1" creator="Gezilecek Yerler Haritası - Ferdimen" xmlns="http://www.topografix.com/GPX/1/1">\n`;
+        gpxData += `  <metadata>\n`;
+        gpxData += `    <name>${startStr}${endStr ? ' - ' + endStr : ''}</name>\n`;
+        gpxData += `    <time>${new Date().toISOString()}</time>\n`;
+        gpxData += `  </metadata>\n`;
+
+        // 1. İşaretlenen Mekanları Waypoint (<wpt>) Olarak Ekle
+        selectedWaypointsRegistry.forEach(pt => {
+            gpxData += `  <wpt lat="${pt.lat}" lon="${pt.lng}">\n`;
+            gpxData += `    <name>${pt.name}</name>\n`;
+            if (pt.desc) {
+                let cleanDesc = pt.desc.replace(/<[^>]*>?/gm, '').trim();
+                gpxData += `    <desc>${cleanDesc}</desc>\n`;
+            }
+            gpxData += `  </wpt>\n`;
+        });
+
+        // 2. Rota Çizgisi Varsa Trkseg Olarak Ekle
+        if (validWps.length >= 2) {
+            gpxData += `  <trk>\n`;
+            gpxData += `    <name>${startStr}${endStr ? ' - ' + endStr : ''}</name>\n`;
+            gpxData += `    <trkseg>\n`;
+
+            if (latestCalculatedCoordinates && latestCalculatedCoordinates.length > 0) {
+                latestCalculatedCoordinates.forEach(function (coord) {
+                    gpxData += `      <trkpt lat="${coord.lat}" lon="${coord.lng}"></trkpt>\n`;
+                });
+            } else {
+                validWps.forEach(function (wp) {
+                    gpxData += `      <trkpt lat="${wp.latLng.lat}" lon="${wp.latLng.lng}"></trkpt>\n`;
+                });
+            }
+
+            gpxData += `    </trkseg>\n`;
+            gpxData += `  </trk>\n`;
+        }
+
+        gpxData += `</gpx>`;
+
+        var blob = new Blob([gpxData], { type: 'application/gpx+xml;charset=utf-8;' });
+        var link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    // Klavye Kısayolları
+    document.addEventListener('keydown', function(event) {
+        if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+
+        if (event.key === 'g' || event.key === 'G') {
+            event.preventDefault();
+            downloadGPX();
+        } else if (event.ctrlKey && (event.key === 'z' || event.key === 'Z')) {
+            event.preventDefault();
+            if (event.shiftKey) {
+                redoAction();
+            } else {
+                undoAction();
+            }
+        } else if (event.ctrlKey && (event.key === 'y' || event.key === 'Y')) {
+            event.preventDefault();
+            redoAction();
+        }
+    });
+
+    // Kategori ve mekan verilerini çekme
     fetch('data/yerler/kategoriler.json')
         .then(res => res.json())
         .then(mainData => {
             const container = document.getElementById('category-container');
             
-            // Kategorileri "baslik" alanına göre Türkçe alfabetik (A-Z) sıralıyoruz
             mainData.categories.sort((a, b) => {
                 const baslikA = a.baslik || "";
                 const baslikB = b.baslik || "";
                 return baslikA.localeCompare(baslikB, 'tr', { sensitivity: 'base' });
             });
 
-            // Sıralanan diziyi döngüye sokup alt JSON dosyalarını asenkron yüklüyoruz
             mainData.categories.forEach((catMeta) => {
                 fetch(catMeta.jsonPath)
                     .then(res => res.json())
@@ -128,7 +462,6 @@
                         const iconUrl = cat.category_icon || 'https://cdn-icons-png.flaticon.com/32/684/684908.png';
                         cat.markers = [];
 
-                        // Kategori altındaki mekanları isme göre Türkçe alfabetik (A-Z) sıralıyoruz
                         if (cat.places && Array.isArray(cat.places)) {
                             cat.places.sort((a, b) => {
                                 const nameA = a.name || "";
@@ -137,20 +470,18 @@
                             });
                         }
 
-                        // Kategori Satırı
                         const catRow = document.createElement('div');
                         catRow.className = 'cat-row';
                         
                         const checkbox = document.createElement('input');
                         checkbox.type = 'checkbox';
-                        checkbox.checked = true; // Varsayılan olarak seçili geliyor
+                        checkbox.checked = true;
                         categoryCheckboxes.push(checkbox);
 
                         const labelDiv = document.createElement('div');
                         labelDiv.className = 'cat-label';
                         labelDiv.innerHTML = `<img src="${iconUrl}" class="cat-icon"> <span>${catMeta.baslik || cat.category_name}</span>`;
                         
-                        // Checkbox harita markerlarını yönetir
                         checkbox.onchange = (e) => {
                             e.stopPropagation(); 
                             cat.markers.forEach(m => {
@@ -166,19 +497,23 @@
                         labelDiv.prepend(checkbox);
                         catRow.appendChild(labelDiv);
                         
-                        // Mekan Listesi (Varsayılan olarak 'hidden' yani kapalı)
                         const list = document.createElement('div');
                         list.className = 'place-list hidden';
                         
-                        // Kategori başlığına (satırına) tıklandığında liste açılıp kapanır
                         catRow.onclick = () => {
                             list.classList.toggle('hidden');
                         };
 
                         container.appendChild(catRow);
                         
-                        // Sıralanmış mekanları döngüye al
                         cat.places.forEach(place => {
+                            allPlacesRegistry.push({
+                                name: place.name,
+                                lat: place.coordinates.lat,
+                                lng: place.coordinates.lng,
+                                desc: place.description || ""
+                            });
+
                             const item = document.createElement('div');
                             item.className = 'place-item';
                             item.innerText = place.name;
@@ -201,6 +536,10 @@
                             if (place.description) popupContent += `<div class="popup-content-box">${place.description}</div>`;
                             if (place.image_url) popupContent += `<img src="${place.image_url}" class="popup-img">`;
                             popupContent += `
+                                <label class="popup-gpx-container">
+                                    <input type="checkbox" class="gpx-toggle-checkbox" data-lat="${place.coordinates.lat}" data-lng="${place.coordinates.lng}">
+                                    <span>GPX Dosyasına Dahil Et</span>
+                                </label>
                                 <div class="btn-container">
                                     <a href="${gmapsUrl}" target="_blank" class="gmaps-btn">📍 Google Haritalar</a>
                                     <a href="${geoUrl}" class="geomaps-btn">🧭 Harita Uygulamasında Aç</a>
@@ -208,11 +547,18 @@
                             
                             marker.bindPopup(popupContent);
                             
-                            // Varsayılan olarak seçili olduğu için harita kümesine doğrudan ekliyoruz
+                            // Popup her açıldığında, kayıtlı durumuna göre checkbox'ı otomatik işaretle
+                            marker.on('popupopen', function() {
+                                let chk = marker.getPopup().getElement().querySelector('.gpx-toggle-checkbox');
+                                if (chk) {
+                                    let isSelected = selectedWaypointsRegistry.some(p => p.lat === place.coordinates.lat && p.lng === place.coordinates.lng);
+                                    chk.checked = isSelected;
+                                }
+                            });
+
                             markersGroup.addLayer(marker);
                             cat.markers.push(marker);
 
-                            // Listeden tıklanınca haritada göster
                             item.onclick = (e) => {
                                 e.stopPropagation(); 
                                 if (!checkbox.checked) {
