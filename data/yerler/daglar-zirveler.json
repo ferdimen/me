@@ -55,6 +55,15 @@
                 "lat": 38.9275311,
                 "lng": 27.4224007
             }
+        },
+        {
+            "name": "Kaz dağı",
+            "description": "1774 metre",
+            "image_url": null,
+            "coordinates": {
+                "lat": 39.7044463,
+                "lng": 26.8291712
+            }
         }
     ]
 }
