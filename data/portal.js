@@ -29,7 +29,10 @@ function initMap() {
     minZoom: minZoomLevel,
     attribution: '© OpenTopoMap | Tüm Hakları Saklıdır <a href="https://ferdimen.com/" target="_blank">Ferdimen</a>'
   });
-
+var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 19,
+    attribution: 'Tiles © Esri | Tüm Hakları Saklıdır <a href="https://ferdimen.com/" target="_blank">Ferdimen</a>'
+});
   map = L.map('map', {
     center: [39.0, 35.0],
     zoom: 6,
@@ -48,7 +51,8 @@ function initMap() {
 
   const baseMaps = {
     "OpenStreetMap": osmLayer,
-    "OpenTopoMap": topoLayer
+    "OpenTopoMap": topoLayer,
+    "Satellite (Uydu)": satellite	
   };
   L.control.layers(baseMaps).addTo(map);
 
