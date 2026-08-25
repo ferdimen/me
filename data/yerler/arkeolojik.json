@@ -2710,6 +2710,15 @@
                 "lat": 39.0912246,
                 "lng": 26.9214579
             }
+        },
+        {
+            "name": "Kırkinler Ören Yeri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.8970753,
+                "lng": 30.831778
+            }
         }
     ]
 }
