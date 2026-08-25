@@ -1074,14 +1074,19 @@ function haritayiKur() {
         maxZoom: 17,
         attribution: 'Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)'
     });
-
+	    // 3. Katman: satellite
+var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 19,
+    attribution: 'Tiles © Esri | Tüm Hakları Saklıdır <a href="https://ferdimen.com/" target="_blank">Ferdimen</a>'
+});
     // Varsayılan olarak OSM haritasını ekrana ekle
     osmKatmani.addTo(yerlerHaritasi);
 
     // Sağ üstteki Katman Kontrolcüsü (Seçici)
     const haritaTurleri = {
         "OpenStreetMap": osmKatmani,
-        "OpenTopoMap (Topoğrafik)": topoKatmani
+        "OpenTopoMap (Topoğrafik)": topoKatmani,
+		"Satellite (Uydu)": satellite	
     };
     L.control.layers(haritaTurleri).addTo(yerlerHaritasi);
 
