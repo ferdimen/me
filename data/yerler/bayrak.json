@@ -1,8 +1,15 @@
-    {
-            "category_name": "Bayrak",
-			"category_icon": "img/yerler/ikon/bayrak.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Bayrak",
+    "category_icon": "img/yerler/ikon/bayrak.png",
+    "places": [
+        {
+            "name": "Kent Savunması ve Kırsal Alan",
+            "description": "Kent Savunması ve Kırsal Alan\nPessinus, doğal bir vadi içerisinde kurulduğu için surlarla çevrilmemiştir. Bunun yerine stratejik noktalarda yer alan 6–7 gözetleme kulesi aracılığıyla güvenlik sağlanmıştır. Antik kentin kontrol ettiği kırsal bölge, kuzeyde Tekören'den doğuda Çaykoz ve Dinek köylerine kadar uzanır.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 39.3387531,
+                "lng": 31.692405
+            }
         }
-      
+    ]
+}
