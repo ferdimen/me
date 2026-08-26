@@ -145,6 +145,15 @@
                 "lat": 41.234167,
                 "lng": 29.1121575
             }
+        },
+        {
+            "name": "Anadolu Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 41.2173424,
+                "lng": 29.1520795
+            }
         }
     ]
 }
