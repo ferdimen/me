@@ -37,6 +37,15 @@
                 "lat": 41.3133777,
                 "lng": 31.399489
             }
+        },
+        {
+            "name": "Zonguldak Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 41.4646663,
+                "lng": 31.7876181
+            }
         }
     ]
 }
