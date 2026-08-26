@@ -46,6 +46,15 @@
                 "lat": 38.396887,
                 "lng": 29.728792
             }
+        },
+        {
+            "name": "Lozan Anıtı",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 41.6525568,
+                "lng": 26.5200278
+            }
         }
     ]
 }
