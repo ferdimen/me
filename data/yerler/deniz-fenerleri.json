@@ -91,6 +91,15 @@
                 "lat": 40.0440508,
                 "lng": 26.1745352
             }
+        },
+        {
+            "name": "Polente Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 39.8364737,
+                "lng": 25.9636196
+            }
         }
     ]
 }
