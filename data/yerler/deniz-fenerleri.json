@@ -118,6 +118,15 @@
                 "lat": 36.2630963,
                 "lng": 29.3081975
             }
+        },
+        {
+            "name": "Babakale Deniz Feneri",
+            "description": "Babakale Feneri, Çanakkale'nin Ayvacık ilçesinde bulunan Babakale Köyü'nde yer alan deniz feneridir.\n\nÖzellikleri\nDeniz fenerinin yerden yüksekliği 10 metre, denizden yüksekliği de 32 metredir.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 39.4799509,
+                "lng": 26.0640362
+            }
         }
     ]
 }
