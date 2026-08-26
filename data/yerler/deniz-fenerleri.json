@@ -190,6 +190,15 @@
                 "lat": 36.0172905,
                 "lng": 32.8029549
             }
+        },
+        {
+            "name": "Karataş Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.5398419,
+                "lng": 35.3402254
+            }
         }
     ]
 }
