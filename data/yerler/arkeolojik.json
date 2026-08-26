@@ -1002,15 +1002,6 @@
             }
         },
         {
-            "name": "Nemrut Dağı",
-            "description": "<br><br>",
-            "image_url": "https://lh3.googleusercontent.com/umsh/AN6v0v5ttQ3sH_qAYzYma9MXNMmv5TTELBz9toTvgQiHi2qO1z9FXYLKR6D6qYWMhccRY3IAS1Lm8NIcsfAV2l2yT5S7o7qGDzFGKVxF9lPleRYA53VBEIKVfcpUTzMIuaEmjw",
-            "coordinates": {
-                "lat": 37.9805364,
-                "lng": 38.7403035
-            }
-        },
-        {
             "name": "Hasankeyf",
             "description": "",
             "image_url": null,
