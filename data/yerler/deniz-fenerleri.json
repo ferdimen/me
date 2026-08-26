@@ -136,6 +136,15 @@
                 "lat": 36.6866952,
                 "lng": 27.3633921
             }
+        },
+        {
+            "name": "Rumeli  Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 41.234167,
+                "lng": 29.1121575
+            }
         }
     ]
 }
