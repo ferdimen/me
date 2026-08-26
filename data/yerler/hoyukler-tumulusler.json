@@ -1,8 +1,15 @@
-    {
-            "category_name": "Höyükler ve Tümülüsler",
-			"category_icon": "img/yerler/ikon/hoyukler-tumulusler.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Höyükler ve Tümülüsler",
+    "category_icon": "img/yerler/ikon/hoyukler-tumulusler.png",
+    "places": [
+        {
+            "name": "Küllüoba",
+            "description": "İlk Tunç Çağı Höyüğü",
+            "image_url": null,
+            "coordinates": {
+                "lat": 39.5562554,
+                "lng": 30.744043
+            }
         }
-      
+    ]
+}
