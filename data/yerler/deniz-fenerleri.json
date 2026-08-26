@@ -109,6 +109,15 @@
                 "lat": 38.6584532,
                 "lng": 26.3625795
             }
+        },
+        {
+            "name": "Patara Deniz Feneri",
+            "description": "Patara deniz feneri, Akdeniz'i Xanthos Nehri'ne bağlayan eski Patara limanının güneybatı ucunda yer alan bir Romalı deniz feneriydi. Ateş deniz seviyesinden yaklaşık 25 metre yükseklikte yanmış ve 4 deniz mili menzile sahip olmuştur.\n\nPatara, klasik antik çağda bir devlet olan Likya'nın önemli bir liman ve ticaret kentiydi. Bu kentin kalıntıları, Türkiye'de bugünkü Kaş, Antalya yakınlarındaki Gelemiş kasabası yakınlarında yer almaktadır.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.2630963,
+                "lng": 29.3081975
+            }
         }
     ]
 }
