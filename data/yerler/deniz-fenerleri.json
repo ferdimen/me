@@ -163,6 +163,15 @@
                 "lat": 40.9925323,
                 "lng": 29.0149033
             }
+        },
+        {
+            "name": "Kumkapı Radar İstasyonu",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 41.0012408,
+                "lng": 28.9778379
+            }
         }
     ]
 }
