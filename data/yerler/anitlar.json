@@ -10,6 +10,15 @@
                 "lat": 41.6749593,
                 "lng": 26.5762764
             }
+        },
+        {
+            "name": "Germencik Kanlıbahçe Şehitlik Anıtı",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.863293,
+                "lng": 27.584253
+            }
         }
     ]
 }
