@@ -28,6 +28,15 @@
                 "lat": 41.1359988,
                 "lng": 37.68262
             }
+        },
+        {
+            "name": "Ölüce Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 41.3133777,
+                "lng": 31.399489
+            }
         }
     ]
 }
