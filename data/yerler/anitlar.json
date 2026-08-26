@@ -19,6 +19,15 @@
                 "lat": 37.863293,
                 "lng": 27.584253
             }
+        },
+        {
+            "name": "Erbeyli Şehitler ve İlkkurşun Abidesi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.8633718,
+                "lng": 27.6768446
+            }
         }
     ]
 }
