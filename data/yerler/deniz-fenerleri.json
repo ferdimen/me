@@ -199,6 +199,15 @@
                 "lat": 36.5398419,
                 "lng": 35.3402254
             }
+        },
+        {
+            "name": "Marmara Ereğlisi Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.9667426,
+                "lng": 27.9617903
+            }
         }
     ]
 }
