@@ -19,6 +19,15 @@
                 "lat": 38.5802854,
                 "lng": 28.0072591
             }
+        },
+        {
+            "name": "Alyattes'in Tümülüsü",
+            "description": "Alyattis (ö. MÖ y. 560), fetihleriyle Orta Anadolu'nun batısında güçlü, ama kısa ömürlü Lidya İmparatorluğu'nu kuran kraldır. Babası Kral Sadyattes'in yerine geçtikten kısa süre sonra, Anadolu'nun güneybatı kıyısındaki Yunan kenti Miletos'a karşı aralıksız beş yıl akınlar düzenledi; kentin çevresindeki tarım alanlarını yakıp yıktı. Sonra doğuya yönelerek beş yıl boyunca da Medler ile savaştı.[1]\n\nAlyattis, elektrumdan yapılmış madeni paraları basan ilk hükümdardı. Bu nedenle Alyattis'ten bazen madeni paranın veya para biriminin yaratıcısı olarak bahsedilir.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.5722759,
+                "lng": 28.0451292
+            }
         }
     ]
 }
