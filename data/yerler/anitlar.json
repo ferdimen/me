@@ -37,6 +37,15 @@
                 "lat": 37.8710731,
                 "lng": 28.2343904
             }
+        },
+        {
+            "name": "Cabar Şehitler Anıtı",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.396887,
+                "lng": 29.728792
+            }
         }
     ]
 }
