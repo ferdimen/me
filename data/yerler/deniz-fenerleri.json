@@ -82,6 +82,15 @@
                 "lat": 40.474455,
                 "lng": 27.2856939
             }
+        },
+        {
+            "name": "Mehmetçik Burnu Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.0440508,
+                "lng": 26.1745352
+            }
         }
     ]
 }
