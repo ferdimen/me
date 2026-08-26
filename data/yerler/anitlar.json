@@ -28,6 +28,15 @@
                 "lat": 37.8633718,
                 "lng": 27.6768446
             }
+        },
+        {
+            "name": "Atça Çomaklı Ovası Şehitler Abidesi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.8710731,
+                "lng": 28.2343904
+            }
         }
     ]
 }
