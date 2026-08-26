@@ -127,6 +127,15 @@
                 "lat": 39.4799509,
                 "lng": 26.0640362
             }
+        },
+        {
+            "name": "Deveboynu  Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.6866952,
+                "lng": 27.3633921
+            }
         }
     ]
 }
