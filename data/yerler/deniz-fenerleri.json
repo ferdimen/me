@@ -172,6 +172,15 @@
                 "lat": 41.0012408,
                 "lng": 28.9778379
             }
+        },
+        {
+            "name": "Gelidonya Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.2191145,
+                "lng": 30.4097003
+            }
         }
     ]
 }
