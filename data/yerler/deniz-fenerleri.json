@@ -1,8 +1,15 @@
-    {
-            "category_name": "Deniz Fenerleri",
-			"category_icon": "img/yerler/ikon/deniz-fenerleri.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Deniz Fenerleri",
+    "category_icon": "img/yerler/ikon/deniz-fenerleri.png",
+    "places": [
+        {
+            "name": "Hoşköy (Hora) Deniz Feneri",
+            "description": "Hora Feneri ya da yeni adıyla Hoşköy Feneri, Tekirdağ'ın Şarköy ilçesinin Hoşköy Mahallesi'nde bulunan, 1861 yılından beri aktif olan rota feneridir. Fener adını Hoşköy'ün eski adı olan \"Hora\"dan almaktadır.\n\nFransa'dan getirilen özel demir malzemeler, döküm paneller ve vidalar kullanılarak 1861 yılında Sultan I. Abdülmecid'in talimatıyla Fransız asıllı Mişel Paşa tarafından inşa edilmiştir.[1][2] Kendi ekseni etrafında 360 derece dönebilen ve 96 kristalden meydana gelen bir fenere sahip[3] olan Hora Feneri'nin yüksekliği 20 metre; deniz seviyesinden yüksekliği ise 50 metredir. Kendi etrafında 20 saniyede tam dönüş yapmaktadır. Fener ışığının görünüş mesafesi 19 mil'dir (40 km).",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.7028419,
+                "lng": 27.3068431
+            }
         }
-      
+    ]
+}
