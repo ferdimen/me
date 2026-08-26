@@ -73,6 +73,15 @@
                 "lat": 40.5338909,
                 "lng": 28.7818837
             }
+        },
+        {
+            "name": "Karaburun Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.474455,
+                "lng": 27.2856939
+            }
         }
     ]
 }
