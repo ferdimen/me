@@ -55,6 +55,15 @@
                 "lat": 41.8844978,
                 "lng": 28.0563676
             }
+        },
+        {
+            "name": "Kıyıköy Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 41.6335871,
+                "lng": 28.0994251
+            }
         }
     ]
 }
