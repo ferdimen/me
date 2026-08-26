@@ -64,6 +64,15 @@
                 "lat": 41.6335871,
                 "lng": 28.0994251
             }
+        },
+        {
+            "name": "Armutlu Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.5338909,
+                "lng": 28.7818837
+            }
         }
     ]
 }
