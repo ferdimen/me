@@ -154,6 +154,15 @@
                 "lat": 41.2173424,
                 "lng": 29.1520795
             }
+        },
+        {
+            "name": "İnceburun Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.9925323,
+                "lng": 29.0149033
+            }
         }
     ]
 }
