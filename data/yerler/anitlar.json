@@ -55,6 +55,15 @@
                 "lat": 41.6525568,
                 "lng": 26.5200278
             }
+        },
+        {
+            "name": "Seyit Onbaşı Anıtı",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.1407113,
+                "lng": 26.3754165
+            }
         }
     ]
 }
