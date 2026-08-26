@@ -46,6 +46,15 @@
                 "lat": 41.4646663,
                 "lng": 31.7876181
             }
+        },
+        {
+            "name": "Limanköy Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 41.8844978,
+                "lng": 28.0563676
+            }
         }
     ]
 }
