@@ -19,6 +19,15 @@
                 "lat": 42.0189778,
                 "lng": 33.3381951
             }
+        },
+        {
+            "name": "Yason Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 41.1359988,
+                "lng": 37.68262
+            }
         }
     ]
 }
