@@ -181,6 +181,15 @@
                 "lat": 36.2191145,
                 "lng": 30.4097003
             }
+        },
+        {
+            "name": "Anamur Deniz Feneri",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.0172905,
+                "lng": 32.8029549
+            }
         }
     ]
 }
