@@ -10,6 +10,15 @@
                 "lat": 40.7028419,
                 "lng": 27.3068431
             }
+        },
+        {
+            "name": "Kerempe Deniz Feneri",
+            "description": "Kerempe Feneri, Kastamonu ilinin Cide ilçesine bağlı Aydıncık köyünde yer alan tarihi bir deniz feneridir. 1885 yılında Osmanlı Dönemi'nde mimar Mişel Paşa tarafından inşa edilen yapı, kâgir bir kule ve gardiyan lojmanından oluşan bir kompleks niteliğindedir. Deniz seviyesinden 82 metre yükseklikte konumlanan ve 20 deniz mili görüş mesafesine sahip olan fener, zaman içerisinde petrol, bütan gazı ve son olarak elektrik enerjisiyle çalışan sistemlerle modernize edilmiştir. Günümüzde ulusal miras olarak koruma altında bulunan yapı, Nâzım Hikmet'in Kurtuluş Savaşı Destanı eserinde de yer almaktadır.",
+            "image_url": null,
+            "coordinates": {
+                "lat": 42.0189778,
+                "lng": 33.3381951
+            }
         }
     ]
 }
