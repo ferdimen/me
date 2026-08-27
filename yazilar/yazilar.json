@@ -169,13 +169,14 @@
     "id": "2026-anadolu-engeregi",
     "baslik": "Anadolu Engereği Bisiklet Turu",
     "url": "yazilar/2026-anadolu-engeregi.html",
-    "tarih": "2026-09-1,",
+    "tarih": "2026-09-10",
     "kategori": "Bisiklet Turları > [iç Anadolu, Karadeniz (Orta)]",
     "ozel": "1, mücadele, macera, zor, yakında",
     "kapakresmi": "https://lh3.googleusercontent.com/pw/AP1GczP7mboL4Ce0SgOt77mK4KGMd8SusyAeSa9-IfpJTr4G3pqtQaiQX4rr2V6ucEdLTh0mAU7ZdkzEBL13O4FTtEFZ9lHlAyXLewSUob5M5UGG41yFfzw=w1920-h1080",
     "etiketler": [
-      "bartın, sinop, samsun, kastamonu, karabük, çankırı, merzifon, tokat, sulusaray, sivas, kayseri, darande, tufanbeyli, antakya, karataş, adana, aladağ, çamlıyayla, mersin, mut, ermenek, seydişehir, derebucak, akseki, antalya"
-    ]
+      "bartın,sinop,samsun,kastamonu,karabük,çankırı,merzifon,tokat,sulusaray,sivas,kayseri,darande,tufanbeyli,antakya,karataş,adana,aladağ,çamlıyayla,mersin,mut,ermenek,seydişehir,derebucak,akseki,antalya,"
+    ],
+    "konum": ""
   },
   {
     "id": "2025-anadolu-irfani",
