@@ -91,6 +91,15 @@
                 "lat": 37.1885616,
                 "lng": 27.4342346
             }
+        },
+        {
+            "name": "Gökova Körfezi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.9299287,
+                "lng": 27.9615784
+            }
         }
     ]
 }
