@@ -100,6 +100,15 @@
                 "lat": 36.9299287,
                 "lng": 27.9615784
             }
+        },
+        {
+            "name": "Hisarönü Körfezi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.7410335,
+                "lng": 28.0312729
+            }
         }
     ]
 }
