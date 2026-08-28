@@ -73,6 +73,15 @@
                 "lat": 38.4533871,
                 "lng": 26.8135071
             }
+        },
+        {
+            "name": "kuşadası Körfezi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 37.9343484,
+                "lng": 27.2179413
+            }
         }
     ]
 }
