@@ -46,6 +46,15 @@
                 "lat": 40.5491894,
                 "lng": 26.5518951
             }
+        },
+        {
+            "name": "Edremit Körfezi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 39.4826467,
+                "lng": 26.7448425
+            }
         }
     ]
 }
