@@ -118,6 +118,15 @@
                 "lat": 36.6584013,
                 "lng": 28.9785004
             }
+        },
+        {
+            "name": "Antalya Körfezi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.6946445,
+                "lng": 30.8097839
+            }
         }
     ]
 }
