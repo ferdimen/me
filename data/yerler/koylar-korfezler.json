@@ -19,6 +19,15 @@
                 "lat": 40.4165348,
                 "lng": 28.9400482
             }
+        },
+        {
+            "name": "Bandırma Körfezi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.3941006,
+                "lng": 27.9880142
+            }
         }
     ]
 }
