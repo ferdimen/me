@@ -1,8 +1,15 @@
-    {
-            "category_name": "Koylar / Körfezler",
-			"category_icon": "img/yerler/ikon/koylar-korfezler.png",			
-            "places": [
-
-            ]
+{
+    "category_name": "Koylar / Körfezler",
+    "category_icon": "img/yerler/ikon/koylar-korfezler.png",
+    "places": [
+        {
+            "name": "İzmit Körfezi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.7419572,
+                "lng": 29.6582794
+            }
         }
-      
+    ]
+}
