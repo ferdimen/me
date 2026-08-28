@@ -127,6 +127,15 @@
                 "lat": 36.6946445,
                 "lng": 30.8097839
             }
+        },
+        {
+            "name": "Mersin Körfezi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.7034532,
+                "lng": 34.6742249
+            }
         }
     ]
 }
