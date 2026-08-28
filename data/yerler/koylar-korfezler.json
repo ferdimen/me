@@ -64,6 +64,15 @@
                 "lat": 38.8899138,
                 "lng": 26.9456863
             }
+        },
+        {
+            "name": "İzmir Körfezi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.4533871,
+                "lng": 26.8135071
+            }
         }
     ]
 }
