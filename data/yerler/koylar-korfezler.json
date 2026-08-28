@@ -136,6 +136,15 @@
                 "lat": 36.7034532,
                 "lng": 34.6742249
             }
+        },
+        {
+            "name": "İskenderun Körfezi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.6329555,
+                "lng": 35.8827209
+            }
         }
     ]
 }
