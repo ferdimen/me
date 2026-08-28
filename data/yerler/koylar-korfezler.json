@@ -55,6 +55,15 @@
                 "lat": 39.4826467,
                 "lng": 26.7448425
             }
+        },
+        {
+            "name": "Çandarlı Körfezi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 38.8899138,
+                "lng": 26.9456863
+            }
         }
     ]
 }
