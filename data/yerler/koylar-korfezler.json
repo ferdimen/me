@@ -109,6 +109,15 @@
                 "lat": 36.7410335,
                 "lng": 28.0312729
             }
+        },
+        {
+            "name": "Fethiye Körfezi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 36.6584013,
+                "lng": 28.9785004
+            }
         }
     ]
 }
