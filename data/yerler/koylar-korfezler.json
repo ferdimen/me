@@ -10,6 +10,15 @@
                 "lat": 40.7419572,
                 "lng": 29.6582794
             }
+        },
+        {
+            "name": "Gemlik Körfezi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.4165348,
+                "lng": 28.9400482
+            }
         }
     ]
 }
