@@ -37,6 +37,15 @@
                 "lat": 40.3632393,
                 "lng": 27.8094864
             }
+        },
+        {
+            "name": "Saros Körfezi",
+            "description": "",
+            "image_url": null,
+            "coordinates": {
+                "lat": 40.5491894,
+                "lng": 26.5518951
+            }
         }
     ]
 }
