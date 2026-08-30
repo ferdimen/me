@@ -68,7 +68,7 @@ function createActiveTourToast(data) {
     const truncatedDesc = truncateText(data.aciklama || "", charLimit);
 
     const toast = document.createElement('a');
-    toast.href = "#takip";
+    toast.href = "https://www.polarsteps.com/ferdimen/27169252-tissss";
     toast.className = 'toast-card active-tour-card';
 
     const bgImage = data.kapakresmi || data.arkaplanResmi || data.bgImage;
