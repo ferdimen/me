@@ -81,9 +81,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (eskiPin) eskiPin.remove();
 
                 if (isTourActive) {
-                    // Pini Polarsteps ikonunun dışına, bağımsız bir <a> etiketi olarak ekliyoruz
+                    // Pini Polarsteps ikonunun dışına, bağımsız bir <a> etiketi olarak ekliyoruz  <a href="/#takip" class="nav-live-link" title="Canlı Tur Takibi">
                     const pinHTML = `
-                        <a href="/#takip" class="nav-live-link" title="Canlı Tur Takibi">
+					<a href="${pLink}" class="nav-live-link" title="Canlı Tur Takibi">
                             <span class="nav-live-pin-container">
                                 <span class="nav-live-pin"></span>
                                 <span class="nav-live-pulse"></span>
