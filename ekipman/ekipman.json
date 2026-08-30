@@ -787,7 +787,9 @@
     "tarih": "2024-04",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/f9be0a85-ff9d-4074-8356-14eec6c41bca.jpg",
     "aciklama": "aslında çok işlevsel bir çanta.\nfermuarı bozulduğu için emekli etmiştim ama küçük bir tamirat operasyonundan sonra tekrar Varsayılan Ekipman olarak envantere ekledim.",
-    "bagli_urunler": [],
+    "bagli_urunler": [
+      4
+    ],
     "yorum": "",
     "varsayilan": true,
     "agirlik": "100",
