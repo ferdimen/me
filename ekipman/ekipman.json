@@ -106,12 +106,16 @@
     "kategori": "Diğer",
     "tarih": "2011-04",
     "kapakresmi": "https://public.flourish.studio/uploads/668469/2ff9eda5-ac19-4d67-b363-e8b4667f487d.jpg",
-    "aciklama": "Tenha, ıssız ve riskli bulduğum ortamlarda silah olarak kullanmaktan çekinmiyorum. Artıları saymakla bitmez ama bir tane eksisi var oda ağırlığı. Çoğu zaman yanıma almaktan imtina ediyorum.",
+    "aciklama": "Su geçirmeyen çantaları almadan evvel çoğunlukla çantaları yağmurdan korumak için kullanıyordum. Yada Bisikleti veya çantaları otobüse yerleştirmeden evvel tüm çantaları veya bisikleti içine koyuyorum.",
+    "bagli_urunler": [
+      54,
+      55,
+      224
+    ],
     "yorum": "",
     "varsayilan": true,
     "agirlik": "0",
-    "etiketler": "diğer, çöp poşeti",
-    "id": 7
+    "etiketler": "diğer, çöp poşeti"
   },
   {
     "baslik": "Plastik Cırt Kelepçe",
