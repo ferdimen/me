@@ -1,0 +1,93 @@
+[
+{
+    "id": 1,
+    "marka": "YalAk Süt & Yoğurt Endüstrileri A.Ş.",
+    "kategori": "Gıda & İçecek",
+    "urun": "Litrelik yayık ayranı fıçısı",
+    "butce": 150000,
+    "durum": "REDDEDİLDİ",
+    "gerekce": "Kendi azığımızı kendimiz taşırız, yol üstündeki yalak başı çeşmeler bize yeter."
+  },
+  {
+    "id": 2,
+    "marka": "Anten Mobil Şebekeler A.Ş.",
+    "kategori": "Telekomünikasyon",
+    "urun": "Sınırsız Veri Paketi",
+    "butce": 300000,
+    "durum": "REDDEDİLDİ",
+    "gerekce": "Şebekenin çekmediği yerlerde yalan beyanda bulunma talebi."
+  },
+  {
+    "id": 3,
+    "marka": "Gofrettin & Çikolata Holding A.Ş.",
+    "kategori": "Gıda & İçecek",
+    "urun": "Koli koli gofret ve çikolata.",
+    "butce": 280000,
+    "durum": "REDDEDİLDİ",
+    "gerekce": "Aman ağzımızın tadı kaçmasın Ali Rıza Bey."
+  },
+    {
+    "marka": "Tırt Bisiklet Kadro A.Ş.",
+    "kategori": "BİSİKLET & EKİPMAN",
+    "urun": "Alüminyum Kadro Bisikleti",
+    "butce": 165000,
+    "durum": "REDDEDİLDİ",
+	"gerekce": "Ülke genelinde pek çok köye hurdacıların girmesi yasak olduğu için hareket alanını daralttığından teklif reddedilmiştir."
+  },
+      {
+    "id": 5,
+    "marka": "Yerel Bisikletçi",
+    "kategori": "Yerel Bisikletçi",
+    "urun": "Ücretsiz malzeme desteği",
+    "butce": 20000,
+    "durum": "REDDEDİLDİ",
+    "gerekce": "Zaten sahip olduğum şeyleri teklif etti."
+  },
+    {
+    "id": 6,
+    "marka": "Ganos Bisiklet / İslam Gölge",
+    "kategori": "Yerel bisikletçi",
+    "urun": "Her Türlü Destek",
+    "butce": 0,
+    "durum": "ONAYLANDI",
+    "gerekce": "İlk günden beri her konuda tek testekçimdir. Onun desteğini milyon dolarlik firmalara değişmem."
+  },
+   {
+    "id": 7,
+    "marka": "Gölge Etme Şemsiyeleri A.Ş.",
+    "kategori": "Sektör Devi",
+    "urun": "Güneşli turlarda bisikletin arkasına takılacak 2 metrelik dev şemsiye sponsoru olma talebi.",
+    "butce": 80000,
+    "durum": "REDDEDİLDİ",
+    "gerekce": "Rüzgarda yelken açıp uçmamak için."
+  },
+  {
+    "id": 8,
+    "marka": "Akıllı Zilli Kilit Sistemleri A.Ş.",
+    "kategori": "Sektör Devi",
+    "urun": "Her pedal devrinde yüksek sesle marka sloganı okuyan akıllı zil.",
+    "butce": 50000,
+    "durum": "REDDEDİLDİ",
+    "gerekce": "Kuş sesleri ve zincir tıkırtısı daha iyi bir playlist."
+  },  
+  {
+    "id": 9,
+    "marka": "Uzay Kampı Ve Stratejik Yön Bulma Kulübü",
+    "kategori": "Sektör Devi",
+    "urun": "GPS yerine pusula ve usturlap kullanarak tur yapma şartıyla ekipman desteği.",
+    "butce": 50000,
+    "durum": "REDDEDİLDİ",
+    "gerekce": "Yok artık."
+  },
+      {
+    "id": 4,
+    "marka": "Gıyabi Reddedilenler Kulübü #01",
+    "kategori": "Önleyici Reddediş",
+    "urun": "",
+    "butce": 80000,
+    "durum": "REDDEDİLDİ",
+    "gerekce": "Cevabın netliğini bildiklerinden 'O hiç olmaz' deyip konuyu kapattılar. Kendilerine zahmet vermedikleri için teşekkürler."
+  }
+]
+
+
