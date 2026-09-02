@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ferdimen // Adı yalnızlığından gelen kahraman - Sponsor</title>
+  <link rel="icon" type="image/png" href="http://www.ferdimen.com/img/logo.png">
+  <link rel="stylesheet" href="https://www.ferdimen.com/data/css.css">
+  <style>
+    :root {
+      --bg: #fafafa;
+      --card-bg: #ffffff;
+      --accent-red: #d63031;
+      --accent-green: #27ae60;
+      --text: #2d3436;
+      --text-muted: #636e72;
+      --border: #dfe6e9;
+      --input-bg: #f8f9fa;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header { margin-bottom: 30px; border-bottom: 2px solid var(--border); padding-bottom: 20px; }
+    h1 { font-size: 2.2rem; color: #1e272e; margin-bottom: 8px; }
+    .subtitle { color: var(--text-muted); font-size: 1.05rem; font-style: italic; }
+
+    .manifesto {
+      background: var(--card-bg);
+      border-left: 4px solid var(--accent-red);
+      padding: 28px;
+      margin-bottom: 35px;
+      border-radius: 0 8px 8px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+      border-left-width: 4px;
+    }
+
+    .manifesto h2 { font-size: 1.3rem; color: var(--accent-red); margin-bottom: 14px; }
+    .manifesto p { margin-bottom: 12px; font-size: 0.98rem; }
+    .manifesto-link { color: var(--accent-red); text-decoration: underline; font-weight: 700; }
+
+    .counter-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-bottom: 40px;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .counter-item { text-align: center; }
+    .counter-value { font-size: 1.4rem; font-weight: 800; color: var(--accent-red); }
+    .counter-value.green { color: var(--accent-green); }
+    .counter-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; margin-top: 4px; }
+
+    .section-title {
+      font-size: 1.6rem;
+      color: #1e272e;
+      margin-bottom: 20px;
+      padding-bottom: 5px;
+      border-bottom: 3px solid var(--border);
+      display: inline-block;
+    }
+
+    .section-title.accepted { border-color: var(--accent-green); color: var(--accent-green); }
+    .section-title.rejected { border-color: var(--accent-red); color: var(--accent-red); }
+
+    .grid { display: grid; gap: 20px; margin-bottom: 50px; }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 22px;
+      border-radius: 8px;
+      position: relative;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    /* Durum Renk Stilleri */
+    .card.status-reddedildi { border-left: 4px solid var(--accent-red); }
+    .card.status-onaylandi { border-left: 4px solid var(--accent-green); }
+
+    .badge {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
+    .badge-reddedildi { background: #ffeaa7; color: var(--accent-red); }
+    .badge-onaylandi { background: #d4edda; color: var(--accent-green); }
+
+    .marka-adi { font-size: 1.2rem; color: #1e272e; margin-bottom: 4px; padding-right: 110px; }
+    .kategori { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px; text-transform: uppercase; font-weight: 600; }
+    .detail { margin-bottom: 8px; font-size: 0.95rem; }
+    .gerekce { background: #f8f9fa; padding: 12px; border-radius: 6px; font-size: 0.92rem; color: #4a5568; border: 1px solid #edf2f7; margin-bottom: 14px; }
+
+    .btn-cert {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 8px 14px;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .btn-cert.reddedildi { color: var(--accent-red); border: 1px solid var(--accent-red); }
+    .btn-cert.reddedildi:hover { background: var(--accent-red); color: #fff; }
+
+    .btn-cert.onaylandi { color: var(--accent-green); border: 1px solid var(--accent-green); }
+    .btn-cert.onaylandi:hover { background: var(--accent-green); color: #fff; }
+
+    /* SRS Accordion */
+    .srs-section { margin-bottom: 50px; }
+    .srs-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; margin-bottom: 10px; overflow: hidden; }
+    .srs-header { padding: 16px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fff; }
+    .srs-body { padding: 16px; display: none; background: #f8f9fa; border-top: 1px solid var(--border); font-size: 0.95rem; }
+    .srs-item.active .srs-body { display: block; }
+    .srs-item.active .srs-icon { transform: rotate(180deg); }
+    .srs-icon { transition: transform 0.2s; }
+
+    /* Form & Slider */
+    .form-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 32px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      scroll-margin-top: 20px;
+    }
+
+    .form-group { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 6px; font-size: 0.88rem; color: #2d3436; font-weight: 600; }
+    input, select, textarea { width: 100%; padding: 12px; background: var(--input-bg); border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: 0.95rem; }
+    
+    .slider-labels { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-muted); font-weight: 600; margin-top: 6px; }
+    .slider-status { margin-top: 10px; font-size: 0.88rem; font-weight: 700; color: #2d3436; background: #f1f2f6; padding: 12px; border-radius: 6px; border-left: 4px solid var(--accent-red); }
+
+    .checkbox-group { display: flex; gap: 10px; align-items: flex-start; margin-top: 20px; }
+    .checkbox-group input { width: auto; margin-top: 4px; }
+    .checkbox-group label { font-size: 0.85rem; font-weight: 500; color: #4a5568; line-height: 1.4; }
+
+    button.btn-submit { background: var(--accent-red); color: #ffffff; border: none; padding: 14px 20px; font-size: 0.95rem; font-weight: 700; cursor: pointer; border-radius: 6px; width: 100%; margin-top: 15px; }
+    button.btn-submit:hover { background: #b22222; }
+
+    /* Modal / Popup Stilleri */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    .modal-content {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      max-width: 850px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .modal-actions { display: flex; gap: 12px; justify-content: center; }
+
+    .btn-modal-save {
+      background: #27ae60;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .btn-modal-save:hover { background: #219150; }
+
+    .btn-modal-close {
+      background: #636e72;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .btn-modal-close:hover { background: #2d3436; }
+
+    .empty-msg { font-style: italic; color: var(--text-muted); margin-bottom: 30px; }
+
+    footer { margin-top: 60px; text-align: center; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 20px; }
+	.btn-modal-print {
+  background: #2980b9;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.btn-modal-print:hover {
+  background: #3498db;
+}
+
+/* Sayfa normal yazdırılmak istendiğinde (Ctrl+P) gereksiz web ögelerini gizleme stili */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .modal-overlay.active, .modal-overlay.active * {
+    visibility: visible;
+  }
+  .modal-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: transparent;
+  }
+  .modal-actions {
+    display: none !important; /* Yazdırılırken butonlar görünmesin */
+  }
+}
+  </style>
+</head>
+<body>
+<header class="main-header"></header>
+
+<script src="data/header-loader.js"></script><br><br>
+  <header>
+    <h1>Sponsorlarımız</h1>
+    <p class="subtitle">"<a href="#reddedilen-listesi" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--accent-red);">Vazgeçtiklerim</a>, çoğunluğun bir ömür aradıklarıdır."</p>
+  </header>
+
+<section class="manifesto">
+    <h2>Sponsor Çağrı Metni & Bağımsızlık Manifestosu</h2>
+    
+    <p><strong>"İçerik Üreticilerinin Kapılalrında Yatılmasına Alışmış Sayın Markalar ve Pazarlama Departmanları,"</strong></p>
+    
+    <p>Yıllardır bütçelerinizle, koli koli ürünlerinizle, 'sponsorluk sözleşmesi' adı altında sunduğunuz prangalarınızla içerik üreticilerinin kapısını çalıp onları birer yürüyen reklam panosuna dönüştürmeye alıştınız. Ancak bu sayfada ve bu yollarda kurallar tamamen farklı işler.</p>
+
+    <p>Benim yollardaki özgürlüğüm, pedal çevirirken hissettiğim rüzgar ve izleyicilerimle kurduğum koşulsuz güven bağı; hiçbir bütçeyle, hiçbir bedava ekipmanla veya 'ürün gönderelim videoda iki saniye gösterin' teklifiyle satın alınamaz. Bagajımdaki fazladan 500 gramlık lüzumsuz bir ağırlık dahi benim için bağımsızlığın ihlalidir.</p>
+    <p>Tanıdıkların kapısını çaldığınızda teklifiniz reddedilip, size "<i>Ferdimen'e gidin</i>" denildiğinde; tarzımı, bağımsızlığımı ve o teklifi anında geri çevireceğimi bildiğiniz için "<i>O olmaz</i>" deyip konuyu kapattığınızı biliyorum. Kendinizi o ilk reddedilme şokundan korumak için masadan erken kalktınız.
+
+Ama artık kaçmanıza gerek yok.
+
+Bu sayfa, bugüne kadar herkese kapı kapatmış, herkesi peşinden koşturmuş dev markalara sunulmuş eşsiz bir fırsattır: <b>Gururla reddedilmenin tadını çıkarın.</b></p>
+
+    <p><strong>Peki Bu Sayfa Nedir?</strong><br>
+    Bu sayfa, kurumsal egolara ve her şeyi satın alabileceğini sanan pazarlama anlayışına karşı dikilmiş "müstakil bir duruş tescilidir". Bize sunulan teklifler, ticari bir pazarlığın değil; bağımsızlık ilkelerimizin süzgecinden geçer:</p>
+
+    <ul style="margin: 15px 0 15px 25px; font-size: 0.95rem; color: var(--text);">
+      <li style="margin-bottom: 8px;"><strong><a href="#onaylanan-listesi" style="color: red; text-decoration: none; border-bottom: 1px dashed var(--accent-red);">Kazananlar Kulübü (Hall of Accepted):</a></strong> Bizi biz yapan ilkelere saygı duyan, rotamıza, senaryomuza, sözümüze ve bagajımızdaki düzene müdahale etmeyi aklından bile geçirmeyen ender ve saygın markaların yer aldığı alandır.</li>
+      <li style="margin-bottom: 8px;"><strong><a href="#reddedilen-listesi" style="color: green; text-decoration: none; border-bottom: 1px dashed var(--accent-red);">Reddedilenler Kulübü (Hall of Rejected):</a></strong> Parasıyla veya ürünüyle yön verebileceğini sanan, logosunu kadronun ortasına basmak isteyen, 'şunu söyle' diyen tekliflerin gururla tescillendiği müzedir.</li>
+    </ul>
+
+    <p>Bizimle yola çıkmak istiyorsanız; bütçenizden önce bağımsızlığa duyduğunuz saygıyı masaya koymalısınız. Şartlarımızı kabul ediyorsanız kapımız açık, aksi takdirde reddedilme sertifikanız sistem tarafından gururla basılacaktır.</p>
+
+    <p style="margin-top: 15px;"><strong>Cesaretiniz ve ilkeleriniz elveriyorsa, <a href="#red-form" class="manifesto-link">teklif formu aşağıda.</a></strong></p>
+  </section>
+
+  <!-- Sayaç Çubuğu -->
+  <div class="counter-bar">
+    <div class="counter-item">
+      <div class="counter-value" id="total-count">0</div>
+      <div class="counter-label">Reddedilen Teklif</div>
+    </div>
+    <div class="counter-item">
+      <div class="counter-value" id="total-rejected-budget">0 TL</div>
+      <div class="counter-label">Reddedilen Bütçe</div>
+    </div>
+    <div class="counter-item">
+      <div class="counter-value green" id="total-accepted-budget">0 TL</div>
+      <div class="counter-label">Kabul Edilen Bütçe</div>
+    </div>
+    <div class="counter-item">
+      <div class="counter-value green">%100</div>
+      <div class="counter-label">Kurtarılan Özgürlük</div>
+    </div>
+  </div>
+
+  <!-- Kazananlar Kulübü -->
+  <h2 class="section-title accepted">Onaylananlar Kulubü (Hall of Accepted)</h2>
+  <main class="grid" id="onaylanan-listesi">
+    <!-- ONAYLANDI verileri buraya gelecek -->
+  </main>
+
+  <!-- Reddedilenler Kulübü -->
+  <h2 class="section-title rejected">Reddedilenler Kulubü (Hall of Rejected)</h2>
+  <main class="grid" id="reddedilen-listesi">
+    <!-- REDDEDİLDİ verileri buraya gelecek -->
+  </main>
+
+  <!-- SRS Akordion -->
+  <section class="srs-section">
+    <h2 class="section-title">Sıkça Reddedilen Sorular (SRS)</h2>
+    <div class="srs-item">
+      <div class="srs-header">S: "Formu doldurduk ama bize dönmediniz?" <span class="srs-icon">▼</span></div>
+      <div class="srs-body">C: Reddedilme talebiniz başarıyla işleme alınmıştır. Yanıt vermemek de reddetmenin bir parçasıdır.</div>
+    </div>
+    <div class="srs-item">
+      <div class="srs-header">S: "Para değil, sadece ürün verelim?" <span class="srs-icon">▼</span></div>
+      <div class="srs-body">C: Bagajdaki ekstra 500 gram ağırlık, benim için bağımsızlığın ihlalidir.</div>
+    </div>
+  </section>
+
+  <!-- Form Alanı -->
+  <section class="form-container" id="red-form">
+    <h2>Teklif Formu</h2>
+    <p style="color: var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Formu doldurarak teklifinizi iletebilirsiniz. Şansınız varsa ONAYLANIR, aksi halde gururla REDDEDİLİRSİNİZ.</p>
+    
+    <form action="https://formspree.io/f/meaqglpq" method="POST">
+      <input type="hidden" name="_subject" value="🔥 Yeni Sponsor Teklifi!" />
+      
+      <div class="form-group">
+        <label for="marka">Markanızın Adı:</label>
+        <input type="text" id="marka" name="marka" required placeholder="Örn: X Holding">
+      </div>
+	  
+	                          <div class="form-group">
+                            <label for="email">E-Posta Adresi</label>
+                            <input type="email" id="email" name="_replyto" required placeholder="E-posta adresinizi giriniz">
+                        </div>
+      
+      <div class="form-group">
+        <label for="ego">Ego Seviyeniz:</label>
+        <select id="ego" name="ego">
+          <option>Sektör Devi</option>
+          <option>Bireysel</option>
+          <option>Mahalle Esnafı</option>
+          <option>KOBİ (Küçük ve Orta Büyüklükteki İşletme)</option>
+          <option>"Biz Herkesi Satın Alırız" Diyenler</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="urun">Teklif Edeceğiniz Ürün / Hizmet:</label>
+        <input type="text" id="urun" name="urun" required placeholder="Örn: Karbon kadro bisiklet, 10 koli matara">
+      </div>
+
+      <div class="form-group">
+        <label for="butce">Teklif Edeceğiniz Bütçe (TL):</label>
+        <input type="number" id="butce" name="butce" required placeholder="Örn: 50000">
+      </div>
+
+      <!-- Esprili Slider / Müdahale Ölçeği -->
+      <div class="form-group">
+        <label for="slider">Müdahale / Bağımsızlık İhlal Ölçeği:</label>
+        <input type="range" id="slider" name="mudahale_seviyesi" min="1" max="5" value="1" step="1">
+        <div class="slider-labels">
+          <span>1. Sadece Ürün</span>
+          <span>3. Logo Basalım</span>
+          <span>5. Ciğerinizi Sökeceğiz</span>
+        </div>
+        <div class="slider-status" id="slider-desc">1. Seviye: Sadece Ürün Göndersek? (Arka bagajda yer kaplamazsa belki değerlendirilir.)</div>
+      </div>
+
+      <div class="form-group">
+        <label for="gerekce">Teklif Notunuz / Açıklamanız:</label>
+        <textarea id="gerekce" name="gerekce" rows="3" placeholder="Kısa bir açıklama bırakın..."></textarea>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="sozlesme" name="sozlesme_onayi" required>
+        <label for="sozlesme">Teklifimin bağımsızlık ilkelerine aykırı bulunması halinde reddedileceğini ve bu sayfada anonim olarak sergilenebileceğini kabul ediyorum.</label>
+      </div>
+      
+      <button type="submit" class="btn-submit">REDDEDİLME TEKLİFİ GÖNDER</button>
+    </form>
+  </section>
+
+  <!-- Modal / Popup -->
+  <div class="modal-overlay" id="certModal">
+    <div class="modal-content">
+      <img id="certImage" src="" alt="Sertifika">
+      <div class="modal-actions">
+        <button class="btn-modal-save" id="btnSaveImg">Resmi Kaydet (PNG)</button>
+		<button class="btn-modal-print" onclick="sertifikaYazdir()">Yazdır</button>
+        <button class="btn-modal-close" onclick="closeModal()">Kapat</button>
+      </div>
+    </div>
+  </div>
+
+    <section class="contact-section" id="iletisim">
+        <div class="container">
+            <div class="contact-grid">
+                
+                <div class="contact-info-side">
+                    <h3>Bağlantıda Kalın</h3>
+                    <p>Yol hikayelerini, bağımsız yayınları ve anlık telemetri paylaşımlarını resmi ağ istasyonları üzerinden takip edebilirsiniz.</p>
+                    
+                    <div class="social-links-container" id="social-container"></div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const socialContainer = document.getElementById("social-container");
+                            if (!socialContainer) return;
+
+                            fetch('https://ferdimen.com/data/sosyal.json?v=' + new Date().getTime())
+                                .then(res => {
+                                    if (!res.ok) throw new Error("Sosyal medya JSON dosyası yüklenemedi!");
+                                    return res.json();
+                                })
+                                .then(data => {
+                                    let htmlContent = '';
+                                    data.forEach(hesap => {
+                                        htmlContent += `
+                                            <a href="${hesap.url}" target="_blank" class="social-icon-btn">
+                                                ${hesap.svg}
+                                                <span>${hesap.ad}</span>
+                                            </a>
+                                        `;
+                                    });
+                                    socialContainer.innerHTML = htmlContent;
+                                })
+                                .catch(err => {
+                                    console.error("Sosyal medya butonları yüklenirken hata:", err);
+                                    socialContainer.innerHTML = `
+                                        <a href="https://www.youtube.com/@ferdimen" target="_blank" class="social-icon-btn">
+                                            <span>YouTube</span>
+                                        </a>
+                                    `;
+                                });
+                        });
+                    </script>
+                </div>
+                
+                <div class="contact-form-side">
+                    <form action="https://formspree.io/f/xnjyjwnk" method="POST">
+                        <div class="form-group">
+                            <label for="name">İsim / Mahlas</label>
+                            <input type="text" id="name" name="name" required placeholder="Adınızı giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Posta Adresi</label>
+                            <input type="email" id="email" name="_replyto" required placeholder="E-posta adresinizi giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mesajınız</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Yol notunuzu buraya bırakın..."></textarea>
+                        </div>
+                        <input type="hidden" name="_language" value="tr" />
+                        <button type="submit" class="submit-btn">Gönder</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p class="footer-text"><script src="/data/footer.js?v=1"></script>© <span id="footer-year"></span> <span id="footer-dynamic-text"></span></p>
+        </div>
+    </footer>
+
+  <script>
+    let currentDownloadUrl = "";
+    let currentFileName = "";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. JSON Verisini Çekme ve Ayrıştırma
+      fetch('data/teklif.json')
+        .then(response => response.json())
+        .then(data => {
+          const reddedilenContainer = document.getElementById('reddedilen-listesi');
+          const onaylananContainer = document.getElementById('onaylanan-listesi');
+
+          let reddedilenSayisi = 0;
+          let toplamReddedilenButce = 0;
+          let toplamOnaylananButce = 0;
+
+          data.forEach(item => {
+            const isRed = (item.durum || '').toUpperCase() === 'REDDEDİLDİ';
+            const statusClass = isRed ? 'reddedildi' : 'onaylandi';
+            const badgeClass = isRed ? 'badge-reddedildi' : 'badge-onaylandi';
+            const statusText = isRed ? 'REDDEDİLDİ' : 'ONAYLANDI';
+            const btnText = isRed ? '📜 Reddedilme Sertifikası' : '📜 Onaylanma Sertifikası';
+
+            if (isRed) {
+              reddedilenSayisi++;
+              if(item.butce) toplamReddedilenButce += Number(item.butce);
+            } else {
+              if(item.butce) toplamOnaylananButce += Number(item.butce);
+            }
+
+            const card = document.createElement('article');
+            card.className = `card status-${statusClass}`;
+            card.innerHTML = `
+              <span class="badge ${badgeClass}">${statusText}</span>
+              <h3 class="marka-adi">${item.marka}</h3>
+              <div class="kategori">${item.kategori || 'GENEL'}</div>
+              <div class="detail"><strong>Teklif Edilen Ürün:</strong> ${item.urun}</div>
+              <div class="detail"><strong>Bütçe:</strong> ${Number(item.butce || 0).toLocaleString('tr-TR')} TL</div>
+              <div class="gerekce"><strong>${isRed ? 'Red Gerekçesi' : 'Onay Gerekçesi'}:</strong> ${item.gerekce}</div>
+              <a class="btn-cert ${statusClass}" onclick="sertifikaModalAc('${item.marka.replace(/'/g, "\\'")}', '${statusText}')">${btnText}</a>
+            `;
+
+            if (isRed) {
+              reddedilenContainer.appendChild(card);
+            } else {
+              onaylananContainer.appendChild(card);
+            }
+          });
+
+          // Sayaçları Güncelle
+          document.getElementById('total-count').textContent = reddedilenSayisi;
+          document.getElementById('total-rejected-budget').textContent = toplamReddedilenButce.toLocaleString('tr-TR') + ' TL';
+          document.getElementById('total-accepted-budget').textContent = toplamOnaylananButce.toLocaleString('tr-TR') + ' TL';
+
+          // Boş Kulüp Mesajları
+          if (onaylananContainer.children.length === 0) {
+            onaylananContainer.innerHTML = '<p class="empty-msg">Henüz onaylanan bir sponsorluk teklifi bulunmamaktadır. Bağımsızlığa devam!</p>';
+          }
+          if (reddedilenContainer.children.length === 0) {
+            reddedilenContainer.innerHTML = '<p class="empty-msg">Henüz reddedilen teklif bulunmuyor.</p>';
+          }
+        })
+        .catch(err => console.error('JSON Hatası:', err));
+
+      // 2. Esprili Slider Metin Değişimi
+      const slider = document.getElementById('slider');
+      const sliderDesc = document.getElementById('slider-desc');
+
+      const sliderTexts = {
+        1: "1. Seviye: Sadece Ürün Göndersek? (Bagajda yer kaplamazsa ve işe yararsa belki kabul edilir.)",
+        2: "2. Seviye: Videoda 5 Saniye Gösterin (Kamera açısına girmesi garanti değil, zorlamayın.)",
+        3: "3. Seviye: Logomuzu Formanın Göğsüne Basın (Tebrikler, doğrudan red listesinin ilk sırasına yükseldiniz!)",
+        4: "4. Seviye: Senaryoyu Biz Yazalım (Metin yazarlarınızın hevesi kursağında kalacak.)",
+        5: "5. Seviye: Ciğerinizi Sökeceğiz / Kanalı Üzerimize Yapın (Bu teklif doğrudan sistem tarafından imha edilir!)"
+      };
+
+      slider.addEventListener('input', (e) => {
+        sliderDesc.textContent = sliderTexts[e.target.value];
+      });
+
+      // 3. SRS Accordion Kontrolü
+      document.querySelectorAll('.srs-header').forEach(header => {
+        header.addEventListener('click', () => {
+          header.parentElement.classList.toggle('active');
+        });
+      });
+
+      // Modal Kaydet Butonu Tıklaması
+      document.getElementById('btnSaveImg').addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.download = currentFileName;
+        link.href = currentDownloadUrl;
+        link.click();
+      });
+    });
+
+// 4. Dinamik Sertifika Üretme (Onay / Red)
+    function sertifikaModalAc(markaAdi, durum) {
+      const isRed = durum === 'REDDEDİLDİ';
+      const primaryColor = isRed ? '#d63031' : '#27ae60';
+      const secondaryColor = isRed ? '#b28900' : '#1e824c';
+      const certTitle = isRed ? 'RESMİ REDDEDİLME SERTİFİKASI' : 'RESMİ ONAYLANMA SERTİFİKASI';
+      const mainStatusText = isRed ? 'REDDEDİLMİŞTİR.' : 'BAŞARIYLA ONAYLANMIŞTIR.';
+
+      // --- ÖZEL SERİ NUMARASI OLUŞTURMA ---
+      // Örn: FBM-RED-2026-A8K9 veya FBM-ONY-2026-X3B7
+      const durmKodu = isRed ? 'RED' : 'ONY';
+      const rastgeleKod = Math.random().toString(36).substring(2, 6).toUpperCase();
+      const seriNo = `FBM-${durmKodu}-2026-${rastgeleKod}`;
+
+      const canvas = document.createElement('canvas');
+      canvas.width = 1000;
+      canvas.height = 650;
+      const ctx = canvas.getContext('2d');
+
+      // Arka Plan
+      ctx.fillStyle = '#fffdf9';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // --- SÜSLÜ DIŞ KENARLIK VE KÖŞELER ---
+      // Dış Çerçeve (Kırmızı / Yeşil)
+      ctx.strokeStyle = primaryColor;
+      ctx.lineWidth = 6;
+      ctx.strokeRect(30, 30, canvas.width - 60, canvas.height - 60);
+
+      // İç Altın / Koyu Çerçeve
+      ctx.strokeStyle = secondaryColor;
+      ctx.lineWidth = 2;
+      ctx.strokeRect(42, 42, canvas.width - 84, canvas.height - 84);
+
+      // Süslü Köşe Motifleri
+      const drawCorner = (x, y, xDir, yDir) => {
+        ctx.strokeStyle = primaryColor;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(x, y + (30 * yDir));
+        ctx.lineTo(x, y);
+        ctx.lineTo(x + (30 * xDir), y);
+        ctx.stroke();
+
+        ctx.strokeStyle = secondaryColor;
+        ctx.beginPath();
+        ctx.arc(x + (15 * xDir), y + (15 * yDir), 8, 0, Math.PI * 2);
+        ctx.stroke();
+      };
+
+      drawCorner(50, 50, 1, 1);
+      drawCorner(canvas.width - 50, 50, -1, 1);
+      drawCorner(50, canvas.height - 50, 1, -1);
+      drawCorner(canvas.width - 50, canvas.height - 50, -1, -1);
+
+      // --- MÜHÜR / DAMGA ---
+      ctx.save();
+      ctx.translate(canvas.width - 150, canvas.height - 150);
+      ctx.rotate(-15 * Math.PI / 180);
+      
+      ctx.strokeStyle = primaryColor;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(0, 0, 58, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(0, 0, 50, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.fillStyle = primaryColor;
+      ctx.font = 'bold 11px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('FERDİMEN', 0, -24);
+      ctx.font = 'bold 14px sans-serif';
+      ctx.fillText(durum, 0, -3);
+      ctx.font = '9px sans-serif';
+      ctx.fillText('BAĞIMSIZLIK MAKAMI', 0, 15);
+      
+      // Mühür İçi Seri No
+      ctx.font = 'bold 9px monospace';
+      ctx.fillStyle = secondaryColor;
+      ctx.fillText(seriNo, 0, 32);
+      ctx.restore();
+
+      // --- SERTİFİKA METİNLERİ ---
+      // Üst Başlık
+      ctx.fillStyle = '#1e272e';
+      ctx.font = 'bold 36px Georgia, serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(certTitle, canvas.width / 2, 115);
+
+      // Kurum
+      ctx.fillStyle = secondaryColor;
+      ctx.font = 'bold 16px sans-serif';
+      ctx.fillText('FERDİMEN BAĞIMSIZLIK MAKAMI', canvas.width / 2, 150);
+
+      // Süs Çizgisi
+      ctx.strokeStyle = '#dfe6e9';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(canvas.width / 2 - 150, 170);
+      ctx.lineTo(canvas.width / 2 + 150, 170);
+      ctx.stroke();
+
+      // Hitap ve Gövde
+      ctx.fillStyle = '#2d3436';
+      ctx.font = '22px Georgia, serif';
+      ctx.fillText(`Sayın ${markaAdi},`, canvas.width / 2, 230);
+
+      ctx.font = '20px sans-serif';
+      ctx.fillText('Tarafımıza sunmuş olduğunuz sponsorluk ve iş birliği teklifi', canvas.width / 2, 280);
+
+      ctx.font = 'bold 28px sans-serif';
+      ctx.fillStyle = primaryColor;
+      ctx.fillText(mainStatusText, canvas.width / 2, 330);
+
+      ctx.fillStyle = '#636e72';
+      ctx.font = 'italic 18px Georgia, serif';
+      const subText = isRed 
+        ? 'Özgürlüğümüze ve bağımsızlığımıza gösterdiğiniz istem dışı katkıdan dolayı teşekkür ederiz.' 
+        : 'Bağımsızlık ilkelerimize gösterdiğiniz saygı ve samimi desteğiniz için teşekkür ederiz.';
+      ctx.fillText(subText, canvas.width / 2, 395);
+
+      // Dipnot ve Resmi Seri No Bilgisi
+      ctx.fillStyle = '#1e272e';
+      ctx.font = 'bold 14px sans-serif';
+      ctx.fillText('© 2026 ferdimen.com', canvas.width / 2, 510);
+      
+      ctx.font = 'italic 14px Georgia, serif';
+      ctx.fillStyle = secondaryColor;
+      ctx.fillText('"Vazgeçtiklerim, çoğunluğun bir ömür aradıklarıdır."', canvas.width / 2, 535);
+
+      // Sol Alt Köşe - Resmi Seri Numarası Etiketi
+      ctx.textAlign = 'left';
+      ctx.font = 'bold 12px monospace';
+      ctx.fillStyle = '#636e72';
+      ctx.fillText(`				SERİ NO: ${seriNo}`, 60, 580);
+
+      // URL Oluşturup Modala Basma
+      currentDownloadUrl = canvas.toDataURL('image/png');
+      currentFileName = `${seriNo}_${durum}_Sertifikasi_${markaAdi.replace(/\s+/g, '_')}.png`;
+
+      document.getElementById('certImage').src = currentDownloadUrl;
+      document.getElementById('certModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('certModal').classList.remove('active');
+    }
+	function sertifikaYazdir() {
+  const certImgSrc = document.getElementById('certImage').src;
+  
+  if (!certImgSrc) return;
+
+  // Yeni bir geçici pencere açıyoruz
+  const printWindow = window.open('', '_blank');
+  
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Sertifika Yazdır - Ferdimen</title>
+        <style>
+          body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #fff;
+          }
+          img {
+            max-width: 100%;
+            height: auto;
+          }
+          @page {
+            size: landscape; /* Sertifikayı yatay A4 formatında basar */
+            margin: 0;
+          }
+        </style>
+      </head>
+      <body>
+        <img src="${certImgSrc}" onload="window.print(); window.close();" />
+      </body>
+    </html>
+  `);
+  
+  printWindow.document.close();
+}
+  </script>
+</body>
+</html>
