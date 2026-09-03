@@ -46,7 +46,7 @@
     {
     "id": 6,
     "marka": "Ganos Bisiklet / İslam Gölge",
-    "kategori": "Yerel bisikletçi",
+    "kategori": "Yerel bisikletçi, Yakın Arkadaş",
     "urun": "Her Türlü Destek",
     "butce": 0,
     "durum": "ONAYLANDI",
@@ -78,6 +78,15 @@
     "butce": 50000,
     "durum": "REDDEDİLDİ",
     "gerekce": "Yok artık."
+  },
+  {
+	"id": 10,
+    "marka": "Şafak Yollarda / Şafak Omaç",
+    "kategori": "Tur bisikletçisi, Yakın Arkadaş, Ağabey",
+    "urun": "Yol Arkadaşlığı, Telepatik İletişim, Rota ve İlham Kaynağı",
+    "butce": "0",
+    "durum": "ONAYLANDI",
+    "gerekce": "Zifiri karanlıkta, dondurucu dağ yollarında kriz anında sırtını tereddütsüz yaslayabileceğin tek adam. İşte kriz anları, yanında yürüdüğün insanın gerçek ağırlığını ortaya çıkarır. İyi günde, düz yolda herkesle sürersin; ama zifiri karanlıkta, dağ başında sırtını tereddütsüz yaslayabileceğin bir ağabeyinin olması paha biçilemez bir lükstür. Verdiğin her türlü destek, yol arkadaşlığın ve hayatıma kattığın tüm ilham için sonsuz teşekkürler Şafak ağabey. İyi ki varsın, yollar seninle her zaman daha güvenli ve daha anlamlı."
   },
       {
     "id": 4,
