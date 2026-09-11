@@ -3235,12 +3235,15 @@
     "baslik": "WD My Passport Wireless Pro 4 TB",
     "kategori": "Elektronik",
     "tarih": "2026-09-10",
-    "kapakresmi": "/img/resim-yok.png",
+    "kapakresmi": "/img/ekipman/2026/elektronik-wdmypassportwirelesspro4tb.jpg",
     "aciklama": "Uzun zamandır göz diktiğim, ikinci el olarak ufacık bir microSD kart fiyatına yakaladığım ve hafıza kartını ya da doğrudan kamerayı bağlayarak tek tıkla yedekleme yapmamı sağlayan hayat kurtarıcı cihazım. Wi-Fi özelliği sayesinde medya merkezine dönüşmesi ve standart harici disk gibi çalışması bir yana, yüksek ihtimalle yanımda taşıdığım eski hdd ve usb adaptörlerini tek başına emekli edecek en akıllı teknoloji hamlemdir.",
-    "bagli_urunler": [],
+    "bagli_urunler": [
+      144,
+      156
+    ],
     "yorum": "",
     "varsayilan": true,
     "agirlik": "446",
-    "etiketler": "hdd, elektrik"
+    "etiketler": "hdd, elektrik, hard disk"
   }
 ]
