@@ -1,31 +1,5 @@
 [
   {
-    "id": "2026-09-10-kitalar-arasi",
-    "baslik": "Kıtalar Arası Bisiklet Turu",
-    "url": "yazilar/2026-09-10-kitalar-arasi.html",
-    "tarih": "2026-09-10",
-    "kategori": "Günlük Geziler > [bisiklet, Gözde]",
-    "ozel": "kültür, bisiklet, yürüyüş, 1, 2",
-    "kapakresmi": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEik5WeqSbUYfLmJTIRxzF8SMHhrekuMvssxOi3jZv8kSDphjnFzU0_uV26INI5BsO_MZ0s_7WLqE4HGL98RTPxkHC41Ooh_Dh2eiaTBA5ZP8fzYkgOryWtL5RfWKAEqitrHQbJgrO-YandA085RII7U_p9MSVlo_2j5Trq8QynW7tFTExdiNkITn06y1lqt/w640-h360/2026091-kitalararasi-05.jpg",
-    "etiketler": [
-      "istanbul,fatih,eminönü,üsküdar,beşiktaş,"
-    ],
-    "konum": "41.043198625125314, 29.006481170654297"
-  },
-  {
-    "id": "2026-it-urur-kervan-yurur",
-    "baslik": "İt Ürür Kervan Yürür (Uvertür) Bisiklet Turu",
-    "url": "#",
-    "tarih": "2026-09-12",
-    "kategori": "Bisiklet Turları",
-    "ozel": "yakında, 1",
-    "kapakresmi": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWLvGjSvh52qe7O4vJ8iEzYQU4p_Bi7BZb2hch8xVSj-G3YI8wBKi5WuX_-IwNwE8I2MfBbxmWpjdWF7KUJTvXN0Z1i3gSRiO0XUVTa-DpAU6tW25TSDRZlpdYdLdV5uzlr2Ma0B1Nqx0LekyPT4Pf2k4k3sI07zIJhMgNP0VH1gLUZ8ostxvCoHh9TYTX/s1600/it-urur-kervan-yurur-1920x1080.jpg",
-    "etiketler": [
-      ""
-    ],
-    "konum": "39.01962964404647, 31.150960922241214"
-  },
-  {
     "id": "2026/2026-07-26-01-35",
     "baslik": "Enez turunda...",
     "aciklama": "yılın fotoğrafı: 2011",
@@ -203,6 +177,32 @@
       "bartın,sinop,samsun,kastamonu,karabük,çankırı,merzifon,tokat,sulusaray,sivas,kayseri,darande,tufanbeyli,antakya,karataş,adana,aladağ,çamlıyayla,mersin,mut,ermenek,seydişehir,derebucak,akseki,antalya,"
     ],
     "konum": ""
+  },
+ {
+    "id": "2026-it-urur-kervan-yurur",
+    "baslik": "İt Ürür Kervan Yürür (Uvertür) Bisiklet Turu",
+    "url": "#",
+    "tarih": "2026-09-12",
+    "kategori": "Bisiklet Turları",
+    "ozel": "yakında, 1",
+    "kapakresmi": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWLvGjSvh52qe7O4vJ8iEzYQU4p_Bi7BZb2hch8xVSj-G3YI8wBKi5WuX_-IwNwE8I2MfBbxmWpjdWF7KUJTvXN0Z1i3gSRiO0XUVTa-DpAU6tW25TSDRZlpdYdLdV5uzlr2Ma0B1Nqx0LekyPT4Pf2k4k3sI07zIJhMgNP0VH1gLUZ8ostxvCoHh9TYTX/s1600/it-urur-kervan-yurur-1920x1080.jpg",
+    "etiketler": [
+      ""
+    ],
+    "konum": "39.01962964404647, 31.150960922241214"
+  },
+    {
+    "id": "2026-09-10-kitalar-arasi",
+    "baslik": "Kıtalar Arası Bisiklet Turu",
+    "url": "yazilar/2026-09-10-kitalar-arasi.html",
+    "tarih": "2026-09-10",
+    "kategori": "Günlük Geziler > [bisiklet, Gözde]",
+    "ozel": "kültür, bisiklet, yürüyüş, 1, 2",
+    "kapakresmi": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEik5WeqSbUYfLmJTIRxzF8SMHhrekuMvssxOi3jZv8kSDphjnFzU0_uV26INI5BsO_MZ0s_7WLqE4HGL98RTPxkHC41Ooh_Dh2eiaTBA5ZP8fzYkgOryWtL5RfWKAEqitrHQbJgrO-YandA085RII7U_p9MSVlo_2j5Trq8QynW7tFTExdiNkITn06y1lqt/w640-h360/2026091-kitalararasi-05.jpg",
+    "etiketler": [
+      "istanbul,fatih,eminönü,üsküdar,beşiktaş,"
+    ],
+    "konum": "41.043198625125314, 29.006481170654297"
   },
   {
     "id": "2025-anadolu-irfani",
