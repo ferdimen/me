@@ -1,12 +1,12 @@
 {
-  "aktifTur": "evet",
-  "canliTakipUrl": "https://www.polarsteps.com/ferdimen/27169252-tissss",
-  "tur-adi": "Anadolu Engereği Bisiklet Turu",
-  "aciklama": "Asfaltın bittiği, rüzgarın sertleştiği ve doğanın kendi kurallarını fısıldadığı yerdeyiz. Bu bir hız yarışı ya da sıradan bir rota geçişi değil; bu, coğrafyanın kılcal damarlarına sızma, sınırları zorlama ve tamamen doğayla bütünleşme mücadelesidir.",
-  "rota": "evet",
+  "aktifTur": "hayir",
+  "canliTakipUrl": "",
+  "tur-adi": "yok",
+  "aciklama": "",
+  "rota": "hayir",
   "gunleri-goster": "hepsi",
   "karakter-siniri": 120,
-  "yazi": "evet",
+  "yazi": "hayir",
   "zoom-seviyesi": 11,
   "cizgi-rengi": "#dc2626",
   "araclar": {
