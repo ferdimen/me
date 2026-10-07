@@ -1,5 +1,15 @@
 [
   {
+  "id": "2026-fissss",
+  "baslik": "2026 Fıssss",
+  "jsonPath": "data/kategoriler/2026-fissss.json"
+},
+{
+  "id": "it-urur-kervan-yurur-uvertur",
+  "baslik": "2026 İt Ürür Kervan Yürür (Uvertür)",
+  "jsonPath": "data/kategoriler/2026-it-urur-kervan-yurur-uvertur.json"
+},
+  {
     "id": "2025-anadolu-irfani",
     "baslik": "2025 Anadolu İrfanı",
     "jsonPath": "data/kategoriler/2025-anadolu-irfani.json"
