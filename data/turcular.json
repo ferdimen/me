@@ -1,0 +1,401 @@
+[
+  {
+    "kimlik": "kupa-as-01",
+    "ad_soyad": "Ferdimen",
+    "kart_serisi": "kupa",
+    "kart_degeri": "A",
+    "unvan": "Yalnız Kurt, Asfalt Düşmanı",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2011],
+    "fotograf": "img/turcular/ferdimen.jpg",
+    "yetenekler": {
+      "PED": 92,
+      "MKA": 85,
+      "KMP": 90,
+      "BFL": 90,
+      "KMR": 92
+    },
+    "ozel_yetenek": "15 yılı aşkın süredir coğrafyanın kılcal damarlarını iki teker üzerinde pedallayan bağımsız bir avare ve dijital yol anlatıcısıdır.",
+    "baglantilar": {
+      "web": "https://ferdimen.com",
+      "youtube": "https://ferdimen.com/youtube",
+      "instagram": "https://ferdimen.com/instagram",
+      "strava": "https://ferdimen.com/strava",
+	  "polarsteps": "https://ferdimen.com/polarsteps",
+      "wikiloc": "https://ferdimen.com/wikiloc"
+    }
+  },
+    {
+    "kimlik": "maca-as-01",
+    "ad_soyad": "Şafak Omaç",
+    "kart_serisi": "maca",
+    "kart_degeri": "A",
+    "unvan": "Yalnız Kurt",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2009],
+    "fotograf": "img/turcular/safak-omac.jpg",
+    "yetenekler": {
+      "PED": 92,
+      "MKA": 85,
+      "KMP": 90,
+      "BFL": 88,
+      "KMR": 100
+    },
+    "ozel_yetenek": "Yüksek irtifalı dağ geçitlerini ve zorlu tırmanışları sabırla aşan deneyimli bir uzun mesafe tur bisikletçisidir.",
+    "baglantilar": {
+      "web": "https://safakomac.com",
+      "youtube": "https://www.youtube.com/@SafakYollarda",
+      "instagram": "https://instagram.com/@SafakYollarda"
+    }
+  },
+        {
+    "kimlik": "karo-as-01",
+    "ad_soyad": "Vulpes Vulpes",
+    "kart_serisi": "karo",
+    "kart_degeri": "A",
+    "unvan": "Yalnız Kurt",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2010],
+    "fotograf": "img/turcular/gokay-terzi.jpg",
+    "yetenekler": {
+      "PED": 100,
+      "MKA": 100,
+      "KMP": 100,
+      "BFL": 60,
+      "KMR": 60
+    },
+    "ozel_yetenek": "Türk bisiklet turculuğunun gözden uzak ama efsaneleşmiş isimlerindendir. Sosyal medyada görünür olmamasına ve göz önünde bulunmamasına rağmen, bisiklet dünyasında tecrübesiyle saygı görür.",
+    "baglantilar": {
+      "web": "#",
+      "youtube": "#",
+      "instagram": "#",
+      "strava": "#"
+    }
+  },
+      {
+    "kimlik": "sinek-as-01",
+    "ad_soyad": "İrfan Özden",
+    "kart_serisi": "sinek",
+    "kart_degeri": "A",
+    "unvan": "Yalnız Kurt",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2013],
+    "fotograf": "img/turcular/irfan-ozden.jpg",
+    "yetenekler": {
+      "PED": 95,
+      "MKA": 85,
+      "KMP": 90,
+      "BFL": 78,
+      "KMR": 80
+    },
+    "ozel_yetenek": "Bisikletle yaptığı şehirler arası ve bölgesel turlarla bilinir. Doğa gezileri, kampçılık ve uzun mesafe bisiklet rotalarıyla ilgilenmektedir. Türkiye'nin ve Dünya'nın çeşitli doğa rotalarında yaptığı yürüyüş/gezi paylaşımlarıyla tanınan bir doğa severdir.",
+    "baglantilar": {
+      "youtube": "https://www.youtube.com/@ikipistonladunyaplanet",
+      "instagram": "https://www.instagram.com/cyclingallaroundtheworld/",
+      "strava": "https://www.strava.com/athletes/133209880"
+    }
+  },
+  {
+    "kimlik": "kupa-k-01",
+    "ad_soyad": "Osman Kapusuz",
+    "kart_serisi": "kupa",
+    "kart_degeri": "K",
+    "unvan": "Duayen",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2012],
+    "fotograf": "img/turcular/osman-kapusuz.jpg",
+    "yetenekler": {
+      "PED": 90,
+      "MKA": 95,
+      "KMP": 85,
+      "BFL": 90,
+      "KMR": 70
+    },
+    "ozel_yetenek": "Yokuşların ve aerodinamiğin gizli kahramanı. Bisikletindeki her cıvatanın, çantasındaki her malzemenin ağırlığını ezbere bilir. Gram gram yaptığı hassas hesaplarla yükünü en aza indirir, hıza ve performansa odaklanır.",
+    "baglantilar": {
+      "web": "https://osmansedat.blogspot.com/",
+      "youtube": "https://www.youtube.com/channel/UCJqvkdWjVxwfL2PZaV-zH5w",
+      "instagram": "https://www.instagram.com/osman.kapusuz",
+      "strava": "https://www.strava.com/athletes/19863045"
+
+    }
+  },
+    {
+    "kimlik": "karo-k-01",
+    "ad_soyad": "Urim Babacan",
+    "kart_serisi": "karo",
+    "kart_degeri": "K",
+    "unvan": "Duayen",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2012],
+    "fotograf": "img/turcular/urim-babacan.jpg",
+    "yetenekler": {
+      "PED": 80,
+      "MKA": 95,
+      "KMP": 85,
+      "BFL": 90,
+      "KMR": 70
+    },
+    "ozel_yetenek": "Bisiklet camiasında bilinen adıyla Urim Baba), Türkiye'nin renkli ve özgün bisiklet seyyahlarından biri, gezgin ve yazardır. Bisikletinin taşıdığı cezve ve kahve gittiği yerlerde, insanlara Türk kahvesi pişirip ikram etmesiyle simgeleşmiştir.",
+    "baglantilar": {
+      "web": "https://urimbaba.net/",
+      "youtube": "https://www.youtube.com/urimbaba",
+      "instagram": "https://www.instagram.com/urimbabacan/",
+      "Facebook": "https://www.facebook.com/urim.babacan/"
+
+    }
+	
+  },
+      {
+    "kimlik": "sinek-k-01",
+    "ad_soyad": "Orhan Kılıç",
+    "kart_serisi": "sinek",
+    "kart_degeri": "K",
+    "unvan": "Duayen",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2010],
+    "fotograf": "img/turcular/orhan-kilic.jpg",
+    "yetenekler": {
+      "PED": 80,
+      "MKA": 95,
+      "KMP": 85,
+      "BFL": 90,
+      "KMR": 70
+    },
+    "ozel_yetenek": "Bisiklet dünyasının tecrübeli kalemlerinden. Vaktiyle katettiği kilometreler ve düzenli tuttuğu tur günlükleriyle bir kuşağa yol gösterdi, bisikletle uzun yola çıkma fikrini aşıladı. Her ne kadar aktif turculuk günlerinin ve fırtınalı zamanlarının gerisinde kalsa da bıraktığı arşiv hâlâ değerini koruyor.",
+    "baglantilar": {
+      "web": "https://bisikletgezgini.blogspot.com/",
+      "instagram": "https://www.instagram.com/bisikletgezgini/"
+
+    }
+	
+  },
+
+    {
+    "kimlik": "kupa-q-01",
+    "ad_soyad": "Elif Uzer",
+    "kart_serisi": "kupa",
+    "kart_degeri": "Q",
+    "unvan": "Dişi Kurt",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2012],
+    "fotograf": "img/turcular/elif-uzer.jpg",
+    "yetenekler": {
+      "PED": 80,
+      "MKA": 75,
+      "KMP": 95,
+      "BFL": 85,
+      "KMR": 90
+    },
+    "ozel_yetenek": "Türk bisiklet turculuğunun ilham veren kadın öncülerinden. Yıllarca tek başına kıtaları aşan, Güney Amerika'nın zorlu coğrafyalarında 8 yıl boyunca pedallayan gerçek bir macera insanı. Pandemide ülkeye dönüş yapmış olsa da cebinde biriktirdiği binlerce kilometrelik hikayesi ve ilk fırsatta çıktığı turlarla yolların vazgeçilmez simalarından biri.",
+    "baglantilar": {
+      "web": "https://nuzerel.com",		
+      "instagram": "https://instagram.com/nuzerel",
+      "x": "https://x.com/nuzerel",	  
+      "strava": "https://www.strava.com/athletes/7114549"
+    }
+  },
+    {
+    "kimlik": "maca-q-01",
+    "ad_soyad": "Selen Kanat",
+    "kart_serisi": "maca",
+    "kart_degeri": "Q",
+    "unvan": "Dişi Kurt",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2012],
+    "fotograf": "img/turcular/selen-kanat.jpg",
+    "yetenekler": {
+      "PED": 70,
+      "MKA": 65,
+      "KMP": 75,
+      "BFL": 85,
+      "KMR": 75
+    },
+    "ozel_yetenek": "Bisiklet yolculuklarını mesleğiyle harmanlayarak geçmişin izini pedal çevirerek süren özgün bir bisiklet gezginidir.",
+    "baglantilar": {
+      "instagram": "https://www.instagram.com/selen.kanat/",
+      "instagram2": "https://www.instagram.com/zorolmuyormu/"
+    }
+  },
+     {
+    "kimlik": "karo-10-01",
+    "ad_soyad": "Ahmet Mumcu",
+    "kart_serisi": "karo",
+    "kart_degeri": "10",
+    "unvan": "Duayen",
+    "durum": "motora_gecti",
+    "durum_etiketi": "Motora Geçti 🛵",
+    "aktif_yillar": [1986, 2014],
+    "fotograf": "img/turcular/ahmet-mumcu.jpg",
+    "yetenekler": {
+      "PED": 90,
+      "MKA": 95,
+      "KMP": 85,
+      "BFL": 90,
+      "KMR": 70
+    },
+    "ozel_yetenek": "Türk bisiklet turculuğunun efsanevi isimlerinden. Dünya haritası üzerinde çizdiği devasa rotalar ve attığı imzalara kıyasla, blog yazıları maceralarının yanında biraz mütevazı (veya gölgede) kalır. Anlatmayı değil, yaşamayı ve pedallamayı seven, eylemi söyleminden katbekat büyük bir yol ustası. 2010'ların sonuna doğru iki tekerin benzinli tarafına geçiş yaptı.",
+    "baglantilar": {
+      "web": "https://ahmetmumcu.blogspot.com/",
+      "youtube": "https://www.youtube.com/channel/UCJqvkdWjVxwfL2PZaV-zH5w",
+      "instagram": "https://www.instagram.com/ahmetmumju/",
+      "X": "https://x.com/amumju",
+      "Facebook": "https://www.facebook.com/ahmet.mumcu.526/"
+    }
+  }, 
+      {
+    "kimlik": "karo-j-01",
+    "ad_soyad": "Serkan Taşdelen",
+    "kart_serisi": "karo",
+    "kart_degeri": "J",
+    "unvan": "Duayen",
+    "durum": "motora_gecti",
+    "durum_etiketi": "Motora Geçti 🛵",
+    "aktif_yillar": [2006],
+    "fotograf": "img/turcular/serkan-tasdelen.jpg",
+    "yetenekler": {
+      "PED": 90,
+      "MKA": 95,
+      "KMP": 85,
+      "BFL": 90,
+      "KMR": 70
+    },
+    "ozel_yetenek": "“Önemli olmak varmak değil, yolda olmaktır” sloganıyla seyahat eden, Serkan işe bisikletle gidip gelirken, ulaşım ihtiyacının karşılanmasının dışında başka birşeyler daha hissetmeye başlamış.",
+    "baglantilar": {
+      "web": "https://www.pedalla.com/",
+      "youtube": "https://www.youtube.com/@dogaci24",
+      "instagram": "https://www.instagram.com/serkantasdelen_/",
+      "strava": "https://www.strava.com/athletes/2987653",
+      "Facebook": "https://www.facebook.com/PedallaBisiklet"
+    }
+  },  
+      {
+    "kimlik": "maca-j-01",
+    "ad_soyad": "Ramil Ziyadov",
+    "kart_serisi": "maca",
+    "kart_degeri": "J",
+    "unvan": "Yalnız Kurt",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2013],
+    "fotograf": "img/turcular/ramil-ziyadov.jpg",
+    "yetenekler": {
+      "PED": 92,
+      "MKA": 85,
+      "KMP": 90,
+      "BFL": 88,
+      "KMR": 70
+    },
+    "ozel_yetenek": "2013 yılından itibaren Azerbaycan bayrağını dünyada dalgalandırma gayesiyle yola çıkmış; Avrupa, Asya ve Güney Amerika dâhil olmak üzere onlarca ülkede on binlerce kilometre pedal basmıştır.",
+    "baglantilar": {
+      "youtube": "https://www.youtube.com/@ramilziyadov1070",
+      "instagram": "https://www.instagram.com/ramilziyadov/"
+    }
+  },   
+      {
+    "kimlik": "maca-10-01",
+    "ad_soyad": "Enes Şensoy",
+    "kart_serisi": "maca",
+    "kart_degeri": "10",
+    "unvan": "Yalnız Kurt",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2010],
+    "fotograf": "img/turcular/enes-sensoy.jpg",
+    "yetenekler": {
+      "PED": 92,
+      "MKA": 85,
+      "KMP": 90,
+      "BFL": 88,
+      "KMR": 70
+    },
+    "ozel_yetenek": "Bisiklet dünyasının tanıdık ve tecrübeli yüzlerinden. Geçmişteki yüksek tempolu turculuk ve aktif içerik üreticiliği günlerinin ardından, şimdilerde mesai saatlerinden fırsat buldukça iki teker üstüne çıkıyor. Yıllık izinlere sığdırılan birkaç haftalık turlarla yolla olan bağını koparmayan, yoğun hayat temposuna karşı pedallayan bir yol sevdalısı.",
+    "baglantilar": {
+      "web": "https://http://www.canavarkesifte.com/",
+      "youtube": "https://www.youtube.com/@canavar",
+      "instagram": "https://www.instagram.com/canavar_kesifte/",
+      "Facebook": "https://www.facebook.com/velosipet",
+      "strava": "https://www.strava.com/athletes/24826730"
+    }
+  },   
+  {
+    "kimlik": "kupa-j-01",
+    "ad_soyad": "Ahmet Rauf Özkul",
+    "kart_serisi": "kupa",
+    "kart_degeri": "J",
+    "unvan": "Yalnız Kurt",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2010],
+    "fotograf": "img/turcular/ahmet-rauf-ozkul.jpg",
+    "yetenekler": {
+      "PED": 92,
+      "MKA": 85,
+      "KMP": 90,
+      "BFL": 80,
+      "KMR": 80
+    },
+    "ozel_yetenek": "Geçmişin uzun km'li turlarından Antalya'nın dik ve meşakkatli dağlarına uzanan bir bisiklet serüveni. İş-güç koşturmacası arasında fırsat buldukça pedallayan Ahmet Rauf, bisikletçiliğinin yanına filmcilik ve fotoğrafçılık tutkusunu da ekler. Onun turlarında sadece irtifa değil, estetik ve görsel derinlik de zirve yapar.",
+    "baglantilar": {
+      "web": "https://hayalinotlar.wordpress.com",
+      "youtube": "https://www.youtube.com/@hayalinotlar",
+      "instagram": "https://www.instagram.com/hayalinotlar/",
+      "Facebook": "https://www.facebook.com/Hayalinotlarblog/"
+    }
+  },
+        {
+    "kimlik": "sinek-10-01",
+    "ad_soyad": "Baki Berk Kayalar",
+    "kart_serisi": "sinek",
+    "kart_degeri": "10",
+    "unvan": "Yalnız Kurt",
+    "durum": "pasif",
+    "durum_etiketi": "Bilinmiyor ⚪",
+    "aktif_yillar": [2003, 2014],
+    "fotograf": "img/turcular/Baki-Berk-Kayalar.jpg",
+    "yetenekler": {
+      "PED": 95,
+      "MKA": 85,
+      "KMP": 90,
+      "BFL": 88,
+      "KMR": 85
+    },
+    "ozel_yetenek": "Türk bisiklet turculuğunun efsanevi uzun yol seyyahlarından. Geçmişte imza attığı devasa turlar ve kilometrelerle tanınan Baki Berk, günümüzde bisiklet dünyasının görünmez kategorisine geçiş yaptı. Haritalardan ve gözlerden uzak, nerede pedalladığı bilinmeyen gerçek bir yol gizemi.",
+    "baglantilar": {
+      "web": "https://bisikletturlari.blogspot.com/"
+    }
+  },
+      {
+    "kimlik": "kupa-10-01",
+    "ad_soyad": "Aziz Küçük",
+    "kart_serisi": "kupa",
+    "kart_degeri": "10",
+    "unvan": "İrtifa Canavarı",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2016],
+    "fotograf": "img/turcular/aziz-kucuk.jpg",
+    "yetenekler": {
+      "PED": 90,
+      "MKA": 59,
+      "KMP": 80,
+      "BFL": 80,
+      "KMR": 55
+    },
+    "ozel_yetenek": "Bisiklet dünyasının pes etmeyen dağ keçisi. Muazzam dayanıklılığı ve inatçı kondisyonuyla en dik tırmanışları bile oyun alanına çevirir. Yokuş yukarı çıkarken harcadığı eforu bir ceza değil, bir ödül olarak gören Aziz; %12 eğimle karşılaştığında ivme kazanan, rampaların ve zirvelerin tartışmasız hakimidir.",
+    "baglantilar": {
+      "web": "https://heybede.wordpress.com",
+      "instagram": "https://www.instagram.com/aziz.kucukk/",
+      "strava": "https://www.strava.com/athletes/14125095"
+    }
+  }
+]
