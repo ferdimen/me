@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Türkiye Bisiklet Turcuları Kolleksiyon Kartları</title>
+<link rel="icon" type="image/png" href="http://www.ferdimen.com/img/logo.png">  
+<link rel="stylesheet" href="data/css.css">
+  <style>
+    :root {
+      --arkaplan: #f1f5f9;
+      --kart-arkaplan: #1e1e24;
+      --metin-renk: #0f172a;
+      --vurgu-renk: #ff9f1c;
+      --maca-renk: #a2d2ff;
+      --karo-renk: #ff4d6d;
+      --kupa-renk: #ff758f;
+      --sinek-renk: #2ec4b6;
+      --joker-renk: #d4af37;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--arkaplan); color: var(--metin-renk); padding: 20px; min-height: 100vh; }
+
+    header { text-align: center; margin-bottom: 20px; }
+    header h1 { font-size: 2.2rem; color: #0f172a; margin-bottom: 6px; }
+    header p { color: #64748b; font-size: 0.95rem; }
+
+    /* Açık Renkli Masa Konteynırı */
+    .oyun-masasi {
+      background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+      border: 6px solid #94a3b8;
+      border-radius: 24px;
+      padding: 25px;
+      max-width: 1300px;
+      margin: 0 auto 30px auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    /* Üst Aksiyon Butonları */
+    .masa-butonlari { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .oyun-btn {
+      background: #ffffff; color: #0f172a; border: 1px solid #cbd5e1;
+      padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9rem;
+      transition: all 0.2s ease; box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .oyun-btn:hover { background: var(--vurgu-renk); color: #000; border-color: var(--vurgu-renk); }
+    .oyun-btn.vurgulu { background: var(--vurgu-renk); color: #000; border-color: #d97706; }
+    .oyun-btn.karistir-btn { background: #3b82f6; color: #ffffff; border-color: #2563eb; }
+    .oyun-btn.karistir-btn:hover { background: #1d4ed8; color: #ffffff; }
+    .oyun-btn.info-btn { background: #0284c7; color: #ffffff; border-color: #0369a1; }
+    .oyun-btn.info-btn:hover { background: #0369a1; color: #ffffff; }
+
+    /* Durum Bilgi Paneli */
+    .oyun-durum-paneli {
+      text-align: center; background: #ffffff; padding: 12px; border-radius: 12px;
+      font-weight: bold; color: #0f172a; font-size: 1rem; border: 1px solid #cbd5e1;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    }
+
+    /* OYUN SAHASI (İLK AÇILIŞTA GİZLENİR) */
+    .oyun-saha-elemanlari { display: none; flex-direction: column; gap: 15px; }
+
+    /* Yapay Zeka (Zekayi) Alanı */
+    .bot-alani { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .bot-eli { display: flex; justify-content: center; gap: 8px; }
+    .bot-kapali-kart {
+      width: 65px; height: 95px; background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 2px solid #38bdf8; border-radius: 8px; display: flex; align-items: center;
+      justify-content: center; font-size: 1.3rem; box-shadow: 0 4px 8px rgba(0,0,0,0.15); color: #fff;
+    }
+
+    /* Orta Oyun Sahası */
+    .orta-saha {
+      display: flex; justify-content: center; align-items: center; gap: 40px;
+      min-height: 350px; margin: 10px 0;
+    }
+
+    .deste-kutusu, .orta-kart-alani {
+      width: 240px; height: 350px; border-radius: 16px;
+      border: 2px dashed #94a3b8; display: flex;
+      flex-direction: column; justify-content: center; align-items: center;
+      position: relative; background: rgba(255,255,255,0.4);
+    }
+
+    .kapali-deste-kart {
+      width: 100%; height: 100%; background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 3px solid #38bdf8; border-radius: 14px; display: flex;
+      justify-content: center; align-items: center; font-size: 3rem;
+      cursor: pointer; box-shadow: 0 6px 15px rgba(0,0,0,0.15); transition: transform 0.2s; color: #fff;
+    }
+    .kapali-deste-kart:hover { transform: scale(1.03); }
+
+    .deste-sayac { position: absolute; bottom: -24px; font-size: 0.85rem; font-weight: bold; color: #475569; }
+
+    /* Oyuncu Eli / Vitrin Alanı */
+    .oyuncu-eli-baslik { text-align: center; font-size: 1.1rem; color: #0f172a; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+    .oyuncu-eli {
+      display: flex; justify-content: center; align-items: flex-end;
+      min-height: 420px; padding-top: 20px; position: relative; perspective: 1000px;
+    }
+
+    .oyuncu-eli .iskambil-kart {
+      margin-left: -110px; transform-origin: bottom center;
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), z-index 0.2s, box-shadow 0.3s;
+      box-shadow: -4px 8px 20px rgba(0, 0, 0, 0.3); cursor: pointer;
+    }
+    .oyuncu-eli .iskambil-kart:first-child { margin-left: 0; }
+    .oyuncu-eli .iskambil-kart:hover {
+      transform: translateY(-60px) rotate(0deg) scale(1.08) !important;
+      z-index: 100 !important; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
+      border-color: var(--vurgu-renk);
+    }
+
+    /* Tüm Liste Görünümü */
+    .tum-liste-alani {
+      display: none; max-width: 1300px; margin: 0 auto; background: #ffffff;
+      padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .kontrol-paneli {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 15px; margin-bottom: 25px; background: #f8fafc;
+      padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0;
+    }
+
+    .filtre-alani { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filtre-buton {
+      background: #ffffff; color: #334155; border: 1px solid #cbd5e1;
+      padding: 6px 12px; border-radius: 14px; cursor: pointer; font-size: 0.8rem;
+    }
+    .filtre-buton.aktif, .filtre-buton:hover { background: var(--vurgu-renk); color: #000; font-weight: bold; border-color: #d97706; }
+
+    .siralama-secim {
+      background: #ffffff; color: #0f172a; border: 1px solid #cbd5e1;
+      padding: 6px 12px; border-radius: 8px; font-weight: bold; cursor: pointer;
+    }
+
+    .kart-izgarasi { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+
+    /* KOYU RENKLİ & BÜYÜK BOYUTLU İSKAMBİL KARTLARI */
+    .iskambil-kart {
+      background: var(--kart-arkaplan); border-radius: 16px; border: 2px solid #333340;
+      overflow: hidden; position: relative; display: flex; flex-direction: column;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25); transition: transform 0.3s ease, border-color 0.3s ease;
+      width: 240px; height: 520px; font-size: 0.88rem; color: #f0f0f5;
+    }
+
+    .tum-liste-alani .iskambil-kart { width: 240px; height: auto; min-height: 350px; }
+    .tum-liste-alani .iskambil-kart:hover { transform: translateY(-6px); border-color: var(--vurgu-renk); }
+    .iskambil-kart.joker-kart { border-color: var(--joker-renk); background: linear-gradient(145deg, #1e1e24, #2a2238); }
+
+    .iskambil-kart.bos-kart {
+      border: 2px dashed #ff9f1c;
+      background: #1e1e24;
+      cursor: pointer;
+    }
+    .iskambil-kart.bos-kart:hover { background: #2a2a35; transform: translateY(-6px) scale(1.02); }
+
+    .bos-kart-icerik {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      height: 100%; text-align: center; padding: 15px; gap: 8px;
+    }
+
+    .bos-kart-simge { font-size: 2.8rem; opacity: 0.6; }
+    .bos-kart-ekle-btn {
+      background: var(--vurgu-renk); color: #000; padding: 5px 12px;
+      border-radius: 10px; font-weight: bold; font-size: 0.8rem;
+    }
+
+    /* KART ÜST BİLGİ */
+    .kart-ust-bilgi {
+      position: absolute; top: 8px; left: 8px; right: 8px;
+      display: flex; justify-content: space-between; align-items: center; z-index: 2;
+    }
+
+    .kart-simgesi {
+      background: rgba(0,0,0,0.85); padding: 4px 9px; border-radius: 8px;
+      font-weight: bold; font-size: 0.95rem; letter-spacing: 1px;
+    }
+
+    .maca { color: var(--maca-renk); }
+    .karo { color: var(--karo-renk); }
+    .kupa { color: var(--kupa-renk); }
+    .sinek { color: var(--sinek-renk); }
+    .joker { color: var(--joker-renk); border: 1px solid var(--joker-renk); }
+
+    .genel-puan-rozet {
+      background: var(--vurgu-renk); color: #000000; font-weight: bold;
+      width: 32px; height: 32px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; font-size: 0.85rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .kart-resim { width: 100%; height: 140px; object-fit: cover; }
+    .tum-liste-alani .kart-resim { height: 160px; }
+    .kart-icerik { padding: 10px; display: flex; flex-direction: column; gap: 5px; flex-grow: 1; }
+    .turcu-adi { font-size: 0.98rem; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #fff; }
+    .turcu-unvan { font-size: 0.75rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .rozet-grubu { display: flex; gap: 4px; flex-wrap: wrap; }
+    .durum-rozet { font-size: 0.65rem; background: #2a2a35; color: #e2e8f0; padding: 2px 5px; border-radius: 4px; }
+    .aktif-yil-rozet { font-size: 0.65rem; background: #14281d; color: #2ec4b6; border: 1px solid #1e4a38; padding: 2px 5px; border-radius: 4px; }
+    .aktif-yil-rozet.pasif { background: #33181c; color: #ff4d6d; border-color: #522229; }
+
+    .yetenek-listesi { display: flex; flex-direction: column; gap: 2px; margin-top: 2px; }
+    .yetenek-satir { display: flex; align-items: center; font-size: 0.68rem; gap: 4px; color: #cbd5e1; }
+    .yetenek-adi { width: 32px; font-weight: bold; color: var(--vurgu-renk); cursor: help; }
+    .yetenek-cubuk-dis { flex-grow: 1; height: 4px; background: #2d2d3a; border-radius: 2px; overflow: hidden; }
+    .yetenek-cubuk-ic { height: 100%; background: var(--vurgu-renk); border-radius: 2px; }
+
+    /* ÖZEL YETENEK METNİ */
+    .ozel-yetenek-kutusu {
+      font-size: 0.7rem; background: #141418; padding: 6px; border-radius: 4px;
+      border-left: 3px solid var(--vurgu-renk); font-style: italic; color: #d0d0e0;
+      white-space: normal; overflow: visible; line-height: 1.25;
+    }
+
+    .baglantilar-kutusu { display: flex; gap: 4px; flex-wrap: wrap; margin-top: auto; padding-top: 4px; border-top: 1px solid #2a2a35; }
+    .baglanti-link { background: #2b2b36; color: #fff; text-decoration: none; font-size: 0.68rem; padding: 2px 6px; border-radius: 3px; }
+    .baglanti-link:hover { background: var(--vurgu-renk); color: #000; font-weight: bold; }
+
+    .duzenle-btn {
+      position: absolute; bottom: 350px; right: 6px; background: #2b2b36;
+      color: var(--vurgu-renk); border: 1px solid var(--vurgu-renk);
+      border-radius: 6px; padding: 3px 6px; font-size: 0.7rem; cursor: pointer;
+      font-weight: bold; z-index: 5;
+    }
+    .duzenle-btn:hover { background: var(--vurgu-renk); color: #000; }
+
+    /* MODAL PENCERELER (FORM & İNFO) */
+    .modal-arkaplan {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.75); z-index: 1000; justify-content: center;
+      align-items: center; padding: 15px; backdrop-filter: blur(3px);
+    }
+
+    .modal-kutu {
+      background: #ffffff; border: 2px solid #cbd5e1; border-radius: 16px;
+      max-width: 580px; width: 100%; max-height: 90vh; display: flex;
+      flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      position: relative; overflow: hidden; color: #0f172a;
+    }
+
+    .modal-ust-sabit {
+      padding: 18px 20px 12px 20px;
+      border-bottom: 1px solid #e2e8f0;
+      background: #f8fafc;
+      position: relative;
+    }
+
+    .modal-kapat {
+      position: absolute; top: 15px; right: 15px; background: #ffffff;
+      color: #64748b; border: 1px solid #cbd5e1; width: 32px; height: 32px; border-radius: 50%;
+      cursor: pointer; font-weight: bold; font-size: 1.1rem; display: flex;
+      align-items: center; justify-content: center; transition: all 0.2s;
+    }
+    .modal-kapat:hover { background: #ef4444; color: #fff; border-color: #ef4444; }
+
+    .modal-ic-kaydirilabilir { padding: 20px; overflow-y: auto; flex-grow: 1; }
+
+    /* BİLGİ MODALI STİLLERİ */
+    .info-maddesi {
+      background: #f8fafc; border-left: 4px solid #0284c7; padding: 10px 14px;
+      border-radius: 8px; margin-bottom: 12px; font-size: 0.88rem; line-height: 1.5;
+    }
+    .info-maddesi strong { color: #0369a1; }
+
+    .form-grubu { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .form-grubu label { font-size: 0.8rem; color: #d97706; font-weight: bold; }
+    .form-grubu input, .form-grubu select, .form-grubu textarea {
+      background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a;
+      padding: 8px 12px; border-radius: 8px; font-size: 0.85rem; outline: none;
+    }
+    .form-grubu input:focus, .form-grubu select:focus, .form-grubu textarea:focus { border-color: #f59e0b; }
+    .form-grubu input:disabled { opacity: 0.6; cursor: not-allowed; background: #f1f5f9; }
+
+    .form-cift { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .stat-grid input { text-align: center; }
+
+    .yetenek-kredi-bilgi {
+      font-size: 0.75rem; color: #475569; background: #f8fafc; padding: 6px 10px;
+      border-radius: 6px; margin-bottom: 6px; border: 1px solid #e2e8f0; display: flex; justify-content: space-between;
+    }
+
+    .ekstra-link-satir { display: flex; gap: 8px; margin-top: 6px; }
+    .ekstra-link-satir input:first-child { width: 35%; }
+    .ekstra-link-satir input:last-child { width: 65%; }
+
+    .link-ekle-btn {
+      background: #f8fafc; color: #d97706; border: 1px dashed #d97706;
+      padding: 6px 10px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 0.75rem; margin-top: 6px;
+    }
+
+    .form-gonder-btn {
+      width: 100%; background: #f59e0b; color: #ffffff; border: none;
+      padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 15px; font-size: 1rem;
+    }
+    .form-gonder-btn:hover { background: #d97706; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>...</h1>
+    <h1>🃏 Türkiye Bisiklet Turcuları Koleksiyon Kartları</h1>
+    <p>Türkiye'nin pedallayan bisiklet turcularını keşfet veya Zekayi ile kapış!</p>
+  </header>
+<header class="main-header"></header>
+
+<!-- Yine aynı şekilde / ile çağırılır, göreceli yol (../) derdi biter -->
+<script src="data/header-loader.js"></script>
+    </header><script src="youtube.js?v=1"></script>	
+  <!-- OYUN MASASI LAYER'I -->
+  <div class="oyun-masasi" id="oyunMasasi">
+    <div class="masa-butonlari">
+	        <button class="oyun-btn info-btn" onclick="infoModalAc()">ℹ️ Bilgi</button>	
+      <button class="oyun-btn vurgulu" onclick="yeniOyunBaslat()">🎮 Yeni Oyun Başlat</button>
+      <button class="oyun-btn karistir-btn" id="karistirBtn" onclick="vitrinKartlariniKaristir()">🔄 Desteyi Yeniden Karıştır</button>
+      <button class="oyun-btn bos-btn" onclick="bosKartlariListele()">🃏 Boş Kartlar (Aday Göster)</button>
+      <button class="oyun-btn" onclick="tumListeyiGosterGizle()" id="listeToggleBtn">📋 Tüm Desteyi Göster</button>
+
+    </div>
+
+    <!-- DURUM MESAJI -->
+    <div class="oyun-durum-paneli" id="oyunDurumPaneli">✨ Turcu Vitrini: Detaylı incelemek istediğin karta veya "Tüm Desteyi Göster" butonuna tıkla!</div>
+
+    <!-- SADECE OYUN BAŞLADIĞINDA GÖRÜNEN SAHA ELEMANLARI -->
+    <div class="oyun-saha-elemanlari" id="oyunSahaElemanlari">
+      <!-- BOT ZEKAYİ ALANI -->
+      <div class="bot-alani">
+        <div style="font-size: 0.85rem; color: #0284c7; font-weight: bold;">🤖 Yapay Zeka Zekayi - Toplam Puan: <span id="botSkor">0</span></div>
+        <div class="bot-eli" id="botEli"></div>
+      </div>
+
+      <!-- ORTA SAHA -->
+      <div class="orta-saha">
+        <div class="deste-kutusu">
+          <div class="kapali-deste-kart" onclick="kartCek()" title="Tıkla ve Kart Çek">🚴‍♂️</div>
+          <div class="deste-sayac" id="desteSayac">Deste: 0</div>
+        </div>
+
+        <div class="orta-kart-alani" id="ortaKartAlani">
+          <span style="color: #94a3b8; font-size: 0.85rem;">Masa Boş</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OYUNCU ELİ / VİTRİN KARTLARI ALANI -->
+    <div class="oyuncu-eli-baslik" id="oyuncuEliBaslik"></div>
+    <div class="oyuncu-eli" id="oyuncuEli"></div>
+  </div>
+
+  <!-- TÜM LİSTE GÖRÜNÜMÜ LAYER'I -->
+  <div class="tum-liste-alani" id="tumListeAlani">
+    <div class="kontrol-paneli">
+      <div class="filtre-alani">
+        <button class="filtre-buton aktif" onclick="kartlariFiltrele('dolu', event)">Tümü</button>
+        <button class="filtre-buton" onclick="kartlariFiltrele('aktif', event)">🟢</button>
+        <button class="filtre-buton" onclick="kartlariFiltrele('motora_gecti', event)">⚪</button>
+        <button class="filtre-buton" onclick="kartlariFiltrele('maca', event)">♠️ Maça</button>
+        <button class="filtre-buton" onclick="kartlariFiltrele('karo', event)">♦️ Karo</button>
+        <button class="filtre-buton" onclick="kartlariFiltrele('kupa', event)">♥️ Kupa</button>
+        <button class="filtre-buton" onclick="kartlariFiltrele('sinek', event)">♣️ Sinek</button>
+      </div>
+
+      <div class="siralama-alani">
+        <label for="siralamaSecim">Sırala:</label>
+        <select id="siralamaSecim" class="siralama-secim" onchange="kartlariSirala(this.value)">
+          <option value="kart_degeri_sirali">🃏 Kart Değerine Göre (JOKER, A, K...)</option>
+          <option value="puan_azalan">Ortalama Puan (Yüksekten Düşüğe)</option>
+          <option value="alfabetik">İsim (A-Z)</option>
+          <option value="aktif_yil">Aktif Yıl Süresi</option>
+          <option value="PED">PED (Pedal)</option>
+          <option value="MKA">MKA (Mekanik)</option>
+          <option value="KMP">KMP (Kamp)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="kart-izgarasi" id="tumKartlarKonteynir"></div>
+  </div>
+
+  <!-- OYUN BİLGİSİ VE KURALLAR MODALI -->
+  <div class="modal-arkaplan" id="infoModal">
+    <div class="modal-kutu">
+      <div class="modal-ust-sabit">
+        <button class="modal-kapat" onclick="infoModalKapat()" title="Pencereyi Kapat">✕</button>
+        <h3 style="color: #0284c7; margin-bottom: 3px;">ℹ️ Kartlar ve Oyun Hakkında & Kurallar</h3>
+        <p style="font-size: 0.8rem; color: #64748b;">Türkiye Bisiklet Turcuları Oyunu Kılavuzu</p>
+      </div>
+
+      <div class="modal-ic-kaydirilabilir">
+        <div class="info-maddesi">
+          <strong>🎮 Oyun Mantığı:</strong> Oyunda rakibiniz Yapay Zeka <strong>Zekayi</strong>'dir. Kartlar dağıtıldıktan sonra sırayla masaya kart atılır.
+        </div>
+
+        <div class="info-maddesi">
+          <strong>⭐ Puan Hesaplama:</strong> Her kartın sol üst köşesindeki altın dairede kartın <strong>Ortalama Güç Puanı</strong> (PED, MKA, KMP, BFL, KMR istatistiklerinin ortalaması) yazar.
+        </div>
+
+        <div class="info-maddesi">
+          <strong>⚔️ Kart Alma & Skorlama:</strong> Masadaki karta karşılık attığınız kartın Ortalama Puanı, masadaki karttan <strong>daha yüksekse</strong> yerdeki kartı alırsınız. İki kart arasındaki puan farkı skorunuza eklenir ve yeri temizlersiniz!
+        </div>
+
+        <div class="info-maddesi">
+          <strong>🃏 Boş Kartlar & Aday Gösterme:</strong> Destede henüz atanmamış boş kartlar bulunmaktadır. Boş kartlara tıklayarak istediğiniz bisiklet turcusunu aday gösterebilir veya bilgileri güncelleyebilirsiniz.
+        </div>
+
+        <div class="info-maddesi">
+          <strong>🔄 Vitrin Modu:</strong> Oyunu başlatmadan önce "Desteyi Yeniden Karıştır" butonuyla farklı turcuları vitrinde listeleyebilir veya tüm desteyi filteleyip sıralayarak inceleyebilirsiniz.
+        </div>
+        <div class="info-maddesi">
+          <strong>⚠️ Not:</strong> Bu sayfadaki bir sıralama yoktur. Tüm puanlar, kart tipleri ve istatistikler tamamen eğlence, mizah ve camia içi tatlı bir anı oluşturmak amacıyla kurgulanmıştır. Bilgiler doğru olmayabilir kartlardaki ✏️ ikona tıklayarak güncelleme isteğinde bulunabilirsiniz. 
+        </div>		
+      </div>
+    </div>
+  </div>
+    <!-- İLETİŞİM VE SOSYAL MEDYA -->
+    <section class="contact-section" id="iletisim">
+        <div class="container">
+            <div class="contact-grid">
+                
+                <div class="contact-info-side">
+                    <h3>Bağlantıda Kalın</h3>
+                    <p>Yol hikayelerini, bağımsız yayınları ve anlık telemetri paylaşımlarını resmi ağ istasyonları üzerinden takip edebilirsiniz.</p>
+                    
+<div class="social-links-container" id="social-container">
+    </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const socialContainer = document.getElementById("social-container");
+        if (!socialContainer) return;
+
+        fetch('data/sosyal.json?v=' + new Date().getTime())
+            .then(res => {
+                if (!res.ok) throw new Error("Sosyal medya JSON dosyası yüklenemedi!");
+                return res.json();
+            })
+            .then(data => {
+                let htmlContent = '';
+
+                data.forEach(hesap => {
+                    htmlContent += `
+                        <a href="${hesap.url}" target="_blank" class="social-icon-btn">
+                            ${hesap.svg}
+                            <span>${hesap.ad}</span>
+                        </a>
+                    `;
+                });
+
+                socialContainer.innerHTML = htmlContent;
+            })
+            .catch(err => {
+                console.error("Sosyal medya butonları yüklenirken hata:", err);
+                // Hata durumunda boş kalmaması için manuel bir yedek bırakabilirsiniz:
+                socialContainer.innerHTML = `
+                    <a href="https://www.youtube.com/@ferdimen" target="_blank" class="social-icon-btn">
+                        <span>YouTube</span>
+                    </a>
+                `;
+            });
+    });
+</script>
+                </div>
+                
+                <div class="contact-form-side">
+                    <form action="https://formspree.io/f/xnjyjwnk" method="POST">
+                        <div class="form-group">
+                            <label for="name">İsim / Mahlas</label>
+                            <input type="text" id="name" name="name" required placeholder="Adınızı giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Posta Adresi</label>
+                            <input type="email" id="email" name="_replyto" required placeholder="E-posta adresinizi giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mesajınız</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Yol notunuzu buraya bırakın..."></textarea>
+                        </div>
+                        <input type="hidden" name="_language" value="tr" />
+                        <button type="submit" class="submit-btn">Gönder</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+<p class="footer-text"><script src="/data/footer.js?v=1"></script>© <span id="footer-year"></span> <span id="footer-dynamic-text"></p>			
+        </div>
+    </footer>
+  <!-- BİSİKLETÇİ EKLE/DÜZENLE MODALI -->
+  <div class="modal-arkaplan" id="modalForm">
+    <div class="modal-kutu">
+      <div class="modal-ust-sabit">
+        <button class="modal-kapat" onclick="modalKapat()" title="Pencereyi Kapat">✕</button>
+        <h3 style="color: #d97706; margin-bottom: 3px;" id="modalBaslik">➕ Yeni Bisikletçi Adayı Ekle</h3>
+        <p style="font-size: 0.8rem; color: #64748b;">
+          Seçilen Kart: <strong id="seciliKartEtiketi" style="color: #0f172a;">-</strong>
+        </p>
+      </div>
+
+      <div class="modal-ic-kaydirilabilir">
+        <form id="turcuFormu">
+          <input type="hidden" id="formKartSerisi" name="kart_serisi">
+          <input type="hidden" id="formKartDegeri" name="kart_degeri">
+          <input type="hidden" id="formKimlik" name="kimlik">
+
+          <div class="form-grubu">
+            <label>Geçerli E-posta Adresiniz (Zorunlu)</label>
+            <input type="email" id="formEmail" name="email" required placeholder="ornek@eposta.com">
+          </div>
+
+          <div class="form-cift">
+            <div class="form-grubu">
+              <label>Ad Soyad</label>
+              <input type="text" name="ad_soyad" id="formAdSoyad" required placeholder="Orhan Kılıç">
+            </div>
+            <div class="form-grubu">
+              <label>Unvan</label>
+              <input type="text" name="unvan" id="formUnvan" required placeholder="Duayen / Yalnız Kurt">
+            </div>
+          </div>
+
+          <div class="form-cift">
+            <div class="form-grubu">
+              <label>Durum</label>
+              <select name="durum" id="formDurum">
+                <option value="aktif">Aktif (🟢 Yolda)</option>
+                <option value="motora_gecti">Motora Geçti / Molada (⚪)</option>
+                <option value="arsiv">Arşivden Yayın 💾</option>
+              </select>
+            </div>
+            <div class="form-grubu">
+              <label>Başlangıç / Bitiş Yılı (Örn: 2010)</label>
+              <input type="text" id="formAktifYillar" placeholder="2010">
+            </div>
+          </div>
+
+          <div class="form-grubu">
+            <label>Fotoğraf Yol Gösterimi</label>
+            <input type="text" name="fotograf" id="formFotograf" required placeholder="img/turcular/orhan-kilic.jpg">
+          </div>
+
+          <div class="form-grubu">
+            <label>Yetenekler (0 - 100 Arası)</label>
+            <div class="yetenek-kredi-bilgi">
+              <span>Toplam Kredi: <strong id="toplamStatGosterge">350</strong> / 350</span>
+              <span>Ortalama: <strong id="ortStatGosterge">70</strong> / 70</span>
+            </div>
+            <div class="stat-grid">
+              <div><span style="font-size:0.7rem; color:#aaa;" title="Pedal & Dayanıklılık">PED ℹ️</span><input type="number" id="stPED" value="70" min="0" max="100" oninput="statHesapla()"></div>
+              <div><span style="font-size:0.7rem; color:#aaa;" title="Mekanik & Tamir">MKA ℹ️</span><input type="number" id="stMKA" value="70" min="0" max="100" oninput="statHesapla()"></div>
+              <div><span style="font-size:0.7rem; color:#aaa;" title="Kamp & Yaban Hayat">KMP ℹ️</span><input type="number" id="stKMP" value="70" min="0" max="100" oninput="statHesapla()"></div>
+              <div><span style="font-size:0.7rem; color:#aaa;" title="Beslenme & Gurme">BFL ℹ️</span><input type="number" id="stBFL" value="70" min="0" max="100" oninput="statHesapla()"></div>
+              <div><span style="font-size:0.7rem; color:#aaa;" title="Kamera & İçerik">KMR ℹ️</span><input type="number" id="stKMR" value="70" min="0" max="100" oninput="statHesapla()"></div>
+            </div>
+          </div>
+
+          <div class="form-grubu">
+            <label>Özel Yetenek / Açıklama</label>
+            <input type="text" name="ozel_yetenek" id="formOzelYetenek" required placeholder="Rüzgar Söndüren: Poyrazda vites düşürmez.">
+          </div>
+
+          <div class="form-grubu">
+            <label>Bağlantılar (Sosyal Medya & Web)</label>
+            <div class="form-cift">
+              <input type="text" id="linkWeb" placeholder="Web (Örn: facebook.com veya site.com)">
+              <input type="text" id="linkYT" placeholder="youtube (Örn: youtube.com/...)">
+              <input type="text" id="linkIG" placeholder="instagram (Örn: instagram.com/...)">
+              <input type="text" id="linkFB" placeholder="Facebook (Örn: facebook.com/...)">
+            </div>
+
+            <div id="ekstraLinkKonteynir"></div>
+            <button type="button" class="link-ekle-btn" onclick="ekstraLinkSatiriEkle()">➕ Başka Sosyal Medya Ekle (Strava, Komoot vs.)</button>
+          </div>
+
+          <textarea name="json_veri" id="jsonKodBlok" style="display:none;"></textarea>
+          <button type="submit" class="form-gonder-btn" id="gonderBtn">🚀 Formu Gönder</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let doluDeste = [];
+    let anaDeste = [];
+    let cekilebilirDeste = [];
+    let eldekiKartlar = [];
+    let botEli = [];
+    let masadakiKartlar = [];
+    let oyuncuSkorPuan = 0;
+    let botSkorPuan = 0;
+    let mevcutSira = "oyuncu";
+    let oyunBasladiMi = false;
+    let mevcutFiltrelenmisVeri = [];
+    let mevcutModalModu = "ekle";
+
+    const FORMSPREE_URL = "https://formspree.io/f/xnjyjwnk";
+    const GUNCEL_YIL = new Date().getFullYear();
+    const seriler = ["maca", "karo", "kupa", "sinek"];
+    const degerler = ["A", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2"];
+    const simgeHaritasi = { maca: "♠", karo: "♦", kupa: "♥", sinek: "♣", joker: "🃏" };
+    const baglantiEtiketleri = { web: "🌐 ", youtube: "▶️ ", instagram: "📸 ", Facebook: "👍 ", strava: "📈 " };
+    const kartAgliklari = { "JOKER": 1, "A": 14, "K": 13, "Q": 12, "J": 11, "10": 10, "9": 9, "8": 8, "7": 7, "6": 6, "5": 5, "4": 4, "3": 3, "2": 2 };
+    const yetenekAciklamalari = { PED: "Pedal & Dayanıklılık", MKA: "Mekanik & Tamir", KMP: "Kamp & Yaban Hayat", BFL: "Beslenme & Gurme", KMR: "Kamera & İçerik" };
+
+    const kiskirtmaSozleri = [
+      "🔥 Rüzgarıma yetişebilirsen pedallamaya başla! İlk kart benden!",
+      "😏 Bakalım bacaklarında bu eğimi çıkacak güç var mı? Şansını dene!",
+      "🚴‍♂️ Zincir koparmayan bu masadan kalkamaz! Hamleni bekliyorum.",
+      "⛰️ Geçit rüzgarı sert eser, bakalım kartın bu yokuşu kurtaracak mı?",
+      "🍵 Çaylar benden, kartlar senden! İlk hamleyi ben yapıyorum."
+    ];
+
+    function tumPozisyonlariUret() {
+      const pozisyonlar = [];
+      seriler.forEach(seri => {
+        degerler.forEach(deger => {
+          pozisyonlar.push({ kart_serisi: seri, kart_degeri: deger });
+        });
+      });
+      pozisyonlar.push({ kart_serisi: "joker", kart_degeri: "JOKER" });
+      pozisyonlar.push({ kart_serisi: "joker", kart_degeri: "JOKER" });
+      return pozisyonlar;
+    }
+
+    function rastgeleStatUret() {
+      const rastgele = () => Math.floor(Math.random() * 11) + 70;
+      return { PED: rastgele(), MKA: rastgele(), KMP: rastgele(), BFL: rastgele(), KMR: rastgele() };
+    }
+
+    function veriIsle(turcu) {
+      if (!turcu.yetenekler) {
+        turcu.yetenekler = rastgeleStatUret();
+      }
+
+      const yetenekPuanlari = Object.values(turcu.yetenekler);
+      const toplamPuan = yetenekPuanlari.reduce((a, b) => a + b, 0);
+      turcu.hesaplanan_ort_puan = Math.round(toplamPuan / yetenekPuanlari.length);
+
+      const yillar = turcu.aktif_yillar || [];
+      const baslangicYili = yillar[0] || GUNCEL_YIL;
+
+      if (yillar.length >= 2) {
+        turcu.toplam_aktif_yil = yillar[1] - baslangicYili;
+        turcu.aktif_yil_metni = `${baslangicYili} - ${yillar[1]} (${turcu.toplam_aktif_yil} Yıl)`;
+        turcu.hala_aktif_mi = false;
+      } else {
+        turcu.toplam_aktif_yil = GUNCEL_YIL - baslangicYili;
+        turcu.aktif_yil_metni = `${baslangicYili} - Günümüz (${turcu.toplam_aktif_yil} Yıl)`;
+        turcu.hala_aktif_mi = true;
+      }
+
+      if (turcu.durum === 'aktif') {
+        turcu.durum_etiketi = `${turcu.durum_etiketi ? turcu.durum_etiketi.replace(/[🟢⚪🔴]/g, '').trim() : ''} 🟢`;
+      } else {
+        turcu.durum_etiketi = `${turcu.durum_etiketi ? turcu.durum_etiketi.replace(/[🟢⚪🔴]/g, '').trim() : ''} ⚪`;
+      }
+      return turcu;
+    }
+
+    function karistir(dizi) {
+      let kopyalanan = [...dizi];
+      for (let i = kopyalanan.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [kopyalanan[i], kopyalanan[j]] = [kopyalanan[j], kopyalanan[i]];
+      }
+      return kopyalanan;
+    }
+
+    async function verileriYukle() {
+      try {
+        const cevap = await fetch('data/turcular.json');
+        if (!cevap.ok) throw new Error('Veri okunamadı');
+        const hamVeri = await cevap.json();
+        
+        doluDeste = hamVeri.map(veriIsle);
+        const tumDestePozisyonlari = tumPozisyonlariUret();
+        const bosKartlar = [];
+
+        tumDestePozisyonlari.forEach(poz => {
+          const doluMu = doluDeste.some(t => t.kart_serisi === poz.kart_serisi && String(t.kart_degeri) === String(poz.kart_degeri));
+          if (!doluMu) {
+            const bosTurcu = {
+              bos_kart: true,
+              kimlik: `${poz.kart_serisi}-${poz.kart_degeri.toLowerCase()}-bos`,
+              kart_serisi: poz.kart_serisi,
+              kart_degeri: poz.kart_degeri,
+              ad_soyad: "Atanmamış Kart",
+              unvan: "Aday Gösterilebilir",
+              yetenekler: rastgeleStatUret()
+            };
+            bosKartlar.push(veriIsle(bosTurcu));
+          }
+        });
+
+        anaDeste = [...doluDeste, ...bosKartlar];
+        mevcutFiltrelenmisVeri = [...doluDeste];
+
+        sayfaIlkAcilisVitrin();
+        tumKartlariEkranaBas(mevcutFiltrelenmisVeri);
+      } catch (hata) {
+        console.error('Hata:', hata);
+        document.getElementById('oyuncuEli').innerHTML = `<p style="color: red;">Veriler yüklenemedi! "data/turcular.json" dosyasını kontrol edin.</p>`;
+      }
+    }
+
+    /* İLK AÇILIŞ VİTRİN MODU */
+    function sayfaIlkAcilisVitrin() {
+      oyunBasladiMi = false;
+      document.getElementById('oyunSahaElemanlari').style.display = 'none';
+      document.getElementById('karistirBtn').style.display = 'inline-block';
+      document.getElementById('oyuncuEliBaslik').innerHTML = "";
+
+      vitrinKartlariniKaristir();
+    }
+
+    /* VİTRİN KARTLARINI YENİDEN KARIŞTIRMA */
+    function vitrinKartlariniKaristir() {
+      if (oyunBasladiMi) return;
+
+      const karistirilmis = karistir(doluDeste);
+      eldekiKartlar = karistirilmis.slice(0, 7);
+
+      eliGuncelle();
+      durumPaneliGuncelle("Turcuları inceleyebilir veya 'Yeni Oyun Başlat' ile Zekayi'ye meydan okuyabilirsin.");
+    }
+
+    /* YENİ OYUN BAŞLATILDIĞINDA SAHA AÇILIR */
+    function yeniOyunBaslat() {
+      oyunBasladiMi = true;
+      document.getElementById('oyunSahaElemanlari').style.display = 'flex';
+      document.getElementById('karistirBtn').style.display = 'none';
+      
+      // Başlık içindeki oyuncuSkor bileşeni düzeltildi
+      document.getElementById('oyuncuEliBaslik').innerHTML = '✋ Oyuncu (Siz) - Toplam Puan: <span id="oyuncuSkor">0</span> (Atmak İstediğin Karta Tıkla)';
+
+      cekilebilirDeste = karistir(anaDeste);
+      eldekiKartlar = [];
+      botEli = [];
+      masadakiKartlar = [];
+      oyuncuSkorPuan = 0;
+      botSkorPuan = 0;
+      mevcutSira = "bot";
+
+      for (let i = 0; i < 5; i++) {
+        if (cekilebilirDeste.length > 0) eldekiKartlar.push(cekilebilirDeste.pop());
+        if (cekilebilirDeste.length > 0) botEli.push(cekilebilirDeste.pop());
+      }
+
+      const rastgeleSoz = kiskirtmaSozleri[Math.floor(Math.random() * kiskirtmaSozleri.length)];
+      durumPaneliGuncelle(`🤖 Zekayi: "${rastgeleSoz}"`);
+
+      eliGuncelle();
+      botEliniguncelle();
+      masayiGuncelle();
+      sayaclariGuncelle();
+
+      setTimeout(botHamleYap, 1800);
+    }
+
+    function durumPaneliGuncelle(mesaj = null) {
+      const el = document.getElementById('oyunDurumPaneli');
+      if (mesaj) {
+        el.innerText = mesaj;
+      } else {
+        el.innerText = mevcutSira === "oyuncu" ? "👉 Sıra SİZDE! Bir karta tıklayıp masaya atın." : "⏳ Sıra ZEKAYİ'DE... Hamle bekleniyor.";
+      }
+    }
+
+    /* OYUNCU KARTA TIKLADIĞINDA VİTRİNDEYSE TÜM DESTEYİ AÇAR */
+    function oyuncuKartAt(kimlik) {
+      if (!oyunBasladiMi) {
+        tumListeyiGosterGizle(true);
+        return;
+      }
+
+      if (mevcutSira !== "oyuncu") {
+        alert("Lütfen Zekayi'nin hamlesini tamamlamasını bekleyin!");
+        return;
+      }
+
+      const kartIndex = eldekiKartlar.findIndex(k => k.kimlik === kimlik);
+      if (kartIndex > -1) {
+        const atilan = eldekiKartlar.splice(kartIndex, 1)[0];
+        const sonMasaKart = masadakiKartlar[masadakiKartlar.length - 1];
+        masadakiKartlar.push(atilan);
+
+        let kartAlindiMi = false;
+
+        if (sonMasaKart) {
+          const oyuncuPuan = atilan.hesaplanan_ort_puan || 0;
+          const masaPuan = sonMasaKart.hesaplanan_ort_puan || 0;
+
+          if (oyuncuPuan > masaPuan) {
+            const kazanilanPuan = oyuncuPuan - masaPuan;
+            oyuncuSkorPuan += kazanilanPuan;
+            masadakiKartlar = [];
+            kartAlindiMi = true;
+
+            mevcutSira = "bot"; 
+            durumPaneliGuncelle(`🎉 Harika! ${atilan.ad_soyad} (${oyuncuPuan}), Zekayi'nin ${sonMasaKart.ad_soyad} (${masaPuan}) kartını yendi! +${kazanilanPuan} puan aldınız.`);
+          }
+        }
+
+        eliGuncelle();
+        masayiGuncelle();
+        sayaclariGuncelle();
+
+        if (kartAlindiMi) {
+          setTimeout(botHamleYap, 1800);
+        } else {
+          if (botEli.length > 0 || cekilebilirDeste.length > 0) {
+            mevcutSira = "bot";
+            durumPaneliGuncelle(`Masaya ${atilan.ad_soyad} kartını attınız. Sıra Zekayi'de...`);
+            setTimeout(botHamleYap, 1500);
+          } else if (eldekiKartlar.length === 0 && botEli.length === 0 && cekilebilirDeste.length === 0) {
+            oyunBittiKontrol();
+          }
+        }
+      }
+    }
+
+    function botHamleYap() {
+      if (!oyunBasladiMi) return;
+
+      if (botEli.length === 0 && cekilebilirDeste.length === 0) {
+        durumPaneliGuncelle("🏳️ Zekayi'nin atacak kartı kalmadı ve PES ETTİ!");
+        oyunBittiKontrol();
+        return;
+      }
+
+      if (botEli.length === 0 && cekilebilirDeste.length > 0) {
+        botEli.push(cekilebilirDeste.pop());
+      }
+
+      const sonMasaKart = masadakiKartlar[masadakiKartlar.length - 1];
+      let secilenIndex = 0;
+
+      if (sonMasaKart) {
+        const masaPuan = sonMasaKart.hesaplanan_ort_puan || 0;
+        const kazananlar = botEli.filter(k => (k.hesaplanan_ort_puan || 0) > masaPuan);
+
+        if (kazananlar.length > 0) {
+          kazananlar.sort((a,b) => a.hesaplanan_ort_puan - b.hesaplanan_ort_puan);
+          secilenIndex = botEli.findIndex(k => k.kimlik === kazananlar[0].kimlik);
+        } else {
+          let minPuan = 999;
+          botEli.forEach((k, idx) => {
+            if ((k.hesaplanan_ort_puan || 0) < minPuan) {
+              minPuan = k.hesaplanan_ort_puan || 0;
+              secilenIndex = idx;
+            }
+          });
+        }
+      }
+
+      const atilan = botEli.splice(secilenIndex, 1)[0];
+      let kartAlindiMi = false;
+
+      if (sonMasaKart) {
+        const botPuan = atilan.hesaplanan_ort_puan || 0;
+        const masaPuan = sonMasaKart.hesaplanan_ort_puan || 0;
+        masadakiKartlar.push(atilan);
+
+        if (botPuan > masaPuan) {
+          const kazanilanPuan = botPuan - masaPuan;
+          botSkorPuan += kazanilanPuan;
+          masadakiKartlar = [];
+          kartAlindiMi = true;
+
+          mevcutSira = "oyuncu";
+          durumPaneliGuncelle(`🤖 Zekayi ${atilan.ad_soyad} (${botPuan}) atarak yerdeki kartı aldı ve +${kazanilanPuan} puan kazandı! Sıra SİZE geçti.`);
+        } else {
+          durumPaneliGuncelle(`🤖 Zekayi masaya ${atilan.ad_soyad} (${botPuan}) kartını attı. Hamle sırası sizde!`);
+          mevcutSira = "oyuncu";
+        }
+      } else {
+        masadakiKartlar.push(atilan);
+        durumPaneliGuncelle(`🤖 Zekayi masaya ${atilan.ad_soyad} kartını attı. Sıra SİZDE!`);
+        mevcutSira = "oyuncu";
+      }
+
+      botEliniguncelle();
+      masayiGuncelle();
+      sayaclariGuncelle();
+
+      if (eldekiKartlar.length === 0 && botEli.length === 0 && cekilebilirDeste.length === 0) {
+        oyunBittiKontrol();
+      }
+    }
+
+    function kartCek() {
+      if (!oyunBasladiMi) {
+        tumListeyiGosterGizle(true);
+        return;
+      }
+
+      if (eldekiKartlar.length >= 5) {
+        alert("Eliniz dolu! Önce elinizdeki bir kartı masaya atın.");
+        return;
+      }
+      if (cekilebilirDeste.length === 0) {
+        alert("Destede kart kalmadı!");
+        return;
+      }
+
+      eldekiKartlar.push(cekilebilirDeste.pop());
+      if (cekilebilirDeste.length > 0 && botEli.length < 5) {
+        botEli.push(cekilebilirDeste.pop());
+      }
+
+      eliGuncelle();
+      botEliniguncelle();
+      sayaclariGuncelle();
+    }
+
+    function oyunBittiKontrol() {
+      let sonuc = "";
+      if (oyuncuSkorPuan > botSkorPuan) {
+        sonuc = `🏆 TEBRİKLER KAZANDINIZ! (${oyuncuSkorPuan} - ${botSkorPuan} Puan)`;
+      } else if (botSkorPuan > oyuncuSkorPuan) {
+        sonuc = `🤖 ZEKAYİ KAZANDI! (${botSkorPuan} - ${oyuncuSkorPuan} Puan)`;
+      } else {
+        sonuc = `🤝 BERABERE! (${oyuncuSkorPuan} - ${botSkorPuan} Puan)`;
+      }
+      durumPaneliGuncelle(`Oyun Bitti! ${sonuc}`);
+    }
+
+    function sayaclariGuncelle() {
+      document.getElementById('desteSayac').innerText = `Deste: ${cekilebilirDeste.length}`;
+      const oyuncuSkorEl = document.getElementById('oyuncuSkor');
+      if (oyuncuSkorEl) oyuncuSkorEl.innerText = oyuncuSkorPuan;
+      document.getElementById('botSkor').innerText = botSkorPuan;
+    }
+
+    function botEliniguncelle() {
+      const konteynir = document.getElementById('botEli');
+      konteynir.innerHTML = '';
+      botEli.forEach(() => {
+        const div = document.createElement('div');
+        div.className = 'bot-kapali-kart';
+        div.innerText = '🚴‍♂️';
+        konteynir.appendChild(div);
+      });
+    }
+
+    function masayiGuncelle() {
+      const ortaAlan = document.getElementById('ortaKartAlani');
+      if (masadakiKartlar.length === 0) {
+        ortaAlan.innerHTML = `<span style="color: #94a3b8; font-size: 0.85rem;">Masa Boş</span>`;
+      } else {
+        const sonKart = masadakiKartlar[masadakiKartlar.length - 1];
+        ortaAlan.innerHTML = tekilKartHtmlOluştur(sonKart, false, false);
+      }
+    }
+
+    function eliGuncelle() {
+      const konteynir = document.getElementById('oyuncuEli');
+      konteynir.innerHTML = '';
+
+      const kartSayisi = eldekiKartlar.length;
+      const aciAdimi = 8;
+      const baslangicAcisi = -((kartSayisi - 1) * aciAdimi) / 2;
+
+      eldekiKartlar.forEach((turcu, indeks) => {
+        const kartKutu = document.createElement('div');
+        kartKutu.innerHTML = tekilKartHtmlOluştur(turcu, false, false);
+        const kartElem = kartKutu.firstElementChild;
+
+        kartElem.onclick = () => oyuncuKartAt(turcu.kimlik);
+        kartElem.title = oyunBasladiMi ? "Masaya atmak için tıklayın" : "Detaylar için tüm desteyi göster";
+
+        const aci = baslangicAcisi + (indeks * aciAdimi);
+        const dikeyOfset = Math.abs(indeks - (kartSayisi - 1) / 2) * 8;
+
+        kartElem.style.transform = `rotate(${aci}deg) translateY(${dikeyOfset}px)`;
+        kartElem.style.zIndex = indeks + 1;
+
+        konteynir.appendChild(kartElem);
+      });
+    }
+
+    /* KART TASARIMI */
+    function tekilKartHtmlOluştur(turcu, duzenleButonuOlsunMu = false, eldeAdayButonuOlsunMu = true) {
+      const kisaSimge = `${turcu.kart_degeri} ${simgeHaritasi[turcu.kart_serisi] || ''}`;
+
+      if (turcu.bos_kart) {
+        const adayBtnHtml = eldeAdayButonuOlsunMu ? `<div class="bos-kart-ekle-btn">➕ Aday Göster</div>` : '';
+        return `
+          <div class="iskambil-kart bos-kart" ${eldeAdayButonuOlsunMu ? `onclick="modalAc('ekle', '${turcu.kart_serisi}', '${turcu.kart_degeri}')"` : ''}>
+            <div class="kart-ust-bilgi">
+              <div class="genel-puan-rozet">${turcu.hesaplanan_ort_puan}</div>
+              <div class="kart-simgesi ${turcu.kart_serisi}">${kisaSimge}</div>
+            </div>
+            <div class="bos-kart-icerik">
+              <div class="bos-kart-simge">👤</div>
+              <div style="font-weight:bold; color:#ff9f1c;">${kisaSimge} Boş Kart</div>
+              <div style="font-size:0.75rem; color:#94a3b8;">Atanmamış Kart</div>
+              ${adayBtnHtml}
+            </div>
+          </div>
+        `;
+      }
+
+      let yeteneklerHtml = '';
+      for (const [yetenekKodu, puan] of Object.entries(turcu.yetenekler || {})) {
+        yeteneklerHtml += `
+          <div class="yetenek-satir">
+            <span class="yetenek-adi" title="${yetenekAciklamalari[yetenekKodu]}">${yetenekKodu}</span>
+            <div class="yetenek-cubuk-dis"><div class="yetenek-cubuk-ic" style="width: ${puan}%"></div></div>
+            <span>${puan}</span>
+          </div>`;
+      }
+
+      let baglantilarHtml = '';
+      if (turcu.baglantilar) {
+        baglantilarHtml += '<div class="baglantilar-kutusu">';
+        for (const [tur, link] of Object.entries(turcu.baglantilar)) {
+          baglantilarHtml += `<a href="${link}" target="_blank" onclick="event.stopPropagation()" class="baglanti-link">${baglantiEtiketleri[tur] || tur}</a>`;
+        }
+        baglantilarHtml += '</div>';
+      }
+
+      const duzenleBtnHtml = duzenleButonuOlsunMu ? `<button class="duzenle-btn" onclick="event.stopPropagation(); modalDuzenleAc('${turcu.kimlik}')">✏️</button>` : '';
+
+      return `
+        <div class="iskambil-kart ${turcu.kart_serisi === 'joker' ? 'joker-kart' : ''}">
+          <div class="kart-ust-bilgi">
+            <div class="genel-puan-rozet">${turcu.hesaplanan_ort_puan}</div>
+            <div class="kart-simgesi ${turcu.kart_serisi}">${kisaSimge}</div>
+          </div>
+          <img src="${turcu.fotograf}" alt="${turcu.ad_soyad}" class="kart-resim">
+          <div class="kart-icerik">
+            <div>
+              <div class="turcu-adi">${turcu.ad_soyad}</div>
+              <div class="turcu-unvan">${turcu.unvan}</div>
+            </div>
+            <div class="rozet-grubu">
+              <span class="durum-rozet">${turcu.durum_etiketi}</span>
+              <span class="aktif-yil-rozet ${turcu.hala_aktif_mi ? '' : 'pasif'}">⏱️ ${turcu.aktif_yil_metni}</span>
+            </div>
+            <div class="yetenek-listesi">${yeteneklerHtml}</div>
+            <div class="ozel-yetenek-kutusu">✨ ${turcu.ozel_yetenek}</div>
+            ${baglantilarHtml}
+            ${duzenleBtnHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    function tumListeyiGosterGizle(zorlaAc = false) {
+      const listeAlani = document.getElementById('tumListeAlani');
+      const btn = document.getElementById('listeToggleBtn');
+
+      if (listeAlani.style.display === 'block' && !zorlaAc) {
+        listeAlani.style.display = 'none';
+        btn.innerText = '📋 Tüm Desteyi Göster';
+      } else {
+        listeAlani.style.display = 'block';
+        btn.innerText = '🙈 Tüm Desteyi Gizle';
+        kartlariFiltrele('dolu');
+        listeAlani.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function bosKartlariListele() {
+      const listeAlani = document.getElementById('tumListeAlani');
+      listeAlani.style.display = 'block';
+      kartlariFiltrele('boslar');
+      listeAlani.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function tumKartlariEkranaBas(veriListesi) {
+      const konteynir = document.getElementById('tumKartlarKonteynir');
+      konteynir.innerHTML = '';
+      veriListesi.forEach(turcu => {
+        const div = document.createElement('div');
+        div.innerHTML = tekilKartHtmlOluştur(turcu, true, true);
+        konteynir.appendChild(div.firstElementChild);
+      });
+    }
+
+    function kartlariSirala(siralamaKriteri) {
+      mevcutFiltrelenmisVeri.sort((a, b) => {
+        if (a.bos_kart) return 1;
+        if (b.bos_kart) return -1;
+        if (siralamaKriteri === 'kart_degeri_sirali') {
+          return (kartAgliklari[String(b.kart_degeri)] || 0) - (kartAgliklari[String(a.kart_degeri)] || 0);
+        } else if (siralamaKriteri === 'alfabetik') {
+          return a.ad_soyad.localeCompare(b.ad_soyad, 'tr');
+        } else if (siralamaKriteri === 'puan_azalan') {
+          return b.hesaplanan_ort_puan - a.hesaplanan_ort_puan;
+        } else if (siralamaKriteri === 'aktif_yil') {
+          return b.toplam_aktif_yil - a.toplam_aktif_yil;
+        } else {
+          return ((b.yetenekler || {})[siralamaKriteri] || 0) - ((a.yetenekler || {})[siralamaKriteri] || 0);
+        }
+      });
+      tumKartlariEkranaBas(mevcutFiltrelenmisVeri);
+    }
+
+    function kartlariFiltrele(kriter, olay) {
+      document.querySelectorAll('.filtre-buton').forEach(btn => btn.classList.remove('aktif'));
+      if (olay && olay.target) olay.target.classList.add('aktif');
+
+      if (kriter === 'dolu') {
+        mevcutFiltrelenmisVeri = anaDeste.filter(t => !t.bos_kart);
+      } else if (kriter === 'boslar') {
+        mevcutFiltrelenmisVeri = anaDeste.filter(t => t.bos_kart);
+      } else {
+        mevcutFiltrelenmisVeri = anaDeste.filter(t => !t.bos_kart && (t.durum === kriter || t.kart_serisi === kriter));
+      }
+      kartlariSirala(document.getElementById('siralamaSecim').value);
+    }
+
+    /* BİLGİ MODALI İŞLEMLERİ */
+    function infoModalAc() {
+      document.getElementById('infoModal').style.display = 'flex';
+    }
+
+    function infoModalKapat() {
+      document.getElementById('infoModal').style.display = 'none';
+    }
+
+    /* FORM İŞLEMLERİ */
+    function statHesapla() {
+      const ped = parseInt(document.getElementById('stPED').value) || 0;
+      const mka = parseInt(document.getElementById('stMKA').value) || 0;
+      const kmp = parseInt(document.getElementById('stKMP').value) || 0;
+      const bfl = parseInt(document.getElementById('stBFL').value) || 0;
+      const kmr = parseInt(document.getElementById('stKMR').value) || 0;
+
+      const toplam = ped + mka + kmp + bfl + kmr;
+      const ortalama = Math.round(toplam / 5);
+
+      const göstergeToplam = document.getElementById('toplamStatGosterge');
+      const göstergeOrt = document.getElementById('ortStatGosterge');
+
+      göstergeToplam.innerText = toplam;
+      göstergeOrt.innerText = ortalama;
+
+      if (toplam > 350) {
+        göstergeToplam.style.color = "#ef4444";
+        göstergeOrt.style.color = "#ef4444";
+      } else {
+        göstergeToplam.style.color = "#10b981";
+        göstergeOrt.style.color = "#10b981";
+      }
+    }
+
+    function yetenekleriPasifYap(pasifMi = true) {
+      ['stPED', 'stMKA', 'stKMP', 'stBFL', 'stKMR'].forEach(id => {
+        document.getElementById(id).disabled = pasifMi;
+      });
+    }
+
+    function urlFix(url) {
+      if (!url) return "";
+      url = url.trim();
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        return 'https://' + url;
+      }
+      return url;
+    }
+
+    function ekstraLinkSatiriEkle(platform = '', url = '') {
+      const konteynir = document.getElementById('ekstraLinkKonteynir');
+      const div = document.createElement('div');
+      div.className = 'ekstra-link-satir';
+      div.innerHTML = `
+        <input type="text" class="ekstra-platform-adi" placeholder="Platform (Örn: Strava)" value="${platform}">
+        <input type="text" class="ekstra-platform-url" placeholder="facebook.com veya url..." value="${url}">
+      `;
+      konteynir.appendChild(div);
+    }
+
+    function modalAc(mod, seri, deger) {
+      mevcutModalModu = mod;
+      document.getElementById('modalBaslik').innerText = mod === 'duzenle' ? '✏️ Kart Bilgilerini Düzenleme Öner' : '➕ Yeni Bisikletçi Adayı Ekle';
+      document.getElementById('seciliKartEtiketi').innerText = `${deger} ${simgeHaritasi[seri] || ''} (${seri.toUpperCase()})`;
+      document.getElementById('formKartSerisi').value = seri;
+      document.getElementById('formKartDegeri').value = deger;
+      document.getElementById('ekstraLinkKonteynir').innerHTML = '';
+      document.getElementById('modalForm').style.display = 'flex';
+      
+      yetenekleriPasifYap(false);
+      statHesapla();
+    }
+
+    function modalDuzenleAc(kimlik) {
+      const turcu = anaDeste.find(t => t.kimlik === kimlik);
+      if (!turcu) return;
+
+      modalAc('duzenle', turcu.kart_serisi, turcu.kart_degeri);
+
+      document.getElementById('formKimlik').value = turcu.kimlik;
+      document.getElementById('formAdSoyad').value = turcu.ad_soyad || '';
+      document.getElementById('formUnvan').value = turcu.unvan || '';
+      document.getElementById('formDurum').value = turcu.durum || 'aktif';
+      document.getElementById('formAktifYillar').value = (turcu.aktif_yillar || []).join(', ');
+      document.getElementById('formFotograf').value = turcu.fotograf || '';
+      document.getElementById('formOzelYetenek').value = turcu.ozel_yetenek || '';
+
+      if (turcu.yetenekler) {
+        document.getElementById('stPED').value = turcu.yetenekler.PED || 70;
+        document.getElementById('stMKA').value = turcu.yetenekler.MKA || 70;
+        document.getElementById('stKMP').value = turcu.yetenekler.KMP || 70;
+        document.getElementById('stBFL').value = turcu.yetenekler.BFL || 70;
+        document.getElementById('stKMR').value = turcu.yetenekler.KMR || 70;
+      }
+
+      yetenekleriPasifYap(true);
+
+      if (turcu.baglantilar) {
+        document.getElementById('linkWeb').value = turcu.baglantilar.web || '';
+        document.getElementById('linkYT').value = turcu.baglantilar.youtube || '';
+        document.getElementById('linkIG').value = turcu.baglantilar.instagram || '';
+        document.getElementById('linkFB').value = turcu.baglantilar.Facebook || '';
+
+        for (const [key, val] of Object.entries(turcu.baglantilar)) {
+          if (!['web', 'youtube', 'instagram', 'Facebook'].includes(key)) {
+            ekstraLinkSatiriEkle(key, val);
+          }
+        }
+      }
+      statHesapla();
+    }
+
+    function modalKapat() {
+      document.getElementById('modalForm').style.display = 'none';
+      document.getElementById('turcuFormu').reset();
+      yetenekleriPasifYap(false);
+      mevcutModalModu = "ekle";
+    }
+
+    /* FORMSPREE GÖNDERİMİ */
+    document.getElementById('turcuFormu').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const emailInput = document.getElementById('formEmail').value;
+      if (!emailInput || !emailInput.includes('@')) {
+        alert("⚠️ Gönderim yapabilmek için lütfen geçerli bir e-posta adresi giriniz!");
+        return;
+      }
+
+      const ped = parseInt(document.getElementById('stPED').value) || 0;
+      const mka = parseInt(document.getElementById('stMKA').value) || 0;
+      const kmp = parseInt(document.getElementById('stKMP').value) || 0;
+      const bfl = parseInt(document.getElementById('stBFL').value) || 0;
+      const kmr = parseInt(document.getElementById('stKMR').value) || 0;
+      const toplam = ped + mka + kmp + bfl + kmr;
+
+      if (mevcutModalModu === 'ekle' && toplam > 350) {
+        alert(`⚠️ Toplam yetenek puanınız ${toplam}! Maksimum 350 kredi sınırını aştınız.`);
+        return;
+      }
+
+      const gonderBtn = document.getElementById('gonderBtn');
+      gonderBtn.innerText = "⏳ Gönderiliyor...";
+      gonderBtn.disabled = true;
+
+      const yillarHam = document.getElementById('formAktifYillar').value.split(',').map(y => parseInt(y.trim())).filter(y => !isNaN(y));
+
+      const baglantilarObj = {};
+      if (document.getElementById('linkWeb').value) baglantilarObj.web = urlFix(document.getElementById('linkWeb').value);
+      if (document.getElementById('linkYT').value) baglantilarObj.youtube = urlFix(document.getElementById('linkYT').value);
+      if (document.getElementById('linkIG').value) baglantilarObj.instagram = urlFix(document.getElementById('linkIG').value);
+      if (document.getElementById('linkFB').value) baglantilarObj.Facebook = urlFix(document.getElementById('linkFB').value);
+
+      const ekstraPlatformlar = document.querySelectorAll('.ekstra-platform-adi');
+      const ekstraUrller = document.querySelectorAll('.ekstra-platform-url');
+      ekstraPlatformlar.forEach((pInput, idx) => {
+        const pAd = pInput.value.trim();
+        const pUrl = ekstraUrller[idx].value.trim();
+        if (pAd && pUrl) baglantilarObj[pAd] = urlFix(pUrl);
+      });
+
+      const durumDegeri = document.getElementById('formDurum').value;
+      let durumEtiketi = "Yolda 🟢";
+      if (durumDegeri === 'motora_gecti') durumEtiketi = "Motora Geçti ⚪";
+      if (durumDegeri === 'arsiv') durumEtiketi = "Arşivden Yayın 💾";
+
+      const jsonVerisi = {
+        islem_turu: mevcutModalModu,
+        gonderen_email: emailInput,
+        kimlik: document.getElementById('formKimlik').value || `${this.kart_serisi.value}-${this.kart_degeri.value.toLowerCase()}-01`,
+        ad_soyad: this.ad_soyad.value,
+        kart_serisi: this.kart_serisi.value,
+        kart_degeri: this.kart_degeri.value,
+        unvan: this.unvan.value,
+        durum: durumDegeri,
+        durum_etiketi: durumEtiketi,
+        aktif_yillar: yillarHam.length ? yillarHam : [GUNCEL_YIL],
+        fotograf: document.getElementById('formFotograf').value,
+        yetenekler: { PED: ped, MKA: mka, KMP: kmp, BFL: bfl, KMR: kmr },
+        ozel_yetenek: this.ozel_yetenek.value,
+        baglantilar: baglantilarObj
+      };
+
+      document.getElementById('jsonKodBlok').value = JSON.stringify(jsonVerisi, null, 2);
+      const formData = new FormData(this);
+
+      try {
+        const cevap = await fetch(FORMSPREE_URL, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (cevap.ok) {
+          alert("🎉 Kart düzenleme talebiniz başarıyla iletildi!");
+          this.reset();
+          modalKapat();
+        } else {
+          alert("⚠️ Formspree gönderim hatası! Lütfen e-posta adresinizi ve alanları kontrol ediniz.");
+        }
+      } catch (hata) {
+        alert("⚠️ İnternet veya sunucu bağlantı hatası!");
+      } finally {
+        gonderBtn.innerText = "🚀 Formu Gönder";
+        gonderBtn.disabled = false;
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', verileriYukle);
+  </script>
+</body>
+</html>
