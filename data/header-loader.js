@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "link": ""
       },
       "menu": [
-        { "title": "Hakkımda", "href": "#hakkimda", "isSection": true },
+        { "title": "Ben?", "href": "#hakkimda", "isSection": true },
         { "title": "Ferdigram", "href": "gram.html", "isSection": false, "hideOn": ["gram.html"] },
         { "title": "Yerler", "href": "yerler.html", "isSection": false, "hideOn": ["yerler.html"] },          
         { "title": "Yazılar", "href": "yazilar.html", "isSection": false, "hideOn": ["yazilar", "yazilar.html"] },
@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { "title": "Kronoloji", "href": "#kronoloji", "isSection": true },
         { "title": "Dosyalar", "href": "#dosyalar", "isSection": true },
         { "title": "Ekipman", "href": "ekipman.html", "otherHref": "/ekipman.html", "isSection": false, "hideOn": ["ekipman", "ekipman.html"] },
+        { "title": "Turcular", "href": "turcular.html", "otherHref": "/turcular.html", "isSection": false, "hideOn": ["turcular.html"] },  
         { "title": "Rotalar", "href": "rotalar.html", "otherHref": "/rotalar.html", "isSection": false, "hideOn": ["rotalar", "rotalar.html"] },          
         { "title": "S.S.S.", "href": "#faq", "isSection": true },
         { "title": "Vasiyet", "href": "#sablon", "isSection": true },
