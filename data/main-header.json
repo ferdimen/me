@@ -15,7 +15,7 @@
     { "title": "Kronoloji", "href": "#kronoloji", "isSection": true },
     { "title": "Dosyalar", "href": "#dosyalar", "isSection": true },
     { "title": "Ekipman", "href": "ekipman.html", "otherHref": "/ekipman.html", "isSection": false, "hideOn": ["ekipman.html"] },
-	{ "title": "Turcular", "href": "turcular.html", "isSection": false, "hideOn": ["turcular.html"] },
+	{ "title": "turcular", "href": "turcular.html", "otherHref": "/turcular.html", "isSection": false, "hideOn": ["turcular.html"] },
     { "title": "Rotalar", "href": "rotalar.html", "otherHref": "/rotalar.html", "isSection": false, "hideOn": ["rotalar.html"] },
     { "title": "S.S.S.", "href": "#faq", "isSection": true },
     { "title": "Vasiyet", "href": "#sablon", "isSection": true },
