@@ -1,17 +1,16 @@
 [
   {
     "id": "2026/2026-10-23-10-24",
-    "baslik": "",
-    "aciklama": "",
+    "baslik": "Lokma",
     "url": "gram.html",
-    "tarih": "2026-10-23",
+    "tarih": "2026-10-22",
     "kategori": "Anlık",
     "ozel": "fotoğraf, anlık",
-    "konum": "41.187399, 27.767400",
     "kapakresmi": "/img/posts/2026/2026-10-23-10-24.jpg",
     "etiketler": [
-      "fotoğraf,anlık,ferdimen"
-    ]
+      "fotoğraf,anlık,ferdimen,"
+    ],
+    "konum": "41.187399, 27.767400"
   },
   {
     "id": "2026/2026-10-18-12-52",
