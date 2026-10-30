@@ -163,11 +163,11 @@
     "aktif_yillar": [2010],
     "fotograf": "img/turcular/orhan-kilic.jpg",
     "yetenekler": {
-      "PED": 80,
-      "MKA": 95,
-      "KMP": 85,
-      "BFL": 90,
-      "KMR": 70
+      "PED": 70,
+      "MKA": 75,
+      "KMP": 75,
+      "BFL": 70,
+      "KMR": 60
     },
     "ozel_yetenek": "Bisiklet dünyasının tecrübeli kalemlerinden. Vaktiyle katettiği kilometreler ve düzenli tuttuğu tur günlükleriyle bir kuşağa yol gösterdi, bisikletle uzun yola çıkma fikrini aşıladı. Her ne kadar aktif turculuk günlerinin ve fırtınalı zamanlarının gerisinde kalsa da bıraktığı arşiv hâlâ değerini koruyor.",
     "baglantilar": {
@@ -200,7 +200,8 @@
       "web": "https://nuzerel.com",		
       "instagram": "https://instagram.com/nuzerel",
       "x": "https://x.com/nuzerel",	  
-      "strava": "https://www.strava.com/athletes/7114549"
+      "strava": "https://www.strava.com/athletes/7114549",
+	  "polarsteps": "https://www.polarsteps.com/ElifUzer"
     }
   },
     {
@@ -259,7 +260,7 @@
     "kart_degeri": "J",
     "unvan": "Pedalla",
     "durum": "aktif",
-    "durum_etiketi": "Motora Geçti 🛵",
+    "durum_etiketi": "Yolda 🟢",
     "aktif_yillar": [2006],
     "fotograf": "img/turcular/serkan-tasdelen.jpg",
     "yetenekler": {
@@ -278,10 +279,33 @@
       "Facebook": "https://www.facebook.com/PedallaBisiklet"
     }
   },  
-      {
+        {
     "kimlik": "maca-j-01",
-    "ad_soyad": "Ramil Ziyadov",
+    "ad_soyad": "Arif Özhan",
     "kart_serisi": "maca",
+    "kart_degeri": "J",
+    "unvan": "Atom Karınca",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2014],
+    "fotograf": "img/turcular/arif-ozhan.jpg",
+    "yetenekler": {
+      "PED": 92,
+      "MKA": 85,
+      "KMP": 85,
+      "BFL": 80,
+      "KMR": 70
+    },
+    "ozel_yetenek": "Zorlu dağlık arazi turları, sert coğrafya geçişleriyle ve ekstrem solo turculuğuyla tanınan seyyahlardandır. Harita dışı coğrafyaları keşfetmeyi odak noktasına alan bir seyahat anlayışına sahiptir. Fiziksel minyonluğu sebebiyle Atom karınca olarak anılır. 2018 yılında Hasankeyf civarında yaşadığı bir kaybolma olayıyla da basında yer almıştır. Bisiklet festivallerinde ve sunumlarda bu extrem rotalara dair deneyimlerini paylaşmaktadır. ",
+    "baglantilar": {
+      "youtube": "#",
+      "instagram": "https://www.instagram.com/arifozhan/"
+    }
+  }, 
+      {
+    "kimlik": "sinek-j-01",
+    "ad_soyad": "Ramil Ziyadov",
+    "kart_serisi": "sinek",
     "kart_degeri": "J",
     "unvan": "Yalnız Kurt",
     "durum": "aktif",
@@ -396,6 +420,29 @@
       "web": "https://heybede.wordpress.com",
       "instagram": "https://www.instagram.com/aziz.kucukk/",
       "strava": "https://www.strava.com/athletes/14125095"
+    }
+  },
+        {
+    "kimlik": "kupa-9-01",
+    "ad_soyad": "Fırat Yılmaz",
+    "kart_serisi": "kupa",
+    "kart_degeri": "9",
+    "unvan": "zortan_vahey",
+    "durum": "aktif",
+    "durum_etiketi": "Yolda 🟢",
+    "aktif_yillar": [2015],
+    "fotograf": "img/turcular/firat-yilmaz.jpg",
+    "yetenekler": {
+      "PED": 90,
+      "MKA": 80,
+      "KMP": 80,
+      "BFL": 80,
+      "KMR": 40
+    },
+    "ozel_yetenek": "Samsun ve çevresi başta olmak üzere Karadeniz, İç Anadolu ve Doğu Anadolu hatlarında pedal basan, turlarında çadır kampı ve bütçe dostu solo seyahat anlayışını benimseyen uzun mesafe bisiklet turcusudur. Popüler yayıncılık hırslarından ziyade, bisikleti doğrudan bir keşif ve yolda olma biçimi olarak gören kendi halinde bağımsız turculuk çizgisindedir. ",
+    "baglantilar": {
+      "instagram": "https://www.instagram.com/zortan_vahey/",
+      "strava": "https://www.strava.com/athletes/15161048"
     }
   }
 ]
