@@ -232,9 +232,9 @@
     ]
   },
   {
-    "id": "2026-anadolu-engeregi",
-    "baslik": "Anadolu Engereği Bisiklet Turu",
-    "url": "yazilar/2026-anadolu-engeregi.html",
+    "id": "2026-fiss",
+    "baslik": "Fıss Bisiklet Turu",
+    "url": "yazilar/2026-fisss.html",
     "tarih": "2026-09-27 , 2026-10-05",
     "kategori": "Bisiklet Turları > [iç Anadolu, Karadeniz (Orta)]",
     "ozel": "1, mücadele, macera, zor, yakında",
@@ -247,7 +247,7 @@
   {
     "id": "2026-it-urur-kervan-yurur",
     "baslik": "İt Ürür Kervan Yürür (Uvertür) Bisiklet Turu",
-    "url": "#",
+    "url": "2026-uvertur",
     "tarih": "2026-09-17, 2026-09-26",
     "kategori": "Bisiklet Turları",
     "ozel": "1",
